@@ -20,7 +20,8 @@
     "assistant_coach_name": "Trey Taylor",
     "assistant_coach_email": "baseball@acu.edu",
     "website": "https://acusports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "30-25"
   },
   {
     "id": 140,
@@ -43,7 +44,8 @@
     "assistant_coach_name": "T.J. Milone",
     "assistant_coach_email": "baseball@usafa.edu",
     "website": "https://goairforcefalcons.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "28-24"
   },
   {
     "id": 13,
@@ -66,7 +68,8 @@
     "assistant_coach_name": "Jason Jackson",
     "assistant_coach_email": "baseball@ua.edu",
     "website": "https://rolltide.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "34-24"
   },
   {
     "id": 287,
@@ -89,7 +92,8 @@
     "assistant_coach_name": "Tommy Hunter",
     "assistant_coach_email": "baseball@aamu.edu",
     "website": "https://aamusports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "18-32"
   },
   {
     "id": 286,
@@ -112,7 +116,8 @@
     "assistant_coach_name": "Samuel Williams",
     "assistant_coach_email": "baseball@alasu.edu",
     "website": "https://bamastatesports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "24-28"
   },
   {
     "id": 256,
@@ -135,7 +140,8 @@
     "assistant_coach_name": "Tyler Martin",
     "assistant_coach_email": "baseball@albany.edu",
     "website": "https://ualbanysports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "27-25"
   },
   {
     "id": 288,
@@ -158,7 +164,8 @@
     "assistant_coach_name": "Landon Griffin",
     "assistant_coach_email": "baseball@alcorn.edu",
     "website": "https://alcornsports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "26-25"
   },
   {
     "id": 86,
@@ -181,7 +188,8 @@
     "assistant_coach_name": "Josh White",
     "assistant_coach_email": "baseball@appstate.edu",
     "website": "https://appstatesports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "33-24"
   },
   {
     "id": 46,
@@ -204,7 +212,8 @@
     "assistant_coach_name": "Dave Lawn",
     "assistant_coach_email": "baseball@arizona.edu",
     "website": "https://arizonawildcats.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "32-24"
   },
   {
     "id": 45,
@@ -227,7 +236,8 @@
     "assistant_coach_name": "Michael Early",
     "assistant_coach_email": "baseball@asu.edu",
     "website": "https://thesundevils.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "36-22"
   },
   {
     "id": 7,
@@ -250,7 +260,8 @@
     "assistant_coach_name": "Nate Thompson",
     "assistant_coach_email": "baseball@uark.edu",
     "website": "https://arkansasrazorbacks.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "44-18"
   },
   {
     "id": 87,
@@ -273,7 +284,8 @@
     "assistant_coach_name": "Alex Jefferson",
     "assistant_coach_email": "baseball@astate.edu",
     "website": "https://astateredwolves.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "22-32"
   },
   {
     "id": 291,
@@ -296,7 +308,8 @@
     "assistant_coach_name": "Freddie Booker",
     "assistant_coach_email": "baseball@uapb.edu",
     "website": "https://uapblionsroar.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "16-34"
   },
   {
     "id": 212,
@@ -319,7 +332,8 @@
     "assistant_coach_name": "Sean Monaghan",
     "assistant_coach_email": "baseball@westpoint.edu",
     "website": "https://goarmywestpoint.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "22-25"
   },
   {
     "id": 11,
@@ -342,7 +356,8 @@
     "assistant_coach_name": "Karl Nonemaker",
     "assistant_coach_email": "baseball@auburn.edu",
     "website": "https://auburntigers.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "39-21"
   },
   {
     "id": 170,
@@ -365,7 +380,8 @@
     "assistant_coach_name": "Joel Mangrum",
     "assistant_coach_email": "baseball@apsu.edu",
     "website": "https://letsgopeay.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "29-27"
   },
   {
     "id": 43,
@@ -388,7 +404,8 @@
     "assistant_coach_name": "Brent Haring",
     "assistant_coach_email": "baseball@byu.edu",
     "website": "https://byucougars.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "28-28"
   },
   {
     "id": 40,
@@ -411,7 +428,8 @@
     "assistant_coach_name": "Jon Strauss",
     "assistant_coach_email": "baseball@baylor.edu",
     "website": "https://baylorbears.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "33-23"
   },
   {
     "id": 172,
@@ -434,7 +452,8 @@
     "assistant_coach_name": "Phil Elson",
     "assistant_coach_email": "baseball@bellarmine.edu",
     "website": "https://bellarmineknights.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "30-25"
   },
   {
     "id": 292,
@@ -457,7 +476,8 @@
     "assistant_coach_name": "Greg Marron",
     "assistant_coach_email": "baseball@cookman.edu",
     "website": "https://bcuathletics.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "25-27"
   },
   {
     "id": 255,
@@ -480,7 +500,8 @@
     "assistant_coach_name": "Steve DeVivo",
     "assistant_coach_email": "baseball@binghamton.edu",
     "website": "https://bubearcats.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "25-27"
   },
   {
     "id": 31,
@@ -503,7 +524,8 @@
     "assistant_coach_name": "Alex Trahan",
     "assistant_coach_email": "baseball@bc.edu",
     "website": "https://bceagles.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "30-23"
   },
   {
     "id": 148,
@@ -526,7 +548,8 @@
     "assistant_coach_name": "Brett Helton",
     "assistant_coach_email": "baseball@bradley.edu",
     "website": "https://bradleybraves.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "22-30"
   },
   {
     "id": 223,
@@ -549,7 +572,8 @@
     "assistant_coach_name": "Cameron Curler",
     "assistant_coach_email": "baseball@brown.edu",
     "website": "https://brownbears.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "16-24"
   },
   {
     "id": 258,
@@ -572,7 +596,8 @@
     "assistant_coach_name": "Steve Owens",
     "assistant_coach_email": "baseball@bryant.edu",
     "website": "https://bryantbulldogs.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "25-28"
   },
   {
     "id": 214,
@@ -595,7 +620,8 @@
     "assistant_coach_name": "Brent Shade",
     "assistant_coach_email": "baseball@bucknell.edu",
     "website": "https://bucknellbison.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "26-21"
   },
   {
     "id": 113,
@@ -618,7 +644,8 @@
     "assistant_coach_name": "Adam Weiss",
     "assistant_coach_email": "baseball@butler.edu",
     "website": "https://butlersports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "22-33"
   },
   {
     "id": 128,
@@ -641,7 +668,8 @@
     "assistant_coach_name": "Teddy Warrecker",
     "assistant_coach_email": "baseball@calpoly.edu",
     "website": "https://gopoly.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "28-26"
   },
   {
     "id": 134,
@@ -664,7 +692,8 @@
     "assistant_coach_name": "Greg Clanagan",
     "assistant_coach_email": "baseball@csub.edu",
     "website": "https://gorunners.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "18-34"
   },
   {
     "id": 124,
@@ -687,7 +716,8 @@
     "assistant_coach_name": "Chad Baum",
     "assistant_coach_email": "baseball@fullerton.edu",
     "website": "https://fullertontitans.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "32-24"
   },
   {
     "id": 133,
@@ -710,7 +740,8 @@
     "assistant_coach_name": "Shaughn Glover",
     "assistant_coach_email": "baseball@csun.edu",
     "website": "https://gomatadors.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "22-32"
   },
   {
     "id": 32,
@@ -733,7 +764,8 @@
     "assistant_coach_name": "David Nakama",
     "assistant_coach_email": "baseball@cal.berkeley.edu",
     "website": "https://calbears.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "27-29"
   },
   {
     "id": 198,
@@ -756,7 +788,8 @@
     "assistant_coach_name": "Logan Sowers",
     "assistant_coach_email": "baseball@calbaptist.edu",
     "website": "https://cbulancers.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "26-29"
   },
   {
     "id": 242,
@@ -779,7 +812,8 @@
     "assistant_coach_name": "Matt Powers",
     "assistant_coach_email": "baseball@canisius.edu",
     "website": "https://gogriffs.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "26-25"
   },
   {
     "id": 171,
@@ -802,7 +836,8 @@
     "assistant_coach_name": "Bryce Collins",
     "assistant_coach_email": "baseball@uca.edu",
     "website": "https://ucasports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "25-30"
   },
   {
     "id": 262,
@@ -825,7 +860,8 @@
     "assistant_coach_name": "Mike Robilotta",
     "assistant_coach_email": "baseball@ccsu.edu",
     "website": "https://ccsubluedevils.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "28-22"
   },
   {
     "id": 151,
@@ -848,7 +884,8 @@
     "assistant_coach_name": "Kevin Nichols",
     "assistant_coach_email": "baseball@cofc.edu",
     "website": "https://cofcsports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "32-24"
   },
   {
     "id": 73,
@@ -871,7 +908,8 @@
     "assistant_coach_name": "Toby Bicknell",
     "assistant_coach_email": "baseball@charlotte.edu",
     "website": "https://charlotte49ers.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "31-26"
   },
   {
     "id": 184,
@@ -894,7 +932,8 @@
     "assistant_coach_name": "Casey Dykes",
     "assistant_coach_email": "baseball@utc.edu",
     "website": "https://gomocs.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "25-30"
   },
   {
     "id": 44,
@@ -917,7 +956,8 @@
     "assistant_coach_name": "Dan Bautista",
     "assistant_coach_email": "baseball@uc.edu",
     "website": "https://gobearcats.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "28-27"
   },
   {
     "id": 19,
@@ -940,7 +980,8 @@
     "assistant_coach_name": "Andrew See",
     "assistant_coach_email": "baseball@clemson.edu",
     "website": "https://clemsontigers.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "38-20"
   },
   {
     "id": 251,
@@ -963,7 +1004,8 @@
     "assistant_coach_name": "T.J. Tomczak",
     "assistant_coach_email": "baseball@csuohio.edu",
     "website": "https://csuvikings.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "20-32"
   },
   {
     "id": 82,
@@ -986,7 +1028,8 @@
     "assistant_coach_name": "Drew Thomas",
     "assistant_coach_email": "baseball@coastal.edu",
     "website": "https://goccusports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "42-18"
   },
   {
     "id": 47,
@@ -1009,7 +1052,8 @@
     "assistant_coach_name": "Ryan Garvey",
     "assistant_coach_email": "baseball@colorado.edu",
     "website": "https://cubuffs.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "24-31"
   },
   {
     "id": 219,
@@ -1032,7 +1076,8 @@
     "assistant_coach_name": "Connor Smith",
     "assistant_coach_email": "baseball@columbia.edu",
     "website": "https://gocolumbialions.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "22-19"
   },
   {
     "id": 106,
@@ -1055,7 +1100,8 @@
     "assistant_coach_name": "Jeff Hourigan",
     "assistant_coach_email": "baseball@uconn.edu",
     "website": "https://uconnhuskies.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "36-22"
   },
   {
     "id": 278,
@@ -1078,7 +1124,8 @@
     "assistant_coach_name": "Thomas Marston",
     "assistant_coach_email": "baseball@coppin.edu",
     "website": "https://coppinstatesports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "22-28"
   },
   {
     "id": 224,
@@ -1101,7 +1148,8 @@
     "assistant_coach_name": "Frank Margiotta",
     "assistant_coach_email": "baseball@cornell.edu",
     "website": "https://cornellbigred.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "20-21"
   },
   {
     "id": 107,
@@ -1124,7 +1172,8 @@
     "assistant_coach_name": "Connor Gandossy",
     "assistant_coach_email": "baseball@creighton.edu",
     "website": "https://gocreighton.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "30-24"
   },
   {
     "id": 142,
@@ -1147,7 +1196,8 @@
     "assistant_coach_name": "Ryan Stegall",
     "assistant_coach_email": "baseball@dbu.edu",
     "website": "https://dbupatriots.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "39-20"
   },
   {
     "id": 222,
@@ -1170,7 +1220,8 @@
     "assistant_coach_name": "Eric Podbelski",
     "assistant_coach_email": "baseball@dartmouth.edu",
     "website": "https://dartmouthsports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "18-22"
   },
   {
     "id": 228,
@@ -1193,7 +1244,8 @@
     "assistant_coach_name": "Parker Bangs",
     "assistant_coach_email": "baseball@davidson.edu",
     "website": "https://davidsonwildcats.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "27-26"
   },
   {
     "id": 229,
@@ -1216,7 +1268,8 @@
     "assistant_coach_name": "Todd Linklater",
     "assistant_coach_email": "baseball@udayton.edu",
     "website": "https://daytonflyers.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "33-22"
   },
   {
     "id": 159,
@@ -1239,7 +1292,8 @@
     "assistant_coach_name": "Dan Jennings",
     "assistant_coach_email": "baseball@udel.edu",
     "website": "https://bluehens.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "26-28"
   },
   {
     "id": 279,
@@ -1262,7 +1316,8 @@
     "assistant_coach_name": "Kyle Davis",
     "assistant_coach_email": "baseball@desu.edu",
     "website": "https://dsuhornets.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "20-30"
   },
   {
     "id": 160,
@@ -1285,7 +1340,8 @@
     "assistant_coach_name": "Sean Fisher",
     "assistant_coach_email": "baseball@drexel.edu",
     "website": "https://drexeldragons.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "22-30"
   },
   {
     "id": 26,
@@ -1308,7 +1364,8 @@
     "assistant_coach_name": "Josh Jordan",
     "assistant_coach_email": "baseball@duke.edu",
     "website": "https://goduke.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "36-22"
   },
   {
     "id": 176,
@@ -1331,7 +1388,8 @@
     "assistant_coach_name": "Skyler Moss",
     "assistant_coach_email": "baseball@etsu.edu",
     "website": "https://etsubucs.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "38-20"
   },
   {
     "id": 68,
@@ -1354,7 +1412,8 @@
     "assistant_coach_name": "Jeff Palumbo",
     "assistant_coach_email": "baseball@ecu.edu",
     "website": "https://ecupirates.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "42-20"
   },
   {
     "id": 169,
@@ -1377,7 +1436,8 @@
     "assistant_coach_name": "Kyle Mullinix",
     "assistant_coach_email": "baseball@eku.edu",
     "website": "https://ekusports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "24-30"
   },
   {
     "id": 153,
@@ -1400,7 +1460,8 @@
     "assistant_coach_name": "Chris Clark",
     "assistant_coach_email": "baseball@elon.edu",
     "website": "https://elonphoenix.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "39-20"
   },
   {
     "id": 147,
@@ -1423,7 +1484,8 @@
     "assistant_coach_name": "Tyler Buechler",
     "assistant_coach_email": "baseball@evansville.edu",
     "website": "https://gopurpleaces.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "27-28"
   },
   {
     "id": 74,
@@ -1446,7 +1508,8 @@
     "assistant_coach_name": "Greg Deiros",
     "assistant_coach_email": "baseball@fau.edu",
     "website": "https://fausports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "25-31"
   },
   {
     "id": 102,
@@ -1469,7 +1532,8 @@
     "assistant_coach_name": "Kris Clemente",
     "assistant_coach_email": "baseball@fiu.edu",
     "website": "https://fiusports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "24-31"
   },
   {
     "id": 241,
@@ -1492,7 +1556,8 @@
     "assistant_coach_name": "Dylan Fabian",
     "assistant_coach_email": "baseball@fairfield.edu",
     "website": "https://fairfieldstags.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "28-24"
   },
   {
     "id": 266,
@@ -1515,7 +1580,8 @@
     "assistant_coach_name": "Joe Margiotta",
     "assistant_coach_email": "baseball@fdu.edu",
     "website": "https://fduknights.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "26-24"
   },
   {
     "id": 4,
@@ -1538,7 +1604,8 @@
     "assistant_coach_name": "Craig Bell",
     "assistant_coach_email": "baseball@gators.ufl.edu",
     "website": "https://floridagators.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "34-28"
   },
   {
     "id": 294,
@@ -1561,7 +1628,8 @@
     "assistant_coach_name": "Bryan Henry",
     "assistant_coach_email": "baseball@famu.edu",
     "website": "https://famuathletics.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "28-24"
   },
   {
     "id": 167,
@@ -1584,7 +1652,8 @@
     "assistant_coach_name": "Jake Smith",
     "assistant_coach_email": "baseball@fgcu.edu",
     "website": "https://fgcuathletics.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "33-24"
   },
   {
     "id": 20,
@@ -1607,7 +1676,8 @@
     "assistant_coach_name": "Mike Martin Jr.",
     "assistant_coach_email": "baseball@fsu.edu",
     "website": "https://seminoles.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "47-16"
   },
   {
     "id": 231,
@@ -1630,7 +1700,8 @@
     "assistant_coach_name": "CJ Ketchum",
     "assistant_coach_email": "baseball@fordham.edu",
     "website": "https://fordhamsports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "22-30"
   },
   {
     "id": 136,
@@ -1653,7 +1724,8 @@
     "assistant_coach_name": "Brad Marcelino",
     "assistant_coach_email": "baseball@csufresno.edu",
     "website": "https://gobulldogs.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "27-28"
   },
   {
     "id": 180,
@@ -1676,7 +1748,8 @@
     "assistant_coach_name": "Kyle Kessler",
     "assistant_coach_email": "baseball@furman.edu",
     "website": "https://furmanpaladins.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "34-24"
   },
   {
     "id": 227,
@@ -1699,7 +1772,8 @@
     "assistant_coach_name": "Sam McConnell",
     "assistant_coach_email": "baseball@gmu.edu",
     "website": "https://gomason.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "31-24"
   },
   {
     "id": 235,
@@ -1722,7 +1796,8 @@
     "assistant_coach_name": "Tim Sinicki",
     "assistant_coach_email": "baseball@gwu.edu",
     "website": "https://gwsports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "30-25"
   },
   {
     "id": 112,
@@ -1745,7 +1820,8 @@
     "assistant_coach_name": "Matt Herr",
     "assistant_coach_email": "baseball@georgetown.edu",
     "website": "https://guhoyas.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "24-29"
   },
   {
     "id": 12,
@@ -1768,7 +1844,8 @@
     "assistant_coach_name": "Sean Kenny",
     "assistant_coach_email": "baseball@uga.edu",
     "website": "https://georgiadogs.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "34-25"
   },
   {
     "id": 84,
@@ -1791,7 +1868,8 @@
     "assistant_coach_name": "A.J. Battisto",
     "assistant_coach_email": "baseball@georgiasouthern.edu",
     "website": "https://gseagles.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "40-19"
   },
   {
     "id": 88,
@@ -1814,7 +1892,8 @@
     "assistant_coach_name": "Kevin Erminio",
     "assistant_coach_email": "baseball@gsu.edu",
     "website": "https://georgiastatesports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "29-27"
   },
   {
     "id": 27,
@@ -1837,7 +1916,8 @@
     "assistant_coach_name": "James Ramsey",
     "assistant_coach_email": "baseball@athletics.gatech.edu",
     "website": "https://ramblinwreck.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "34-23"
   },
   {
     "id": 115,
@@ -1860,7 +1940,8 @@
     "assistant_coach_name": "Brandon Harmon",
     "assistant_coach_email": "baseball@gonzaga.edu",
     "website": "https://gozags.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "35-21"
   },
   {
     "id": 284,
@@ -1883,7 +1964,8 @@
     "assistant_coach_name": "Arturo Rivas",
     "assistant_coach_email": "baseball@gram.edu",
     "website": "https://gsutigers.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "30-22"
   },
   {
     "id": 193,
@@ -1906,7 +1988,8 @@
     "assistant_coach_name": "Gregg Wallis",
     "assistant_coach_email": "baseball@gcu.edu",
     "website": "https://gculopes.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "37-21"
   },
   {
     "id": 162,
@@ -1929,7 +2012,8 @@
     "assistant_coach_name": "Isaiah West",
     "assistant_coach_email": "baseball@hamptonu.edu",
     "website": "https://hamptonpirates.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "22-30"
   },
   {
     "id": 217,
@@ -1952,7 +2036,8 @@
     "assistant_coach_name": "Kevin Corr",
     "assistant_coach_email": "baseball@fas.harvard.edu",
     "website": "https://gocrimson.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "22-18"
   },
   {
     "id": 127,
@@ -1975,7 +2060,8 @@
     "assistant_coach_name": "Carl Fraticelli",
     "assistant_coach_email": "baseball@hawaii.edu",
     "website": "https://hawaiiathletics.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "27-28"
   },
   {
     "id": 157,
@@ -1998,7 +2084,8 @@
     "assistant_coach_name": "Mike Cooney",
     "assistant_coach_email": "baseball@hofstra.edu",
     "website": "https://gohofstra.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "27-27"
   },
   {
     "id": 215,
@@ -2021,7 +2108,8 @@
     "assistant_coach_name": "Dan Letcher",
     "assistant_coach_email": "baseball@holycross.edu",
     "website": "https://goholycross.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "24-23"
   },
   {
     "id": 42,
@@ -2044,7 +2132,8 @@
     "assistant_coach_name": "Trip Couch",
     "assistant_coach_email": "baseball@uh.edu",
     "website": "https://uhcougars.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "28-27"
   },
   {
     "id": 190,
@@ -2067,7 +2156,8 @@
     "assistant_coach_name": "Hunter Faught",
     "assistant_coach_email": "baseball@hc.edu",
     "website": "https://hcuhuskies.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "24-30"
   },
   {
     "id": 280,
@@ -2090,7 +2180,8 @@
     "assistant_coach_name": "Kyle Decker",
     "assistant_coach_email": "baseball@howard.edu",
     "website": "https://hubison.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "22-27"
   },
   {
     "id": 63,
@@ -2113,7 +2204,8 @@
     "assistant_coach_name": "Drew Dickinson",
     "assistant_coach_email": "baseball@illinois.edu",
     "website": "https://fightingillini.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "28-26"
   },
   {
     "id": 146,
@@ -2136,7 +2228,8 @@
     "assistant_coach_name": "Mike Stallings",
     "assistant_coach_email": "baseball@ilstu.edu",
     "website": "https://goredbirds.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "28-27"
   },
   {
     "id": 191,
@@ -2159,7 +2252,8 @@
     "assistant_coach_name": "Travis Creel",
     "assistant_coach_email": "baseball@uiwtx.edu",
     "website": "https://uiwcardinals.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "24-31"
   },
   {
     "id": 52,
@@ -2182,7 +2276,8 @@
     "assistant_coach_name": "Morgan Hopewell",
     "assistant_coach_email": "baseball@indiana.edu",
     "website": "https://iuhoosiers.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "39-20"
   },
   {
     "id": 144,
@@ -2205,7 +2300,8 @@
     "assistant_coach_name": "Brian Sims",
     "assistant_coach_email": "baseball@indstate.edu",
     "website": "https://gosycamores.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "35-22"
   },
   {
     "id": 243,
@@ -2228,7 +2324,8 @@
     "assistant_coach_name": "Dave Brainard",
     "assistant_coach_email": "baseball@iona.edu",
     "website": "https://icgaels.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "21-29"
   },
   {
     "id": 56,
@@ -2251,7 +2348,8 @@
     "assistant_coach_name": "Marty Sutherland",
     "assistant_coach_email": "baseball@hawkeyesports.com",
     "website": "https://hawkeyesports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "25-30"
   },
   {
     "id": 285,
@@ -2274,7 +2372,8 @@
     "assistant_coach_name": "Ethan Thomas",
     "assistant_coach_email": "baseball@jsums.edu",
     "website": "https://jsutigers.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "27-25"
   },
   {
     "id": 164,
@@ -2297,7 +2396,8 @@
     "assistant_coach_name": "Matt Healy",
     "assistant_coach_email": "baseball@ju.edu",
     "website": "https://judolphins.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "38-21"
   },
   {
     "id": 101,
@@ -2320,7 +2420,8 @@
     "assistant_coach_name": "Haston Forkner",
     "assistant_coach_email": "baseball@jsu.edu",
     "website": "https://jsugamecocksports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "32-24"
   },
   {
     "id": 89,
@@ -2343,7 +2444,8 @@
     "assistant_coach_name": "Jay Martinez",
     "assistant_coach_email": "baseball@jmu.edu",
     "website": "https://jmusports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "33-24"
   },
   {
     "id": 49,
@@ -2366,7 +2468,8 @@
     "assistant_coach_name": "Ryan Graves",
     "assistant_coach_email": "baseball@ku.edu",
     "website": "https://kuathletics.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "16-36"
   },
   {
     "id": 274,
@@ -2389,7 +2492,8 @@
     "assistant_coach_name": "Joe DeStefano",
     "assistant_coach_email": "baseball@umkc.edu",
     "website": "https://kcroos.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "20-32"
   },
   {
     "id": 38,
@@ -2412,7 +2516,8 @@
     "assistant_coach_name": "Matt Angle",
     "assistant_coach_email": "baseball@kstatesports.com",
     "website": "https://kstatesports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "28-27"
   },
   {
     "id": 103,
@@ -2435,7 +2540,8 @@
     "assistant_coach_name": "Brian Anderson",
     "assistant_coach_email": "baseball@kennesaw.edu",
     "website": "https://ksuowls.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "30-26"
   },
   {
     "id": 14,
@@ -2458,7 +2564,8 @@
     "assistant_coach_name": "Todd Guilliams",
     "assistant_coach_email": "baseball@uky.edu",
     "website": "https://ukathletics.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "45-16"
   },
   {
     "id": 263,
@@ -2481,7 +2588,8 @@
     "assistant_coach_name": "Sean Farrell",
     "assistant_coach_email": "baseball@liu.edu",
     "website": "https://liuathletics.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "25-25"
   },
   {
     "id": 118,
@@ -2504,7 +2612,8 @@
     "assistant_coach_name": "Brad Sanfilippo",
     "assistant_coach_email": "baseball@lmu.edu",
     "website": "https://lmulions.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "26-28"
   },
   {
     "id": 1,
@@ -2527,7 +2636,8 @@
     "assistant_coach_name": "Dan Fitzgerald",
     "assistant_coach_email": "baseball@lsu.edu",
     "website": "https://lsusports.net/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "38-24"
   },
   {
     "id": 234,
@@ -2550,7 +2660,8 @@
     "assistant_coach_name": "Chris Lafrenz",
     "assistant_coach_email": "baseball@lasalle.edu",
     "website": "https://goexplorers.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "20-32"
   },
   {
     "id": 216,
@@ -2573,7 +2684,8 @@
     "assistant_coach_name": "Cody Wertheimer",
     "assistant_coach_email": "baseball@lafayette.edu",
     "website": "https://goleopards.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "20-28"
   },
   {
     "id": 189,
@@ -2596,7 +2708,8 @@
     "assistant_coach_name": "Jason Stein",
     "assistant_coach_email": "baseball@lamar.edu",
     "website": "https://lamarcardinals.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "21-33"
   },
   {
     "id": 268,
@@ -2619,7 +2732,8 @@
     "assistant_coach_name": "Ross Meagher",
     "assistant_coach_email": "baseball@lemoyne.edu",
     "website": "https://lemoynesports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "24-26"
   },
   {
     "id": 213,
@@ -2642,7 +2756,8 @@
     "assistant_coach_name": "Joe Martucci",
     "assistant_coach_email": "baseball@lehigh.edu",
     "website": "https://lehighsports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "18-28"
   },
   {
     "id": 96,
@@ -2665,7 +2780,8 @@
     "assistant_coach_name": "Tim Benkert",
     "assistant_coach_email": "baseball@liberty.edu",
     "website": "https://libertyflames.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "39-21"
   },
   {
     "id": 208,
@@ -2688,7 +2804,8 @@
     "assistant_coach_name": "David Pappas",
     "assistant_coach_email": "baseball@lindenwood.edu",
     "website": "https://lindenwoodlions.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "20-32"
   },
   {
     "id": 165,
@@ -2711,7 +2828,8 @@
     "assistant_coach_name": "Brian Ryman",
     "assistant_coach_email": "baseball@lipscomb.edu",
     "website": "https://lipscombsports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "37-22"
   },
   {
     "id": 209,
@@ -2734,7 +2852,8 @@
     "assistant_coach_name": "Matt McLeod",
     "assistant_coach_email": "baseball@ualr.edu",
     "website": "https://lrtrojans.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "22-31"
   },
   {
     "id": 125,
@@ -2757,7 +2876,8 @@
     "assistant_coach_name": "Troy Nakamura",
     "assistant_coach_email": "baseball@csulb.edu",
     "website": "https://longbeachstate.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "30-25"
   },
   {
     "id": 83,
@@ -2780,7 +2900,8 @@
     "assistant_coach_name": "Anthony Babineaux",
     "assistant_coach_email": "baseball@louisiana.edu",
     "website": "https://ragincajuns.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "44-17"
   },
   {
     "id": 97,
@@ -2803,7 +2924,8 @@
     "assistant_coach_name": "Chris Frey",
     "assistant_coach_email": "baseball@latech.edu",
     "website": "https://latechsports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "31-25"
   },
   {
     "id": 90,
@@ -2826,7 +2948,8 @@
     "assistant_coach_name": "Blake Wiley",
     "assistant_coach_email": "baseball@ulm.edu",
     "website": "https://ulmwarhawks.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "22-33"
   },
   {
     "id": 24,
@@ -2849,7 +2972,8 @@
     "assistant_coach_name": "Roger Williams",
     "assistant_coach_email": "baseball@louisville.edu",
     "website": "https://gocards.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "32-25"
   },
   {
     "id": 257,
@@ -2872,7 +2996,8 @@
     "assistant_coach_name": "Tyler Patzalek",
     "assistant_coach_email": "baseball@maine.edu",
     "website": "https://goblackbears.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "30-22"
   },
   {
     "id": 240,
@@ -2895,7 +3020,8 @@
     "assistant_coach_name": "Kevin Mooney",
     "assistant_coach_email": "baseball@marist.edu",
     "website": "https://goredfoxes.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "25-26"
   },
   {
     "id": 91,
@@ -2918,7 +3044,8 @@
     "assistant_coach_name": "Tim Donnelly",
     "assistant_coach_email": "baseball@marshall.edu",
     "website": "https://herdzone.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "26-29"
   },
   {
     "id": 55,
@@ -2941,7 +3068,8 @@
     "assistant_coach_name": "Corey Muscara",
     "assistant_coach_email": "baseball@umd.edu",
     "website": "https://umterps.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "37-20"
   },
   {
     "id": 281,
@@ -2964,7 +3092,8 @@
     "assistant_coach_name": "Craig Keilitz",
     "assistant_coach_email": "baseball@umes.edu",
     "website": "https://umeshawks.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "14-36"
   },
   {
     "id": 236,
@@ -2987,7 +3116,8 @@
     "assistant_coach_name": "Nate Balczak",
     "assistant_coach_email": "baseball@umass.edu",
     "website": "https://umassathletics.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "26-27"
   },
   {
     "id": 185,
@@ -3010,7 +3140,8 @@
     "assistant_coach_name": "Jake Wells",
     "assistant_coach_email": "baseball@mcneese.edu",
     "website": "https://mcneesesports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "37-21"
   },
   {
     "id": 71,
@@ -3033,7 +3164,8 @@
     "assistant_coach_name": "Jeremy Baughman",
     "assistant_coach_email": "baseball@memphis.edu",
     "website": "https://gotigersgo.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "34-24"
   },
   {
     "id": 177,
@@ -3056,7 +3188,8 @@
     "assistant_coach_name": "Brent Shade",
     "assistant_coach_email": "baseball@mercer.edu",
     "website": "https://mercerbears.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "32-25"
   },
   {
     "id": 265,
@@ -3079,7 +3212,8 @@
     "assistant_coach_name": "Shawn Krey",
     "assistant_coach_email": "baseball@merrimack.edu",
     "website": "https://merrimackathletics.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "20-30"
   },
   {
     "id": 21,
@@ -3102,7 +3236,8 @@
     "assistant_coach_name": "Norberto Lopez",
     "assistant_coach_email": "baseball@miami.edu",
     "website": "https://miamihurricanes.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "42-22"
   },
   {
     "id": 51,
@@ -3125,7 +3260,8 @@
     "assistant_coach_name": "Nick Schnabel",
     "assistant_coach_email": "baseball@umich.edu",
     "website": "https://mgoblue.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "32-24"
   },
   {
     "id": 59,
@@ -3148,7 +3284,8 @@
     "assistant_coach_name": "Graham Sikes",
     "assistant_coach_email": "baseball@ath.msu.edu",
     "website": "https://msuspartans.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "27-27"
   },
   {
     "id": 100,
@@ -3171,7 +3308,8 @@
     "assistant_coach_name": "Travis Janssen",
     "assistant_coach_email": "baseball@mtsu.edu",
     "website": "https://goblueraiders.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "28-27"
   },
   {
     "id": 249,
@@ -3194,7 +3332,8 @@
     "assistant_coach_name": "Mike Rooney",
     "assistant_coach_email": "baseball@uwm.edu",
     "website": "https://mkepanthers.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "27-27"
   },
   {
     "id": 57,
@@ -3217,7 +3356,8 @@
     "assistant_coach_name": "Garza Roberts",
     "assistant_coach_email": "baseball@umn.edu",
     "website": "https://gophersports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "28-25"
   },
   {
     "id": 9,
@@ -3240,7 +3380,8 @@
     "assistant_coach_name": "Jake Gautreau",
     "assistant_coach_email": "baseball@msstate.edu",
     "website": "https://hailstate.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "30-28"
   },
   {
     "id": 293,
@@ -3263,7 +3404,8 @@
     "assistant_coach_name": "Jeremy Brown",
     "assistant_coach_email": "baseball@mvsu.edu",
     "website": "https://mvsusports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "12-38"
   },
   {
     "id": 15,
@@ -3286,7 +3428,8 @@
     "assistant_coach_name": "Jeric Ciccarello",
     "assistant_coach_email": "baseball@missouri.edu",
     "website": "https://mutigers.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "30-26"
   },
   {
     "id": 143,
@@ -3309,7 +3452,8 @@
     "assistant_coach_name": "Paul Evans",
     "assistant_coach_email": "baseball@missouristate.edu",
     "website": "https://missouristatebears.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "33-23"
   },
   {
     "id": 161,
@@ -3332,7 +3476,8 @@
     "assistant_coach_name": "Jeff Barile",
     "assistant_coach_email": "baseball@monmouth.edu",
     "website": "https://monmouthhawks.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "21-31"
   },
   {
     "id": 203,
@@ -3355,7 +3500,8 @@
     "assistant_coach_name": "Adam Puckett",
     "assistant_coach_email": "baseball@moreheadstate.edu",
     "website": "https://msueagles.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "34-22"
   },
   {
     "id": 204,
@@ -3378,7 +3524,8 @@
     "assistant_coach_name": "Austin Coombs",
     "assistant_coach_email": "baseball@murraystate.edu",
     "website": "https://goracers.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "25-29"
   },
   {
     "id": 163,
@@ -3401,7 +3548,8 @@
     "assistant_coach_name": "Brian Rountree",
     "assistant_coach_email": "baseball@ncat.edu",
     "website": "https://ncataggies.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "14-37"
   },
   {
     "id": 22,
@@ -3424,7 +3572,8 @@
     "assistant_coach_name": "Chris Hart",
     "assistant_coach_email": "baseball@ncsu.edu",
     "website": "https://gopack.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "38-22"
   },
   {
     "id": 259,
@@ -3447,7 +3596,8 @@
     "assistant_coach_name": "Dave Callahan",
     "assistant_coach_email": "baseball@njit.edu",
     "website": "https://njithighlanders.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "20-31"
   },
   {
     "id": 75,
@@ -3470,7 +3620,8 @@
     "assistant_coach_name": "Bobby Applegate",
     "assistant_coach_email": "baseball@usna.edu",
     "website": "https://navysports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "22-26"
   },
   {
     "id": 54,
@@ -3493,7 +3644,8 @@
     "assistant_coach_name": "Jeff Christy",
     "assistant_coach_email": "baseball@huskers.com",
     "website": "https://huskers.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "32-23"
   },
   {
     "id": 138,
@@ -3516,7 +3668,8 @@
     "assistant_coach_name": "Troy Buckley",
     "assistant_coach_email": "baseball@unr.edu",
     "website": "https://nevadawolfpack.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "25-29"
   },
   {
     "id": 139,
@@ -3539,7 +3692,8 @@
     "assistant_coach_name": "Ray Birmingham",
     "assistant_coach_email": "baseball@unm.edu",
     "website": "https://golobos.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "20-34"
   },
   {
     "id": 104,
@@ -3562,7 +3716,8 @@
     "assistant_coach_name": "Sergio Sanchez",
     "assistant_coach_email": "baseball@nmsu.edu",
     "website": "https://nmstatesports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "26-28"
   },
   {
     "id": 244,
@@ -3585,7 +3740,8 @@
     "assistant_coach_name": "Nick Doscher",
     "assistant_coach_email": "baseball@niagara.edu",
     "website": "https://purpleeagles.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "22-28"
   },
   {
     "id": 188,
@@ -3608,7 +3764,8 @@
     "assistant_coach_name": "Tyler Theriot",
     "assistant_coach_email": "baseball@nicholls.edu",
     "website": "https://geauxcolonels.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "32-24"
   },
   {
     "id": 276,
@@ -3631,7 +3788,8 @@
     "assistant_coach_name": "Kevin Johnson",
     "assistant_coach_email": "baseball@nsu.edu",
     "website": "https://nsuspartans.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "28-22"
   },
   {
     "id": 173,
@@ -3654,7 +3812,8 @@
     "assistant_coach_name": "Daniel Zardon",
     "assistant_coach_email": "baseball@una.edu",
     "website": "https://roarlions.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "21-33"
   },
   {
     "id": 23,
@@ -3677,7 +3836,8 @@
     "assistant_coach_name": "Jesse Wierzbicki",
     "assistant_coach_email": "baseball@unc.edu",
     "website": "https://goheels.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "47-14"
   },
   {
     "id": 277,
@@ -3700,7 +3860,8 @@
     "assistant_coach_name": "Marcus Jones",
     "assistant_coach_email": "baseball@nccu.edu",
     "website": "https://nccueaglepride.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "18-32"
   },
   {
     "id": 272,
@@ -3723,7 +3884,8 @@
     "assistant_coach_name": "Max Casper",
     "assistant_coach_email": "baseball@ndsu.edu",
     "website": "https://gobison.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "24-29"
   },
   {
     "id": 168,
@@ -3746,7 +3908,8 @@
     "assistant_coach_name": "Derek Bermudez",
     "assistant_coach_email": "baseball@unf.edu",
     "website": "https://unfospreys.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "19-34"
   },
   {
     "id": 76,
@@ -3769,7 +3932,8 @@
     "assistant_coach_name": "Lane Holliday",
     "assistant_coach_email": "baseball@unt.edu",
     "website": "https://meangreensports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "28-28"
   },
   {
     "id": 152,
@@ -3792,7 +3956,8 @@
     "assistant_coach_name": "Kevin & Cobb",
     "assistant_coach_email": "baseball@northeastern.edu",
     "website": "https://nuhuskies.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "33-22"
   },
   {
     "id": 248,
@@ -3815,7 +3980,8 @@
     "assistant_coach_name": "Denny Sander",
     "assistant_coach_email": "baseball@nku.edu",
     "website": "https://nkunorse.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "30-25"
   },
   {
     "id": 62,
@@ -3838,7 +4004,8 @@
     "assistant_coach_name": "Josh Reynolds",
     "assistant_coach_email": "baseball@northwestern.edu",
     "website": "https://nusports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "22-31"
   },
   {
     "id": 187,
@@ -3861,7 +4028,8 @@
     "assistant_coach_name": "Patrick Dayton",
     "assistant_coach_email": "baseball@nsula.edu",
     "website": "https://nsudemons.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "29-26"
   },
   {
     "id": 30,
@@ -3884,7 +4052,8 @@
     "assistant_coach_name": "Rich Wallace",
     "assistant_coach_email": "baseball@nd.edu",
     "website": "https://und.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "36-22"
   },
   {
     "id": 252,
@@ -3907,7 +4076,8 @@
     "assistant_coach_name": "Colin Kaline",
     "assistant_coach_email": "baseball@oakland.edu",
     "website": "https://goldengrizzlies.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "24-29"
   },
   {
     "id": 53,
@@ -3930,7 +4100,8 @@
     "assistant_coach_name": "Matt Carpenter",
     "assistant_coach_email": "baseball@osu.edu",
     "website": "https://ohiostatebuckeyes.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "33-22"
   },
   {
     "id": 16,
@@ -3953,7 +4124,8 @@
     "assistant_coach_name": "Clay Van Hook",
     "assistant_coach_email": "baseball@ou.edu",
     "website": "https://soonersports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "33-24"
   },
   {
     "id": 36,
@@ -3976,7 +4148,8 @@
     "assistant_coach_name": "Marty Lees",
     "assistant_coach_email": "baseball@okstate.edu",
     "website": "https://okstate.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "37-24"
   },
   {
     "id": 92,
@@ -3999,7 +4172,8 @@
     "assistant_coach_name": "Mike Marron",
     "assistant_coach_email": "baseball@odu.edu",
     "website": "https://odusports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "35-21"
   },
   {
     "id": 8,
@@ -4022,7 +4196,8 @@
     "assistant_coach_name": "Mike Federico",
     "assistant_coach_email": "baseball@olemiss.edu",
     "website": "https://olemisssports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "39-23"
   },
   {
     "id": 271,
@@ -4045,7 +4220,8 @@
     "assistant_coach_name": "Matty Johnson",
     "assistant_coach_email": "baseball@unomaha.edu",
     "website": "https://omavs.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "27-27"
   },
   {
     "id": 270,
@@ -4068,7 +4244,8 @@
     "assistant_coach_name": "Dustin Adkison",
     "assistant_coach_email": "baseball@oru.edu",
     "website": "https://orugoldeneagles.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "34-22"
   },
   {
     "id": 67,
@@ -4091,7 +4268,8 @@
     "assistant_coach_name": "Jake Angier",
     "assistant_coach_email": "baseball@uoregon.edu",
     "website": "https://goducks.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "28-28"
   },
   {
     "id": 50,
@@ -4114,7 +4292,8 @@
     "assistant_coach_name": "Rich Dorman",
     "assistant_coach_email": "baseball@oregonstate.edu",
     "website": "https://osubeavers.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "45-16"
   },
   {
     "id": 121,
@@ -4137,7 +4316,8 @@
     "assistant_coach_name": "Joey Centanni",
     "assistant_coach_email": "baseball@pacific.edu",
     "website": "https://pacifictigers.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "24-30"
   },
   {
     "id": 220,
@@ -4160,7 +4340,8 @@
     "assistant_coach_name": "Chris Mooney",
     "assistant_coach_email": "baseball@upenn.edu",
     "website": "https://pennathletics.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "19-21"
   },
   {
     "id": 58,
@@ -4183,7 +4364,8 @@
     "assistant_coach_name": "Tyler Etcheberry",
     "assistant_coach_email": "baseball@psu.edu",
     "website": "https://gopsusports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "25-26"
   },
   {
     "id": 117,
@@ -4206,7 +4388,8 @@
     "assistant_coach_name": "Danny Worth",
     "assistant_coach_email": "baseball@pepperdine.edu",
     "website": "https://pepperdinewaves.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "22-32"
   },
   {
     "id": 29,
@@ -4229,7 +4412,8 @@
     "assistant_coach_name": "Pat Livingston",
     "assistant_coach_email": "baseball@athletics.pitt.edu",
     "website": "https://pittsburghpanthers.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "30-24"
   },
   {
     "id": 123,
@@ -4252,7 +4436,8 @@
     "assistant_coach_name": "Connor Lambert",
     "assistant_coach_email": "baseball@up.edu",
     "website": "https://portlandpilots.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "19-33"
   },
   {
     "id": 290,
@@ -4275,7 +4460,8 @@
     "assistant_coach_name": "AJ Nettleton",
     "assistant_coach_email": "baseball@pvamu.edu",
     "website": "https://pvpanthers.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "20-30"
   },
   {
     "id": 221,
@@ -4298,7 +4484,8 @@
     "assistant_coach_name": "Dillon McConnell",
     "assistant_coach_email": "baseball@princeton.edu",
     "website": "https://goprincetontigers.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "20-20"
   },
   {
     "id": 114,
@@ -4321,7 +4508,8 @@
     "assistant_coach_name": "Tyler Mons",
     "assistant_coach_email": "baseball@providence.edu",
     "website": "https://friars.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "20-32"
   },
   {
     "id": 60,
@@ -4344,7 +4532,8 @@
     "assistant_coach_name": "Ryan Hesters",
     "assistant_coach_email": "baseball@purdue.edu",
     "website": "https://purduesports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "23-32"
   },
   {
     "id": 253,
@@ -4367,7 +4556,8 @@
     "assistant_coach_name": "Ted Marchibroda",
     "assistant_coach_email": "baseball@pfw.edu",
     "website": "https://gomastodons.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "18-34"
   },
   {
     "id": 174,
@@ -4390,7 +4580,8 @@
     "assistant_coach_name": "Mike Stover",
     "assistant_coach_email": "baseball@queens.edu",
     "website": "https://queensroyals.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "27-28"
   },
   {
     "id": 238,
@@ -4413,7 +4604,8 @@
     "assistant_coach_name": "Adam Garner",
     "assistant_coach_email": "baseball@quinnipiac.edu",
     "website": "https://quinnipiacbobcats.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "24-27"
   },
   {
     "id": 232,
@@ -4436,7 +4628,8 @@
     "assistant_coach_name": "Rich Marlin",
     "assistant_coach_email": "baseball@uri.edu",
     "website": "https://gorhody.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "24-29"
   },
   {
     "id": 72,
@@ -4459,7 +4652,8 @@
     "assistant_coach_name": "Paul Janish",
     "assistant_coach_email": "baseball@rice.edu",
     "website": "https://riceowls.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "30-28"
   },
   {
     "id": 226,
@@ -4482,7 +4676,8 @@
     "assistant_coach_name": "Nate Mulberg",
     "assistant_coach_email": "baseball@richmond.edu",
     "website": "https://richmondspiders.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "28-27"
   },
   {
     "id": 239,
@@ -4505,7 +4700,8 @@
     "assistant_coach_name": "Mark Cieslak",
     "assistant_coach_email": "baseball@rider.edu",
     "website": "https://gobroncs.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "30-22"
   },
   {
     "id": 61,
@@ -4528,7 +4724,8 @@
     "assistant_coach_name": "Phil Cundari",
     "assistant_coach_email": "baseball@scarletknights.com",
     "website": "https://scarletknights.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "28-25"
   },
   {
     "id": 205,
@@ -4551,7 +4748,8 @@
     "assistant_coach_name": "Kirk Kelnar",
     "assistant_coach_email": "baseball@semo.edu",
     "website": "https://gosoutheast.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "32-24"
   },
   {
     "id": 206,
@@ -4574,7 +4772,8 @@
     "assistant_coach_name": "P.J. Fultz",
     "assistant_coach_email": "baseball@siue.edu",
     "website": "https://siuecougars.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "23-30"
   },
   {
     "id": 33,
@@ -4597,7 +4796,8 @@
     "assistant_coach_name": "Danny Clark",
     "assistant_coach_email": "baseball@smu.edu",
     "website": "https://smumustangs.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "31-25"
   },
   {
     "id": 264,
@@ -4620,7 +4820,8 @@
     "assistant_coach_name": "Chris Mielke",
     "assistant_coach_email": "baseball@sacredheart.edu",
     "website": "https://sacredheartpioneers.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "21-29"
   },
   {
     "id": 230,
@@ -4643,7 +4844,8 @@
     "assistant_coach_name": "Todd Linklater",
     "assistant_coach_email": "baseball@sju.edu",
     "website": "https://sjuhawks.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "18-34"
   },
   {
     "id": 233,
@@ -4666,7 +4868,8 @@
     "assistant_coach_name": "Mick Irvine",
     "assistant_coach_email": "baseball@slu.edu",
     "website": "https://slubillikens.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "28-26"
   },
   {
     "id": 122,
@@ -4689,7 +4892,8 @@
     "assistant_coach_name": "Derek Stafford",
     "assistant_coach_email": "baseball@stmarys-ca.edu",
     "website": "https://smcgaels.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "20-33"
   },
   {
     "id": 245,
@@ -4712,7 +4916,8 @@
     "assistant_coach_name": "Matt Lawson",
     "assistant_coach_email": "baseball@saintpeters.edu",
     "website": "https://saintpeterspeacocks.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "16-32"
   },
   {
     "id": 98,
@@ -4735,7 +4940,8 @@
     "assistant_coach_name": "Philip Miller",
     "assistant_coach_email": "baseball@shsu.edu",
     "website": "https://gobearkats.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "36-23"
   },
   {
     "id": 175,
@@ -4758,7 +4964,8 @@
     "assistant_coach_name": "Tyler Ferguson",
     "assistant_coach_email": "baseball@samford.edu",
     "website": "https://samfordsports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "36-22"
   },
   {
     "id": 116,
@@ -4781,7 +4988,8 @@
     "assistant_coach_name": "Sam Wolff",
     "assistant_coach_email": "baseball@sandiego.edu",
     "website": "https://usdtoreros.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "33-22"
   },
   {
     "id": 135,
@@ -4804,7 +5012,8 @@
     "assistant_coach_name": "Sam Peraza",
     "assistant_coach_email": "baseball@sdsu.edu",
     "website": "https://goaztecs.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "30-26"
   },
   {
     "id": 120,
@@ -4827,7 +5036,8 @@
     "assistant_coach_name": "Troy Nakamura",
     "assistant_coach_email": "baseball@usfca.edu",
     "website": "https://usfdons.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "28-26"
   },
   {
     "id": 141,
@@ -4850,7 +5060,8 @@
     "assistant_coach_name": "Ryan & Sarmento",
     "assistant_coach_email": "baseball@sjsu.edu",
     "website": "https://sjsuspartans.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "26-28"
   },
   {
     "id": 119,
@@ -4873,7 +5084,8 @@
     "assistant_coach_name": "Dan O'Brien",
     "assistant_coach_email": "baseball@scu.edu",
     "website": "https://santaclarabroncos.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "27-27"
   },
   {
     "id": 111,
@@ -4896,7 +5108,8 @@
     "assistant_coach_name": "Mike Gibbons",
     "assistant_coach_email": "baseball@shu.edu",
     "website": "https://shupirates.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "31-23"
   },
   {
     "id": 246,
@@ -4919,7 +5132,8 @@
     "assistant_coach_name": "Steve Marrabito",
     "assistant_coach_email": "baseball@siena.edu",
     "website": "https://sienasaints.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "18-32"
   },
   {
     "id": 93,
@@ -4942,7 +5156,8 @@
     "assistant_coach_name": "Ronnie Sams",
     "assistant_coach_email": "baseball@southalabama.edu",
     "website": "https://usajaguars.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "31-24"
   },
   {
     "id": 10,
@@ -4965,7 +5180,8 @@
     "assistant_coach_name": "Trip Couch",
     "assistant_coach_email": "baseball@sc.edu",
     "website": "https://gamecocksonline.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "38-23"
   },
   {
     "id": 282,
@@ -4988,7 +5204,8 @@
     "assistant_coach_name": "Jason Broadus",
     "assistant_coach_email": "baseball@scsu.edu",
     "website": "https://scstatebulldogs.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "16-34"
   },
   {
     "id": 273,
@@ -5011,7 +5228,8 @@
     "assistant_coach_name": "Jaxon Shirack",
     "assistant_coach_email": "baseball@sdstate.edu",
     "website": "https://gojacks.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "30-24"
   },
   {
     "id": 77,
@@ -5034,7 +5252,8 @@
     "assistant_coach_name": "Matt Henderson",
     "assistant_coach_email": "baseball@usf.edu",
     "website": "https://gousfbulls.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "33-24"
   },
   {
     "id": 186,
@@ -5057,7 +5276,8 @@
     "assistant_coach_name": "David Platt",
     "assistant_coach_email": "baseball@southeastern.edu",
     "website": "https://lionsports.net/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "30-27"
   },
   {
     "id": 283,
@@ -5080,7 +5300,8 @@
     "assistant_coach_name": "Cedric Smith",
     "assistant_coach_email": "baseball@subr.edu",
     "website": "https://gojagsports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "32-20"
   },
   {
     "id": 145,
@@ -5103,7 +5324,8 @@
     "assistant_coach_name": "P.J. Finigan",
     "assistant_coach_email": "baseball@siu.edu",
     "website": "https://siusalukis.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "31-25"
   },
   {
     "id": 210,
@@ -5126,7 +5348,8 @@
     "assistant_coach_name": "Chad Murray",
     "assistant_coach_email": "baseball@usi.edu",
     "website": "https://gousieagles.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "30-25"
   },
   {
     "id": 85,
@@ -5149,7 +5372,8 @@
     "assistant_coach_name": "Travis Creel",
     "assistant_coach_email": "baseball@usm.edu",
     "website": "https://southernmiss.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "33-25"
   },
   {
     "id": 199,
@@ -5172,7 +5396,8 @@
     "assistant_coach_name": "Riley O'Brien",
     "assistant_coach_email": "baseball@suu.edu",
     "website": "https://suutbirds.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "22-31"
   },
   {
     "id": 237,
@@ -5195,7 +5420,8 @@
     "assistant_coach_name": "Jake Sanford",
     "assistant_coach_email": "baseball@sbu.edu",
     "website": "https://gobonnies.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "22-28"
   },
   {
     "id": 110,
@@ -5218,7 +5444,8 @@
     "assistant_coach_name": "Danny Bethea",
     "assistant_coach_email": "baseball@stjohns.edu",
     "website": "https://redstormsports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "29-25"
   },
   {
     "id": 25,
@@ -5241,7 +5468,8 @@
     "assistant_coach_name": "Thomas Eager",
     "assistant_coach_email": "baseball@stanford.edu",
     "website": "https://gostanford.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "33-25"
   },
   {
     "id": 194,
@@ -5264,7 +5492,8 @@
     "assistant_coach_name": "Scott Hatten",
     "assistant_coach_email": "baseball@sfasu.edu",
     "website": "https://sfajacks.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "26-29"
   },
   {
     "id": 166,
@@ -5287,7 +5516,8 @@
     "assistant_coach_name": "Chris Givin",
     "assistant_coach_email": "baseball@stetson.edu",
     "website": "https://gohatters.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "35-22"
   },
   {
     "id": 269,
@@ -5310,7 +5540,8 @@
     "assistant_coach_name": "Brendan Adams",
     "assistant_coach_email": "baseball@stonehill.edu",
     "website": "https://stonehillskyhawks.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "16-34"
   },
   {
     "id": 158,
@@ -5333,7 +5564,8 @@
     "assistant_coach_name": "Tyler McNamara",
     "assistant_coach_email": "baseball@stonybrook.edu",
     "website": "https://stonybrookathletics.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "23-30"
   },
   {
     "id": 34,
@@ -5356,7 +5588,8 @@
     "assistant_coach_name": "Kevin Connolly",
     "assistant_coach_email": "baseball@syr.edu",
     "website": "https://cuse.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "21-33"
   },
   {
     "id": 35,
@@ -5379,7 +5612,8 @@
     "assistant_coach_name": "Bill Mosiello",
     "assistant_coach_email": "baseball@tcu.edu",
     "website": "https://gofrogs.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "36-24"
   },
   {
     "id": 196,
@@ -5402,7 +5636,8 @@
     "assistant_coach_name": "Lane Closner",
     "assistant_coach_email": "baseball@tarleton.edu",
     "website": "https://tarletonsports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "28-27"
   },
   {
     "id": 78,
@@ -5425,7 +5660,8 @@
     "assistant_coach_name": "Brian Girard",
     "assistant_coach_email": "baseball@temple.edu",
     "website": "https://owlsports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "22-33"
   },
   {
     "id": 2,
@@ -5448,7 +5684,8 @@
     "assistant_coach_name": "Josh Elander",
     "assistant_coach_email": "baseball@utk.edu",
     "website": "https://utsports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "60-13"
   },
   {
     "id": 211,
@@ -5471,7 +5708,8 @@
     "assistant_coach_name": "Josh Lawson",
     "assistant_coach_email": "baseball@tnstate.edu",
     "website": "https://tsutigers.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "20-30"
   },
   {
     "id": 202,
@@ -5494,7 +5732,8 @@
     "assistant_coach_name": "Travis Bishop",
     "assistant_coach_email": "baseball@tntech.edu",
     "website": "https://ttusports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "28-27"
   },
   {
     "id": 6,
@@ -5517,7 +5756,8 @@
     "assistant_coach_name": "Sean Allen",
     "assistant_coach_email": "baseball@athletics.utexas.edu",
     "website": "https://texassports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "37-24"
   },
   {
     "id": 3,
@@ -5540,7 +5780,8 @@
     "assistant_coach_name": "Nate Thompson",
     "assistant_coach_email": "baseball@athletics.tamu.edu",
     "website": "https://12thman.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "53-15"
   },
   {
     "id": 192,
@@ -5563,7 +5804,8 @@
     "assistant_coach_name": "Kyle Vasquez",
     "assistant_coach_email": "baseball@tamucc.edu",
     "website": "https://goislanders.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "20-34"
   },
   {
     "id": 289,
@@ -5586,7 +5828,8 @@
     "assistant_coach_name": "Joey Davis",
     "assistant_coach_email": "baseball@tsu.edu",
     "website": "https://tsusports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "22-28"
   },
   {
     "id": 94,
@@ -5609,7 +5852,8 @@
     "assistant_coach_name": "Chad Massengale",
     "assistant_coach_email": "baseball@txstate.edu",
     "website": "https://txstatebobcats.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "36-21"
   },
   {
     "id": 39,
@@ -5632,7 +5876,8 @@
     "assistant_coach_name": "J-Bob Thomas",
     "assistant_coach_email": "baseball@ttu.edu",
     "website": "https://texastech.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "38-22"
   },
   {
     "id": 178,
@@ -5655,7 +5900,8 @@
     "assistant_coach_name": "Collin Faust",
     "assistant_coach_email": "baseball@citadel.edu",
     "website": "https://citadelsports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "29-27"
   },
   {
     "id": 156,
@@ -5678,7 +5924,8 @@
     "assistant_coach_name": "Dominic Fratantuono",
     "assistant_coach_email": "baseball@towson.edu",
     "website": "https://towsontigers.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "25-29"
   },
   {
     "id": 95,
@@ -5701,7 +5948,8 @@
     "assistant_coach_name": "Drew Boyd",
     "assistant_coach_email": "baseball@troy.edu",
     "website": "https://troytrojans.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "38-20"
   },
   {
     "id": 69,
@@ -5724,7 +5972,8 @@
     "assistant_coach_name": "Eddie Smith",
     "assistant_coach_email": "baseball@tulane.edu",
     "website": "https://tulanegreenwave.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "40-22"
   },
   {
     "id": 79,
@@ -5747,7 +5996,8 @@
     "assistant_coach_name": "Nic Constantino",
     "assistant_coach_email": "baseball@utulsa.edu",
     "website": "https://tulsahurricane.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "24-30"
   },
   {
     "id": 80,
@@ -5770,7 +6020,8 @@
     "assistant_coach_name": "Will Startup",
     "assistant_coach_email": "baseball@uab.edu",
     "website": "https://uabsports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "28-27"
   },
   {
     "id": 131,
@@ -5793,7 +6044,8 @@
     "assistant_coach_name": "David Steed",
     "assistant_coach_email": "baseball@ucdavis.edu",
     "website": "https://ucdavisaggies.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "25-29"
   },
   {
     "id": 126,
@@ -5816,7 +6068,8 @@
     "assistant_coach_name": "Matt McDonald",
     "assistant_coach_email": "baseball@uci.edu",
     "website": "https://ucirvinesports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "38-19"
   },
   {
     "id": 130,
@@ -5839,7 +6092,8 @@
     "assistant_coach_name": "Chris Gutierrez",
     "assistant_coach_email": "baseball@ucr.edu",
     "website": "https://gohighlanders.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "24-30"
   },
   {
     "id": 132,
@@ -5862,7 +6116,8 @@
     "assistant_coach_name": "Kevin Couture",
     "assistant_coach_email": "baseball@ucsd.edu",
     "website": "https://ucsdtritons.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "26-28"
   },
   {
     "id": 129,
@@ -5885,7 +6140,8 @@
     "assistant_coach_name": "Donegal Fergus",
     "assistant_coach_email": "baseball@ucsb.edu",
     "website": "https://ucsbgauchos.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "36-20"
   },
   {
     "id": 41,
@@ -5908,7 +6164,8 @@
     "assistant_coach_name": "Nick Ayers",
     "assistant_coach_email": "baseball@ucf.edu",
     "website": "https://ucfknights.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "34-24"
   },
   {
     "id": 65,
@@ -5931,7 +6188,8 @@
     "assistant_coach_name": "Rex Peters",
     "assistant_coach_email": "baseball@athletics.ucla.edu",
     "website": "https://uclabruins.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "28-28"
   },
   {
     "id": 150,
@@ -5954,7 +6212,8 @@
     "assistant_coach_name": "Mike Dee",
     "assistant_coach_email": "baseball@uic.edu",
     "website": "https://uicflames.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "18-34"
   },
   {
     "id": 254,
@@ -5977,7 +6236,8 @@
     "assistant_coach_name": "Bobby Minarcin",
     "assistant_coach_email": "baseball@umbc.edu",
     "website": "https://umbcretrievers.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "28-24"
   },
   {
     "id": 260,
@@ -6000,7 +6260,8 @@
     "assistant_coach_name": "Eric Giese",
     "assistant_coach_email": "baseball@uml.edu",
     "website": "https://goriverhawks.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "24-28"
   },
   {
     "id": 181,
@@ -6023,7 +6284,8 @@
     "assistant_coach_name": "Trey Gowdy",
     "assistant_coach_email": "baseball@uncg.edu",
     "website": "https://uncgspartans.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "27-28"
   },
   {
     "id": 154,
@@ -6046,7 +6308,8 @@
     "assistant_coach_name": "Kyle Koehler",
     "assistant_coach_email": "baseball@uncw.edu",
     "website": "https://uncwsports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "34-22"
   },
   {
     "id": 137,
@@ -6069,7 +6332,8 @@
     "assistant_coach_name": "Kevin Higgins",
     "assistant_coach_email": "baseball@unlv.edu",
     "website": "https://unlvrebels.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "26-30"
   },
   {
     "id": 64,
@@ -6092,7 +6356,8 @@
     "assistant_coach_name": "Ted Silva",
     "assistant_coach_email": "baseball@usc.edu",
     "website": "https://usctrojans.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "25-30"
   },
   {
     "id": 197,
@@ -6115,7 +6380,8 @@
     "assistant_coach_name": "Clay Overcash",
     "assistant_coach_email": "baseball@uta.edu",
     "website": "https://utamavs.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "28-27"
   },
   {
     "id": 207,
@@ -6138,7 +6404,8 @@
     "assistant_coach_name": "Jordan Corn",
     "assistant_coach_email": "baseball@utm.edu",
     "website": "https://utmsports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "26-28"
   },
   {
     "id": 105,
@@ -6161,7 +6428,8 @@
     "assistant_coach_name": "Tyler Collins",
     "assistant_coach_email": "baseball@utep.edu",
     "website": "https://utepminers.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "17-37"
   },
   {
     "id": 81,
@@ -6184,7 +6452,8 @@
     "assistant_coach_name": "Daniel Saenz",
     "assistant_coach_email": "baseball@utsa.edu",
     "website": "https://goutsa.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "26-29"
   },
   {
     "id": 48,
@@ -6207,7 +6476,8 @@
     "assistant_coach_name": "Adam Pavkovich",
     "assistant_coach_email": "baseball@utah.edu",
     "website": "https://utahutes.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "16-37"
   },
   {
     "id": 201,
@@ -6230,7 +6500,8 @@
     "assistant_coach_name": "Blake Schmit",
     "assistant_coach_email": "baseball@utahtech.edu",
     "website": "https://utahtechblazers.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "15-37"
   },
   {
     "id": 200,
@@ -6253,7 +6524,8 @@
     "assistant_coach_name": "Russell Smith",
     "assistant_coach_email": "baseball@uvu.edu",
     "website": "https://wolverinegreen.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "27-28"
   },
   {
     "id": 225,
@@ -6276,7 +6548,8 @@
     "assistant_coach_name": "Kevin Herget",
     "assistant_coach_email": "baseball@vcu.edu",
     "website": "https://vcuathletics.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "35-20"
   },
   {
     "id": 183,
@@ -6299,7 +6572,8 @@
     "assistant_coach_name": "Matt Kirby",
     "assistant_coach_email": "baseball@vmi.edu",
     "website": "https://vmikeydets.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "22-31"
   },
   {
     "id": 149,
@@ -6322,7 +6596,8 @@
     "assistant_coach_name": "Zach Bratt",
     "assistant_coach_email": "baseball@valpo.edu",
     "website": "https://valpoathletics.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "20-32"
   },
   {
     "id": 5,
@@ -6345,7 +6620,8 @@
     "assistant_coach_name": "Mike Baxter",
     "assistant_coach_email": "baseball@vanderbilt.edu",
     "website": "https://vucommodores.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "41-21"
   },
   {
     "id": 261,
@@ -6368,7 +6644,8 @@
     "assistant_coach_name": "Brian Jenkins",
     "assistant_coach_email": "baseball@uvm.edu",
     "website": "https://uvmathletics.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "18-33"
   },
   {
     "id": 109,
@@ -6391,7 +6668,8 @@
     "assistant_coach_name": "Dan Iachini",
     "assistant_coach_email": "baseball@villanova.edu",
     "website": "https://villanova.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "25-28"
   },
   {
     "id": 18,
@@ -6414,7 +6692,8 @@
     "assistant_coach_name": "Drew Dickinson",
     "assistant_coach_email": "baseball@virginia.edu",
     "website": "https://virginiasports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "46-15"
   },
   {
     "id": 28,
@@ -6437,7 +6716,8 @@
     "assistant_coach_name": "Ryan Fecteau",
     "assistant_coach_email": "baseball@vt.edu",
     "website": "https://hokiesports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "37-23"
   },
   {
     "id": 267,
@@ -6460,7 +6740,8 @@
     "assistant_coach_name": "Matt Kinney",
     "assistant_coach_email": "baseball@wagner.edu",
     "website": "https://wagnerathletics.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "16-34"
   },
   {
     "id": 17,
@@ -6483,7 +6764,8 @@
     "assistant_coach_name": "Bill Cilento",
     "assistant_coach_email": "baseball@wfu.edu",
     "website": "https://godeacs.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "37-23"
   },
   {
     "id": 66,
@@ -6506,7 +6788,8 @@
     "assistant_coach_name": "Elliott Cribby",
     "assistant_coach_email": "baseball@uw.edu",
     "website": "https://gohuskies.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "26-27"
   },
   {
     "id": 37,
@@ -6529,7 +6812,8 @@
     "assistant_coach_name": "Steve Sabins",
     "assistant_coach_email": "baseball@mail.wvu.edu",
     "website": "https://wvusports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "35-23"
   },
   {
     "id": 179,
@@ -6552,7 +6836,8 @@
     "assistant_coach_name": "Daylon Clanton",
     "assistant_coach_email": "baseball@wcu.edu",
     "website": "https://catamountsports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "31-26"
   },
   {
     "id": 275,
@@ -6575,7 +6860,8 @@
     "assistant_coach_name": "Mitchell Crosby",
     "assistant_coach_email": "baseball@wiu.edu",
     "website": "https://goleathernecks.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "18-34"
   },
   {
     "id": 99,
@@ -6598,7 +6884,8 @@
     "assistant_coach_name": "Rob Reinstetle",
     "assistant_coach_email": "baseball@wku.edu",
     "website": "https://wkusports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "27-27"
   },
   {
     "id": 70,
@@ -6621,7 +6908,8 @@
     "assistant_coach_name": "Mike Sirianni",
     "assistant_coach_email": "baseball@goshockers.com",
     "website": "https://goshockers.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "36-22"
   },
   {
     "id": 155,
@@ -6644,7 +6932,8 @@
     "assistant_coach_name": "Trevor Martin",
     "assistant_coach_email": "baseball@wm.edu",
     "website": "https://tribeathletics.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "34-21"
   },
   {
     "id": 182,
@@ -6667,7 +6956,8 @@
     "assistant_coach_name": "Drew Sherrod",
     "assistant_coach_email": "baseball@wofford.edu",
     "website": "https://woffordterriers.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "24-30"
   },
   {
     "id": 247,
@@ -6690,7 +6980,8 @@
     "assistant_coach_name": "Dan Blewett",
     "assistant_coach_email": "baseball@wright.edu",
     "website": "https://wsuraiders.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "32-23"
   },
   {
     "id": 108,
@@ -6713,7 +7004,8 @@
     "assistant_coach_name": "Nick Otte",
     "assistant_coach_email": "baseball@xavier.edu",
     "website": "https://goxavier.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29"
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "33-23"
   },
   {
     "id": 218,
@@ -6736,7 +7028,8 @@
     "assistant_coach_name": "Ray Guarino",
     "assistant_coach_email": "baseball@yale.edu",
     "website": "https://yalebulldogs.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "24-16"
   },
   {
     "id": 250,
@@ -6759,6 +7052,7 @@
     "assistant_coach_name": "Craig Snider",
     "assistant_coach_email": "baseball@ysu.edu",
     "website": "https://ysusports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32"
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "25-29"
   }
 ]
