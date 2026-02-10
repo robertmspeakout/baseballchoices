@@ -1,7 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
 interface Filters {
   search: string;
   division: string;
@@ -20,27 +18,17 @@ interface FilterOptions {
 
 interface SearchFiltersProps {
   filters: Filters;
+  filterOptions: FilterOptions;
   onChange: (filters: Filters) => void;
   onZipSearch: (zip: string) => void;
 }
 
 export default function SearchFilters({
   filters,
+  filterOptions,
   onChange,
   onZipSearch,
 }: SearchFiltersProps) {
-  const [options, setOptions] = useState<FilterOptions>({
-    states: [],
-    conferences: [],
-    divisions: [],
-  });
-
-  useEffect(() => {
-    fetch("/api/filters")
-      .then((r) => r.json())
-      .then(setOptions);
-  }, []);
-
   const update = (key: keyof Filters, value: string | boolean) => {
     onChange({ ...filters, [key]: value });
   };
@@ -81,7 +69,7 @@ export default function SearchFilters({
           className="px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-700 focus:ring-2 focus:ring-blue-500"
         >
           <option value="">All Divisions</option>
-          {options.divisions.map((d) => (
+          {filterOptions.divisions.map((d) => (
             <option key={d} value={d}>
               {d === "JUCO" ? "Junior College" : `Division ${d.replace("D", "")}`}
             </option>
@@ -94,7 +82,7 @@ export default function SearchFilters({
           className="px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-700 focus:ring-2 focus:ring-blue-500"
         >
           <option value="">All States</option>
-          {options.states.map((s) => (
+          {filterOptions.states.map((s) => (
             <option key={s} value={s}>
               {s}
             </option>
@@ -107,7 +95,7 @@ export default function SearchFilters({
           className="px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-700 focus:ring-2 focus:ring-blue-500"
         >
           <option value="">All Conferences</option>
-          {options.conferences.map((c) => (
+          {filterOptions.conferences.map((c) => (
             <option key={c} value={c}>
               {c}
             </option>

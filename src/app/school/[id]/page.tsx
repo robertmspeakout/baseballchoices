@@ -3,6 +3,8 @@
 import { useEffect, useState, use } from "react";
 import Link from "next/link";
 import StarRating from "@/components/StarRating";
+import schoolsData from "@/data/schools.json";
+import { getUserData, setUserData } from "@/lib/userData";
 
 interface SchoolDetail {
   id: number;
@@ -23,9 +25,6 @@ interface SchoolDetail {
   assistant_coach_name: string | null;
   assistant_coach_email: string | null;
   website: string | null;
-  priority: number;
-  notes: string;
-  last_contacted: string | null;
 }
 
 export default function SchoolPage({
@@ -34,39 +33,51 @@ export default function SchoolPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = use(params);
-  const [school, setSchool] = useState<SchoolDetail | null>(null);
-  const [loading, setLoading] = useState(true);
+  const schoolData = (schoolsData as SchoolDetail[]).find((s) => s.id === parseInt(id));
+
+  const [priority, setPriority] = useState(0);
   const [notes, setNotes] = useState("");
   const [lastContacted, setLastContacted] = useState("");
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
+  // Load user data from localStorage on mount
   useEffect(() => {
-    fetch(`/api/schools/${id}`)
-      .then((r) => r.json())
-      .then((data) => {
-        setSchool(data);
-        setNotes(data.notes || "");
-        setLastContacted(data.last_contacted || "");
-        setLoading(false);
-      });
+    const ud = getUserData(parseInt(id));
+    setPriority(ud.priority);
+    setNotes(ud.notes);
+    setLastContacted(ud.last_contacted || "");
+    setMounted(true);
   }, [id]);
 
-  const saveUserData = async (updates: Partial<{ priority: number; notes: string; last_contacted: string }>) => {
+  const savePriority = (newPriority: number) => {
+    setPriority(newPriority);
+    setUserData(parseInt(id), { priority: newPriority });
+    setSaved(true);
+    setTimeout(() => setSaved(false), 2000);
+  };
+
+  const saveNotes = () => {
     setSaving(true);
-    const res = await fetch(`/api/user-data/${id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(updates),
+    setUserData(parseInt(id), {
+      notes,
+      last_contacted: lastContacted || null,
     });
-    const updated = await res.json();
-    setSchool(updated);
     setSaving(false);
     setSaved(true);
     setTimeout(() => setSaved(false), 2000);
   };
 
-  if (loading) {
+  if (!schoolData) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <p className="text-gray-500 text-lg">School not found</p>
+      </div>
+    );
+  }
+
+  if (!mounted) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="animate-spin rounded-full h-10 w-10 border-4 border-blue-200 border-t-blue-600" />
@@ -74,13 +85,7 @@ export default function SchoolPage({
     );
   }
 
-  if (!school) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p className="text-gray-500 text-lg">School not found</p>
-      </div>
-    );
-  }
+  const school = schoolData;
 
   const divLabel: Record<string, string> = {
     D1: "NCAA Division I",
@@ -138,8 +143,8 @@ export default function SchoolPage({
               </div>
               <div className="flex flex-col items-end gap-2">
                 <StarRating
-                  value={school.priority}
-                  onChange={(v) => saveUserData({ priority: v })}
+                  value={priority}
+                  onChange={savePriority}
                   size="lg"
                 />
                 <span className="text-xs text-gray-400">Your Priority</span>
@@ -289,12 +294,7 @@ export default function SchoolPage({
             </div>
             <div className="flex items-center gap-3">
               <button
-                onClick={() =>
-                  saveUserData({
-                    notes,
-                    last_contacted: lastContacted || undefined,
-                  })
-                }
+                onClick={saveNotes}
                 disabled={saving}
                 className="px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 font-medium transition-colors"
               >
