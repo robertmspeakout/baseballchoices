@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "seed": "npx tsx scripts/seed.ts"
+    "seed": "npx tsx scripts/seed.ts && npx tsx scripts/seed-d1-part2.ts"
   },
   "dependencies": {
     "better-sqlite3": "^12.6.2",
