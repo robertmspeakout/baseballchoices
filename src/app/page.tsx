@@ -112,7 +112,6 @@ export default function Home() {
         case "state": aVal = a.state; bVal = b.state; break;
         case "conference": aVal = a.conference; bVal = b.conference; break;
         case "ranking": aVal = a.current_ranking; bVal = b.current_ranking; break;
-        case "tuition": aVal = a.tuition; bVal = b.tuition; break;
         case "priority": aVal = a.priority; bVal = b.priority; break;
         case "last_contacted": aVal = a.last_contacted; bVal = b.last_contacted; break;
         case "distance":

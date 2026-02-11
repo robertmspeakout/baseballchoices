@@ -22,7 +22,11 @@
     "website": "https://acusports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "33-25",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2000.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2000.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 32.442,
+    "stadium_longitude": -99.715,
+    "stadium_name": null
   },
   {
     "id": 140,
@@ -47,7 +51,11 @@
     "website": "https://goairforcefalcons.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "22-34",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2005.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2005.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 38.9985,
+    "stadium_longitude": -104.8585,
+    "stadium_name": "Falcon Field"
   },
   {
     "id": 13,
@@ -72,7 +80,11 @@
     "website": "https://rolltide.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "34-26",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/333.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/333.png",
+    "mlb_draft_picks": 12,
+    "stadium_latitude": 33.2057,
+    "stadium_longitude": -87.5503,
+    "stadium_name": "Sewell-Thomas Stadium"
   },
   {
     "id": 287,
@@ -97,7 +109,11 @@
     "website": "https://aamusports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "20-34",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2010.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2010.png",
+    "mlb_draft_picks": 1,
+    "stadium_latitude": 34.783,
+    "stadium_longitude": -86.569,
+    "stadium_name": null
   },
   {
     "id": 286,
@@ -122,7 +138,11 @@
     "website": "https://bamastatesports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "22-32",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2011.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2011.png",
+    "mlb_draft_picks": 1,
+    "stadium_latitude": 32.364,
+    "stadium_longitude": -86.296,
+    "stadium_name": null
   },
   {
     "id": 256,
@@ -147,7 +167,11 @@
     "website": "https://ualbanysports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "24-30",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/399.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/399.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 42.685,
+    "stadium_longitude": -73.825,
+    "stadium_name": null
   },
   {
     "id": 288,
@@ -172,7 +196,11 @@
     "website": "https://alcornsports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "18-36",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2016.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2016.png",
+    "mlb_draft_picks": 1,
+    "stadium_latitude": 31.872,
+    "stadium_longitude": -91.136,
+    "stadium_name": null
   },
   {
     "id": 86,
@@ -197,7 +225,11 @@
     "website": "https://appstatesports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "32-27",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2026.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2026.png",
+    "mlb_draft_picks": 5,
+    "stadium_latitude": 36.217,
+    "stadium_longitude": -81.685,
+    "stadium_name": null
   },
   {
     "id": 46,
@@ -222,7 +254,11 @@
     "website": "https://arizonawildcats.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "36-24",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/12.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/12.png",
+    "mlb_draft_picks": 7,
+    "stadium_latitude": 32.2288,
+    "stadium_longitude": -110.9415,
+    "stadium_name": "Hi Corbett Field"
   },
   {
     "id": 45,
@@ -247,7 +283,11 @@
     "website": "https://thesundevils.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "38-22",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/9.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/9.png",
+    "mlb_draft_picks": 15,
+    "stadium_latitude": 33.4255,
+    "stadium_longitude": -111.9315,
+    "stadium_name": "Phoenix Municipal Stadium"
   },
   {
     "id": 7,
@@ -272,7 +312,11 @@
     "website": "https://arkansasrazorbacks.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "44-20",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/8.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/8.png",
+    "mlb_draft_picks": 20,
+    "stadium_latitude": 36.0685,
+    "stadium_longitude": -94.1785,
+    "stadium_name": "Baum-Walker Stadium"
   },
   {
     "id": 87,
@@ -297,7 +341,11 @@
     "website": "https://astateredwolves.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "30-28",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2032.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2032.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 35.843,
+    "stadium_longitude": -90.683,
+    "stadium_name": null
   },
   {
     "id": 291,
@@ -322,7 +370,11 @@
     "website": "https://uapblionsroar.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "16-38",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2029.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2029.png",
+    "mlb_draft_picks": 1,
+    "stadium_latitude": 34.229,
+    "stadium_longitude": -92.003,
+    "stadium_name": null
   },
   {
     "id": 212,
@@ -347,7 +399,11 @@
     "website": "https://goarmywestpoint.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "32-22",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/349.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/349.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 41.391,
+    "stadium_longitude": -73.956,
+    "stadium_name": null
   },
   {
     "id": 11,
@@ -372,7 +428,11 @@
     "website": "https://auburntigers.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "32-27",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2.png",
+    "mlb_draft_picks": 14,
+    "stadium_latitude": 32.6055,
+    "stadium_longitude": -85.487,
+    "stadium_name": "Plainsman Park"
   },
   {
     "id": 170,
@@ -397,32 +457,11 @@
     "website": "https://letsgopeay.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "30-27",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2046.png"
-  },
-  {
-    "id": 43,
-    "name": "BYU",
-    "mascot": "Cougars",
-    "city": "Provo",
-    "state": "UT",
-    "zip": "84602",
-    "latitude": 40.252,
-    "longitude": -111.649,
-    "division": "D1",
-    "public_private": "Private",
-    "conference": "Big 12",
-    "current_ranking": null,
-    "tuition": 6496,
-    "instagram": "@byubaseball",
-    "x_account": "@BYUBaseball",
-    "head_coach_name": "Trent Pratt",
-    "head_coach_email": "baseball@byu.edu",
-    "assistant_coach_name": "Brent Haring",
-    "assistant_coach_email": "baseball@byu.edu",
-    "website": "https://byucougars.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29",
-    "last_season_record": "27-30",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/252.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2046.png",
+    "mlb_draft_picks": 4,
+    "stadium_latitude": 36.539,
+    "stadium_longitude": -87.354,
+    "stadium_name": null
   },
   {
     "id": 40,
@@ -447,7 +486,11 @@
     "website": "https://baylorbears.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "29-29",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/239.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/239.png",
+    "mlb_draft_picks": 11,
+    "stadium_latitude": 31.5575,
+    "stadium_longitude": -97.119,
+    "stadium_name": "Baylor Ballpark"
   },
   {
     "id": 172,
@@ -472,7 +515,11 @@
     "website": "https://bellarmineknights.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "22-34",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/91.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/91.png",
+    "mlb_draft_picks": 4,
+    "stadium_latitude": 38.218,
+    "stadium_longitude": -85.676,
+    "stadium_name": null
   },
   {
     "id": 292,
@@ -497,7 +544,11 @@
     "website": "https://bcuathletics.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "25-29",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2065.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2065.png",
+    "mlb_draft_picks": 1,
+    "stadium_latitude": 29.1985,
+    "stadium_longitude": -81.049,
+    "stadium_name": "Jackie Robinson Ballpark"
   },
   {
     "id": 255,
@@ -522,7 +573,11 @@
     "website": "https://bubearcats.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "20-34",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2066.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2066.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 42.089,
+    "stadium_longitude": -75.966,
+    "stadium_name": null
   },
   {
     "id": 31,
@@ -547,7 +602,11 @@
     "website": "https://bceagles.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "28-29",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/103.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/103.png",
+    "mlb_draft_picks": 4,
+    "stadium_latitude": 42.3355,
+    "stadium_longitude": -71.1685,
+    "stadium_name": "Eddie Pellagrini Diamond"
   },
   {
     "id": 148,
@@ -572,7 +631,11 @@
     "website": "https://bradleybraves.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "25-31",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/71.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/71.png",
+    "mlb_draft_picks": 5,
+    "stadium_latitude": 40.698,
+    "stadium_longitude": -89.616,
+    "stadium_name": null
   },
   {
     "id": 223,
@@ -597,7 +660,11 @@
     "website": "https://brownbears.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "16-28",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/225.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/225.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 41.826,
+    "stadium_longitude": -71.403,
+    "stadium_name": null
   },
   {
     "id": 258,
@@ -622,7 +689,11 @@
     "website": "https://bryantbulldogs.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "25-28",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2803.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2803.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 41.844,
+    "stadium_longitude": -71.526,
+    "stadium_name": null
   },
   {
     "id": 214,
@@ -647,7 +718,11 @@
     "website": "https://bucknellbison.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "26-27",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2083.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2083.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 40.955,
+    "stadium_longitude": -76.884,
+    "stadium_name": null
   },
   {
     "id": 113,
@@ -672,7 +747,40 @@
     "website": "https://butlersports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "25-32",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2086.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2086.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 39.839,
+    "stadium_longitude": -86.17,
+    "stadium_name": null
+  },
+  {
+    "id": 43,
+    "name": "BYU",
+    "mascot": "Cougars",
+    "city": "Provo",
+    "state": "UT",
+    "zip": "84602",
+    "latitude": 40.252,
+    "longitude": -111.649,
+    "division": "D1",
+    "public_private": "Private",
+    "conference": "Big 12",
+    "current_ranking": null,
+    "tuition": 6496,
+    "instagram": "@byubaseball",
+    "x_account": "@BYUBaseball",
+    "head_coach_name": "Trent Pratt",
+    "head_coach_email": "baseball@byu.edu",
+    "assistant_coach_name": "Brent Haring",
+    "assistant_coach_email": "baseball@byu.edu",
+    "website": "https://byucougars.com/sports/baseball",
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "27-30",
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/252.png",
+    "mlb_draft_picks": 7,
+    "stadium_latitude": 40.2555,
+    "stadium_longitude": -111.651,
+    "stadium_name": "Larry H. Miller Field"
   },
   {
     "id": 128,
@@ -697,7 +805,11 @@
     "website": "https://gopoly.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "30-27",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/13.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/13.png",
+    "mlb_draft_picks": 7,
+    "stadium_latitude": 35.3015,
+    "stadium_longitude": -120.6565,
+    "stadium_name": "Baggett Stadium"
   },
   {
     "id": 134,
@@ -722,7 +834,11 @@
     "website": "https://gorunners.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "20-36",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2934.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2934.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 35.348,
+    "stadium_longitude": -119.103,
+    "stadium_name": null
   },
   {
     "id": 124,
@@ -747,7 +863,11 @@
     "website": "https://fullertontitans.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "34-24",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2239.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2239.png",
+    "mlb_draft_picks": 13,
+    "stadium_latitude": 33.8835,
+    "stadium_longitude": -117.8835,
+    "stadium_name": "Goodwin Field"
   },
   {
     "id": 133,
@@ -772,7 +892,11 @@
     "website": "https://gomatadors.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "27-30",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2463.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2463.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 34.24,
+    "stadium_longitude": -118.529,
+    "stadium_name": null
   },
   {
     "id": 32,
@@ -797,7 +921,11 @@
     "website": "https://calbears.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "29-28",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/25.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/25.png",
+    "mlb_draft_picks": 7,
+    "stadium_latitude": 37.871,
+    "stadium_longitude": -122.251,
+    "stadium_name": "Evans Diamond"
   },
   {
     "id": 198,
@@ -822,7 +950,11 @@
     "website": "https://cbulancers.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "26-29",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2856.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2856.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 33.932,
+    "stadium_longitude": -117.426,
+    "stadium_name": null
   },
   {
     "id": 242,
@@ -847,7 +979,11 @@
     "website": "https://gogriffs.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "28-26",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2098.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2098.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 42.936,
+    "stadium_longitude": -78.857,
+    "stadium_name": null
   },
   {
     "id": 171,
@@ -872,7 +1008,11 @@
     "website": "https://ucasports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "26-31",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2110.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2110.png",
+    "mlb_draft_picks": 5,
+    "stadium_latitude": 35.076,
+    "stadium_longitude": -92.462,
+    "stadium_name": null
   },
   {
     "id": 262,
@@ -897,7 +1037,11 @@
     "website": "https://ccsubluedevils.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "33-22",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2115.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2115.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 41.669,
+    "stadium_longitude": -72.783,
+    "stadium_name": null
   },
   {
     "id": 151,
@@ -922,7 +1066,11 @@
     "website": "https://cofcsports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "40-19",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/232.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/232.png",
+    "mlb_draft_picks": 6,
+    "stadium_latitude": 32.784,
+    "stadium_longitude": -79.937,
+    "stadium_name": null
   },
   {
     "id": 73,
@@ -947,7 +1095,11 @@
     "website": "https://charlotte49ers.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "31-27",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2429.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2429.png",
+    "mlb_draft_picks": 8,
+    "stadium_latitude": 35.306,
+    "stadium_longitude": -80.729,
+    "stadium_name": null
   },
   {
     "id": 184,
@@ -972,7 +1124,11 @@
     "website": "https://gomocs.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "31-26",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/236.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/236.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 35.05,
+    "stadium_longitude": -85.307,
+    "stadium_name": null
   },
   {
     "id": 44,
@@ -990,14 +1146,18 @@
     "tuition": 11000,
     "instagram": "@gobearcatsbsb",
     "x_account": "@GoBEARCATSBSB",
-    "head_coach_name": "Connor Barth",
+    "head_coach_name": "TJ Barra",
     "head_coach_email": "baseball@uc.edu",
     "assistant_coach_name": "Dan Bautista",
     "assistant_coach_email": "baseball@uc.edu",
     "website": "https://gobearcats.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "31-27",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2132.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2132.png",
+    "mlb_draft_picks": 4,
+    "stadium_latitude": 39.133,
+    "stadium_longitude": -84.515,
+    "stadium_name": null
   },
   {
     "id": 19,
@@ -1022,7 +1182,11 @@
     "website": "https://clemsontigers.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "45-18",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/228.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/228.png",
+    "mlb_draft_picks": 16,
+    "stadium_latitude": 34.683,
+    "stadium_longitude": -82.838,
+    "stadium_name": "Doug Kingsmore Stadium"
   },
   {
     "id": 251,
@@ -1047,7 +1211,11 @@
     "website": "https://csuvikings.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "22-34",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2129.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2129.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 41.502,
+    "stadium_longitude": -81.675,
+    "stadium_name": null
   },
   {
     "id": 82,
@@ -1065,14 +1233,18 @@
     "tuition": 12060,
     "instagram": "@ccubaseball",
     "x_account": "@CoastalBaseball",
-    "head_coach_name": "Gary Gilmore",
+    "head_coach_name": "Drew Thomas",
     "head_coach_email": "baseball@coastal.edu",
     "assistant_coach_name": "Drew Thomas",
     "assistant_coach_email": "baseball@coastal.edu",
     "website": "https://goccusports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "47-19",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/324.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/324.png",
+    "mlb_draft_picks": 13,
+    "stadium_latitude": 33.796,
+    "stadium_longitude": -79.0185,
+    "stadium_name": "Springs Brooks Stadium"
   },
   {
     "id": 219,
@@ -1097,7 +1269,11 @@
     "website": "https://gocolumbialions.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "28-16",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/171.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/171.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 40.808,
+    "stadium_longitude": -73.962,
+    "stadium_name": null
   },
   {
     "id": 106,
@@ -1122,7 +1298,11 @@
     "website": "https://uconnhuskies.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "38-20",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/41.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/41.png",
+    "mlb_draft_picks": 5,
+    "stadium_latitude": 41.8085,
+    "stadium_longitude": -72.253,
+    "stadium_name": "Elliot Ballpark"
   },
   {
     "id": 278,
@@ -1147,7 +1327,11 @@
     "website": "https://coppinstatesports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "22-32",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2154.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2154.png",
+    "mlb_draft_picks": 1,
+    "stadium_latitude": 39.311,
+    "stadium_longitude": -76.656,
+    "stadium_name": null
   },
   {
     "id": 224,
@@ -1172,7 +1356,11 @@
     "website": "https://cornellbigred.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "20-24",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/172.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/172.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 42.447,
+    "stadium_longitude": -76.477,
+    "stadium_name": null
   },
   {
     "id": 107,
@@ -1197,7 +1385,11 @@
     "website": "https://gocreighton.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "35-23",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/156.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/156.png",
+    "mlb_draft_picks": 7,
+    "stadium_latitude": 41.2555,
+    "stadium_longitude": -95.9345,
+    "stadium_name": "TD Ameritrade Park"
   },
   {
     "id": 142,
@@ -1222,7 +1414,11 @@
     "website": "https://dbupatriots.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "40-20",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2169.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2169.png",
+    "mlb_draft_picks": 6,
+    "stadium_latitude": 32.7125,
+    "stadium_longitude": -96.8945,
+    "stadium_name": "Horner Ballpark"
   },
   {
     "id": 222,
@@ -1247,7 +1443,11 @@
     "website": "https://dartmouthsports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "23-21",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/159.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/159.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 43.704,
+    "stadium_longitude": -72.289,
+    "stadium_name": null
   },
   {
     "id": 228,
@@ -1272,7 +1472,11 @@
     "website": "https://davidsonwildcats.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "29-28",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2166.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2166.png",
+    "mlb_draft_picks": 4,
+    "stadium_latitude": 35.502,
+    "stadium_longitude": -80.843,
+    "stadium_name": null
   },
   {
     "id": 229,
@@ -1297,7 +1501,11 @@
     "website": "https://daytonflyers.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "31-26",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2168.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2168.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 39.741,
+    "stadium_longitude": -84.179,
+    "stadium_name": null
   },
   {
     "id": 159,
@@ -1322,7 +1530,11 @@
     "website": "https://bluehens.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "22-34",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/48.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/48.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 39.683,
+    "stadium_longitude": -75.752,
+    "stadium_name": null
   },
   {
     "id": 279,
@@ -1347,7 +1559,11 @@
     "website": "https://dsuhornets.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "20-34",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2178.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2178.png",
+    "mlb_draft_picks": 1,
+    "stadium_latitude": 39.186,
+    "stadium_longitude": -75.543,
+    "stadium_name": null
   },
   {
     "id": 160,
@@ -1372,7 +1588,11 @@
     "website": "https://drexeldragons.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "20-36",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2182.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2182.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 39.957,
+    "stadium_longitude": -75.189,
+    "stadium_name": null
   },
   {
     "id": 26,
@@ -1397,32 +1617,11 @@
     "website": "https://goduke.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "36-23",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/150.png"
-  },
-  {
-    "id": 176,
-    "name": "ETSU",
-    "mascot": "Buccaneers",
-    "city": "Johnson City",
-    "state": "TN",
-    "zip": "37614",
-    "latitude": 36.304,
-    "longitude": -82.368,
-    "division": "D1",
-    "public_private": "Public",
-    "conference": "Southern",
-    "current_ranking": null,
-    "tuition": 9632,
-    "instagram": "@etsubaseball",
-    "x_account": "@ETSU_Baseball",
-    "head_coach_name": "Joe Pennucci",
-    "head_coach_email": "baseball@etsu.edu",
-    "assistant_coach_name": "Skyler Moss",
-    "assistant_coach_email": "baseball@etsu.edu",
-    "website": "https://etsubucs.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32",
-    "last_season_record": "35-23",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2193.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/150.png",
+    "mlb_draft_picks": 12,
+    "stadium_latitude": 36.0045,
+    "stadium_longitude": -78.943,
+    "stadium_name": "Jack Coombs Field"
   },
   {
     "id": 68,
@@ -1447,7 +1646,11 @@
     "website": "https://ecupirates.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "42-20",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/151.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/151.png",
+    "mlb_draft_picks": 17,
+    "stadium_latitude": 35.6045,
+    "stadium_longitude": -77.372,
+    "stadium_name": "Clark-LeClair Stadium"
   },
   {
     "id": 169,
@@ -1472,7 +1675,11 @@
     "website": "https://ekusports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "28-29",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2198.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2198.png",
+    "mlb_draft_picks": 4,
+    "stadium_latitude": 37.733,
+    "stadium_longitude": -84.295,
+    "stadium_name": null
   },
   {
     "id": 153,
@@ -1497,7 +1704,40 @@
     "website": "https://elonphoenix.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "36-22",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2210.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2210.png",
+    "mlb_draft_picks": 4,
+    "stadium_latitude": 36.105,
+    "stadium_longitude": -79.502,
+    "stadium_name": null
+  },
+  {
+    "id": 176,
+    "name": "ETSU",
+    "mascot": "Buccaneers",
+    "city": "Johnson City",
+    "state": "TN",
+    "zip": "37614",
+    "latitude": 36.304,
+    "longitude": -82.368,
+    "division": "D1",
+    "public_private": "Public",
+    "conference": "Southern",
+    "current_ranking": null,
+    "tuition": 9632,
+    "instagram": "@etsubaseball",
+    "x_account": "@ETSU_Baseball",
+    "head_coach_name": "Joe Pennucci",
+    "head_coach_email": "baseball@etsu.edu",
+    "assistant_coach_name": "Skyler Moss",
+    "assistant_coach_email": "baseball@etsu.edu",
+    "website": "https://etsubucs.com/sports/baseball",
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "35-23",
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2193.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 36.304,
+    "stadium_longitude": -82.368,
+    "stadium_name": null
   },
   {
     "id": 147,
@@ -1522,57 +1762,11 @@
     "website": "https://gopurpleaces.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "28-29",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/339.png"
-  },
-  {
-    "id": 74,
-    "name": "FAU",
-    "mascot": "Owls",
-    "city": "Boca Raton",
-    "state": "FL",
-    "zip": "33431",
-    "latitude": 26.373,
-    "longitude": -80.101,
-    "division": "D1",
-    "public_private": "Public",
-    "conference": "American Athletic",
-    "current_ranking": null,
-    "tuition": 6039,
-    "instagram": "@faubaseball",
-    "x_account": "@FAUBaseball",
-    "head_coach_name": "Dustin Pease",
-    "head_coach_email": "baseball@fau.edu",
-    "assistant_coach_name": "Greg Deiros",
-    "assistant_coach_email": "baseball@fau.edu",
-    "website": "https://fausports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29",
-    "last_season_record": "28-29",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2226.png"
-  },
-  {
-    "id": 102,
-    "name": "FIU",
-    "mascot": "Panthers",
-    "city": "Miami",
-    "state": "FL",
-    "zip": "33199",
-    "latitude": 25.756,
-    "longitude": -80.374,
-    "division": "D1",
-    "public_private": "Public",
-    "conference": "Conference USA",
-    "current_ranking": null,
-    "tuition": 6556,
-    "instagram": "@fiubaseball",
-    "x_account": "@FIUBaseball",
-    "head_coach_name": "Mervyl Melendez",
-    "head_coach_email": "baseball@fiu.edu",
-    "assistant_coach_name": "Kris Clemente",
-    "assistant_coach_email": "baseball@fiu.edu",
-    "website": "https://fiusports.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29",
-    "last_season_record": "26-31",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2229.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/339.png",
+    "mlb_draft_picks": 7,
+    "stadium_latitude": 37.9715,
+    "stadium_longitude": -87.564,
+    "stadium_name": "German American Bank Field"
   },
   {
     "id": 241,
@@ -1597,7 +1791,11 @@
     "website": "https://fairfieldstags.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "32-22",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2217.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2217.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 41.168,
+    "stadium_longitude": -73.255,
+    "stadium_name": null
   },
   {
     "id": 266,
@@ -1622,7 +1820,69 @@
     "website": "https://fduknights.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "28-27",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2218.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2218.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 40.862,
+    "stadium_longitude": -74.015,
+    "stadium_name": null
+  },
+  {
+    "id": 74,
+    "name": "FAU",
+    "mascot": "Owls",
+    "city": "Boca Raton",
+    "state": "FL",
+    "zip": "33431",
+    "latitude": 26.373,
+    "longitude": -80.101,
+    "division": "D1",
+    "public_private": "Public",
+    "conference": "American Athletic",
+    "current_ranking": null,
+    "tuition": 6039,
+    "instagram": "@faubaseball",
+    "x_account": "@FAUBaseball",
+    "head_coach_name": "Dustin Pease",
+    "head_coach_email": "baseball@fau.edu",
+    "assistant_coach_name": "Greg Deiros",
+    "assistant_coach_email": "baseball@fau.edu",
+    "website": "https://fausports.com/sports/baseball",
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "28-29",
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2226.png",
+    "mlb_draft_picks": 5,
+    "stadium_latitude": 26.373,
+    "stadium_longitude": -80.102,
+    "stadium_name": "FAU Baseball Stadium"
+  },
+  {
+    "id": 102,
+    "name": "FIU",
+    "mascot": "Panthers",
+    "city": "Miami",
+    "state": "FL",
+    "zip": "33199",
+    "latitude": 25.756,
+    "longitude": -80.374,
+    "division": "D1",
+    "public_private": "Public",
+    "conference": "Conference USA",
+    "current_ranking": null,
+    "tuition": 6556,
+    "instagram": "@fiubaseball",
+    "x_account": "@FIUBaseball",
+    "head_coach_name": "Mervyl Melendez",
+    "head_coach_email": "baseball@fiu.edu",
+    "assistant_coach_name": "Kris Clemente",
+    "assistant_coach_email": "baseball@fiu.edu",
+    "website": "https://fiusports.com/sports/baseball",
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "26-31",
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2229.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 25.7565,
+    "stadium_longitude": -80.3745,
+    "stadium_name": "FIU Baseball Stadium"
   },
   {
     "id": 4,
@@ -1647,7 +1907,11 @@
     "website": "https://floridagators.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "42-21",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/57.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/57.png",
+    "mlb_draft_picks": 23,
+    "stadium_latitude": 29.6463,
+    "stadium_longitude": -82.3442,
+    "stadium_name": "Condron Ballpark"
   },
   {
     "id": 294,
@@ -1672,7 +1936,11 @@
     "website": "https://famuathletics.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "27-27",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/50.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/50.png",
+    "mlb_draft_picks": 1,
+    "stadium_latitude": 30.4225,
+    "stadium_longitude": -84.289,
+    "stadium_name": "Moore-Kittles Field"
   },
   {
     "id": 167,
@@ -1697,7 +1965,11 @@
     "website": "https://fgcuathletics.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "38-20",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/526.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/526.png",
+    "mlb_draft_picks": 5,
+    "stadium_latitude": 26.4635,
+    "stadium_longitude": -81.7735,
+    "stadium_name": "FGCU Baseball Complex"
   },
   {
     "id": 20,
@@ -1722,7 +1994,11 @@
     "website": "https://seminoles.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "35-24",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/52.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/52.png",
+    "mlb_draft_picks": 18,
+    "stadium_latitude": 30.438,
+    "stadium_longitude": -84.3005,
+    "stadium_name": "Dick Howser Stadium"
   },
   {
     "id": 231,
@@ -1747,7 +2023,11 @@
     "website": "https://fordhamsports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "22-34",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2230.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2230.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 40.861,
+    "stadium_longitude": -73.886,
+    "stadium_name": null
   },
   {
     "id": 136,
@@ -1772,7 +2052,11 @@
     "website": "https://gobulldogs.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "34-24",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/278.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/278.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 36.817,
+    "stadium_longitude": -119.7535,
+    "stadium_name": "Pete Beiden Field"
   },
   {
     "id": 180,
@@ -1797,7 +2081,11 @@
     "website": "https://furmanpaladins.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "27-30",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/231.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/231.png",
+    "mlb_draft_picks": 4,
+    "stadium_latitude": 34.925,
+    "stadium_longitude": -82.441,
+    "stadium_name": null
   },
   {
     "id": 227,
@@ -1822,7 +2110,11 @@
     "website": "https://gomason.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "33-25",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2244.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2244.png",
+    "mlb_draft_picks": 5,
+    "stadium_latitude": 38.832,
+    "stadium_longitude": -77.307,
+    "stadium_name": null
   },
   {
     "id": 235,
@@ -1847,7 +2139,11 @@
     "website": "https://gwsports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "23-33",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/45.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/45.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 38.9,
+    "stadium_longitude": -77.049,
+    "stadium_name": null
   },
   {
     "id": 112,
@@ -1872,7 +2168,11 @@
     "website": "https://guhoyas.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "27-30",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/46.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/46.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 38.908,
+    "stadium_longitude": -77.072,
+    "stadium_name": null
   },
   {
     "id": 12,
@@ -1890,14 +2190,18 @@
     "tuition": 12080,
     "instagram": "@ugabaseball",
     "x_account": "@BaseballUGA",
-    "head_coach_name": "Wes Johnson",
+    "head_coach_name": "Scott Stricklin",
     "head_coach_email": "baseball@uga.edu",
     "assistant_coach_name": "Sean Kenny",
     "assistant_coach_email": "baseball@uga.edu",
     "website": "https://georgiadogs.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "35-25",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/61.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/61.png",
+    "mlb_draft_picks": 14,
+    "stadium_latitude": 33.9505,
+    "stadium_longitude": -83.3735,
+    "stadium_name": "Foley Field"
   },
   {
     "id": 84,
@@ -1922,7 +2226,11 @@
     "website": "https://gseagles.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "35-24",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/290.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/290.png",
+    "mlb_draft_picks": 5,
+    "stadium_latitude": 32.423,
+    "stadium_longitude": -81.783,
+    "stadium_name": null
   },
   {
     "id": 88,
@@ -1947,7 +2255,11 @@
     "website": "https://georgiastatesports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "25-31",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2247.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2247.png",
+    "mlb_draft_picks": 5,
+    "stadium_latitude": 33.753,
+    "stadium_longitude": -84.389,
+    "stadium_name": null
   },
   {
     "id": 27,
@@ -1972,7 +2284,11 @@
     "website": "https://ramblinwreck.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "38-22",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/59.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/59.png",
+    "mlb_draft_picks": 16,
+    "stadium_latitude": 33.773,
+    "stadium_longitude": -84.392,
+    "stadium_name": "Russ Chandler Stadium"
   },
   {
     "id": 115,
@@ -1997,7 +2313,11 @@
     "website": "https://gozags.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "35-22",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2250.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2250.png",
+    "mlb_draft_picks": 8,
+    "stadium_latitude": 47.666,
+    "stadium_longitude": -117.4015,
+    "stadium_name": "Patterson Baseball Complex"
   },
   {
     "id": 284,
@@ -2022,7 +2342,11 @@
     "website": "https://gsutigers.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "30-24",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2755.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2755.png",
+    "mlb_draft_picks": 1,
+    "stadium_latitude": 32.524,
+    "stadium_longitude": -92.714,
+    "stadium_name": null
   },
   {
     "id": 193,
@@ -2047,7 +2371,11 @@
     "website": "https://gculopes.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "38-20",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2253.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2253.png",
+    "mlb_draft_picks": 6,
+    "stadium_latitude": 33.5115,
+    "stadium_longitude": -112.1025,
+    "stadium_name": "Brazell Field"
   },
   {
     "id": 162,
@@ -2072,7 +2400,11 @@
     "website": "https://hamptonpirates.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "18-37",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2261.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2261.png",
+    "mlb_draft_picks": 1,
+    "stadium_latitude": 37.02,
+    "stadium_longitude": -76.337,
+    "stadium_name": null
   },
   {
     "id": 217,
@@ -2097,7 +2429,11 @@
     "website": "https://gocrimson.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "25-19",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/108.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/108.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 42.377,
+    "stadium_longitude": -71.117,
+    "stadium_name": null
   },
   {
     "id": 127,
@@ -2122,7 +2458,11 @@
     "website": "https://hawaiiathletics.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "24-32",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/62.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/62.png",
+    "mlb_draft_picks": 5,
+    "stadium_latitude": 21.2935,
+    "stadium_longitude": -157.819,
+    "stadium_name": "Les Murakami Stadium"
   },
   {
     "id": 157,
@@ -2147,7 +2487,11 @@
     "website": "https://gohofstra.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "26-30",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2275.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2275.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 40.714,
+    "stadium_longitude": -73.6,
+    "stadium_name": null
   },
   {
     "id": 215,
@@ -2172,7 +2516,11 @@
     "website": "https://goholycross.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "24-29",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/107.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/107.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 42.237,
+    "stadium_longitude": -71.808,
+    "stadium_name": null
   },
   {
     "id": 42,
@@ -2197,7 +2545,11 @@
     "website": "https://uhcougars.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "30-28",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/248.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/248.png",
+    "mlb_draft_picks": 9,
+    "stadium_latitude": 29.722,
+    "stadium_longitude": -95.343,
+    "stadium_name": "Darryl & Lori Schroeder Park"
   },
   {
     "id": 190,
@@ -2222,7 +2574,11 @@
     "website": "https://hcuhuskies.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "26-30",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2277.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2277.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 29.718,
+    "stadium_longitude": -95.498,
+    "stadium_name": null
   },
   {
     "id": 280,
@@ -2247,7 +2603,11 @@
     "website": "https://hubison.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "26-28",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/47.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/47.png",
+    "mlb_draft_picks": 1,
+    "stadium_latitude": 38.922,
+    "stadium_longitude": -77.02,
+    "stadium_name": null
   },
   {
     "id": 63,
@@ -2272,7 +2632,11 @@
     "website": "https://fightingillini.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "31-27",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/356.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/356.png",
+    "mlb_draft_picks": 9,
+    "stadium_latitude": 40.096,
+    "stadium_longitude": -88.237,
+    "stadium_name": "Illinois Field"
   },
   {
     "id": 146,
@@ -2297,7 +2661,11 @@
     "website": "https://goredbirds.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "30-27",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2287.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2287.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 40.511,
+    "stadium_longitude": -88.998,
+    "stadium_name": null
   },
   {
     "id": 191,
@@ -2322,7 +2690,11 @@
     "website": "https://uiwcardinals.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "22-34",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2916.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2916.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 29.463,
+    "stadium_longitude": -98.462,
+    "stadium_name": null
   },
   {
     "id": 52,
@@ -2347,7 +2719,11 @@
     "website": "https://iuhoosiers.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "41-20",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/84.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/84.png",
+    "mlb_draft_picks": 11,
+    "stadium_latitude": 39.182,
+    "stadium_longitude": -86.5235,
+    "stadium_name": "Bart Kaufman Field"
   },
   {
     "id": 144,
@@ -2372,7 +2748,11 @@
     "website": "https://gosycamores.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "36-22",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/282.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/282.png",
+    "mlb_draft_picks": 7,
+    "stadium_latitude": 39.4645,
+    "stadium_longitude": -87.3965,
+    "stadium_name": "Bob Warn Field"
   },
   {
     "id": 243,
@@ -2397,7 +2777,11 @@
     "website": "https://icgaels.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "22-32",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/314.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/314.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 40.929,
+    "stadium_longitude": -73.788,
+    "stadium_name": null
   },
   {
     "id": 56,
@@ -2422,7 +2806,11 @@
     "website": "https://hawkeyesports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "27-30",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2294.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2294.png",
+    "mlb_draft_picks": 8,
+    "stadium_latitude": 41.6625,
+    "stadium_longitude": -91.548,
+    "stadium_name": "Duane Banks Field"
   },
   {
     "id": 285,
@@ -2447,7 +2835,11 @@
     "website": "https://jsutigers.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "28-26",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2296.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2296.png",
+    "mlb_draft_picks": 1,
+    "stadium_latitude": 32.296,
+    "stadium_longitude": -90.209,
+    "stadium_name": null
   },
   {
     "id": 164,
@@ -2472,7 +2864,11 @@
     "website": "https://judolphins.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "34-24",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/294.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/294.png",
+    "mlb_draft_picks": 7,
+    "stadium_latitude": 30.353,
+    "stadium_longitude": -81.6125,
+    "stadium_name": "John Sessions Stadium"
   },
   {
     "id": 101,
@@ -2497,7 +2893,11 @@
     "website": "https://jsugamecocksports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "34-25",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/55.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/55.png",
+    "mlb_draft_picks": 5,
+    "stadium_latitude": 33.822,
+    "stadium_longitude": -85.764,
+    "stadium_name": null
   },
   {
     "id": 89,
@@ -2522,7 +2922,11 @@
     "website": "https://jmusports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "37-23",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/256.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/256.png",
+    "mlb_draft_picks": 9,
+    "stadium_latitude": 38.435,
+    "stadium_longitude": -78.869,
+    "stadium_name": null
   },
   {
     "id": 49,
@@ -2547,7 +2951,11 @@
     "website": "https://kuathletics.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "25-32",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2305.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2305.png",
+    "mlb_draft_picks": 4,
+    "stadium_latitude": 38.954,
+    "stadium_longitude": -95.256,
+    "stadium_name": null
   },
   {
     "id": 274,
@@ -2572,7 +2980,11 @@
     "website": "https://kcroos.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "22-34",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/140.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/140.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 39.034,
+    "stadium_longitude": -94.574,
+    "stadium_name": null
   },
   {
     "id": 38,
@@ -2597,7 +3009,11 @@
     "website": "https://kstatesports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "33-26",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2306.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2306.png",
+    "mlb_draft_picks": 10,
+    "stadium_latitude": 39.2005,
+    "stadium_longitude": -96.5845,
+    "stadium_name": "Tointon Family Stadium"
   },
   {
     "id": 103,
@@ -2622,7 +3038,11 @@
     "website": "https://ksuowls.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "30-28",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/338.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/338.png",
+    "mlb_draft_picks": 6,
+    "stadium_latitude": 34.037,
+    "stadium_longitude": -84.582,
+    "stadium_name": null
   },
   {
     "id": 14,
@@ -2647,82 +3067,11 @@
     "website": "https://ukathletics.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "36-25",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/96.png"
-  },
-  {
-    "id": 263,
-    "name": "LIU",
-    "mascot": "Sharks",
-    "city": "Brooklyn",
-    "state": "NY",
-    "zip": "11201",
-    "latitude": 40.69,
-    "longitude": -73.982,
-    "division": "D1",
-    "public_private": "Private",
-    "conference": "NEC",
-    "current_ranking": null,
-    "tuition": 43476,
-    "instagram": "@liusharksbsb",
-    "x_account": "@LIUSharksBSB",
-    "head_coach_name": "Dan Pirillo",
-    "head_coach_email": "baseball@liu.edu",
-    "assistant_coach_name": "Sean Farrell",
-    "assistant_coach_email": "baseball@liu.edu",
-    "website": "https://liuathletics.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32",
-    "last_season_record": "35-23",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2344.png"
-  },
-  {
-    "id": 118,
-    "name": "LMU",
-    "mascot": "Lions",
-    "city": "Los Angeles",
-    "state": "CA",
-    "zip": "90045",
-    "latitude": 33.97,
-    "longitude": -118.418,
-    "division": "D1",
-    "public_private": "Private",
-    "conference": "West Coast",
-    "current_ranking": null,
-    "tuition": 54936,
-    "instagram": "@lmubaseball",
-    "x_account": "@LMU_Baseball",
-    "head_coach_name": "Nathan Choate",
-    "head_coach_email": "baseball@lmu.edu",
-    "assistant_coach_name": "Brad Sanfilippo",
-    "assistant_coach_email": "baseball@lmu.edu",
-    "website": "https://lmulions.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32",
-    "last_season_record": "28-28",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2369.png"
-  },
-  {
-    "id": 1,
-    "name": "LSU",
-    "mascot": "Tigers",
-    "city": "Baton Rouge",
-    "state": "LA",
-    "zip": "70803",
-    "latitude": 30.413,
-    "longitude": -91.18,
-    "division": "D1",
-    "public_private": "Public",
-    "conference": "SEC",
-    "current_ranking": 1,
-    "tuition": 11962,
-    "instagram": "@lsubaseball",
-    "x_account": "@LSUbaseball",
-    "head_coach_name": "Jay Johnson",
-    "head_coach_email": "baseball@lsu.edu",
-    "assistant_coach_name": "Dan Fitzgerald",
-    "assistant_coach_email": "baseball@lsu.edu",
-    "website": "https://lsusports.net/sports/baseball",
-    "created_at": "2026-02-10 16:55:29",
-    "last_season_record": "50-16",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/99.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/96.png",
+    "mlb_draft_picks": 12,
+    "stadium_latitude": 38.0365,
+    "stadium_longitude": -84.492,
+    "stadium_name": "Kentucky Proud Park"
   },
   {
     "id": 234,
@@ -2747,7 +3096,11 @@
     "website": "https://goexplorers.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "16-39",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2325.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2325.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 40.038,
+    "stadium_longitude": -75.155,
+    "stadium_name": null
   },
   {
     "id": 216,
@@ -2772,7 +3125,11 @@
     "website": "https://goleopards.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "20-33",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/322.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/322.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 40.697,
+    "stadium_longitude": -75.212,
+    "stadium_name": null
   },
   {
     "id": 189,
@@ -2797,7 +3154,11 @@
     "website": "https://lamarcardinals.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "28-28",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2320.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2320.png",
+    "mlb_draft_picks": 6,
+    "stadium_latitude": 30.0455,
+    "stadium_longitude": -94.056,
+    "stadium_name": "Vincent-Beck Stadium"
   },
   {
     "id": 268,
@@ -2822,7 +3183,11 @@
     "website": "https://lemoynesports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "24-26",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2330.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2330.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 43.028,
+    "stadium_longitude": -76.074,
+    "stadium_name": null
   },
   {
     "id": 213,
@@ -2847,7 +3212,11 @@
     "website": "https://lehighsports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "28-25",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2329.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2329.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 40.607,
+    "stadium_longitude": -75.378,
+    "stadium_name": null
   },
   {
     "id": 96,
@@ -2872,7 +3241,11 @@
     "website": "https://libertyflames.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "37-23",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2335.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2335.png",
+    "mlb_draft_picks": 10,
+    "stadium_latitude": 37.3525,
+    "stadium_longitude": -79.174,
+    "stadium_name": "Liberty Baseball Stadium"
   },
   {
     "id": 208,
@@ -2897,7 +3270,11 @@
     "website": "https://lindenwoodlions.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "24-32",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2815.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2815.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 38.789,
+    "stadium_longitude": -90.502,
+    "stadium_name": null
   },
   {
     "id": 165,
@@ -2922,7 +3299,11 @@
     "website": "https://lipscombsports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "32-25",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/288.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/288.png",
+    "mlb_draft_picks": 4,
+    "stadium_latitude": 36.105,
+    "stadium_longitude": -86.809,
+    "stadium_name": null
   },
   {
     "id": 209,
@@ -2947,7 +3328,69 @@
     "website": "https://lrtrojans.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "27-29",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2031.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2031.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 34.725,
+    "stadium_longitude": -92.343,
+    "stadium_name": null
+  },
+  {
+    "id": 263,
+    "name": "LIU",
+    "mascot": "Sharks",
+    "city": "Brooklyn",
+    "state": "NY",
+    "zip": "11201",
+    "latitude": 40.69,
+    "longitude": -73.982,
+    "division": "D1",
+    "public_private": "Private",
+    "conference": "NEC",
+    "current_ranking": null,
+    "tuition": 43476,
+    "instagram": "@liusharksbsb",
+    "x_account": "@LIUSharksBSB",
+    "head_coach_name": "Dan Pirillo",
+    "head_coach_email": "baseball@liu.edu",
+    "assistant_coach_name": "Sean Farrell",
+    "assistant_coach_email": "baseball@liu.edu",
+    "website": "https://liuathletics.com/sports/baseball",
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "35-23",
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2344.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 40.69,
+    "stadium_longitude": -73.982,
+    "stadium_name": null
+  },
+  {
+    "id": 118,
+    "name": "LMU",
+    "mascot": "Lions",
+    "city": "Los Angeles",
+    "state": "CA",
+    "zip": "90045",
+    "latitude": 33.97,
+    "longitude": -118.418,
+    "division": "D1",
+    "public_private": "Private",
+    "conference": "West Coast",
+    "current_ranking": null,
+    "tuition": 54936,
+    "instagram": "@lmubaseball",
+    "x_account": "@LMU_Baseball",
+    "head_coach_name": "Nathan Choate",
+    "head_coach_email": "baseball@lmu.edu",
+    "assistant_coach_name": "Brad Sanfilippo",
+    "assistant_coach_email": "baseball@lmu.edu",
+    "website": "https://lmulions.com/sports/baseball",
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "28-28",
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2369.png",
+    "mlb_draft_picks": 6,
+    "stadium_latitude": 33.97,
+    "stadium_longitude": -118.418,
+    "stadium_name": null
   },
   {
     "id": 125,
@@ -2972,7 +3415,11 @@
     "website": "https://longbeachstate.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "32-25",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/299.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/299.png",
+    "mlb_draft_picks": 11,
+    "stadium_latitude": 33.7825,
+    "stadium_longitude": -118.113,
+    "stadium_name": "Blair Field"
   },
   {
     "id": 83,
@@ -2997,7 +3444,11 @@
     "website": "https://ragincajuns.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "38-22",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/309.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/309.png",
+    "mlb_draft_picks": 7,
+    "stadium_latitude": 30.2175,
+    "stadium_longitude": -92.0285,
+    "stadium_name": "M.L. Tigue Moore Field"
   },
   {
     "id": 97,
@@ -3022,7 +3473,11 @@
     "website": "https://latechsports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "38-22",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2348.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2348.png",
+    "mlb_draft_picks": 7,
+    "stadium_latitude": 32.5235,
+    "stadium_longitude": -92.6475,
+    "stadium_name": "J.C. Love Field"
   },
   {
     "id": 90,
@@ -3047,7 +3502,11 @@
     "website": "https://ulmwarhawks.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "22-33",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2433.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2433.png",
+    "mlb_draft_picks": 6,
+    "stadium_latitude": 32.529,
+    "stadium_longitude": -92.069,
+    "stadium_name": null
   },
   {
     "id": 24,
@@ -3072,7 +3531,40 @@
     "website": "https://gocards.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "34-25",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/97.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/97.png",
+    "mlb_draft_picks": 15,
+    "stadium_latitude": 38.2165,
+    "stadium_longitude": -85.757,
+    "stadium_name": "Jim Patterson Stadium"
+  },
+  {
+    "id": 1,
+    "name": "LSU",
+    "mascot": "Tigers",
+    "city": "Baton Rouge",
+    "state": "LA",
+    "zip": "70803",
+    "latitude": 30.413,
+    "longitude": -91.18,
+    "division": "D1",
+    "public_private": "Public",
+    "conference": "SEC",
+    "current_ranking": 1,
+    "tuition": 11962,
+    "instagram": "@lsubaseball",
+    "x_account": "@LSUbaseball",
+    "head_coach_name": "Jay Johnson",
+    "head_coach_email": "baseball@lsu.edu",
+    "assistant_coach_name": "Wes Johnson",
+    "assistant_coach_email": "baseball@lsu.edu",
+    "website": "https://lsusports.net/sports/baseball",
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "50-16",
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/99.png",
+    "mlb_draft_picks": 26,
+    "stadium_latitude": 30.406,
+    "stadium_longitude": -91.1845,
+    "stadium_name": "Alex Box Stadium"
   },
   {
     "id": 257,
@@ -3097,7 +3589,11 @@
     "website": "https://goblackbears.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "30-24",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/311.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/311.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 44.901,
+    "stadium_longitude": -68.672,
+    "stadium_name": null
   },
   {
     "id": 240,
@@ -3122,7 +3618,11 @@
     "website": "https://goredfoxes.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "24-30",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2374.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2374.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 41.72,
+    "stadium_longitude": -73.934,
+    "stadium_name": null
   },
   {
     "id": 91,
@@ -3147,7 +3647,11 @@
     "website": "https://herdzone.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "27-30",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/276.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/276.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 38.424,
+    "stadium_longitude": -82.432,
+    "stadium_name": null
   },
   {
     "id": 55,
@@ -3165,14 +3669,18 @@
     "tuition": 10779,
     "instagram": "@terpsbaseball",
     "x_account": "@TerpsBaseball",
-    "head_coach_name": "Matt Swope",
+    "head_coach_name": "Matt Deedon",
     "head_coach_email": "baseball@umd.edu",
     "assistant_coach_name": "Corey Muscara",
     "assistant_coach_email": "baseball@umd.edu",
     "website": "https://umterps.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "33-25",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/120.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/120.png",
+    "mlb_draft_picks": 12,
+    "stadium_latitude": 38.991,
+    "stadium_longitude": -76.9485,
+    "stadium_name": "Bob \"Turtle\" Smith Stadium"
   },
   {
     "id": 281,
@@ -3197,7 +3705,11 @@
     "website": "https://umeshawks.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "18-36",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2379.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2379.png",
+    "mlb_draft_picks": 1,
+    "stadium_latitude": 38.2,
+    "stadium_longitude": -75.693,
+    "stadium_name": null
   },
   {
     "id": 236,
@@ -3222,7 +3734,11 @@
     "website": "https://umassathletics.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "24-32",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/113.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/113.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 42.386,
+    "stadium_longitude": -72.53,
+    "stadium_name": null
   },
   {
     "id": 185,
@@ -3247,7 +3763,11 @@
     "website": "https://mcneesesports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "36-22",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2377.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2377.png",
+    "mlb_draft_picks": 6,
+    "stadium_latitude": 30.2055,
+    "stadium_longitude": -93.219,
+    "stadium_name": "Joe Miller Ballpark"
   },
   {
     "id": 71,
@@ -3272,7 +3792,11 @@
     "website": "https://gotigersgo.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "29-28",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/235.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/235.png",
+    "mlb_draft_picks": 5,
+    "stadium_latitude": 35.1195,
+    "stadium_longitude": -89.937,
+    "stadium_name": "FedExPark"
   },
   {
     "id": 177,
@@ -3297,7 +3821,11 @@
     "website": "https://mercerbears.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "33-25",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2382.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2382.png",
+    "mlb_draft_picks": 6,
+    "stadium_latitude": 32.831,
+    "stadium_longitude": -83.649,
+    "stadium_name": null
   },
   {
     "id": 265,
@@ -3322,7 +3850,11 @@
     "website": "https://merrimackathletics.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "20-30",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2771.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2771.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 42.704,
+    "stadium_longitude": -71.131,
+    "stadium_name": null
   },
   {
     "id": 21,
@@ -3347,7 +3879,11 @@
     "website": "https://miamihurricanes.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "38-22",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2390.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2390.png",
+    "mlb_draft_picks": 17,
+    "stadium_latitude": 25.716,
+    "stadium_longitude": -80.2405,
+    "stadium_name": "Mark Light Field"
   },
   {
     "id": 51,
@@ -3365,14 +3901,18 @@
     "tuition": 16312,
     "instagram": "@umichbaseball",
     "x_account": "@umichbaseball",
-    "head_coach_name": "Erik Bakich",
+    "head_coach_name": "Tracy Smith",
     "head_coach_email": "baseball@umich.edu",
     "assistant_coach_name": "Nick Schnabel",
     "assistant_coach_email": "baseball@umich.edu",
     "website": "https://mgoblue.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "35-24",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/130.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/130.png",
+    "mlb_draft_picks": 11,
+    "stadium_latitude": 42.269,
+    "stadium_longitude": -83.745,
+    "stadium_name": "Ray Fisher Stadium"
   },
   {
     "id": 59,
@@ -3397,7 +3937,11 @@
     "website": "https://msuspartans.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "22-34",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/127.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/127.png",
+    "mlb_draft_picks": 4,
+    "stadium_latitude": 42.729,
+    "stadium_longitude": -84.481,
+    "stadium_name": "McLane Baseball Stadium"
   },
   {
     "id": 100,
@@ -3422,7 +3966,11 @@
     "website": "https://goblueraiders.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "28-29",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2393.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2393.png",
+    "mlb_draft_picks": 5,
+    "stadium_latitude": 35.85,
+    "stadium_longitude": -86.368,
+    "stadium_name": null
   },
   {
     "id": 249,
@@ -3447,7 +3995,11 @@
     "website": "https://mkepanthers.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "24-32",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/270.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/270.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 43.078,
+    "stadium_longitude": -87.882,
+    "stadium_name": null
   },
   {
     "id": 57,
@@ -3465,14 +4017,18 @@
     "tuition": 15027,
     "instagram": "@gopherbaseball",
     "x_account": "@GopherBaseball",
-    "head_coach_name": "Ty Johnson",
+    "head_coach_name": "Ty McDevitt",
     "head_coach_email": "baseball@umn.edu",
     "assistant_coach_name": "Garza Roberts",
     "assistant_coach_email": "baseball@umn.edu",
     "website": "https://gophersports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "28-29",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/135.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/135.png",
+    "mlb_draft_picks": 8,
+    "stadium_latitude": 44.9825,
+    "stadium_longitude": -93.231,
+    "stadium_name": "Siebert Field"
   },
   {
     "id": 9,
@@ -3497,7 +4053,11 @@
     "website": "https://hailstate.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "33-26",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/344.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/344.png",
+    "mlb_draft_picks": 16,
+    "stadium_latitude": 33.455,
+    "stadium_longitude": -88.792,
+    "stadium_name": "Dudy Noble Field"
   },
   {
     "id": 293,
@@ -3522,7 +4082,11 @@
     "website": "https://mvsusports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "14-40",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2400.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2400.png",
+    "mlb_draft_picks": 1,
+    "stadium_latitude": 33.499,
+    "stadium_longitude": -90.33,
+    "stadium_name": null
   },
   {
     "id": 15,
@@ -3547,7 +4111,11 @@
     "website": "https://mutigers.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "30-28",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/142.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/142.png",
+    "mlb_draft_picks": 7,
+    "stadium_latitude": 38.9415,
+    "stadium_longitude": -92.333,
+    "stadium_name": "Taylor Stadium"
   },
   {
     "id": 143,
@@ -3572,7 +4140,11 @@
     "website": "https://missouristatebears.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "34-24",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2623.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2623.png",
+    "mlb_draft_picks": 5,
+    "stadium_latitude": 37.196,
+    "stadium_longitude": -93.282,
+    "stadium_name": null
   },
   {
     "id": 161,
@@ -3597,7 +4169,11 @@
     "website": "https://monmouthhawks.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "23-33",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2405.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2405.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 40.278,
+    "stadium_longitude": -74.004,
+    "stadium_name": null
   },
   {
     "id": 203,
@@ -3622,7 +4198,11 @@
     "website": "https://msueagles.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "30-26",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2413.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2413.png",
+    "mlb_draft_picks": 4,
+    "stadium_latitude": 38.188,
+    "stadium_longitude": -83.434,
+    "stadium_name": null
   },
   {
     "id": 204,
@@ -3647,82 +4227,11 @@
     "website": "https://goracers.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "28-28",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/93.png"
-  },
-  {
-    "id": 163,
-    "name": "NC A&T",
-    "mascot": "Aggies",
-    "city": "Greensboro",
-    "state": "NC",
-    "zip": "27411",
-    "latitude": 36.075,
-    "longitude": -79.772,
-    "division": "D1",
-    "public_private": "Public",
-    "conference": "CAA",
-    "current_ranking": null,
-    "tuition": 6456,
-    "instagram": "@ncaboratbsb",
-    "x_account": "@NCAT_Baseball",
-    "head_coach_name": "Ben Hall",
-    "head_coach_email": "baseball@ncat.edu",
-    "assistant_coach_name": "Brian Rountree",
-    "assistant_coach_email": "baseball@ncat.edu",
-    "website": "https://ncataggies.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32",
-    "last_season_record": "15-39",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2448.png"
-  },
-  {
-    "id": 22,
-    "name": "NC State",
-    "mascot": "Wolfpack",
-    "city": "Raleigh",
-    "state": "NC",
-    "zip": "27695",
-    "latitude": 35.787,
-    "longitude": -78.671,
-    "division": "D1",
-    "public_private": "Public",
-    "conference": "ACC",
-    "current_ranking": 14,
-    "tuition": 9128,
-    "instagram": "@packbaseball",
-    "x_account": "@NCStateBaseball",
-    "head_coach_name": "Elliott Avent",
-    "head_coach_email": "baseball@ncsu.edu",
-    "assistant_coach_name": "Chris Hart",
-    "assistant_coach_email": "baseball@ncsu.edu",
-    "website": "https://gopack.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29",
-    "last_season_record": "37-24",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/152.png"
-  },
-  {
-    "id": 259,
-    "name": "NJIT",
-    "mascot": "Highlanders",
-    "city": "Newark",
-    "state": "NJ",
-    "zip": "07102",
-    "latitude": 40.742,
-    "longitude": -74.179,
-    "division": "D1",
-    "public_private": "Public",
-    "conference": "America East",
-    "current_ranking": null,
-    "tuition": 17866,
-    "instagram": "@njitbaseball",
-    "x_account": "@NJIT_Baseball",
-    "head_coach_name": "Brian & Guiliana",
-    "head_coach_email": "baseball@njit.edu",
-    "assistant_coach_name": "Dave Callahan",
-    "assistant_coach_email": "baseball@njit.edu",
-    "website": "https://njithighlanders.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32",
-    "last_season_record": "22-32",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2885.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/93.png",
+    "mlb_draft_picks": 4,
+    "stadium_latitude": 36.613,
+    "stadium_longitude": -88.327,
+    "stadium_name": null
   },
   {
     "id": 75,
@@ -3747,7 +4256,69 @@
     "website": "https://navysports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "22-33",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2426.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2426.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 38.984,
+    "stadium_longitude": -76.484,
+    "stadium_name": null
+  },
+  {
+    "id": 163,
+    "name": "NC A&T",
+    "mascot": "Aggies",
+    "city": "Greensboro",
+    "state": "NC",
+    "zip": "27411",
+    "latitude": 36.075,
+    "longitude": -79.772,
+    "division": "D1",
+    "public_private": "Public",
+    "conference": "CAA",
+    "current_ranking": null,
+    "tuition": 6456,
+    "instagram": "@ncaboratbsb",
+    "x_account": "@NCAT_Baseball",
+    "head_coach_name": "Ben Hall",
+    "head_coach_email": "baseball@ncat.edu",
+    "assistant_coach_name": "Brian Rountree",
+    "assistant_coach_email": "baseball@ncat.edu",
+    "website": "https://ncataggies.com/sports/baseball",
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "15-39",
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2448.png",
+    "mlb_draft_picks": 1,
+    "stadium_latitude": 36.075,
+    "stadium_longitude": -79.772,
+    "stadium_name": null
+  },
+  {
+    "id": 22,
+    "name": "NC State",
+    "mascot": "Wolfpack",
+    "city": "Raleigh",
+    "state": "NC",
+    "zip": "27695",
+    "latitude": 35.787,
+    "longitude": -78.671,
+    "division": "D1",
+    "public_private": "Public",
+    "conference": "ACC",
+    "current_ranking": 14,
+    "tuition": 9128,
+    "instagram": "@packbaseball",
+    "x_account": "@NCStateBaseball",
+    "head_coach_name": "Elliott Avent",
+    "head_coach_email": "baseball@ncsu.edu",
+    "assistant_coach_name": "Chris Hart",
+    "assistant_coach_email": "baseball@ncsu.edu",
+    "website": "https://gopack.com/sports/baseball",
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "37-24",
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/152.png",
+    "mlb_draft_picks": 17,
+    "stadium_latitude": 35.7685,
+    "stadium_longitude": -78.678,
+    "stadium_name": "Doak Field"
   },
   {
     "id": 54,
@@ -3772,7 +4343,11 @@
     "website": "https://huskers.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "32-26",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/158.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/158.png",
+    "mlb_draft_picks": 9,
+    "stadium_latitude": 40.8295,
+    "stadium_longitude": -96.6925,
+    "stadium_name": "Hawks Field"
   },
   {
     "id": 138,
@@ -3797,7 +4372,11 @@
     "website": "https://nevadawolfpack.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "32-26",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2440.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2440.png",
+    "mlb_draft_picks": 6,
+    "stadium_latitude": 39.5425,
+    "stadium_longitude": -119.8175,
+    "stadium_name": "Peccole Park"
   },
   {
     "id": 139,
@@ -3822,7 +4401,11 @@
     "website": "https://golobos.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "28-29",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/167.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/167.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 35.0785,
+    "stadium_longitude": -106.6195,
+    "stadium_name": "Santa Ana Star Field"
   },
   {
     "id": 104,
@@ -3847,7 +4430,11 @@
     "website": "https://nmstatesports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "24-33",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/166.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/166.png",
+    "mlb_draft_picks": 7,
+    "stadium_latitude": 32.35,
+    "stadium_longitude": -106.756,
+    "stadium_name": null
   },
   {
     "id": 244,
@@ -3872,7 +4459,11 @@
     "website": "https://purpleeagles.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "16-38",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2450.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2450.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 43.139,
+    "stadium_longitude": -79.034,
+    "stadium_name": null
   },
   {
     "id": 188,
@@ -3897,7 +4488,40 @@
     "website": "https://geauxcolonels.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "31-27",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2447.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2447.png",
+    "mlb_draft_picks": 4,
+    "stadium_latitude": 29.451,
+    "stadium_longitude": -90.8115,
+    "stadium_name": "Ray E. Didier Field"
+  },
+  {
+    "id": 259,
+    "name": "NJIT",
+    "mascot": "Highlanders",
+    "city": "Newark",
+    "state": "NJ",
+    "zip": "07102",
+    "latitude": 40.742,
+    "longitude": -74.179,
+    "division": "D1",
+    "public_private": "Public",
+    "conference": "America East",
+    "current_ranking": null,
+    "tuition": 17866,
+    "instagram": "@njitbaseball",
+    "x_account": "@NJIT_Baseball",
+    "head_coach_name": "Brian & Guiliana",
+    "head_coach_email": "baseball@njit.edu",
+    "assistant_coach_name": "Dave Callahan",
+    "assistant_coach_email": "baseball@njit.edu",
+    "website": "https://njithighlanders.com/sports/baseball",
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "22-32",
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2885.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 40.742,
+    "stadium_longitude": -74.179,
+    "stadium_name": null
   },
   {
     "id": 276,
@@ -3922,7 +4546,11 @@
     "website": "https://nsuspartans.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "30-24",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2452.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2452.png",
+    "mlb_draft_picks": 1,
+    "stadium_latitude": 36.847,
+    "stadium_longitude": -76.27,
+    "stadium_name": null
   },
   {
     "id": 173,
@@ -3947,7 +4575,11 @@
     "website": "https://roarlions.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "20-36",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2453.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2453.png",
+    "mlb_draft_picks": 4,
+    "stadium_latitude": 34.804,
+    "stadium_longitude": -87.674,
+    "stadium_name": null
   },
   {
     "id": 23,
@@ -3972,7 +4604,11 @@
     "website": "https://goheels.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "40-22",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/153.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/153.png",
+    "mlb_draft_picks": 13,
+    "stadium_latitude": 35.9665,
+    "stadium_longitude": -79.0575,
+    "stadium_name": "Boshamer Stadium"
   },
   {
     "id": 277,
@@ -3997,7 +4633,11 @@
     "website": "https://nccueaglepride.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "28-26",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2428.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2428.png",
+    "mlb_draft_picks": 1,
+    "stadium_latitude": 35.974,
+    "stadium_longitude": -78.899,
+    "stadium_name": null
   },
   {
     "id": 272,
@@ -4022,7 +4662,11 @@
     "website": "https://gobison.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "28-28",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2449.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2449.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 46.897,
+    "stadium_longitude": -96.8,
+    "stadium_name": null
   },
   {
     "id": 168,
@@ -4047,7 +4691,11 @@
     "website": "https://unfospreys.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "24-32",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2454.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2454.png",
+    "mlb_draft_picks": 5,
+    "stadium_latitude": 30.2705,
+    "stadium_longitude": -81.51,
+    "stadium_name": "Harmon Stadium"
   },
   {
     "id": 76,
@@ -4072,7 +4720,11 @@
     "website": "https://meangreensports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "27-30",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/249.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/249.png",
+    "mlb_draft_picks": 5,
+    "stadium_latitude": 33.211,
+    "stadium_longitude": -97.149,
+    "stadium_name": null
   },
   {
     "id": 152,
@@ -4097,7 +4749,11 @@
     "website": "https://nuhuskies.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "32-25",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/111.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/111.png",
+    "mlb_draft_picks": 5,
+    "stadium_latitude": 42.34,
+    "stadium_longitude": -71.09,
+    "stadium_name": null
   },
   {
     "id": 248,
@@ -4122,7 +4778,11 @@
     "website": "https://nkunorse.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "30-26",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/94.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/94.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 39.032,
+    "stadium_longitude": -84.462,
+    "stadium_name": null
   },
   {
     "id": 62,
@@ -4140,14 +4800,18 @@
     "tuition": 63468,
     "instagram": "@nubaseball",
     "x_account": "@NUCatsBaseball",
-    "head_coach_name": "Jim Foster",
+    "head_coach_name": "Josh Reynolds",
     "head_coach_email": "baseball@northwestern.edu",
     "assistant_coach_name": "Josh Reynolds",
     "assistant_coach_email": "baseball@northwestern.edu",
     "website": "https://nusports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "24-32",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/77.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/77.png",
+    "mlb_draft_picks": 6,
+    "stadium_latitude": 42.064,
+    "stadium_longitude": -87.6745,
+    "stadium_name": "Rocky Miller Park"
   },
   {
     "id": 187,
@@ -4172,7 +4836,11 @@
     "website": "https://nsudemons.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "33-25",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2466.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2466.png",
+    "mlb_draft_picks": 4,
+    "stadium_latitude": 31.753,
+    "stadium_longitude": -93.0975,
+    "stadium_name": "Brown-Stroud Field"
   },
   {
     "id": 30,
@@ -4197,7 +4865,11 @@
     "website": "https://und.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "35-24",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/87.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/87.png",
+    "mlb_draft_picks": 14,
+    "stadium_latitude": 41.6985,
+    "stadium_longitude": -86.233,
+    "stadium_name": "Frank Eck Stadium"
   },
   {
     "id": 252,
@@ -4222,7 +4894,11 @@
     "website": "https://goldengrizzlies.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "26-30",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2473.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2473.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 42.672,
+    "stadium_longitude": -83.218,
+    "stadium_name": null
   },
   {
     "id": 53,
@@ -4247,7 +4923,11 @@
     "website": "https://ohiostatebuckeyes.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "37-22",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/194.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/194.png",
+    "mlb_draft_picks": 8,
+    "stadium_latitude": 40.0065,
+    "stadium_longitude": -83.0225,
+    "stadium_name": "Bill Davis Stadium"
   },
   {
     "id": 16,
@@ -4272,7 +4952,11 @@
     "website": "https://soonersports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "26-30",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/201.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/201.png",
+    "mlb_draft_picks": 11,
+    "stadium_latitude": 35.205,
+    "stadium_longitude": -97.442,
+    "stadium_name": "L. Dale Mitchell Baseball Park"
   },
   {
     "id": 36,
@@ -4297,7 +4981,11 @@
     "website": "https://okstate.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "40-22",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/197.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/197.png",
+    "mlb_draft_picks": 17,
+    "stadium_latitude": 36.1235,
+    "stadium_longitude": -97.065,
+    "stadium_name": "O'Brate Stadium"
   },
   {
     "id": 92,
@@ -4322,7 +5010,11 @@
     "website": "https://odusports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "28-29",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/295.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/295.png",
+    "mlb_draft_picks": 8,
+    "stadium_latitude": 36.885,
+    "stadium_longitude": -76.305,
+    "stadium_name": null
   },
   {
     "id": 8,
@@ -4347,7 +5039,11 @@
     "website": "https://olemisssports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "39-23",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/145.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/145.png",
+    "mlb_draft_picks": 19,
+    "stadium_latitude": 34.3615,
+    "stadium_longitude": -89.535,
+    "stadium_name": "Swayze Field"
   },
   {
     "id": 271,
@@ -4372,7 +5068,11 @@
     "website": "https://omavs.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "32-25",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2437.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2437.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 41.259,
+    "stadium_longitude": -96.01,
+    "stadium_name": null
   },
   {
     "id": 270,
@@ -4397,7 +5097,11 @@
     "website": "https://orugoldeneagles.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "36-22",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/198.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/198.png",
+    "mlb_draft_picks": 6,
+    "stadium_latitude": 36.056,
+    "stadium_longitude": -95.948,
+    "stadium_name": null
   },
   {
     "id": 67,
@@ -4422,7 +5126,11 @@
     "website": "https://goducks.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "34-24",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2483.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2483.png",
+    "mlb_draft_picks": 12,
+    "stadium_latitude": 44.0585,
+    "stadium_longitude": -123.068,
+    "stadium_name": "PK Park"
   },
   {
     "id": 50,
@@ -4447,7 +5155,11 @@
     "website": "https://osubeavers.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "48-17",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/204.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/204.png",
+    "mlb_draft_picks": 21,
+    "stadium_latitude": 44.5615,
+    "stadium_longitude": -123.2635,
+    "stadium_name": "Goss Stadium"
   },
   {
     "id": 121,
@@ -4472,7 +5184,11 @@
     "website": "https://pacifictigers.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "20-35",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/279.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/279.png",
+    "mlb_draft_picks": 5,
+    "stadium_latitude": 37.979,
+    "stadium_longitude": -121.31,
+    "stadium_name": null
   },
   {
     "id": 220,
@@ -4497,7 +5213,11 @@
     "website": "https://pennathletics.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "27-17",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/219.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/219.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 39.952,
+    "stadium_longitude": -75.193,
+    "stadium_name": null
   },
   {
     "id": 58,
@@ -4522,7 +5242,11 @@
     "website": "https://gopsusports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "26-31",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/213.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/213.png",
+    "mlb_draft_picks": 6,
+    "stadium_latitude": 40.8115,
+    "stadium_longitude": -77.853,
+    "stadium_name": "Medlar Field"
   },
   {
     "id": 117,
@@ -4547,7 +5271,11 @@
     "website": "https://pepperdinewaves.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "30-26",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2492.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2492.png",
+    "mlb_draft_picks": 10,
+    "stadium_latitude": 34.036,
+    "stadium_longitude": -118.7095,
+    "stadium_name": "Eddy D. Field Stadium"
   },
   {
     "id": 123,
@@ -4572,7 +5300,11 @@
     "website": "https://portlandpilots.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "24-32",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2501.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2501.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 45.571,
+    "stadium_longitude": -122.726,
+    "stadium_name": null
   },
   {
     "id": 290,
@@ -4597,7 +5329,11 @@
     "website": "https://pvpanthers.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "21-33",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2504.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2504.png",
+    "mlb_draft_picks": 1,
+    "stadium_latitude": 30.093,
+    "stadium_longitude": -95.988,
+    "stadium_name": null
   },
   {
     "id": 221,
@@ -4622,7 +5358,11 @@
     "website": "https://goprincetontigers.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "18-26",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/163.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/163.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 40.348,
+    "stadium_longitude": -74.659,
+    "stadium_name": null
   },
   {
     "id": 114,
@@ -4647,7 +5387,11 @@
     "website": "https://friars.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "23-33",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2507.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2507.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 41.839,
+    "stadium_longitude": -71.436,
+    "stadium_name": null
   },
   {
     "id": 60,
@@ -4672,7 +5416,11 @@
     "website": "https://purduesports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "30-28",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2509.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2509.png",
+    "mlb_draft_picks": 6,
+    "stadium_latitude": 40.4375,
+    "stadium_longitude": -86.9195,
+    "stadium_name": "Alexander Field"
   },
   {
     "id": 253,
@@ -4697,7 +5445,11 @@
     "website": "https://gomastodons.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "20-36",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2870.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2870.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 41.118,
+    "stadium_longitude": -85.111,
+    "stadium_name": null
   },
   {
     "id": 174,
@@ -4722,7 +5474,11 @@
     "website": "https://queensroyals.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "27-28",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2511.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2511.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 35.189,
+    "stadium_longitude": -80.835,
+    "stadium_name": null
   },
   {
     "id": 238,
@@ -4747,7 +5503,11 @@
     "website": "https://quinnipiacbobcats.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "26-28",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2514.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2514.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 41.419,
+    "stadium_longitude": -72.894,
+    "stadium_name": null
   },
   {
     "id": 232,
@@ -4772,7 +5532,11 @@
     "website": "https://gorhody.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "25-31",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/227.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/227.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 41.483,
+    "stadium_longitude": -71.53,
+    "stadium_name": null
   },
   {
     "id": 72,
@@ -4797,7 +5561,11 @@
     "website": "https://riceowls.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "37-23",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/242.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/242.png",
+    "mlb_draft_picks": 9,
+    "stadium_latitude": 29.7165,
+    "stadium_longitude": -95.405,
+    "stadium_name": "Reckling Park"
   },
   {
     "id": 226,
@@ -4822,7 +5590,11 @@
     "website": "https://richmondspiders.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "35-23",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/257.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/257.png",
+    "mlb_draft_picks": 4,
+    "stadium_latitude": 37.574,
+    "stadium_longitude": -77.54,
+    "stadium_name": null
   },
   {
     "id": 239,
@@ -4847,7 +5619,11 @@
     "website": "https://gobroncs.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "30-24",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2520.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2520.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 40.283,
+    "stadium_longitude": -74.747,
+    "stadium_name": null
   },
   {
     "id": 61,
@@ -4872,82 +5648,11 @@
     "website": "https://scarletknights.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "23-33",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/164.png"
-  },
-  {
-    "id": 205,
-    "name": "SE Missouri State",
-    "mascot": "Redhawks",
-    "city": "Cape Girardeau",
-    "state": "MO",
-    "zip": "63701",
-    "latitude": 37.306,
-    "longitude": -89.531,
-    "division": "D1",
-    "public_private": "Public",
-    "conference": "Ohio Valley",
-    "current_ranking": null,
-    "tuition": 7843,
-    "instagram": "@saboremobaseball",
-    "x_account": "@SEMOBaseball",
-    "head_coach_name": "Andy Sawyers",
-    "head_coach_email": "baseball@semo.edu",
-    "assistant_coach_name": "Kirk Kelnar",
-    "assistant_coach_email": "baseball@semo.edu",
-    "website": "https://gosoutheast.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32",
-    "last_season_record": "34-22",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2546.png"
-  },
-  {
-    "id": 206,
-    "name": "SIU Edwardsville",
-    "mascot": "Cougars",
-    "city": "Edwardsville",
-    "state": "IL",
-    "zip": "62026",
-    "latitude": 38.793,
-    "longitude": -89.997,
-    "division": "D1",
-    "public_private": "Public",
-    "conference": "Ohio Valley",
-    "current_ranking": null,
-    "tuition": 13584,
-    "instagram": "@siuebaseball",
-    "x_account": "@SIUE_Baseball",
-    "head_coach_name": "Sean Lyons",
-    "head_coach_email": "baseball@siue.edu",
-    "assistant_coach_name": "P.J. Fultz",
-    "assistant_coach_email": "baseball@siue.edu",
-    "website": "https://siuecougars.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32",
-    "last_season_record": "25-31",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2565.png"
-  },
-  {
-    "id": 33,
-    "name": "SMU",
-    "mascot": "Mustangs",
-    "city": "Dallas",
-    "state": "TX",
-    "zip": "75205",
-    "latitude": 32.843,
-    "longitude": -96.785,
-    "division": "D1",
-    "public_private": "Private",
-    "conference": "ACC",
-    "current_ranking": null,
-    "tuition": 61510,
-    "instagram": "@smubaseball",
-    "x_account": "@SMUBaseball",
-    "head_coach_name": "Travis Jewett",
-    "head_coach_email": "baseball@smu.edu",
-    "assistant_coach_name": "Danny Clark",
-    "assistant_coach_email": "baseball@smu.edu",
-    "website": "https://smumustangs.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29",
-    "last_season_record": "26-31",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2567.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/164.png",
+    "mlb_draft_picks": 8,
+    "stadium_latitude": 40.5125,
+    "stadium_longitude": -74.4635,
+    "stadium_name": "Bainton Field"
   },
   {
     "id": 264,
@@ -4972,7 +5677,11 @@
     "website": "https://sacredheartpioneers.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "26-29",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2529.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2529.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 41.221,
+    "stadium_longitude": -73.238,
+    "stadium_name": null
   },
   {
     "id": 230,
@@ -4997,7 +5706,11 @@
     "website": "https://sjuhawks.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "20-35",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2603.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2603.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 39.997,
+    "stadium_longitude": -75.237,
+    "stadium_name": null
   },
   {
     "id": 233,
@@ -5022,7 +5735,11 @@
     "website": "https://slubillikens.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "27-30",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/139.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/139.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 38.635,
+    "stadium_longitude": -90.234,
+    "stadium_name": null
   },
   {
     "id": 122,
@@ -5047,7 +5764,11 @@
     "website": "https://smcgaels.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "22-33",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2608.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2608.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 37.84,
+    "stadium_longitude": -122.114,
+    "stadium_name": null
   },
   {
     "id": 245,
@@ -5072,7 +5793,11 @@
     "website": "https://saintpeterspeacocks.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "18-36",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2612.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2612.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 40.735,
+    "stadium_longitude": -74.063,
+    "stadium_name": null
   },
   {
     "id": 98,
@@ -5097,7 +5822,11 @@
     "website": "https://gobearkats.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "35-24",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2534.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2534.png",
+    "mlb_draft_picks": 7,
+    "stadium_latitude": 30.7185,
+    "stadium_longitude": -95.5425,
+    "stadium_name": "Don Sanders Stadium"
   },
   {
     "id": 175,
@@ -5122,7 +5851,11 @@
     "website": "https://samfordsports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "38-21",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2535.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2535.png",
+    "mlb_draft_picks": 6,
+    "stadium_latitude": 33.463,
+    "stadium_longitude": -86.793,
+    "stadium_name": null
   },
   {
     "id": 116,
@@ -5147,7 +5880,11 @@
     "website": "https://usdtoreros.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "33-24",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/301.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/301.png",
+    "mlb_draft_picks": 10,
+    "stadium_latitude": 32.772,
+    "stadium_longitude": -117.189,
+    "stadium_name": "Fowler Park"
   },
   {
     "id": 135,
@@ -5172,7 +5909,11 @@
     "website": "https://goaztecs.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "36-22",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/21.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/21.png",
+    "mlb_draft_picks": 5,
+    "stadium_latitude": 32.7775,
+    "stadium_longitude": -117.1235,
+    "stadium_name": "Tony Gwynn Stadium"
   },
   {
     "id": 120,
@@ -5197,7 +5938,11 @@
     "website": "https://usfdons.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "26-30",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2539.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2539.png",
+    "mlb_draft_picks": 5,
+    "stadium_latitude": 37.776,
+    "stadium_longitude": -122.451,
+    "stadium_name": null
   },
   {
     "id": 141,
@@ -5222,7 +5967,11 @@
     "website": "https://sjsuspartans.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "25-32",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/23.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/23.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 37.3345,
+    "stadium_longitude": -121.886,
+    "stadium_name": "Municipal Stadium"
   },
   {
     "id": 119,
@@ -5247,7 +5996,40 @@
     "website": "https://santaclarabroncos.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "31-25",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2541.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2541.png",
+    "mlb_draft_picks": 7,
+    "stadium_latitude": 37.349,
+    "stadium_longitude": -121.94,
+    "stadium_name": null
+  },
+  {
+    "id": 205,
+    "name": "SE Missouri State",
+    "mascot": "Redhawks",
+    "city": "Cape Girardeau",
+    "state": "MO",
+    "zip": "63701",
+    "latitude": 37.306,
+    "longitude": -89.531,
+    "division": "D1",
+    "public_private": "Public",
+    "conference": "Ohio Valley",
+    "current_ranking": null,
+    "tuition": 7843,
+    "instagram": "@saboremobaseball",
+    "x_account": "@SEMOBaseball",
+    "head_coach_name": "Andy Sawyers",
+    "head_coach_email": "baseball@semo.edu",
+    "assistant_coach_name": "Kirk Kelnar",
+    "assistant_coach_email": "baseball@semo.edu",
+    "website": "https://gosoutheast.com/sports/baseball",
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "34-22",
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2546.png",
+    "mlb_draft_picks": 4,
+    "stadium_latitude": 37.306,
+    "stadium_longitude": -89.531,
+    "stadium_name": null
   },
   {
     "id": 111,
@@ -5272,7 +6054,11 @@
     "website": "https://shupirates.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "29-28",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2550.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2550.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 40.743,
+    "stadium_longitude": -74.265,
+    "stadium_name": null
   },
   {
     "id": 246,
@@ -5297,7 +6083,69 @@
     "website": "https://sienasaints.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "20-34",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2561.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2561.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 42.719,
+    "stadium_longitude": -73.752,
+    "stadium_name": null
+  },
+  {
+    "id": 206,
+    "name": "SIU Edwardsville",
+    "mascot": "Cougars",
+    "city": "Edwardsville",
+    "state": "IL",
+    "zip": "62026",
+    "latitude": 38.793,
+    "longitude": -89.997,
+    "division": "D1",
+    "public_private": "Public",
+    "conference": "Ohio Valley",
+    "current_ranking": null,
+    "tuition": 13584,
+    "instagram": "@siuebaseball",
+    "x_account": "@SIUE_Baseball",
+    "head_coach_name": "Sean Lyons",
+    "head_coach_email": "baseball@siue.edu",
+    "assistant_coach_name": "P.J. Fultz",
+    "assistant_coach_email": "baseball@siue.edu",
+    "website": "https://siuecougars.com/sports/baseball",
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "25-31",
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2565.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 38.793,
+    "stadium_longitude": -89.997,
+    "stadium_name": null
+  },
+  {
+    "id": 33,
+    "name": "SMU",
+    "mascot": "Mustangs",
+    "city": "Dallas",
+    "state": "TX",
+    "zip": "75205",
+    "latitude": 32.843,
+    "longitude": -96.785,
+    "division": "D1",
+    "public_private": "Private",
+    "conference": "ACC",
+    "current_ranking": null,
+    "tuition": 61510,
+    "instagram": "@smubaseball",
+    "x_account": "@SMUBaseball",
+    "head_coach_name": "Travis Jewett",
+    "head_coach_email": "baseball@smu.edu",
+    "assistant_coach_name": "Danny Clark",
+    "assistant_coach_email": "baseball@smu.edu",
+    "website": "https://smumustangs.com/sports/baseball",
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "26-31",
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2567.png",
+    "mlb_draft_picks": 4,
+    "stadium_latitude": 32.837,
+    "stadium_longitude": -96.783,
+    "stadium_name": "Irish Yard"
   },
   {
     "id": 93,
@@ -5322,7 +6170,11 @@
     "website": "https://usajaguars.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "34-25",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/6.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/6.png",
+    "mlb_draft_picks": 4,
+    "stadium_latitude": 30.696,
+    "stadium_longitude": -88.178,
+    "stadium_name": null
   },
   {
     "id": 10,
@@ -5340,14 +6192,18 @@
     "tuition": 12688,
     "instagram": "@gamecockbsb",
     "x_account": "@GamecockBaseb1",
-    "head_coach_name": "Mark Kingston",
+    "head_coach_name": "Monte Lee",
     "head_coach_email": "baseball@sc.edu",
     "assistant_coach_name": "Trip Couch",
     "assistant_coach_email": "baseball@sc.edu",
     "website": "https://gamecocksonline.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "36-24",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2579.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2579.png",
+    "mlb_draft_picks": 14,
+    "stadium_latitude": 34.0165,
+    "stadium_longitude": -81.0215,
+    "stadium_name": "Founders Park"
   },
   {
     "id": 282,
@@ -5372,7 +6228,11 @@
     "website": "https://scstatebulldogs.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "16-38",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2569.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2569.png",
+    "mlb_draft_picks": 1,
+    "stadium_latitude": 33.497,
+    "stadium_longitude": -80.855,
+    "stadium_name": null
   },
   {
     "id": 273,
@@ -5397,7 +6257,11 @@
     "website": "https://gojacks.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "26-30",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2571.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2571.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 44.31,
+    "stadium_longitude": -96.786,
+    "stadium_name": null
   },
   {
     "id": 77,
@@ -5422,7 +6286,11 @@
     "website": "https://gousfbulls.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "33-26",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/58.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/58.png",
+    "mlb_draft_picks": 5,
+    "stadium_latitude": 28.0625,
+    "stadium_longitude": -82.413,
+    "stadium_name": "USF Baseball Stadium"
   },
   {
     "id": 186,
@@ -5447,7 +6315,11 @@
     "website": "https://lionsports.net/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "38-16",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2545.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2545.png",
+    "mlb_draft_picks": 7,
+    "stadium_latitude": 30.5225,
+    "stadium_longitude": -90.465,
+    "stadium_name": "Alumni Field"
   },
   {
     "id": 283,
@@ -5472,7 +6344,11 @@
     "website": "https://gojagsports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "32-22",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2582.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2582.png",
+    "mlb_draft_picks": 1,
+    "stadium_latitude": 30.527,
+    "stadium_longitude": -91.191,
+    "stadium_name": null
   },
   {
     "id": 145,
@@ -5497,7 +6373,11 @@
     "website": "https://siusalukis.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "32-26",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/79.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/79.png",
+    "mlb_draft_picks": 5,
+    "stadium_latitude": 37.717,
+    "stadium_longitude": -89.217,
+    "stadium_name": null
   },
   {
     "id": 210,
@@ -5522,7 +6402,11 @@
     "website": "https://gousieagles.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "22-34",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/88.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/88.png",
+    "mlb_draft_picks": 4,
+    "stadium_latitude": 38.003,
+    "stadium_longitude": -87.535,
+    "stadium_name": null
   },
   {
     "id": 85,
@@ -5547,7 +6431,11 @@
     "website": "https://southernmiss.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "40-22",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2572.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2572.png",
+    "mlb_draft_picks": 10,
+    "stadium_latitude": 31.327,
+    "stadium_longitude": -89.338,
+    "stadium_name": null
   },
   {
     "id": 199,
@@ -5572,7 +6460,11 @@
     "website": "https://suutbirds.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "22-34",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/253.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/253.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 37.677,
+    "stadium_longitude": -113.062,
+    "stadium_name": null
   },
   {
     "id": 237,
@@ -5597,7 +6489,11 @@
     "website": "https://gobonnies.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "18-37",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/179.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/179.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 42.08,
+    "stadium_longitude": -78.498,
+    "stadium_name": null
   },
   {
     "id": 110,
@@ -5622,7 +6518,11 @@
     "website": "https://redstormsports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "31-26",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2599.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2599.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 40.726,
+    "stadium_longitude": -73.795,
+    "stadium_name": null
   },
   {
     "id": 25,
@@ -5647,7 +6547,11 @@
     "website": "https://gostanford.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "33-25",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/24.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/24.png",
+    "mlb_draft_picks": 22,
+    "stadium_latitude": 37.4345,
+    "stadium_longitude": -122.1615,
+    "stadium_name": "Sunken Diamond"
   },
   {
     "id": 194,
@@ -5672,7 +6576,11 @@
     "website": "https://sfajacks.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "35-23",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2617.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2617.png",
+    "mlb_draft_picks": 6,
+    "stadium_latitude": 31.6235,
+    "stadium_longitude": -94.6525,
+    "stadium_name": "Jaycees Field"
   },
   {
     "id": 166,
@@ -5697,7 +6605,11 @@
     "website": "https://gohatters.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "36-22",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/56.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/56.png",
+    "mlb_draft_picks": 7,
+    "stadium_latitude": 29.051,
+    "stadium_longitude": -81.3005,
+    "stadium_name": "Melching Field"
   },
   {
     "id": 269,
@@ -5722,7 +6634,11 @@
     "website": "https://stonehillskyhawks.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "16-34",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/284.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/284.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 42.104,
+    "stadium_longitude": -71.099,
+    "stadium_name": null
   },
   {
     "id": 158,
@@ -5747,32 +6663,11 @@
     "website": "https://stonybrookathletics.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "28-28",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2619.png"
-  },
-  {
-    "id": 35,
-    "name": "TCU",
-    "mascot": "Horned Frogs",
-    "city": "Fort Worth",
-    "state": "TX",
-    "zip": "76129",
-    "latitude": 32.71,
-    "longitude": -97.363,
-    "division": "D1",
-    "public_private": "Private",
-    "conference": "Big 12",
-    "current_ranking": 21,
-    "tuition": 55760,
-    "instagram": "@tcubaseball",
-    "x_account": "@TCU_Baseball",
-    "head_coach_name": "Kirk Saarloos",
-    "head_coach_email": "baseball@tcu.edu",
-    "assistant_coach_name": "Bill Mosiello",
-    "assistant_coach_email": "baseball@tcu.edu",
-    "website": "https://gofrogs.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29",
-    "last_season_record": "41-21",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2628.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2619.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 40.914,
+    "stadium_longitude": -73.123,
+    "stadium_name": null
   },
   {
     "id": 196,
@@ -5797,7 +6692,40 @@
     "website": "https://tarletonsports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "28-28",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2627.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2627.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 32.223,
+    "stadium_longitude": -98.209,
+    "stadium_name": null
+  },
+  {
+    "id": 35,
+    "name": "TCU",
+    "mascot": "Horned Frogs",
+    "city": "Fort Worth",
+    "state": "TX",
+    "zip": "76129",
+    "latitude": 32.71,
+    "longitude": -97.363,
+    "division": "D1",
+    "public_private": "Private",
+    "conference": "Big 12",
+    "current_ranking": 21,
+    "tuition": 55760,
+    "instagram": "@tcubaseball",
+    "x_account": "@TCU_Baseball",
+    "head_coach_name": "Kirk Saarloos",
+    "head_coach_email": "baseball@tcu.edu",
+    "assistant_coach_name": "Bill Mosiello",
+    "assistant_coach_email": "baseball@tcu.edu",
+    "website": "https://gofrogs.com/sports/baseball",
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "41-21",
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2628.png",
+    "mlb_draft_picks": 19,
+    "stadium_latitude": 32.71,
+    "stadium_longitude": -97.3625,
+    "stadium_name": "Lupton Stadium"
   },
   {
     "id": 78,
@@ -5822,7 +6750,11 @@
     "website": "https://owlsports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "24-32",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/218.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/218.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 39.981,
+    "stadium_longitude": -75.155,
+    "stadium_name": null
   },
   {
     "id": 2,
@@ -5842,12 +6774,16 @@
     "x_account": "@Vol_Baseball",
     "head_coach_name": "Tony Vitello",
     "head_coach_email": "baseball@utk.edu",
-    "assistant_coach_name": "Josh Elander",
+    "assistant_coach_name": "Ross Kivett",
     "assistant_coach_email": "baseball@utk.edu",
     "website": "https://utsports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "48-15",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2633.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2633.png",
+    "mlb_draft_picks": 16,
+    "stadium_latitude": 35.953,
+    "stadium_longitude": -83.927,
+    "stadium_name": "Lindsey Nelson Stadium"
   },
   {
     "id": 211,
@@ -5872,7 +6808,11 @@
     "website": "https://tsutigers.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "18-38",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2634.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2634.png",
+    "mlb_draft_picks": 1,
+    "stadium_latitude": 36.168,
+    "stadium_longitude": -86.836,
+    "stadium_name": null
   },
   {
     "id": 202,
@@ -5897,7 +6837,11 @@
     "website": "https://ttusports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "32-24",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2635.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2635.png",
+    "mlb_draft_picks": 4,
+    "stadium_latitude": 36.177,
+    "stadium_longitude": -85.505,
+    "stadium_name": null
   },
   {
     "id": 6,
@@ -5922,7 +6866,11 @@
     "website": "https://texassports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "46-17",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/251.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/251.png",
+    "mlb_draft_picks": 24,
+    "stadium_latitude": 30.2835,
+    "stadium_longitude": -97.731,
+    "stadium_name": "UFCU Disch-Falk Field"
   },
   {
     "id": 3,
@@ -5947,7 +6895,11 @@
     "website": "https://12thman.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "47-18",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/245.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/245.png",
+    "mlb_draft_picks": 15,
+    "stadium_latitude": 30.605,
+    "stadium_longitude": -96.344,
+    "stadium_name": "Blue Bell Park"
   },
   {
     "id": 192,
@@ -5972,7 +6924,11 @@
     "website": "https://goislanders.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "24-32",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/357.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/357.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 27.713,
+    "stadium_longitude": -97.326,
+    "stadium_name": null
   },
   {
     "id": 289,
@@ -5997,7 +6953,11 @@
     "website": "https://tsusports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "24-30",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2640.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2640.png",
+    "mlb_draft_picks": 1,
+    "stadium_latitude": 29.724,
+    "stadium_longitude": -95.358,
+    "stadium_name": null
   },
   {
     "id": 94,
@@ -6022,7 +6982,11 @@
     "website": "https://txstatebobcats.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "33-26",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/326.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/326.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 29.8885,
+    "stadium_longitude": -97.9335,
+    "stadium_name": "Bobcat Ballpark"
   },
   {
     "id": 39,
@@ -6047,7 +7011,11 @@
     "website": "https://texastech.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "37-23",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2641.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2641.png",
+    "mlb_draft_picks": 14,
+    "stadium_latitude": 33.5875,
+    "stadium_longitude": -101.844,
+    "stadium_name": "Dan Law Field"
   },
   {
     "id": 178,
@@ -6072,7 +7040,11 @@
     "website": "https://citadelsports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "23-33",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2643.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2643.png",
+    "mlb_draft_picks": 4,
+    "stadium_latitude": 32.798,
+    "stadium_longitude": -79.958,
+    "stadium_name": null
   },
   {
     "id": 156,
@@ -6097,7 +7069,11 @@
     "website": "https://towsontigers.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "24-32",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/119.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/119.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 39.393,
+    "stadium_longitude": -76.61,
+    "stadium_name": null
   },
   {
     "id": 95,
@@ -6122,7 +7098,11 @@
     "website": "https://troytrojans.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "31-27",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2653.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2653.png",
+    "mlb_draft_picks": 6,
+    "stadium_latitude": 31.796,
+    "stadium_longitude": -85.968,
+    "stadium_name": null
   },
   {
     "id": 69,
@@ -6147,7 +7127,11 @@
     "website": "https://tulanegreenwave.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "40-22",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2655.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2655.png",
+    "mlb_draft_picks": 10,
+    "stadium_latitude": 30.0185,
+    "stadium_longitude": -90.06,
+    "stadium_name": "Greer Field at Turchin Stadium"
   },
   {
     "id": 79,
@@ -6172,7 +7156,11 @@
     "website": "https://tulsahurricane.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "25-31",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/202.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/202.png",
+    "mlb_draft_picks": 5,
+    "stadium_latitude": 36.152,
+    "stadium_longitude": -95.946,
+    "stadium_name": null
   },
   {
     "id": 80,
@@ -6197,7 +7185,11 @@
     "website": "https://uabsports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "26-31",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/5.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/5.png",
+    "mlb_draft_picks": 4,
+    "stadium_latitude": 33.502,
+    "stadium_longitude": -86.799,
+    "stadium_name": null
   },
   {
     "id": 131,
@@ -6222,7 +7214,11 @@
     "website": "https://ucdavisaggies.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "25-31",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/302.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/302.png",
+    "mlb_draft_picks": 5,
+    "stadium_latitude": 38.5375,
+    "stadium_longitude": -121.7535,
+    "stadium_name": "Dobbins Baseball Stadium"
   },
   {
     "id": 126,
@@ -6247,7 +7243,11 @@
     "website": "https://ucirvinesports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "38-20",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/300.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/300.png",
+    "mlb_draft_picks": 5,
+    "stadium_latitude": 33.6675,
+    "stadium_longitude": -117.8465,
+    "stadium_name": "Cicerone Field"
   },
   {
     "id": 130,
@@ -6272,7 +7272,11 @@
     "website": "https://gohighlanders.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "22-34",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/27.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/27.png",
+    "mlb_draft_picks": 5,
+    "stadium_latitude": 33.9755,
+    "stadium_longitude": -117.3275,
+    "stadium_name": "Riverside Sports Complex"
   },
   {
     "id": 132,
@@ -6297,7 +7301,11 @@
     "website": "https://ucsdtritons.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "29-28",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2728.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2728.png",
+    "mlb_draft_picks": 5,
+    "stadium_latitude": 32.877,
+    "stadium_longitude": -117.2355,
+    "stadium_name": "Triton Ballpark"
   },
   {
     "id": 129,
@@ -6322,7 +7330,11 @@
     "website": "https://ucsbgauchos.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "36-22",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2540.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2540.png",
+    "mlb_draft_picks": 11,
+    "stadium_latitude": 34.4175,
+    "stadium_longitude": -119.8505,
+    "stadium_name": "Caesar Uyesaka Stadium"
   },
   {
     "id": 41,
@@ -6347,7 +7359,11 @@
     "website": "https://ucfknights.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "32-26",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2116.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2116.png",
+    "mlb_draft_picks": 9,
+    "stadium_latitude": 28.6015,
+    "stadium_longitude": -81.201,
+    "stadium_name": "John Euliano Park"
   },
   {
     "id": 65,
@@ -6372,7 +7388,11 @@
     "website": "https://uclabruins.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "38-22",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/26.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/26.png",
+    "mlb_draft_picks": 16,
+    "stadium_latitude": 34.071,
+    "stadium_longitude": -118.4485,
+    "stadium_name": "Jackie Robinson Stadium"
   },
   {
     "id": 150,
@@ -6397,32 +7417,11 @@
     "website": "https://uicflames.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "23-33",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/82.png"
-  },
-  {
-    "id": 254,
-    "name": "UMBC",
-    "mascot": "Retrievers",
-    "city": "Baltimore",
-    "state": "MD",
-    "zip": "21250",
-    "latitude": 39.255,
-    "longitude": -76.714,
-    "division": "D1",
-    "public_private": "Public",
-    "conference": "America East",
-    "current_ranking": null,
-    "tuition": 12168,
-    "instagram": "@umbcbaseball",
-    "x_account": "@UMBC_Baseball",
-    "head_coach_name": "Liam Bowen",
-    "head_coach_email": "baseball@umbc.edu",
-    "assistant_coach_name": "Bobby Minarcin",
-    "assistant_coach_email": "baseball@umbc.edu",
-    "website": "https://umbcretrievers.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32",
-    "last_season_record": "26-28",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2378.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/82.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 41.87,
+    "stadium_longitude": -87.65,
+    "stadium_name": null
   },
   {
     "id": 260,
@@ -6447,7 +7446,40 @@
     "website": "https://goriverhawks.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "28-26",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2349.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2349.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 42.655,
+    "stadium_longitude": -71.325,
+    "stadium_name": null
+  },
+  {
+    "id": 254,
+    "name": "UMBC",
+    "mascot": "Retrievers",
+    "city": "Baltimore",
+    "state": "MD",
+    "zip": "21250",
+    "latitude": 39.255,
+    "longitude": -76.714,
+    "division": "D1",
+    "public_private": "Public",
+    "conference": "America East",
+    "current_ranking": null,
+    "tuition": 12168,
+    "instagram": "@umbcbaseball",
+    "x_account": "@UMBC_Baseball",
+    "head_coach_name": "Liam Bowen",
+    "head_coach_email": "baseball@umbc.edu",
+    "assistant_coach_name": "Bobby Minarcin",
+    "assistant_coach_email": "baseball@umbc.edu",
+    "website": "https://umbcretrievers.com/sports/baseball",
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "26-28",
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2378.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 39.255,
+    "stadium_longitude": -76.714,
+    "stadium_name": null
   },
   {
     "id": 181,
@@ -6472,7 +7504,11 @@
     "website": "https://uncgspartans.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "25-31",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2459.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2459.png",
+    "mlb_draft_picks": 4,
+    "stadium_latitude": 36.069,
+    "stadium_longitude": -79.81,
+    "stadium_name": null
   },
   {
     "id": 154,
@@ -6497,7 +7533,11 @@
     "website": "https://uncwsports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "34-24",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/350.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/350.png",
+    "mlb_draft_picks": 7,
+    "stadium_latitude": 34.227,
+    "stadium_longitude": -77.872,
+    "stadium_name": null
   },
   {
     "id": 137,
@@ -6522,7 +7562,11 @@
     "website": "https://unlvrebels.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "30-27",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2439.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2439.png",
+    "mlb_draft_picks": 5,
+    "stadium_latitude": 36.108,
+    "stadium_longitude": -115.1495,
+    "stadium_name": "Wilson Stadium"
   },
   {
     "id": 64,
@@ -6547,7 +7591,11 @@
     "website": "https://usctrojans.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "32-26",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/30.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/30.png",
+    "mlb_draft_picks": 0,
+    "stadium_latitude": 34.018,
+    "stadium_longitude": -118.2875,
+    "stadium_name": "Dedeaux Field"
   },
   {
     "id": 197,
@@ -6572,7 +7620,11 @@
     "website": "https://utamavs.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "28-27",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/250.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/250.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 32.731,
+    "stadium_longitude": -97.115,
+    "stadium_name": null
   },
   {
     "id": 207,
@@ -6597,57 +7649,40 @@
     "website": "https://utmsports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "20-36",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2630.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2630.png",
+    "mlb_draft_picks": 1,
+    "stadium_latitude": 36.339,
+    "stadium_longitude": -88.855,
+    "stadium_name": null
   },
   {
-    "id": 105,
-    "name": "UTEP",
-    "mascot": "Miners",
-    "city": "El Paso",
-    "state": "TX",
-    "zip": "79968",
-    "latitude": 31.77,
-    "longitude": -106.504,
+    "id": 48,
+    "name": "Utah",
+    "mascot": "Utes",
+    "city": "Salt Lake City",
+    "state": "UT",
+    "zip": "84112",
+    "latitude": 40.765,
+    "longitude": -111.842,
     "division": "D1",
     "public_private": "Public",
-    "conference": "Conference USA",
+    "conference": "Big 12",
     "current_ranking": null,
-    "tuition": 8572,
-    "instagram": "@utepbaseball",
-    "x_account": "@UTEPBSB",
-    "head_coach_name": "Bryan Prince",
-    "head_coach_email": "baseball@utep.edu",
-    "assistant_coach_name": "Tyler Collins",
-    "assistant_coach_email": "baseball@utep.edu",
-    "website": "https://utepminers.com/sports/baseball",
+    "tuition": 9222,
+    "instagram": "@utahbaseball",
+    "x_account": "@Utah_Baseball",
+    "head_coach_name": "Gary Henderson",
+    "head_coach_email": "baseball@utah.edu",
+    "assistant_coach_name": "Adam Pavkovich",
+    "assistant_coach_email": "baseball@utah.edu",
+    "website": "https://utahutes.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
-    "last_season_record": "20-36",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2638.png"
-  },
-  {
-    "id": 81,
-    "name": "UTSA",
-    "mascot": "Roadrunners",
-    "city": "San Antonio",
-    "state": "TX",
-    "zip": "78249",
-    "latitude": 29.583,
-    "longitude": -98.619,
-    "division": "D1",
-    "public_private": "Public",
-    "conference": "American Athletic",
-    "current_ranking": null,
-    "tuition": 10400,
-    "instagram": "@utsabaseball",
-    "x_account": "@UTSABSB",
-    "head_coach_name": "Pat Hallmark",
-    "head_coach_email": "baseball@utsa.edu",
-    "assistant_coach_name": "Daniel Saenz",
-    "assistant_coach_email": "baseball@utsa.edu",
-    "website": "https://goutsa.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:29",
-    "last_season_record": "30-28",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2636.png"
+    "last_season_record": "22-34",
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/254.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 40.7635,
+    "stadium_longitude": -111.8465,
+    "stadium_name": "Smith's Ballpark"
   },
   {
     "id": 201,
@@ -6672,7 +7707,11 @@
     "website": "https://utahtechblazers.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "18-38",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/3101.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/3101.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 37.109,
+    "stadium_longitude": -113.568,
+    "stadium_name": null
   },
   {
     "id": 200,
@@ -6697,57 +7736,69 @@
     "website": "https://wolverinegreen.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "24-32",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/3084.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/3084.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 40.276,
+    "stadium_longitude": -111.714,
+    "stadium_name": null
   },
   {
-    "id": 225,
-    "name": "VCU",
-    "mascot": "Rams",
-    "city": "Richmond",
-    "state": "VA",
-    "zip": "23284",
-    "latitude": 37.549,
-    "longitude": -77.453,
+    "id": 105,
+    "name": "UTEP",
+    "mascot": "Miners",
+    "city": "El Paso",
+    "state": "TX",
+    "zip": "79968",
+    "latitude": 31.77,
+    "longitude": -106.504,
     "division": "D1",
     "public_private": "Public",
-    "conference": "Atlantic 10",
+    "conference": "Conference USA",
     "current_ranking": null,
-    "tuition": 14876,
-    "instagram": "@vcubaseball",
-    "x_account": "@VCUBaseball",
-    "head_coach_name": "Shawn Stiffler",
-    "head_coach_email": "baseball@vcu.edu",
-    "assistant_coach_name": "Kevin Herget",
-    "assistant_coach_email": "baseball@vcu.edu",
-    "website": "https://vcuathletics.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32",
-    "last_season_record": "37-21",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2670.png"
-  },
-  {
-    "id": 183,
-    "name": "VMI",
-    "mascot": "Keydets",
-    "city": "Lexington",
-    "state": "VA",
-    "zip": "24450",
-    "latitude": 37.792,
-    "longitude": -79.442,
-    "division": "D1",
-    "public_private": "Public",
-    "conference": "Southern",
-    "current_ranking": null,
-    "tuition": 9532,
-    "instagram": "@vmibaseball",
-    "x_account": "@VMI_Baseball",
-    "head_coach_name": "Sam Roberts",
-    "head_coach_email": "baseball@vmi.edu",
-    "assistant_coach_name": "Matt Kirby",
-    "assistant_coach_email": "baseball@vmi.edu",
-    "website": "https://vmikeydets.com/sports/baseball",
-    "created_at": "2026-02-10 16:55:32",
+    "tuition": 8572,
+    "instagram": "@utepbaseball",
+    "x_account": "@UTEPBSB",
+    "head_coach_name": "Bryan Prince",
+    "head_coach_email": "baseball@utep.edu",
+    "assistant_coach_name": "Tyler Collins",
+    "assistant_coach_email": "baseball@utep.edu",
+    "website": "https://utepminers.com/sports/baseball",
+    "created_at": "2026-02-10 16:55:29",
     "last_season_record": "20-36",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2681.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2638.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 31.77,
+    "stadium_longitude": -106.504,
+    "stadium_name": null
+  },
+  {
+    "id": 81,
+    "name": "UTSA",
+    "mascot": "Roadrunners",
+    "city": "San Antonio",
+    "state": "TX",
+    "zip": "78249",
+    "latitude": 29.583,
+    "longitude": -98.619,
+    "division": "D1",
+    "public_private": "Public",
+    "conference": "American Athletic",
+    "current_ranking": null,
+    "tuition": 10400,
+    "instagram": "@utsabaseball",
+    "x_account": "@UTSABSB",
+    "head_coach_name": "Pat Hallmark",
+    "head_coach_email": "baseball@utsa.edu",
+    "assistant_coach_name": "Daniel Saenz",
+    "assistant_coach_email": "baseball@utsa.edu",
+    "website": "https://goutsa.com/sports/baseball",
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "30-28",
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2636.png",
+    "mlb_draft_picks": 5,
+    "stadium_latitude": 29.461,
+    "stadium_longitude": -98.4835,
+    "stadium_name": "Roadrunner Field"
   },
   {
     "id": 149,
@@ -6772,7 +7823,11 @@
     "website": "https://valpoathletics.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "20-36",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2674.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2674.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 41.466,
+    "stadium_longitude": -87.036,
+    "stadium_name": null
   },
   {
     "id": 5,
@@ -6797,7 +7852,40 @@
     "website": "https://vucommodores.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "40-22",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/238.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/238.png",
+    "mlb_draft_picks": 28,
+    "stadium_latitude": 36.148,
+    "stadium_longitude": -86.812,
+    "stadium_name": "Hawkins Field"
+  },
+  {
+    "id": 225,
+    "name": "VCU",
+    "mascot": "Rams",
+    "city": "Richmond",
+    "state": "VA",
+    "zip": "23284",
+    "latitude": 37.549,
+    "longitude": -77.453,
+    "division": "D1",
+    "public_private": "Public",
+    "conference": "Atlantic 10",
+    "current_ranking": null,
+    "tuition": 14876,
+    "instagram": "@vcubaseball",
+    "x_account": "@VCUBaseball",
+    "head_coach_name": "Shawn Stiffler",
+    "head_coach_email": "baseball@vcu.edu",
+    "assistant_coach_name": "Kevin Herget",
+    "assistant_coach_email": "baseball@vcu.edu",
+    "website": "https://vcuathletics.com/sports/baseball",
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "37-21",
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2670.png",
+    "mlb_draft_picks": 9,
+    "stadium_latitude": 37.549,
+    "stadium_longitude": -77.453,
+    "stadium_name": null
   },
   {
     "id": 261,
@@ -6822,7 +7910,11 @@
     "website": "https://uvmathletics.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "18-36",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/261.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/261.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 44.478,
+    "stadium_longitude": -73.196,
+    "stadium_name": null
   },
   {
     "id": 109,
@@ -6847,7 +7939,11 @@
     "website": "https://villanova.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "21-35",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2679.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2679.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 40.037,
+    "stadium_longitude": -75.338,
+    "stadium_name": null
   },
   {
     "id": 18,
@@ -6872,7 +7968,11 @@
     "website": "https://virginiasports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "43-19",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/258.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/258.png",
+    "mlb_draft_picks": 22,
+    "stadium_latitude": 38.0315,
+    "stadium_longitude": -78.514,
+    "stadium_name": "Disharoon Park"
   },
   {
     "id": 28,
@@ -6897,7 +7997,40 @@
     "website": "https://hokiesports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "33-25",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/259.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/259.png",
+    "mlb_draft_picks": 4,
+    "stadium_latitude": 37.2275,
+    "stadium_longitude": -80.421,
+    "stadium_name": "English Field"
+  },
+  {
+    "id": 183,
+    "name": "VMI",
+    "mascot": "Keydets",
+    "city": "Lexington",
+    "state": "VA",
+    "zip": "24450",
+    "latitude": 37.792,
+    "longitude": -79.442,
+    "division": "D1",
+    "public_private": "Public",
+    "conference": "Southern",
+    "current_ranking": null,
+    "tuition": 9532,
+    "instagram": "@vmibaseball",
+    "x_account": "@VMI_Baseball",
+    "head_coach_name": "Sam Roberts",
+    "head_coach_email": "baseball@vmi.edu",
+    "assistant_coach_name": "Matt Kirby",
+    "assistant_coach_email": "baseball@vmi.edu",
+    "website": "https://vmikeydets.com/sports/baseball",
+    "created_at": "2026-02-10 16:55:32",
+    "last_season_record": "20-36",
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2681.png",
+    "mlb_draft_picks": 4,
+    "stadium_latitude": 37.792,
+    "stadium_longitude": -79.442,
+    "stadium_name": null
   },
   {
     "id": 267,
@@ -6922,7 +8055,11 @@
     "website": "https://wagnerathletics.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "24-31",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2690.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2690.png",
+    "mlb_draft_picks": 1,
+    "stadium_latitude": 40.616,
+    "stadium_longitude": -74.095,
+    "stadium_name": null
   },
   {
     "id": 17,
@@ -6947,7 +8084,40 @@
     "website": "https://godeacs.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "44-19",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/154.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/154.png",
+    "mlb_draft_picks": 4,
+    "stadium_latitude": 36.0885,
+    "stadium_longitude": -80.2575,
+    "stadium_name": "David F. Couch Ballpark"
+  },
+  {
+    "id": 66,
+    "name": "Washington",
+    "mascot": "Huskies",
+    "city": "Seattle",
+    "state": "WA",
+    "zip": "98195",
+    "latitude": 47.655,
+    "longitude": -122.304,
+    "division": "D1",
+    "public_private": "Public",
+    "conference": "Big Ten",
+    "current_ranking": null,
+    "tuition": 12076,
+    "instagram": "@uw_baseball",
+    "x_account": "@UW_Baseball",
+    "head_coach_name": "Jason Kelly",
+    "head_coach_email": "baseball@uw.edu",
+    "assistant_coach_name": "Elliott Cribby",
+    "assistant_coach_email": "baseball@uw.edu",
+    "website": "https://gohuskies.com/sports/baseball",
+    "created_at": "2026-02-10 16:55:29",
+    "last_season_record": "29-28",
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/264.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 47.651,
+    "stadium_longitude": -122.3015,
+    "stadium_name": "Husky Ballpark"
   },
   {
     "id": 37,
@@ -6972,7 +8142,11 @@
     "website": "https://wvusports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "35-24",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/277.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/277.png",
+    "mlb_draft_picks": 10,
+    "stadium_latitude": 39.6485,
+    "stadium_longitude": -79.953,
+    "stadium_name": "Monongalia County Ballpark"
   },
   {
     "id": 179,
@@ -6997,7 +8171,11 @@
     "website": "https://catamountsports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "28-29",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2717.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2717.png",
+    "mlb_draft_picks": 6,
+    "stadium_latitude": 35.312,
+    "stadium_longitude": -83.186,
+    "stadium_name": null
   },
   {
     "id": 275,
@@ -7022,7 +8200,11 @@
     "website": "https://goleathernecks.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "18-38",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2710.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2710.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 40.476,
+    "stadium_longitude": -90.68,
+    "stadium_name": null
   },
   {
     "id": 99,
@@ -7047,7 +8229,11 @@
     "website": "https://wkusports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "32-27",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/98.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/98.png",
+    "mlb_draft_picks": 4,
+    "stadium_latitude": 36.99,
+    "stadium_longitude": -86.443,
+    "stadium_name": null
   },
   {
     "id": 70,
@@ -7072,7 +8258,11 @@
     "website": "https://goshockers.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "35-24",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2724.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2724.png",
+    "mlb_draft_picks": 8,
+    "stadium_latitude": 37.7215,
+    "stadium_longitude": -97.2955,
+    "stadium_name": "Eck Stadium"
   },
   {
     "id": 155,
@@ -7097,7 +8287,11 @@
     "website": "https://tribeathletics.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "30-27",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2729.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2729.png",
+    "mlb_draft_picks": 4,
+    "stadium_latitude": 37.271,
+    "stadium_longitude": -76.714,
+    "stadium_name": null
   },
   {
     "id": 182,
@@ -7122,7 +8316,11 @@
     "website": "https://woffordterriers.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "29-28",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2747.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2747.png",
+    "mlb_draft_picks": 4,
+    "stadium_latitude": 34.952,
+    "stadium_longitude": -81.929,
+    "stadium_name": null
   },
   {
     "id": 247,
@@ -7147,7 +8345,11 @@
     "website": "https://wsuraiders.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "34-22",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2750.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2750.png",
+    "mlb_draft_picks": 6,
+    "stadium_latitude": 39.782,
+    "stadium_longitude": -84.062,
+    "stadium_name": null
   },
   {
     "id": 108,
@@ -7172,7 +8374,11 @@
     "website": "https://goxavier.com/sports/baseball",
     "created_at": "2026-02-10 16:55:29",
     "last_season_record": "33-25",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2752.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2752.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 39.149,
+    "stadium_longitude": -84.473,
+    "stadium_name": null
   },
   {
     "id": 218,
@@ -7197,7 +8403,11 @@
     "website": "https://yalebulldogs.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "22-22",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/43.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/43.png",
+    "mlb_draft_picks": 3,
+    "stadium_latitude": 41.311,
+    "stadium_longitude": -72.926,
+    "stadium_name": null
   },
   {
     "id": 250,
@@ -7222,6 +8432,10 @@
     "website": "https://ysusports.com/sports/baseball",
     "created_at": "2026-02-10 16:55:32",
     "last_season_record": "28-28",
-    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2754.png"
+    "logo_url": "https://a.espncdn.com/i/teamlogos/ncaa/500/2754.png",
+    "mlb_draft_picks": 2,
+    "stadium_latitude": 41.104,
+    "stadium_longitude": -80.646,
+    "stadium_name": null
   }
 ]

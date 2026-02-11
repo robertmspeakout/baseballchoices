@@ -16,6 +16,9 @@ interface SchoolDetail {
   zip: string;
   latitude: number | null;
   longitude: number | null;
+  stadium_latitude: number | null;
+  stadium_longitude: number | null;
+  stadium_name: string | null;
   division: string;
   public_private: string;
   conference: string;
@@ -30,6 +33,14 @@ interface SchoolDetail {
   website: string | null;
   last_season_record: string | null;
   logo_url: string | null;
+  mlb_draft_picks: number | null;
+}
+
+interface NewsArticle {
+  title: string;
+  link: string;
+  pubDate: string;
+  source: string;
 }
 
 export default function SchoolPage({
@@ -48,6 +59,8 @@ export default function SchoolPage({
   const [mounted, setMounted] = useState(false);
   const [logoError, setLogoError] = useState(false);
   const [distanceFromHome, setDistanceFromHome] = useState<number | null>(null);
+  const [news, setNews] = useState<NewsArticle[]>([]);
+  const [newsLoading, setNewsLoading] = useState(true);
 
   // Load user data from localStorage on mount
   useEffect(() => {
@@ -67,6 +80,17 @@ export default function SchoolPage({
 
     setMounted(true);
   }, [id, schoolData]);
+
+  // Fetch news articles
+  useEffect(() => {
+    if (!schoolData) return;
+    setNewsLoading(true);
+    fetch(`/api/news?school=${encodeURIComponent(schoolData.name)}`)
+      .then((r) => r.json())
+      .then((data) => setNews(data.articles || []))
+      .catch(() => setNews([]))
+      .finally(() => setNewsLoading(false));
+  }, [schoolData]);
 
   const savePriority = (newPriority: number) => {
     setPriority(newPriority);
@@ -104,6 +128,10 @@ export default function SchoolPage({
 
   const school = schoolData;
 
+  // Use stadium coords for map, fall back to campus
+  const mapLat = school.stadium_latitude || school.latitude;
+  const mapLng = school.stadium_longitude || school.longitude;
+
   const divLabel: Record<string, string> = {
     D1: "NCAA Division I",
     D2: "NCAA Division II",
@@ -117,6 +145,15 @@ export default function SchoolPage({
     D3: "bg-purple-100 text-purple-800 border-purple-200",
     JUCO: "bg-orange-100 text-orange-800 border-orange-200",
   };
+
+  function formatNewsDate(dateStr: string): string {
+    try {
+      const d = new Date(dateStr);
+      return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+    } catch {
+      return "";
+    }
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -147,7 +184,7 @@ export default function SchoolPage({
         <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
           <div className="bg-gradient-to-r from-gray-50 to-white p-4 sm:p-8 border-b border-gray-100">
             <div className="flex items-start gap-3 sm:gap-5">
-              {/* School Logo - visible on all screens */}
+              {/* School Logo */}
               <div className="shrink-0 w-14 h-14 sm:w-20 sm:h-20 rounded-xl bg-gray-100 border border-gray-200 flex items-center justify-center overflow-hidden">
                 {school.logo_url && !logoError ? (
                   <img
@@ -185,7 +222,7 @@ export default function SchoolPage({
                     {distanceFromHome.toLocaleString()} miles from home
                   </span>
                 )}
-                {/* Priority - inline on mobile */}
+                {/* Priority */}
                 <div className="flex items-center gap-2 mt-2">
                   <StarRating
                     value={priority}
@@ -198,7 +235,7 @@ export default function SchoolPage({
             </div>
           </div>
 
-          {/* Quick stats - 3 cols on mobile for better fit, 5 on desktop */}
+          {/* Quick stats */}
           <div className="grid grid-cols-3 sm:grid-cols-5 divide-x divide-y sm:divide-y-0 divide-gray-100">
             <div className="p-3 sm:p-4 text-center">
               <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">2025 Record</p>
@@ -233,6 +270,36 @@ export default function SchoolPage({
           </div>
         </div>
 
+        {/* MLB Draft Picks */}
+        {school.mlb_draft_picks != null && school.mlb_draft_picks > 0 && (
+          <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">
+            <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-2 flex items-center gap-2">
+              <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+              </svg>
+              MLB Draft Picks since 2021
+            </h2>
+            <p className="text-xs text-gray-500 mb-3">Players drafted across the 2021&ndash;2025 MLB Drafts</p>
+            <div className="flex items-center gap-4">
+              <div className="bg-gradient-to-br from-amber-50 to-amber-100 border border-amber-200 rounded-xl px-6 py-4 text-center">
+                <p className="text-3xl sm:text-4xl font-extrabold text-amber-700">{school.mlb_draft_picks}</p>
+                <p className="text-xs text-amber-600 font-medium mt-1">Total Picks</p>
+              </div>
+              <div className="text-sm text-gray-600">
+                <p>
+                  {school.mlb_draft_picks >= 15
+                    ? "Elite pipeline to professional baseball"
+                    : school.mlb_draft_picks >= 8
+                    ? "Strong track record of developing MLB talent"
+                    : school.mlb_draft_picks >= 3
+                    ? "Consistent at producing draft-eligible players"
+                    : "Developing program with draft history"}
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Coaching Staff */}
           <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">
@@ -243,29 +310,43 @@ export default function SchoolPage({
               Coaching Staff
             </h2>
             <div className="space-y-3 sm:space-y-4">
-              <div>
-                <p className="text-[10px] sm:text-xs uppercase text-gray-500 font-medium">Head Coach</p>
-                <p className="text-sm sm:text-base text-gray-900 font-semibold">{school.head_coach_name || "N/A"}</p>
-                {school.head_coach_email && (
-                  <a
-                    href={`mailto:${school.head_coach_email}`}
-                    className="text-xs sm:text-sm text-blue-600 hover:underline break-all"
-                  >
-                    {school.head_coach_email}
-                  </a>
-                )}
+              <div className="flex items-start gap-3">
+                <div className="shrink-0 w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
+                  <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-[10px] sm:text-xs uppercase text-gray-500 font-medium">Head Coach</p>
+                  <p className="text-sm sm:text-base text-gray-900 font-semibold">{school.head_coach_name || "N/A"}</p>
+                  {school.head_coach_email && (
+                    <a
+                      href={`mailto:${school.head_coach_email}`}
+                      className="text-xs sm:text-sm text-blue-600 hover:underline break-all"
+                    >
+                      {school.head_coach_email}
+                    </a>
+                  )}
+                </div>
               </div>
-              <div>
-                <p className="text-[10px] sm:text-xs uppercase text-gray-500 font-medium">Assistant Coach</p>
-                <p className="text-sm sm:text-base text-gray-900 font-semibold">{school.assistant_coach_name || "N/A"}</p>
-                {school.assistant_coach_email && (
-                  <a
-                    href={`mailto:${school.assistant_coach_email}`}
-                    className="text-xs sm:text-sm text-blue-600 hover:underline break-all"
-                  >
-                    {school.assistant_coach_email}
-                  </a>
-                )}
+              <div className="flex items-start gap-3">
+                <div className="shrink-0 w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center">
+                  <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-[10px] sm:text-xs uppercase text-gray-500 font-medium">Assistant Coach</p>
+                  <p className="text-sm sm:text-base text-gray-900 font-semibold">{school.assistant_coach_name || "N/A"}</p>
+                  {school.assistant_coach_email && (
+                    <a
+                      href={`mailto:${school.assistant_coach_email}`}
+                      className="text-xs sm:text-sm text-blue-600 hover:underline break-all"
+                    >
+                      {school.assistant_coach_email}
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
           </div>
@@ -286,8 +367,12 @@ export default function SchoolPage({
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 px-4 py-3 bg-blue-50 hover:bg-blue-100 rounded-lg text-blue-700 font-medium transition-colors"
                 >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9" />
+                  <svg className="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5" />
+                    <path d="M12 2c-2 3-3 6-3 10s1 7 3 10m0-20c2 3 3 6 3 10s-1 7-3 10" stroke="currentColor" strokeWidth="1.5" />
+                    <path d="M4 9c2.5 1 5 1.5 8 1.5s5.5-.5 8-1.5M4 15c2.5-1 5-1.5 8-1.5s5.5.5 8 1.5" stroke="currentColor" strokeWidth="1" />
+                    <path d="M5 10.5c2 .8 4.5 1.2 7 1.2s5-.4 7-1.2" stroke="red" strokeWidth="1" strokeDasharray="1.5 1.5" />
+                    <path d="M5 13.5c2-.8 4.5-1.2 7-1.2s5 .4 7 1.2" stroke="red" strokeWidth="1" strokeDasharray="1.5 1.5" />
                   </svg>
                   Program Website
                 </a>
@@ -328,8 +413,45 @@ export default function SchoolPage({
           </div>
         </div>
 
+        {/* Latest News */}
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">
+          <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4 flex items-center gap-2">
+            <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+            </svg>
+            Latest News
+          </h2>
+          {newsLoading ? (
+            <div className="flex items-center gap-2 text-sm text-gray-400 py-4">
+              <div className="animate-spin rounded-full h-4 w-4 border-2 border-gray-200 border-t-blue-600" />
+              Loading news...
+            </div>
+          ) : news.length > 0 ? (
+            <div className="space-y-3">
+              {news.map((article, i) => (
+                <a
+                  key={i}
+                  href={article.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block px-4 py-3 rounded-lg border border-gray-100 hover:border-blue-200 hover:bg-blue-50/50 transition-colors"
+                >
+                  <p className="text-sm font-medium text-gray-900 line-clamp-2">{article.title}</p>
+                  <div className="flex items-center gap-2 mt-1.5 text-xs text-gray-500">
+                    {article.source && <span className="font-medium text-gray-600">{article.source}</span>}
+                    {article.source && article.pubDate && <span>&middot;</span>}
+                    {article.pubDate && <span>{formatNewsDate(article.pubDate)}</span>}
+                  </div>
+                </a>
+              ))}
+            </div>
+          ) : (
+            <p className="text-sm text-gray-400 py-2">No recent news found</p>
+          )}
+        </div>
+
         {/* Location & Map */}
-        {school.latitude && school.longitude && (
+        {mapLat && mapLng && (
           <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
             <div className="p-4 sm:p-6 pb-3 sm:pb-4">
               <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-1 flex items-center gap-2">
@@ -337,7 +459,7 @@ export default function SchoolPage({
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                Location
+                {school.stadium_name ? school.stadium_name : "Location"}
               </h2>
               <p className="text-xs sm:text-sm text-gray-500">
                 {school.city}, {school.state} {school.zip}
@@ -349,11 +471,11 @@ export default function SchoolPage({
               </p>
             </div>
             <iframe
-              title={`Map of ${school.name}`}
+              title={`Map of ${school.stadium_name || school.name}`}
               className="w-full h-48 sm:h-64 border-t border-gray-100"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              src={`https://maps.google.com/maps?q=${school.latitude},${school.longitude}&z=14&output=embed`}
+              src={`https://maps.google.com/maps?q=${mapLat},${mapLng}&z=16&output=embed`}
             />
           </div>
         )}

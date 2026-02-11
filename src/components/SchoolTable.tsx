@@ -61,11 +61,6 @@ function SortHeader({
   );
 }
 
-function formatTuition(tuition: number | null): string {
-  if (!tuition) return "-";
-  return `$${(tuition / 1000).toFixed(0)}k`;
-}
-
 function divisionBadge(division: string) {
   const colors: Record<string, string> = {
     D1: "bg-blue-100 text-blue-800",
@@ -120,7 +115,7 @@ function MobileCard({
   onPriorityChange: (schoolId: number, priority: number) => void;
 }) {
   return (
-    <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4">
+    <Link href={`/school/${school.id}`} className="block bg-white rounded-xl border border-gray-200 shadow-sm p-4 hover:border-blue-300 hover:shadow-md transition-all">
       <div className="flex items-start gap-3">
         {/* Logo */}
         <div className="shrink-0 w-12 h-12 rounded-lg bg-gray-50 border border-gray-100 flex items-center justify-center overflow-hidden">
@@ -130,12 +125,9 @@ function MobileCard({
         <div className="flex-1 min-w-0">
           <div className="flex items-start justify-between gap-2">
             <div className="min-w-0">
-              <Link
-                href={`/school/${school.id}`}
-                className="text-blue-700 font-bold text-base hover:underline block truncate"
-              >
+              <span className="text-blue-700 font-bold text-base block truncate">
                 {school.name}
-              </Link>
+              </span>
               <p className="text-xs text-gray-500 truncate">
                 {school.mascot} &middot; {school.city}, {school.state}
               </p>
@@ -151,9 +143,6 @@ function MobileCard({
             {divisionBadge(school.division)}
             <span className="text-xs text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full">{school.conference}</span>
             <span className="text-xs text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full">{school.public_private}</span>
-            {school.tuition ? (
-              <span className="text-xs text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full">{formatTuition(school.tuition)}</span>
-            ) : null}
             {distances && distances[school.id] != null && (
               <span className="text-xs text-green-700 bg-green-50 px-2 py-0.5 rounded-full font-medium">
                 📍 {distances[school.id].toLocaleString()} mi from home
@@ -161,7 +150,7 @@ function MobileCard({
             )}
           </div>
           {/* Priority */}
-          <div className="mt-2">
+          <div className="mt-2" onClick={(e) => e.preventDefault()}>
             <StarRating
               value={school.priority}
               onChange={(v) => onPriorityChange(school.id, v)}
@@ -170,7 +159,7 @@ function MobileCard({
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 
@@ -210,7 +199,6 @@ export default function SchoolTable({
             <option value="conference">Conference</option>
             <option value="state">State</option>
             <option value="ranking">Ranking</option>
-            <option value="tuition">Tuition</option>
             <option value="priority">Priority</option>
             {distances && <option value="distance">Distance from Home</option>}
           </select>
@@ -242,7 +230,6 @@ export default function SchoolTable({
               <SortHeader label="State" column="state" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
               <th className="px-3 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Type</th>
               <SortHeader label="Rank" column="ranking" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
-              <SortHeader label="Tuition" column="tuition" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
               {distances && (
                 <SortHeader label="From Home" column="distance" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
               )}
@@ -252,14 +239,15 @@ export default function SchoolTable({
           </thead>
           <tbody className="bg-white divide-y divide-gray-100">
             {schools.map((school) => (
-              <tr key={school.id} className="hover:bg-blue-50/50 transition-colors">
+              <tr
+                key={school.id}
+                className="hover:bg-blue-50/50 transition-colors cursor-pointer"
+                onClick={() => window.location.href = `/school/${school.id}`}
+              >
                 <td className="px-3 py-3">
-                  <Link
-                    href={`/school/${school.id}`}
-                    className="text-blue-700 hover:text-blue-900 font-semibold hover:underline"
-                  >
+                  <span className="text-blue-700 font-semibold">
                     {school.name}
-                  </Link>
+                  </span>
                   <div className="text-xs text-gray-500">
                     {school.mascot} &middot; {school.city}, {school.state}
                   </div>
@@ -277,9 +265,6 @@ export default function SchoolTable({
                     <span className="text-gray-300">-</span>
                   )}
                 </td>
-                <td className="px-3 py-3 text-sm text-gray-700">
-                  {formatTuition(school.tuition)}
-                </td>
                 {distances && (
                   <td className="px-3 py-3 text-sm text-gray-700 text-right">
                     {distances[school.id] != null
@@ -287,7 +272,7 @@ export default function SchoolTable({
                       : "-"}
                   </td>
                 )}
-                <td className="px-3 py-3">
+                <td className="px-3 py-3" onClick={(e) => e.stopPropagation()}>
                   <StarRating
                     value={school.priority}
                     onChange={(v) => onPriorityChange(school.id, v)}
