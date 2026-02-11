@@ -156,7 +156,7 @@ function MobileCard({
             ) : null}
             {distances && distances[school.id] != null && (
               <span className="text-xs text-green-700 bg-green-50 px-2 py-0.5 rounded-full font-medium">
-                {distances[school.id].toLocaleString()} mi
+                📍 {distances[school.id].toLocaleString()} mi from home
               </span>
             )}
           </div>
@@ -243,7 +243,7 @@ export default function SchoolTable({
               <SortHeader label="Rank" column="ranking" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
               <SortHeader label="Tuition" column="tuition" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
               {distances && (
-                <th className="px-3 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider whitespace-nowrap">Miles</th>
+                <th className="px-3 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider whitespace-nowrap">From Home</th>
               )}
               <SortHeader label="Priority" column="priority" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
               <th className="px-3 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Coach</th>

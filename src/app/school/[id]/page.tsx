@@ -5,6 +5,7 @@ import Link from "next/link";
 import StarRating from "@/components/StarRating";
 import schoolsData from "@/data/schools.json";
 import { getUserData, setUserData } from "@/lib/userData";
+import { haversineDistance } from "@/lib/geo";
 
 interface SchoolDetail {
   id: number;
@@ -13,6 +14,8 @@ interface SchoolDetail {
   city: string;
   state: string;
   zip: string;
+  latitude: number | null;
+  longitude: number | null;
   division: string;
   public_private: string;
   conference: string;
@@ -44,6 +47,7 @@ export default function SchoolPage({
   const [saved, setSaved] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [logoError, setLogoError] = useState(false);
+  const [distanceFromHome, setDistanceFromHome] = useState<number | null>(null);
 
   // Load user data from localStorage on mount
   useEffect(() => {
@@ -51,8 +55,18 @@ export default function SchoolPage({
     setPriority(ud.priority);
     setNotes(ud.notes);
     setLastContacted(ud.last_contacted || "");
+
+    // Calculate distance from home if zip was saved
+    try {
+      const saved = localStorage.getItem("baseballchoices_homeZip");
+      if (saved && schoolData?.latitude && schoolData?.longitude) {
+        const { lat, lng } = JSON.parse(saved);
+        setDistanceFromHome(haversineDistance(lat, lng, schoolData.latitude, schoolData.longitude));
+      }
+    } catch { /* ignore parse errors */ }
+
     setMounted(true);
-  }, [id]);
+  }, [id, schoolData]);
 
   const savePriority = (newPriority: number) => {
     setPriority(newPriority);
@@ -165,6 +179,12 @@ export default function SchoolPage({
                 <p className="text-xs sm:text-sm text-gray-500 mt-0.5">
                   {school.conference} &middot; {school.public_private}
                 </p>
+                {distanceFromHome != null && (
+                  <span className="inline-flex items-center gap-1 mt-1 text-xs font-medium text-green-700 bg-green-50 border border-green-200 px-2 py-0.5 rounded-full">
+                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                    {distanceFromHome.toLocaleString()} miles from home
+                  </span>
+                )}
                 {/* Priority - inline on mobile */}
                 <div className="flex items-center gap-2 mt-2">
                   <StarRating
@@ -307,6 +327,36 @@ export default function SchoolPage({
             </div>
           </div>
         </div>
+
+        {/* Location & Map */}
+        {school.latitude && school.longitude && (
+          <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+            <div className="p-4 sm:p-6 pb-3 sm:pb-4">
+              <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-1 flex items-center gap-2">
+                <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                Location
+              </h2>
+              <p className="text-xs sm:text-sm text-gray-500">
+                {school.city}, {school.state} {school.zip}
+                {distanceFromHome != null && (
+                  <span className="ml-2 text-green-600 font-medium">
+                    &middot; {distanceFromHome.toLocaleString()} miles from home
+                  </span>
+                )}
+              </p>
+            </div>
+            <iframe
+              title={`Map of ${school.name}`}
+              className="w-full h-48 sm:h-64 border-t border-gray-100"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              src={`https://maps.google.com/maps?q=${school.latitude},${school.longitude}&z=14&output=embed`}
+            />
+          </div>
+        )}
 
         {/* Notes and Tracking Section */}
         <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">

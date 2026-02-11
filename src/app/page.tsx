@@ -162,10 +162,14 @@ export default function Home() {
   const handleZipSearch = async (zip: string) => {
     if (!zip) {
       setDistances(null);
+      localStorage.removeItem("baseballchoices_homeZip");
       return;
     }
     const coords = await geocodeZip(zip);
     if (!coords) return;
+
+    // Persist zip + coords so detail pages can show distance too
+    localStorage.setItem("baseballchoices_homeZip", JSON.stringify({ zip, lat: coords.lat, lng: coords.lng }));
 
     const dists: Record<number, number> = {};
     for (const school of allSchools) {
