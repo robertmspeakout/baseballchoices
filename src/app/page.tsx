@@ -185,46 +185,74 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen">
-      {/* Header */}
-      <header className="bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 text-white shadow-lg">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 py-6">
-          <div className="flex items-center gap-4">
-            <div className="bg-white/10 rounded-xl p-2.5">
-              <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
-                <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="1.5" />
-                <path d="M12 2C12 2 5 8 5 12s3.13 10 7 10 7-6 7-10S12 2 12 2z" fill="none" stroke="currentColor" strokeWidth="1.5" />
-                <path d="M2 12h20" fill="none" stroke="currentColor" strokeWidth="1.5" />
+    <div className="min-h-screen bg-gray-50">
+      {/* Header with baseball imagery */}
+      <header className="relative bg-gradient-to-br from-blue-950 via-blue-900 to-blue-800 text-white shadow-lg overflow-hidden">
+        {/* Baseball diamond pattern background */}
+        <div className="absolute inset-0 opacity-5">
+          <svg className="w-full h-full" viewBox="0 0 800 200" preserveAspectRatio="xMidYMid slice">
+            {/* Baseball stitching pattern */}
+            <path d="M0,100 Q200,0 400,100 Q600,200 800,100" fill="none" stroke="white" strokeWidth="3" />
+            <path d="M0,100 Q200,200 400,100 Q600,0 800,100" fill="none" stroke="white" strokeWidth="3" />
+            {/* Diamond shapes */}
+            <polygon points="100,30 130,60 100,90 70,60" fill="none" stroke="white" strokeWidth="1.5" />
+            <polygon points="350,40 380,70 350,100 320,70" fill="none" stroke="white" strokeWidth="1.5" />
+            <polygon points="600,20 630,50 600,80 570,50" fill="none" stroke="white" strokeWidth="1.5" />
+            <polygon points="700,60 730,90 700,120 670,90" fill="none" stroke="white" strokeWidth="1.5" />
+          </svg>
+        </div>
+        <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 py-8 sm:py-10">
+          <div className="flex items-center gap-5">
+            {/* Baseball icon */}
+            <div className="bg-white/10 backdrop-blur rounded-2xl p-3 border border-white/10">
+              <svg className="w-10 h-10 sm:w-12 sm:h-12" viewBox="0 0 64 64" fill="none">
+                <circle cx="32" cy="32" r="28" stroke="white" strokeWidth="2.5" />
+                <path d="M18,8 Q28,20 28,32 Q28,44 18,56" stroke="white" strokeWidth="2" fill="none" />
+                <path d="M46,8 Q36,20 36,32 Q36,44 46,56" stroke="white" strokeWidth="2" fill="none" />
+                {/* Stitching marks */}
+                <line x1="20" y1="12" x2="24" y2="14" stroke="currentColor" strokeWidth="1.5" className="text-red-300" />
+                <line x1="19" y1="18" x2="23" y2="19" stroke="currentColor" strokeWidth="1.5" className="text-red-300" />
+                <line x1="19" y1="24" x2="24" y2="24" stroke="currentColor" strokeWidth="1.5" className="text-red-300" />
+                <line x1="19" y1="30" x2="24" y2="30" stroke="currentColor" strokeWidth="1.5" className="text-red-300" />
+                <line x1="19" y1="36" x2="24" y2="35" stroke="currentColor" strokeWidth="1.5" className="text-red-300" />
+                <line x1="19" y1="42" x2="23" y2="40" stroke="currentColor" strokeWidth="1.5" className="text-red-300" />
+                <line x1="20" y1="48" x2="24" y2="45" stroke="currentColor" strokeWidth="1.5" className="text-red-300" />
+                <line x1="44" y1="12" x2="40" y2="14" stroke="currentColor" strokeWidth="1.5" className="text-red-300" />
+                <line x1="45" y1="18" x2="41" y2="19" stroke="currentColor" strokeWidth="1.5" className="text-red-300" />
+                <line x1="45" y1="24" x2="40" y2="24" stroke="currentColor" strokeWidth="1.5" className="text-red-300" />
+                <line x1="45" y1="30" x2="40" y2="30" stroke="currentColor" strokeWidth="1.5" className="text-red-300" />
+                <line x1="45" y1="36" x2="40" y2="35" stroke="currentColor" strokeWidth="1.5" className="text-red-300" />
+                <line x1="45" y1="42" x2="41" y2="40" stroke="currentColor" strokeWidth="1.5" className="text-red-300" />
+                <line x1="44" y1="48" x2="40" y2="45" stroke="currentColor" strokeWidth="1.5" className="text-red-300" />
               </svg>
             </div>
             <div>
-              <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">
+              <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
                 BaseballChoices
               </h1>
-              <p className="text-blue-200 text-sm sm:text-base">
-                College Baseball Recruiting Directory
+              <p className="text-blue-200 text-sm sm:text-base mt-1">
+                Your college baseball recruiting companion
               </p>
             </div>
           </div>
+          {/* Stats badges */}
+          <div className="mt-6 flex flex-wrap items-center gap-3">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/10 backdrop-blur rounded-full text-sm font-medium border border-white/10">
+              <svg className="w-4 h-4 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+              {sorted.length} Programs
+            </span>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/10 backdrop-blur rounded-full text-sm font-medium border border-white/10">
+              NCAA Division I
+            </span>
+            {distances && (
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-green-500/20 backdrop-blur rounded-full text-sm font-medium border border-green-400/20 text-green-200">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                Distances from {filters.zip}
+              </span>
+            )}
+          </div>
         </div>
       </header>
-
-      {/* Stats bar */}
-      <div className="bg-white border-b border-gray-200">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center gap-4 text-sm text-gray-600">
-          <span className="font-medium text-gray-900">{sorted.length} programs</span>
-          <span className="text-gray-300">|</span>
-          <span>D-I, D-II, D-III & Junior College</span>
-          {distances && (
-            <>
-              <span className="text-gray-300">|</span>
-              <span className="text-green-700 font-medium">
-                Showing distances from {filters.zip}
-              </span>
-            </>
-          )}
-        </div>
-      </div>
 
       {/* Main content */}
       <main className="max-w-[1400px] mx-auto px-4 sm:px-6 py-6 space-y-6">

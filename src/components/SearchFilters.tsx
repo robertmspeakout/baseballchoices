@@ -112,33 +112,33 @@ export default function SearchFilters({
           <option value="Private">Private</option>
         </select>
 
-        {/* Zip code input */}
-        <div className="flex gap-1">
+        {/* Zip code distance search */}
+        <div className="relative">
+          <svg
+            className="absolute left-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
           <input
             type="text"
-            placeholder="Zip code"
+            placeholder="Your zip code"
             value={filters.zip}
             onChange={(e) => {
               const v = e.target.value.replace(/\D/g, "").slice(0, 5);
               update("zip", v);
-            }}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" && filters.zip.length === 5) {
-                onZipSearch(filters.zip);
+              if (v.length === 5) {
+                onZipSearch(v);
+              } else if (v === "") {
+                onZipSearch("");
               }
             }}
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-700 focus:ring-2 focus:ring-blue-500"
+            className="w-full pl-8 pr-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-700 focus:ring-2 focus:ring-blue-500"
             maxLength={5}
           />
-          <button
-            onClick={() => {
-              if (filters.zip.length === 5) onZipSearch(filters.zip);
-              else if (filters.zip === "") onZipSearch("");
-            }}
-            className="px-3 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 whitespace-nowrap"
-          >
-            Mi
-          </button>
         </div>
 
         {/* My List toggle */}
