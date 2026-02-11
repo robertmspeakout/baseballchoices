@@ -28,6 +28,8 @@ interface School {
   assistant_coach_name: string | null;
   assistant_coach_email: string | null;
   website: string | null;
+  last_season_record: string | null;
+  logo_url: string | null;
 }
 
 interface Filters {
@@ -78,7 +80,7 @@ export default function Home() {
   const schoolsWithUserData = useMemo(() => {
     return allSchools.map((school) => {
       const ud = userData[school.id] || { priority: 0, notes: "", last_contacted: null };
-      return { ...school, priority: ud.priority, notes: ud.notes, last_contacted: ud.last_contacted };
+      return { ...school, priority: ud.priority, notes: ud.notes, last_contacted: ud.last_contacted, last_season_record: school.last_season_record, logo_url: school.logo_url };
     });
   }, [userData]);
 
@@ -112,6 +114,7 @@ export default function Home() {
         case "state": aVal = a.state; bVal = b.state; break;
         case "conference": aVal = a.conference; bVal = b.conference; break;
         case "ranking": aVal = a.current_ranking; bVal = b.current_ranking; break;
+        case "record": aVal = a.last_season_record; bVal = b.last_season_record; break;
         case "priority": aVal = a.priority; bVal = b.priority; break;
         case "last_contacted": aVal = a.last_contacted; bVal = b.last_contacted; break;
         case "distance":
@@ -227,7 +230,7 @@ export default function Home() {
                 NextBase
               </h1>
               <p className="text-blue-200 text-xs sm:text-base mt-0.5 sm:mt-1">
-                Your college baseball recruiting companion
+                Your college baseball recruiting personal assistant
               </p>
             </div>
           </div>
@@ -295,7 +298,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="bg-white border-t border-gray-200 mt-8">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 py-4 text-center text-sm text-gray-500">
-          NextBase &mdash; Your college baseball recruiting companion.
+          NextBase &mdash; Your college baseball recruiting personal assistant.
           Data for informational purposes only.
         </div>
       </footer>

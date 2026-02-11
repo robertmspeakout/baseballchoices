@@ -52,12 +52,13 @@ const RECRUITING_STATUSES = [
   "Committed",
 ];
 
-const SEEN_ME_OPTIONS = [
+const CONTACT_OPTIONS = [
   "Watched my video",
   "Saw me at a camp or showcase",
   "Came to my HS/travel game",
   "Evaluated me at their camp",
   "Spoke with my coach",
+  "Followed me on social media",
 ];
 
 export default function SchoolPage({
@@ -213,8 +214,16 @@ export default function SchoolPage({
       <main className="max-w-5xl mx-auto px-4 sm:px-6 py-4 sm:py-8 space-y-4 sm:space-y-6">
         {/* School header card */}
         <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
-          <div className="bg-gradient-to-r from-gray-50 to-white p-4 sm:p-8 border-b border-gray-100">
-            <div className="flex items-start gap-3 sm:gap-5">
+          <div className="relative bg-gradient-to-r from-gray-50 to-white p-4 sm:p-8 border-b border-gray-100 overflow-hidden">
+            {/* Large faded school logo watermark */}
+            {school.logo_url && (
+              <img
+                src={school.logo_url}
+                alt=""
+                className="absolute right-[-20px] top-[-20px] w-48 h-48 sm:w-64 sm:h-64 object-contain opacity-[0.06] pointer-events-none select-none"
+              />
+            )}
+            <div className="relative flex items-start gap-3 sm:gap-5">
               <div className="shrink-0 w-14 h-14 sm:w-20 sm:h-20 rounded-xl bg-gray-100 border border-gray-200 flex items-center justify-center overflow-hidden">
                 {school.logo_url && !logoError ? (
                   <img src={school.logo_url} alt={`${school.name} logo`} className="w-11 h-11 sm:w-16 sm:h-16 object-contain" onError={() => setLogoError(true)} />
@@ -261,11 +270,11 @@ export default function SchoolPage({
           {/* Quick stats */}
           <div className="grid grid-cols-3 sm:grid-cols-5 divide-x divide-y sm:divide-y-0 divide-gray-100">
             <div className="p-3 sm:p-4 text-center">
-              <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">2025 Record</p>
+              <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Current Record</p>
               <p className="text-base sm:text-xl font-bold text-gray-900 mt-0.5 sm:mt-1">{school.last_season_record || "N/A"}</p>
             </div>
             <div className="p-3 sm:p-4 text-center">
-              <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Ranking</p>
+              <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Current Ranking</p>
               <p className="text-base sm:text-xl font-bold text-gray-900 mt-0.5 sm:mt-1">{school.current_ranking ? `#${school.current_ranking}` : "NR"}</p>
             </div>
             <div className="p-3 sm:p-4 text-center">
@@ -414,11 +423,11 @@ export default function SchoolPage({
               </div>
             </div>
 
-            {/* They've Seen Me */}
+            {/* Points of Contact */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">They&apos;ve Seen Me</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">Points of Contact</label>
               <div className="flex flex-wrap gap-2">
-                {SEEN_ME_OPTIONS.map((option) => (
+                {CONTACT_OPTIONS.map((option) => (
                   <button
                     key={option}
                     onClick={() => toggleSeenMe(option)}

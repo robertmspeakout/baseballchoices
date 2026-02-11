@@ -19,6 +19,7 @@ interface School {
   last_contacted: string | null;
   head_coach_name: string | null;
   logo_url?: string | null;
+  last_season_record: string | null;
 }
 
 interface SchoolTableProps {
@@ -151,7 +152,9 @@ function MobileCard({
           <div className="flex flex-wrap items-center gap-1.5 mt-2">
             {divisionBadge(school.division)}
             <span className="text-xs text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full">{school.conference}</span>
-            <span className="text-xs text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full">{school.public_private}</span>
+            {school.last_season_record && (
+              <span className="text-xs text-blue-700 bg-blue-50 px-2 py-0.5 rounded-full font-medium">{school.last_season_record}</span>
+            )}
             {distances && distances[school.id] != null && (
               <span className="text-xs text-green-700 bg-green-50 px-2 py-0.5 rounded-full font-medium">
                 📍 {distances[school.id].toLocaleString()} mi from home
@@ -210,7 +213,7 @@ export default function SchoolTable({
             <option value="name">Name</option>
             <option value="conference">Conference</option>
             <option value="state">State</option>
-            <option value="ranking">Ranking</option>
+            <option value="ranking">Current Ranking</option>
             <option value="priority">Priority</option>
             {distances && <option value="distance">Distance from Home</option>}
           </select>
@@ -241,7 +244,8 @@ export default function SchoolTable({
               <SortHeader label="Conference" column="conference" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
               <SortHeader label="State" column="state" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
               <th className="px-3 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Type</th>
-              <SortHeader label="Rank" column="ranking" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
+              <SortHeader label="Record" column="record" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
+              <SortHeader label="Ranking" column="ranking" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
               {distances && (
                 <SortHeader label="From Home" column="distance" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
               )}
@@ -268,6 +272,9 @@ export default function SchoolTable({
                 <td className="px-3 py-3 text-sm text-gray-700">{school.conference}</td>
                 <td className="px-3 py-3 text-sm text-gray-700">{school.state}</td>
                 <td className="px-3 py-3 text-sm text-gray-700">{school.public_private}</td>
+                <td className="px-3 py-3 text-sm text-gray-700 font-medium text-center">
+                  {school.last_season_record || <span className="text-gray-300">-</span>}
+                </td>
                 <td className="px-3 py-3 text-sm text-gray-700 text-center">
                   {school.current_ranking ? (
                     <span className="inline-block bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded-full text-xs font-bold">
