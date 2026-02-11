@@ -162,14 +162,14 @@ export default function Home() {
   const handleZipSearch = async (zip: string) => {
     if (!zip) {
       setDistances(null);
-      localStorage.removeItem("baseballchoices_homeZip");
+      localStorage.removeItem("nextbase_homeZip");
       return;
     }
     const coords = await geocodeZip(zip);
     if (!coords) return;
 
     // Persist zip + coords so detail pages can show distance too
-    localStorage.setItem("baseballchoices_homeZip", JSON.stringify({ zip, lat: coords.lat, lng: coords.lng }));
+    localStorage.setItem("nextbase_homeZip", JSON.stringify({ zip, lat: coords.lat, lng: coords.lng }));
 
     const dists: Record<number, number> = {};
     for (const school of allSchools) {
@@ -225,7 +225,7 @@ export default function Home() {
             </div>
             <div>
               <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight">
-                BaseballChoices
+                NextBase
               </h1>
               <p className="text-blue-200 text-xs sm:text-base mt-0.5 sm:mt-1">
                 Your college baseball recruiting companion
@@ -296,7 +296,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="bg-white border-t border-gray-200 mt-8">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 py-4 text-center text-sm text-gray-500">
-          BaseballChoices &mdash; Your college baseball recruiting companion.
+          NextBase &mdash; Your college baseball recruiting companion.
           Data for informational purposes only.
         </div>
       </footer>

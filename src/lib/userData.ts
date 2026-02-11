@@ -4,12 +4,21 @@ export interface UserData {
   last_contacted: string | null;
 }
 
-const STORAGE_KEY = "baseballchoices_userData";
+const STORAGE_KEY = "nextbase_userData";
+const OLD_STORAGE_KEY = "baseballchoices_userData";
 
 function loadAll(): Record<string, UserData> {
   if (typeof window === "undefined") return {};
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    let raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) {
+      // Migrate from old key
+      raw = localStorage.getItem(OLD_STORAGE_KEY);
+      if (raw) {
+        localStorage.setItem(STORAGE_KEY, raw);
+        localStorage.removeItem(OLD_STORAGE_KEY);
+      }
+    }
     return raw ? JSON.parse(raw) : {};
   } catch {
     return {};

@@ -58,7 +58,7 @@ export default function SchoolPage({
 
     // Calculate distance from home if zip was saved
     try {
-      const saved = localStorage.getItem("baseballchoices_homeZip");
+      const saved = localStorage.getItem("nextbase_homeZip");
       if (saved && schoolData?.latitude && schoolData?.longitude) {
         const { lat, lng } = JSON.parse(saved);
         setDistanceFromHome(haversineDistance(lat, lng, schoolData.latitude, schoolData.longitude));
