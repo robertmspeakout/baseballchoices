@@ -27,7 +27,15 @@
     "stadium_latitude": 32.442,
     "stadium_longitude": -99.715,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 5200,
+    "acceptance_rate": 63,
+    "graduation_rate": 60,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://acusports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 140,
@@ -57,7 +65,15 @@
     "stadium_latitude": 38.9985,
     "stadium_longitude": -104.8585,
     "stadium_name": "Falcon Field",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 4300,
+    "acceptance_rate": 11,
+    "graduation_rate": 86,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://goairforcefalcons.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 13,
@@ -87,7 +103,15 @@
     "stadium_latitude": 33.2057,
     "stadium_longitude": -87.5503,
     "stadium_name": "Sewell-Thomas Stadium",
-    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Sewell-Thomas_Stadium_2020.jpg/1280px-Sewell-Thomas_Stadium_2020.jpg"
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Sewell-Thomas_Stadium_2020.jpg/1280px-Sewell-Thomas_Stadium_2020.jpg",
+    "enrollment": 38300,
+    "acceptance_rate": 80,
+    "graduation_rate": 73,
+    "cws_appearances": 4,
+    "ncaa_regionals": 7,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://rolltide.com/sports/baseball/form/prospect-form"
   },
   {
     "id": 287,
@@ -117,7 +141,15 @@
     "stadium_latitude": 34.783,
     "stadium_longitude": -86.569,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 6100,
+    "acceptance_rate": 42,
+    "graduation_rate": 31,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://aamusports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 286,
@@ -147,7 +179,15 @@
     "stadium_latitude": 32.364,
     "stadium_longitude": -86.296,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 4600,
+    "acceptance_rate": 52,
+    "graduation_rate": 28,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://bamastatesports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 256,
@@ -177,7 +217,15 @@
     "stadium_latitude": 42.685,
     "stadium_longitude": -73.825,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 17800,
+    "acceptance_rate": 58,
+    "graduation_rate": 66,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://ualbanysports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 288,
@@ -207,7 +255,15 @@
     "stadium_latitude": 31.872,
     "stadium_longitude": -91.136,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 3100,
+    "acceptance_rate": 36,
+    "graduation_rate": 37,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://alcornsports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 86,
@@ -237,7 +293,15 @@
     "stadium_latitude": 36.217,
     "stadium_longitude": -81.685,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 20500,
+    "acceptance_rate": 84,
+    "graduation_rate": 66,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://appstatesports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 46,
@@ -267,7 +331,15 @@
     "stadium_latitude": 32.2288,
     "stadium_longitude": -110.9415,
     "stadium_name": "Hi Corbett Field",
-    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Hi_Corbett_Field%2C_Tucson.jpg/1280px-Hi_Corbett_Field%2C_Tucson.jpg"
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Hi_Corbett_Field%2C_Tucson.jpg/1280px-Hi_Corbett_Field%2C_Tucson.jpg",
+    "enrollment": 47000,
+    "acceptance_rate": 87,
+    "graduation_rate": 66,
+    "cws_appearances": 18,
+    "ncaa_regionals": 20,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://arizonawildcats.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 45,
@@ -297,7 +369,15 @@
     "stadium_latitude": 33.4255,
     "stadium_longitude": -111.9315,
     "stadium_name": "Phoenix Municipal Stadium",
-    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Phoenix_Municipal_Stadium.jpg/1280px-Phoenix_Municipal_Stadium.jpg"
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Phoenix_Municipal_Stadium.jpg/1280px-Phoenix_Municipal_Stadium.jpg",
+    "enrollment": 65000,
+    "acceptance_rate": 90,
+    "graduation_rate": 66,
+    "cws_appearances": 22,
+    "ncaa_regionals": 18,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://thesundevils.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 7,
@@ -327,7 +407,15 @@
     "stadium_latitude": 36.0685,
     "stadium_longitude": -94.1785,
     "stadium_name": "Baum-Walker Stadium",
-    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Baum_Stadium%2C_Fayetteville%2C_AR.jpg/1280px-Baum_Stadium%2C_Fayetteville%2C_AR.jpg"
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Baum_Stadium%2C_Fayetteville%2C_AR.jpg/1280px-Baum_Stadium%2C_Fayetteville%2C_AR.jpg",
+    "enrollment": 30900,
+    "acceptance_rate": 73,
+    "graduation_rate": 67,
+    "cws_appearances": 11,
+    "ncaa_regionals": 17,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://arkansasrazorbacks.com/sport/baseball/recruit-questionnaire/"
   },
   {
     "id": 87,
@@ -357,7 +445,15 @@
     "stadium_latitude": 35.843,
     "stadium_longitude": -90.683,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 13200,
+    "acceptance_rate": 71,
+    "graduation_rate": 45,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://astateredwolves.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 291,
@@ -387,7 +483,15 @@
     "stadium_latitude": 34.229,
     "stadium_longitude": -92.003,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 2700,
+    "acceptance_rate": 49,
+    "graduation_rate": 28,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://uapblionsroar.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 212,
@@ -417,7 +521,15 @@
     "stadium_latitude": 41.391,
     "stadium_longitude": -73.956,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 4600,
+    "acceptance_rate": 12,
+    "graduation_rate": 87,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://goarmywestpoint.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 11,
@@ -447,7 +559,15 @@
     "stadium_latitude": 32.6055,
     "stadium_longitude": -85.487,
     "stadium_name": "Plainsman Park",
-    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Plainsman_Park_2011.jpg/1280px-Plainsman_Park_2011.jpg"
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Plainsman_Park_2011.jpg/1280px-Plainsman_Park_2011.jpg",
+    "enrollment": 31500,
+    "acceptance_rate": 44,
+    "graduation_rate": 79,
+    "cws_appearances": 6,
+    "ncaa_regionals": 14,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://auburntigers.com/sports/baseball/form/prospect-form"
   },
   {
     "id": 170,
@@ -477,7 +597,15 @@
     "stadium_latitude": 36.539,
     "stadium_longitude": -87.354,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 10200,
+    "acceptance_rate": 82,
+    "graduation_rate": 43,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://letsgopeay.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 40,
@@ -507,7 +635,15 @@
     "stadium_latitude": 31.5575,
     "stadium_longitude": -97.119,
     "stadium_name": "Baylor Ballpark",
-    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Baylor_Ballpark_2014.jpg/1280px-Baylor_Ballpark_2014.jpg"
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Baylor_Ballpark_2014.jpg/1280px-Baylor_Ballpark_2014.jpg",
+    "enrollment": 20600,
+    "acceptance_rate": 47,
+    "graduation_rate": 82,
+    "cws_appearances": 5,
+    "ncaa_regionals": 11,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://baylorbears.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 172,
@@ -537,7 +673,15 @@
     "stadium_latitude": 38.218,
     "stadium_longitude": -85.676,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 3700,
+    "acceptance_rate": 80,
+    "graduation_rate": 64,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://bellarmineknights.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 292,
@@ -567,7 +711,15 @@
     "stadium_latitude": 29.1985,
     "stadium_longitude": -81.049,
     "stadium_name": "Jackie Robinson Ballpark",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 3000,
+    "acceptance_rate": 52,
+    "graduation_rate": 33,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://bcuathletics.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 255,
@@ -597,7 +749,15 @@
     "stadium_latitude": 42.089,
     "stadium_longitude": -75.966,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 17800,
+    "acceptance_rate": 44,
+    "graduation_rate": 78,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://bubearcats.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 31,
@@ -627,7 +787,15 @@
     "stadium_latitude": 42.3355,
     "stadium_longitude": -71.1685,
     "stadium_name": "Eddie Pellagrini Diamond",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 14900,
+    "acceptance_rate": 17,
+    "graduation_rate": 93,
+    "cws_appearances": 0,
+    "ncaa_regionals": 3,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://bceagles.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 148,
@@ -657,7 +825,15 @@
     "stadium_latitude": 40.698,
     "stadium_longitude": -89.616,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 5100,
+    "acceptance_rate": 72,
+    "graduation_rate": 75,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://bradleybraves.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 223,
@@ -687,7 +863,15 @@
     "stadium_latitude": 41.826,
     "stadium_longitude": -71.403,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 10700,
+    "acceptance_rate": 5,
+    "graduation_rate": 96,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://brownbears.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 258,
@@ -717,7 +901,15 @@
     "stadium_latitude": 41.844,
     "stadium_longitude": -71.526,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 3800,
+    "acceptance_rate": 78,
+    "graduation_rate": 67,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://bryantbulldogs.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 214,
@@ -747,7 +939,15 @@
     "stadium_latitude": 40.955,
     "stadium_longitude": -76.884,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 3800,
+    "acceptance_rate": 34,
+    "graduation_rate": 90,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://bucknellbison.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 113,
@@ -777,7 +977,15 @@
     "stadium_latitude": 39.839,
     "stadium_longitude": -86.17,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 5700,
+    "acceptance_rate": 67,
+    "graduation_rate": 78,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://butlersports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 43,
@@ -807,7 +1015,15 @@
     "stadium_latitude": 40.2555,
     "stadium_longitude": -111.651,
     "stadium_name": "Larry H. Miller Field",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 36200,
+    "acceptance_rate": 67,
+    "graduation_rate": 83,
+    "cws_appearances": 0,
+    "ncaa_regionals": 2,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://byucougars.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 128,
@@ -837,7 +1053,15 @@
     "stadium_latitude": 35.3015,
     "stadium_longitude": -120.6565,
     "stadium_name": "Baggett Stadium",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 22000,
+    "acceptance_rate": 30,
+    "graduation_rate": 82,
+    "cws_appearances": 0,
+    "ncaa_regionals": 4,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://gopoly.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 134,
@@ -867,7 +1091,15 @@
     "stadium_latitude": 35.348,
     "stadium_longitude": -119.103,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 11200,
+    "acceptance_rate": 78,
+    "graduation_rate": 49,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://gorunners.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 124,
@@ -897,7 +1129,15 @@
     "stadium_latitude": 33.8835,
     "stadium_longitude": -117.8835,
     "stadium_name": "Goodwin Field",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 41500,
+    "acceptance_rate": 68,
+    "graduation_rate": 65,
+    "cws_appearances": 18,
+    "ncaa_regionals": 15,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://fullertontitans.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 133,
@@ -927,7 +1167,15 @@
     "stadium_latitude": 34.24,
     "stadium_longitude": -118.529,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 38000,
+    "acceptance_rate": 80,
+    "graduation_rate": 54,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://gomatadors.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 32,
@@ -957,7 +1205,15 @@
     "stadium_latitude": 37.871,
     "stadium_longitude": -122.251,
     "stadium_name": "Evans Diamond",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 45300,
+    "acceptance_rate": 11,
+    "graduation_rate": 93,
+    "cws_appearances": 2,
+    "ncaa_regionals": 4,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://calbears.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 198,
@@ -987,7 +1243,15 @@
     "stadium_latitude": 33.932,
     "stadium_longitude": -117.426,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 12000,
+    "acceptance_rate": 77,
+    "graduation_rate": 56,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://cbulancers.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 242,
@@ -1017,7 +1281,15 @@
     "stadium_latitude": 42.936,
     "stadium_longitude": -78.857,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 2800,
+    "acceptance_rate": 85,
+    "graduation_rate": 63,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://gogriffs.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 171,
@@ -1047,7 +1319,15 @@
     "stadium_latitude": 35.076,
     "stadium_longitude": -92.462,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 9500,
+    "acceptance_rate": 90,
+    "graduation_rate": 43,
+    "cws_appearances": 0,
+    "ncaa_regionals": 1,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://ucasports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 262,
@@ -1077,7 +1357,15 @@
     "stadium_latitude": 41.669,
     "stadium_longitude": -72.783,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 9200,
+    "acceptance_rate": 77,
+    "graduation_rate": 48,
+    "cws_appearances": 0,
+    "ncaa_regionals": 2,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://ccsubluedevils.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 151,
@@ -1107,7 +1395,15 @@
     "stadium_latitude": 32.784,
     "stadium_longitude": -79.937,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 10400,
+    "acceptance_rate": 76,
+    "graduation_rate": 65,
+    "cws_appearances": 0,
+    "ncaa_regionals": 3,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://cofcsports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 73,
@@ -1137,7 +1433,15 @@
     "stadium_latitude": 35.306,
     "stadium_longitude": -80.729,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 30000,
+    "acceptance_rate": 80,
+    "graduation_rate": 55,
+    "cws_appearances": 0,
+    "ncaa_regionals": 2,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://charlotte49ers.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 184,
@@ -1167,7 +1471,15 @@
     "stadium_latitude": 35.05,
     "stadium_longitude": -85.307,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 11700,
+    "acceptance_rate": 73,
+    "graduation_rate": 56,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://gomocs.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 44,
@@ -1197,7 +1509,15 @@
     "stadium_latitude": 39.133,
     "stadium_longitude": -84.515,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 46700,
+    "acceptance_rate": 88,
+    "graduation_rate": 69,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://gobearcats.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 19,
@@ -1227,7 +1547,15 @@
     "stadium_latitude": 34.683,
     "stadium_longitude": -82.838,
     "stadium_name": "Doug Kingsmore Stadium",
-    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Doug_Kingsmore_Stadium.jpg/1280px-Doug_Kingsmore_Stadium.jpg"
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Doug_Kingsmore_Stadium.jpg/1280px-Doug_Kingsmore_Stadium.jpg",
+    "enrollment": 27600,
+    "acceptance_rate": 43,
+    "graduation_rate": 84,
+    "cws_appearances": 13,
+    "ncaa_regionals": 18,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://clemsontigers.com/sport/baseball/recruit-questionnaire/"
   },
   {
     "id": 251,
@@ -1257,7 +1585,15 @@
     "stadium_latitude": 41.502,
     "stadium_longitude": -81.675,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 12000,
+    "acceptance_rate": 92,
+    "graduation_rate": 40,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://csuvikings.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 82,
@@ -1287,7 +1623,15 @@
     "stadium_latitude": 33.796,
     "stadium_longitude": -79.0185,
     "stadium_name": "Springs Brooks Stadium",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 10600,
+    "acceptance_rate": 72,
+    "graduation_rate": 54,
+    "cws_appearances": 2,
+    "ncaa_regionals": 10,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://goccusports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 219,
@@ -1317,7 +1661,15 @@
     "stadium_latitude": 40.808,
     "stadium_longitude": -73.962,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 8900,
+    "acceptance_rate": 4,
+    "graduation_rate": 96,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://gocolumbialions.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 106,
@@ -1347,7 +1699,15 @@
     "stadium_latitude": 41.8085,
     "stadium_longitude": -72.253,
     "stadium_name": "Elliot Ballpark",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 32700,
+    "acceptance_rate": 56,
+    "graduation_rate": 84,
+    "cws_appearances": 0,
+    "ncaa_regionals": 5,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://uconnhuskies.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 278,
@@ -1377,7 +1737,15 @@
     "stadium_latitude": 39.311,
     "stadium_longitude": -76.656,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 2400,
+    "acceptance_rate": 33,
+    "graduation_rate": 22,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://coppinstatesports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 224,
@@ -1407,7 +1775,15 @@
     "stadium_latitude": 42.447,
     "stadium_longitude": -76.477,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 15700,
+    "acceptance_rate": 7,
+    "graduation_rate": 95,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://cornellbigred.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 107,
@@ -1437,7 +1813,15 @@
     "stadium_latitude": 41.2555,
     "stadium_longitude": -95.9345,
     "stadium_name": "TD Ameritrade Park",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 9000,
+    "acceptance_rate": 71,
+    "graduation_rate": 82,
+    "cws_appearances": 3,
+    "ncaa_regionals": 6,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://gocreighton.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 142,
@@ -1467,7 +1851,15 @@
     "stadium_latitude": 32.7125,
     "stadium_longitude": -96.8945,
     "stadium_name": "Horner Ballpark",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 4600,
+    "acceptance_rate": 58,
+    "graduation_rate": 62,
+    "cws_appearances": 0,
+    "ncaa_regionals": 7,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://dbupatriots.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 222,
@@ -1497,7 +1889,15 @@
     "stadium_latitude": 43.704,
     "stadium_longitude": -72.289,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 4500,
+    "acceptance_rate": 6,
+    "graduation_rate": 96,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://dartmouthsports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 228,
@@ -1527,7 +1927,15 @@
     "stadium_latitude": 35.502,
     "stadium_longitude": -80.843,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 2000,
+    "acceptance_rate": 17,
+    "graduation_rate": 92,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://davidsonwildcats.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 229,
@@ -1557,7 +1965,15 @@
     "stadium_latitude": 39.741,
     "stadium_longitude": -84.179,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 12300,
+    "acceptance_rate": 68,
+    "graduation_rate": 80,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://daytonflyers.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 159,
@@ -1587,7 +2003,15 @@
     "stadium_latitude": 39.683,
     "stadium_longitude": -75.752,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 24100,
+    "acceptance_rate": 69,
+    "graduation_rate": 78,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://bluehens.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 279,
@@ -1617,7 +2041,15 @@
     "stadium_latitude": 39.186,
     "stadium_longitude": -75.543,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 5200,
+    "acceptance_rate": 57,
+    "graduation_rate": 34,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://dsuhornets.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 160,
@@ -1647,7 +2079,15 @@
     "stadium_latitude": 39.957,
     "stadium_longitude": -75.189,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 24400,
+    "acceptance_rate": 78,
+    "graduation_rate": 72,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://drexeldragons.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 26,
@@ -1677,7 +2117,15 @@
     "stadium_latitude": 36.0045,
     "stadium_longitude": -78.943,
     "stadium_name": "Jack Coombs Field",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 16600,
+    "acceptance_rate": 6,
+    "graduation_rate": 96,
+    "cws_appearances": 2,
+    "ncaa_regionals": 6,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://goduke.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 68,
@@ -1707,7 +2155,15 @@
     "stadium_latitude": 35.6045,
     "stadium_longitude": -77.372,
     "stadium_name": "Clark-LeClair Stadium",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 28800,
+    "acceptance_rate": 87,
+    "graduation_rate": 62,
+    "cws_appearances": 2,
+    "ncaa_regionals": 12,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://ecupirates.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 169,
@@ -1737,7 +2193,15 @@
     "stadium_latitude": 37.733,
     "stadium_longitude": -84.295,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 14600,
+    "acceptance_rate": 88,
+    "graduation_rate": 41,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://ekusports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 153,
@@ -1767,7 +2231,15 @@
     "stadium_latitude": 36.105,
     "stadium_longitude": -79.502,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 7100,
+    "acceptance_rate": 74,
+    "graduation_rate": 81,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://elonphoenix.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 176,
@@ -1797,7 +2269,15 @@
     "stadium_latitude": 36.304,
     "stadium_longitude": -82.368,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 14300,
+    "acceptance_rate": 82,
+    "graduation_rate": 49,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://etsubucs.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 147,
@@ -1827,7 +2307,15 @@
     "stadium_latitude": 37.9715,
     "stadium_longitude": -87.564,
     "stadium_name": "German American Bank Field",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 2400,
+    "acceptance_rate": 79,
+    "graduation_rate": 63,
+    "cws_appearances": 0,
+    "ncaa_regionals": 3,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://gopurpleaces.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 241,
@@ -1857,7 +2345,15 @@
     "stadium_latitude": 41.168,
     "stadium_longitude": -73.255,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 5600,
+    "acceptance_rate": 60,
+    "graduation_rate": 82,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://fairfieldstags.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 266,
@@ -1887,7 +2383,15 @@
     "stadium_latitude": 40.862,
     "stadium_longitude": -74.015,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 7800,
+    "acceptance_rate": 81,
+    "graduation_rate": 48,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://fduknights.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 74,
@@ -1917,7 +2421,15 @@
     "stadium_latitude": 26.373,
     "stadium_longitude": -80.102,
     "stadium_name": "FAU Baseball Stadium",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 30000,
+    "acceptance_rate": 67,
+    "graduation_rate": 56,
+    "cws_appearances": 0,
+    "ncaa_regionals": 4,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://fausports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 102,
@@ -1947,7 +2459,15 @@
     "stadium_latitude": 25.7565,
     "stadium_longitude": -80.3745,
     "stadium_name": "FIU Baseball Stadium",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 56000,
+    "acceptance_rate": 64,
+    "graduation_rate": 56,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://fiusports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 4,
@@ -1977,7 +2497,15 @@
     "stadium_latitude": 29.6463,
     "stadium_longitude": -82.3442,
     "stadium_name": "Condron Ballpark",
-    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Florida_Ballpark_2021.jpg/1280px-Florida_Ballpark_2021.jpg"
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Florida_Ballpark_2021.jpg/1280px-Florida_Ballpark_2021.jpg",
+    "enrollment": 55800,
+    "acceptance_rate": 23,
+    "graduation_rate": 90,
+    "cws_appearances": 14,
+    "ncaa_regionals": 20,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://floridagators.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 294,
@@ -2007,7 +2535,15 @@
     "stadium_latitude": 30.4225,
     "stadium_longitude": -84.289,
     "stadium_name": "Moore-Kittles Field",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 9600,
+    "acceptance_rate": 38,
+    "graduation_rate": 40,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://famuathletics.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 167,
@@ -2037,7 +2573,15 @@
     "stadium_latitude": 26.4635,
     "stadium_longitude": -81.7735,
     "stadium_name": "FGCU Baseball Complex",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 16100,
+    "acceptance_rate": 76,
+    "graduation_rate": 50,
+    "cws_appearances": 0,
+    "ncaa_regionals": 1,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://fgcuathletics.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 20,
@@ -2067,7 +2611,15 @@
     "stadium_latitude": 30.438,
     "stadium_longitude": -84.3005,
     "stadium_name": "Dick Howser Stadium",
-    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Dick_Howser_Stadium.jpg/1280px-Dick_Howser_Stadium.jpg"
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Dick_Howser_Stadium.jpg/1280px-Dick_Howser_Stadium.jpg",
+    "enrollment": 45500,
+    "acceptance_rate": 25,
+    "graduation_rate": 84,
+    "cws_appearances": 23,
+    "ncaa_regionals": 22,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://seminoles.com/sport/baseball/recruit-questionnaire/"
   },
   {
     "id": 231,
@@ -2097,7 +2649,15 @@
     "stadium_latitude": 40.861,
     "stadium_longitude": -73.886,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 16600,
+    "acceptance_rate": 46,
+    "graduation_rate": 82,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://fordhamsports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 136,
@@ -2127,7 +2687,15 @@
     "stadium_latitude": 36.817,
     "stadium_longitude": -119.7535,
     "stadium_name": "Pete Beiden Field",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 25200,
+    "acceptance_rate": 65,
+    "graduation_rate": 57,
+    "cws_appearances": 6,
+    "ncaa_regionals": 8,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://gobulldogs.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 180,
@@ -2157,7 +2725,15 @@
     "stadium_latitude": 34.925,
     "stadium_longitude": -82.441,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 2700,
+    "acceptance_rate": 66,
+    "graduation_rate": 84,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://furmanpaladins.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 227,
@@ -2187,7 +2763,15 @@
     "stadium_latitude": 38.832,
     "stadium_longitude": -77.307,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 39000,
+    "acceptance_rate": 88,
+    "graduation_rate": 69,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://gomason.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 235,
@@ -2217,7 +2801,15 @@
     "stadium_latitude": 38.9,
     "stadium_longitude": -77.049,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 26500,
+    "acceptance_rate": 49,
+    "graduation_rate": 83,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://gwsports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 112,
@@ -2247,7 +2839,15 @@
     "stadium_latitude": 38.908,
     "stadium_longitude": -77.072,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 19400,
+    "acceptance_rate": 12,
+    "graduation_rate": 95,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://guhoyas.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 12,
@@ -2277,7 +2877,15 @@
     "stadium_latitude": 33.9505,
     "stadium_longitude": -83.3735,
     "stadium_name": "Foley Field",
-    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Foley_Field.jpg/1280px-Foley_Field.jpg"
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Foley_Field.jpg/1280px-Foley_Field.jpg",
+    "enrollment": 40100,
+    "acceptance_rate": 43,
+    "graduation_rate": 87,
+    "cws_appearances": 5,
+    "ncaa_regionals": 13,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://georgiadogs.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 84,
@@ -2307,7 +2915,15 @@
     "stadium_latitude": 32.423,
     "stadium_longitude": -81.783,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 26400,
+    "acceptance_rate": 81,
+    "graduation_rate": 50,
+    "cws_appearances": 0,
+    "ncaa_regionals": 3,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://gseagles.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 88,
@@ -2337,7 +2953,15 @@
     "stadium_latitude": 33.753,
     "stadium_longitude": -84.389,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 54000,
+    "acceptance_rate": 67,
+    "graduation_rate": 51,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://georgiastatesports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 27,
@@ -2367,7 +2991,15 @@
     "stadium_latitude": 33.773,
     "stadium_longitude": -84.392,
     "stadium_name": "Russ Chandler Stadium",
-    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Russ_Chandler_Stadium.jpg/1280px-Russ_Chandler_Stadium.jpg"
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Russ_Chandler_Stadium.jpg/1280px-Russ_Chandler_Stadium.jpg",
+    "enrollment": 44000,
+    "acceptance_rate": 17,
+    "graduation_rate": 90,
+    "cws_appearances": 5,
+    "ncaa_regionals": 12,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://ramblinwreck.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 115,
@@ -2397,7 +3029,15 @@
     "stadium_latitude": 47.666,
     "stadium_longitude": -117.4015,
     "stadium_name": "Patterson Baseball Complex",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 7600,
+    "acceptance_rate": 48,
+    "graduation_rate": 87,
+    "cws_appearances": 0,
+    "ncaa_regionals": 4,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://gozags.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 284,
@@ -2427,7 +3067,15 @@
     "stadium_latitude": 32.524,
     "stadium_longitude": -92.714,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 5200,
+    "acceptance_rate": 44,
+    "graduation_rate": 32,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://gsutigers.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 193,
@@ -2457,7 +3105,15 @@
     "stadium_latitude": 33.5115,
     "stadium_longitude": -112.1025,
     "stadium_name": "Brazell Field",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 25000,
+    "acceptance_rate": 78,
+    "graduation_rate": 41,
+    "cws_appearances": 0,
+    "ncaa_regionals": 1,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://gculopes.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 162,
@@ -2487,7 +3143,15 @@
     "stadium_latitude": 37.02,
     "stadium_longitude": -76.337,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 3900,
+    "acceptance_rate": 40,
+    "graduation_rate": 49,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://hamptonpirates.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 217,
@@ -2517,7 +3181,15 @@
     "stadium_latitude": 42.377,
     "stadium_longitude": -71.117,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 7200,
+    "acceptance_rate": 3,
+    "graduation_rate": 98,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://gocrimson.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 127,
@@ -2547,7 +3219,15 @@
     "stadium_latitude": 21.2935,
     "stadium_longitude": -157.819,
     "stadium_name": "Les Murakami Stadium",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 17700,
+    "acceptance_rate": 69,
+    "graduation_rate": 56,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://hawaiiathletics.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 157,
@@ -2577,7 +3257,15 @@
     "stadium_latitude": 40.714,
     "stadium_longitude": -73.6,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 11100,
+    "acceptance_rate": 68,
+    "graduation_rate": 67,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://gohofstra.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 215,
@@ -2607,7 +3295,15 @@
     "stadium_latitude": 42.237,
     "stadium_longitude": -71.808,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 3100,
+    "acceptance_rate": 39,
+    "graduation_rate": 91,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://goholycross.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 42,
@@ -2637,7 +3333,15 @@
     "stadium_latitude": 29.722,
     "stadium_longitude": -95.343,
     "stadium_name": "Darryl & Lori Schroeder Park",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 47000,
+    "acceptance_rate": 66,
+    "graduation_rate": 59,
+    "cws_appearances": 6,
+    "ncaa_regionals": 7,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://uhcougars.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 190,
@@ -2667,7 +3371,15 @@
     "stadium_latitude": 29.718,
     "stadium_longitude": -95.498,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 4400,
+    "acceptance_rate": 70,
+    "graduation_rate": 35,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://hcuhuskies.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 280,
@@ -2697,7 +3409,15 @@
     "stadium_latitude": 38.922,
     "stadium_longitude": -77.02,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 12200,
+    "acceptance_rate": 30,
+    "graduation_rate": 62,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://hubison.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 63,
@@ -2727,7 +3447,15 @@
     "stadium_latitude": 40.096,
     "stadium_longitude": -88.237,
     "stadium_name": "Illinois Field",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 56000,
+    "acceptance_rate": 45,
+    "graduation_rate": 86,
+    "cws_appearances": 0,
+    "ncaa_regionals": 3,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://fightingillini.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 146,
@@ -2757,7 +3485,15 @@
     "stadium_latitude": 40.511,
     "stadium_longitude": -88.998,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 20600,
+    "acceptance_rate": 74,
+    "graduation_rate": 72,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://goredbirds.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 191,
@@ -2787,7 +3523,15 @@
     "stadium_latitude": 29.463,
     "stadium_longitude": -98.462,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 8300,
+    "acceptance_rate": 90,
+    "graduation_rate": 38,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://uiwcardinals.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 52,
@@ -2817,7 +3561,15 @@
     "stadium_latitude": 39.182,
     "stadium_longitude": -86.5235,
     "stadium_name": "Bart Kaufman Field",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 47000,
+    "acceptance_rate": 80,
+    "graduation_rate": 79,
+    "cws_appearances": 2,
+    "ncaa_regionals": 5,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://iuhoosiers.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 144,
@@ -2847,7 +3599,15 @@
     "stadium_latitude": 39.4645,
     "stadium_longitude": -87.3965,
     "stadium_name": "Bob Warn Field",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 11400,
+    "acceptance_rate": 90,
+    "graduation_rate": 42,
+    "cws_appearances": 1,
+    "ncaa_regionals": 4,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://gosycamores.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 243,
@@ -2877,7 +3637,15 @@
     "stadium_latitude": 40.929,
     "stadium_longitude": -73.788,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 3900,
+    "acceptance_rate": 83,
+    "graduation_rate": 62,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://icgaels.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 56,
@@ -2907,7 +3675,15 @@
     "stadium_latitude": 41.6625,
     "stadium_longitude": -91.548,
     "stadium_name": "Duane Banks Field",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 32000,
+    "acceptance_rate": 86,
+    "graduation_rate": 74,
+    "cws_appearances": 0,
+    "ncaa_regionals": 3,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://hawkeyesports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 285,
@@ -2937,7 +3713,15 @@
     "stadium_latitude": 32.296,
     "stadium_longitude": -90.209,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 7100,
+    "acceptance_rate": 55,
+    "graduation_rate": 39,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://jsutigers.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 164,
@@ -2967,7 +3751,15 @@
     "stadium_latitude": 30.353,
     "stadium_longitude": -81.6125,
     "stadium_name": "John Sessions Stadium",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 3400,
+    "acceptance_rate": 63,
+    "graduation_rate": 56,
+    "cws_appearances": 0,
+    "ncaa_regionals": 2,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://judolphins.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 101,
@@ -2997,7 +3789,15 @@
     "stadium_latitude": 33.822,
     "stadium_longitude": -85.764,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 9600,
+    "acceptance_rate": 78,
+    "graduation_rate": 39,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://jsugamecocksports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 89,
@@ -3027,7 +3827,15 @@
     "stadium_latitude": 38.435,
     "stadium_longitude": -78.869,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 22500,
+    "acceptance_rate": 72,
+    "graduation_rate": 82,
+    "cws_appearances": 0,
+    "ncaa_regionals": 3,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://jmusports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 49,
@@ -3057,7 +3865,15 @@
     "stadium_latitude": 38.954,
     "stadium_longitude": -95.256,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 27600,
+    "acceptance_rate": 88,
+    "graduation_rate": 66,
+    "cws_appearances": 0,
+    "ncaa_regionals": 2,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://kuathletics.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 274,
@@ -3087,7 +3903,15 @@
     "stadium_latitude": 39.034,
     "stadium_longitude": -94.574,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 16800,
+    "acceptance_rate": 57,
+    "graduation_rate": 44,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://kcroos.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 38,
@@ -3117,7 +3941,15 @@
     "stadium_latitude": 39.2005,
     "stadium_longitude": -96.5845,
     "stadium_name": "Tointon Family Stadium",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 21400,
+    "acceptance_rate": 95,
+    "graduation_rate": 66,
+    "cws_appearances": 0,
+    "ncaa_regionals": 3,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://kstatesports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 103,
@@ -3147,7 +3979,15 @@
     "stadium_latitude": 34.037,
     "stadium_longitude": -84.582,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 43000,
+    "acceptance_rate": 83,
+    "graduation_rate": 47,
+    "cws_appearances": 0,
+    "ncaa_regionals": 2,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://ksuowls.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 14,
@@ -3177,7 +4017,15 @@
     "stadium_latitude": 38.0365,
     "stadium_longitude": -84.492,
     "stadium_name": "Kentucky Proud Park",
-    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Kentucky_Proud_Park.jpg/1280px-Kentucky_Proud_Park.jpg"
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Kentucky_Proud_Park.jpg/1280px-Kentucky_Proud_Park.jpg",
+    "enrollment": 31600,
+    "acceptance_rate": 90,
+    "graduation_rate": 68,
+    "cws_appearances": 2,
+    "ncaa_regionals": 8,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://ukathletics.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 234,
@@ -3207,7 +4055,15 @@
     "stadium_latitude": 40.038,
     "stadium_longitude": -75.155,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 4700,
+    "acceptance_rate": 76,
+    "graduation_rate": 66,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://goexplorers.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 216,
@@ -3237,7 +4093,15 @@
     "stadium_latitude": 40.697,
     "stadium_longitude": -75.212,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 2800,
+    "acceptance_rate": 36,
+    "graduation_rate": 90,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://goleopards.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 189,
@@ -3267,7 +4131,15 @@
     "stadium_latitude": 30.0455,
     "stadium_longitude": -94.056,
     "stadium_name": "Vincent-Beck Stadium",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 11200,
+    "acceptance_rate": 81,
+    "graduation_rate": 32,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://lamarcardinals.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 268,
@@ -3297,7 +4169,15 @@
     "stadium_latitude": 43.028,
     "stadium_longitude": -76.074,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 3800,
+    "acceptance_rate": 68,
+    "graduation_rate": 67,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://lemoynesports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 213,
@@ -3327,7 +4207,15 @@
     "stadium_latitude": 40.607,
     "stadium_longitude": -75.378,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 5600,
+    "acceptance_rate": 32,
+    "graduation_rate": 89,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://lehighsports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 96,
@@ -3357,7 +4245,15 @@
     "stadium_latitude": 37.3525,
     "stadium_longitude": -79.174,
     "stadium_name": "Liberty Baseball Stadium",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 15000,
+    "acceptance_rate": 49,
+    "graduation_rate": 62,
+    "cws_appearances": 0,
+    "ncaa_regionals": 5,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://libertyflames.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 208,
@@ -3387,7 +4283,15 @@
     "stadium_latitude": 38.789,
     "stadium_longitude": -90.502,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 7800,
+    "acceptance_rate": 67,
+    "graduation_rate": 42,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://lindenwoodlions.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 165,
@@ -3417,7 +4321,15 @@
     "stadium_latitude": 36.105,
     "stadium_longitude": -86.809,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 4500,
+    "acceptance_rate": 64,
+    "graduation_rate": 66,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://lipscombsports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 209,
@@ -3447,7 +4359,15 @@
     "stadium_latitude": 34.725,
     "stadium_longitude": -92.343,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 10600,
+    "acceptance_rate": 65,
+    "graduation_rate": 37,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://lrtrojans.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 263,
@@ -3477,7 +4397,15 @@
     "stadium_latitude": 40.69,
     "stadium_longitude": -73.982,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 6300,
+    "acceptance_rate": 83,
+    "graduation_rate": 42,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://liuathletics.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 118,
@@ -3507,7 +4435,15 @@
     "stadium_latitude": 33.97,
     "stadium_longitude": -118.418,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 7100,
+    "acceptance_rate": 49,
+    "graduation_rate": 82,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://lmulions.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 125,
@@ -3537,7 +4473,15 @@
     "stadium_latitude": 33.7825,
     "stadium_longitude": -118.113,
     "stadium_name": "Blair Field",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 39300,
+    "acceptance_rate": 48,
+    "graduation_rate": 65,
+    "cws_appearances": 3,
+    "ncaa_regionals": 8,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://longbeachstate.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 83,
@@ -3567,7 +4511,15 @@
     "stadium_latitude": 30.2175,
     "stadium_longitude": -92.0285,
     "stadium_name": "M.L. Tigue Moore Field",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 18400,
+    "acceptance_rate": 72,
+    "graduation_rate": 49,
+    "cws_appearances": 2,
+    "ncaa_regionals": 10,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://ragincajuns.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 97,
@@ -3597,7 +4549,15 @@
     "stadium_latitude": 32.5235,
     "stadium_longitude": -92.6475,
     "stadium_name": "J.C. Love Field",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 12000,
+    "acceptance_rate": 70,
+    "graduation_rate": 51,
+    "cws_appearances": 1,
+    "ncaa_regionals": 6,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://latechsports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 90,
@@ -3627,7 +4587,15 @@
     "stadium_latitude": 32.529,
     "stadium_longitude": -92.069,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 8700,
+    "acceptance_rate": 79,
+    "graduation_rate": 39,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://ulmwarhawks.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 24,
@@ -3657,7 +4625,15 @@
     "stadium_latitude": 38.2165,
     "stadium_longitude": -85.757,
     "stadium_name": "Jim Patterson Stadium",
-    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Jim_Patterson_Stadium.jpg/1280px-Jim_Patterson_Stadium.jpg"
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Jim_Patterson_Stadium.jpg/1280px-Jim_Patterson_Stadium.jpg",
+    "enrollment": 23000,
+    "acceptance_rate": 72,
+    "graduation_rate": 60,
+    "cws_appearances": 5,
+    "ncaa_regionals": 14,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://gocards.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 1,
@@ -3687,7 +4663,15 @@
     "stadium_latitude": 30.406,
     "stadium_longitude": -91.1845,
     "stadium_name": "Alex Box Stadium",
-    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Alex_Box_Stadium_Skip_Bertman_Field.jpg/1280px-Alex_Box_Stadium_Skip_Bertman_Field.jpg"
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Alex_Box_Stadium_Skip_Bertman_Field.jpg/1280px-Alex_Box_Stadium_Skip_Bertman_Field.jpg",
+    "enrollment": 36100,
+    "acceptance_rate": 76,
+    "graduation_rate": 70,
+    "cws_appearances": 20,
+    "ncaa_regionals": 22,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://lsusports.net/sport/baseball/recruit-questionnaire/"
   },
   {
     "id": 257,
@@ -3717,7 +4701,15 @@
     "stadium_latitude": 44.901,
     "stadium_longitude": -68.672,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 11300,
+    "acceptance_rate": 91,
+    "graduation_rate": 61,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://goblackbears.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 240,
@@ -3747,7 +4739,15 @@
     "stadium_latitude": 41.72,
     "stadium_longitude": -73.934,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 6800,
+    "acceptance_rate": 52,
+    "graduation_rate": 75,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://goredfoxes.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 91,
@@ -3777,7 +4777,15 @@
     "stadium_latitude": 38.424,
     "stadium_longitude": -82.432,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 12800,
+    "acceptance_rate": 89,
+    "graduation_rate": 47,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://herdzone.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 55,
@@ -3807,7 +4815,15 @@
     "stadium_latitude": 38.991,
     "stadium_longitude": -76.9485,
     "stadium_name": "Bob \"Turtle\" Smith Stadium",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 40500,
+    "acceptance_rate": 44,
+    "graduation_rate": 87,
+    "cws_appearances": 1,
+    "ncaa_regionals": 6,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://umterps.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 281,
@@ -3837,7 +4853,15 @@
     "stadium_latitude": 38.2,
     "stadium_longitude": -75.693,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 2300,
+    "acceptance_rate": 46,
+    "graduation_rate": 25,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://umeshawks.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 236,
@@ -3867,7 +4891,15 @@
     "stadium_latitude": 42.386,
     "stadium_longitude": -72.53,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 30600,
+    "acceptance_rate": 64,
+    "graduation_rate": 77,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://umassathletics.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 185,
@@ -3897,7 +4929,15 @@
     "stadium_latitude": 30.2055,
     "stadium_longitude": -93.219,
     "stadium_name": "Joe Miller Ballpark",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 6900,
+    "acceptance_rate": 78,
+    "graduation_rate": 36,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://mcneesesports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 71,
@@ -3927,7 +4967,15 @@
     "stadium_latitude": 35.1195,
     "stadium_longitude": -89.937,
     "stadium_name": "FedExPark",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 21800,
+    "acceptance_rate": 88,
+    "graduation_rate": 48,
+    "cws_appearances": 0,
+    "ncaa_regionals": 2,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://gotigersgo.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 177,
@@ -3957,7 +5005,15 @@
     "stadium_latitude": 32.831,
     "stadium_longitude": -83.649,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 9100,
+    "acceptance_rate": 72,
+    "graduation_rate": 66,
+    "cws_appearances": 0,
+    "ncaa_regionals": 2,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://mercerbears.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 265,
@@ -3987,7 +5043,15 @@
     "stadium_latitude": 42.704,
     "stadium_longitude": -71.131,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 5400,
+    "acceptance_rate": 79,
+    "graduation_rate": 60,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://merrimackathletics.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 21,
@@ -4017,7 +5081,15 @@
     "stadium_latitude": 25.716,
     "stadium_longitude": -80.2405,
     "stadium_name": "Mark Light Field",
-    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Alex_Rodriguez_Park_at_Mark_Light_Field.jpg/1280px-Alex_Rodriguez_Park_at_Mark_Light_Field.jpg"
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Alex_Rodriguez_Park_at_Mark_Light_Field.jpg/1280px-Alex_Rodriguez_Park_at_Mark_Light_Field.jpg",
+    "enrollment": 18200,
+    "acceptance_rate": 19,
+    "graduation_rate": 83,
+    "cws_appearances": 25,
+    "ncaa_regionals": 20,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://miamihurricanes.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 51,
@@ -4047,7 +5119,15 @@
     "stadium_latitude": 42.269,
     "stadium_longitude": -83.745,
     "stadium_name": "Ray Fisher Stadium",
-    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Ray_Fisher_Stadium_2015.jpg/1280px-Ray_Fisher_Stadium_2015.jpg"
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Ray_Fisher_Stadium_2015.jpg/1280px-Ray_Fisher_Stadium_2015.jpg",
+    "enrollment": 48100,
+    "acceptance_rate": 15,
+    "graduation_rate": 93,
+    "cws_appearances": 8,
+    "ncaa_regionals": 8,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://mgoblue.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 59,
@@ -4077,7 +5157,15 @@
     "stadium_latitude": 42.729,
     "stadium_longitude": -84.481,
     "stadium_name": "McLane Baseball Stadium",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 49700,
+    "acceptance_rate": 76,
+    "graduation_rate": 80,
+    "cws_appearances": 0,
+    "ncaa_regionals": 2,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://msuspartans.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 100,
@@ -4107,7 +5195,15 @@
     "stadium_latitude": 35.85,
     "stadium_longitude": -86.368,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 18200,
+    "acceptance_rate": 89,
+    "graduation_rate": 47,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://goblueraiders.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 249,
@@ -4137,7 +5233,15 @@
     "stadium_latitude": 43.078,
     "stadium_longitude": -87.882,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 23100,
+    "acceptance_rate": 79,
+    "graduation_rate": 42,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://mkepanthers.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 57,
@@ -4167,7 +5271,15 @@
     "stadium_latitude": 44.9825,
     "stadium_longitude": -93.231,
     "stadium_name": "Siebert Field",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 52500,
+    "acceptance_rate": 75,
+    "graduation_rate": 82,
+    "cws_appearances": 3,
+    "ncaa_regionals": 4,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://gophersports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 9,
@@ -4197,7 +5309,15 @@
     "stadium_latitude": 33.455,
     "stadium_longitude": -88.792,
     "stadium_name": "Dudy Noble Field",
-    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Dudy_Noble_Field.jpg/1280px-Dudy_Noble_Field.jpg"
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Dudy_Noble_Field.jpg/1280px-Dudy_Noble_Field.jpg",
+    "enrollment": 22000,
+    "acceptance_rate": 80,
+    "graduation_rate": 64,
+    "cws_appearances": 12,
+    "ncaa_regionals": 18,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://hailstate.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 293,
@@ -4227,7 +5347,15 @@
     "stadium_latitude": 33.499,
     "stadium_longitude": -90.33,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 1800,
+    "acceptance_rate": 56,
+    "graduation_rate": 29,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://mvsusports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 15,
@@ -4257,7 +5385,15 @@
     "stadium_latitude": 38.9415,
     "stadium_longitude": -92.333,
     "stadium_name": "Taylor Stadium",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 31400,
+    "acceptance_rate": 82,
+    "graduation_rate": 72,
+    "cws_appearances": 1,
+    "ncaa_regionals": 6,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://mutigers.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 143,
@@ -4287,7 +5423,15 @@
     "stadium_latitude": 37.196,
     "stadium_longitude": -93.282,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 22400,
+    "acceptance_rate": 85,
+    "graduation_rate": 57,
+    "cws_appearances": 1,
+    "ncaa_regionals": 5,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://missouristatebears.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 161,
@@ -4317,7 +5461,15 @@
     "stadium_latitude": 40.278,
     "stadium_longitude": -74.004,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 5800,
+    "acceptance_rate": 78,
+    "graduation_rate": 66,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://monmouthhawks.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 203,
@@ -4347,7 +5499,15 @@
     "stadium_latitude": 38.188,
     "stadium_longitude": -83.434,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 9400,
+    "acceptance_rate": 88,
+    "graduation_rate": 45,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://msueagles.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 204,
@@ -4377,7 +5537,15 @@
     "stadium_latitude": 36.613,
     "stadium_longitude": -88.327,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 9600,
+    "acceptance_rate": 85,
+    "graduation_rate": 50,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://goracers.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 75,
@@ -4407,7 +5575,15 @@
     "stadium_latitude": 38.984,
     "stadium_longitude": -76.484,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 4600,
+    "acceptance_rate": 8,
+    "graduation_rate": 90,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://navysports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 163,
@@ -4437,7 +5613,15 @@
     "stadium_latitude": 36.075,
     "stadium_longitude": -79.772,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 13500,
+    "acceptance_rate": 58,
+    "graduation_rate": 42,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://ncataggies.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 22,
@@ -4467,7 +5651,15 @@
     "stadium_latitude": 35.7685,
     "stadium_longitude": -78.678,
     "stadium_name": "Doak Field",
-    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Doak_Field_at_Dail_Park.jpg/1280px-Doak_Field_at_Dail_Park.jpg"
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Doak_Field_at_Dail_Park.jpg/1280px-Doak_Field_at_Dail_Park.jpg",
+    "enrollment": 36000,
+    "acceptance_rate": 47,
+    "graduation_rate": 80,
+    "cws_appearances": 3,
+    "ncaa_regionals": 11,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://gopack.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 54,
@@ -4497,7 +5689,15 @@
     "stadium_latitude": 40.8295,
     "stadium_longitude": -96.6925,
     "stadium_name": "Hawks Field",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 25100,
+    "acceptance_rate": 73,
+    "graduation_rate": 71,
+    "cws_appearances": 3,
+    "ncaa_regionals": 6,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://huskers.com/sport/baseball/recruit-questionnaire/"
   },
   {
     "id": 138,
@@ -4527,7 +5727,15 @@
     "stadium_latitude": 39.5425,
     "stadium_longitude": -119.8175,
     "stadium_name": "Peccole Park",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 20900,
+    "acceptance_rate": 84,
+    "graduation_rate": 55,
+    "cws_appearances": 0,
+    "ncaa_regionals": 2,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://nevadawolfpack.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 139,
@@ -4557,7 +5765,15 @@
     "stadium_latitude": 35.0785,
     "stadium_longitude": -106.6195,
     "stadium_name": "Santa Ana Star Field",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 22900,
+    "acceptance_rate": 96,
+    "graduation_rate": 47,
+    "cws_appearances": 0,
+    "ncaa_regionals": 2,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://golobos.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 104,
@@ -4587,7 +5803,15 @@
     "stadium_latitude": 32.35,
     "stadium_longitude": -106.756,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 12300,
+    "acceptance_rate": 67,
+    "graduation_rate": 44,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://nmstatesports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 244,
@@ -4617,7 +5841,15 @@
     "stadium_latitude": 43.139,
     "stadium_longitude": -79.034,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 3000,
+    "acceptance_rate": 83,
+    "graduation_rate": 60,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://purpleeagles.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 188,
@@ -4647,7 +5879,15 @@
     "stadium_latitude": 29.451,
     "stadium_longitude": -90.8115,
     "stadium_name": "Ray E. Didier Field",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 6400,
+    "acceptance_rate": 84,
+    "graduation_rate": 40,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://geauxcolonels.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 259,
@@ -4677,7 +5917,15 @@
     "stadium_latitude": 40.742,
     "stadium_longitude": -74.179,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 11700,
+    "acceptance_rate": 66,
+    "graduation_rate": 61,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://njithighlanders.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 276,
@@ -4707,7 +5955,15 @@
     "stadium_latitude": 36.847,
     "stadium_longitude": -76.27,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 6200,
+    "acceptance_rate": 66,
+    "graduation_rate": 35,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://nsuspartans.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 173,
@@ -4737,7 +5993,15 @@
     "stadium_latitude": 34.804,
     "stadium_longitude": -87.674,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 7500,
+    "acceptance_rate": 80,
+    "graduation_rate": 42,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://roarlions.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 23,
@@ -4767,7 +6031,15 @@
     "stadium_latitude": 35.9665,
     "stadium_longitude": -79.0575,
     "stadium_name": "Boshamer Stadium",
-    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Boshamer_Stadium_2018.jpg/1280px-Boshamer_Stadium_2018.jpg"
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Boshamer_Stadium_2018.jpg/1280px-Boshamer_Stadium_2018.jpg",
+    "enrollment": 31600,
+    "acceptance_rate": 17,
+    "graduation_rate": 91,
+    "cws_appearances": 11,
+    "ncaa_regionals": 16,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://goheels.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 277,
@@ -4797,7 +6069,15 @@
     "stadium_latitude": 35.974,
     "stadium_longitude": -78.899,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 8000,
+    "acceptance_rate": 54,
+    "graduation_rate": 38,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://nccueaglepride.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 272,
@@ -4827,7 +6107,15 @@
     "stadium_latitude": 46.897,
     "stadium_longitude": -96.8,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 12600,
+    "acceptance_rate": 89,
+    "graduation_rate": 60,
+    "cws_appearances": 0,
+    "ncaa_regionals": 1,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://gobison.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 168,
@@ -4857,7 +6145,15 @@
     "stadium_latitude": 30.2705,
     "stadium_longitude": -81.51,
     "stadium_name": "Harmon Stadium",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 17200,
+    "acceptance_rate": 82,
+    "graduation_rate": 50,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://unfospreys.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 76,
@@ -4887,7 +6183,15 @@
     "stadium_latitude": 33.211,
     "stadium_longitude": -97.149,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 42000,
+    "acceptance_rate": 73,
+    "graduation_rate": 50,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://meangreensports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 152,
@@ -4917,7 +6221,15 @@
     "stadium_latitude": 42.34,
     "stadium_longitude": -71.09,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 21000,
+    "acceptance_rate": 7,
+    "graduation_rate": 91,
+    "cws_appearances": 0,
+    "ncaa_regionals": 4,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://nuhuskies.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 248,
@@ -4947,7 +6259,15 @@
     "stadium_latitude": 39.032,
     "stadium_longitude": -84.462,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 15100,
+    "acceptance_rate": 87,
+    "graduation_rate": 42,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://nkunorse.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 62,
@@ -4977,7 +6297,15 @@
     "stadium_latitude": 42.064,
     "stadium_longitude": -87.6745,
     "stadium_name": "Rocky Miller Park",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 22000,
+    "acceptance_rate": 7,
+    "graduation_rate": 95,
+    "cws_appearances": 0,
+    "ncaa_regionals": 2,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://nusports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 187,
@@ -5007,7 +6335,15 @@
     "stadium_latitude": 31.753,
     "stadium_longitude": -93.0975,
     "stadium_name": "Brown-Stroud Field",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 8400,
+    "acceptance_rate": 78,
+    "graduation_rate": 36,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://nsudemons.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 30,
@@ -5037,7 +6373,15 @@
     "stadium_latitude": 41.6985,
     "stadium_longitude": -86.233,
     "stadium_name": "Frank Eck Stadium",
-    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Frank_Eck_Stadium.jpg/1280px-Frank_Eck_Stadium.jpg"
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Frank_Eck_Stadium.jpg/1280px-Frank_Eck_Stadium.jpg",
+    "enrollment": 13100,
+    "acceptance_rate": 12,
+    "graduation_rate": 97,
+    "cws_appearances": 3,
+    "ncaa_regionals": 11,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://und.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 252,
@@ -5067,7 +6411,15 @@
     "stadium_latitude": 42.672,
     "stadium_longitude": -83.218,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 17200,
+    "acceptance_rate": 86,
+    "graduation_rate": 43,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://goldengrizzlies.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 53,
@@ -5097,7 +6449,15 @@
     "stadium_latitude": 40.0065,
     "stadium_longitude": -83.0225,
     "stadium_name": "Bill Davis Stadium",
-    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Bill_Davis_Stadium.jpg/1280px-Bill_Davis_Stadium.jpg"
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Bill_Davis_Stadium.jpg/1280px-Bill_Davis_Stadium.jpg",
+    "enrollment": 61400,
+    "acceptance_rate": 53,
+    "graduation_rate": 83,
+    "cws_appearances": 4,
+    "ncaa_regionals": 8,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://ohiostatebuckeyes.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 16,
@@ -5127,7 +6487,15 @@
     "stadium_latitude": 35.205,
     "stadium_longitude": -97.442,
     "stadium_name": "L. Dale Mitchell Baseball Park",
-    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/L_Dale_Mitchell_Park.jpg/1280px-L_Dale_Mitchell_Park.jpg"
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/L_Dale_Mitchell_Park.jpg/1280px-L_Dale_Mitchell_Park.jpg",
+    "enrollment": 32700,
+    "acceptance_rate": 71,
+    "graduation_rate": 72,
+    "cws_appearances": 10,
+    "ncaa_regionals": 14,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://soonersports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 36,
@@ -5157,7 +6525,15 @@
     "stadium_latitude": 36.1235,
     "stadium_longitude": -97.065,
     "stadium_name": "O'Brate Stadium",
-    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/O%27Brate_Stadium_2021.jpg/1280px-O%27Brate_Stadium_2021.jpg"
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/O%27Brate_Stadium_2021.jpg/1280px-O%27Brate_Stadium_2021.jpg",
+    "enrollment": 25100,
+    "acceptance_rate": 74,
+    "graduation_rate": 65,
+    "cws_appearances": 20,
+    "ncaa_regionals": 18,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://okstate.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 92,
@@ -5187,7 +6563,15 @@
     "stadium_latitude": 36.885,
     "stadium_longitude": -76.305,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 24700,
+    "acceptance_rate": 84,
+    "graduation_rate": 56,
+    "cws_appearances": 1,
+    "ncaa_regionals": 5,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://odusports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 8,
@@ -5217,7 +6601,15 @@
     "stadium_latitude": 34.3615,
     "stadium_longitude": -89.535,
     "stadium_name": "Swayze Field",
-    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Swayze_Field_2017.jpg/1280px-Swayze_Field_2017.jpg"
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Swayze_Field_2017.jpg/1280px-Swayze_Field_2017.jpg",
+    "enrollment": 22700,
+    "acceptance_rate": 73,
+    "graduation_rate": 66,
+    "cws_appearances": 7,
+    "ncaa_regionals": 14,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://olemisssports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 271,
@@ -5247,7 +6639,15 @@
     "stadium_latitude": 41.259,
     "stadium_longitude": -96.01,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 15400,
+    "acceptance_rate": 79,
+    "graduation_rate": 50,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://omavs.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 270,
@@ -5277,7 +6677,15 @@
     "stadium_latitude": 36.056,
     "stadium_longitude": -95.948,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 4300,
+    "acceptance_rate": 63,
+    "graduation_rate": 56,
+    "cws_appearances": 3,
+    "ncaa_regionals": 8,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://orugoldeneagles.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 67,
@@ -5307,7 +6715,15 @@
     "stadium_latitude": 44.0585,
     "stadium_longitude": -123.068,
     "stadium_name": "PK Park",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 24100,
+    "acceptance_rate": 82,
+    "graduation_rate": 76,
+    "cws_appearances": 4,
+    "ncaa_regionals": 6,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://goducks.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 50,
@@ -5337,7 +6753,15 @@
     "stadium_latitude": 44.5615,
     "stadium_longitude": -123.2635,
     "stadium_name": "Goss Stadium",
-    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Goss_Stadium_at_Coleman_Field.jpg/1280px-Goss_Stadium_at_Coleman_Field.jpg"
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Goss_Stadium_at_Coleman_Field.jpg/1280px-Goss_Stadium_at_Coleman_Field.jpg",
+    "enrollment": 34000,
+    "acceptance_rate": 65,
+    "graduation_rate": 68,
+    "cws_appearances": 7,
+    "ncaa_regionals": 14,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://osubeavers.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 121,
@@ -5367,7 +6791,15 @@
     "stadium_latitude": 37.979,
     "stadium_longitude": -121.31,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 6100,
+    "acceptance_rate": 74,
+    "graduation_rate": 65,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://pacifictigers.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 220,
@@ -5397,7 +6829,15 @@
     "stadium_latitude": 39.952,
     "stadium_longitude": -75.193,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 10700,
+    "acceptance_rate": 6,
+    "graduation_rate": 96,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://pennathletics.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 58,
@@ -5427,7 +6867,15 @@
     "stadium_latitude": 40.8115,
     "stadium_longitude": -77.853,
     "stadium_name": "Medlar Field",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 47000,
+    "acceptance_rate": 54,
+    "graduation_rate": 85,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://gopsusports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 117,
@@ -5457,7 +6905,15 @@
     "stadium_latitude": 34.036,
     "stadium_longitude": -118.7095,
     "stadium_name": "Eddy D. Field Stadium",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 9100,
+    "acceptance_rate": 49,
+    "graduation_rate": 85,
+    "cws_appearances": 3,
+    "ncaa_regionals": 8,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://pepperdinewaves.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 123,
@@ -5487,7 +6943,15 @@
     "stadium_latitude": 45.571,
     "stadium_longitude": -122.726,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 4200,
+    "acceptance_rate": 82,
+    "graduation_rate": 73,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://portlandpilots.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 290,
@@ -5517,7 +6981,15 @@
     "stadium_latitude": 30.093,
     "stadium_longitude": -95.988,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 9100,
+    "acceptance_rate": 44,
+    "graduation_rate": 30,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://pvpanthers.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 221,
@@ -5547,7 +7019,15 @@
     "stadium_latitude": 40.348,
     "stadium_longitude": -74.659,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 8400,
+    "acceptance_rate": 4,
+    "graduation_rate": 97,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://goprincetontigers.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 114,
@@ -5577,7 +7057,15 @@
     "stadium_latitude": 41.839,
     "stadium_longitude": -71.436,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 5000,
+    "acceptance_rate": 44,
+    "graduation_rate": 89,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://friars.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 60,
@@ -5607,7 +7095,15 @@
     "stadium_latitude": 40.4375,
     "stadium_longitude": -86.9195,
     "stadium_name": "Alexander Field",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 50300,
+    "acceptance_rate": 53,
+    "graduation_rate": 82,
+    "cws_appearances": 0,
+    "ncaa_regionals": 2,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://purduesports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 253,
@@ -5637,7 +7133,15 @@
     "stadium_latitude": 41.118,
     "stadium_longitude": -85.111,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 7600,
+    "acceptance_rate": 96,
+    "graduation_rate": 31,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://gomastodons.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 174,
@@ -5667,7 +7171,15 @@
     "stadium_latitude": 35.189,
     "stadium_longitude": -80.835,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 2500,
+    "acceptance_rate": 75,
+    "graduation_rate": 56,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://queensroyals.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 238,
@@ -5697,7 +7209,15 @@
     "stadium_latitude": 41.419,
     "stadium_longitude": -72.894,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 9800,
+    "acceptance_rate": 77,
+    "graduation_rate": 77,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://quinnipiacbobcats.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 232,
@@ -5727,7 +7247,15 @@
     "stadium_latitude": 41.483,
     "stadium_longitude": -71.53,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 17400,
+    "acceptance_rate": 73,
+    "graduation_rate": 68,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://gorhody.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 72,
@@ -5757,7 +7285,15 @@
     "stadium_latitude": 29.7165,
     "stadium_longitude": -95.405,
     "stadium_name": "Reckling Park",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 8600,
+    "acceptance_rate": 9,
+    "graduation_rate": 93,
+    "cws_appearances": 8,
+    "ncaa_regionals": 14,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://riceowls.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 226,
@@ -5787,7 +7323,15 @@
     "stadium_latitude": 37.574,
     "stadium_longitude": -77.54,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 4000,
+    "acceptance_rate": 24,
+    "graduation_rate": 88,
+    "cws_appearances": 0,
+    "ncaa_regionals": 2,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://richmondspiders.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 239,
@@ -5817,7 +7361,15 @@
     "stadium_latitude": 40.283,
     "stadium_longitude": -74.747,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 4600,
+    "acceptance_rate": 73,
+    "graduation_rate": 60,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://gobroncs.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 61,
@@ -5847,7 +7399,15 @@
     "stadium_latitude": 40.5125,
     "stadium_longitude": -74.4635,
     "stadium_name": "Bainton Field",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 51000,
+    "acceptance_rate": 66,
+    "graduation_rate": 81,
+    "cws_appearances": 0,
+    "ncaa_regionals": 2,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://scarletknights.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 264,
@@ -5877,7 +7437,15 @@
     "stadium_latitude": 41.221,
     "stadium_longitude": -73.238,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 6200,
+    "acceptance_rate": 68,
+    "graduation_rate": 63,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://sacredheartpioneers.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 230,
@@ -5907,7 +7475,15 @@
     "stadium_latitude": 39.997,
     "stadium_longitude": -75.237,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 8700,
+    "acceptance_rate": 81,
+    "graduation_rate": 76,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://sjuhawks.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 233,
@@ -5937,7 +7513,15 @@
     "stadium_latitude": 38.635,
     "stadium_longitude": -90.234,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 12000,
+    "acceptance_rate": 56,
+    "graduation_rate": 74,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://slubillikens.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 122,
@@ -5967,7 +7551,15 @@
     "stadium_latitude": 37.84,
     "stadium_longitude": -122.114,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 4100,
+    "acceptance_rate": 67,
+    "graduation_rate": 74,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://smcgaels.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 245,
@@ -5997,7 +7589,15 @@
     "stadium_latitude": 40.735,
     "stadium_longitude": -74.063,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 2900,
+    "acceptance_rate": 74,
+    "graduation_rate": 47,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://saintpeterspeacocks.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 98,
@@ -6027,7 +7627,15 @@
     "stadium_latitude": 30.7185,
     "stadium_longitude": -95.5425,
     "stadium_name": "Don Sanders Stadium",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 21600,
+    "acceptance_rate": 83,
+    "graduation_rate": 46,
+    "cws_appearances": 1,
+    "ncaa_regionals": 5,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://gobearkats.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 175,
@@ -6057,7 +7665,15 @@
     "stadium_latitude": 33.463,
     "stadium_longitude": -86.793,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 5600,
+    "acceptance_rate": 82,
+    "graduation_rate": 74,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://samfordsports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 116,
@@ -6087,7 +7703,15 @@
     "stadium_latitude": 32.772,
     "stadium_longitude": -117.189,
     "stadium_name": "Fowler Park",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 9400,
+    "acceptance_rate": 47,
+    "graduation_rate": 79,
+    "cws_appearances": 0,
+    "ncaa_regionals": 4,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://usdtoreros.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 135,
@@ -6117,7 +7741,15 @@
     "stadium_latitude": 32.7775,
     "stadium_longitude": -117.1235,
     "stadium_name": "Tony Gwynn Stadium",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 35700,
+    "acceptance_rate": 39,
+    "graduation_rate": 73,
+    "cws_appearances": 0,
+    "ncaa_regionals": 3,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://goaztecs.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 120,
@@ -6147,7 +7779,15 @@
     "stadium_latitude": 37.776,
     "stadium_longitude": -122.451,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 10000,
+    "acceptance_rate": 63,
+    "graduation_rate": 73,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://usfdons.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 141,
@@ -6177,7 +7817,15 @@
     "stadium_latitude": 37.3345,
     "stadium_longitude": -121.886,
     "stadium_name": "Municipal Stadium",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 36800,
+    "acceptance_rate": 70,
+    "graduation_rate": 61,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://sjsuspartans.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 119,
@@ -6207,7 +7855,15 @@
     "stadium_latitude": 37.349,
     "stadium_longitude": -121.94,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 9000,
+    "acceptance_rate": 44,
+    "graduation_rate": 90,
+    "cws_appearances": 1,
+    "ncaa_regionals": 5,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://santaclarabroncos.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 205,
@@ -6237,7 +7893,15 @@
     "stadium_latitude": 37.306,
     "stadium_longitude": -89.531,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 10300,
+    "acceptance_rate": 89,
+    "graduation_rate": 42,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://gosoutheast.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 111,
@@ -6267,7 +7931,15 @@
     "stadium_latitude": 40.743,
     "stadium_longitude": -74.265,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 10200,
+    "acceptance_rate": 63,
+    "graduation_rate": 76,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://shupirates.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 246,
@@ -6297,7 +7969,15 @@
     "stadium_latitude": 42.719,
     "stadium_longitude": -73.752,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 3400,
+    "acceptance_rate": 73,
+    "graduation_rate": 70,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://sienasaints.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 206,
@@ -6327,7 +8007,15 @@
     "stadium_latitude": 38.793,
     "stadium_longitude": -89.997,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 12400,
+    "acceptance_rate": 90,
+    "graduation_rate": 50,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://siuecougars.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 33,
@@ -6357,7 +8045,15 @@
     "stadium_latitude": 32.837,
     "stadium_longitude": -96.783,
     "stadium_name": "Irish Yard",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 12400,
+    "acceptance_rate": 52,
+    "graduation_rate": 81,
+    "cws_appearances": 0,
+    "ncaa_regionals": 2,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://smumustangs.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 93,
@@ -6387,7 +8083,15 @@
     "stadium_latitude": 30.696,
     "stadium_longitude": -88.178,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 14000,
+    "acceptance_rate": 80,
+    "graduation_rate": 42,
+    "cws_appearances": 1,
+    "ncaa_regionals": 5,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://usajaguars.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 10,
@@ -6417,7 +8121,15 @@
     "stadium_latitude": 34.0165,
     "stadium_longitude": -81.0215,
     "stadium_name": "Founders Park",
-    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Founders_Park_2016.jpg/1280px-Founders_Park_2016.jpg"
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Founders_Park_2016.jpg/1280px-Founders_Park_2016.jpg",
+    "enrollment": 35500,
+    "acceptance_rate": 64,
+    "graduation_rate": 78,
+    "cws_appearances": 11,
+    "ncaa_regionals": 18,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://gamecocksonline.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 282,
@@ -6447,7 +8159,15 @@
     "stadium_latitude": 33.497,
     "stadium_longitude": -80.855,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 2900,
+    "acceptance_rate": 66,
+    "graduation_rate": 35,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://scstatebulldogs.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 273,
@@ -6477,7 +8197,15 @@
     "stadium_latitude": 44.31,
     "stadium_longitude": -96.786,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 12000,
+    "acceptance_rate": 87,
+    "graduation_rate": 60,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://gojacks.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 77,
@@ -6507,7 +8235,15 @@
     "stadium_latitude": 28.0625,
     "stadium_longitude": -82.413,
     "stadium_name": "USF Baseball Stadium",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 50000,
+    "acceptance_rate": 46,
+    "graduation_rate": 72,
+    "cws_appearances": 2,
+    "ncaa_regionals": 7,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://gousfbulls.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 186,
@@ -6537,7 +8273,15 @@
     "stadium_latitude": 30.5225,
     "stadium_longitude": -90.465,
     "stadium_name": "Alumni Field",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 14600,
+    "acceptance_rate": 88,
+    "graduation_rate": 38,
+    "cws_appearances": 0,
+    "ncaa_regionals": 4,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://lionsports.net/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 283,
@@ -6567,7 +8311,15 @@
     "stadium_latitude": 30.527,
     "stadium_longitude": -91.191,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 7400,
+    "acceptance_rate": 63,
+    "graduation_rate": 33,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://gojagsports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 145,
@@ -6597,7 +8349,15 @@
     "stadium_latitude": 37.717,
     "stadium_longitude": -89.217,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 11200,
+    "acceptance_rate": 86,
+    "graduation_rate": 49,
+    "cws_appearances": 0,
+    "ncaa_regionals": 3,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://siusalukis.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 210,
@@ -6627,7 +8387,15 @@
     "stadium_latitude": 38.003,
     "stadium_longitude": -87.535,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 9200,
+    "acceptance_rate": 92,
+    "graduation_rate": 42,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://gousieagles.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 85,
@@ -6657,7 +8425,15 @@
     "stadium_latitude": 31.327,
     "stadium_longitude": -89.338,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 14300,
+    "acceptance_rate": 95,
+    "graduation_rate": 52,
+    "cws_appearances": 3,
+    "ncaa_regionals": 12,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://southernmiss.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 199,
@@ -6687,7 +8463,15 @@
     "stadium_latitude": 37.677,
     "stadium_longitude": -113.062,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 12200,
+    "acceptance_rate": 79,
+    "graduation_rate": 37,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://suutbirds.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 237,
@@ -6717,7 +8501,15 @@
     "stadium_latitude": 42.08,
     "stadium_longitude": -78.498,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 2800,
+    "acceptance_rate": 72,
+    "graduation_rate": 68,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://gobonnies.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 110,
@@ -6747,7 +8539,15 @@
     "stadium_latitude": 40.726,
     "stadium_longitude": -73.795,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 20400,
+    "acceptance_rate": 54,
+    "graduation_rate": 72,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://redstormsports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 25,
@@ -6777,7 +8577,15 @@
     "stadium_latitude": 37.4345,
     "stadium_longitude": -122.1615,
     "stadium_name": "Sunken Diamond",
-    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Klein_Field_at_Sunken_Diamond.jpg/1280px-Klein_Field_at_Sunken_Diamond.jpg"
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Klein_Field_at_Sunken_Diamond.jpg/1280px-Klein_Field_at_Sunken_Diamond.jpg",
+    "enrollment": 17300,
+    "acceptance_rate": 4,
+    "graduation_rate": 96,
+    "cws_appearances": 17,
+    "ncaa_regionals": 20,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://gostanford.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 194,
@@ -6807,7 +8615,15 @@
     "stadium_latitude": 31.6235,
     "stadium_longitude": -94.6525,
     "stadium_name": "Jaycees Field",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 11400,
+    "acceptance_rate": 79,
+    "graduation_rate": 41,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://sfajacks.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 166,
@@ -6837,7 +8653,15 @@
     "stadium_latitude": 29.051,
     "stadium_longitude": -81.3005,
     "stadium_name": "Melching Field",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 4600,
+    "acceptance_rate": 64,
+    "graduation_rate": 63,
+    "cws_appearances": 0,
+    "ncaa_regionals": 4,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://gohatters.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 269,
@@ -6867,7 +8691,15 @@
     "stadium_latitude": 42.104,
     "stadium_longitude": -71.099,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 2600,
+    "acceptance_rate": 75,
+    "graduation_rate": 73,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://stonehillskyhawks.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 158,
@@ -6897,7 +8729,15 @@
     "stadium_latitude": 40.914,
     "stadium_longitude": -73.123,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 27200,
+    "acceptance_rate": 49,
+    "graduation_rate": 72,
+    "cws_appearances": 1,
+    "ncaa_regionals": 2,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://stonybrookathletics.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 196,
@@ -6927,7 +8767,15 @@
     "stadium_latitude": 32.223,
     "stadium_longitude": -98.209,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 14900,
+    "acceptance_rate": 68,
+    "graduation_rate": 36,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://tarletonsports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 35,
@@ -6957,7 +8805,15 @@
     "stadium_latitude": 32.71,
     "stadium_longitude": -97.3625,
     "stadium_name": "Lupton Stadium",
-    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Lupton_Stadium_2013.jpg/1280px-Lupton_Stadium_2013.jpg"
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Lupton_Stadium_2013.jpg/1280px-Lupton_Stadium_2013.jpg",
+    "enrollment": 12400,
+    "acceptance_rate": 38,
+    "graduation_rate": 81,
+    "cws_appearances": 5,
+    "ncaa_regionals": 11,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://gofrogs.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 78,
@@ -6987,7 +8843,15 @@
     "stadium_latitude": 39.981,
     "stadium_longitude": -75.155,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 33600,
+    "acceptance_rate": 62,
+    "graduation_rate": 68,
+    "cws_appearances": 0,
+    "ncaa_regionals": 1,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://owlsports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 2,
@@ -7017,7 +8881,15 @@
     "stadium_latitude": 35.953,
     "stadium_longitude": -83.927,
     "stadium_name": "Lindsey Nelson Stadium",
-    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Lindsey_Nelson_Stadium_2019.jpg/1280px-Lindsey_Nelson_Stadium_2019.jpg"
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Lindsey_Nelson_Stadium_2019.jpg/1280px-Lindsey_Nelson_Stadium_2019.jpg",
+    "enrollment": 34600,
+    "acceptance_rate": 49,
+    "graduation_rate": 73,
+    "cws_appearances": 6,
+    "ncaa_regionals": 11,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://utsports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 211,
@@ -7047,7 +8919,15 @@
     "stadium_latitude": 36.168,
     "stadium_longitude": -86.836,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 7700,
+    "acceptance_rate": 67,
+    "graduation_rate": 27,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://tsutigers.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 202,
@@ -7077,7 +8957,15 @@
     "stadium_latitude": 36.177,
     "stadium_longitude": -85.505,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 9400,
+    "acceptance_rate": 87,
+    "graduation_rate": 51,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://ttusports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 6,
@@ -7107,7 +8995,15 @@
     "stadium_latitude": 30.2835,
     "stadium_longitude": -97.731,
     "stadium_name": "UFCU Disch-Falk Field",
-    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/UFCU_Disch-Falk_Field.jpg/1280px-UFCU_Disch-Falk_Field.jpg"
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/UFCU_Disch-Falk_Field.jpg/1280px-UFCU_Disch-Falk_Field.jpg",
+    "enrollment": 52000,
+    "acceptance_rate": 31,
+    "graduation_rate": 87,
+    "cws_appearances": 38,
+    "ncaa_regionals": 22,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://texassports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 3,
@@ -7137,7 +9033,15 @@
     "stadium_latitude": 30.605,
     "stadium_longitude": -96.344,
     "stadium_name": "Blue Bell Park",
-    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Blue_Bell_Park.jpg/1280px-Blue_Bell_Park.jpg"
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Blue_Bell_Park.jpg/1280px-Blue_Bell_Park.jpg",
+    "enrollment": 72000,
+    "acceptance_rate": 63,
+    "graduation_rate": 82,
+    "cws_appearances": 8,
+    "ncaa_regionals": 14,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://12thman.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 192,
@@ -7167,7 +9071,15 @@
     "stadium_latitude": 27.713,
     "stadium_longitude": -97.326,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 10800,
+    "acceptance_rate": 87,
+    "graduation_rate": 38,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://goislanders.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 289,
@@ -7197,7 +9109,15 @@
     "stadium_latitude": 29.724,
     "stadium_longitude": -95.358,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 7600,
+    "acceptance_rate": 60,
+    "graduation_rate": 18,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://tsusports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 94,
@@ -7227,7 +9147,15 @@
     "stadium_latitude": 29.8885,
     "stadium_longitude": -97.9335,
     "stadium_name": "Bobcat Ballpark",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 38000,
+    "acceptance_rate": 82,
+    "graduation_rate": 53,
+    "cws_appearances": 0,
+    "ncaa_regionals": 3,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://txstatebobcats.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 39,
@@ -7257,7 +9185,15 @@
     "stadium_latitude": 33.5875,
     "stadium_longitude": -101.844,
     "stadium_name": "Dan Law Field",
-    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Dan_Law_Field_at_Rip_Griffin_Park.jpg/1280px-Dan_Law_Field_at_Rip_Griffin_Park.jpg"
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Dan_Law_Field_at_Rip_Griffin_Park.jpg/1280px-Dan_Law_Field_at_Rip_Griffin_Park.jpg",
+    "enrollment": 40600,
+    "acceptance_rate": 70,
+    "graduation_rate": 64,
+    "cws_appearances": 4,
+    "ncaa_regionals": 10,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://texastech.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 178,
@@ -7287,7 +9223,15 @@
     "stadium_latitude": 32.798,
     "stadium_longitude": -79.958,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 3300,
+    "acceptance_rate": 80,
+    "graduation_rate": 66,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://citadelsports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 156,
@@ -7317,7 +9261,15 @@
     "stadium_latitude": 39.393,
     "stadium_longitude": -76.61,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 22400,
+    "acceptance_rate": 67,
+    "graduation_rate": 67,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://towsontigers.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 95,
@@ -7347,7 +9299,15 @@
     "stadium_latitude": 31.796,
     "stadium_longitude": -85.968,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 17500,
+    "acceptance_rate": 84,
+    "graduation_rate": 42,
+    "cws_appearances": 0,
+    "ncaa_regionals": 2,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://troytrojans.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 69,
@@ -7377,7 +9337,15 @@
     "stadium_latitude": 30.0185,
     "stadium_longitude": -90.06,
     "stadium_name": "Greer Field at Turchin Stadium",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 14000,
+    "acceptance_rate": 11,
+    "graduation_rate": 87,
+    "cws_appearances": 5,
+    "ncaa_regionals": 10,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://tulanegreenwave.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 79,
@@ -7407,7 +9375,15 @@
     "stadium_latitude": 36.152,
     "stadium_longitude": -95.946,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 3600,
+    "acceptance_rate": 67,
+    "graduation_rate": 67,
+    "cws_appearances": 0,
+    "ncaa_regionals": 3,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://tulsahurricane.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 80,
@@ -7437,7 +9413,15 @@
     "stadium_latitude": 33.502,
     "stadium_longitude": -86.799,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 22100,
+    "acceptance_rate": 82,
+    "graduation_rate": 49,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://uabsports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 131,
@@ -7467,7 +9451,15 @@
     "stadium_latitude": 38.5375,
     "stadium_longitude": -121.7535,
     "stadium_name": "Dobbins Baseball Stadium",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 40100,
+    "acceptance_rate": 49,
+    "graduation_rate": 83,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://ucdavisaggies.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 126,
@@ -7497,7 +9489,15 @@
     "stadium_latitude": 33.6675,
     "stadium_longitude": -117.8465,
     "stadium_name": "Cicerone Field",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 36400,
+    "acceptance_rate": 27,
+    "graduation_rate": 83,
+    "cws_appearances": 2,
+    "ncaa_regionals": 6,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://ucirvinesports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 130,
@@ -7527,7 +9527,15 @@
     "stadium_latitude": 33.9755,
     "stadium_longitude": -117.3275,
     "stadium_name": "Riverside Sports Complex",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 24800,
+    "acceptance_rate": 66,
+    "graduation_rate": 72,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://gohighlanders.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 132,
@@ -7557,7 +9565,15 @@
     "stadium_latitude": 32.877,
     "stadium_longitude": -117.2355,
     "stadium_name": "Triton Ballpark",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 42000,
+    "acceptance_rate": 24,
+    "graduation_rate": 87,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://ucsdtritons.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 129,
@@ -7587,7 +9603,15 @@
     "stadium_latitude": 34.4175,
     "stadium_longitude": -119.8505,
     "stadium_name": "Caesar Uyesaka Stadium",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 26300,
+    "acceptance_rate": 26,
+    "graduation_rate": 82,
+    "cws_appearances": 2,
+    "ncaa_regionals": 6,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://ucsbgauchos.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 41,
@@ -7617,7 +9641,15 @@
     "stadium_latitude": 28.6015,
     "stadium_longitude": -81.201,
     "stadium_name": "John Euliano Park",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 70400,
+    "acceptance_rate": 41,
+    "graduation_rate": 73,
+    "cws_appearances": 0,
+    "ncaa_regionals": 5,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://ucfknights.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 65,
@@ -7647,7 +9679,15 @@
     "stadium_latitude": 34.071,
     "stadium_longitude": -118.4485,
     "stadium_name": "Jackie Robinson Stadium",
-    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Jackie_Robinson_Stadium.jpg/1280px-Jackie_Robinson_Stadium.jpg"
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Jackie_Robinson_Stadium.jpg/1280px-Jackie_Robinson_Stadium.jpg",
+    "enrollment": 47000,
+    "acceptance_rate": 9,
+    "graduation_rate": 92,
+    "cws_appearances": 6,
+    "ncaa_regionals": 13,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://uclabruins.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 150,
@@ -7677,7 +9717,15 @@
     "stadium_latitude": 41.87,
     "stadium_longitude": -87.65,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 34000,
+    "acceptance_rate": 73,
+    "graduation_rate": 57,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://uicflames.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 260,
@@ -7707,7 +9755,15 @@
     "stadium_latitude": 42.655,
     "stadium_longitude": -71.325,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 18400,
+    "acceptance_rate": 90,
+    "graduation_rate": 59,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://goriverhawks.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 254,
@@ -7737,7 +9793,15 @@
     "stadium_latitude": 39.255,
     "stadium_longitude": -76.714,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 13000,
+    "acceptance_rate": 75,
+    "graduation_rate": 63,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://umbcretrievers.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 181,
@@ -7767,7 +9831,15 @@
     "stadium_latitude": 36.069,
     "stadium_longitude": -79.81,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 18800,
+    "acceptance_rate": 78,
+    "graduation_rate": 54,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://uncgspartans.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 154,
@@ -7797,7 +9869,15 @@
     "stadium_latitude": 34.227,
     "stadium_longitude": -77.872,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 17900,
+    "acceptance_rate": 71,
+    "graduation_rate": 66,
+    "cws_appearances": 0,
+    "ncaa_regionals": 4,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://uncwsports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 137,
@@ -7827,7 +9907,15 @@
     "stadium_latitude": 36.108,
     "stadium_longitude": -115.1495,
     "stadium_name": "Wilson Stadium",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 31000,
+    "acceptance_rate": 85,
+    "graduation_rate": 49,
+    "cws_appearances": 0,
+    "ncaa_regionals": 4,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://unlvrebels.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 64,
@@ -7857,7 +9945,15 @@
     "stadium_latitude": 34.018,
     "stadium_longitude": -118.2875,
     "stadium_name": "Dedeaux Field",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 49000,
+    "acceptance_rate": 10,
+    "graduation_rate": 92,
+    "cws_appearances": 22,
+    "ncaa_regionals": 15,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://usctrojans.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 197,
@@ -7887,7 +9983,15 @@
     "stadium_latitude": 32.731,
     "stadium_longitude": -97.115,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 40600,
+    "acceptance_rate": 82,
+    "graduation_rate": 45,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://utamavs.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 207,
@@ -7917,7 +10021,15 @@
     "stadium_latitude": 36.339,
     "stadium_longitude": -88.855,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 6700,
+    "acceptance_rate": 82,
+    "graduation_rate": 44,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://utmsports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 48,
@@ -7947,7 +10059,15 @@
     "stadium_latitude": 40.7635,
     "stadium_longitude": -111.8465,
     "stadium_name": "Smith's Ballpark",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 35300,
+    "acceptance_rate": 91,
+    "graduation_rate": 70,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://utahutes.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 201,
@@ -7977,7 +10097,15 @@
     "stadium_latitude": 37.109,
     "stadium_longitude": -113.568,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 12600,
+    "acceptance_rate": 100,
+    "graduation_rate": 31,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://utahtechblazers.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 200,
@@ -8007,7 +10135,15 @@
     "stadium_latitude": 40.276,
     "stadium_longitude": -111.714,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 42800,
+    "acceptance_rate": 100,
+    "graduation_rate": 28,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://wolverinegreen.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 105,
@@ -8037,7 +10173,15 @@
     "stadium_latitude": 31.77,
     "stadium_longitude": -106.504,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 25200,
+    "acceptance_rate": 100,
+    "graduation_rate": 40,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://utepminers.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 81,
@@ -8067,7 +10211,15 @@
     "stadium_latitude": 29.461,
     "stadium_longitude": -98.4835,
     "stadium_name": "Roadrunner Field",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 34700,
+    "acceptance_rate": 87,
+    "graduation_rate": 44,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://goutsa.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 149,
@@ -8097,7 +10249,15 @@
     "stadium_latitude": 41.466,
     "stadium_longitude": -87.036,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 3700,
+    "acceptance_rate": 87,
+    "graduation_rate": 66,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://valpoathletics.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 5,
@@ -8127,7 +10287,15 @@
     "stadium_latitude": 36.148,
     "stadium_longitude": -86.812,
     "stadium_name": "Hawkins Field",
-    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Hawkins_Field_%28Vanderbilt%29.jpg/1280px-Hawkins_Field_%28Vanderbilt%29.jpg"
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Hawkins_Field_%28Vanderbilt%29.jpg/1280px-Hawkins_Field_%28Vanderbilt%29.jpg",
+    "enrollment": 13500,
+    "acceptance_rate": 5,
+    "graduation_rate": 94,
+    "cws_appearances": 5,
+    "ncaa_regionals": 14,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://vucommodores.com/sport/baseball/recruit-questionnaire/"
   },
   {
     "id": 225,
@@ -8157,7 +10325,15 @@
     "stadium_latitude": 37.549,
     "stadium_longitude": -77.453,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 28000,
+    "acceptance_rate": 86,
+    "graduation_rate": 62,
+    "cws_appearances": 0,
+    "ncaa_regionals": 3,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://vcuathletics.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 261,
@@ -8187,7 +10363,15 @@
     "stadium_latitude": 44.478,
     "stadium_longitude": -73.196,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 13500,
+    "acceptance_rate": 62,
+    "graduation_rate": 73,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://uvmathletics.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 109,
@@ -8217,7 +10401,15 @@
     "stadium_latitude": 40.037,
     "stadium_longitude": -75.338,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 10800,
+    "acceptance_rate": 23,
+    "graduation_rate": 91,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://villanova.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 18,
@@ -8247,7 +10439,15 @@
     "stadium_latitude": 38.0315,
     "stadium_longitude": -78.514,
     "stadium_name": "Disharoon Park",
-    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Davenport_Field_2018.jpg/1280px-Davenport_Field_2018.jpg"
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Davenport_Field_2018.jpg/1280px-Davenport_Field_2018.jpg",
+    "enrollment": 26100,
+    "acceptance_rate": 19,
+    "graduation_rate": 94,
+    "cws_appearances": 7,
+    "ncaa_regionals": 14,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://virginiasports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 28,
@@ -8277,7 +10477,15 @@
     "stadium_latitude": 37.2275,
     "stadium_longitude": -80.421,
     "stadium_name": "English Field",
-    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/English_Field_at_Atlantic_Union_Bank_Park.jpg/1280px-English_Field_at_Atlantic_Union_Bank_Park.jpg"
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/English_Field_at_Atlantic_Union_Bank_Park.jpg/1280px-English_Field_at_Atlantic_Union_Bank_Park.jpg",
+    "enrollment": 37400,
+    "acceptance_rate": 57,
+    "graduation_rate": 83,
+    "cws_appearances": 1,
+    "ncaa_regionals": 7,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://hokiesports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 183,
@@ -8307,7 +10515,15 @@
     "stadium_latitude": 37.792,
     "stadium_longitude": -79.442,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 1700,
+    "acceptance_rate": 52,
+    "graduation_rate": 70,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://vmikeydets.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 267,
@@ -8337,7 +10553,15 @@
     "stadium_latitude": 40.616,
     "stadium_longitude": -74.095,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 1700,
+    "acceptance_rate": 78,
+    "graduation_rate": 63,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://wagnerathletics.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 17,
@@ -8367,7 +10591,15 @@
     "stadium_latitude": 36.0885,
     "stadium_longitude": -80.2575,
     "stadium_name": "David F. Couch Ballpark",
-    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/David_F._Couch_Ballpark.jpg/1280px-David_F._Couch_Ballpark.jpg"
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/David_F._Couch_Ballpark.jpg/1280px-David_F._Couch_Ballpark.jpg",
+    "enrollment": 8700,
+    "acceptance_rate": 21,
+    "graduation_rate": 91,
+    "cws_appearances": 3,
+    "ncaa_regionals": 10,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://godeacs.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 66,
@@ -8397,7 +10629,15 @@
     "stadium_latitude": 47.651,
     "stadium_longitude": -122.3015,
     "stadium_name": "Husky Ballpark",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 48100,
+    "acceptance_rate": 48,
+    "graduation_rate": 84,
+    "cws_appearances": 1,
+    "ncaa_regionals": 3,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://gohuskies.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 37,
@@ -8427,7 +10667,15 @@
     "stadium_latitude": 39.6485,
     "stadium_longitude": -79.953,
     "stadium_name": "Monongalia County Ballpark",
-    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Monongalia_County_Ballpark.jpg/1280px-Monongalia_County_Ballpark.jpg"
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Monongalia_County_Ballpark.jpg/1280px-Monongalia_County_Ballpark.jpg",
+    "enrollment": 26900,
+    "acceptance_rate": 86,
+    "graduation_rate": 60,
+    "cws_appearances": 0,
+    "ncaa_regionals": 5,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://wvusports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 179,
@@ -8457,7 +10705,15 @@
     "stadium_latitude": 35.312,
     "stadium_longitude": -83.186,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 12000,
+    "acceptance_rate": 55,
+    "graduation_rate": 49,
+    "cws_appearances": 0,
+    "ncaa_regionals": 2,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://catamountsports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 275,
@@ -8487,7 +10743,15 @@
     "stadium_latitude": 40.476,
     "stadium_longitude": -90.68,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 6700,
+    "acceptance_rate": 67,
+    "graduation_rate": 49,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://goleathernecks.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 99,
@@ -8517,7 +10781,15 @@
     "stadium_latitude": 36.99,
     "stadium_longitude": -86.443,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 16100,
+    "acceptance_rate": 90,
+    "graduation_rate": 50,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://wkusports.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 70,
@@ -8547,7 +10819,15 @@
     "stadium_latitude": 37.7215,
     "stadium_longitude": -97.2955,
     "stadium_name": "Eck Stadium",
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 16100,
+    "acceptance_rate": 94,
+    "graduation_rate": 51,
+    "cws_appearances": 7,
+    "ncaa_regionals": 9,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://goshockers.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 155,
@@ -8577,7 +10857,15 @@
     "stadium_latitude": 37.271,
     "stadium_longitude": -76.714,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 6700,
+    "acceptance_rate": 33,
+    "graduation_rate": 91,
+    "cws_appearances": 0,
+    "ncaa_regionals": 1,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://tribeathletics.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 182,
@@ -8607,7 +10895,15 @@
     "stadium_latitude": 34.952,
     "stadium_longitude": -81.929,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 1800,
+    "acceptance_rate": 61,
+    "graduation_rate": 79,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://woffordterriers.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 247,
@@ -8637,7 +10933,15 @@
     "stadium_latitude": 39.782,
     "stadium_longitude": -84.062,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 12000,
+    "acceptance_rate": 97,
+    "graduation_rate": 40,
+    "cws_appearances": 0,
+    "ncaa_regionals": 3,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://wsuraiders.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 108,
@@ -8667,7 +10971,15 @@
     "stadium_latitude": 39.149,
     "stadium_longitude": -84.473,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 7100,
+    "acceptance_rate": 76,
+    "graduation_rate": 79,
+    "cws_appearances": 0,
+    "ncaa_regionals": 2,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://goxavier.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 218,
@@ -8697,7 +11009,15 @@
     "stadium_latitude": 41.311,
     "stadium_longitude": -72.926,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 6500,
+    "acceptance_rate": 4,
+    "graduation_rate": 97,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://yalebulldogs.com/sports/baseball/form/recruit-questionnaire"
   },
   {
     "id": 250,
@@ -8727,6 +11047,14 @@
     "stadium_latitude": 41.104,
     "stadium_longitude": -80.646,
     "stadium_name": null,
-    "stadium_image_url": null
+    "stadium_image_url": null,
+    "enrollment": 11300,
+    "acceptance_rate": 75,
+    "graduation_rate": 39,
+    "cws_appearances": 0,
+    "ncaa_regionals": 0,
+    "roster_size": 35,
+    "scholarship_limit": 11.7,
+    "recruiting_questionnaire_url": "https://ysusports.com/sports/baseball/form/recruit-questionnaire"
   }
 ]

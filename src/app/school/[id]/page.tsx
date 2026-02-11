@@ -46,6 +46,14 @@ interface SchoolDetail {
   logo_url: string | null;
   mlb_draft_picks: number | null;
   stadium_image_url: string | null;
+  enrollment: number | null;
+  acceptance_rate: number | null;
+  graduation_rate: number | null;
+  cws_appearances: number;
+  ncaa_regionals: number;
+  roster_size: number;
+  scholarship_limit: number;
+  recruiting_questionnaire_url: string | null;
 }
 
 interface NewsArticle {
@@ -300,6 +308,93 @@ export default function SchoolPage({
               </p>
               <p className="text-[10px] sm:text-xs text-gray-400 mt-0.5">since 2021</p>
             </div>
+          </div>
+        </div>
+
+        {/* Academics, Roster & Postseason */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Academics & School Info */}
+          <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">
+            <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4 flex items-center gap-2">
+              <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+              </svg>
+              Academics & School Info
+            </h2>
+            <div className="grid grid-cols-2 gap-4">
+              {school.enrollment && (
+                <div className="bg-gray-50 rounded-lg p-3">
+                  <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Enrollment</p>
+                  <p className="text-lg font-bold text-gray-900">{school.enrollment.toLocaleString()}</p>
+                </div>
+              )}
+              {school.acceptance_rate && (
+                <div className="bg-gray-50 rounded-lg p-3">
+                  <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Acceptance Rate</p>
+                  <p className="text-lg font-bold text-gray-900">{school.acceptance_rate}%</p>
+                </div>
+              )}
+              {school.graduation_rate && (
+                <div className="bg-gray-50 rounded-lg p-3">
+                  <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Graduation Rate</p>
+                  <p className="text-lg font-bold text-gray-900">{school.graduation_rate}%</p>
+                </div>
+              )}
+              <div className="bg-gray-50 rounded-lg p-3">
+                <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Tuition</p>
+                <p className="text-lg font-bold text-gray-900">{school.tuition ? `$${(school.tuition).toLocaleString()}` : "N/A"}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Roster & Postseason */}
+          <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">
+            <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4 flex items-center gap-2">
+              <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+              </svg>
+              Roster & Postseason
+            </h2>
+            <div className="grid grid-cols-2 gap-4 mb-4">
+              <div className="bg-gray-50 rounded-lg p-3">
+                <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Roster Size</p>
+                <p className="text-lg font-bold text-gray-900">~{school.roster_size}</p>
+                <p className="text-[10px] sm:text-xs text-gray-400">players</p>
+              </div>
+              <div className="bg-gray-50 rounded-lg p-3">
+                <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Scholarships</p>
+                <p className="text-lg font-bold text-gray-900">{school.scholarship_limit}</p>
+                <p className="text-[10px] sm:text-xs text-gray-400">{school.division === "D3" ? "academic aid only" : "available to split"}</p>
+              </div>
+            </div>
+            {(school.cws_appearances > 0 || school.ncaa_regionals > 0) ? (
+              <div className="border-t border-gray-100 pt-4">
+                <h3 className="text-sm font-semibold text-gray-700 mb-2">Postseason History</h3>
+                <div className="space-y-2">
+                  {school.cws_appearances > 0 && (
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm text-gray-600">College World Series</span>
+                      <span className="text-sm font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-200">
+                        {school.cws_appearances} {school.cws_appearances === 1 ? "appearance" : "appearances"}
+                      </span>
+                    </div>
+                  )}
+                  {school.ncaa_regionals > 0 && (
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm text-gray-600">NCAA Regionals</span>
+                      <span className="text-sm font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded-full border border-blue-200">
+                        {school.ncaa_regionals} since 2000
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ) : (
+              <div className="border-t border-gray-100 pt-4">
+                <p className="text-sm text-gray-400">No recorded CWS or NCAA Regional appearances</p>
+              </div>
+            )}
           </div>
         </div>
 
