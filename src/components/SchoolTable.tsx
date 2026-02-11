@@ -212,6 +212,7 @@ export default function SchoolTable({
             <option value="ranking">Ranking</option>
             <option value="tuition">Tuition</option>
             <option value="priority">Priority</option>
+            {distances && <option value="distance">Distance from Home</option>}
           </select>
           <button
             onClick={() => onSort(sortBy)}
@@ -243,7 +244,7 @@ export default function SchoolTable({
               <SortHeader label="Rank" column="ranking" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
               <SortHeader label="Tuition" column="tuition" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
               {distances && (
-                <th className="px-3 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider whitespace-nowrap">From Home</th>
+                <SortHeader label="From Home" column="distance" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
               )}
               <SortHeader label="Priority" column="priority" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
               <th className="px-3 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Coach</th>
