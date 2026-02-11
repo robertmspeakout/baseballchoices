@@ -174,7 +174,7 @@ export default function SchoolPage({
           {/* Quick stats - 3 cols on mobile for better fit, 5 on desktop */}
           <div className="grid grid-cols-3 sm:grid-cols-5 divide-x divide-y sm:divide-y-0 divide-gray-100">
             <div className="p-3 sm:p-4 text-center">
-              <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">2024 Record</p>
+              <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">2025 Record</p>
               <p className="text-base sm:text-xl font-bold text-gray-900 mt-0.5 sm:mt-1">
                 {school.last_season_record || "N/A"}
               </p>
