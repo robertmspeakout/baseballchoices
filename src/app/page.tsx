@@ -44,7 +44,7 @@ interface Filters {
 
 const TABS = [
   { key: "mylist", label: "My List" },
-  { key: "D1", label: "D1" },
+  { key: "D1", label: "Division I Programs" },
 ] as const;
 type TabKey = (typeof TABS)[number]["key"];
 
@@ -332,7 +332,7 @@ export default function Home() {
               onClick={() => handleTabChange("D1")}
               className="text-sm text-blue-600 hover:text-blue-800 font-medium"
             >
-              Browse all D1 &rarr;
+              Browse all D1 Programs &rarr;
             </button>
           </div>
         )}
