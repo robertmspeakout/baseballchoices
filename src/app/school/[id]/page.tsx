@@ -106,9 +106,16 @@ export default function SchoolPage({
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 text-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-4">
+      {/* Header with baseball park background */}
+      <header className="relative bg-blue-950 text-white overflow-hidden">
+        {/* Baseball park background image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/2019CWSVanderbiltVsLouisville.jpg/1600px-2019CWSVanderbiltVsLouisville.jpg')" }}
+        />
+        {/* Dark gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-950/90 via-blue-900/85 to-blue-950/90" />
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 py-4">
           <Link
             href="/"
             className="inline-flex items-center gap-2 text-blue-200 hover:text-white text-sm transition-colors"

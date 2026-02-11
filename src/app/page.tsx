@@ -186,21 +186,15 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header with baseball imagery */}
-      <header className="relative bg-gradient-to-br from-blue-950 via-blue-900 to-blue-800 text-white shadow-lg overflow-hidden">
-        {/* Baseball diamond pattern background */}
-        <div className="absolute inset-0 opacity-5">
-          <svg className="w-full h-full" viewBox="0 0 800 200" preserveAspectRatio="xMidYMid slice">
-            {/* Baseball stitching pattern */}
-            <path d="M0,100 Q200,0 400,100 Q600,200 800,100" fill="none" stroke="white" strokeWidth="3" />
-            <path d="M0,100 Q200,200 400,100 Q600,0 800,100" fill="none" stroke="white" strokeWidth="3" />
-            {/* Diamond shapes */}
-            <polygon points="100,30 130,60 100,90 70,60" fill="none" stroke="white" strokeWidth="1.5" />
-            <polygon points="350,40 380,70 350,100 320,70" fill="none" stroke="white" strokeWidth="1.5" />
-            <polygon points="600,20 630,50 600,80 570,50" fill="none" stroke="white" strokeWidth="1.5" />
-            <polygon points="700,60 730,90 700,120 670,90" fill="none" stroke="white" strokeWidth="1.5" />
-          </svg>
-        </div>
+      {/* Header with CWS Omaha stadium background */}
+      <header className="relative bg-blue-950 text-white shadow-lg overflow-hidden">
+        {/* Charles Schwab Field (CWS) background image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Inside_TD_Ameritrade_Park_Omaha.jpg/1600px-Inside_TD_Ameritrade_Park_Omaha.jpg')" }}
+        />
+        {/* Dark gradient overlay for readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-950/90 via-blue-900/80 to-blue-950/85" />
         <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 py-5 sm:py-10">
           <div className="flex items-center gap-3 sm:gap-5">
             {/* Baseball icon */}
