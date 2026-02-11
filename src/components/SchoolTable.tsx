@@ -61,6 +61,15 @@ function SortHeader({
   );
 }
 
+const priorityLabels: Record<number, string> = {
+  0: "",
+  1: "Mildly Interested",
+  2: "Interested",
+  3: "Very Interested",
+  4: "Top Choice",
+  5: "VIP Choice",
+};
+
 function divisionBadge(division: string) {
   const colors: Record<string, string> = {
     D1: "bg-blue-100 text-blue-800",
@@ -150,12 +159,15 @@ function MobileCard({
             )}
           </div>
           {/* Priority */}
-          <div className="mt-2" onClick={(e) => e.preventDefault()}>
+          <div className="mt-2 flex items-center gap-2" onClick={(e) => e.preventDefault()}>
             <StarRating
               value={school.priority}
               onChange={(v) => onPriorityChange(school.id, v)}
               size="sm"
             />
+            {school.priority > 0 && (
+              <span className="text-xs text-gray-500 font-medium">{priorityLabels[school.priority]}</span>
+            )}
           </div>
         </div>
       </div>

@@ -229,7 +229,14 @@ export default function SchoolPage({
                     onChange={savePriority}
                     size="sm"
                   />
-                  <span className="text-xs text-gray-400">Your Priority</span>
+                  <span className="text-xs text-gray-500 font-medium">
+                    {priority === 0 && "Not Rated"}
+                    {priority === 1 && "Mildly Interested"}
+                    {priority === 2 && "Interested"}
+                    {priority === 3 && "Very Interested"}
+                    {priority === 4 && "Top Choice"}
+                    {priority === 5 && "VIP Choice"}
+                  </span>
                 </div>
               </div>
             </div>
@@ -270,36 +277,6 @@ export default function SchoolPage({
           </div>
         </div>
 
-        {/* MLB Draft Picks */}
-        {school.mlb_draft_picks != null && school.mlb_draft_picks > 0 && (
-          <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">
-            <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-2 flex items-center gap-2">
-              <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-              </svg>
-              MLB Draft Picks since 2021
-            </h2>
-            <p className="text-xs text-gray-500 mb-3">Players drafted across the 2021&ndash;2025 MLB Drafts</p>
-            <div className="flex items-center gap-4">
-              <div className="bg-gradient-to-br from-amber-50 to-amber-100 border border-amber-200 rounded-xl px-6 py-4 text-center">
-                <p className="text-3xl sm:text-4xl font-extrabold text-amber-700">{school.mlb_draft_picks}</p>
-                <p className="text-xs text-amber-600 font-medium mt-1">Total Picks</p>
-              </div>
-              <div className="text-sm text-gray-600">
-                <p>
-                  {school.mlb_draft_picks >= 15
-                    ? "Elite pipeline to professional baseball"
-                    : school.mlb_draft_picks >= 8
-                    ? "Strong track record of developing MLB talent"
-                    : school.mlb_draft_picks >= 3
-                    ? "Consistent at producing draft-eligible players"
-                    : "Developing program with draft history"}
-                </p>
-              </div>
-            </div>
-          </div>
-        )}
-
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Coaching Staff */}
           <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">
@@ -325,25 +302,6 @@ export default function SchoolPage({
                       className="text-xs sm:text-sm text-blue-600 hover:underline break-all"
                     >
                       {school.head_coach_email}
-                    </a>
-                  )}
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="shrink-0 w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center">
-                  <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="text-[10px] sm:text-xs uppercase text-gray-500 font-medium">Assistant Coach</p>
-                  <p className="text-sm sm:text-base text-gray-900 font-semibold">{school.assistant_coach_name || "N/A"}</p>
-                  {school.assistant_coach_email && (
-                    <a
-                      href={`mailto:${school.assistant_coach_email}`}
-                      className="text-xs sm:text-sm text-blue-600 hover:underline break-all"
-                    >
-                      {school.assistant_coach_email}
                     </a>
                   )}
                 </div>
@@ -412,6 +370,39 @@ export default function SchoolPage({
             </div>
           </div>
         </div>
+
+        {/* MLB Draft Picks */}
+        {school.mlb_draft_picks != null && school.mlb_draft_picks > 0 && (
+          <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">
+            <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-2 flex items-center gap-2">
+              <img
+                src="https://www.mlbstatic.com/team-logos/league-on-dark/1.svg"
+                alt="MLB"
+                className="w-6 h-6"
+                onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+              />
+              MLB Draft Picks since 2021
+            </h2>
+            <p className="text-xs text-gray-500 mb-3">Players drafted across the 2021&ndash;2025 MLB Drafts</p>
+            <div className="flex items-center gap-4">
+              <div className="bg-gradient-to-br from-amber-50 to-amber-100 border border-amber-200 rounded-xl px-6 py-4 text-center">
+                <p className="text-3xl sm:text-4xl font-extrabold text-amber-700">{school.mlb_draft_picks}</p>
+                <p className="text-xs text-amber-600 font-medium mt-1">Total Picks</p>
+              </div>
+              <div className="text-sm text-gray-600">
+                <p>
+                  {school.mlb_draft_picks >= 15
+                    ? "Elite pipeline to professional baseball"
+                    : school.mlb_draft_picks >= 8
+                    ? "Strong track record of developing MLB talent"
+                    : school.mlb_draft_picks >= 3
+                    ? "Consistent at producing draft-eligible players"
+                    : "Developing program with draft history"}
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Latest News */}
         <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">
