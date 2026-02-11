@@ -153,7 +153,7 @@ function MobileCard({
             {divisionBadge(school.division)}
             <span className="text-xs text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full">{school.conference}</span>
             {school.last_season_record && (
-              <span className="text-xs text-blue-700 bg-blue-50 px-2 py-0.5 rounded-full font-medium">{school.last_season_record}</span>
+              <span className="text-xs text-blue-700 bg-blue-50 px-2 py-0.5 rounded-full font-medium">Last: {school.last_season_record}</span>
             )}
             {distances && distances[school.id] != null && (
               <span className="text-xs text-green-700 bg-green-50 px-2 py-0.5 rounded-full font-medium">
@@ -272,8 +272,11 @@ export default function SchoolTable({
                 <td className="px-3 py-3 text-sm text-gray-700">{school.conference}</td>
                 <td className="px-3 py-3 text-sm text-gray-700">{school.state}</td>
                 <td className="px-3 py-3 text-sm text-gray-700">{school.public_private}</td>
-                <td className="px-3 py-3 text-sm text-gray-700 font-medium text-center">
-                  {school.last_season_record || <span className="text-gray-300">-</span>}
+                <td className="px-3 py-3 text-sm text-gray-700 text-center">
+                  <span className="font-medium">0-0</span>
+                  {school.last_season_record && (
+                    <div className="text-[10px] text-gray-400">{school.last_season_record}</div>
+                  )}
                 </td>
                 <td className="px-3 py-3 text-sm text-gray-700 text-center">
                   {school.current_ranking ? (

@@ -4,8 +4,19 @@ import { useEffect, useState, use } from "react";
 import Link from "next/link";
 import StarRating from "@/components/StarRating";
 import schoolsData from "@/data/schools.json";
+import draftPicksData from "@/data/draft-picks.json";
 import { getUserData, setUserData } from "@/lib/userData";
 import { haversineDistance } from "@/lib/geo";
+
+interface DraftPick {
+  name: string;
+  year: number;
+  round: number;
+  pick: number;
+  team: string;
+  position: string;
+  current_level: string;
+}
 
 interface SchoolDetail {
   id: number;
@@ -34,6 +45,7 @@ interface SchoolDetail {
   last_season_record: string | null;
   logo_url: string | null;
   mlb_draft_picks: number | null;
+  stadium_image_url: string | null;
 }
 
 interface NewsArticle {
@@ -84,6 +96,7 @@ export default function SchoolPage({
   const [distanceFromHome, setDistanceFromHome] = useState<number | null>(null);
   const [news, setNews] = useState<NewsArticle[]>([]);
   const [newsLoading, setNewsLoading] = useState(true);
+  const [draftExpanded, setDraftExpanded] = useState(false);
 
   useEffect(() => {
     const ud = getUserData(parseInt(id));
@@ -198,7 +211,7 @@ export default function SchoolPage({
       <header className="relative bg-blue-950 text-white overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/2019CWSVanderbiltVsLouisville.jpg/1600px-2019CWSVanderbiltVsLouisville.jpg')" }}
+          style={{ backgroundImage: `url('${school.stadium_image_url || "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/2019CWSVanderbiltVsLouisville.jpg/1600px-2019CWSVanderbiltVsLouisville.jpg"}')` }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-blue-950/90 via-blue-900/85 to-blue-950/90" />
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 py-4">
@@ -214,16 +227,8 @@ export default function SchoolPage({
       <main className="max-w-5xl mx-auto px-4 sm:px-6 py-4 sm:py-8 space-y-4 sm:space-y-6">
         {/* School header card */}
         <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
-          <div className="relative bg-gradient-to-r from-gray-50 to-white p-4 sm:p-8 border-b border-gray-100 overflow-hidden">
-            {/* Large faded school logo watermark */}
-            {school.logo_url && (
-              <img
-                src={school.logo_url}
-                alt=""
-                className="absolute right-[-20px] top-[-20px] w-48 h-48 sm:w-64 sm:h-64 object-contain opacity-[0.06] pointer-events-none select-none"
-              />
-            )}
-            <div className="relative flex items-start gap-3 sm:gap-5">
+          <div className="bg-gradient-to-r from-gray-50 to-white p-4 sm:p-8 border-b border-gray-100">
+            <div className="flex items-start gap-3 sm:gap-5">
               <div className="shrink-0 w-14 h-14 sm:w-20 sm:h-20 rounded-xl bg-gray-100 border border-gray-200 flex items-center justify-center overflow-hidden">
                 {school.logo_url && !logoError ? (
                   <img src={school.logo_url} alt={`${school.name} logo`} className="w-11 h-11 sm:w-16 sm:h-16 object-contain" onError={() => setLogoError(true)} />
@@ -271,7 +276,10 @@ export default function SchoolPage({
           <div className="grid grid-cols-3 sm:grid-cols-5 divide-x divide-y sm:divide-y-0 divide-gray-100">
             <div className="p-3 sm:p-4 text-center">
               <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Current Record</p>
-              <p className="text-base sm:text-xl font-bold text-gray-900 mt-0.5 sm:mt-1">{school.last_season_record || "N/A"}</p>
+              <p className="text-base sm:text-xl font-bold text-gray-900 mt-0.5 sm:mt-1">0-0</p>
+              {school.last_season_record && (
+                <p className="text-[10px] sm:text-xs text-gray-400 mt-0.5">Last Season: {school.last_season_record}</p>
+              )}
             </div>
             <div className="p-3 sm:p-4 text-center">
               <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Current Ranking</p>
@@ -500,35 +508,101 @@ export default function SchoolPage({
           </div>
         </div>
 
-        {/* MLB Draft Picks — compact inline */}
-        {school.mlb_draft_picks != null && school.mlb_draft_picks > 0 && (
-          <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">
-            <div className="flex items-center gap-3">
-              <img
-                src="https://www.mlbstatic.com/team-logos/league-on-dark/1.svg"
-                alt="MLB"
-                className="w-7 h-7"
-                onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
-              />
-              <div>
-                <h2 className="text-base sm:text-lg font-bold text-gray-900">
-                  {school.mlb_draft_picks} MLB Draft Picks
-                  <span className="text-sm font-normal text-gray-500 ml-1.5">since 2021</span>
-                </h2>
-                <p className="text-xs text-gray-500">
-                  {school.mlb_draft_picks >= 15
-                    ? "Elite pipeline to professional baseball"
-                    : school.mlb_draft_picks >= 8
-                    ? "Strong track record of developing MLB talent"
-                    : school.mlb_draft_picks >= 3
-                    ? "Consistent at producing draft-eligible players"
-                    : "Developing program with draft history"}
-                  {" "}&middot; 2021&ndash;2025 MLB Drafts
-                </p>
-              </div>
+        {/* MLB Draft Picks — collapsible table */}
+        {school.mlb_draft_picks != null && school.mlb_draft_picks > 0 && (() => {
+          const picks = (draftPicksData as Record<string, DraftPick[]>)[school.name] || [];
+          return (
+            <div className="bg-white rounded-xl border border-gray-200 shadow-sm">
+              <button
+                onClick={() => setDraftExpanded(!draftExpanded)}
+                className="w-full flex items-center gap-3 p-4 sm:p-6 text-left hover:bg-gray-50/50 transition-colors"
+              >
+                <img
+                  src="https://www.mlbstatic.com/team-logos/league-on-dark/1.svg"
+                  alt="MLB"
+                  className="w-7 h-7 shrink-0"
+                  onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
+                />
+                <div className="flex-1 min-w-0">
+                  <h2 className="text-base sm:text-lg font-bold text-gray-900">
+                    {school.mlb_draft_picks} MLB Draft Picks
+                    <span className="text-sm font-normal text-gray-500 ml-1.5">since 2021</span>
+                  </h2>
+                  <p className="text-xs text-gray-500">
+                    {picks.length > 0
+                      ? `${picks.filter(p => p.current_level === "MLB").length} in MLB now`
+                      : school.mlb_draft_picks >= 8
+                      ? "Strong track record of developing MLB talent"
+                      : "Players drafted to professional baseball"}
+                    {" "}&middot; Tap to {draftExpanded ? "collapse" : "see details"}
+                  </p>
+                </div>
+                <svg
+                  className={`w-5 h-5 text-gray-400 shrink-0 transition-transform ${draftExpanded ? "rotate-180" : ""}`}
+                  fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {draftExpanded && picks.length > 0 && (
+                <div className="border-t border-gray-100 overflow-x-auto">
+                  <table className="min-w-full divide-y divide-gray-100">
+                    <thead className="bg-gray-50">
+                      <tr>
+                        <th className="px-4 py-2.5 text-left text-xs font-semibold text-gray-600 uppercase">Player</th>
+                        <th className="px-3 py-2.5 text-left text-xs font-semibold text-gray-600 uppercase">Year</th>
+                        <th className="px-3 py-2.5 text-left text-xs font-semibold text-gray-600 uppercase">Selection</th>
+                        <th className="px-3 py-2.5 text-left text-xs font-semibold text-gray-600 uppercase">Team</th>
+                        <th className="px-3 py-2.5 text-left text-xs font-semibold text-gray-600 uppercase">Pos</th>
+                        <th className="px-3 py-2.5 text-left text-xs font-semibold text-gray-600 uppercase">Current</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-50">
+                      {picks.sort((a, b) => b.year - a.year || a.round - b.round).map((pick, i) => (
+                        <tr key={i} className="hover:bg-blue-50/30">
+                          <td className="px-4 py-2.5">
+                            <a
+                              href={`https://www.mlb.com/search?q=${encodeURIComponent(pick.name)}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-sm font-medium text-blue-700 hover:underline"
+                            >
+                              {pick.name}
+                            </a>
+                          </td>
+                          <td className="px-3 py-2.5 text-sm text-gray-700">{pick.year}</td>
+                          <td className="px-3 py-2.5 text-sm text-gray-700">
+                            Rd {pick.round}, #{pick.pick}
+                          </td>
+                          <td className="px-3 py-2.5 text-sm text-gray-700 whitespace-nowrap">{pick.team}</td>
+                          <td className="px-3 py-2.5 text-sm text-gray-700">{pick.position}</td>
+                          <td className="px-3 py-2.5">
+                            <span className={`inline-block px-2 py-0.5 rounded-full text-xs font-semibold ${
+                              pick.current_level === "MLB"
+                                ? "bg-green-100 text-green-800"
+                                : pick.current_level === "AAA"
+                                ? "bg-blue-100 text-blue-800"
+                                : pick.current_level === "AA"
+                                ? "bg-purple-100 text-purple-800"
+                                : "bg-gray-100 text-gray-700"
+                            }`}>
+                              {pick.current_level}
+                            </span>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+              {draftExpanded && picks.length === 0 && (
+                <div className="border-t border-gray-100 p-4 text-sm text-gray-400 text-center">
+                  Detailed player data not yet available for this program.
+                </div>
+              )}
             </div>
-          </div>
-        )}
+          );
+        })()}
 
         {/* Latest News */}
         <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">

@@ -26,7 +26,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 32.442,
     "stadium_longitude": -99.715,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 140,
@@ -55,7 +56,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 38.9985,
     "stadium_longitude": -104.8585,
-    "stadium_name": "Falcon Field"
+    "stadium_name": "Falcon Field",
+    "stadium_image_url": null
   },
   {
     "id": 13,
@@ -84,7 +86,8 @@
     "mlb_draft_picks": 12,
     "stadium_latitude": 33.2057,
     "stadium_longitude": -87.5503,
-    "stadium_name": "Sewell-Thomas Stadium"
+    "stadium_name": "Sewell-Thomas Stadium",
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Sewell-Thomas_Stadium_2020.jpg/1280px-Sewell-Thomas_Stadium_2020.jpg"
   },
   {
     "id": 287,
@@ -113,7 +116,8 @@
     "mlb_draft_picks": 1,
     "stadium_latitude": 34.783,
     "stadium_longitude": -86.569,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 286,
@@ -142,7 +146,8 @@
     "mlb_draft_picks": 1,
     "stadium_latitude": 32.364,
     "stadium_longitude": -86.296,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 256,
@@ -171,7 +176,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 42.685,
     "stadium_longitude": -73.825,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 288,
@@ -200,7 +206,8 @@
     "mlb_draft_picks": 1,
     "stadium_latitude": 31.872,
     "stadium_longitude": -91.136,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 86,
@@ -229,7 +236,8 @@
     "mlb_draft_picks": 5,
     "stadium_latitude": 36.217,
     "stadium_longitude": -81.685,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 46,
@@ -258,7 +266,8 @@
     "mlb_draft_picks": 7,
     "stadium_latitude": 32.2288,
     "stadium_longitude": -110.9415,
-    "stadium_name": "Hi Corbett Field"
+    "stadium_name": "Hi Corbett Field",
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Hi_Corbett_Field%2C_Tucson.jpg/1280px-Hi_Corbett_Field%2C_Tucson.jpg"
   },
   {
     "id": 45,
@@ -287,7 +296,8 @@
     "mlb_draft_picks": 15,
     "stadium_latitude": 33.4255,
     "stadium_longitude": -111.9315,
-    "stadium_name": "Phoenix Municipal Stadium"
+    "stadium_name": "Phoenix Municipal Stadium",
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Phoenix_Municipal_Stadium.jpg/1280px-Phoenix_Municipal_Stadium.jpg"
   },
   {
     "id": 7,
@@ -316,7 +326,8 @@
     "mlb_draft_picks": 20,
     "stadium_latitude": 36.0685,
     "stadium_longitude": -94.1785,
-    "stadium_name": "Baum-Walker Stadium"
+    "stadium_name": "Baum-Walker Stadium",
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Baum_Stadium%2C_Fayetteville%2C_AR.jpg/1280px-Baum_Stadium%2C_Fayetteville%2C_AR.jpg"
   },
   {
     "id": 87,
@@ -345,7 +356,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 35.843,
     "stadium_longitude": -90.683,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 291,
@@ -374,7 +386,8 @@
     "mlb_draft_picks": 1,
     "stadium_latitude": 34.229,
     "stadium_longitude": -92.003,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 212,
@@ -403,7 +416,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 41.391,
     "stadium_longitude": -73.956,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 11,
@@ -432,7 +446,8 @@
     "mlb_draft_picks": 14,
     "stadium_latitude": 32.6055,
     "stadium_longitude": -85.487,
-    "stadium_name": "Plainsman Park"
+    "stadium_name": "Plainsman Park",
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Plainsman_Park_2011.jpg/1280px-Plainsman_Park_2011.jpg"
   },
   {
     "id": 170,
@@ -461,7 +476,8 @@
     "mlb_draft_picks": 4,
     "stadium_latitude": 36.539,
     "stadium_longitude": -87.354,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 40,
@@ -490,7 +506,8 @@
     "mlb_draft_picks": 11,
     "stadium_latitude": 31.5575,
     "stadium_longitude": -97.119,
-    "stadium_name": "Baylor Ballpark"
+    "stadium_name": "Baylor Ballpark",
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Baylor_Ballpark_2014.jpg/1280px-Baylor_Ballpark_2014.jpg"
   },
   {
     "id": 172,
@@ -519,7 +536,8 @@
     "mlb_draft_picks": 4,
     "stadium_latitude": 38.218,
     "stadium_longitude": -85.676,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 292,
@@ -548,7 +566,8 @@
     "mlb_draft_picks": 1,
     "stadium_latitude": 29.1985,
     "stadium_longitude": -81.049,
-    "stadium_name": "Jackie Robinson Ballpark"
+    "stadium_name": "Jackie Robinson Ballpark",
+    "stadium_image_url": null
   },
   {
     "id": 255,
@@ -577,7 +596,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 42.089,
     "stadium_longitude": -75.966,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 31,
@@ -606,7 +626,8 @@
     "mlb_draft_picks": 4,
     "stadium_latitude": 42.3355,
     "stadium_longitude": -71.1685,
-    "stadium_name": "Eddie Pellagrini Diamond"
+    "stadium_name": "Eddie Pellagrini Diamond",
+    "stadium_image_url": null
   },
   {
     "id": 148,
@@ -635,7 +656,8 @@
     "mlb_draft_picks": 5,
     "stadium_latitude": 40.698,
     "stadium_longitude": -89.616,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 223,
@@ -664,7 +686,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 41.826,
     "stadium_longitude": -71.403,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 258,
@@ -693,7 +716,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 41.844,
     "stadium_longitude": -71.526,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 214,
@@ -722,7 +746,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 40.955,
     "stadium_longitude": -76.884,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 113,
@@ -751,7 +776,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 39.839,
     "stadium_longitude": -86.17,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 43,
@@ -780,7 +806,8 @@
     "mlb_draft_picks": 7,
     "stadium_latitude": 40.2555,
     "stadium_longitude": -111.651,
-    "stadium_name": "Larry H. Miller Field"
+    "stadium_name": "Larry H. Miller Field",
+    "stadium_image_url": null
   },
   {
     "id": 128,
@@ -809,7 +836,8 @@
     "mlb_draft_picks": 7,
     "stadium_latitude": 35.3015,
     "stadium_longitude": -120.6565,
-    "stadium_name": "Baggett Stadium"
+    "stadium_name": "Baggett Stadium",
+    "stadium_image_url": null
   },
   {
     "id": 134,
@@ -838,7 +866,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 35.348,
     "stadium_longitude": -119.103,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 124,
@@ -867,7 +896,8 @@
     "mlb_draft_picks": 13,
     "stadium_latitude": 33.8835,
     "stadium_longitude": -117.8835,
-    "stadium_name": "Goodwin Field"
+    "stadium_name": "Goodwin Field",
+    "stadium_image_url": null
   },
   {
     "id": 133,
@@ -896,7 +926,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 34.24,
     "stadium_longitude": -118.529,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 32,
@@ -925,7 +956,8 @@
     "mlb_draft_picks": 7,
     "stadium_latitude": 37.871,
     "stadium_longitude": -122.251,
-    "stadium_name": "Evans Diamond"
+    "stadium_name": "Evans Diamond",
+    "stadium_image_url": null
   },
   {
     "id": 198,
@@ -954,7 +986,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 33.932,
     "stadium_longitude": -117.426,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 242,
@@ -983,7 +1016,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 42.936,
     "stadium_longitude": -78.857,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 171,
@@ -1012,7 +1046,8 @@
     "mlb_draft_picks": 5,
     "stadium_latitude": 35.076,
     "stadium_longitude": -92.462,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 262,
@@ -1041,7 +1076,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 41.669,
     "stadium_longitude": -72.783,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 151,
@@ -1070,7 +1106,8 @@
     "mlb_draft_picks": 6,
     "stadium_latitude": 32.784,
     "stadium_longitude": -79.937,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 73,
@@ -1099,7 +1136,8 @@
     "mlb_draft_picks": 8,
     "stadium_latitude": 35.306,
     "stadium_longitude": -80.729,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 184,
@@ -1128,7 +1166,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 35.05,
     "stadium_longitude": -85.307,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 44,
@@ -1157,7 +1196,8 @@
     "mlb_draft_picks": 4,
     "stadium_latitude": 39.133,
     "stadium_longitude": -84.515,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 19,
@@ -1186,7 +1226,8 @@
     "mlb_draft_picks": 16,
     "stadium_latitude": 34.683,
     "stadium_longitude": -82.838,
-    "stadium_name": "Doug Kingsmore Stadium"
+    "stadium_name": "Doug Kingsmore Stadium",
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Doug_Kingsmore_Stadium.jpg/1280px-Doug_Kingsmore_Stadium.jpg"
   },
   {
     "id": 251,
@@ -1215,7 +1256,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 41.502,
     "stadium_longitude": -81.675,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 82,
@@ -1244,7 +1286,8 @@
     "mlb_draft_picks": 13,
     "stadium_latitude": 33.796,
     "stadium_longitude": -79.0185,
-    "stadium_name": "Springs Brooks Stadium"
+    "stadium_name": "Springs Brooks Stadium",
+    "stadium_image_url": null
   },
   {
     "id": 219,
@@ -1273,7 +1316,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 40.808,
     "stadium_longitude": -73.962,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 106,
@@ -1302,7 +1346,8 @@
     "mlb_draft_picks": 5,
     "stadium_latitude": 41.8085,
     "stadium_longitude": -72.253,
-    "stadium_name": "Elliot Ballpark"
+    "stadium_name": "Elliot Ballpark",
+    "stadium_image_url": null
   },
   {
     "id": 278,
@@ -1331,7 +1376,8 @@
     "mlb_draft_picks": 1,
     "stadium_latitude": 39.311,
     "stadium_longitude": -76.656,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 224,
@@ -1360,7 +1406,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 42.447,
     "stadium_longitude": -76.477,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 107,
@@ -1389,7 +1436,8 @@
     "mlb_draft_picks": 7,
     "stadium_latitude": 41.2555,
     "stadium_longitude": -95.9345,
-    "stadium_name": "TD Ameritrade Park"
+    "stadium_name": "TD Ameritrade Park",
+    "stadium_image_url": null
   },
   {
     "id": 142,
@@ -1418,7 +1466,8 @@
     "mlb_draft_picks": 6,
     "stadium_latitude": 32.7125,
     "stadium_longitude": -96.8945,
-    "stadium_name": "Horner Ballpark"
+    "stadium_name": "Horner Ballpark",
+    "stadium_image_url": null
   },
   {
     "id": 222,
@@ -1447,7 +1496,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 43.704,
     "stadium_longitude": -72.289,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 228,
@@ -1476,7 +1526,8 @@
     "mlb_draft_picks": 4,
     "stadium_latitude": 35.502,
     "stadium_longitude": -80.843,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 229,
@@ -1505,7 +1556,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 39.741,
     "stadium_longitude": -84.179,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 159,
@@ -1534,7 +1586,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 39.683,
     "stadium_longitude": -75.752,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 279,
@@ -1563,7 +1616,8 @@
     "mlb_draft_picks": 1,
     "stadium_latitude": 39.186,
     "stadium_longitude": -75.543,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 160,
@@ -1592,7 +1646,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 39.957,
     "stadium_longitude": -75.189,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 26,
@@ -1621,7 +1676,8 @@
     "mlb_draft_picks": 12,
     "stadium_latitude": 36.0045,
     "stadium_longitude": -78.943,
-    "stadium_name": "Jack Coombs Field"
+    "stadium_name": "Jack Coombs Field",
+    "stadium_image_url": null
   },
   {
     "id": 68,
@@ -1650,7 +1706,8 @@
     "mlb_draft_picks": 17,
     "stadium_latitude": 35.6045,
     "stadium_longitude": -77.372,
-    "stadium_name": "Clark-LeClair Stadium"
+    "stadium_name": "Clark-LeClair Stadium",
+    "stadium_image_url": null
   },
   {
     "id": 169,
@@ -1679,7 +1736,8 @@
     "mlb_draft_picks": 4,
     "stadium_latitude": 37.733,
     "stadium_longitude": -84.295,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 153,
@@ -1708,7 +1766,8 @@
     "mlb_draft_picks": 4,
     "stadium_latitude": 36.105,
     "stadium_longitude": -79.502,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 176,
@@ -1737,7 +1796,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 36.304,
     "stadium_longitude": -82.368,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 147,
@@ -1766,7 +1826,8 @@
     "mlb_draft_picks": 7,
     "stadium_latitude": 37.9715,
     "stadium_longitude": -87.564,
-    "stadium_name": "German American Bank Field"
+    "stadium_name": "German American Bank Field",
+    "stadium_image_url": null
   },
   {
     "id": 241,
@@ -1795,7 +1856,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 41.168,
     "stadium_longitude": -73.255,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 266,
@@ -1824,7 +1886,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 40.862,
     "stadium_longitude": -74.015,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 74,
@@ -1853,7 +1916,8 @@
     "mlb_draft_picks": 5,
     "stadium_latitude": 26.373,
     "stadium_longitude": -80.102,
-    "stadium_name": "FAU Baseball Stadium"
+    "stadium_name": "FAU Baseball Stadium",
+    "stadium_image_url": null
   },
   {
     "id": 102,
@@ -1882,7 +1946,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 25.7565,
     "stadium_longitude": -80.3745,
-    "stadium_name": "FIU Baseball Stadium"
+    "stadium_name": "FIU Baseball Stadium",
+    "stadium_image_url": null
   },
   {
     "id": 4,
@@ -1911,7 +1976,8 @@
     "mlb_draft_picks": 23,
     "stadium_latitude": 29.6463,
     "stadium_longitude": -82.3442,
-    "stadium_name": "Condron Ballpark"
+    "stadium_name": "Condron Ballpark",
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Florida_Ballpark_2021.jpg/1280px-Florida_Ballpark_2021.jpg"
   },
   {
     "id": 294,
@@ -1940,7 +2006,8 @@
     "mlb_draft_picks": 1,
     "stadium_latitude": 30.4225,
     "stadium_longitude": -84.289,
-    "stadium_name": "Moore-Kittles Field"
+    "stadium_name": "Moore-Kittles Field",
+    "stadium_image_url": null
   },
   {
     "id": 167,
@@ -1969,7 +2036,8 @@
     "mlb_draft_picks": 5,
     "stadium_latitude": 26.4635,
     "stadium_longitude": -81.7735,
-    "stadium_name": "FGCU Baseball Complex"
+    "stadium_name": "FGCU Baseball Complex",
+    "stadium_image_url": null
   },
   {
     "id": 20,
@@ -1998,7 +2066,8 @@
     "mlb_draft_picks": 18,
     "stadium_latitude": 30.438,
     "stadium_longitude": -84.3005,
-    "stadium_name": "Dick Howser Stadium"
+    "stadium_name": "Dick Howser Stadium",
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Dick_Howser_Stadium.jpg/1280px-Dick_Howser_Stadium.jpg"
   },
   {
     "id": 231,
@@ -2027,7 +2096,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 40.861,
     "stadium_longitude": -73.886,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 136,
@@ -2056,7 +2126,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 36.817,
     "stadium_longitude": -119.7535,
-    "stadium_name": "Pete Beiden Field"
+    "stadium_name": "Pete Beiden Field",
+    "stadium_image_url": null
   },
   {
     "id": 180,
@@ -2085,7 +2156,8 @@
     "mlb_draft_picks": 4,
     "stadium_latitude": 34.925,
     "stadium_longitude": -82.441,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 227,
@@ -2114,7 +2186,8 @@
     "mlb_draft_picks": 5,
     "stadium_latitude": 38.832,
     "stadium_longitude": -77.307,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 235,
@@ -2143,7 +2216,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 38.9,
     "stadium_longitude": -77.049,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 112,
@@ -2172,7 +2246,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 38.908,
     "stadium_longitude": -77.072,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 12,
@@ -2201,7 +2276,8 @@
     "mlb_draft_picks": 14,
     "stadium_latitude": 33.9505,
     "stadium_longitude": -83.3735,
-    "stadium_name": "Foley Field"
+    "stadium_name": "Foley Field",
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Foley_Field.jpg/1280px-Foley_Field.jpg"
   },
   {
     "id": 84,
@@ -2230,7 +2306,8 @@
     "mlb_draft_picks": 5,
     "stadium_latitude": 32.423,
     "stadium_longitude": -81.783,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 88,
@@ -2259,7 +2336,8 @@
     "mlb_draft_picks": 5,
     "stadium_latitude": 33.753,
     "stadium_longitude": -84.389,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 27,
@@ -2288,7 +2366,8 @@
     "mlb_draft_picks": 16,
     "stadium_latitude": 33.773,
     "stadium_longitude": -84.392,
-    "stadium_name": "Russ Chandler Stadium"
+    "stadium_name": "Russ Chandler Stadium",
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Russ_Chandler_Stadium.jpg/1280px-Russ_Chandler_Stadium.jpg"
   },
   {
     "id": 115,
@@ -2317,7 +2396,8 @@
     "mlb_draft_picks": 8,
     "stadium_latitude": 47.666,
     "stadium_longitude": -117.4015,
-    "stadium_name": "Patterson Baseball Complex"
+    "stadium_name": "Patterson Baseball Complex",
+    "stadium_image_url": null
   },
   {
     "id": 284,
@@ -2346,7 +2426,8 @@
     "mlb_draft_picks": 1,
     "stadium_latitude": 32.524,
     "stadium_longitude": -92.714,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 193,
@@ -2375,7 +2456,8 @@
     "mlb_draft_picks": 6,
     "stadium_latitude": 33.5115,
     "stadium_longitude": -112.1025,
-    "stadium_name": "Brazell Field"
+    "stadium_name": "Brazell Field",
+    "stadium_image_url": null
   },
   {
     "id": 162,
@@ -2404,7 +2486,8 @@
     "mlb_draft_picks": 1,
     "stadium_latitude": 37.02,
     "stadium_longitude": -76.337,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 217,
@@ -2433,7 +2516,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 42.377,
     "stadium_longitude": -71.117,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 127,
@@ -2462,7 +2546,8 @@
     "mlb_draft_picks": 5,
     "stadium_latitude": 21.2935,
     "stadium_longitude": -157.819,
-    "stadium_name": "Les Murakami Stadium"
+    "stadium_name": "Les Murakami Stadium",
+    "stadium_image_url": null
   },
   {
     "id": 157,
@@ -2491,7 +2576,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 40.714,
     "stadium_longitude": -73.6,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 215,
@@ -2520,7 +2606,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 42.237,
     "stadium_longitude": -71.808,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 42,
@@ -2549,7 +2636,8 @@
     "mlb_draft_picks": 9,
     "stadium_latitude": 29.722,
     "stadium_longitude": -95.343,
-    "stadium_name": "Darryl & Lori Schroeder Park"
+    "stadium_name": "Darryl & Lori Schroeder Park",
+    "stadium_image_url": null
   },
   {
     "id": 190,
@@ -2578,7 +2666,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 29.718,
     "stadium_longitude": -95.498,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 280,
@@ -2607,7 +2696,8 @@
     "mlb_draft_picks": 1,
     "stadium_latitude": 38.922,
     "stadium_longitude": -77.02,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 63,
@@ -2636,7 +2726,8 @@
     "mlb_draft_picks": 9,
     "stadium_latitude": 40.096,
     "stadium_longitude": -88.237,
-    "stadium_name": "Illinois Field"
+    "stadium_name": "Illinois Field",
+    "stadium_image_url": null
   },
   {
     "id": 146,
@@ -2665,7 +2756,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 40.511,
     "stadium_longitude": -88.998,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 191,
@@ -2694,7 +2786,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 29.463,
     "stadium_longitude": -98.462,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 52,
@@ -2723,7 +2816,8 @@
     "mlb_draft_picks": 11,
     "stadium_latitude": 39.182,
     "stadium_longitude": -86.5235,
-    "stadium_name": "Bart Kaufman Field"
+    "stadium_name": "Bart Kaufman Field",
+    "stadium_image_url": null
   },
   {
     "id": 144,
@@ -2752,7 +2846,8 @@
     "mlb_draft_picks": 7,
     "stadium_latitude": 39.4645,
     "stadium_longitude": -87.3965,
-    "stadium_name": "Bob Warn Field"
+    "stadium_name": "Bob Warn Field",
+    "stadium_image_url": null
   },
   {
     "id": 243,
@@ -2781,7 +2876,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 40.929,
     "stadium_longitude": -73.788,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 56,
@@ -2810,7 +2906,8 @@
     "mlb_draft_picks": 8,
     "stadium_latitude": 41.6625,
     "stadium_longitude": -91.548,
-    "stadium_name": "Duane Banks Field"
+    "stadium_name": "Duane Banks Field",
+    "stadium_image_url": null
   },
   {
     "id": 285,
@@ -2839,7 +2936,8 @@
     "mlb_draft_picks": 1,
     "stadium_latitude": 32.296,
     "stadium_longitude": -90.209,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 164,
@@ -2868,7 +2966,8 @@
     "mlb_draft_picks": 7,
     "stadium_latitude": 30.353,
     "stadium_longitude": -81.6125,
-    "stadium_name": "John Sessions Stadium"
+    "stadium_name": "John Sessions Stadium",
+    "stadium_image_url": null
   },
   {
     "id": 101,
@@ -2897,7 +2996,8 @@
     "mlb_draft_picks": 5,
     "stadium_latitude": 33.822,
     "stadium_longitude": -85.764,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 89,
@@ -2926,7 +3026,8 @@
     "mlb_draft_picks": 9,
     "stadium_latitude": 38.435,
     "stadium_longitude": -78.869,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 49,
@@ -2955,7 +3056,8 @@
     "mlb_draft_picks": 4,
     "stadium_latitude": 38.954,
     "stadium_longitude": -95.256,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 274,
@@ -2984,7 +3086,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 39.034,
     "stadium_longitude": -94.574,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 38,
@@ -3013,7 +3116,8 @@
     "mlb_draft_picks": 10,
     "stadium_latitude": 39.2005,
     "stadium_longitude": -96.5845,
-    "stadium_name": "Tointon Family Stadium"
+    "stadium_name": "Tointon Family Stadium",
+    "stadium_image_url": null
   },
   {
     "id": 103,
@@ -3042,7 +3146,8 @@
     "mlb_draft_picks": 6,
     "stadium_latitude": 34.037,
     "stadium_longitude": -84.582,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 14,
@@ -3071,7 +3176,8 @@
     "mlb_draft_picks": 12,
     "stadium_latitude": 38.0365,
     "stadium_longitude": -84.492,
-    "stadium_name": "Kentucky Proud Park"
+    "stadium_name": "Kentucky Proud Park",
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Kentucky_Proud_Park.jpg/1280px-Kentucky_Proud_Park.jpg"
   },
   {
     "id": 234,
@@ -3100,7 +3206,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 40.038,
     "stadium_longitude": -75.155,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 216,
@@ -3129,7 +3236,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 40.697,
     "stadium_longitude": -75.212,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 189,
@@ -3158,7 +3266,8 @@
     "mlb_draft_picks": 6,
     "stadium_latitude": 30.0455,
     "stadium_longitude": -94.056,
-    "stadium_name": "Vincent-Beck Stadium"
+    "stadium_name": "Vincent-Beck Stadium",
+    "stadium_image_url": null
   },
   {
     "id": 268,
@@ -3187,7 +3296,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 43.028,
     "stadium_longitude": -76.074,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 213,
@@ -3216,7 +3326,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 40.607,
     "stadium_longitude": -75.378,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 96,
@@ -3245,7 +3356,8 @@
     "mlb_draft_picks": 10,
     "stadium_latitude": 37.3525,
     "stadium_longitude": -79.174,
-    "stadium_name": "Liberty Baseball Stadium"
+    "stadium_name": "Liberty Baseball Stadium",
+    "stadium_image_url": null
   },
   {
     "id": 208,
@@ -3274,7 +3386,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 38.789,
     "stadium_longitude": -90.502,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 165,
@@ -3303,7 +3416,8 @@
     "mlb_draft_picks": 4,
     "stadium_latitude": 36.105,
     "stadium_longitude": -86.809,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 209,
@@ -3332,7 +3446,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 34.725,
     "stadium_longitude": -92.343,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 263,
@@ -3361,7 +3476,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 40.69,
     "stadium_longitude": -73.982,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 118,
@@ -3390,7 +3506,8 @@
     "mlb_draft_picks": 6,
     "stadium_latitude": 33.97,
     "stadium_longitude": -118.418,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 125,
@@ -3419,7 +3536,8 @@
     "mlb_draft_picks": 11,
     "stadium_latitude": 33.7825,
     "stadium_longitude": -118.113,
-    "stadium_name": "Blair Field"
+    "stadium_name": "Blair Field",
+    "stadium_image_url": null
   },
   {
     "id": 83,
@@ -3448,7 +3566,8 @@
     "mlb_draft_picks": 7,
     "stadium_latitude": 30.2175,
     "stadium_longitude": -92.0285,
-    "stadium_name": "M.L. Tigue Moore Field"
+    "stadium_name": "M.L. Tigue Moore Field",
+    "stadium_image_url": null
   },
   {
     "id": 97,
@@ -3477,7 +3596,8 @@
     "mlb_draft_picks": 7,
     "stadium_latitude": 32.5235,
     "stadium_longitude": -92.6475,
-    "stadium_name": "J.C. Love Field"
+    "stadium_name": "J.C. Love Field",
+    "stadium_image_url": null
   },
   {
     "id": 90,
@@ -3506,7 +3626,8 @@
     "mlb_draft_picks": 6,
     "stadium_latitude": 32.529,
     "stadium_longitude": -92.069,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 24,
@@ -3535,7 +3656,8 @@
     "mlb_draft_picks": 15,
     "stadium_latitude": 38.2165,
     "stadium_longitude": -85.757,
-    "stadium_name": "Jim Patterson Stadium"
+    "stadium_name": "Jim Patterson Stadium",
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Jim_Patterson_Stadium.jpg/1280px-Jim_Patterson_Stadium.jpg"
   },
   {
     "id": 1,
@@ -3564,7 +3686,8 @@
     "mlb_draft_picks": 26,
     "stadium_latitude": 30.406,
     "stadium_longitude": -91.1845,
-    "stadium_name": "Alex Box Stadium"
+    "stadium_name": "Alex Box Stadium",
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Alex_Box_Stadium_Skip_Bertman_Field.jpg/1280px-Alex_Box_Stadium_Skip_Bertman_Field.jpg"
   },
   {
     "id": 257,
@@ -3593,7 +3716,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 44.901,
     "stadium_longitude": -68.672,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 240,
@@ -3622,7 +3746,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 41.72,
     "stadium_longitude": -73.934,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 91,
@@ -3651,7 +3776,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 38.424,
     "stadium_longitude": -82.432,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 55,
@@ -3680,7 +3806,8 @@
     "mlb_draft_picks": 12,
     "stadium_latitude": 38.991,
     "stadium_longitude": -76.9485,
-    "stadium_name": "Bob \"Turtle\" Smith Stadium"
+    "stadium_name": "Bob \"Turtle\" Smith Stadium",
+    "stadium_image_url": null
   },
   {
     "id": 281,
@@ -3709,7 +3836,8 @@
     "mlb_draft_picks": 1,
     "stadium_latitude": 38.2,
     "stadium_longitude": -75.693,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 236,
@@ -3738,7 +3866,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 42.386,
     "stadium_longitude": -72.53,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 185,
@@ -3767,7 +3896,8 @@
     "mlb_draft_picks": 6,
     "stadium_latitude": 30.2055,
     "stadium_longitude": -93.219,
-    "stadium_name": "Joe Miller Ballpark"
+    "stadium_name": "Joe Miller Ballpark",
+    "stadium_image_url": null
   },
   {
     "id": 71,
@@ -3796,7 +3926,8 @@
     "mlb_draft_picks": 5,
     "stadium_latitude": 35.1195,
     "stadium_longitude": -89.937,
-    "stadium_name": "FedExPark"
+    "stadium_name": "FedExPark",
+    "stadium_image_url": null
   },
   {
     "id": 177,
@@ -3825,7 +3956,8 @@
     "mlb_draft_picks": 6,
     "stadium_latitude": 32.831,
     "stadium_longitude": -83.649,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 265,
@@ -3854,7 +3986,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 42.704,
     "stadium_longitude": -71.131,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 21,
@@ -3883,7 +4016,8 @@
     "mlb_draft_picks": 17,
     "stadium_latitude": 25.716,
     "stadium_longitude": -80.2405,
-    "stadium_name": "Mark Light Field"
+    "stadium_name": "Mark Light Field",
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Alex_Rodriguez_Park_at_Mark_Light_Field.jpg/1280px-Alex_Rodriguez_Park_at_Mark_Light_Field.jpg"
   },
   {
     "id": 51,
@@ -3912,7 +4046,8 @@
     "mlb_draft_picks": 11,
     "stadium_latitude": 42.269,
     "stadium_longitude": -83.745,
-    "stadium_name": "Ray Fisher Stadium"
+    "stadium_name": "Ray Fisher Stadium",
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Ray_Fisher_Stadium_2015.jpg/1280px-Ray_Fisher_Stadium_2015.jpg"
   },
   {
     "id": 59,
@@ -3941,7 +4076,8 @@
     "mlb_draft_picks": 4,
     "stadium_latitude": 42.729,
     "stadium_longitude": -84.481,
-    "stadium_name": "McLane Baseball Stadium"
+    "stadium_name": "McLane Baseball Stadium",
+    "stadium_image_url": null
   },
   {
     "id": 100,
@@ -3970,7 +4106,8 @@
     "mlb_draft_picks": 5,
     "stadium_latitude": 35.85,
     "stadium_longitude": -86.368,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 249,
@@ -3999,7 +4136,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 43.078,
     "stadium_longitude": -87.882,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 57,
@@ -4028,7 +4166,8 @@
     "mlb_draft_picks": 8,
     "stadium_latitude": 44.9825,
     "stadium_longitude": -93.231,
-    "stadium_name": "Siebert Field"
+    "stadium_name": "Siebert Field",
+    "stadium_image_url": null
   },
   {
     "id": 9,
@@ -4057,7 +4196,8 @@
     "mlb_draft_picks": 16,
     "stadium_latitude": 33.455,
     "stadium_longitude": -88.792,
-    "stadium_name": "Dudy Noble Field"
+    "stadium_name": "Dudy Noble Field",
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Dudy_Noble_Field.jpg/1280px-Dudy_Noble_Field.jpg"
   },
   {
     "id": 293,
@@ -4086,7 +4226,8 @@
     "mlb_draft_picks": 1,
     "stadium_latitude": 33.499,
     "stadium_longitude": -90.33,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 15,
@@ -4115,7 +4256,8 @@
     "mlb_draft_picks": 7,
     "stadium_latitude": 38.9415,
     "stadium_longitude": -92.333,
-    "stadium_name": "Taylor Stadium"
+    "stadium_name": "Taylor Stadium",
+    "stadium_image_url": null
   },
   {
     "id": 143,
@@ -4144,7 +4286,8 @@
     "mlb_draft_picks": 5,
     "stadium_latitude": 37.196,
     "stadium_longitude": -93.282,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 161,
@@ -4173,7 +4316,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 40.278,
     "stadium_longitude": -74.004,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 203,
@@ -4202,7 +4346,8 @@
     "mlb_draft_picks": 4,
     "stadium_latitude": 38.188,
     "stadium_longitude": -83.434,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 204,
@@ -4231,7 +4376,8 @@
     "mlb_draft_picks": 4,
     "stadium_latitude": 36.613,
     "stadium_longitude": -88.327,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 75,
@@ -4260,7 +4406,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 38.984,
     "stadium_longitude": -76.484,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 163,
@@ -4289,7 +4436,8 @@
     "mlb_draft_picks": 1,
     "stadium_latitude": 36.075,
     "stadium_longitude": -79.772,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 22,
@@ -4318,7 +4466,8 @@
     "mlb_draft_picks": 17,
     "stadium_latitude": 35.7685,
     "stadium_longitude": -78.678,
-    "stadium_name": "Doak Field"
+    "stadium_name": "Doak Field",
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Doak_Field_at_Dail_Park.jpg/1280px-Doak_Field_at_Dail_Park.jpg"
   },
   {
     "id": 54,
@@ -4347,7 +4496,8 @@
     "mlb_draft_picks": 9,
     "stadium_latitude": 40.8295,
     "stadium_longitude": -96.6925,
-    "stadium_name": "Hawks Field"
+    "stadium_name": "Hawks Field",
+    "stadium_image_url": null
   },
   {
     "id": 138,
@@ -4376,7 +4526,8 @@
     "mlb_draft_picks": 6,
     "stadium_latitude": 39.5425,
     "stadium_longitude": -119.8175,
-    "stadium_name": "Peccole Park"
+    "stadium_name": "Peccole Park",
+    "stadium_image_url": null
   },
   {
     "id": 139,
@@ -4405,7 +4556,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 35.0785,
     "stadium_longitude": -106.6195,
-    "stadium_name": "Santa Ana Star Field"
+    "stadium_name": "Santa Ana Star Field",
+    "stadium_image_url": null
   },
   {
     "id": 104,
@@ -4434,7 +4586,8 @@
     "mlb_draft_picks": 7,
     "stadium_latitude": 32.35,
     "stadium_longitude": -106.756,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 244,
@@ -4463,7 +4616,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 43.139,
     "stadium_longitude": -79.034,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 188,
@@ -4492,7 +4646,8 @@
     "mlb_draft_picks": 4,
     "stadium_latitude": 29.451,
     "stadium_longitude": -90.8115,
-    "stadium_name": "Ray E. Didier Field"
+    "stadium_name": "Ray E. Didier Field",
+    "stadium_image_url": null
   },
   {
     "id": 259,
@@ -4521,7 +4676,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 40.742,
     "stadium_longitude": -74.179,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 276,
@@ -4550,7 +4706,8 @@
     "mlb_draft_picks": 1,
     "stadium_latitude": 36.847,
     "stadium_longitude": -76.27,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 173,
@@ -4579,7 +4736,8 @@
     "mlb_draft_picks": 4,
     "stadium_latitude": 34.804,
     "stadium_longitude": -87.674,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 23,
@@ -4608,7 +4766,8 @@
     "mlb_draft_picks": 13,
     "stadium_latitude": 35.9665,
     "stadium_longitude": -79.0575,
-    "stadium_name": "Boshamer Stadium"
+    "stadium_name": "Boshamer Stadium",
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Boshamer_Stadium_2018.jpg/1280px-Boshamer_Stadium_2018.jpg"
   },
   {
     "id": 277,
@@ -4637,7 +4796,8 @@
     "mlb_draft_picks": 1,
     "stadium_latitude": 35.974,
     "stadium_longitude": -78.899,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 272,
@@ -4666,7 +4826,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 46.897,
     "stadium_longitude": -96.8,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 168,
@@ -4695,7 +4856,8 @@
     "mlb_draft_picks": 5,
     "stadium_latitude": 30.2705,
     "stadium_longitude": -81.51,
-    "stadium_name": "Harmon Stadium"
+    "stadium_name": "Harmon Stadium",
+    "stadium_image_url": null
   },
   {
     "id": 76,
@@ -4724,7 +4886,8 @@
     "mlb_draft_picks": 5,
     "stadium_latitude": 33.211,
     "stadium_longitude": -97.149,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 152,
@@ -4753,7 +4916,8 @@
     "mlb_draft_picks": 5,
     "stadium_latitude": 42.34,
     "stadium_longitude": -71.09,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 248,
@@ -4782,7 +4946,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 39.032,
     "stadium_longitude": -84.462,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 62,
@@ -4811,7 +4976,8 @@
     "mlb_draft_picks": 6,
     "stadium_latitude": 42.064,
     "stadium_longitude": -87.6745,
-    "stadium_name": "Rocky Miller Park"
+    "stadium_name": "Rocky Miller Park",
+    "stadium_image_url": null
   },
   {
     "id": 187,
@@ -4840,7 +5006,8 @@
     "mlb_draft_picks": 4,
     "stadium_latitude": 31.753,
     "stadium_longitude": -93.0975,
-    "stadium_name": "Brown-Stroud Field"
+    "stadium_name": "Brown-Stroud Field",
+    "stadium_image_url": null
   },
   {
     "id": 30,
@@ -4869,7 +5036,8 @@
     "mlb_draft_picks": 14,
     "stadium_latitude": 41.6985,
     "stadium_longitude": -86.233,
-    "stadium_name": "Frank Eck Stadium"
+    "stadium_name": "Frank Eck Stadium",
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Frank_Eck_Stadium.jpg/1280px-Frank_Eck_Stadium.jpg"
   },
   {
     "id": 252,
@@ -4898,7 +5066,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 42.672,
     "stadium_longitude": -83.218,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 53,
@@ -4927,7 +5096,8 @@
     "mlb_draft_picks": 8,
     "stadium_latitude": 40.0065,
     "stadium_longitude": -83.0225,
-    "stadium_name": "Bill Davis Stadium"
+    "stadium_name": "Bill Davis Stadium",
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Bill_Davis_Stadium.jpg/1280px-Bill_Davis_Stadium.jpg"
   },
   {
     "id": 16,
@@ -4956,7 +5126,8 @@
     "mlb_draft_picks": 11,
     "stadium_latitude": 35.205,
     "stadium_longitude": -97.442,
-    "stadium_name": "L. Dale Mitchell Baseball Park"
+    "stadium_name": "L. Dale Mitchell Baseball Park",
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/L_Dale_Mitchell_Park.jpg/1280px-L_Dale_Mitchell_Park.jpg"
   },
   {
     "id": 36,
@@ -4985,7 +5156,8 @@
     "mlb_draft_picks": 17,
     "stadium_latitude": 36.1235,
     "stadium_longitude": -97.065,
-    "stadium_name": "O'Brate Stadium"
+    "stadium_name": "O'Brate Stadium",
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/O%27Brate_Stadium_2021.jpg/1280px-O%27Brate_Stadium_2021.jpg"
   },
   {
     "id": 92,
@@ -5014,7 +5186,8 @@
     "mlb_draft_picks": 8,
     "stadium_latitude": 36.885,
     "stadium_longitude": -76.305,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 8,
@@ -5043,7 +5216,8 @@
     "mlb_draft_picks": 19,
     "stadium_latitude": 34.3615,
     "stadium_longitude": -89.535,
-    "stadium_name": "Swayze Field"
+    "stadium_name": "Swayze Field",
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Swayze_Field_2017.jpg/1280px-Swayze_Field_2017.jpg"
   },
   {
     "id": 271,
@@ -5072,7 +5246,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 41.259,
     "stadium_longitude": -96.01,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 270,
@@ -5101,7 +5276,8 @@
     "mlb_draft_picks": 6,
     "stadium_latitude": 36.056,
     "stadium_longitude": -95.948,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 67,
@@ -5130,7 +5306,8 @@
     "mlb_draft_picks": 12,
     "stadium_latitude": 44.0585,
     "stadium_longitude": -123.068,
-    "stadium_name": "PK Park"
+    "stadium_name": "PK Park",
+    "stadium_image_url": null
   },
   {
     "id": 50,
@@ -5159,7 +5336,8 @@
     "mlb_draft_picks": 21,
     "stadium_latitude": 44.5615,
     "stadium_longitude": -123.2635,
-    "stadium_name": "Goss Stadium"
+    "stadium_name": "Goss Stadium",
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Goss_Stadium_at_Coleman_Field.jpg/1280px-Goss_Stadium_at_Coleman_Field.jpg"
   },
   {
     "id": 121,
@@ -5188,7 +5366,8 @@
     "mlb_draft_picks": 5,
     "stadium_latitude": 37.979,
     "stadium_longitude": -121.31,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 220,
@@ -5217,7 +5396,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 39.952,
     "stadium_longitude": -75.193,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 58,
@@ -5246,7 +5426,8 @@
     "mlb_draft_picks": 6,
     "stadium_latitude": 40.8115,
     "stadium_longitude": -77.853,
-    "stadium_name": "Medlar Field"
+    "stadium_name": "Medlar Field",
+    "stadium_image_url": null
   },
   {
     "id": 117,
@@ -5275,7 +5456,8 @@
     "mlb_draft_picks": 10,
     "stadium_latitude": 34.036,
     "stadium_longitude": -118.7095,
-    "stadium_name": "Eddy D. Field Stadium"
+    "stadium_name": "Eddy D. Field Stadium",
+    "stadium_image_url": null
   },
   {
     "id": 123,
@@ -5304,7 +5486,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 45.571,
     "stadium_longitude": -122.726,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 290,
@@ -5333,7 +5516,8 @@
     "mlb_draft_picks": 1,
     "stadium_latitude": 30.093,
     "stadium_longitude": -95.988,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 221,
@@ -5362,7 +5546,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 40.348,
     "stadium_longitude": -74.659,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 114,
@@ -5391,7 +5576,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 41.839,
     "stadium_longitude": -71.436,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 60,
@@ -5420,7 +5606,8 @@
     "mlb_draft_picks": 6,
     "stadium_latitude": 40.4375,
     "stadium_longitude": -86.9195,
-    "stadium_name": "Alexander Field"
+    "stadium_name": "Alexander Field",
+    "stadium_image_url": null
   },
   {
     "id": 253,
@@ -5449,7 +5636,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 41.118,
     "stadium_longitude": -85.111,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 174,
@@ -5478,7 +5666,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 35.189,
     "stadium_longitude": -80.835,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 238,
@@ -5507,7 +5696,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 41.419,
     "stadium_longitude": -72.894,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 232,
@@ -5536,7 +5726,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 41.483,
     "stadium_longitude": -71.53,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 72,
@@ -5565,7 +5756,8 @@
     "mlb_draft_picks": 9,
     "stadium_latitude": 29.7165,
     "stadium_longitude": -95.405,
-    "stadium_name": "Reckling Park"
+    "stadium_name": "Reckling Park",
+    "stadium_image_url": null
   },
   {
     "id": 226,
@@ -5594,7 +5786,8 @@
     "mlb_draft_picks": 4,
     "stadium_latitude": 37.574,
     "stadium_longitude": -77.54,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 239,
@@ -5623,7 +5816,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 40.283,
     "stadium_longitude": -74.747,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 61,
@@ -5652,7 +5846,8 @@
     "mlb_draft_picks": 8,
     "stadium_latitude": 40.5125,
     "stadium_longitude": -74.4635,
-    "stadium_name": "Bainton Field"
+    "stadium_name": "Bainton Field",
+    "stadium_image_url": null
   },
   {
     "id": 264,
@@ -5681,7 +5876,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 41.221,
     "stadium_longitude": -73.238,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 230,
@@ -5710,7 +5906,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 39.997,
     "stadium_longitude": -75.237,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 233,
@@ -5739,7 +5936,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 38.635,
     "stadium_longitude": -90.234,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 122,
@@ -5768,7 +5966,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 37.84,
     "stadium_longitude": -122.114,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 245,
@@ -5797,7 +5996,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 40.735,
     "stadium_longitude": -74.063,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 98,
@@ -5826,7 +6026,8 @@
     "mlb_draft_picks": 7,
     "stadium_latitude": 30.7185,
     "stadium_longitude": -95.5425,
-    "stadium_name": "Don Sanders Stadium"
+    "stadium_name": "Don Sanders Stadium",
+    "stadium_image_url": null
   },
   {
     "id": 175,
@@ -5855,7 +6056,8 @@
     "mlb_draft_picks": 6,
     "stadium_latitude": 33.463,
     "stadium_longitude": -86.793,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 116,
@@ -5884,7 +6086,8 @@
     "mlb_draft_picks": 10,
     "stadium_latitude": 32.772,
     "stadium_longitude": -117.189,
-    "stadium_name": "Fowler Park"
+    "stadium_name": "Fowler Park",
+    "stadium_image_url": null
   },
   {
     "id": 135,
@@ -5913,7 +6116,8 @@
     "mlb_draft_picks": 5,
     "stadium_latitude": 32.7775,
     "stadium_longitude": -117.1235,
-    "stadium_name": "Tony Gwynn Stadium"
+    "stadium_name": "Tony Gwynn Stadium",
+    "stadium_image_url": null
   },
   {
     "id": 120,
@@ -5942,7 +6146,8 @@
     "mlb_draft_picks": 5,
     "stadium_latitude": 37.776,
     "stadium_longitude": -122.451,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 141,
@@ -5971,7 +6176,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 37.3345,
     "stadium_longitude": -121.886,
-    "stadium_name": "Municipal Stadium"
+    "stadium_name": "Municipal Stadium",
+    "stadium_image_url": null
   },
   {
     "id": 119,
@@ -6000,7 +6206,8 @@
     "mlb_draft_picks": 7,
     "stadium_latitude": 37.349,
     "stadium_longitude": -121.94,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 205,
@@ -6029,7 +6236,8 @@
     "mlb_draft_picks": 4,
     "stadium_latitude": 37.306,
     "stadium_longitude": -89.531,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 111,
@@ -6058,7 +6266,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 40.743,
     "stadium_longitude": -74.265,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 246,
@@ -6087,7 +6296,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 42.719,
     "stadium_longitude": -73.752,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 206,
@@ -6116,7 +6326,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 38.793,
     "stadium_longitude": -89.997,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 33,
@@ -6145,7 +6356,8 @@
     "mlb_draft_picks": 4,
     "stadium_latitude": 32.837,
     "stadium_longitude": -96.783,
-    "stadium_name": "Irish Yard"
+    "stadium_name": "Irish Yard",
+    "stadium_image_url": null
   },
   {
     "id": 93,
@@ -6174,7 +6386,8 @@
     "mlb_draft_picks": 4,
     "stadium_latitude": 30.696,
     "stadium_longitude": -88.178,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 10,
@@ -6203,7 +6416,8 @@
     "mlb_draft_picks": 14,
     "stadium_latitude": 34.0165,
     "stadium_longitude": -81.0215,
-    "stadium_name": "Founders Park"
+    "stadium_name": "Founders Park",
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Founders_Park_2016.jpg/1280px-Founders_Park_2016.jpg"
   },
   {
     "id": 282,
@@ -6232,7 +6446,8 @@
     "mlb_draft_picks": 1,
     "stadium_latitude": 33.497,
     "stadium_longitude": -80.855,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 273,
@@ -6261,7 +6476,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 44.31,
     "stadium_longitude": -96.786,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 77,
@@ -6290,7 +6506,8 @@
     "mlb_draft_picks": 5,
     "stadium_latitude": 28.0625,
     "stadium_longitude": -82.413,
-    "stadium_name": "USF Baseball Stadium"
+    "stadium_name": "USF Baseball Stadium",
+    "stadium_image_url": null
   },
   {
     "id": 186,
@@ -6319,7 +6536,8 @@
     "mlb_draft_picks": 7,
     "stadium_latitude": 30.5225,
     "stadium_longitude": -90.465,
-    "stadium_name": "Alumni Field"
+    "stadium_name": "Alumni Field",
+    "stadium_image_url": null
   },
   {
     "id": 283,
@@ -6348,7 +6566,8 @@
     "mlb_draft_picks": 1,
     "stadium_latitude": 30.527,
     "stadium_longitude": -91.191,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 145,
@@ -6377,7 +6596,8 @@
     "mlb_draft_picks": 5,
     "stadium_latitude": 37.717,
     "stadium_longitude": -89.217,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 210,
@@ -6406,7 +6626,8 @@
     "mlb_draft_picks": 4,
     "stadium_latitude": 38.003,
     "stadium_longitude": -87.535,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 85,
@@ -6435,7 +6656,8 @@
     "mlb_draft_picks": 10,
     "stadium_latitude": 31.327,
     "stadium_longitude": -89.338,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 199,
@@ -6464,7 +6686,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 37.677,
     "stadium_longitude": -113.062,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 237,
@@ -6493,7 +6716,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 42.08,
     "stadium_longitude": -78.498,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 110,
@@ -6522,7 +6746,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 40.726,
     "stadium_longitude": -73.795,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 25,
@@ -6551,7 +6776,8 @@
     "mlb_draft_picks": 22,
     "stadium_latitude": 37.4345,
     "stadium_longitude": -122.1615,
-    "stadium_name": "Sunken Diamond"
+    "stadium_name": "Sunken Diamond",
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Klein_Field_at_Sunken_Diamond.jpg/1280px-Klein_Field_at_Sunken_Diamond.jpg"
   },
   {
     "id": 194,
@@ -6580,7 +6806,8 @@
     "mlb_draft_picks": 6,
     "stadium_latitude": 31.6235,
     "stadium_longitude": -94.6525,
-    "stadium_name": "Jaycees Field"
+    "stadium_name": "Jaycees Field",
+    "stadium_image_url": null
   },
   {
     "id": 166,
@@ -6609,7 +6836,8 @@
     "mlb_draft_picks": 7,
     "stadium_latitude": 29.051,
     "stadium_longitude": -81.3005,
-    "stadium_name": "Melching Field"
+    "stadium_name": "Melching Field",
+    "stadium_image_url": null
   },
   {
     "id": 269,
@@ -6638,7 +6866,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 42.104,
     "stadium_longitude": -71.099,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 158,
@@ -6667,7 +6896,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 40.914,
     "stadium_longitude": -73.123,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 196,
@@ -6696,7 +6926,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 32.223,
     "stadium_longitude": -98.209,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 35,
@@ -6725,7 +6956,8 @@
     "mlb_draft_picks": 19,
     "stadium_latitude": 32.71,
     "stadium_longitude": -97.3625,
-    "stadium_name": "Lupton Stadium"
+    "stadium_name": "Lupton Stadium",
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Lupton_Stadium_2013.jpg/1280px-Lupton_Stadium_2013.jpg"
   },
   {
     "id": 78,
@@ -6754,7 +6986,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 39.981,
     "stadium_longitude": -75.155,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 2,
@@ -6783,7 +7016,8 @@
     "mlb_draft_picks": 16,
     "stadium_latitude": 35.953,
     "stadium_longitude": -83.927,
-    "stadium_name": "Lindsey Nelson Stadium"
+    "stadium_name": "Lindsey Nelson Stadium",
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Lindsey_Nelson_Stadium_2019.jpg/1280px-Lindsey_Nelson_Stadium_2019.jpg"
   },
   {
     "id": 211,
@@ -6812,7 +7046,8 @@
     "mlb_draft_picks": 1,
     "stadium_latitude": 36.168,
     "stadium_longitude": -86.836,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 202,
@@ -6841,7 +7076,8 @@
     "mlb_draft_picks": 4,
     "stadium_latitude": 36.177,
     "stadium_longitude": -85.505,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 6,
@@ -6870,7 +7106,8 @@
     "mlb_draft_picks": 24,
     "stadium_latitude": 30.2835,
     "stadium_longitude": -97.731,
-    "stadium_name": "UFCU Disch-Falk Field"
+    "stadium_name": "UFCU Disch-Falk Field",
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/UFCU_Disch-Falk_Field.jpg/1280px-UFCU_Disch-Falk_Field.jpg"
   },
   {
     "id": 3,
@@ -6899,7 +7136,8 @@
     "mlb_draft_picks": 15,
     "stadium_latitude": 30.605,
     "stadium_longitude": -96.344,
-    "stadium_name": "Blue Bell Park"
+    "stadium_name": "Blue Bell Park",
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Blue_Bell_Park.jpg/1280px-Blue_Bell_Park.jpg"
   },
   {
     "id": 192,
@@ -6928,7 +7166,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 27.713,
     "stadium_longitude": -97.326,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 289,
@@ -6957,7 +7196,8 @@
     "mlb_draft_picks": 1,
     "stadium_latitude": 29.724,
     "stadium_longitude": -95.358,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 94,
@@ -6986,7 +7226,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 29.8885,
     "stadium_longitude": -97.9335,
-    "stadium_name": "Bobcat Ballpark"
+    "stadium_name": "Bobcat Ballpark",
+    "stadium_image_url": null
   },
   {
     "id": 39,
@@ -7015,7 +7256,8 @@
     "mlb_draft_picks": 14,
     "stadium_latitude": 33.5875,
     "stadium_longitude": -101.844,
-    "stadium_name": "Dan Law Field"
+    "stadium_name": "Dan Law Field",
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Dan_Law_Field_at_Rip_Griffin_Park.jpg/1280px-Dan_Law_Field_at_Rip_Griffin_Park.jpg"
   },
   {
     "id": 178,
@@ -7044,7 +7286,8 @@
     "mlb_draft_picks": 4,
     "stadium_latitude": 32.798,
     "stadium_longitude": -79.958,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 156,
@@ -7073,7 +7316,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 39.393,
     "stadium_longitude": -76.61,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 95,
@@ -7102,7 +7346,8 @@
     "mlb_draft_picks": 6,
     "stadium_latitude": 31.796,
     "stadium_longitude": -85.968,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 69,
@@ -7131,7 +7376,8 @@
     "mlb_draft_picks": 10,
     "stadium_latitude": 30.0185,
     "stadium_longitude": -90.06,
-    "stadium_name": "Greer Field at Turchin Stadium"
+    "stadium_name": "Greer Field at Turchin Stadium",
+    "stadium_image_url": null
   },
   {
     "id": 79,
@@ -7160,7 +7406,8 @@
     "mlb_draft_picks": 5,
     "stadium_latitude": 36.152,
     "stadium_longitude": -95.946,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 80,
@@ -7189,7 +7436,8 @@
     "mlb_draft_picks": 4,
     "stadium_latitude": 33.502,
     "stadium_longitude": -86.799,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 131,
@@ -7218,7 +7466,8 @@
     "mlb_draft_picks": 5,
     "stadium_latitude": 38.5375,
     "stadium_longitude": -121.7535,
-    "stadium_name": "Dobbins Baseball Stadium"
+    "stadium_name": "Dobbins Baseball Stadium",
+    "stadium_image_url": null
   },
   {
     "id": 126,
@@ -7247,7 +7496,8 @@
     "mlb_draft_picks": 5,
     "stadium_latitude": 33.6675,
     "stadium_longitude": -117.8465,
-    "stadium_name": "Cicerone Field"
+    "stadium_name": "Cicerone Field",
+    "stadium_image_url": null
   },
   {
     "id": 130,
@@ -7276,7 +7526,8 @@
     "mlb_draft_picks": 5,
     "stadium_latitude": 33.9755,
     "stadium_longitude": -117.3275,
-    "stadium_name": "Riverside Sports Complex"
+    "stadium_name": "Riverside Sports Complex",
+    "stadium_image_url": null
   },
   {
     "id": 132,
@@ -7305,7 +7556,8 @@
     "mlb_draft_picks": 5,
     "stadium_latitude": 32.877,
     "stadium_longitude": -117.2355,
-    "stadium_name": "Triton Ballpark"
+    "stadium_name": "Triton Ballpark",
+    "stadium_image_url": null
   },
   {
     "id": 129,
@@ -7334,7 +7586,8 @@
     "mlb_draft_picks": 11,
     "stadium_latitude": 34.4175,
     "stadium_longitude": -119.8505,
-    "stadium_name": "Caesar Uyesaka Stadium"
+    "stadium_name": "Caesar Uyesaka Stadium",
+    "stadium_image_url": null
   },
   {
     "id": 41,
@@ -7363,7 +7616,8 @@
     "mlb_draft_picks": 9,
     "stadium_latitude": 28.6015,
     "stadium_longitude": -81.201,
-    "stadium_name": "John Euliano Park"
+    "stadium_name": "John Euliano Park",
+    "stadium_image_url": null
   },
   {
     "id": 65,
@@ -7392,7 +7646,8 @@
     "mlb_draft_picks": 16,
     "stadium_latitude": 34.071,
     "stadium_longitude": -118.4485,
-    "stadium_name": "Jackie Robinson Stadium"
+    "stadium_name": "Jackie Robinson Stadium",
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Jackie_Robinson_Stadium.jpg/1280px-Jackie_Robinson_Stadium.jpg"
   },
   {
     "id": 150,
@@ -7421,7 +7676,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 41.87,
     "stadium_longitude": -87.65,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 260,
@@ -7450,7 +7706,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 42.655,
     "stadium_longitude": -71.325,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 254,
@@ -7479,7 +7736,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 39.255,
     "stadium_longitude": -76.714,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 181,
@@ -7508,7 +7766,8 @@
     "mlb_draft_picks": 4,
     "stadium_latitude": 36.069,
     "stadium_longitude": -79.81,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 154,
@@ -7537,7 +7796,8 @@
     "mlb_draft_picks": 7,
     "stadium_latitude": 34.227,
     "stadium_longitude": -77.872,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 137,
@@ -7566,7 +7826,8 @@
     "mlb_draft_picks": 5,
     "stadium_latitude": 36.108,
     "stadium_longitude": -115.1495,
-    "stadium_name": "Wilson Stadium"
+    "stadium_name": "Wilson Stadium",
+    "stadium_image_url": null
   },
   {
     "id": 64,
@@ -7595,7 +7856,8 @@
     "mlb_draft_picks": 0,
     "stadium_latitude": 34.018,
     "stadium_longitude": -118.2875,
-    "stadium_name": "Dedeaux Field"
+    "stadium_name": "Dedeaux Field",
+    "stadium_image_url": null
   },
   {
     "id": 197,
@@ -7624,7 +7886,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 32.731,
     "stadium_longitude": -97.115,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 207,
@@ -7653,7 +7916,8 @@
     "mlb_draft_picks": 1,
     "stadium_latitude": 36.339,
     "stadium_longitude": -88.855,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 48,
@@ -7682,7 +7946,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 40.7635,
     "stadium_longitude": -111.8465,
-    "stadium_name": "Smith's Ballpark"
+    "stadium_name": "Smith's Ballpark",
+    "stadium_image_url": null
   },
   {
     "id": 201,
@@ -7711,7 +7976,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 37.109,
     "stadium_longitude": -113.568,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 200,
@@ -7740,7 +8006,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 40.276,
     "stadium_longitude": -111.714,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 105,
@@ -7769,7 +8036,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 31.77,
     "stadium_longitude": -106.504,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 81,
@@ -7798,7 +8066,8 @@
     "mlb_draft_picks": 5,
     "stadium_latitude": 29.461,
     "stadium_longitude": -98.4835,
-    "stadium_name": "Roadrunner Field"
+    "stadium_name": "Roadrunner Field",
+    "stadium_image_url": null
   },
   {
     "id": 149,
@@ -7827,7 +8096,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 41.466,
     "stadium_longitude": -87.036,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 5,
@@ -7856,7 +8126,8 @@
     "mlb_draft_picks": 28,
     "stadium_latitude": 36.148,
     "stadium_longitude": -86.812,
-    "stadium_name": "Hawkins Field"
+    "stadium_name": "Hawkins Field",
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Hawkins_Field_%28Vanderbilt%29.jpg/1280px-Hawkins_Field_%28Vanderbilt%29.jpg"
   },
   {
     "id": 225,
@@ -7885,7 +8156,8 @@
     "mlb_draft_picks": 9,
     "stadium_latitude": 37.549,
     "stadium_longitude": -77.453,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 261,
@@ -7914,7 +8186,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 44.478,
     "stadium_longitude": -73.196,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 109,
@@ -7943,7 +8216,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 40.037,
     "stadium_longitude": -75.338,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 18,
@@ -7972,7 +8246,8 @@
     "mlb_draft_picks": 22,
     "stadium_latitude": 38.0315,
     "stadium_longitude": -78.514,
-    "stadium_name": "Disharoon Park"
+    "stadium_name": "Disharoon Park",
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Davenport_Field_2018.jpg/1280px-Davenport_Field_2018.jpg"
   },
   {
     "id": 28,
@@ -8001,7 +8276,8 @@
     "mlb_draft_picks": 4,
     "stadium_latitude": 37.2275,
     "stadium_longitude": -80.421,
-    "stadium_name": "English Field"
+    "stadium_name": "English Field",
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/English_Field_at_Atlantic_Union_Bank_Park.jpg/1280px-English_Field_at_Atlantic_Union_Bank_Park.jpg"
   },
   {
     "id": 183,
@@ -8030,7 +8306,8 @@
     "mlb_draft_picks": 4,
     "stadium_latitude": 37.792,
     "stadium_longitude": -79.442,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 267,
@@ -8059,7 +8336,8 @@
     "mlb_draft_picks": 1,
     "stadium_latitude": 40.616,
     "stadium_longitude": -74.095,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 17,
@@ -8088,7 +8366,8 @@
     "mlb_draft_picks": 4,
     "stadium_latitude": 36.0885,
     "stadium_longitude": -80.2575,
-    "stadium_name": "David F. Couch Ballpark"
+    "stadium_name": "David F. Couch Ballpark",
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/David_F._Couch_Ballpark.jpg/1280px-David_F._Couch_Ballpark.jpg"
   },
   {
     "id": 66,
@@ -8117,7 +8396,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 47.651,
     "stadium_longitude": -122.3015,
-    "stadium_name": "Husky Ballpark"
+    "stadium_name": "Husky Ballpark",
+    "stadium_image_url": null
   },
   {
     "id": 37,
@@ -8146,7 +8426,8 @@
     "mlb_draft_picks": 10,
     "stadium_latitude": 39.6485,
     "stadium_longitude": -79.953,
-    "stadium_name": "Monongalia County Ballpark"
+    "stadium_name": "Monongalia County Ballpark",
+    "stadium_image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Monongalia_County_Ballpark.jpg/1280px-Monongalia_County_Ballpark.jpg"
   },
   {
     "id": 179,
@@ -8175,7 +8456,8 @@
     "mlb_draft_picks": 6,
     "stadium_latitude": 35.312,
     "stadium_longitude": -83.186,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 275,
@@ -8204,7 +8486,8 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 40.476,
     "stadium_longitude": -90.68,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 99,
@@ -8233,7 +8516,8 @@
     "mlb_draft_picks": 4,
     "stadium_latitude": 36.99,
     "stadium_longitude": -86.443,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 70,
@@ -8262,7 +8546,8 @@
     "mlb_draft_picks": 8,
     "stadium_latitude": 37.7215,
     "stadium_longitude": -97.2955,
-    "stadium_name": "Eck Stadium"
+    "stadium_name": "Eck Stadium",
+    "stadium_image_url": null
   },
   {
     "id": 155,
@@ -8291,7 +8576,8 @@
     "mlb_draft_picks": 4,
     "stadium_latitude": 37.271,
     "stadium_longitude": -76.714,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 182,
@@ -8320,7 +8606,8 @@
     "mlb_draft_picks": 4,
     "stadium_latitude": 34.952,
     "stadium_longitude": -81.929,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 247,
@@ -8349,7 +8636,8 @@
     "mlb_draft_picks": 6,
     "stadium_latitude": 39.782,
     "stadium_longitude": -84.062,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 108,
@@ -8378,7 +8666,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 39.149,
     "stadium_longitude": -84.473,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 218,
@@ -8407,7 +8696,8 @@
     "mlb_draft_picks": 3,
     "stadium_latitude": 41.311,
     "stadium_longitude": -72.926,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   },
   {
     "id": 250,
@@ -8436,6 +8726,7 @@
     "mlb_draft_picks": 2,
     "stadium_latitude": 41.104,
     "stadium_longitude": -80.646,
-    "stadium_name": null
+    "stadium_name": null,
+    "stadium_image_url": null
   }
 ]
