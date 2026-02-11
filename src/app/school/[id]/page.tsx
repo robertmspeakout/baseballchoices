@@ -121,86 +121,85 @@ export default function SchoolPage({
         </div>
       </header>
 
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-6">
+      <main className="max-w-5xl mx-auto px-4 sm:px-6 py-4 sm:py-8 space-y-4 sm:space-y-6">
         {/* School header card */}
         <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
-          <div className="bg-gradient-to-r from-gray-50 to-white p-6 sm:p-8 border-b border-gray-100">
-            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
-              <div className="flex items-start gap-5">
-                {/* School Logo */}
-                <div className="hidden sm:flex shrink-0 w-20 h-20 rounded-xl bg-gray-100 border border-gray-200 items-center justify-center overflow-hidden">
-                  {school.logo_url && !logoError ? (
-                    <img
-                      src={school.logo_url}
-                      alt={`${school.name} logo`}
-                      className="w-16 h-16 object-contain"
-                      onError={() => setLogoError(true)}
-                    />
-                  ) : (
-                    <span className="text-2xl font-bold text-gray-400">
-                      {school.name.split(" ").map(w => w[0]).join("").slice(0, 3)}
-                    </span>
-                  )}
-                </div>
-                <div>
-                <div className="flex items-center gap-3 mb-2">
-                  <h1 className="text-3xl font-bold text-gray-900">{school.name}</h1>
+          <div className="bg-gradient-to-r from-gray-50 to-white p-4 sm:p-8 border-b border-gray-100">
+            <div className="flex items-start gap-3 sm:gap-5">
+              {/* School Logo - visible on all screens */}
+              <div className="shrink-0 w-14 h-14 sm:w-20 sm:h-20 rounded-xl bg-gray-100 border border-gray-200 flex items-center justify-center overflow-hidden">
+                {school.logo_url && !logoError ? (
+                  <img
+                    src={school.logo_url}
+                    alt={`${school.name} logo`}
+                    className="w-11 h-11 sm:w-16 sm:h-16 object-contain"
+                    onError={() => setLogoError(true)}
+                  />
+                ) : (
+                  <span className="text-lg sm:text-2xl font-bold text-gray-400">
+                    {school.name.split(" ").map(w => w[0]).join("").slice(0, 3)}
+                  </span>
+                )}
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex flex-wrap items-center gap-2 mb-1">
+                  <h1 className="text-xl sm:text-3xl font-bold text-gray-900 truncate">{school.name}</h1>
                   <span
-                    className={`px-3 py-1 rounded-full text-sm font-semibold border ${
+                    className={`shrink-0 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs sm:text-sm font-semibold border ${
                       divColor[school.division] || "bg-gray-100 text-gray-800"
                     }`}
                   >
                     {divLabel[school.division] || school.division}
                   </span>
                 </div>
-                <p className="text-lg text-gray-600">
+                <p className="text-sm sm:text-lg text-gray-600 truncate">
                   {school.mascot} &middot; {school.city}, {school.state}
                 </p>
-                <p className="text-sm text-gray-500 mt-1">
+                <p className="text-xs sm:text-sm text-gray-500 mt-0.5">
                   {school.conference} &middot; {school.public_private}
                 </p>
+                {/* Priority - inline on mobile */}
+                <div className="flex items-center gap-2 mt-2">
+                  <StarRating
+                    value={priority}
+                    onChange={savePriority}
+                    size="sm"
+                  />
+                  <span className="text-xs text-gray-400">Your Priority</span>
                 </div>
-              </div>
-              <div className="flex flex-col items-end gap-2">
-                <StarRating
-                  value={priority}
-                  onChange={savePriority}
-                  size="lg"
-                />
-                <span className="text-xs text-gray-400">Your Priority</span>
               </div>
             </div>
           </div>
 
-          {/* Quick stats */}
-          <div className="grid grid-cols-2 sm:grid-cols-5 divide-x divide-y sm:divide-y-0 divide-gray-100">
-            <div className="p-4 text-center">
-              <p className="text-xs text-gray-500 uppercase font-medium">2024 Record</p>
-              <p className="text-xl font-bold text-gray-900 mt-1">
+          {/* Quick stats - 3 cols on mobile for better fit, 5 on desktop */}
+          <div className="grid grid-cols-3 sm:grid-cols-5 divide-x divide-y sm:divide-y-0 divide-gray-100">
+            <div className="p-3 sm:p-4 text-center">
+              <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">2024 Record</p>
+              <p className="text-base sm:text-xl font-bold text-gray-900 mt-0.5 sm:mt-1">
                 {school.last_season_record || "N/A"}
               </p>
             </div>
-            <div className="p-4 text-center">
-              <p className="text-xs text-gray-500 uppercase font-medium">Ranking</p>
-              <p className="text-xl font-bold text-gray-900 mt-1">
+            <div className="p-3 sm:p-4 text-center">
+              <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Ranking</p>
+              <p className="text-base sm:text-xl font-bold text-gray-900 mt-0.5 sm:mt-1">
                 {school.current_ranking ? `#${school.current_ranking}` : "NR"}
               </p>
             </div>
-            <div className="p-4 text-center">
-              <p className="text-xs text-gray-500 uppercase font-medium">Tuition</p>
-              <p className="text-xl font-bold text-gray-900 mt-1">
-                {school.tuition ? `$${school.tuition.toLocaleString()}` : "N/A"}
+            <div className="p-3 sm:p-4 text-center">
+              <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Tuition</p>
+              <p className="text-base sm:text-xl font-bold text-gray-900 mt-0.5 sm:mt-1">
+                {school.tuition ? `$${(school.tuition / 1000).toFixed(0)}k` : "N/A"}
               </p>
             </div>
-            <div className="p-4 text-center">
-              <p className="text-xs text-gray-500 uppercase font-medium">Type</p>
-              <p className="text-xl font-bold text-gray-900 mt-1">
+            <div className="p-3 sm:p-4 text-center col-span-1 hidden sm:block">
+              <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Type</p>
+              <p className="text-base sm:text-xl font-bold text-gray-900 mt-0.5 sm:mt-1">
                 {school.public_private}
               </p>
             </div>
-            <div className="p-4 text-center">
-              <p className="text-xs text-gray-500 uppercase font-medium">Division</p>
-              <p className="text-xl font-bold text-gray-900 mt-1">
+            <div className="p-3 sm:p-4 text-center col-span-1 hidden sm:block">
+              <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Division</p>
+              <p className="text-base sm:text-xl font-bold text-gray-900 mt-0.5 sm:mt-1">
                 {school.division === "JUCO" ? "JUCO" : school.division.replace("D", "D-")}
               </p>
             </div>
@@ -209,33 +208,33 @@ export default function SchoolPage({
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Coaching Staff */}
-          <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
-            <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+          <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">
+            <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4 flex items-center gap-2">
               <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
               </svg>
               Coaching Staff
             </h2>
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               <div>
-                <p className="text-xs uppercase text-gray-500 font-medium">Head Coach</p>
-                <p className="text-gray-900 font-semibold">{school.head_coach_name || "N/A"}</p>
+                <p className="text-[10px] sm:text-xs uppercase text-gray-500 font-medium">Head Coach</p>
+                <p className="text-sm sm:text-base text-gray-900 font-semibold">{school.head_coach_name || "N/A"}</p>
                 {school.head_coach_email && (
                   <a
                     href={`mailto:${school.head_coach_email}`}
-                    className="text-sm text-blue-600 hover:underline"
+                    className="text-xs sm:text-sm text-blue-600 hover:underline break-all"
                   >
                     {school.head_coach_email}
                   </a>
                 )}
               </div>
               <div>
-                <p className="text-xs uppercase text-gray-500 font-medium">Assistant Coach</p>
-                <p className="text-gray-900 font-semibold">{school.assistant_coach_name || "N/A"}</p>
+                <p className="text-[10px] sm:text-xs uppercase text-gray-500 font-medium">Assistant Coach</p>
+                <p className="text-sm sm:text-base text-gray-900 font-semibold">{school.assistant_coach_name || "N/A"}</p>
                 {school.assistant_coach_email && (
                   <a
                     href={`mailto:${school.assistant_coach_email}`}
-                    className="text-sm text-blue-600 hover:underline"
+                    className="text-xs sm:text-sm text-blue-600 hover:underline break-all"
                   >
                     {school.assistant_coach_email}
                   </a>
@@ -245,8 +244,8 @@ export default function SchoolPage({
           </div>
 
           {/* Links & Social */}
-          <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
-            <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+          <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">
+            <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4 flex items-center gap-2">
               <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
               </svg>
@@ -303,14 +302,14 @@ export default function SchoolPage({
         </div>
 
         {/* Notes and Tracking Section */}
-        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
-          <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">
+          <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4 flex items-center gap-2">
             <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
             </svg>
             Your Notes & Tracking
           </h2>
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Last Contacted
@@ -319,7 +318,7 @@ export default function SchoolPage({
                 type="date"
                 value={lastContacted}
                 onChange={(e) => setLastContacted(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="w-full sm:w-auto px-3 py-2 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
             <div>
@@ -329,16 +328,16 @@ export default function SchoolPage({
               <textarea
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
-                rows={5}
-                placeholder="Add your notes about this program, camp visits, conversations with coaches, impressions..."
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-y"
+                rows={4}
+                placeholder="Notes about this program, camp visits, conversations with coaches..."
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-y text-sm sm:text-base"
               />
             </div>
             <div className="flex items-center gap-3">
               <button
                 onClick={saveNotes}
                 disabled={saving}
-                className="px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 font-medium transition-colors"
+                className="flex-1 sm:flex-none px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 font-medium transition-colors text-sm sm:text-base"
               >
                 {saving ? "Saving..." : "Save Notes"}
               </button>

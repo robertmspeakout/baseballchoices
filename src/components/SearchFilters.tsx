@@ -34,12 +34,12 @@ export default function SearchFilters({
   };
 
   return (
-    <div className="bg-white border border-gray-200 rounded-xl p-4 sm:p-6 shadow-sm space-y-4">
+    <div className="bg-white border border-gray-200 rounded-xl p-3 sm:p-6 shadow-sm space-y-3 sm:space-y-4">
       {/* Search bar */}
       <div>
         <div className="relative">
           <svg
-            className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"
+            className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-gray-400"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -53,20 +53,20 @@ export default function SearchFilters({
           </svg>
           <input
             type="text"
-            placeholder="Search schools, cities, coaches, conferences..."
+            placeholder="Search schools, coaches, cities..."
             value={filters.search}
             onChange={(e) => update("search", e.target.value)}
-            className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 placeholder-gray-400"
+            className="w-full pl-9 sm:pl-10 pr-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base text-gray-900 placeholder-gray-400"
           />
         </div>
       </div>
 
       {/* Filter row */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3">
         <select
           value={filters.division}
           onChange={(e) => update("division", e.target.value)}
-          className="px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-700 focus:ring-2 focus:ring-blue-500"
+          className="px-2.5 sm:px-3 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm text-gray-700 focus:ring-2 focus:ring-blue-500"
         >
           <option value="">All Divisions</option>
           {filterOptions.divisions.map((d) => (
@@ -79,7 +79,7 @@ export default function SearchFilters({
         <select
           value={filters.state}
           onChange={(e) => update("state", e.target.value)}
-          className="px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-700 focus:ring-2 focus:ring-blue-500"
+          className="px-2.5 sm:px-3 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm text-gray-700 focus:ring-2 focus:ring-blue-500"
         >
           <option value="">All States</option>
           {filterOptions.states.map((s) => (
@@ -92,7 +92,7 @@ export default function SearchFilters({
         <select
           value={filters.conference}
           onChange={(e) => update("conference", e.target.value)}
-          className="px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-700 focus:ring-2 focus:ring-blue-500"
+          className="px-2.5 sm:px-3 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm text-gray-700 focus:ring-2 focus:ring-blue-500"
         >
           <option value="">All Conferences</option>
           {filterOptions.conferences.map((c) => (
@@ -105,7 +105,7 @@ export default function SearchFilters({
         <select
           value={filters.publicPrivate}
           onChange={(e) => update("publicPrivate", e.target.value)}
-          className="px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-700 focus:ring-2 focus:ring-blue-500"
+          className="px-2.5 sm:px-3 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm text-gray-700 focus:ring-2 focus:ring-blue-500"
         >
           <option value="">Public & Private</option>
           <option value="Public">Public</option>
@@ -136,13 +136,13 @@ export default function SearchFilters({
                 onZipSearch("");
               }
             }}
-            className="w-full pl-8 pr-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-700 focus:ring-2 focus:ring-blue-500"
+            className="w-full pl-8 pr-3 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm text-gray-700 focus:ring-2 focus:ring-blue-500"
             maxLength={5}
           />
         </div>
 
         {/* My List toggle */}
-        <label className="flex items-center gap-2 px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-700 cursor-pointer hover:bg-gray-50">
+        <label className="flex items-center gap-2 px-2.5 sm:px-3 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm text-gray-700 cursor-pointer hover:bg-gray-50">
           <input
             type="checkbox"
             checked={filters.priorityOnly}
