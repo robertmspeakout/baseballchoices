@@ -43,6 +43,23 @@ interface NewsArticle {
   source: string;
 }
 
+const RECRUITING_STATUSES = [
+  "Researching",
+  "Reached Out",
+  "In Contact",
+  "Mutual Interest",
+  "Offer",
+  "Committed",
+];
+
+const SEEN_ME_OPTIONS = [
+  "Watched my video",
+  "Saw me at a camp or showcase",
+  "Came to my HS/travel game",
+  "Evaluated me at their camp",
+  "Spoke with my coach",
+];
+
 export default function SchoolPage({
   params,
 }: {
@@ -54,6 +71,11 @@ export default function SchoolPage({
   const [priority, setPriority] = useState(0);
   const [notes, setNotes] = useState("");
   const [lastContacted, setLastContacted] = useState("");
+  const [recruitingStatus, setRecruitingStatus] = useState("");
+  const [theyvSeenMe, setTheyvSeenMe] = useState<string[]>([]);
+  const [detail, setDetail] = useState("");
+  const [myContactName, setMyContactName] = useState("");
+  const [myContactEmail, setMyContactEmail] = useState("");
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -62,26 +84,28 @@ export default function SchoolPage({
   const [news, setNews] = useState<NewsArticle[]>([]);
   const [newsLoading, setNewsLoading] = useState(true);
 
-  // Load user data from localStorage on mount
   useEffect(() => {
     const ud = getUserData(parseInt(id));
     setPriority(ud.priority);
     setNotes(ud.notes);
     setLastContacted(ud.last_contacted || "");
+    setRecruitingStatus(ud.recruiting_status || "");
+    setTheyvSeenMe(ud.theyve_seen_me || []);
+    setDetail(ud.detail || "");
+    setMyContactName(ud.my_contact_name || "");
+    setMyContactEmail(ud.my_contact_email || "");
 
-    // Calculate distance from home if zip was saved
     try {
       const saved = localStorage.getItem("nextbase_homeZip");
       if (saved && schoolData?.latitude && schoolData?.longitude) {
         const { lat, lng } = JSON.parse(saved);
         setDistanceFromHome(haversineDistance(lat, lng, schoolData.latitude, schoolData.longitude));
       }
-    } catch { /* ignore parse errors */ }
+    } catch { /* ignore */ }
 
     setMounted(true);
   }, [id, schoolData]);
 
-  // Fetch news articles
   useEffect(() => {
     if (!schoolData) return;
     setNewsLoading(true);
@@ -99,15 +123,26 @@ export default function SchoolPage({
     setTimeout(() => setSaved(false), 2000);
   };
 
-  const saveNotes = () => {
+  const saveAll = () => {
     setSaving(true);
     setUserData(parseInt(id), {
       notes,
       last_contacted: lastContacted || null,
+      recruiting_status: recruitingStatus,
+      theyve_seen_me: theyvSeenMe,
+      detail,
+      my_contact_name: myContactName,
+      my_contact_email: myContactEmail,
     });
     setSaving(false);
     setSaved(true);
     setTimeout(() => setSaved(false), 2000);
+  };
+
+  const toggleSeenMe = (option: string) => {
+    setTheyvSeenMe((prev) =>
+      prev.includes(option) ? prev.filter((o) => o !== option) : [...prev, option]
+    );
   };
 
   if (!schoolData) {
@@ -127,18 +162,13 @@ export default function SchoolPage({
   }
 
   const school = schoolData;
-
-  // Use stadium coords for map, fall back to campus
   const mapLat = school.stadium_latitude || school.latitude;
   const mapLng = school.stadium_longitude || school.longitude;
 
   const divLabel: Record<string, string> = {
-    D1: "NCAA Division I",
-    D2: "NCAA Division II",
-    D3: "NCAA Division III",
-    JUCO: "Junior College",
+    D1: "NCAA Division I", D2: "NCAA Division II",
+    D3: "NCAA Division III", JUCO: "Junior College",
   };
-
   const divColor: Record<string, string> = {
     D1: "bg-blue-100 text-blue-800 border-blue-200",
     D2: "bg-green-100 text-green-800 border-green-200",
@@ -146,31 +176,32 @@ export default function SchoolPage({
     JUCO: "bg-orange-100 text-orange-800 border-orange-200",
   };
 
+  const statusColor: Record<string, string> = {
+    "Researching": "bg-gray-100 text-gray-700 border-gray-300",
+    "Reached Out": "bg-blue-50 text-blue-700 border-blue-300",
+    "In Contact": "bg-cyan-50 text-cyan-700 border-cyan-300",
+    "Mutual Interest": "bg-purple-50 text-purple-700 border-purple-300",
+    "Offer": "bg-amber-50 text-amber-700 border-amber-300",
+    "Committed": "bg-green-50 text-green-700 border-green-300",
+  };
+
   function formatNewsDate(dateStr: string): string {
     try {
       const d = new Date(dateStr);
       return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
-    } catch {
-      return "";
-    }
+    } catch { return ""; }
   }
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header with baseball park background */}
       <header className="relative bg-blue-950 text-white overflow-hidden">
-        {/* Baseball park background image */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: "url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/2019CWSVanderbiltVsLouisville.jpg/1600px-2019CWSVanderbiltVsLouisville.jpg')" }}
         />
-        {/* Dark gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-blue-950/90 via-blue-900/85 to-blue-950/90" />
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 py-4">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-blue-200 hover:text-white text-sm transition-colors"
-          >
+          <Link href="/" className="inline-flex items-center gap-2 text-blue-200 hover:text-white text-sm transition-colors">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
@@ -184,15 +215,9 @@ export default function SchoolPage({
         <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
           <div className="bg-gradient-to-r from-gray-50 to-white p-4 sm:p-8 border-b border-gray-100">
             <div className="flex items-start gap-3 sm:gap-5">
-              {/* School Logo */}
               <div className="shrink-0 w-14 h-14 sm:w-20 sm:h-20 rounded-xl bg-gray-100 border border-gray-200 flex items-center justify-center overflow-hidden">
                 {school.logo_url && !logoError ? (
-                  <img
-                    src={school.logo_url}
-                    alt={`${school.name} logo`}
-                    className="w-11 h-11 sm:w-16 sm:h-16 object-contain"
-                    onError={() => setLogoError(true)}
-                  />
+                  <img src={school.logo_url} alt={`${school.name} logo`} className="w-11 h-11 sm:w-16 sm:h-16 object-contain" onError={() => setLogoError(true)} />
                 ) : (
                   <span className="text-lg sm:text-2xl font-bold text-gray-400">
                     {school.name.split(" ").map(w => w[0]).join("").slice(0, 3)}
@@ -202,11 +227,7 @@ export default function SchoolPage({
               <div className="flex-1 min-w-0">
                 <div className="flex flex-wrap items-center gap-2 mb-1">
                   <h1 className="text-xl sm:text-3xl font-bold text-gray-900 truncate">{school.name}</h1>
-                  <span
-                    className={`shrink-0 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs sm:text-sm font-semibold border ${
-                      divColor[school.division] || "bg-gray-100 text-gray-800"
-                    }`}
-                  >
+                  <span className={`shrink-0 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs sm:text-sm font-semibold border ${divColor[school.division] || "bg-gray-100 text-gray-800"}`}>
                     {divLabel[school.division] || school.division}
                   </span>
                 </div>
@@ -222,13 +243,8 @@ export default function SchoolPage({
                     {distanceFromHome.toLocaleString()} miles from home
                   </span>
                 )}
-                {/* Priority */}
                 <div className="flex items-center gap-2 mt-2">
-                  <StarRating
-                    value={priority}
-                    onChange={savePriority}
-                    size="sm"
-                  />
+                  <StarRating value={priority} onChange={savePriority} size="sm" />
                   <span className="text-xs text-gray-500 font-medium">
                     {priority === 0 && "Not Rated"}
                     {priority === 1 && "Mildly Interested"}
@@ -246,47 +262,39 @@ export default function SchoolPage({
           <div className="grid grid-cols-3 sm:grid-cols-5 divide-x divide-y sm:divide-y-0 divide-gray-100">
             <div className="p-3 sm:p-4 text-center">
               <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">2025 Record</p>
-              <p className="text-base sm:text-xl font-bold text-gray-900 mt-0.5 sm:mt-1">
-                {school.last_season_record || "N/A"}
-              </p>
+              <p className="text-base sm:text-xl font-bold text-gray-900 mt-0.5 sm:mt-1">{school.last_season_record || "N/A"}</p>
             </div>
             <div className="p-3 sm:p-4 text-center">
               <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Ranking</p>
-              <p className="text-base sm:text-xl font-bold text-gray-900 mt-0.5 sm:mt-1">
-                {school.current_ranking ? `#${school.current_ranking}` : "NR"}
-              </p>
+              <p className="text-base sm:text-xl font-bold text-gray-900 mt-0.5 sm:mt-1">{school.current_ranking ? `#${school.current_ranking}` : "NR"}</p>
             </div>
             <div className="p-3 sm:p-4 text-center">
               <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Tuition</p>
-              <p className="text-base sm:text-xl font-bold text-gray-900 mt-0.5 sm:mt-1">
-                {school.tuition ? `$${(school.tuition / 1000).toFixed(0)}k` : "N/A"}
-              </p>
+              <p className="text-base sm:text-xl font-bold text-gray-900 mt-0.5 sm:mt-1">{school.tuition ? `$${(school.tuition / 1000).toFixed(0)}k` : "N/A"}</p>
             </div>
             <div className="p-3 sm:p-4 text-center col-span-1 hidden sm:block">
               <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Type</p>
-              <p className="text-base sm:text-xl font-bold text-gray-900 mt-0.5 sm:mt-1">
-                {school.public_private}
-              </p>
+              <p className="text-base sm:text-xl font-bold text-gray-900 mt-0.5 sm:mt-1">{school.public_private}</p>
             </div>
             <div className="p-3 sm:p-4 text-center col-span-1 hidden sm:block">
-              <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Division</p>
+              <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Draft Picks</p>
               <p className="text-base sm:text-xl font-bold text-gray-900 mt-0.5 sm:mt-1">
-                {school.division === "JUCO" ? "JUCO" : school.division.replace("D", "D-")}
+                {school.mlb_draft_picks ? school.mlb_draft_picks : "0"}
               </p>
             </div>
           </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* Coaching Staff */}
+          {/* Head Coach + My Contact */}
           <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">
             <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4 flex items-center gap-2">
               <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
               </svg>
-              Coaching Staff
+              Head Coach
             </h2>
-            <div className="space-y-3 sm:space-y-4">
+            <div className="space-y-4">
               <div className="flex items-start gap-3">
                 <div className="shrink-0 w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
                   <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -294,16 +302,37 @@ export default function SchoolPage({
                   </svg>
                 </div>
                 <div>
-                  <p className="text-[10px] sm:text-xs uppercase text-gray-500 font-medium">Head Coach</p>
                   <p className="text-sm sm:text-base text-gray-900 font-semibold">{school.head_coach_name || "N/A"}</p>
                   {school.head_coach_email && (
-                    <a
-                      href={`mailto:${school.head_coach_email}`}
-                      className="text-xs sm:text-sm text-blue-600 hover:underline break-all"
-                    >
+                    <a href={`mailto:${school.head_coach_email}`} className="text-xs sm:text-sm text-blue-600 hover:underline break-all">
                       {school.head_coach_email}
                     </a>
                   )}
+                </div>
+              </div>
+
+              <div className="border-t border-gray-100 pt-4">
+                <h3 className="text-sm font-semibold text-gray-700 mb-2 flex items-center gap-1.5">
+                  <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  My Contact
+                </h3>
+                <div className="space-y-2">
+                  <input
+                    type="text"
+                    value={myContactName}
+                    onChange={(e) => setMyContactName(e.target.value)}
+                    placeholder="Contact name at this school"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  />
+                  <input
+                    type="email"
+                    value={myContactEmail}
+                    onChange={(e) => setMyContactEmail(e.target.value)}
+                    placeholder="Contact email"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  />
                 </div>
               </div>
             </div>
@@ -319,12 +348,7 @@ export default function SchoolPage({
             </h2>
             <div className="space-y-3">
               {school.website && (
-                <a
-                  href={school.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 px-4 py-3 bg-blue-50 hover:bg-blue-100 rounded-lg text-blue-700 font-medium transition-colors"
-                >
+                <a href={school.website} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 px-4 py-3 bg-blue-50 hover:bg-blue-100 rounded-lg text-blue-700 font-medium transition-colors">
                   <svg className="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none">
                     <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5" />
                     <path d="M12 2c-2 3-3 6-3 10s1 7 3 10m0-20c2 3 3 6 3 10s-1 7-3 10" stroke="currentColor" strokeWidth="1.5" />
@@ -336,12 +360,7 @@ export default function SchoolPage({
                 </a>
               )}
               {school.instagram && (
-                <a
-                  href={`https://instagram.com/${school.instagram.replace("@", "")}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-purple-50 to-pink-50 hover:from-purple-100 hover:to-pink-100 rounded-lg text-purple-700 font-medium transition-colors"
-                >
+                <a href={`https://instagram.com/${school.instagram.replace("@", "")}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-purple-50 to-pink-50 hover:from-purple-100 hover:to-pink-100 rounded-lg text-purple-700 font-medium transition-colors">
                   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
                   </svg>
@@ -352,12 +371,7 @@ export default function SchoolPage({
                 </a>
               )}
               {school.x_account && (
-                <a
-                  href={`https://x.com/${school.x_account.replace("@", "")}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 px-4 py-3 bg-gray-50 hover:bg-gray-100 rounded-lg text-gray-800 font-medium transition-colors"
-                >
+                <a href={`https://x.com/${school.x_account.replace("@", "")}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 px-4 py-3 bg-gray-50 hover:bg-gray-100 rounded-lg text-gray-800 font-medium transition-colors">
                   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                   </svg>
@@ -371,26 +385,128 @@ export default function SchoolPage({
           </div>
         </div>
 
-        {/* MLB Draft Picks */}
+        {/* Notes & Tracking */}
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">
+          <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4 flex items-center gap-2">
+            <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+            </svg>
+            Your Notes & Tracking
+          </h2>
+          <div className="space-y-4">
+            {/* Recruiting Status */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">Recruiting Status</label>
+              <div className="flex flex-wrap gap-2">
+                {RECRUITING_STATUSES.map((status) => (
+                  <button
+                    key={status}
+                    onClick={() => setRecruitingStatus(recruitingStatus === status ? "" : status)}
+                    className={`px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium border transition-colors ${
+                      recruitingStatus === status
+                        ? statusColor[status] || "bg-blue-50 text-blue-700 border-blue-300"
+                        : "bg-white text-gray-500 border-gray-200 hover:border-gray-300"
+                    }`}
+                  >
+                    {status}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* They've Seen Me */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1.5">They&apos;ve Seen Me</label>
+              <div className="flex flex-wrap gap-2">
+                {SEEN_ME_OPTIONS.map((option) => (
+                  <button
+                    key={option}
+                    onClick={() => toggleSeenMe(option)}
+                    className={`px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium border transition-colors ${
+                      theyvSeenMe.includes(option)
+                        ? "bg-blue-50 text-blue-700 border-blue-300"
+                        : "bg-white text-gray-500 border-gray-200 hover:border-gray-300"
+                    }`}
+                  >
+                    {theyvSeenMe.includes(option) && (
+                      <svg className="w-3.5 h-3.5 inline mr-1 -mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    )}
+                    {option}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Detail */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Detail</label>
+              <textarea
+                value={detail}
+                onChange={(e) => setDetail(e.target.value)}
+                rows={2}
+                placeholder="Additional recruiting details..."
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-y"
+              />
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {/* Last Contacted */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Last Contacted</label>
+                <input
+                  type="date"
+                  value={lastContacted}
+                  onChange={(e) => setLastContacted(e.target.value)}
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                />
+              </div>
+            </div>
+
+            {/* Notes */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Notes</label>
+              <textarea
+                value={notes}
+                onChange={(e) => setNotes(e.target.value)}
+                rows={3}
+                placeholder="Notes about this program, camp visits, conversations with coaches..."
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-y"
+              />
+            </div>
+
+            <div className="flex items-center gap-3">
+              <button
+                onClick={saveAll}
+                disabled={saving}
+                className="flex-1 sm:flex-none px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 font-medium transition-colors text-sm"
+              >
+                {saving ? "Saving..." : "Save"}
+              </button>
+              {saved && (
+                <span className="text-green-600 text-sm font-medium animate-pulse">Saved!</span>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* MLB Draft Picks — compact inline */}
         {school.mlb_draft_picks != null && school.mlb_draft_picks > 0 && (
           <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">
-            <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-2 flex items-center gap-2">
+            <div className="flex items-center gap-3">
               <img
                 src="https://www.mlbstatic.com/team-logos/league-on-dark/1.svg"
                 alt="MLB"
-                className="w-6 h-6"
-                onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                className="w-7 h-7"
+                onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
               />
-              MLB Draft Picks since 2021
-            </h2>
-            <p className="text-xs text-gray-500 mb-3">Players drafted across the 2021&ndash;2025 MLB Drafts</p>
-            <div className="flex items-center gap-4">
-              <div className="bg-gradient-to-br from-amber-50 to-amber-100 border border-amber-200 rounded-xl px-6 py-4 text-center">
-                <p className="text-3xl sm:text-4xl font-extrabold text-amber-700">{school.mlb_draft_picks}</p>
-                <p className="text-xs text-amber-600 font-medium mt-1">Total Picks</p>
-              </div>
-              <div className="text-sm text-gray-600">
-                <p>
+              <div>
+                <h2 className="text-base sm:text-lg font-bold text-gray-900">
+                  {school.mlb_draft_picks} MLB Draft Picks
+                  <span className="text-sm font-normal text-gray-500 ml-1.5">since 2021</span>
+                </h2>
+                <p className="text-xs text-gray-500">
                   {school.mlb_draft_picks >= 15
                     ? "Elite pipeline to professional baseball"
                     : school.mlb_draft_picks >= 8
@@ -398,6 +514,7 @@ export default function SchoolPage({
                     : school.mlb_draft_picks >= 3
                     ? "Consistent at producing draft-eligible players"
                     : "Developing program with draft history"}
+                  {" "}&middot; 2021&ndash;2025 MLB Drafts
                 </p>
               </div>
             </div>
@@ -420,13 +537,7 @@ export default function SchoolPage({
           ) : news.length > 0 ? (
             <div className="space-y-3">
               {news.map((article, i) => (
-                <a
-                  key={i}
-                  href={article.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block px-4 py-3 rounded-lg border border-gray-100 hover:border-blue-200 hover:bg-blue-50/50 transition-colors"
-                >
+                <a key={i} href={article.link} target="_blank" rel="noopener noreferrer" className="block px-4 py-3 rounded-lg border border-gray-100 hover:border-blue-200 hover:bg-blue-50/50 transition-colors">
                   <p className="text-sm font-medium text-gray-900 line-clamp-2">{article.title}</p>
                   <div className="flex items-center gap-2 mt-1.5 text-xs text-gray-500">
                     {article.source && <span className="font-medium text-gray-600">{article.source}</span>}
@@ -470,55 +581,6 @@ export default function SchoolPage({
             />
           </div>
         )}
-
-        {/* Notes and Tracking Section */}
-        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">
-          <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4 flex items-center gap-2">
-            <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-            </svg>
-            Your Notes & Tracking
-          </h2>
-          <div className="space-y-3 sm:space-y-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Last Contacted
-              </label>
-              <input
-                type="date"
-                value={lastContacted}
-                onChange={(e) => setLastContacted(e.target.value)}
-                className="w-full sm:w-auto px-3 py-2 border border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Notes
-              </label>
-              <textarea
-                value={notes}
-                onChange={(e) => setNotes(e.target.value)}
-                rows={4}
-                placeholder="Notes about this program, camp visits, conversations with coaches..."
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-y text-sm sm:text-base"
-              />
-            </div>
-            <div className="flex items-center gap-3">
-              <button
-                onClick={saveNotes}
-                disabled={saving}
-                className="flex-1 sm:flex-none px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 font-medium transition-colors text-sm sm:text-base"
-              >
-                {saving ? "Saving..." : "Save Notes"}
-              </button>
-              {saved && (
-                <span className="text-green-600 text-sm font-medium animate-pulse">
-                  Saved!
-                </span>
-              )}
-            </div>
-          </div>
-        </div>
       </main>
     </div>
   );

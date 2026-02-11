@@ -2,10 +2,26 @@ export interface UserData {
   priority: number;
   notes: string;
   last_contacted: string | null;
+  recruiting_status: string;
+  theyve_seen_me: string[];
+  detail: string;
+  my_contact_name: string;
+  my_contact_email: string;
 }
 
 const STORAGE_KEY = "nextbase_userData";
 const OLD_STORAGE_KEY = "baseballchoices_userData";
+
+const DEFAULT_USER_DATA: UserData = {
+  priority: 0,
+  notes: "",
+  last_contacted: null,
+  recruiting_status: "",
+  theyve_seen_me: [],
+  detail: "",
+  my_contact_name: "",
+  my_contact_email: "",
+};
 
 function loadAll(): Record<string, UserData> {
   if (typeof window === "undefined") return {};
@@ -31,12 +47,12 @@ function saveAll(data: Record<string, UserData>) {
 
 export function getUserData(schoolId: number): UserData {
   const all = loadAll();
-  return all[schoolId] || { priority: 0, notes: "", last_contacted: null };
+  return { ...DEFAULT_USER_DATA, ...all[schoolId] };
 }
 
 export function setUserData(schoolId: number, updates: Partial<UserData>) {
   const all = loadAll();
-  const existing = all[schoolId] || { priority: 0, notes: "", last_contacted: null };
+  const existing = { ...DEFAULT_USER_DATA, ...all[schoolId] };
   all[schoolId] = { ...existing, ...updates };
   saveAll(all);
 }
