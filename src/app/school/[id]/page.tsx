@@ -213,62 +213,62 @@ export default function SchoolPage({
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url('${school.stadium_image_url || "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/2019CWSVanderbiltVsLouisville.jpg/1600px-2019CWSVanderbiltVsLouisville.jpg"}')` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-950/90 via-blue-900/85 to-blue-950/90" />
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 py-4">
-          <Link href="/" className="inline-flex items-center gap-2 text-blue-200 hover:text-white text-sm transition-colors">
+        <div className="absolute inset-0 bg-gradient-to-t from-blue-950/85 via-blue-950/40 to-blue-950/60" />
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 pt-4 pb-10 sm:pb-14">
+          <Link href="/" className="inline-flex items-center gap-2 text-white/80 hover:text-white text-sm transition-colors mb-6 sm:mb-10">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
             Back to Directory
           </Link>
+          <div className="flex items-end gap-3 sm:gap-4">
+            <div className="shrink-0 w-14 h-14 sm:w-20 sm:h-20 rounded-xl bg-white/20 backdrop-blur-sm border border-white/20 flex items-center justify-center overflow-hidden">
+              {school.logo_url && !logoError ? (
+                <img src={school.logo_url} alt={`${school.name} logo`} className="w-11 h-11 sm:w-16 sm:h-16 object-contain" onError={() => setLogoError(true)} />
+              ) : (
+                <span className="text-lg sm:text-2xl font-bold text-white/70">
+                  {school.name.split(" ").map(w => w[0]).join("").slice(0, 3)}
+                </span>
+              )}
+            </div>
+            <div className="min-w-0">
+              <h1 className="text-2xl sm:text-4xl font-extrabold text-white drop-shadow-lg truncate">{school.name}</h1>
+              <p className="text-sm sm:text-base text-white/80 drop-shadow truncate">
+                {school.mascot} &middot; {school.conference}
+              </p>
+            </div>
+          </div>
         </div>
       </header>
 
       <main className="max-w-5xl mx-auto px-4 sm:px-6 py-4 sm:py-8 space-y-4 sm:space-y-6">
-        {/* School header card */}
-        <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
-          <div className="bg-gradient-to-r from-gray-50 to-white p-4 sm:p-8 border-b border-gray-100">
-            <div className="flex items-start gap-3 sm:gap-5">
-              <div className="shrink-0 w-14 h-14 sm:w-20 sm:h-20 rounded-xl bg-gray-100 border border-gray-200 flex items-center justify-center overflow-hidden">
-                {school.logo_url && !logoError ? (
-                  <img src={school.logo_url} alt={`${school.name} logo`} className="w-11 h-11 sm:w-16 sm:h-16 object-contain" onError={() => setLogoError(true)} />
-                ) : (
-                  <span className="text-lg sm:text-2xl font-bold text-gray-400">
-                    {school.name.split(" ").map(w => w[0]).join("").slice(0, 3)}
-                  </span>
-                )}
-              </div>
-              <div className="flex-1 min-w-0">
-                <div className="flex flex-wrap items-center gap-2 mb-1">
-                  <h1 className="text-xl sm:text-3xl font-bold text-gray-900 truncate">{school.name}</h1>
-                  <span className={`shrink-0 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs sm:text-sm font-semibold border ${divColor[school.division] || "bg-gray-100 text-gray-800"}`}>
-                    {divLabel[school.division] || school.division}
-                  </span>
-                </div>
-                <p className="text-sm sm:text-lg text-gray-600 truncate">
-                  {school.mascot} &middot; {school.city}, {school.state}
-                </p>
-                <p className="text-xs sm:text-sm text-gray-500 mt-0.5">
-                  {school.conference} &middot; {school.public_private}
-                </p>
-                {distanceFromHome != null && (
-                  <span className="inline-flex items-center gap-1 mt-1 text-xs font-medium text-green-700 bg-green-50 border border-green-200 px-2 py-0.5 rounded-full">
-                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-                    {distanceFromHome.toLocaleString()} miles from home
-                  </span>
-                )}
-                <div className="flex items-center gap-2 mt-2">
-                  <StarRating value={priority} onChange={savePriority} size="sm" />
-                  <span className="text-xs text-gray-500 font-medium">
-                    {priority === 0 && "Not Rated"}
-                    {priority === 1 && "Mildly Interested"}
-                    {priority === 2 && "Interested"}
-                    {priority === 3 && "Very Interested"}
-                    {priority === 4 && "Top Choice"}
-                    {priority === 5 && "VIP Choice"}
-                  </span>
-                </div>
-              </div>
+        {/* School info card */}
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden -mt-6 relative z-10">
+          <div className="p-4 sm:p-6 border-b border-gray-100">
+            <div className="flex flex-wrap items-center gap-2 mb-2">
+              <span className={`px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs sm:text-sm font-semibold border ${divColor[school.division] || "bg-gray-100 text-gray-800"}`}>
+                {divLabel[school.division] || school.division}
+              </span>
+              <span className="text-xs sm:text-sm text-gray-500">{school.public_private}</span>
+              <span className="text-xs text-gray-400">&middot;</span>
+              <span className="text-xs sm:text-sm text-gray-500">{school.city}, {school.state}</span>
+              {distanceFromHome != null && (
+                <span className="inline-flex items-center gap-1 text-xs font-medium text-green-700 bg-green-50 border border-green-200 px-2 py-0.5 rounded-full">
+                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                  {distanceFromHome.toLocaleString()} miles from home
+                </span>
+              )}
+            </div>
+            <div className="flex items-center gap-2">
+              <StarRating value={priority} onChange={savePriority} size="sm" />
+              <span className="text-xs text-gray-500 font-medium">
+                {priority === 0 && "Not Rated"}
+                {priority === 1 && "Mildly Interested"}
+                {priority === 2 && "Interested"}
+                {priority === 3 && "Very Interested"}
+                {priority === 4 && "Top Choice"}
+                {priority === 5 && "VIP Choice"}
+              </span>
             </div>
           </div>
 
@@ -511,39 +511,52 @@ export default function SchoolPage({
         {/* MLB Draft Picks — collapsible table */}
         {school.mlb_draft_picks != null && school.mlb_draft_picks > 0 && (() => {
           const picks = (draftPicksData as Record<string, DraftPick[]>)[school.name] || [];
+          const mlbCount = picks.filter(p => p.current_level === "MLB").length;
           return (
-            <div className="bg-white rounded-xl border border-gray-200 shadow-sm">
-              <button
-                onClick={() => setDraftExpanded(!draftExpanded)}
-                className="w-full flex items-center gap-3 p-4 sm:p-6 text-left hover:bg-gray-50/50 transition-colors"
-              >
-                <img
-                  src="https://www.mlbstatic.com/team-logos/league-on-dark/1.svg"
-                  alt="MLB"
-                  className="w-7 h-7 shrink-0"
-                  onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
-                />
-                <div className="flex-1 min-w-0">
-                  <h2 className="text-base sm:text-lg font-bold text-gray-900">
-                    {school.mlb_draft_picks} MLB Draft Picks
-                    <span className="text-sm font-normal text-gray-500 ml-1.5">since 2021</span>
-                  </h2>
-                  <p className="text-xs text-gray-500">
-                    {picks.length > 0
-                      ? `${picks.filter(p => p.current_level === "MLB").length} in MLB now`
-                      : school.mlb_draft_picks >= 8
-                      ? "Strong track record of developing MLB talent"
-                      : "Players drafted to professional baseball"}
-                    {" "}&middot; Tap to {draftExpanded ? "collapse" : "see details"}
-                  </p>
+            <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+              <div className="p-4 sm:p-6">
+                <div className="flex items-center gap-3">
+                  <div className="shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-blue-900 to-red-800 flex items-center justify-center">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.5 9.5c2 1.5 5.5 2 9.5 2s7.5-.5 9.5-2" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.5 14.5c2-1.5 5.5-2 9.5-2s7.5.5 9.5 2" />
+                    </svg>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h2 className="text-base sm:text-lg font-bold text-gray-900">
+                      {school.mlb_draft_picks} MLB Draft Picks
+                      <span className="text-sm font-normal text-gray-500 ml-1.5">since 2021</span>
+                    </h2>
+                    <p className="text-xs text-gray-500">
+                      {picks.length > 0 && mlbCount > 0
+                        ? `${mlbCount} currently in MLB`
+                        : picks.length > 0
+                        ? "Players in minor league systems"
+                        : "Players drafted to professional baseball"}
+                    </p>
+                  </div>
                 </div>
-                <svg
-                  className={`w-5 h-5 text-gray-400 shrink-0 transition-transform ${draftExpanded ? "rotate-180" : ""}`}
-                  fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
+                {/* Prominent expand button */}
+                {picks.length > 0 && (
+                  <button
+                    onClick={() => setDraftExpanded(!draftExpanded)}
+                    className={`mt-4 w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold transition-all ${
+                      draftExpanded
+                        ? "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                        : "bg-blue-600 text-white hover:bg-blue-700 shadow-sm"
+                    }`}
+                  >
+                    {draftExpanded ? "Hide Player Details" : `View All ${picks.length} Players`}
+                    <svg
+                      className={`w-4 h-4 transition-transform ${draftExpanded ? "rotate-180" : ""}`}
+                      fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                )}
+              </div>
               {draftExpanded && picks.length > 0 && (
                 <div className="border-t border-gray-100 overflow-x-auto">
                   <table className="min-w-full divide-y divide-gray-100">
@@ -593,11 +606,6 @@ export default function SchoolPage({
                       ))}
                     </tbody>
                   </table>
-                </div>
-              )}
-              {draftExpanded && picks.length === 0 && (
-                <div className="border-t border-gray-100 p-4 text-sm text-gray-400 text-center">
-                  Detailed player data not yet available for this program.
                 </div>
               )}
             </div>

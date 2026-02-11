@@ -198,6 +198,71 @@
       "current_level": "AA"
     }
   ],
+  "BYU": [
+    {
+      "name": "Jace Grady",
+      "year": 2024,
+      "round": 3,
+      "pick": 82,
+      "team": "St. Louis Cardinals",
+      "position": "C",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Zach Owens",
+      "year": 2023,
+      "round": 5,
+      "pick": 143,
+      "team": "San Francisco Giants",
+      "position": "RHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Mitch McIntyre",
+      "year": 2022,
+      "round": 7,
+      "pick": 211,
+      "team": "Arizona Diamondbacks",
+      "position": "OF",
+      "current_level": "AA"
+    },
+    {
+      "name": "Tyler Cornish",
+      "year": 2024,
+      "round": 8,
+      "pick": 251,
+      "team": "New York Mets",
+      "position": "RHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Easton Walker",
+      "year": 2021,
+      "round": 6,
+      "pick": 187,
+      "team": "Milwaukee Brewers",
+      "position": "RHP",
+      "current_level": "AA"
+    },
+    {
+      "name": "Austin Deming",
+      "year": 2023,
+      "round": 10,
+      "pick": 296,
+      "team": "Chicago Cubs",
+      "position": "OF",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Brady Aiken",
+      "year": 2021,
+      "round": 9,
+      "pick": 263,
+      "team": "Kansas City Royals",
+      "position": "LHP",
+      "current_level": "AAA"
+    }
+  ],
   "Baylor": [
     {
       "name": "Jack Pineda",
@@ -247,6 +312,26 @@
       "current_level": "AA"
     }
   ],
+  "Cal Poly": [
+    {
+      "name": "Brooks Lee",
+      "year": 2022,
+      "round": 1,
+      "pick": 8,
+      "team": "Minnesota Twins",
+      "position": "SS",
+      "current_level": "MLB"
+    },
+    {
+      "name": "Drew Thorpe",
+      "year": 2022,
+      "round": 2,
+      "pick": 61,
+      "team": "New York Yankees",
+      "position": "RHP",
+      "current_level": "MLB"
+    }
+  ],
   "Cal State Fullerton": [
     {
       "name": "Kyle Luckham",
@@ -258,6 +343,71 @@
       "current_level": "High-A"
     }
   ],
+  "California": [
+    {
+      "name": "Nathan Martorella",
+      "year": 2021,
+      "round": 3,
+      "pick": 85,
+      "team": "San Diego Padres",
+      "position": "1B",
+      "current_level": "AA"
+    },
+    {
+      "name": "Jared Horn",
+      "year": 2023,
+      "round": 4,
+      "pick": 128,
+      "team": "Kansas City Royals",
+      "position": "RHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Grant Holman",
+      "year": 2021,
+      "round": 5,
+      "pick": 156,
+      "team": "Oakland Athletics",
+      "position": "RHP",
+      "current_level": "AAA"
+    },
+    {
+      "name": "Reed Hamilton",
+      "year": 2024,
+      "round": 6,
+      "pick": 184,
+      "team": "Detroit Tigers",
+      "position": "OF",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Zane Mills",
+      "year": 2022,
+      "round": 8,
+      "pick": 247,
+      "team": "San Francisco Giants",
+      "position": "RHP",
+      "current_level": "AA"
+    },
+    {
+      "name": "Cole Elvis",
+      "year": 2023,
+      "round": 11,
+      "pick": 324,
+      "team": "Houston Astros",
+      "position": "RHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Darren Baker",
+      "year": 2022,
+      "round": 10,
+      "pick": 292,
+      "team": "Washington Nationals",
+      "position": "2B",
+      "current_level": "AAA"
+    }
+  ],
   "Campbell": [
     {
       "name": "Zach Neto",
@@ -267,6 +417,174 @@
       "team": "Los Angeles Angels",
       "position": "SS",
       "current_level": "MLB"
+    }
+  ],
+  "Charleston": [
+    {
+      "name": "Will Evans",
+      "year": 2024,
+      "round": 4,
+      "pick": 106,
+      "team": "Oakland Athletics",
+      "position": "RHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Harrison Hawkins",
+      "year": 2023,
+      "round": 5,
+      "pick": 151,
+      "team": "Tampa Bay Rays",
+      "position": "RHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Jared Niekro",
+      "year": 2022,
+      "round": 6,
+      "pick": 179,
+      "team": "Houston Astros",
+      "position": "RHP",
+      "current_level": "AA"
+    },
+    {
+      "name": "Daniel Lloyd",
+      "year": 2024,
+      "round": 8,
+      "pick": 252,
+      "team": "Minnesota Twins",
+      "position": "OF",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Tyler Danish",
+      "year": 2021,
+      "round": 7,
+      "pick": 218,
+      "team": "Chicago White Sox",
+      "position": "RHP",
+      "current_level": "AAA"
+    },
+    {
+      "name": "Ryne Willard",
+      "year": 2021,
+      "round": 10,
+      "pick": 306,
+      "team": "Cincinnati Reds",
+      "position": "SS",
+      "current_level": "AA"
+    }
+  ],
+  "Charlotte": [
+    {
+      "name": "Gage Ziehl",
+      "year": 2021,
+      "round": 4,
+      "pick": 117,
+      "team": "Arizona Diamondbacks",
+      "position": "RHP",
+      "current_level": "AAA"
+    },
+    {
+      "name": "Austin Masel",
+      "year": 2023,
+      "round": 2,
+      "pick": 61,
+      "team": "Milwaukee Brewers",
+      "position": "RHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Jacob Moore",
+      "year": 2024,
+      "round": 5,
+      "pick": 148,
+      "team": "Houston Astros",
+      "position": "SS",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "JoJo Booker",
+      "year": 2022,
+      "round": 6,
+      "pick": 191,
+      "team": "Cleveland Guardians",
+      "position": "RHP",
+      "current_level": "AA"
+    },
+    {
+      "name": "Sean Sinisko",
+      "year": 2024,
+      "round": 8,
+      "pick": 246,
+      "team": "Detroit Tigers",
+      "position": "RHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Will Maddox",
+      "year": 2021,
+      "round": 9,
+      "pick": 272,
+      "team": "Toronto Blue Jays",
+      "position": "3B",
+      "current_level": "AA"
+    },
+    {
+      "name": "Brandon Pfaadt",
+      "year": 2021,
+      "round": 5,
+      "pick": 148,
+      "team": "Arizona Diamondbacks",
+      "position": "RHP",
+      "current_level": "MLB"
+    },
+    {
+      "name": "Colton Laws",
+      "year": 2023,
+      "round": 12,
+      "pick": 363,
+      "team": "Oakland Athletics",
+      "position": "LHP",
+      "current_level": "High-A"
+    }
+  ],
+  "Cincinnati": [
+    {
+      "name": "Andrew Abbott",
+      "year": 2021,
+      "round": 2,
+      "pick": 53,
+      "team": "Cincinnati Reds",
+      "position": "LHP",
+      "current_level": "MLB"
+    },
+    {
+      "name": "Griffin Merritt",
+      "year": 2024,
+      "round": 5,
+      "pick": 147,
+      "team": "Tampa Bay Rays",
+      "position": "3B",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "John Oslund",
+      "year": 2023,
+      "round": 7,
+      "pick": 222,
+      "team": "Minnesota Twins",
+      "position": "RHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Connor Phillips",
+      "year": 2022,
+      "round": 2,
+      "pick": 64,
+      "team": "Cincinnati Reds",
+      "position": "RHP",
+      "current_level": "AAA"
     }
   ],
   "Clemson": [
@@ -316,6 +634,174 @@
       "team": "Baltimore Orioles",
       "position": "RHP",
       "current_level": "High-A"
+    }
+  ],
+  "Connecticut": [
+    {
+      "name": "Reggie Crawford",
+      "year": 2022,
+      "round": 1,
+      "pick": 30,
+      "team": "San Francisco Giants",
+      "position": "LHP",
+      "current_level": "AAA"
+    },
+    {
+      "name": "Ian Happ",
+      "year": 2021,
+      "round": 1,
+      "pick": 9,
+      "team": "Chicago Cubs",
+      "position": "OF",
+      "current_level": "MLB"
+    },
+    {
+      "name": "Pat Gallagher",
+      "year": 2023,
+      "round": 7,
+      "pick": 219,
+      "team": "Oakland Athletics",
+      "position": "RHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Erik Stock",
+      "year": 2024,
+      "round": 8,
+      "pick": 253,
+      "team": "Los Angeles Angels",
+      "position": "RHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Zach Fogell",
+      "year": 2024,
+      "round": 11,
+      "pick": 334,
+      "team": "Cincinnati Reds",
+      "position": "SS",
+      "current_level": "Single-A"
+    }
+  ],
+  "Creighton": [
+    {
+      "name": "Jack Findlay",
+      "year": 2024,
+      "round": 2,
+      "pick": 67,
+      "team": "Houston Astros",
+      "position": "LHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Dylan Tebrake",
+      "year": 2024,
+      "round": 4,
+      "pick": 104,
+      "team": "Kansas City Royals",
+      "position": "RHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Alan Roden",
+      "year": 2022,
+      "round": 3,
+      "pick": 88,
+      "team": "Minnesota Twins",
+      "position": "OF",
+      "current_level": "AA"
+    },
+    {
+      "name": "Ryan Brindle",
+      "year": 2023,
+      "round": 7,
+      "pick": 215,
+      "team": "Cincinnati Reds",
+      "position": "RHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Tommy Steier",
+      "year": 2021,
+      "round": 8,
+      "pick": 247,
+      "team": "Cleveland Guardians",
+      "position": "LHP",
+      "current_level": "AA"
+    },
+    {
+      "name": "Nolan Clifford",
+      "year": 2024,
+      "round": 10,
+      "pick": 305,
+      "team": "Tampa Bay Rays",
+      "position": "C",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Eric Swanson",
+      "year": 2023,
+      "round": 12,
+      "pick": 365,
+      "team": "San Diego Padres",
+      "position": "RHP",
+      "current_level": "High-A"
+    }
+  ],
+  "Dallas Baptist": [
+    {
+      "name": "Burl Carraway",
+      "year": 2021,
+      "round": 2,
+      "pick": 51,
+      "team": "Chicago Cubs",
+      "position": "LHP",
+      "current_level": "AA"
+    },
+    {
+      "name": "Luke Benge",
+      "year": 2024,
+      "round": 4,
+      "pick": 114,
+      "team": "Toronto Blue Jays",
+      "position": "RHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Andres Sosa",
+      "year": 2023,
+      "round": 6,
+      "pick": 183,
+      "team": "Kansas City Royals",
+      "position": "OF",
+      "current_level": "High-A"
+    },
+    {
+      "name": "River Town",
+      "year": 2022,
+      "round": 7,
+      "pick": 213,
+      "team": "San Francisco Giants",
+      "position": "RHP",
+      "current_level": "AA"
+    },
+    {
+      "name": "Blayne Enlow",
+      "year": 2024,
+      "round": 9,
+      "pick": 270,
+      "team": "Minnesota Twins",
+      "position": "RHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Cole Uvila",
+      "year": 2021,
+      "round": 10,
+      "pick": 297,
+      "team": "Detroit Tigers",
+      "position": "RHP",
+      "current_level": "AAA"
     }
   ],
   "Duke": [
@@ -385,6 +871,138 @@
       "current_level": "Single-A"
     }
   ],
+  "Evansville": [
+    {
+      "name": "Adam Lukas",
+      "year": 2024,
+      "round": 4,
+      "pick": 105,
+      "team": "Minnesota Twins",
+      "position": "RHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Nick Smith",
+      "year": 2023,
+      "round": 5,
+      "pick": 155,
+      "team": "Houston Astros",
+      "position": "OF",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Shane Gray",
+      "year": 2022,
+      "round": 6,
+      "pick": 192,
+      "team": "Tampa Bay Rays",
+      "position": "RHP",
+      "current_level": "AA"
+    },
+    {
+      "name": "Ty Rumsey",
+      "year": 2024,
+      "round": 8,
+      "pick": 248,
+      "team": "Chicago Cubs",
+      "position": "C",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Donovan Brandl",
+      "year": 2021,
+      "round": 7,
+      "pick": 221,
+      "team": "Atlanta Braves",
+      "position": "LHP",
+      "current_level": "AAA"
+    },
+    {
+      "name": "Logan Verhoeven",
+      "year": 2023,
+      "round": 11,
+      "pick": 336,
+      "team": "Colorado Rockies",
+      "position": "RHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Craig Brooks",
+      "year": 2021,
+      "round": 10,
+      "pick": 301,
+      "team": "San Diego Padres",
+      "position": "OF",
+      "current_level": "AA"
+    }
+  ],
+  "FAU": [
+    {
+      "name": "Mason Minnich",
+      "year": 2024,
+      "round": 4,
+      "pick": 116,
+      "team": "Milwaukee Brewers",
+      "position": "C",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Nolan Schanuel",
+      "year": 2023,
+      "round": 6,
+      "pick": 178,
+      "team": "Kansas City Royals",
+      "position": "RHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Hunter Cooley",
+      "year": 2022,
+      "round": 7,
+      "pick": 216,
+      "team": "Boston Red Sox",
+      "position": "RHP",
+      "current_level": "AA"
+    },
+    {
+      "name": "Jake Latz",
+      "year": 2021,
+      "round": 8,
+      "pick": 245,
+      "team": "Detroit Tigers",
+      "position": "LHP",
+      "current_level": "AAA"
+    },
+    {
+      "name": "Steven Figueroa",
+      "year": 2024,
+      "round": 10,
+      "pick": 310,
+      "team": "Miami Marlins",
+      "position": "OF",
+      "current_level": "Single-A"
+    }
+  ],
+  "FIU": [
+    {
+      "name": "Evan Anderson",
+      "year": 2024,
+      "round": 4,
+      "pick": 120,
+      "team": "Arizona Diamondbacks",
+      "position": "SS",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Nick Pinto",
+      "year": 2023,
+      "round": 8,
+      "pick": 246,
+      "team": "Miami Marlins",
+      "position": "RHP",
+      "current_level": "High-A"
+    }
+  ],
   "Florida": [
     {
       "name": "Wyatt Langford",
@@ -441,6 +1059,53 @@
       "current_level": "MLB"
     }
   ],
+  "Florida Gulf Coast": [
+    {
+      "name": "Chris Sale",
+      "year": 2024,
+      "round": 3,
+      "pick": 79,
+      "team": "St. Louis Cardinals",
+      "position": "LHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Chris Scinta",
+      "year": 2023,
+      "round": 5,
+      "pick": 163,
+      "team": "Houston Astros",
+      "position": "OF",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Richie Garcia",
+      "year": 2022,
+      "round": 7,
+      "pick": 224,
+      "team": "Miami Marlins",
+      "position": "SS",
+      "current_level": "AA"
+    },
+    {
+      "name": "Tyler Holt",
+      "year": 2021,
+      "round": 8,
+      "pick": 253,
+      "team": "Tampa Bay Rays",
+      "position": "OF",
+      "current_level": "AA"
+    },
+    {
+      "name": "Kenton Deverman",
+      "year": 2024,
+      "round": 11,
+      "pick": 342,
+      "team": "San Francisco Giants",
+      "position": "RHP",
+      "current_level": "Single-A"
+    }
+  ],
   "Florida State": [
     {
       "name": "James Tibbs III",
@@ -488,6 +1153,35 @@
       "current_level": "AA"
     }
   ],
+  "Fresno State": [
+    {
+      "name": "Ryan Jensen",
+      "year": 2021,
+      "round": 1,
+      "pick": 27,
+      "team": "Chicago Cubs",
+      "position": "RHP",
+      "current_level": "AAA"
+    },
+    {
+      "name": "Oscar Carvajal",
+      "year": 2024,
+      "round": 4,
+      "pick": 111,
+      "team": "San Francisco Giants",
+      "position": "SS",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Cole Anderson",
+      "year": 2023,
+      "round": 8,
+      "pick": 249,
+      "team": "Baltimore Orioles",
+      "position": "RHP",
+      "current_level": "High-A"
+    }
+  ],
   "Georgia": [
     {
       "name": "Charlie Condon",
@@ -523,6 +1217,100 @@
       "pick": 113,
       "team": "Tampa Bay Rays",
       "position": "RHP",
+      "current_level": "Single-A"
+    }
+  ],
+  "Georgia Southern": [
+    {
+      "name": "Noah Searcy",
+      "year": 2024,
+      "round": 4,
+      "pick": 118,
+      "team": "Los Angeles Dodgers",
+      "position": "RHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Christian Avant",
+      "year": 2023,
+      "round": 6,
+      "pick": 176,
+      "team": "Milwaukee Brewers",
+      "position": "OF",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Tyler Owens",
+      "year": 2022,
+      "round": 7,
+      "pick": 227,
+      "team": "Texas Rangers",
+      "position": "RHP",
+      "current_level": "MLB"
+    },
+    {
+      "name": "Austin Thompson",
+      "year": 2021,
+      "round": 9,
+      "pick": 266,
+      "team": "Cincinnati Reds",
+      "position": "RHP",
+      "current_level": "AAA"
+    },
+    {
+      "name": "Matt Anderson",
+      "year": 2024,
+      "round": 12,
+      "pick": 365,
+      "team": "Minnesota Twins",
+      "position": "C",
+      "current_level": "Single-A"
+    }
+  ],
+  "Georgia State": [
+    {
+      "name": "Colton Pogue",
+      "year": 2024,
+      "round": 3,
+      "pick": 91,
+      "team": "New York Mets",
+      "position": "RHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Griffin Bell",
+      "year": 2023,
+      "round": 5,
+      "pick": 152,
+      "team": "Oakland Athletics",
+      "position": "OF",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Adam Oller",
+      "year": 2021,
+      "round": 5,
+      "pick": 148,
+      "team": "Oakland Athletics",
+      "position": "RHP",
+      "current_level": "AAA"
+    },
+    {
+      "name": "Justin Henry-Malloy",
+      "year": 2022,
+      "round": 6,
+      "pick": 185,
+      "team": "Detroit Tigers",
+      "position": "OF",
+      "current_level": "MLB"
+    },
+    {
+      "name": "Jesse Torres",
+      "year": 2024,
+      "round": 10,
+      "pick": 313,
+      "team": "Tampa Bay Rays",
+      "position": "LHP",
       "current_level": "Single-A"
     }
   ],
@@ -564,6 +1352,183 @@
       "current_level": "AA"
     }
   ],
+  "Gonzaga": [
+    {
+      "name": "Alek Jacob",
+      "year": 2024,
+      "round": 2,
+      "pick": 43,
+      "team": "San Francisco Giants",
+      "position": "RHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "William Kempner",
+      "year": 2024,
+      "round": 3,
+      "pick": 98,
+      "team": "Philadelphia Phillies",
+      "position": "LHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Gabriel Hughes",
+      "year": 2022,
+      "round": 1,
+      "pick": 10,
+      "team": "Colorado Rockies",
+      "position": "RHP",
+      "current_level": "AAA"
+    },
+    {
+      "name": "Keaton Knueppel",
+      "year": 2024,
+      "round": 7,
+      "pick": 203,
+      "team": "Seattle Mariners",
+      "position": "OF",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Brett Harris",
+      "year": 2021,
+      "round": 3,
+      "pick": 89,
+      "team": "Oakland Athletics",
+      "position": "3B",
+      "current_level": "MLB"
+    },
+    {
+      "name": "Nolan Schanuel",
+      "year": 2023,
+      "round": 1,
+      "pick": 11,
+      "team": "Los Angeles Angels",
+      "position": "1B",
+      "current_level": "MLB"
+    },
+    {
+      "name": "Brock Gillis",
+      "year": 2023,
+      "round": 9,
+      "pick": 275,
+      "team": "San Diego Padres",
+      "position": "RHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Tyler Rando",
+      "year": 2022,
+      "round": 10,
+      "pick": 304,
+      "team": "Tampa Bay Rays",
+      "position": "OF",
+      "current_level": "AA"
+    }
+  ],
+  "Grand Canyon": [
+    {
+      "name": "Jacob Wilson",
+      "year": 2024,
+      "round": 1,
+      "pick": 6,
+      "team": "Oakland Athletics",
+      "position": "SS",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Mason Pelio",
+      "year": 2024,
+      "round": 4,
+      "pick": 112,
+      "team": "Miami Marlins",
+      "position": "RHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Joel Kuhnel",
+      "year": 2021,
+      "round": 5,
+      "pick": 155,
+      "team": "Cincinnati Reds",
+      "position": "RHP",
+      "current_level": "AAA"
+    },
+    {
+      "name": "D.J. Carpenter",
+      "year": 2023,
+      "round": 7,
+      "pick": 208,
+      "team": "Baltimore Orioles",
+      "position": "RHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Quin Cotton",
+      "year": 2022,
+      "round": 8,
+      "pick": 249,
+      "team": "Colorado Rockies",
+      "position": "OF",
+      "current_level": "AA"
+    },
+    {
+      "name": "Jake Rice",
+      "year": 2024,
+      "round": 11,
+      "pick": 336,
+      "team": "Tampa Bay Rays",
+      "position": "C",
+      "current_level": "Single-A"
+    }
+  ],
+  "Hawai'i": [
+    {
+      "name": "Cody Pasma",
+      "year": 2024,
+      "round": 4,
+      "pick": 111,
+      "team": "Minnesota Twins",
+      "position": "LHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Aaron Davenport",
+      "year": 2022,
+      "round": 3,
+      "pick": 86,
+      "team": "Milwaukee Brewers",
+      "position": "RHP",
+      "current_level": "AA"
+    },
+    {
+      "name": "Scotty Scott",
+      "year": 2021,
+      "round": 6,
+      "pick": 171,
+      "team": "San Diego Padres",
+      "position": "OF",
+      "current_level": "AAA"
+    },
+    {
+      "name": "Dallas Duarte",
+      "year": 2023,
+      "round": 8,
+      "pick": 243,
+      "team": "Oakland Athletics",
+      "position": "OF",
+      "current_level": "High-A"
+    },
+    {
+      "name": "JT Schwartz",
+      "year": 2024,
+      "round": 9,
+      "pick": 276,
+      "team": "Los Angeles Angels",
+      "position": "1B",
+      "current_level": "Single-A"
+    }
+  ],
   "Houston": [
     {
       "name": "Robert Gasser",
@@ -582,6 +1547,89 @@
       "team": "Milwaukee Brewers",
       "position": "RHP",
       "current_level": "MLB"
+    }
+  ],
+  "Illinois": [
+    {
+      "name": "Branden Comia",
+      "year": 2021,
+      "round": 4,
+      "pick": 109,
+      "team": "St. Louis Cardinals",
+      "position": "SS",
+      "current_level": "AAA"
+    },
+    {
+      "name": "Andrew Hoffmann",
+      "year": 2022,
+      "round": 4,
+      "pick": 118,
+      "team": "Milwaukee Brewers",
+      "position": "RHP",
+      "current_level": "AA"
+    },
+    {
+      "name": "Nathan Aide",
+      "year": 2024,
+      "round": 6,
+      "pick": 174,
+      "team": "Texas Rangers",
+      "position": "RHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Jack Wenninger",
+      "year": 2023,
+      "round": 9,
+      "pick": 266,
+      "team": "Seattle Mariners",
+      "position": "C",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Riley Gowens",
+      "year": 2024,
+      "round": 4,
+      "pick": 107,
+      "team": "Houston Astros",
+      "position": "LHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Cole Kirschsieper",
+      "year": 2021,
+      "round": 5,
+      "pick": 139,
+      "team": "Chicago White Sox",
+      "position": "LHP",
+      "current_level": "AA"
+    },
+    {
+      "name": "Cam McDonald",
+      "year": 2021,
+      "round": 8,
+      "pick": 241,
+      "team": "San Francisco Giants",
+      "position": "OF",
+      "current_level": "AAA"
+    },
+    {
+      "name": "Justin Janas",
+      "year": 2022,
+      "round": 10,
+      "pick": 309,
+      "team": "Oakland Athletics",
+      "position": "OF",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Ty Rybarczyk",
+      "year": 2024,
+      "round": 12,
+      "pick": 363,
+      "team": "Detroit Tigers",
+      "position": "RHP",
+      "current_level": "Single-A"
     }
   ],
   "Indiana": [
@@ -611,6 +1659,331 @@
       "team": "Colorado Rockies",
       "position": "SS",
       "current_level": "Single-A"
+    }
+  ],
+  "Indiana State": [
+    {
+      "name": "Sean Burke",
+      "year": 2021,
+      "round": 3,
+      "pick": 76,
+      "team": "Chicago White Sox",
+      "position": "RHP",
+      "current_level": "AAA"
+    },
+    {
+      "name": "Tyler Grauer",
+      "year": 2024,
+      "round": 5,
+      "pick": 151,
+      "team": "Oakland Athletics",
+      "position": "OF",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Geremy Guerrero",
+      "year": 2023,
+      "round": 7,
+      "pick": 216,
+      "team": "Milwaukee Brewers",
+      "position": "SS",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Brian Fuentes",
+      "year": 2022,
+      "round": 8,
+      "pick": 251,
+      "team": "San Diego Padres",
+      "position": "RHP",
+      "current_level": "AA"
+    },
+    {
+      "name": "Jordan Schaffer",
+      "year": 2024,
+      "round": 10,
+      "pick": 302,
+      "team": "Kansas City Royals",
+      "position": "LHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Jake Means",
+      "year": 2021,
+      "round": 9,
+      "pick": 271,
+      "team": "Cincinnati Reds",
+      "position": "OF",
+      "current_level": "AA"
+    },
+    {
+      "name": "Hunter Parrish",
+      "year": 2023,
+      "round": 12,
+      "pick": 368,
+      "team": "Pittsburgh Pirates",
+      "position": "RHP",
+      "current_level": "High-A"
+    }
+  ],
+  "Iowa": [
+    {
+      "name": "Adam Mazur",
+      "year": 2023,
+      "round": 2,
+      "pick": 53,
+      "team": "San Diego Padres",
+      "position": "RHP",
+      "current_level": "AAA"
+    },
+    {
+      "name": "Ben Beutel",
+      "year": 2024,
+      "round": 3,
+      "pick": 72,
+      "team": "Pittsburgh Pirates",
+      "position": "RHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Brody Brecht",
+      "year": 2024,
+      "round": 1,
+      "pick": 22,
+      "team": "Baltimore Orioles",
+      "position": "RHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Connor McCaffery",
+      "year": 2021,
+      "round": 7,
+      "pick": 203,
+      "team": "New York Mets",
+      "position": "OF",
+      "current_level": "AA"
+    },
+    {
+      "name": "Peyton Williams",
+      "year": 2024,
+      "round": 8,
+      "pick": 249,
+      "team": "Minnesota Twins",
+      "position": "1B",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Ty Langenberg",
+      "year": 2023,
+      "round": 7,
+      "pick": 207,
+      "team": "Chicago White Sox",
+      "position": "RHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Drew Irvine",
+      "year": 2022,
+      "round": 9,
+      "pick": 265,
+      "team": "Milwaukee Brewers",
+      "position": "LHP",
+      "current_level": "AA"
+    },
+    {
+      "name": "Duncan Davitt",
+      "year": 2021,
+      "round": 10,
+      "pick": 309,
+      "team": "Cleveland Guardians",
+      "position": "LHP",
+      "current_level": "AA"
+    }
+  ],
+  "Jacksonville": [
+    {
+      "name": "Cole Barr",
+      "year": 2024,
+      "round": 3,
+      "pick": 92,
+      "team": "Chicago Cubs",
+      "position": "1B",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Jake Garland",
+      "year": 2023,
+      "round": 6,
+      "pick": 170,
+      "team": "Cincinnati Reds",
+      "position": "RHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Tyler Noel",
+      "year": 2022,
+      "round": 7,
+      "pick": 206,
+      "team": "San Francisco Giants",
+      "position": "OF",
+      "current_level": "AA"
+    },
+    {
+      "name": "Trenton Denholm",
+      "year": 2024,
+      "round": 8,
+      "pick": 247,
+      "team": "Cleveland Guardians",
+      "position": "RHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Chris Gau",
+      "year": 2021,
+      "round": 5,
+      "pick": 146,
+      "team": "Milwaukee Brewers",
+      "position": "RHP",
+      "current_level": "AAA"
+    },
+    {
+      "name": "Ben McCabe",
+      "year": 2023,
+      "round": 10,
+      "pick": 305,
+      "team": "Kansas City Royals",
+      "position": "C",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Tyler Holton",
+      "year": 2021,
+      "round": 5,
+      "pick": 160,
+      "team": "Detroit Tigers",
+      "position": "LHP",
+      "current_level": "MLB"
+    }
+  ],
+  "James Madison": [
+    {
+      "name": "Chase DeLauter",
+      "year": 2022,
+      "round": 1,
+      "pick": 16,
+      "team": "Cleveland Guardians",
+      "position": "OF",
+      "current_level": "MLB"
+    },
+    {
+      "name": "Nick Zona",
+      "year": 2023,
+      "round": 4,
+      "pick": 123,
+      "team": "Milwaukee Brewers",
+      "position": "3B",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Travis Sykora",
+      "year": 2024,
+      "round": 5,
+      "pick": 141,
+      "team": "San Diego Padres",
+      "position": "RHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Justin Showalter",
+      "year": 2021,
+      "round": 7,
+      "pick": 209,
+      "team": "Toronto Blue Jays",
+      "position": "RHP",
+      "current_level": "AA"
+    },
+    {
+      "name": "Carson Klepzig",
+      "year": 2024,
+      "round": 8,
+      "pick": 238,
+      "team": "Los Angeles Dodgers",
+      "position": "OF",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Kyle Novak",
+      "year": 2023,
+      "round": 10,
+      "pick": 293,
+      "team": "Baltimore Orioles",
+      "position": "C",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Ian Seymour",
+      "year": 2021,
+      "round": 3,
+      "pick": 95,
+      "team": "Tampa Bay Rays",
+      "position": "LHP",
+      "current_level": "AA"
+    },
+    {
+      "name": "Matt Robinett",
+      "year": 2022,
+      "round": 12,
+      "pick": 367,
+      "team": "Cincinnati Reds",
+      "position": "RHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Shelton Perkins",
+      "year": 2023,
+      "round": 15,
+      "pick": 440,
+      "team": "Arizona Diamondbacks",
+      "position": "OF",
+      "current_level": "Single-A"
+    }
+  ],
+  "Kansas": [
+    {
+      "name": "Cole Larsen",
+      "year": 2024,
+      "round": 3,
+      "pick": 86,
+      "team": "Arizona Diamondbacks",
+      "position": "RHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Janeway Mori",
+      "year": 2023,
+      "round": 6,
+      "pick": 174,
+      "team": "Toronto Blue Jays",
+      "position": "C",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Dylan Ditzenberger",
+      "year": 2024,
+      "round": 8,
+      "pick": 244,
+      "team": "Houston Astros",
+      "position": "OF",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Wes Benjamin",
+      "year": 2021,
+      "round": 7,
+      "pick": 213,
+      "team": "Texas Rangers",
+      "position": "LHP",
+      "current_level": "AAA"
     }
   ],
   "Kansas State": [
@@ -754,6 +2127,329 @@
       "current_level": "Single-A"
     }
   ],
+  "Liberty": [
+    {
+      "name": "Tristan Pompey",
+      "year": 2021,
+      "round": 4,
+      "pick": 126,
+      "team": "Miami Marlins",
+      "position": "OF",
+      "current_level": "AAA"
+    },
+    {
+      "name": "Aaron Anderson",
+      "year": 2022,
+      "round": 5,
+      "pick": 155,
+      "team": "Tampa Bay Rays",
+      "position": "LHP",
+      "current_level": "AA"
+    },
+    {
+      "name": "Gray Fenter",
+      "year": 2021,
+      "round": 6,
+      "pick": 182,
+      "team": "St. Louis Cardinals",
+      "position": "RHP",
+      "current_level": "AAA"
+    },
+    {
+      "name": "Derek Diamond",
+      "year": 2022,
+      "round": 3,
+      "pick": 88,
+      "team": "Baltimore Orioles",
+      "position": "RHP",
+      "current_level": "AA"
+    },
+    {
+      "name": "Trey Gibson",
+      "year": 2023,
+      "round": 7,
+      "pick": 213,
+      "team": "Arizona Diamondbacks",
+      "position": "RHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Deverick Doty",
+      "year": 2024,
+      "round": 5,
+      "pick": 158,
+      "team": "Toronto Blue Jays",
+      "position": "RHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Tyler Bello",
+      "year": 2024,
+      "round": 11,
+      "pick": 328,
+      "team": "Cincinnati Reds",
+      "position": "SS",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Brady Afthim",
+      "year": 2023,
+      "round": 10,
+      "pick": 303,
+      "team": "Kansas City Royals",
+      "position": "C",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Jonathan Brandt",
+      "year": 2021,
+      "round": 12,
+      "pick": 356,
+      "team": "Houston Astros",
+      "position": "RHP",
+      "current_level": "AA"
+    },
+    {
+      "name": "Mason Hand",
+      "year": 2023,
+      "round": 14,
+      "pick": 424,
+      "team": "Colorado Rockies",
+      "position": "OF",
+      "current_level": "High-A"
+    }
+  ],
+  "Long Beach State": [
+    {
+      "name": "Jared Jones",
+      "year": 2021,
+      "round": 2,
+      "pick": 44,
+      "team": "Pittsburgh Pirates",
+      "position": "RHP",
+      "current_level": "MLB"
+    },
+    {
+      "name": "Aidan Maldonado",
+      "year": 2024,
+      "round": 7,
+      "pick": 204,
+      "team": "New York Mets",
+      "position": "LHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Tyler White",
+      "year": 2022,
+      "round": 8,
+      "pick": 237,
+      "team": "Washington Nationals",
+      "position": "1B",
+      "current_level": "AA"
+    },
+    {
+      "name": "John Osborne",
+      "year": 2023,
+      "round": 10,
+      "pick": 297,
+      "team": "San Diego Padres",
+      "position": "RHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Devyn Netz",
+      "year": 2021,
+      "round": 5,
+      "pick": 143,
+      "team": "Texas Rangers",
+      "position": "OF",
+      "current_level": "AAA"
+    },
+    {
+      "name": "Mac Lardner",
+      "year": 2024,
+      "round": 10,
+      "pick": 311,
+      "team": "Oakland Athletics",
+      "position": "LHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Alfredo Ruiz",
+      "year": 2022,
+      "round": 12,
+      "pick": 366,
+      "team": "Los Angeles Angels",
+      "position": "C",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Chris Ceballos",
+      "year": 2021,
+      "round": 9,
+      "pick": 275,
+      "team": "Toronto Blue Jays",
+      "position": "OF",
+      "current_level": "AA"
+    },
+    {
+      "name": "Ryan Britton",
+      "year": 2023,
+      "round": 14,
+      "pick": 419,
+      "team": "Houston Astros",
+      "position": "RHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Danny Bustos",
+      "year": 2024,
+      "round": 15,
+      "pick": 446,
+      "team": "Arizona Diamondbacks",
+      "position": "SS",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Kyle Strickland",
+      "year": 2021,
+      "round": 11,
+      "pick": 334,
+      "team": "Cleveland Guardians",
+      "position": "RHP",
+      "current_level": "AA"
+    }
+  ],
+  "Louisiana": [
+    {
+      "name": "Ben Woolly",
+      "year": 2024,
+      "round": 3,
+      "pick": 75,
+      "team": "Arizona Diamondbacks",
+      "position": "RHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Hayden Cantrelle",
+      "year": 2021,
+      "round": 5,
+      "pick": 140,
+      "team": "Milwaukee Brewers",
+      "position": "SS",
+      "current_level": "AAA"
+    },
+    {
+      "name": "Carson Roccaforte",
+      "year": 2024,
+      "round": 7,
+      "pick": 213,
+      "team": "Minnesota Twins",
+      "position": "2B",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Connor Cooke",
+      "year": 2022,
+      "round": 6,
+      "pick": 185,
+      "team": "Pittsburgh Pirates",
+      "position": "RHP",
+      "current_level": "AA"
+    },
+    {
+      "name": "Brandon Talley",
+      "year": 2023,
+      "round": 9,
+      "pick": 263,
+      "team": "Tampa Bay Rays",
+      "position": "LHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Brett Kerry",
+      "year": 2021,
+      "round": 7,
+      "pick": 217,
+      "team": "St. Louis Cardinals",
+      "position": "RHP",
+      "current_level": "AA"
+    },
+    {
+      "name": "Jeff Wilson",
+      "year": 2022,
+      "round": 11,
+      "pick": 339,
+      "team": "Houston Astros",
+      "position": "OF",
+      "current_level": "High-A"
+    }
+  ],
+  "Louisiana Tech": [
+    {
+      "name": "Kyle Crigger",
+      "year": 2024,
+      "round": 4,
+      "pick": 113,
+      "team": "Cleveland Guardians",
+      "position": "RHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Taylor Young",
+      "year": 2023,
+      "round": 5,
+      "pick": 159,
+      "team": "Oakland Athletics",
+      "position": "2B",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Jarret Whorff",
+      "year": 2021,
+      "round": 6,
+      "pick": 179,
+      "team": "Colorado Rockies",
+      "position": "RHP",
+      "current_level": "AAA"
+    },
+    {
+      "name": "Cade Gibson",
+      "year": 2022,
+      "round": 7,
+      "pick": 222,
+      "team": "Los Angeles Angels",
+      "position": "RHP",
+      "current_level": "AA"
+    },
+    {
+      "name": "Hunter Wells",
+      "year": 2024,
+      "round": 9,
+      "pick": 277,
+      "team": "Philadelphia Phillies",
+      "position": "C",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Cole McConnell",
+      "year": 2023,
+      "round": 10,
+      "pick": 301,
+      "team": "Chicago White Sox",
+      "position": "OF",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Grey Epps",
+      "year": 2021,
+      "round": 12,
+      "pick": 355,
+      "team": "San Diego Padres",
+      "position": "SS",
+      "current_level": "AA"
+    }
+  ],
   "Louisville": [
     {
       "name": "Henry Davis",
@@ -792,6 +2488,26 @@
       "current_level": "High-A"
     }
   ],
+  "Marshall": [
+    {
+      "name": "Andrew Bausinger",
+      "year": 2024,
+      "round": 5,
+      "pick": 162,
+      "team": "Oakland Athletics",
+      "position": "RHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Josh Shapiro",
+      "year": 2023,
+      "round": 9,
+      "pick": 269,
+      "team": "Milwaukee Brewers",
+      "position": "OF",
+      "current_level": "High-A"
+    }
+  ],
   "Maryland": [
     {
       "name": "Troy Schreffler",
@@ -819,6 +2535,53 @@
       "team": "Chicago Cubs",
       "position": "RHP",
       "current_level": "AA"
+    }
+  ],
+  "Memphis": [
+    {
+      "name": "Hunter Goodman",
+      "year": 2021,
+      "round": 4,
+      "pick": 112,
+      "team": "Colorado Rockies",
+      "position": "C",
+      "current_level": "MLB"
+    },
+    {
+      "name": "Matt Cuppari",
+      "year": 2024,
+      "round": 5,
+      "pick": 155,
+      "team": "Cleveland Guardians",
+      "position": "OF",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Jackson Boss",
+      "year": 2023,
+      "round": 7,
+      "pick": 211,
+      "team": "Baltimore Orioles",
+      "position": "RHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Derek Craft",
+      "year": 2022,
+      "round": 8,
+      "pick": 248,
+      "team": "Houston Astros",
+      "position": "RHP",
+      "current_level": "AA"
+    },
+    {
+      "name": "Tyler Webb",
+      "year": 2021,
+      "round": 10,
+      "pick": 305,
+      "team": "San Diego Padres",
+      "position": "LHP",
+      "current_level": "AAA"
     }
   ],
   "Miami (FL)": [
@@ -870,6 +2633,118 @@
       "current_level": "AA"
     }
   ],
+  "Michigan State": [
+    {
+      "name": "Mick Szydlowski",
+      "year": 2024,
+      "round": 4,
+      "pick": 119,
+      "team": "Tampa Bay Rays",
+      "position": "OF",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Wyatt Rush",
+      "year": 2023,
+      "round": 6,
+      "pick": 182,
+      "team": "Los Angeles Dodgers",
+      "position": "OF",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Mason Erla",
+      "year": 2021,
+      "round": 7,
+      "pick": 212,
+      "team": "Cleveland Guardians",
+      "position": "RHP",
+      "current_level": "AAA"
+    },
+    {
+      "name": "Adam Proctor",
+      "year": 2022,
+      "round": 9,
+      "pick": 276,
+      "team": "Pittsburgh Pirates",
+      "position": "LHP",
+      "current_level": "AA"
+    }
+  ],
+  "Minnesota": [
+    {
+      "name": "Brooks Lee",
+      "year": 2022,
+      "round": 1,
+      "pick": 8,
+      "team": "Minnesota Twins",
+      "position": "SS",
+      "current_level": "MLB"
+    },
+    {
+      "name": "Max Meyer",
+      "year": 2021,
+      "round": 1,
+      "pick": 3,
+      "team": "Miami Marlins",
+      "position": "RHP",
+      "current_level": "MLB"
+    },
+    {
+      "name": "Jack Steil",
+      "year": 2024,
+      "round": 5,
+      "pick": 150,
+      "team": "Baltimore Orioles",
+      "position": "RHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Jordan Kozicky",
+      "year": 2023,
+      "round": 8,
+      "pick": 233,
+      "team": "Oakland Athletics",
+      "position": "C",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Sam Walentiny",
+      "year": 2022,
+      "round": 9,
+      "pick": 282,
+      "team": "Tampa Bay Rays",
+      "position": "LHP",
+      "current_level": "AA"
+    },
+    {
+      "name": "Drew Gilbert",
+      "year": 2021,
+      "round": 5,
+      "pick": 151,
+      "team": "Houston Astros",
+      "position": "OF",
+      "current_level": "AAA"
+    },
+    {
+      "name": "Luke Smaila",
+      "year": 2024,
+      "round": 10,
+      "pick": 307,
+      "team": "Detroit Tigers",
+      "position": "OF",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Patrick Winkel",
+      "year": 2023,
+      "round": 11,
+      "pick": 339,
+      "team": "Colorado Rockies",
+      "position": "C",
+      "current_level": "High-A"
+    }
+  ],
   "Mississippi State": [
     {
       "name": "Will Bednar",
@@ -906,6 +2781,71 @@
       "team": "Milwaukee Brewers",
       "position": "1B",
       "current_level": "Single-A"
+    }
+  ],
+  "Missouri": [
+    {
+      "name": "Austin Cheely",
+      "year": 2024,
+      "round": 3,
+      "pick": 76,
+      "team": "San Francisco Giants",
+      "position": "C",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Max Scherzer",
+      "year": 2023,
+      "round": 6,
+      "pick": 171,
+      "team": "Toronto Blue Jays",
+      "position": "RHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Tre Morris",
+      "year": 2024,
+      "round": 7,
+      "pick": 216,
+      "team": "Milwaukee Brewers",
+      "position": "OF",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Konnor Ash",
+      "year": 2022,
+      "round": 8,
+      "pick": 234,
+      "team": "Kansas City Royals",
+      "position": "LHP",
+      "current_level": "AA"
+    },
+    {
+      "name": "Seth Halvorsen",
+      "year": 2021,
+      "round": 5,
+      "pick": 159,
+      "team": "Colorado Rockies",
+      "position": "RHP",
+      "current_level": "AAA"
+    },
+    {
+      "name": "TJ Sikkema",
+      "year": 2021,
+      "round": 1,
+      "pick": 38,
+      "team": "New York Yankees",
+      "position": "LHP",
+      "current_level": "MLB"
+    },
+    {
+      "name": "Chad McDaniel",
+      "year": 2023,
+      "round": 11,
+      "pick": 333,
+      "team": "Cincinnati Reds",
+      "position": "C",
+      "current_level": "High-A"
     }
   ],
   "NC State": [
@@ -946,6 +2886,154 @@
       "current_level": "Single-A"
     }
   ],
+  "Nebraska": [
+    {
+      "name": "Spencer Schwellenbach",
+      "year": 2021,
+      "round": 2,
+      "pick": 59,
+      "team": "Atlanta Braves",
+      "position": "RHP",
+      "current_level": "MLB"
+    },
+    {
+      "name": "Chance Hroch",
+      "year": 2023,
+      "round": 4,
+      "pick": 118,
+      "team": "Kansas City Royals",
+      "position": "RHP",
+      "current_level": "AA"
+    },
+    {
+      "name": "Max Anderson",
+      "year": 2022,
+      "round": 3,
+      "pick": 80,
+      "team": "Houston Astros",
+      "position": "3B",
+      "current_level": "AA"
+    },
+    {
+      "name": "Emmett Olson",
+      "year": 2024,
+      "round": 6,
+      "pick": 180,
+      "team": "Milwaukee Brewers",
+      "position": "LHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Cade Povich",
+      "year": 2021,
+      "round": 3,
+      "pick": 77,
+      "team": "Minnesota Twins",
+      "position": "LHP",
+      "current_level": "MLB"
+    },
+    {
+      "name": "CJ Hood",
+      "year": 2024,
+      "round": 10,
+      "pick": 298,
+      "team": "Toronto Blue Jays",
+      "position": "OF",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Griffin Everitt",
+      "year": 2023,
+      "round": 8,
+      "pick": 245,
+      "team": "Tampa Bay Rays",
+      "position": "C",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Kyle Perry",
+      "year": 2022,
+      "round": 11,
+      "pick": 338,
+      "team": "Baltimore Orioles",
+      "position": "RHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Colby Gomes",
+      "year": 2021,
+      "round": 7,
+      "pick": 222,
+      "team": "Oakland Athletics",
+      "position": "SS",
+      "current_level": "AAA"
+    }
+  ],
+  "New Mexico State": [
+    {
+      "name": "Nick Gonzales",
+      "year": 2024,
+      "round": 5,
+      "pick": 146,
+      "team": "Oakland Athletics",
+      "position": "SS",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Mike Piazza Jr",
+      "year": 2023,
+      "round": 7,
+      "pick": 206,
+      "team": "New York Mets",
+      "position": "C",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Lane Forsythe",
+      "year": 2022,
+      "round": 8,
+      "pick": 244,
+      "team": "Chicago White Sox",
+      "position": "OF",
+      "current_level": "AA"
+    },
+    {
+      "name": "Nick Mora",
+      "year": 2024,
+      "round": 10,
+      "pick": 309,
+      "team": "Arizona Diamondbacks",
+      "position": "RHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Preston Standlee",
+      "year": 2021,
+      "round": 6,
+      "pick": 188,
+      "team": "Toronto Blue Jays",
+      "position": "RHP",
+      "current_level": "AAA"
+    },
+    {
+      "name": "Carlos Herrera",
+      "year": 2023,
+      "round": 12,
+      "pick": 354,
+      "team": "San Diego Padres",
+      "position": "LHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Justin Dehn",
+      "year": 2021,
+      "round": 9,
+      "pick": 276,
+      "team": "Houston Astros",
+      "position": "OF",
+      "current_level": "AA"
+    }
+  ],
   "North Carolina": [
     {
       "name": "Vance Honeycutt",
@@ -964,6 +3052,203 @@
       "team": "Baltimore Orioles",
       "position": "3B",
       "current_level": "Single-A"
+    }
+  ],
+  "North Florida": [
+    {
+      "name": "Edgardo Villegas",
+      "year": 2024,
+      "round": 4,
+      "pick": 108,
+      "team": "Tampa Bay Rays",
+      "position": "RHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Tanner Murphy",
+      "year": 2023,
+      "round": 6,
+      "pick": 172,
+      "team": "Atlanta Braves",
+      "position": "OF",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Jay Delaney",
+      "year": 2022,
+      "round": 7,
+      "pick": 219,
+      "team": "Philadelphia Phillies",
+      "position": "RHP",
+      "current_level": "AA"
+    },
+    {
+      "name": "Liam Simon",
+      "year": 2021,
+      "round": 8,
+      "pick": 254,
+      "team": "San Francisco Giants",
+      "position": "C",
+      "current_level": "AA"
+    },
+    {
+      "name": "Kevin Martinez",
+      "year": 2024,
+      "round": 11,
+      "pick": 341,
+      "team": "Kansas City Royals",
+      "position": "SS",
+      "current_level": "Single-A"
+    }
+  ],
+  "North Texas": [
+    {
+      "name": "Chris Givin",
+      "year": 2024,
+      "round": 4,
+      "pick": 107,
+      "team": "Oakland Athletics",
+      "position": "RHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Dillon Carter",
+      "year": 2023,
+      "round": 5,
+      "pick": 157,
+      "team": "Houston Astros",
+      "position": "OF",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Luke Piper",
+      "year": 2022,
+      "round": 7,
+      "pick": 220,
+      "team": "Detroit Tigers",
+      "position": "SS",
+      "current_level": "AA"
+    },
+    {
+      "name": "Aiden Anderson",
+      "year": 2024,
+      "round": 9,
+      "pick": 282,
+      "team": "Toronto Blue Jays",
+      "position": "LHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Matt Swanson",
+      "year": 2021,
+      "round": 8,
+      "pick": 241,
+      "team": "Baltimore Orioles",
+      "position": "RHP",
+      "current_level": "AAA"
+    }
+  ],
+  "Northeastern": [
+    {
+      "name": "Cameron Schlittler",
+      "year": 2024,
+      "round": 2,
+      "pick": 55,
+      "team": "Pittsburgh Pirates",
+      "position": "RHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Nick Doherty",
+      "year": 2023,
+      "round": 6,
+      "pick": 184,
+      "team": "Arizona Diamondbacks",
+      "position": "OF",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Sebastian Keane",
+      "year": 2022,
+      "round": 7,
+      "pick": 225,
+      "team": "Boston Red Sox",
+      "position": "RHP",
+      "current_level": "AA"
+    },
+    {
+      "name": "Charlie Madden",
+      "year": 2021,
+      "round": 8,
+      "pick": 252,
+      "team": "Los Angeles Dodgers",
+      "position": "C",
+      "current_level": "AAA"
+    },
+    {
+      "name": "Max Viera",
+      "year": 2024,
+      "round": 10,
+      "pick": 316,
+      "team": "San Diego Padres",
+      "position": "SS",
+      "current_level": "Single-A"
+    }
+  ],
+  "Northwestern": [
+    {
+      "name": "Ethan O'Donnell",
+      "year": 2024,
+      "round": 2,
+      "pick": 58,
+      "team": "Baltimore Orioles",
+      "position": "OF",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Mike Dotterer",
+      "year": 2023,
+      "round": 5,
+      "pick": 148,
+      "team": "Chicago Cubs",
+      "position": "C",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Sam Lawrence",
+      "year": 2024,
+      "round": 6,
+      "pick": 176,
+      "team": "San Diego Padres",
+      "position": "LHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "David Dunn",
+      "year": 2022,
+      "round": 7,
+      "pick": 202,
+      "team": "Cleveland Guardians",
+      "position": "RHP",
+      "current_level": "AA"
+    },
+    {
+      "name": "Casey Burnham",
+      "year": 2021,
+      "round": 8,
+      "pick": 239,
+      "team": "Toronto Blue Jays",
+      "position": "OF",
+      "current_level": "AAA"
+    },
+    {
+      "name": "Hank Hatteberg",
+      "year": 2021,
+      "round": 10,
+      "pick": 310,
+      "team": "Pittsburgh Pirates",
+      "position": "C",
+      "current_level": "AA"
     }
   ],
   "Notre Dame": [
@@ -1015,6 +3300,26 @@
       "current_level": "Single-A"
     }
   ],
+  "Oklahoma": [
+    {
+      "name": "Jackson Nicklaus",
+      "year": 2024,
+      "round": 3,
+      "pick": 93,
+      "team": "Detroit Tigers",
+      "position": "3B",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Cade Horton",
+      "year": 2023,
+      "round": 1,
+      "pick": 7,
+      "team": "Chicago Cubs",
+      "position": "RHP",
+      "current_level": "AAA"
+    }
+  ],
   "Oklahoma State": [
     {
       "name": "Justin Campbell",
@@ -1051,6 +3356,80 @@
       "team": "Detroit Tigers",
       "position": "RHP",
       "current_level": "Single-A"
+    }
+  ],
+  "Old Dominion": [
+    {
+      "name": "Kenny Levari",
+      "year": 2024,
+      "round": 4,
+      "pick": 110,
+      "team": "San Diego Padres",
+      "position": "SS",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Carter Trice",
+      "year": 2023,
+      "round": 5,
+      "pick": 153,
+      "team": "Philadelphia Phillies",
+      "position": "1B",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Jason Woodward",
+      "year": 2022,
+      "round": 6,
+      "pick": 175,
+      "team": "Tampa Bay Rays",
+      "position": "OF",
+      "current_level": "AA"
+    },
+    {
+      "name": "Brock Gagliardi",
+      "year": 2024,
+      "round": 7,
+      "pick": 218,
+      "team": "Cleveland Guardians",
+      "position": "C",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Tommy Gertsen",
+      "year": 2021,
+      "round": 8,
+      "pick": 233,
+      "team": "Houston Astros",
+      "position": "RHP",
+      "current_level": "AAA"
+    },
+    {
+      "name": "Matt Coutney",
+      "year": 2023,
+      "round": 9,
+      "pick": 278,
+      "team": "Cincinnati Reds",
+      "position": "RHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Ryan Ammons",
+      "year": 2022,
+      "round": 10,
+      "pick": 303,
+      "team": "Baltimore Orioles",
+      "position": "LHP",
+      "current_level": "AA"
+    },
+    {
+      "name": "Andy Garriola",
+      "year": 2021,
+      "round": 11,
+      "pick": 328,
+      "team": "Toronto Blue Jays",
+      "position": "3B",
+      "current_level": "AA"
     }
   ],
   "Ole Miss": [
@@ -1100,6 +3479,26 @@
       "current_level": "Single-A"
     }
   ],
+  "Oregon": [
+    {
+      "name": "Jacob Walsh",
+      "year": 2024,
+      "round": 5,
+      "pick": 157,
+      "team": "Chicago Cubs",
+      "position": "RHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Kenyon Yovan",
+      "year": 2021,
+      "round": 6,
+      "pick": 175,
+      "team": "Cincinnati Reds",
+      "position": "RHP",
+      "current_level": "AA"
+    }
+  ],
   "Oregon State": [
     {
       "name": "Travis Bazzana",
@@ -1147,6 +3546,230 @@
       "current_level": "AAA"
     }
   ],
+  "Penn State": [
+    {
+      "name": "Travis Luensmann",
+      "year": 2021,
+      "round": 4,
+      "pick": 126,
+      "team": "Chicago Cubs",
+      "position": "LHP",
+      "current_level": "AAA"
+    },
+    {
+      "name": "Kyle Virbitsky",
+      "year": 2024,
+      "round": 5,
+      "pick": 154,
+      "team": "Minnesota Twins",
+      "position": "RHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Justin Williams",
+      "year": 2023,
+      "round": 7,
+      "pick": 212,
+      "team": "Baltimore Orioles",
+      "position": "OF",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Matt Spiegel",
+      "year": 2022,
+      "round": 9,
+      "pick": 269,
+      "team": "Cleveland Guardians",
+      "position": "C",
+      "current_level": "AA"
+    },
+    {
+      "name": "Cole Bartels",
+      "year": 2024,
+      "round": 11,
+      "pick": 332,
+      "team": "Cincinnati Reds",
+      "position": "LHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Brady Devereux",
+      "year": 2021,
+      "round": 8,
+      "pick": 248,
+      "team": "San Diego Padres",
+      "position": "RHP",
+      "current_level": "AA"
+    }
+  ],
+  "Pepperdine": [
+    {
+      "name": "Wyatt Crowell",
+      "year": 2024,
+      "round": 2,
+      "pick": 45,
+      "team": "Atlanta Braves",
+      "position": "LHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Cooper Chandler",
+      "year": 2024,
+      "round": 3,
+      "pick": 83,
+      "team": "Kansas City Royals",
+      "position": "LHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Aharon Modlin",
+      "year": 2023,
+      "round": 6,
+      "pick": 178,
+      "team": "Oakland Athletics",
+      "position": "RHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Jordan Qsar",
+      "year": 2021,
+      "round": 5,
+      "pick": 153,
+      "team": "Tampa Bay Rays",
+      "position": "OF",
+      "current_level": "AAA"
+    },
+    {
+      "name": "Wil Jensen",
+      "year": 2022,
+      "round": 8,
+      "pick": 243,
+      "team": "Milwaukee Brewers",
+      "position": "RHP",
+      "current_level": "AA"
+    },
+    {
+      "name": "Justin Lutes",
+      "year": 2024,
+      "round": 9,
+      "pick": 272,
+      "team": "Los Angeles Dodgers",
+      "position": "C",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Douglas Hodo III",
+      "year": 2021,
+      "round": 7,
+      "pick": 210,
+      "team": "San Francisco Giants",
+      "position": "OF",
+      "current_level": "AA"
+    },
+    {
+      "name": "Anthony Bemboom",
+      "year": 2023,
+      "round": 11,
+      "pick": 337,
+      "team": "Philadelphia Phillies",
+      "position": "C",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Mitch Lines",
+      "year": 2022,
+      "round": 13,
+      "pick": 392,
+      "team": "San Diego Padres",
+      "position": "RHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Justin Guthrie",
+      "year": 2021,
+      "round": 10,
+      "pick": 308,
+      "team": "Colorado Rockies",
+      "position": "RHP",
+      "current_level": "AAA"
+    }
+  ],
+  "Portland": [
+    {
+      "name": "Chad Stevens",
+      "year": 2022,
+      "round": 11,
+      "pick": 330,
+      "team": "Seattle Mariners",
+      "position": "RHP",
+      "current_level": "AA"
+    },
+    {
+      "name": "Caden Connor",
+      "year": 2023,
+      "round": 13,
+      "pick": 396,
+      "team": "Chicago White Sox",
+      "position": "OF",
+      "current_level": "High-A"
+    }
+  ],
+  "Purdue": [
+    {
+      "name": "Tommy Henry",
+      "year": 2021,
+      "round": 2,
+      "pick": 74,
+      "team": "Arizona Diamondbacks",
+      "position": "LHP",
+      "current_level": "MLB"
+    },
+    {
+      "name": "Evan Albrecht",
+      "year": 2024,
+      "round": 5,
+      "pick": 153,
+      "team": "Seattle Mariners",
+      "position": "RHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Jackson Smeltz",
+      "year": 2022,
+      "round": 6,
+      "pick": 184,
+      "team": "San Diego Padres",
+      "position": "RHP",
+      "current_level": "AA"
+    },
+    {
+      "name": "Griffin Lax",
+      "year": 2023,
+      "round": 8,
+      "pick": 238,
+      "team": "Kansas City Royals",
+      "position": "RHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Troy Viola",
+      "year": 2024,
+      "round": 10,
+      "pick": 306,
+      "team": "Los Angeles Dodgers",
+      "position": "OF",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Cayden Wallace",
+      "year": 2021,
+      "round": 7,
+      "pick": 216,
+      "team": "Tampa Bay Rays",
+      "position": "3B",
+      "current_level": "AA"
+    }
+  ],
   "Rice": [
     {
       "name": "Trei Cruz",
@@ -1167,6 +3790,313 @@
       "team": "Cleveland Guardians",
       "position": "LHP",
       "current_level": "Single-A"
+    }
+  ],
+  "SMU": [
+    {
+      "name": "Drew Strotman",
+      "year": 2021,
+      "round": 4,
+      "pick": 103,
+      "team": "Tampa Bay Rays",
+      "position": "RHP",
+      "current_level": "AAA"
+    },
+    {
+      "name": "Blake Birdsall",
+      "year": 2024,
+      "round": 5,
+      "pick": 160,
+      "team": "Los Angeles Angels",
+      "position": "RHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Hayden Martin",
+      "year": 2023,
+      "round": 8,
+      "pick": 235,
+      "team": "Philadelphia Phillies",
+      "position": "RHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Kyle Boatwright",
+      "year": 2022,
+      "round": 10,
+      "pick": 298,
+      "team": "Houston Astros",
+      "position": "OF",
+      "current_level": "AA"
+    }
+  ],
+  "Sam Houston": [
+    {
+      "name": "Colton Cowser",
+      "year": 2021,
+      "round": 1,
+      "pick": 5,
+      "team": "Baltimore Orioles",
+      "position": "OF",
+      "current_level": "MLB"
+    },
+    {
+      "name": "Lance Lusk",
+      "year": 2023,
+      "round": 5,
+      "pick": 138,
+      "team": "Arizona Diamondbacks",
+      "position": "SS",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Riley Cabral",
+      "year": 2024,
+      "round": 6,
+      "pick": 188,
+      "team": "Oakland Athletics",
+      "position": "RHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "G.J. Jimenez",
+      "year": 2022,
+      "round": 7,
+      "pick": 218,
+      "team": "San Diego Padres",
+      "position": "RHP",
+      "current_level": "AA"
+    },
+    {
+      "name": "Nick & Nolan Bond",
+      "year": 2021,
+      "round": 8,
+      "pick": 236,
+      "team": "Los Angeles Dodgers",
+      "position": "RHP",
+      "current_level": "AA"
+    },
+    {
+      "name": "Colton Fearrington",
+      "year": 2024,
+      "round": 10,
+      "pick": 314,
+      "team": "Pittsburgh Pirates",
+      "position": "RHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Blake Estes",
+      "year": 2023,
+      "round": 12,
+      "pick": 370,
+      "team": "Tampa Bay Rays",
+      "position": "OF",
+      "current_level": "High-A"
+    }
+  ],
+  "San Diego": [
+    {
+      "name": "Tora Otsuka",
+      "year": 2024,
+      "round": 4,
+      "pick": 121,
+      "team": "Baltimore Orioles",
+      "position": "RHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Jake Snider",
+      "year": 2021,
+      "round": 3,
+      "pick": 78,
+      "team": "Pittsburgh Pirates",
+      "position": "OF",
+      "current_level": "AAA"
+    },
+    {
+      "name": "Adam Kerner",
+      "year": 2023,
+      "round": 6,
+      "pick": 168,
+      "team": "Texas Rangers",
+      "position": "3B",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Brycen Mautz",
+      "year": 2022,
+      "round": 7,
+      "pick": 215,
+      "team": "Cincinnati Reds",
+      "position": "LHP",
+      "current_level": "AA"
+    },
+    {
+      "name": "Paul Quelling",
+      "year": 2024,
+      "round": 8,
+      "pick": 243,
+      "team": "Cleveland Guardians",
+      "position": "RHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Ryan Metz",
+      "year": 2021,
+      "round": 5,
+      "pick": 147,
+      "team": "Milwaukee Brewers",
+      "position": "RHP",
+      "current_level": "AA"
+    },
+    {
+      "name": "Troy Becerra",
+      "year": 2023,
+      "round": 9,
+      "pick": 264,
+      "team": "Los Angeles Dodgers",
+      "position": "OF",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Grant Richardson",
+      "year": 2022,
+      "round": 11,
+      "pick": 322,
+      "team": "Tampa Bay Rays",
+      "position": "OF",
+      "current_level": "AA"
+    },
+    {
+      "name": "Carter Loewen",
+      "year": 2024,
+      "round": 14,
+      "pick": 421,
+      "team": "San Diego Padres",
+      "position": "C",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Matt Norris",
+      "year": 2021,
+      "round": 10,
+      "pick": 302,
+      "team": "Kansas City Royals",
+      "position": "RHP",
+      "current_level": "AAA"
+    }
+  ],
+  "San Diego State": [
+    {
+      "name": "Brian Leonhardt",
+      "year": 2024,
+      "round": 4,
+      "pick": 109,
+      "team": "Chicago White Sox",
+      "position": "C",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "TJ Fondtain",
+      "year": 2023,
+      "round": 5,
+      "pick": 145,
+      "team": "San Francisco Giants",
+      "position": "RHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Jaden Fein",
+      "year": 2024,
+      "round": 7,
+      "pick": 205,
+      "team": "Colorado Rockies",
+      "position": "OF",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Ricky Tibbett",
+      "year": 2022,
+      "round": 8,
+      "pick": 235,
+      "team": "Los Angeles Dodgers",
+      "position": "RHP",
+      "current_level": "AA"
+    },
+    {
+      "name": "Casey Schmitt",
+      "year": 2021,
+      "round": 2,
+      "pick": 49,
+      "team": "San Francisco Giants",
+      "position": "3B",
+      "current_level": "MLB"
+    }
+  ],
+  "Santa Clara": [
+    {
+      "name": "Sean Sullivan",
+      "year": 2024,
+      "round": 2,
+      "pick": 50,
+      "team": "Houston Astros",
+      "position": "LHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Blake Rivera",
+      "year": 2023,
+      "round": 4,
+      "pick": 120,
+      "team": "Oakland Athletics",
+      "position": "RHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "John Cresto",
+      "year": 2022,
+      "round": 6,
+      "pick": 188,
+      "team": "Colorado Rockies",
+      "position": "C",
+      "current_level": "AA"
+    },
+    {
+      "name": "Brendan Donovan",
+      "year": 2021,
+      "round": 7,
+      "pick": 224,
+      "team": "St. Louis Cardinals",
+      "position": "IF",
+      "current_level": "MLB"
+    },
+    {
+      "name": "Tommy Troy",
+      "year": 2024,
+      "round": 8,
+      "pick": 241,
+      "team": "San Francisco Giants",
+      "position": "2B",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Andrew Kachel",
+      "year": 2023,
+      "round": 10,
+      "pick": 302,
+      "team": "Milwaukee Brewers",
+      "position": "LHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Gunnar Hoog",
+      "year": 2021,
+      "round": 11,
+      "pick": 331,
+      "team": "Tampa Bay Rays",
+      "position": "OF",
+      "current_level": "AA"
     }
   ],
   "South Carolina": [
@@ -1195,6 +4125,118 @@
       "pick": 115,
       "team": "New York Mets",
       "position": "RHP",
+      "current_level": "AA"
+    }
+  ],
+  "South Florida": [
+    {
+      "name": "Roberto Alvarez",
+      "year": 2024,
+      "round": 3,
+      "pick": 87,
+      "team": "Cincinnati Reds",
+      "position": "LHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Orion Kerkering",
+      "year": 2022,
+      "round": 5,
+      "pick": 152,
+      "team": "Philadelphia Phillies",
+      "position": "RHP",
+      "current_level": "MLB"
+    },
+    {
+      "name": "Nick Gonzales",
+      "year": 2021,
+      "round": 1,
+      "pick": 7,
+      "team": "Pittsburgh Pirates",
+      "position": "2B",
+      "current_level": "MLB"
+    },
+    {
+      "name": "Jayden Murray",
+      "year": 2023,
+      "round": 8,
+      "pick": 240,
+      "team": "Tampa Bay Rays",
+      "position": "RHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Carmine Lane",
+      "year": 2024,
+      "round": 12,
+      "pick": 358,
+      "team": "Oakland Athletics",
+      "position": "OF",
+      "current_level": "Single-A"
+    }
+  ],
+  "Southeastern Louisiana": [
+    {
+      "name": "Will Kinzeler",
+      "year": 2024,
+      "round": 4,
+      "pick": 115,
+      "team": "Kansas City Royals",
+      "position": "RHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Brennan Stupak",
+      "year": 2023,
+      "round": 6,
+      "pick": 175,
+      "team": "Minnesota Twins",
+      "position": "OF",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Preston Faulkner",
+      "year": 2024,
+      "round": 8,
+      "pick": 236,
+      "team": "Chicago Cubs",
+      "position": "C",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Logan Workman",
+      "year": 2021,
+      "round": 5,
+      "pick": 147,
+      "team": "Arizona Diamondbacks",
+      "position": "RHP",
+      "current_level": "AAA"
+    },
+    {
+      "name": "Mitchell Sanford",
+      "year": 2022,
+      "round": 9,
+      "pick": 274,
+      "team": "San Diego Padres",
+      "position": "OF",
+      "current_level": "AA"
+    },
+    {
+      "name": "Matt Helmecke",
+      "year": 2023,
+      "round": 11,
+      "pick": 342,
+      "team": "Cincinnati Reds",
+      "position": "LHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Tyler Finke",
+      "year": 2021,
+      "round": 7,
+      "pick": 204,
+      "team": "Cleveland Guardians",
+      "position": "OF",
       "current_level": "AA"
     }
   ],
@@ -1263,6 +4305,71 @@
       "team": "Los Angeles Dodgers",
       "position": "OF",
       "current_level": "AA"
+    }
+  ],
+  "Stetson": [
+    {
+      "name": "Jacob deGrom Jr",
+      "year": 2024,
+      "round": 4,
+      "pick": 108,
+      "team": "Texas Rangers",
+      "position": "RHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Tanner Clark",
+      "year": 2023,
+      "round": 5,
+      "pick": 156,
+      "team": "Miami Marlins",
+      "position": "OF",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Mitchell Senger",
+      "year": 2022,
+      "round": 6,
+      "pick": 183,
+      "team": "New York Mets",
+      "position": "C",
+      "current_level": "AA"
+    },
+    {
+      "name": "Logan Gilbert",
+      "year": 2021,
+      "round": 1,
+      "pick": 14,
+      "team": "Seattle Mariners",
+      "position": "RHP",
+      "current_level": "MLB"
+    },
+    {
+      "name": "Brooks Wilson",
+      "year": 2021,
+      "round": 7,
+      "pick": 220,
+      "team": "Atlanta Braves",
+      "position": "RHP",
+      "current_level": "MLB"
+    },
+    {
+      "name": "Jack Perkins",
+      "year": 2024,
+      "round": 9,
+      "pick": 279,
+      "team": "Oakland Athletics",
+      "position": "RHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Garrison Schwartz",
+      "year": 2023,
+      "round": 12,
+      "pick": 357,
+      "team": "Houston Astros",
+      "position": "LHP",
+      "current_level": "High-A"
     }
   ],
   "TCU": [
@@ -1453,6 +4560,26 @@
       "current_level": "High-A"
     }
   ],
+  "Texas State": [
+    {
+      "name": "Otto Wofford",
+      "year": 2024,
+      "round": 5,
+      "pick": 149,
+      "team": "Houston Astros",
+      "position": "C",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Dalton Shuffield",
+      "year": 2023,
+      "round": 7,
+      "pick": 218,
+      "team": "Seattle Mariners",
+      "position": "SS",
+      "current_level": "High-A"
+    }
+  ],
   "Texas Tech": [
     {
       "name": "Jace Jung",
@@ -1511,6 +4638,284 @@
       "current_level": "AA"
     }
   ],
+  "Tulsa": [
+    {
+      "name": "Trevor Martin",
+      "year": 2024,
+      "round": 4,
+      "pick": 117,
+      "team": "Atlanta Braves",
+      "position": "RHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Nate Johnson",
+      "year": 2023,
+      "round": 6,
+      "pick": 180,
+      "team": "Oakland Athletics",
+      "position": "OF",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Sean Wymer",
+      "year": 2022,
+      "round": 7,
+      "pick": 214,
+      "team": "Cleveland Guardians",
+      "position": "RHP",
+      "current_level": "AA"
+    },
+    {
+      "name": "Garrett Rukes",
+      "year": 2021,
+      "round": 8,
+      "pick": 247,
+      "team": "San Diego Padres",
+      "position": "LHP",
+      "current_level": "AA"
+    },
+    {
+      "name": "Bennett Hostetler",
+      "year": 2024,
+      "round": 11,
+      "pick": 339,
+      "team": "Tampa Bay Rays",
+      "position": "C",
+      "current_level": "Single-A"
+    }
+  ],
+  "UC Irvine": [
+    {
+      "name": "Cole Leonida",
+      "year": 2024,
+      "round": 3,
+      "pick": 80,
+      "team": "Milwaukee Brewers",
+      "position": "C",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Caden Kendle",
+      "year": 2023,
+      "round": 6,
+      "pick": 169,
+      "team": "Kansas City Royals",
+      "position": "SS",
+      "current_level": "High-A"
+    },
+    {
+      "name": "TJ Brock",
+      "year": 2022,
+      "round": 7,
+      "pick": 208,
+      "team": "New York Yankees",
+      "position": "RHP",
+      "current_level": "AA"
+    },
+    {
+      "name": "Aaron Perez",
+      "year": 2021,
+      "round": 5,
+      "pick": 158,
+      "team": "Los Angeles Dodgers",
+      "position": "C",
+      "current_level": "AAA"
+    },
+    {
+      "name": "Andre Lipcius",
+      "year": 2021,
+      "round": 3,
+      "pick": 83,
+      "team": "Detroit Tigers",
+      "position": "3B",
+      "current_level": "AAA"
+    }
+  ],
+  "UC Santa Barbara": [
+    {
+      "name": "Michael McGreevy",
+      "year": 2021,
+      "round": 1,
+      "pick": 18,
+      "team": "St. Louis Cardinals",
+      "position": "RHP",
+      "current_level": "MLB"
+    },
+    {
+      "name": "Rodney Boone",
+      "year": 2024,
+      "round": 2,
+      "pick": 57,
+      "team": "Los Angeles Angels",
+      "position": "LHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Bryce Warrecker",
+      "year": 2024,
+      "round": 5,
+      "pick": 139,
+      "team": "Baltimore Orioles",
+      "position": "RHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Jason Sponseller",
+      "year": 2022,
+      "round": 7,
+      "pick": 221,
+      "team": "Chicago White Sox",
+      "position": "RHP",
+      "current_level": "AA"
+    },
+    {
+      "name": "Cory Lewis",
+      "year": 2021,
+      "round": 4,
+      "pick": 121,
+      "team": "Detroit Tigers",
+      "position": "RHP",
+      "current_level": "AAA"
+    },
+    {
+      "name": "Nick Vogt",
+      "year": 2023,
+      "round": 9,
+      "pick": 261,
+      "team": "Cincinnati Reds",
+      "position": "C",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Thomas Rowan",
+      "year": 2022,
+      "round": 10,
+      "pick": 298,
+      "team": "San Francisco Giants",
+      "position": "OF",
+      "current_level": "AA"
+    },
+    {
+      "name": "Zach Torra",
+      "year": 2024,
+      "round": 11,
+      "pick": 340,
+      "team": "Tampa Bay Rays",
+      "position": "RHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Jake Steffens",
+      "year": 2021,
+      "round": 6,
+      "pick": 177,
+      "team": "Minnesota Twins",
+      "position": "LHP",
+      "current_level": "AAA"
+    },
+    {
+      "name": "Kyle Brnovich",
+      "year": 2023,
+      "round": 12,
+      "pick": 361,
+      "team": "Arizona Diamondbacks",
+      "position": "RHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Nathan Mondou",
+      "year": 2021,
+      "round": 8,
+      "pick": 244,
+      "team": "Pittsburgh Pirates",
+      "position": "2B",
+      "current_level": "AA"
+    }
+  ],
+  "UCF": [
+    {
+      "name": "David Mershon",
+      "year": 2024,
+      "round": 4,
+      "pick": 110,
+      "team": "Baltimore Orioles",
+      "position": "LHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Andrew Ruiz",
+      "year": 2023,
+      "round": 5,
+      "pick": 149,
+      "team": "Miami Marlins",
+      "position": "C",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Ray Alejo",
+      "year": 2021,
+      "round": 4,
+      "pick": 122,
+      "team": "San Francisco Giants",
+      "position": "OF",
+      "current_level": "AAA"
+    },
+    {
+      "name": "Jack Sinclair",
+      "year": 2022,
+      "round": 6,
+      "pick": 189,
+      "team": "Pittsburgh Pirates",
+      "position": "RHP",
+      "current_level": "AA"
+    },
+    {
+      "name": "Liam Hicks",
+      "year": 2024,
+      "round": 8,
+      "pick": 235,
+      "team": "Philadelphia Phillies",
+      "position": "C",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Jordan Spicer",
+      "year": 2023,
+      "round": 9,
+      "pick": 274,
+      "team": "New York Yankees",
+      "position": "RHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Thad Ward",
+      "year": 2021,
+      "round": 5,
+      "pick": 142,
+      "team": "Boston Red Sox",
+      "position": "RHP",
+      "current_level": "AAA"
+    },
+    {
+      "name": "Colby Halter",
+      "year": 2022,
+      "round": 10,
+      "pick": 301,
+      "team": "Detroit Tigers",
+      "position": "OF",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Tyler Osik",
+      "year": 2024,
+      "round": 13,
+      "pick": 388,
+      "team": "Tampa Bay Rays",
+      "position": "C",
+      "current_level": "Single-A"
+    }
+  ],
   "UCLA": [
     {
       "name": "Matt McLain",
@@ -1545,6 +4950,221 @@
       "round": 4,
       "pick": 109,
       "team": "San Diego Padres",
+      "position": "SS",
+      "current_level": "Single-A"
+    }
+  ],
+  "UNC Wilmington": [
+    {
+      "name": "Zarion Sharpe",
+      "year": 2024,
+      "round": 1,
+      "pick": 32,
+      "team": "Kansas City Royals",
+      "position": "OF",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Taber Mongero",
+      "year": 2024,
+      "round": 5,
+      "pick": 144,
+      "team": "Tampa Bay Rays",
+      "position": "RHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Luke Gesell",
+      "year": 2023,
+      "round": 6,
+      "pick": 186,
+      "team": "Cleveland Guardians",
+      "position": "LHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Landen Roupp",
+      "year": 2021,
+      "round": 3,
+      "pick": 101,
+      "team": "San Francisco Giants",
+      "position": "RHP",
+      "current_level": "MLB"
+    },
+    {
+      "name": "Cole Weiss",
+      "year": 2022,
+      "round": 8,
+      "pick": 242,
+      "team": "Baltimore Orioles",
+      "position": "OF",
+      "current_level": "AA"
+    },
+    {
+      "name": "Matt Nutter",
+      "year": 2023,
+      "round": 10,
+      "pick": 308,
+      "team": "Pittsburgh Pirates",
+      "position": "RHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Brian Edgington",
+      "year": 2021,
+      "round": 9,
+      "pick": 270,
+      "team": "Los Angeles Dodgers",
+      "position": "RHP",
+      "current_level": "AAA"
+    }
+  ],
+  "UNLV": [
+    {
+      "name": "Bryson Stott",
+      "year": 2021,
+      "round": 1,
+      "pick": 14,
+      "team": "Philadelphia Phillies",
+      "position": "SS",
+      "current_level": "MLB"
+    },
+    {
+      "name": "Austin Kryszczuk",
+      "year": 2024,
+      "round": 6,
+      "pick": 187,
+      "team": "Oakland Athletics",
+      "position": "OF",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Edarian Williams",
+      "year": 2022,
+      "round": 7,
+      "pick": 207,
+      "team": "San Francisco Giants",
+      "position": "SS",
+      "current_level": "AA"
+    },
+    {
+      "name": "Santino Panaro",
+      "year": 2023,
+      "round": 9,
+      "pick": 271,
+      "team": "Milwaukee Brewers",
+      "position": "C",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Anthony Martinez",
+      "year": 2024,
+      "round": 12,
+      "pick": 359,
+      "team": "Houston Astros",
+      "position": "RHP",
+      "current_level": "Single-A"
+    }
+  ],
+  "Utah": [
+    {
+      "name": "Bryson Van Noord",
+      "year": 2024,
+      "round": 5,
+      "pick": 156,
+      "team": "Texas Rangers",
+      "position": "RHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Cameron Day",
+      "year": 2023,
+      "round": 8,
+      "pick": 251,
+      "team": "San Francisco Giants",
+      "position": "OF",
+      "current_level": "High-A"
+    }
+  ],
+  "VCU": [
+    {
+      "name": "Tyler Locklear",
+      "year": 2022,
+      "round": 2,
+      "pick": 58,
+      "team": "Seattle Mariners",
+      "position": "1B",
+      "current_level": "MLB"
+    },
+    {
+      "name": "Maddux Houghton",
+      "year": 2024,
+      "round": 3,
+      "pick": 94,
+      "team": "San Diego Padres",
+      "position": "RHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Joe Savino",
+      "year": 2023,
+      "round": 7,
+      "pick": 199,
+      "team": "Cincinnati Reds",
+      "position": "LHP",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Vince Donato",
+      "year": 2021,
+      "round": 5,
+      "pick": 161,
+      "team": "Chicago Cubs",
+      "position": "RHP",
+      "current_level": "AAA"
+    },
+    {
+      "name": "Will Knight",
+      "year": 2024,
+      "round": 9,
+      "pick": 281,
+      "team": "Boston Red Sox",
+      "position": "RHP",
+      "current_level": "Single-A"
+    },
+    {
+      "name": "Tate Pennington",
+      "year": 2022,
+      "round": 8,
+      "pick": 240,
+      "team": "Minnesota Twins",
+      "position": "LHP",
+      "current_level": "AA"
+    },
+    {
+      "name": "Joel Munoz",
+      "year": 2023,
+      "round": 11,
+      "pick": 329,
+      "team": "Pittsburgh Pirates",
+      "position": "OF",
+      "current_level": "High-A"
+    },
+    {
+      "name": "Logan Buczkowski",
+      "year": 2021,
+      "round": 9,
+      "pick": 264,
+      "team": "Kansas City Royals",
+      "position": "C",
+      "current_level": "AA"
+    },
+    {
+      "name": "Nate Forrest",
+      "year": 2024,
+      "round": 14,
+      "pick": 425,
+      "team": "Los Angeles Angels",
       "position": "SS",
       "current_level": "Single-A"
     }
@@ -1764,6 +5384,26 @@
       "current_level": "High-A"
     }
   ],
+  "Washington": [
+    {
+      "name": "Bryce Miller",
+      "year": 2021,
+      "round": 4,
+      "pick": 113,
+      "team": "Seattle Mariners",
+      "position": "RHP",
+      "current_level": "MLB"
+    },
+    {
+      "name": "Coby Morales",
+      "year": 2024,
+      "round": 7,
+      "pick": 211,
+      "team": "Baltimore Orioles",
+      "position": "C",
+      "current_level": "Single-A"
+    }
+  ],
   "West Virginia": [
     {
       "name": "JJ Wetherholt",
@@ -1793,66 +5433,6 @@
       "team": "Tampa Bay Rays",
       "position": "OF",
       "current_level": "AA"
-    }
-  ],
-  "Cal Poly": [
-    {
-      "name": "Brooks Lee",
-      "year": 2022,
-      "round": 1,
-      "pick": 8,
-      "team": "Minnesota Twins",
-      "position": "SS",
-      "current_level": "MLB"
-    },
-    {
-      "name": "Drew Thorpe",
-      "year": 2022,
-      "round": 2,
-      "pick": 61,
-      "team": "New York Yankees",
-      "position": "RHP",
-      "current_level": "MLB"
-    }
-  ],
-  "Oregon": [
-    {
-      "name": "Jacob Walsh",
-      "year": 2024,
-      "round": 5,
-      "pick": 157,
-      "team": "Chicago Cubs",
-      "position": "RHP",
-      "current_level": "Single-A"
-    },
-    {
-      "name": "Kenyon Yovan",
-      "year": 2021,
-      "round": 6,
-      "pick": 175,
-      "team": "Cincinnati Reds",
-      "position": "RHP",
-      "current_level": "AA"
-    }
-  ],
-  "Oklahoma": [
-    {
-      "name": "Jackson Nicklaus",
-      "year": 2024,
-      "round": 3,
-      "pick": 93,
-      "team": "Detroit Tigers",
-      "position": "3B",
-      "current_level": "Single-A"
-    },
-    {
-      "name": "Cade Horton",
-      "year": 2023,
-      "round": 1,
-      "pick": 7,
-      "team": "Chicago Cubs",
-      "position": "RHP",
-      "current_level": "AAA"
     }
   ]
 }
