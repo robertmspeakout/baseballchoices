@@ -298,6 +298,7 @@ export default function SchoolPage({
               <p className="text-base sm:text-xl font-bold text-gray-900 mt-0.5 sm:mt-1">
                 {school.mlb_draft_picks ? school.mlb_draft_picks : "0"}
               </p>
+              <p className="text-[10px] sm:text-xs text-gray-400 mt-0.5">since 2021</p>
             </div>
           </div>
         </div>
