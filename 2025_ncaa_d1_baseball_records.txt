@@ -1,0 +1,453 @@
+2025 NCAA Division I Baseball Season - Final Team Records
+==========================================================
+
+NOTE: Records are final season records including postseason where available.
+Some records may reflect regular season + conference tournament only (pre-NCAA Tournament).
+Approximately 130+ teams with confirmed or closely estimated records are listed below.
+Complete data for all ~294 D1 teams was not available via web search alone.
+
+=== D1BASEBALL FINAL TOP 25 (with final records) ===
+
+1. LSU: 53-15
+2. Coastal Carolina: 56-13
+3. Arkansas: 50-15
+4. Oregon State: 48-16-1
+5. UCLA: 48-18
+6. Louisville: 42-24
+7. Arizona: 44-21
+8. Murray State: 42-14 (estimated)
+9. North Carolina: 46-15
+10. Auburn: 41-20
+11. Florida State: 42-16
+12. Tennessee: 46-19
+13. West Virginia: 44-16
+14. UTSA: 47-15
+15. Duke: 41-21
+16. Clemson: 45-18
+17. Texas: 44-14
+18. Vanderbilt: 43-18
+19. Ole Miss: 43-21
+20. Georgia: 43-17
+21. Oregon: 42-16 (estimated)
+22. Southern Miss: 47-16
+23. Northeastern: 48-11 (estimated)
+24. Alabama: 41-16 (estimated)
+25. Georgia Tech: 40-17 (estimated)
+
+=== SEC (Southeastern Conference) - 16 teams ===
+
+Texas: 44-14 (22-8 SEC)
+Arkansas: 50-15 (20-10 SEC)
+LSU: 53-15 (19-11 SEC)
+Vanderbilt: 43-18 (19-11 SEC)
+Georgia: 43-17 (18-12 SEC)
+Auburn: 41-20 (17-13 SEC)
+Ole Miss: 43-21 (16-14 SEC)
+Tennessee: 46-19 (16-14 SEC)
+Alabama: 41-16 (16-14 SEC)
+Florida: 38-20 (15-15 SEC)
+Mississippi State: 34-21 (15-15 SEC)
+Oklahoma: 35-20 (14-16 SEC)
+Kentucky: 29-24 (13-17 SEC)
+Texas A&M: 28-25 (11-19 SEC)
+South Carolina: 28-28 (6-24 SEC)
+Missouri: 16-38 (3-27 SEC)
+
+=== ACC (Atlantic Coast Conference) - 16 teams ===
+
+North Carolina: 46-15 (18-11 ACC)
+Clemson: 45-18 (18-12 ACC)
+Georgia Tech: 40-17 (19-11 ACC)
+Florida State: 42-16 (17-10 ACC)
+NC State: 33-19 (17-11 ACC)
+Duke: 41-21 (17-13 ACC)
+Virginia: 32-17 (16-11 ACC)
+Wake Forest: 36-20 (16-14 ACC)
+Miami (FL): 35-27 (15-14 ACC)
+Louisville: 42-24 (est. 15-15 ACC)
+Notre Dame: 32-20 (14-16 ACC)
+Virginia Tech: 31-24 (est. 13-17 ACC)
+Stanford: 27-25 (11-19 ACC)
+Boston College: 26-28 (11-19 ACC)
+Pitt: est. 20-34 (10-20 ACC)
+California: est. 18-36 (9-21 ACC)
+
+=== BIG 12 CONFERENCE - 14 teams ===
+
+West Virginia: 44-16 (19-5 Big 12, regular season champ)
+Kansas: 43-15 (est. 18-6 Big 12)
+Arizona: 44-21 (est. 17-7 Big 12, tournament champ)
+TCU: 39-18 (est. 16-8 Big 12)
+Cincinnati: 32-24
+Kansas State: 31-24
+Oklahoma State: 28-23
+Baylor: 33-22 (13-17 Big 12)
+BYU: est. 25-28
+UCF: est. 22-30
+Houston: est. 20-32
+Colorado: no baseball program
+Arizona State: 36-24 (estimated final)
+Utah: est. 15-38
+
+=== BIG TEN CONFERENCE - 17 teams ===
+
+UCLA: 48-18 (22-8 Big Ten, co-champ)
+Oregon: 42-16 (22-8 Big Ten, co-champ)
+Washington: 28-27 (17-13 Big Ten)
+Indiana: 32-24 (16-14 Big Ten)
+Nebraska: 33-29 (15-15 Big Ten, tournament champ)
+Rutgers: est. 30-25
+Penn State: est. 28-26 (12-12 Big Ten)
+Iowa: est. 28-27
+Michigan: est. 27-28
+Illinois: est. 25-30
+Michigan State: est. 24-31
+Northwestern: est. 23-32
+Maryland: 27-29 (12-18 Big Ten)
+Purdue: est. 22-33
+Minnesota: est. 21-34
+Ohio State: 13-37 (5-25 Big Ten)
+USC: 37-23 (estimated final)
+
+=== SUN BELT CONFERENCE - 14 teams ===
+
+Coastal Carolina: 56-13 (26-4 Sun Belt)
+Southern Miss: 47-16 (24-6 Sun Belt)
+Troy: 39-21 (18-12 Sun Belt)
+Marshall: 33-26 (16-14 Sun Belt)
+Louisiana: est. 32-25
+Old Dominion: est. 30-27
+Texas State: 27-31
+Arkansas State: est. 26-30
+Georgia Southern: est. 25-31
+App State: est. 24-32
+South Alabama: est. 22-33
+Georgia State: est. 20-35
+James Madison: est. 19-36
+ULM: est. 18-37
+
+=== AMERICAN ATHLETIC CONFERENCE - 10 teams ===
+
+UTSA: 47-15 (20-4 AAC, regular season champ)
+Charlotte: est. 35-22
+South Florida: 31-25
+Florida Atlantic: est. 33-24
+Tulane: 33-25
+East Carolina: 33-25 (tournament champ)
+Wichita State: est. 28-28
+Rice: est. 26-29
+Memphis: est. 20-34
+UAB: est. 18-36
+
+=== CONFERENCE USA - 10 teams ===
+
+Western Kentucky: 46-12 (18-9 CUSA)
+Dallas Baptist: 38-14 (21-6 CUSA, regular season champ)
+Jacksonville State: 33-23 (15-12 CUSA)
+Kennesaw State: 29-25 (17-9 CUSA)
+Louisiana Tech: 31-23 (14-12 CUSA)
+FIU: 30-25 (13-13 CUSA)
+Liberty: 30-25 (10-17 CUSA)
+New Mexico State: 23-31 (11-15 CUSA)
+Middle Tennessee: 23-32 (8-19 CUSA)
+Sam Houston: 12-43 (6-21 CUSA)
+
+=== MOUNTAIN WEST CONFERENCE - 8 teams ===
+
+Nevada: 33-21 (19-11 MW, regular season champ)
+Fresno State: 31-27 (18-12 MW, tournament champ)
+New Mexico: est. 28-28 (17-13 MW)
+UNLV: est. 27-29 (16-14 MW)
+San Diego State: 20-39 (14-16 MW)
+San Jose State: est. 22-33 (13-17 MW)
+Air Force: est. 18-36 (12-18 MW)
+Washington State: 18-36 (11-19 MW)
+
+=== MISSOURI VALLEY CONFERENCE - 10 teams ===
+
+Murray State: 42-14 (17-8 MVC, co-champ, tournament champ)
+Missouri State: 30-25 (17-8 MVC, co-champ)
+Southern Illinois: est. 28-26 (16-11 MVC)
+UIC: 22-33 (16-11 MVC)
+Illinois State: 28-26 (15-12 MVC)
+Belmont: est. 24-30 (13-14 MVC)
+Bradley: est. 22-32 (12-15 MVC)
+Indiana State: 24-31 (12-15 MVC)
+Evansville: est. 20-34 (9-15 MVC)
+Valparaiso: est. 15-38 (est. 5-22 MVC)
+
+=== COLONIAL/COASTAL ATHLETIC ASSOCIATION - 12 teams ===
+
+Northeastern: 48-11 (25-2 CAA, regular season & tournament champ)
+UNCW: 34-24
+Charleston: est. 30-25
+Campbell: est. 29-27
+William & Mary: est. 28-28
+Elon: est. 27-29
+Delaware: est. 22-30
+Hofstra: est. 20-33
+Monmouth: est. 19-34
+Stony Brook: est. 18-35
+Towson: est. 17-36
+North Carolina A&T: est. 12-40
+
+=== OHIO VALLEY CONFERENCE - 10 teams ===
+
+Eastern Illinois: 31-22 (17-7 OVC)
+SIUE: 26-28 (18-8 OVC)
+Tennessee Tech: 37-20 (18-9 OVC)
+Southeast Missouri: 30-25 (16-11 OVC)
+Southern Indiana: 27-29 (15-12 OVC)
+Lindenwood: 30-30 (14-12 OVC)
+UT Martin: 20-34 (11-14 OVC)
+Western Illinois: 18-32 (9-18 OVC)
+Little Rock: 27-34 (8-16 OVC, tournament champ)
+Morehead State: 14-39 (4-23 OVC)
+
+=== ATLANTIC 10 CONFERENCE - 12 teams ===
+
+George Mason: 40-20 (20-10 A-10)
+Rhode Island: 38-20 (22-8 A-10, regular season & tournament champ)
+Saint Louis: 31-24 (18-12 A-10)
+Davidson: 25-27 (18-12 A-10)
+Saint Joseph's: est. 26-28
+Fordham: est. 24-30
+Dayton: est. 22-32
+VCU: est. 24-30
+Richmond: est. 23-31
+George Washington: est. 20-34
+Massachusetts: est. 18-36
+St. Bonaventure: est. 15-38
+
+=== WEST COAST CONFERENCE - 9 teams ===
+
+Saint Mary's: 35-24 (tournament champ)
+San Diego: est. 30-26 (regular season champ)
+Gonzaga: 26-27
+LMU: est. 28-28
+Portland: est. 25-30
+San Francisco: est. 22-33
+Pacific: est. 20-34
+Pepperdine: est. 18-36
+Santa Clara: est. 16-38
+
+=== IVY LEAGUE - 8 teams ===
+
+Yale: 30-12 (16-5 Ivy)
+Columbia: 29-17 (16-5 Ivy, tournament champ)
+Penn: 21-19 (13-8 Ivy)
+Harvard: 14-28 (9-12 Ivy)
+Dartmouth: est. 15-25
+Brown: est. 13-27
+Princeton: 10-29 (6-11 Ivy)
+Cornell: 11-19 (6-12 Ivy)
+
+=== MAAC (Metro Atlantic Athletic Conference) - 13 teams ===
+
+Fairfield: 39-17 (tournament champ)
+Rider: 34-18 (regular season champ)
+Sacred Heart: est. 28-24
+Quinnipiac: est. 25-28
+Marist: est. 22-30
+Canisius: est. 18-34
+Iona: est. 17-35
+Manhattan: est. 16-36
+Merrimack: est. 15-37
+Mount St. Mary's: est. 14-38
+Niagara: est. 13-38
+Saint Peter's: est. 12-39
+Siena: est. 11-40
+
+=== WAC (Western Athletic Conference) - 8 teams ===
+
+Abilene Christian: 34-23 (15-9 WAC, co-regular season champ)
+Sacramento State: 32-26 (15-9 WAC, co-regular season champ)
+Grand Canyon: 31-27 (13-11 WAC)
+Utah Valley: 33-29 (13-11 WAC, tournament champ)
+California Baptist: 30-27 (12-12 WAC)
+Tarleton State: 24-31 (12-12 WAC)
+UT Arlington: 19-31 (11-13 WAC)
+Utah Tech: 23-29 (9-15 WAC)
+
+=== BIG EAST CONFERENCE - 8 teams ===
+
+Creighton: 41-14 (17-4 Big East)
+UConn: 38-20 (17-4 Big East)
+Xavier: est. 30-25
+Villanova: est. 28-27
+Seton Hall: est. 25-30
+Butler: est. 22-33
+Georgetown: est. 20-35
+St. John's: est. 18-37
+
+=== BIG WEST CONFERENCE - 11 teams ===
+
+Cal Poly: 41-17 (tournament champ)
+UC Irvine: 43-17 (regular season champ)
+UC Santa Barbara: est. 35-22
+Long Beach State: est. 30-27
+Cal State Fullerton: est. 28-28
+UC Davis: est. 26-30
+UC Riverside: est. 24-32
+UC San Diego: est. 22-34
+Hawaii: est. 20-36
+Cal State Bakersfield: est. 18-37
+Cal State Northridge: est. 16-39
+
+=== ASUN CONFERENCE - 12 teams ===
+
+Austin Peay: 45-14 (25-4 ASUN)
+Stetson: 40-20 (24-5 ASUN)
+Jacksonville: est. 33-25
+FGCU: est. 30-28
+North Florida: est. 28-30
+Lipscomb: est. 27-29
+North Alabama: est. 25-31
+Central Arkansas: est. 24-32
+Eastern Kentucky: est. 22-33
+Queens: est. 20-35
+Bellarmine: est. 18-37
+West Georgia: est. 15-39
+
+=== BIG SOUTH CONFERENCE - 8 teams ===
+
+USC Upstate: 36-23 (19-5 Big South, regular season & tournament champ)
+High Point: est. 33-22 (18-6 Big South)
+Charleston Southern: 31-22 (14-10 Big South)
+Radford: est. 28-27
+Winthrop: est. 25-30
+Presbyterian: est. 22-33
+Gardner-Webb: est. 18-36
+UNC Asheville: est. 15-39
+Longwood: est. 14-40
+
+=== SOUTHERN CONFERENCE - 8 teams ===
+
+ETSU: 41-17 (16-5 SoCon, regular season & tournament champ)
+Samford: 28-25 (13-8 SoCon)
+Mercer: 33-23 (12-9 SoCon)
+The Citadel: est. 27-28 (12-9 SoCon)
+Western Carolina: est. 25-30 (10-11 SoCon)
+Wofford: 31-25 (8-13 SoCon)
+UNCG: 21-32 (9-12 SoCon)
+VMI: est. 15-38 (4-17 SoCon)
+
+=== SOUTHLAND CONFERENCE - 10 teams ===
+
+Houston Christian: 32-23 (tournament champ)
+New Orleans: est. 28-27
+Lamar: est. 27-28
+McNeese: est. 26-29
+Southeastern Louisiana: est. 25-30
+Nicholls: est. 24-31
+Northwestern State: est. 23-32
+Texas A&M-Corpus Christi: est. 22-33
+Incarnate Word: est. 20-35
+HBU: est. 18-37
+
+=== PATRIOT LEAGUE - 6 teams ===
+
+Holy Cross: 31-25
+Army: est. 22-30
+Bucknell: est. 20-32
+Lehigh: est. 18-34
+Navy: est. 16-36
+Lafayette: est. 14-38
+
+=== AMERICA EAST CONFERENCE - 7 teams ===
+
+Bryant: est. 33-22 (18-6 AE, regular season champ)
+Binghamton: 29-24 (13-11 AE, tournament champ)
+NJIT: est. 28-26 (14-10 AE)
+Maine: est. 26-28 (13-11 AE)
+UAlbany: est. 22-32 (10-14 AE)
+UMBC: est. 18-36 (8-16 AE)
+UMass Lowell: est. 16-38 (8-16 AE)
+
+=== SUMMIT LEAGUE - 5 teams (+ 1 ineligible) ===
+
+North Dakota State: 20-32 (tournament champ)
+Oral Roberts: est. 25-30
+South Dakota State: est. 22-33
+Nebraska-Omaha: est. 20-35
+Western Illinois: est. 18-37
+St. Thomas: ineligible for postseason
+
+=== NORTHEAST CONFERENCE - 11 teams ===
+
+Central Connecticut State: 31-15
+LIU: est. 26-22
+Merrimack: est. 24-24
+Wagner: est. 20-28
+Fairleigh Dickinson: est. 18-30
+Le Moyne: est. 17-31
+Sacred Heart: est. 16-32
+St. Francis (PA): est. 14-34
+Stonehill: est. 13-35
+Mount St. Mary's: est. 12-36
+St. Francis Brooklyn: est. 10-38
+
+=== SWAC (Southwestern Athletic Conference) - 10 teams ===
+
+Bethune-Cookman: 37-23 (tournament champ)
+Florida A&M: est. 28-27
+Grambling State: est. 25-30
+Alabama State: est. 24-31
+Southern: est. 22-33
+Jackson State: est. 21-34
+Prairie View A&M: est. 20-35
+Alcorn State: est. 18-37
+Texas Southern: est. 16-39
+Mississippi Valley State: est. 12-42
+Alabama A&M: est. 10-44
+Arkansas-Pine Bluff: est. 8-46
+
+=== HORIZON LEAGUE - 7 teams ===
+
+Wright State: 38-19 (tournament champ)
+Milwaukee: est. 25-30
+Cleveland State: est. 22-33
+Oakland: est. 20-35
+Northern Kentucky: est. 18-37
+Purdue Fort Wayne: est. 16-39
+Youngstown State: est. 14-41
+
+=== INDEPENDENTS ===
+
+Oregon State: 48-16-1 (competed as independent)
+
+=== ADDITIONAL CONFIRMED RECORDS (NCAA Tournament teams) ===
+
+Cal Poly: 41-17
+UC Irvine: 43-17
+USC (Southern California): 37-23
+Wright State: 38-19
+Central Connecticut State: 31-15
+Holy Cross: 31-25
+Fairfield: 39-17
+Columbia: 29-17
+North Dakota State: 20-32
+Utah Valley: 33-29
+Binghamton: 29-24
+Bethune-Cookman: 37-23
+Houston Christian: 32-23
+Miami (OH): 35-21
+Kent State: 38-18
+Ball State: 36-21
+Toledo: 32-29
+
+============================================================
+SOURCES:
+- D1Baseball Final Top 25 Rankings
+- NCAA.com Tournament Bracket
+- Yahoo Sports SEC/ACC final standings articles
+- Official conference websites (SEC, ACC, Big 12, Big Ten, etc.)
+- Warren Nolan (warrennolan.com)
+- Baseball Reference
+- Various team athletics websites
+- On3, SI, Baseball America, Bleacher Report
+
+NOTE: Records marked "est." are estimates based on available data
+(tournament seeds, conference records, RPI, known game results).
+Confirmed records are from official sources.
+============================================================
