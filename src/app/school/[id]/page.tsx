@@ -516,13 +516,12 @@ export default function SchoolPage({
             <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
               <div className="p-4 sm:p-6">
                 <div className="flex items-center gap-3">
-                  <div className="shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-blue-900 to-red-800 flex items-center justify-center">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.5 9.5c2 1.5 5.5 2 9.5 2s7.5-.5 9.5-2" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.5 14.5c2-1.5 5.5-2 9.5-2s7.5.5 9.5 2" />
-                    </svg>
-                  </div>
+                  <img
+                    src="https://www.mlbstatic.com/team-logos/league-on-dark/1.svg"
+                    alt="MLB"
+                    className="w-10 h-10 shrink-0"
+                    onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
+                  />
                   <div className="flex-1 min-w-0">
                     <h2 className="text-base sm:text-lg font-bold text-gray-900">
                       {school.mlb_draft_picks} MLB Draft Picks
