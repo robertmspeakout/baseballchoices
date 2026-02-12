@@ -608,7 +608,6 @@ export default function SchoolPage({
             {/* MLB Draft Picks — collapsible table */}
             {school.mlb_draft_picks != null && school.mlb_draft_picks > 0 && (() => {
               const picks = (draftPicksData as Record<string, DraftPick[]>)[school.name] || [];
-              const mlbCount = picks.filter(p => p.current_level === "MLB").length;
               return (
                 <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
                   <div className="p-4 sm:p-6">
@@ -624,13 +623,6 @@ export default function SchoolPage({
                           {school.mlb_draft_picks} MLB Draft Picks
                           <span className="text-sm font-normal text-gray-500 ml-1.5">since 2021</span>
                         </h2>
-                        <p className="text-xs text-gray-500">
-                          {picks.length > 0 && mlbCount > 0
-                            ? `${mlbCount} currently in MLB`
-                            : picks.length > 0
-                            ? "Players in minor league systems"
-                            : "Players drafted to professional baseball"}
-                        </p>
                       </div>
                     </div>
                     {/* Prominent expand button */}
@@ -663,21 +655,13 @@ export default function SchoolPage({
                             <th className="px-3 py-2.5 text-left text-xs font-semibold text-gray-600 uppercase">Selection</th>
                             <th className="px-3 py-2.5 text-left text-xs font-semibold text-gray-600 uppercase">Team</th>
                             <th className="px-3 py-2.5 text-left text-xs font-semibold text-gray-600 uppercase">Pos</th>
-                            <th className="px-3 py-2.5 text-left text-xs font-semibold text-gray-600 uppercase">Current</th>
                           </tr>
                         </thead>
                         <tbody className="divide-y divide-gray-50">
                           {picks.sort((a, b) => b.year - a.year || a.round - b.round).map((pick, i) => (
                             <tr key={i} className="hover:bg-blue-50/30">
-                              <td className="px-4 py-2.5">
-                                <a
-                                  href={`https://www.baseball-reference.com/search/search.fcgi?search=${encodeURIComponent(pick.name)}`}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="text-sm font-medium text-blue-700 hover:underline"
-                                >
-                                  {pick.name}
-                                </a>
+                              <td className="px-4 py-2.5 text-sm font-medium text-gray-900">
+                                {pick.name}
                               </td>
                               <td className="px-3 py-2.5 text-sm text-gray-700">{pick.year}</td>
                               <td className="px-3 py-2.5 text-sm text-gray-700">
@@ -685,19 +669,6 @@ export default function SchoolPage({
                               </td>
                               <td className="px-3 py-2.5 text-sm text-gray-700 whitespace-nowrap">{pick.team}</td>
                               <td className="px-3 py-2.5 text-sm text-gray-700">{pick.position}</td>
-                              <td className="px-3 py-2.5">
-                                <span className={`inline-block px-2 py-0.5 rounded-full text-xs font-semibold ${
-                                  pick.current_level === "MLB"
-                                    ? "bg-green-100 text-green-800"
-                                    : pick.current_level === "AAA"
-                                    ? "bg-blue-100 text-blue-800"
-                                    : pick.current_level === "AA"
-                                    ? "bg-purple-100 text-purple-800"
-                                    : "bg-gray-100 text-gray-700"
-                                }`}>
-                                  {pick.current_level}
-                                </span>
-                              </td>
                             </tr>
                           ))}
                         </tbody>
