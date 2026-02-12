@@ -216,6 +216,8 @@ export default function SchoolPage({
   }
 
   const school = schoolData;
+  const draftCutoffYear = new Date().getFullYear() - 5;
+  const draftPicksCount = ((draftPicksData as Record<string, DraftPick[]>)[school.name] || []).filter(p => p.year >= draftCutoffYear).length;
   const mapLat = school.stadium_latitude || school.latitude;
   const mapLng = school.stadium_longitude || school.longitude;
 
@@ -355,9 +357,9 @@ export default function SchoolPage({
             <div className="p-3 sm:p-4 text-center col-span-1 hidden sm:block">
               <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Draft Picks</p>
               <p className="text-base sm:text-xl font-bold text-gray-900 mt-0.5 sm:mt-1">
-                {school.mlb_draft_picks ? school.mlb_draft_picks : "0"}
+                {draftPicksCount}
               </p>
-              <p className="text-[10px] sm:text-xs text-gray-400 mt-0.5">since 2021</p>
+              <p className="text-[10px] sm:text-xs text-gray-400 mt-0.5">since {draftCutoffYear}</p>
             </div>
           </div>
         </div>
@@ -634,8 +636,8 @@ export default function SchoolPage({
             </div>
 
             {/* MLB Draft Picks — collapsible table */}
-            {school.mlb_draft_picks != null && school.mlb_draft_picks > 0 && (() => {
-              const picks = (draftPicksData as Record<string, DraftPick[]>)[school.name] || [];
+            {draftPicksCount > 0 && (() => {
+              const picks = ((draftPicksData as Record<string, DraftPick[]>)[school.name] || []).filter(p => p.year >= draftCutoffYear);
               return (
                 <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
                   <div className="p-4 sm:p-6">
@@ -648,8 +650,8 @@ export default function SchoolPage({
                       />
                       <div className="flex-1 min-w-0">
                         <h2 className="text-base sm:text-lg font-bold text-gray-900">
-                          {school.mlb_draft_picks} MLB Draft Picks
-                          <span className="text-sm font-normal text-gray-500 ml-1.5">since 2021</span>
+                          {picks.length} MLB Draft Pick{picks.length !== 1 ? "s" : ""}
+                          <span className="text-sm font-normal text-gray-500 ml-1.5">since {draftCutoffYear}</span>
                         </h2>
                       </div>
                     </div>
