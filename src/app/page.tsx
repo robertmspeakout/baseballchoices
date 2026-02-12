@@ -38,7 +38,6 @@ interface Filters {
   state: string;
   conference: string;
   publicPrivate: string;
-  priorityOnly: boolean;
   zip: string;
 }
 
@@ -65,7 +64,6 @@ export default function Home() {
     state: "",
     conference: "",
     publicPrivate: "",
-    priorityOnly: false,
     zip: "",
   });
 
@@ -277,16 +275,16 @@ export default function Home() {
 
       {/* Tab Navigation */}
       <div className="bg-white border-b border-gray-200 sticky top-0 z-20">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6">
-          <nav className="flex gap-0 -mb-px overflow-x-auto">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 py-2.5 sm:py-3">
+          <div className="inline-flex bg-gray-100 rounded-lg p-1 gap-1">
             {TABS.map((tab) => (
               <button
                 key={tab.key}
                 onClick={() => handleTabChange(tab.key)}
-                className={`relative px-4 sm:px-6 py-3 sm:py-4 text-sm sm:text-base font-semibold whitespace-nowrap transition-colors ${
+                className={`relative px-4 sm:px-6 py-2 sm:py-2.5 rounded-md text-sm sm:text-base font-semibold whitespace-nowrap transition-all ${
                   activeTab === tab.key
-                    ? "text-blue-700 border-b-2 border-blue-700"
-                    : "text-gray-500 hover:text-gray-700 border-b-2 border-transparent"
+                    ? "bg-white text-blue-700 shadow-sm"
+                    : "text-gray-500 hover:text-gray-700 hover:bg-gray-50"
                 }`}
               >
                 {tab.label}
@@ -297,7 +295,7 @@ export default function Home() {
                 )}
               </button>
             ))}
-          </nav>
+          </div>
         </div>
       </div>
 
