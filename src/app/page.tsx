@@ -43,7 +43,8 @@ interface Filters {
 
 const TABS = [
   { key: "mylist", label: "My List" },
-  { key: "D1", label: "Division I Programs" },
+  { key: "D1", label: "Division I" },
+  { key: "D2", label: "Division II" },
 ] as const;
 type TabKey = (typeof TABS)[number]["key"];
 
@@ -342,12 +343,21 @@ export default function Home() {
 
         {/* Browse all link - below filters, above results */}
         {activeTab === "mylist" && (
-          <div>
+          <div className="flex gap-4">
             <button
               onClick={() => handleTabChange("D1")}
               className="inline-flex items-center gap-1.5 text-sm text-blue-600 hover:text-blue-800 font-semibold"
             >
               Browse all D1 Programs
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+            <button
+              onClick={() => handleTabChange("D2")}
+              className="inline-flex items-center gap-1.5 text-sm text-blue-600 hover:text-blue-800 font-semibold"
+            >
+              Browse all D2 Programs
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
