@@ -103,6 +103,7 @@ export default function SchoolPage({
   const [news, setNews] = useState<NewsArticle[]>([]);
   const [newsLoading, setNewsLoading] = useState(true);
   const [draftExpanded, setDraftExpanded] = useState(false);
+  const [activeDetailTab, setActiveDetailTab] = useState<"info" | "tracking">("info");
 
   useEffect(() => {
     const ud = getUserData(parseInt(id));
@@ -292,8 +293,13 @@ export default function SchoolPage({
               <p className="text-base sm:text-xl font-bold text-gray-900 mt-0.5 sm:mt-1">{school.current_ranking ? `#${school.current_ranking}` : "NR"}</p>
             </div>
             <div className="p-3 sm:p-4 text-center">
-              <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Tuition</p>
-              <p className="text-base sm:text-xl font-bold text-gray-900 mt-0.5 sm:mt-1">{school.tuition ? `$${(school.tuition / 1000).toFixed(0)}k` : "N/A"}</p>
+              <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Postseason</p>
+              <p className="text-base sm:text-xl font-bold text-gray-900 mt-0.5 sm:mt-1">
+                {school.cws_appearances > 0 ? `${school.cws_appearances} CWS` : school.ncaa_regionals > 0 ? `${school.ncaa_regionals} Reg.` : "—"}
+              </p>
+              {school.cws_appearances > 0 && school.ncaa_regionals > 0 && (
+                <p className="text-[10px] sm:text-xs text-gray-400 mt-0.5">{school.ncaa_regionals} Regionals</p>
+              )}
             </div>
             <div className="p-3 sm:p-4 text-center col-span-1 hidden sm:block">
               <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Type</p>
@@ -309,82 +315,350 @@ export default function SchoolPage({
           </div>
         </div>
 
-        {/* Academics & School Info */}
-        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">
-          <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4 flex items-center gap-2">
-            <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5z" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-            </svg>
-            Academics & School Info
-          </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            {school.enrollment && (
-              <div className="bg-gray-50 rounded-lg p-3">
-                <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Enrollment</p>
-                <p className="text-lg font-bold text-gray-900">{school.enrollment.toLocaleString()}</p>
-              </div>
-            )}
-            {school.acceptance_rate && (
-              <div className="bg-gray-50 rounded-lg p-3">
-                <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Acceptance Rate</p>
-                <p className="text-lg font-bold text-gray-900">{school.acceptance_rate}%</p>
-              </div>
-            )}
-            {school.graduation_rate && (
-              <div className="bg-gray-50 rounded-lg p-3">
-                <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Graduation Rate</p>
-                <p className="text-lg font-bold text-gray-900">{school.graduation_rate}%</p>
-              </div>
-            )}
-            <div className="bg-gray-50 rounded-lg p-3">
-              <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Tuition</p>
-              <p className="text-lg font-bold text-gray-900">{school.tuition ? `$${(school.tuition).toLocaleString()}` : "N/A"}</p>
-            </div>
-          </div>
+        {/* Detail Tab Navigation */}
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+          <nav className="flex -mb-px">
+            <button
+              onClick={() => setActiveDetailTab("info")}
+              className={`flex-1 px-4 py-3 text-sm sm:text-base font-semibold text-center transition-colors ${
+                activeDetailTab === "info"
+                  ? "text-blue-700 border-b-2 border-blue-700 bg-blue-50/50"
+                  : "text-gray-500 hover:text-gray-700 border-b-2 border-transparent"
+              }`}
+            >
+              <svg className="w-4 h-4 inline mr-1.5 -mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+              </svg>
+              Program Info
+            </button>
+            <button
+              onClick={() => setActiveDetailTab("tracking")}
+              className={`flex-1 px-4 py-3 text-sm sm:text-base font-semibold text-center transition-colors ${
+                activeDetailTab === "tracking"
+                  ? "text-blue-700 border-b-2 border-blue-700 bg-blue-50/50"
+                  : "text-gray-500 hover:text-gray-700 border-b-2 border-transparent"
+              }`}
+            >
+              <svg className="w-4 h-4 inline mr-1.5 -mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+              </svg>
+              My Tracking
+            </button>
+          </nav>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* Head Coach + My Contact */}
-          <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">
-            <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4 flex items-center gap-2">
-              <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-              </svg>
-              Head Coach
-            </h2>
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <div className="shrink-0 w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
-                  <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        {/* ===== PROGRAM INFO TAB ===== */}
+        {activeDetailTab === "info" && (
+          <>
+            {/* Academics & School Info */}
+            <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">
+              <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4 flex items-center gap-2">
+                <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                </svg>
+                Academics & School Info
+              </h2>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                {school.enrollment && (
+                  <div className="bg-gray-50 rounded-lg p-3">
+                    <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Enrollment</p>
+                    <p className="text-lg font-bold text-gray-900">{school.enrollment.toLocaleString()}</p>
+                  </div>
+                )}
+                {school.acceptance_rate && (
+                  <div className="bg-gray-50 rounded-lg p-3">
+                    <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Acceptance Rate</p>
+                    <p className="text-lg font-bold text-gray-900">{school.acceptance_rate}%</p>
+                  </div>
+                )}
+                {school.graduation_rate && (
+                  <div className="bg-gray-50 rounded-lg p-3">
+                    <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Graduation Rate</p>
+                    <p className="text-lg font-bold text-gray-900">{school.graduation_rate}%</p>
+                  </div>
+                )}
+                <div className="bg-gray-50 rounded-lg p-3">
+                  <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Tuition</p>
+                  <p className="text-lg font-bold text-gray-900">{school.tuition ? `$${(school.tuition).toLocaleString()}` : "N/A"}</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              {/* Head Coach */}
+              <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">
+                <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4 flex items-center gap-2">
+                  <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                   </svg>
+                  Head Coach
+                </h2>
+                <div className="flex items-start gap-3">
+                  <div className="shrink-0 w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
+                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-sm sm:text-base text-gray-900 font-semibold">{school.head_coach_name || "N/A"}</p>
+                    {school.head_coach_email && (
+                      <a href={`mailto:${school.head_coach_email}`} className="text-xs sm:text-sm text-blue-600 hover:underline break-all">
+                        {school.head_coach_email}
+                      </a>
+                    )}
+                  </div>
                 </div>
-                <div>
-                  <p className="text-sm sm:text-base text-gray-900 font-semibold">{school.head_coach_name || "N/A"}</p>
-                  {school.head_coach_email && (
-                    <a href={`mailto:${school.head_coach_email}`} className="text-xs sm:text-sm text-blue-600 hover:underline break-all">
-                      {school.head_coach_email}
+              </div>
+
+              {/* Links & Social */}
+              <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">
+                <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4 flex items-center gap-2">
+                  <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                  </svg>
+                  Links & Social
+                </h2>
+                <div className="space-y-3">
+                  {school.website && (
+                    <a href={school.website} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 px-4 py-3 bg-blue-50 hover:bg-blue-100 rounded-lg text-blue-700 font-medium transition-colors">
+                      <svg className="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5" />
+                        <path d="M12 2c-2 3-3 6-3 10s1 7 3 10m0-20c2 3 3 6 3 10s-1 7-3 10" stroke="currentColor" strokeWidth="1.5" />
+                        <path d="M4 9c2.5 1 5 1.5 8 1.5s5.5-.5 8-1.5M4 15c2.5-1 5-1.5 8-1.5s5.5.5 8 1.5" stroke="currentColor" strokeWidth="1" />
+                        <path d="M5 10.5c2 .8 4.5 1.2 7 1.2s5-.4 7-1.2" stroke="red" strokeWidth="1" strokeDasharray="1.5 1.5" />
+                        <path d="M5 13.5c2-.8 4.5-1.2 7-1.2s5 .4 7 1.2" stroke="red" strokeWidth="1" strokeDasharray="1.5 1.5" />
+                      </svg>
+                      Program Website
+                    </a>
+                  )}
+                  {school.instagram && (
+                    <a href={`https://instagram.com/${school.instagram.replace("@", "")}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-purple-50 to-pink-50 hover:from-purple-100 hover:to-pink-100 rounded-lg text-purple-700 font-medium transition-colors">
+                      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                      </svg>
+                      <div>
+                        <span>Follow on Instagram</span>
+                        <span className="block text-xs text-purple-500 font-normal">{school.instagram}</span>
+                      </div>
+                    </a>
+                  )}
+                  {school.x_account && (
+                    <a href={`https://x.com/${school.x_account.replace("@", "")}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 px-4 py-3 bg-gray-50 hover:bg-gray-100 rounded-lg text-gray-800 font-medium transition-colors">
+                      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                      </svg>
+                      <div>
+                        <span>Follow on X</span>
+                        <span className="block text-xs text-gray-500 font-normal">{school.x_account}</span>
+                      </div>
+                    </a>
+                  )}
+                  {school.recruiting_questionnaire_url && (
+                    <a href={school.recruiting_questionnaire_url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 px-4 py-3 bg-green-50 hover:bg-green-100 rounded-lg text-green-700 font-medium transition-colors">
+                      <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                      <div>
+                        <span>Recruiting Questionnaire</span>
+                        <span className="block text-xs text-green-500 font-normal">Fill out their prospect form</span>
+                      </div>
                     </a>
                   )}
                 </div>
               </div>
+            </div>
 
-              <div className="border-t border-gray-100 pt-4">
-                <h3 className="text-sm font-semibold text-gray-700 mb-2 flex items-center gap-1.5">
-                  <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                  My Contact
-                </h3>
-                <div className="space-y-2">
+            {/* MLB Draft Picks — collapsible table */}
+            {school.mlb_draft_picks != null && school.mlb_draft_picks > 0 && (() => {
+              const picks = (draftPicksData as Record<string, DraftPick[]>)[school.name] || [];
+              const mlbCount = picks.filter(p => p.current_level === "MLB").length;
+              return (
+                <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+                  <div className="p-4 sm:p-6">
+                    <div className="flex items-center gap-3">
+                      <img
+                        src="https://www.mlbstatic.com/team-logos/league-on-dark/1.svg"
+                        alt="MLB"
+                        className="w-10 h-10 shrink-0"
+                        onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
+                      />
+                      <div className="flex-1 min-w-0">
+                        <h2 className="text-base sm:text-lg font-bold text-gray-900">
+                          {school.mlb_draft_picks} MLB Draft Picks
+                          <span className="text-sm font-normal text-gray-500 ml-1.5">since 2021</span>
+                        </h2>
+                        <p className="text-xs text-gray-500">
+                          {picks.length > 0 && mlbCount > 0
+                            ? `${mlbCount} currently in MLB`
+                            : picks.length > 0
+                            ? "Players in minor league systems"
+                            : "Players drafted to professional baseball"}
+                        </p>
+                      </div>
+                    </div>
+                    {/* Prominent expand button */}
+                    {picks.length > 0 && (
+                      <button
+                        onClick={() => setDraftExpanded(!draftExpanded)}
+                        className={`mt-4 w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold transition-all ${
+                          draftExpanded
+                            ? "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                            : "bg-blue-600 text-white hover:bg-blue-700 shadow-sm"
+                        }`}
+                      >
+                        {draftExpanded ? "Hide Player Details" : `View All ${picks.length} Players`}
+                        <svg
+                          className={`w-4 h-4 transition-transform ${draftExpanded ? "rotate-180" : ""}`}
+                          fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </button>
+                    )}
+                  </div>
+                  {draftExpanded && picks.length > 0 && (
+                    <div className="border-t border-gray-100 overflow-x-auto">
+                      <table className="min-w-full divide-y divide-gray-100">
+                        <thead className="bg-gray-50">
+                          <tr>
+                            <th className="px-4 py-2.5 text-left text-xs font-semibold text-gray-600 uppercase">Player</th>
+                            <th className="px-3 py-2.5 text-left text-xs font-semibold text-gray-600 uppercase">Year</th>
+                            <th className="px-3 py-2.5 text-left text-xs font-semibold text-gray-600 uppercase">Selection</th>
+                            <th className="px-3 py-2.5 text-left text-xs font-semibold text-gray-600 uppercase">Team</th>
+                            <th className="px-3 py-2.5 text-left text-xs font-semibold text-gray-600 uppercase">Pos</th>
+                            <th className="px-3 py-2.5 text-left text-xs font-semibold text-gray-600 uppercase">Current</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-gray-50">
+                          {picks.sort((a, b) => b.year - a.year || a.round - b.round).map((pick, i) => (
+                            <tr key={i} className="hover:bg-blue-50/30">
+                              <td className="px-4 py-2.5">
+                                <a
+                                  href={`https://www.mlb.com/search?q=${encodeURIComponent(pick.name)}`}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-sm font-medium text-blue-700 hover:underline"
+                                >
+                                  {pick.name}
+                                </a>
+                              </td>
+                              <td className="px-3 py-2.5 text-sm text-gray-700">{pick.year}</td>
+                              <td className="px-3 py-2.5 text-sm text-gray-700">
+                                Rd {pick.round}, #{pick.pick}
+                              </td>
+                              <td className="px-3 py-2.5 text-sm text-gray-700 whitespace-nowrap">{pick.team}</td>
+                              <td className="px-3 py-2.5 text-sm text-gray-700">{pick.position}</td>
+                              <td className="px-3 py-2.5">
+                                <span className={`inline-block px-2 py-0.5 rounded-full text-xs font-semibold ${
+                                  pick.current_level === "MLB"
+                                    ? "bg-green-100 text-green-800"
+                                    : pick.current_level === "AAA"
+                                    ? "bg-blue-100 text-blue-800"
+                                    : pick.current_level === "AA"
+                                    ? "bg-purple-100 text-purple-800"
+                                    : "bg-gray-100 text-gray-700"
+                                }`}>
+                                  {pick.current_level}
+                                </span>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  )}
+                </div>
+              );
+            })()}
+
+            {/* Latest News */}
+            <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">
+              <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4 flex items-center gap-2">
+                <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                </svg>
+                Latest News
+              </h2>
+              {newsLoading ? (
+                <div className="flex items-center gap-2 text-sm text-gray-400 py-4">
+                  <div className="animate-spin rounded-full h-4 w-4 border-2 border-gray-200 border-t-blue-600" />
+                  Loading news...
+                </div>
+              ) : news.length > 0 ? (
+                <div className="space-y-3">
+                  {news.map((article, i) => (
+                    <a key={i} href={article.link} target="_blank" rel="noopener noreferrer" className="block px-4 py-3 rounded-lg border border-gray-100 hover:border-blue-200 hover:bg-blue-50/50 transition-colors">
+                      <p className="text-sm font-medium text-gray-900 line-clamp-2">{article.title}</p>
+                      <div className="flex items-center gap-2 mt-1.5 text-xs text-gray-500">
+                        {article.source && <span className="font-medium text-gray-600">{article.source}</span>}
+                        {article.source && article.pubDate && <span>&middot;</span>}
+                        {article.pubDate && <span>{formatNewsDate(article.pubDate)}</span>}
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-sm text-gray-400 py-2">No recent news found</p>
+              )}
+            </div>
+
+            {/* Location & Map */}
+            {mapLat && mapLng && (
+              <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+                <div className="p-4 sm:p-6 pb-3 sm:pb-4">
+                  <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-1 flex items-center gap-2">
+                    <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    {school.stadium_name ? school.stadium_name : "Location"}
+                  </h2>
+                  <p className="text-xs sm:text-sm text-gray-500">
+                    {school.city}, {school.state} {school.zip}
+                    {distanceFromHome != null && (
+                      <span className="ml-2 text-green-600 font-medium">
+                        &middot; {distanceFromHome.toLocaleString()} miles from home
+                      </span>
+                    )}
+                  </p>
+                </div>
+                <iframe
+                  title={`Map of ${school.stadium_name || school.name}`}
+                  className="w-full h-48 sm:h-64 border-t border-gray-100"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  src={`https://maps.google.com/maps?q=${mapLat},${mapLng}&z=16&output=embed`}
+                />
+              </div>
+            )}
+          </>
+        )}
+
+        {/* ===== MY TRACKING TAB ===== */}
+        {activeDetailTab === "tracking" && (
+          <>
+            {/* My Contact at this school */}
+            <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">
+              <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4 flex items-center gap-2">
+                <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                My Contact at {school.name}
+              </h2>
+              <div className="space-y-3">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Contact Name</label>
                   <input
                     type="text"
                     value={myContactName}
                     onChange={(e) => setMyContactName(e.target.value)}
-                    placeholder="Contact name at this school"
+                    placeholder="Coach or contact name at this school"
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Contact Email</label>
                   <input
                     type="email"
                     value={myContactEmail}
@@ -395,332 +669,113 @@ export default function SchoolPage({
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* Links & Social */}
-          <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">
-            <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4 flex items-center gap-2">
-              <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-              </svg>
-              Links & Social
-            </h2>
-            <div className="space-y-3">
-              {school.website && (
-                <a href={school.website} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 px-4 py-3 bg-blue-50 hover:bg-blue-100 rounded-lg text-blue-700 font-medium transition-colors">
-                  <svg className="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none">
-                    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5" />
-                    <path d="M12 2c-2 3-3 6-3 10s1 7 3 10m0-20c2 3 3 6 3 10s-1 7-3 10" stroke="currentColor" strokeWidth="1.5" />
-                    <path d="M4 9c2.5 1 5 1.5 8 1.5s5.5-.5 8-1.5M4 15c2.5-1 5-1.5 8-1.5s5.5.5 8 1.5" stroke="currentColor" strokeWidth="1" />
-                    <path d="M5 10.5c2 .8 4.5 1.2 7 1.2s5-.4 7-1.2" stroke="red" strokeWidth="1" strokeDasharray="1.5 1.5" />
-                    <path d="M5 13.5c2-.8 4.5-1.2 7-1.2s5 .4 7 1.2" stroke="red" strokeWidth="1" strokeDasharray="1.5 1.5" />
-                  </svg>
-                  Program Website
-                </a>
-              )}
-              {school.instagram && (
-                <a href={`https://instagram.com/${school.instagram.replace("@", "")}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-purple-50 to-pink-50 hover:from-purple-100 hover:to-pink-100 rounded-lg text-purple-700 font-medium transition-colors">
-                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
-                  </svg>
-                  <div>
-                    <span>Follow on Instagram</span>
-                    <span className="block text-xs text-purple-500 font-normal">{school.instagram}</span>
-                  </div>
-                </a>
-              )}
-              {school.x_account && (
-                <a href={`https://x.com/${school.x_account.replace("@", "")}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 px-4 py-3 bg-gray-50 hover:bg-gray-100 rounded-lg text-gray-800 font-medium transition-colors">
-                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                  </svg>
-                  <div>
-                    <span>Follow on X</span>
-                    <span className="block text-xs text-gray-500 font-normal">{school.x_account}</span>
-                  </div>
-                </a>
-              )}
-              {school.recruiting_questionnaire_url && (
-                <a href={school.recruiting_questionnaire_url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 px-4 py-3 bg-green-50 hover:bg-green-100 rounded-lg text-green-700 font-medium transition-colors">
-                  <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                  <div>
-                    <span>Recruiting Questionnaire</span>
-                    <span className="block text-xs text-green-500 font-normal">Fill out their prospect form</span>
-                  </div>
-                </a>
-              )}
-            </div>
-          </div>
-        </div>
-        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">
-          <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4 flex items-center gap-2">
-            <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-            </svg>
-            Your Notes & Tracking
-          </h2>
-          <div className="space-y-4">
-            {/* Recruiting Status */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Recruiting Status</label>
-              <div className="flex flex-wrap gap-2">
-                {RECRUITING_STATUSES.map((status) => (
-                  <button
-                    key={status}
-                    onClick={() => setRecruitingStatus(recruitingStatus === status ? "" : status)}
-                    className={`px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium border transition-colors ${
-                      recruitingStatus === status
-                        ? statusColor[status] || "bg-blue-50 text-blue-700 border-blue-300"
-                        : "bg-white text-gray-500 border-gray-200 hover:border-gray-300"
-                    }`}
-                  >
-                    {status}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Points of Contact */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Points of Contact</label>
-              <div className="flex flex-wrap gap-2">
-                {CONTACT_OPTIONS.map((option) => (
-                  <button
-                    key={option}
-                    onClick={() => toggleSeenMe(option)}
-                    className={`px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium border transition-colors ${
-                      theyvSeenMe.includes(option)
-                        ? "bg-blue-50 text-blue-700 border-blue-300"
-                        : "bg-white text-gray-500 border-gray-200 hover:border-gray-300"
-                    }`}
-                  >
-                    {theyvSeenMe.includes(option) && (
-                      <svg className="w-3.5 h-3.5 inline mr-1 -mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                    )}
-                    {option}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Detail */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Detail</label>
-              <textarea
-                value={detail}
-                onChange={(e) => setDetail(e.target.value)}
-                rows={2}
-                placeholder="Additional recruiting details..."
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-y"
-              />
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {/* Last Contacted */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Last Contacted</label>
-                <input
-                  type="date"
-                  value={lastContacted}
-                  onChange={(e) => setLastContacted(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                />
-              </div>
-            </div>
-
-            {/* Notes */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Notes</label>
-              <textarea
-                value={notes}
-                onChange={(e) => setNotes(e.target.value)}
-                rows={3}
-                placeholder="Notes about this program, camp visits, conversations with coaches..."
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-y"
-              />
-            </div>
-
-            <div className="flex items-center gap-3">
-              <button
-                onClick={saveAll}
-                disabled={saving}
-                className="flex-1 sm:flex-none px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 font-medium transition-colors text-sm"
-              >
-                {saving ? "Saving..." : "Save"}
-              </button>
-              {saved && (
-                <span className="text-green-600 text-sm font-medium animate-pulse">Saved!</span>
-              )}
-            </div>
-          </div>
-        </div>
-
-        {/* MLB Draft Picks — collapsible table */}
-        {school.mlb_draft_picks != null && school.mlb_draft_picks > 0 && (() => {
-          const picks = (draftPicksData as Record<string, DraftPick[]>)[school.name] || [];
-          const mlbCount = picks.filter(p => p.current_level === "MLB").length;
-          return (
-            <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
-              <div className="p-4 sm:p-6">
-                <div className="flex items-center gap-3">
-                  <img
-                    src="https://www.mlbstatic.com/team-logos/league-on-dark/1.svg"
-                    alt="MLB"
-                    className="w-10 h-10 shrink-0"
-                    onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
-                  />
-                  <div className="flex-1 min-w-0">
-                    <h2 className="text-base sm:text-lg font-bold text-gray-900">
-                      {school.mlb_draft_picks} MLB Draft Picks
-                      <span className="text-sm font-normal text-gray-500 ml-1.5">since 2021</span>
-                    </h2>
-                    <p className="text-xs text-gray-500">
-                      {picks.length > 0 && mlbCount > 0
-                        ? `${mlbCount} currently in MLB`
-                        : picks.length > 0
-                        ? "Players in minor league systems"
-                        : "Players drafted to professional baseball"}
-                    </p>
-                  </div>
-                </div>
-                {/* Prominent expand button */}
-                {picks.length > 0 && (
-                  <button
-                    onClick={() => setDraftExpanded(!draftExpanded)}
-                    className={`mt-4 w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold transition-all ${
-                      draftExpanded
-                        ? "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                        : "bg-blue-600 text-white hover:bg-blue-700 shadow-sm"
-                    }`}
-                  >
-                    {draftExpanded ? "Hide Player Details" : `View All ${picks.length} Players`}
-                    <svg
-                      className={`w-4 h-4 transition-transform ${draftExpanded ? "rotate-180" : ""}`}
-                      fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </button>
-                )}
-              </div>
-              {draftExpanded && picks.length > 0 && (
-                <div className="border-t border-gray-100 overflow-x-auto">
-                  <table className="min-w-full divide-y divide-gray-100">
-                    <thead className="bg-gray-50">
-                      <tr>
-                        <th className="px-4 py-2.5 text-left text-xs font-semibold text-gray-600 uppercase">Player</th>
-                        <th className="px-3 py-2.5 text-left text-xs font-semibold text-gray-600 uppercase">Year</th>
-                        <th className="px-3 py-2.5 text-left text-xs font-semibold text-gray-600 uppercase">Selection</th>
-                        <th className="px-3 py-2.5 text-left text-xs font-semibold text-gray-600 uppercase">Team</th>
-                        <th className="px-3 py-2.5 text-left text-xs font-semibold text-gray-600 uppercase">Pos</th>
-                        <th className="px-3 py-2.5 text-left text-xs font-semibold text-gray-600 uppercase">Current</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-gray-50">
-                      {picks.sort((a, b) => b.year - a.year || a.round - b.round).map((pick, i) => (
-                        <tr key={i} className="hover:bg-blue-50/30">
-                          <td className="px-4 py-2.5">
-                            <a
-                              href={`https://www.mlb.com/search?q=${encodeURIComponent(pick.name)}`}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-sm font-medium text-blue-700 hover:underline"
-                            >
-                              {pick.name}
-                            </a>
-                          </td>
-                          <td className="px-3 py-2.5 text-sm text-gray-700">{pick.year}</td>
-                          <td className="px-3 py-2.5 text-sm text-gray-700">
-                            Rd {pick.round}, #{pick.pick}
-                          </td>
-                          <td className="px-3 py-2.5 text-sm text-gray-700 whitespace-nowrap">{pick.team}</td>
-                          <td className="px-3 py-2.5 text-sm text-gray-700">{pick.position}</td>
-                          <td className="px-3 py-2.5">
-                            <span className={`inline-block px-2 py-0.5 rounded-full text-xs font-semibold ${
-                              pick.current_level === "MLB"
-                                ? "bg-green-100 text-green-800"
-                                : pick.current_level === "AAA"
-                                ? "bg-blue-100 text-blue-800"
-                                : pick.current_level === "AA"
-                                ? "bg-purple-100 text-purple-800"
-                                : "bg-gray-100 text-gray-700"
-                            }`}>
-                              {pick.current_level}
-                            </span>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              )}
-            </div>
-          );
-        })()}
-
-        {/* Latest News */}
-        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">
-          <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4 flex items-center gap-2">
-            <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
-            </svg>
-            Latest News
-          </h2>
-          {newsLoading ? (
-            <div className="flex items-center gap-2 text-sm text-gray-400 py-4">
-              <div className="animate-spin rounded-full h-4 w-4 border-2 border-gray-200 border-t-blue-600" />
-              Loading news...
-            </div>
-          ) : news.length > 0 ? (
-            <div className="space-y-3">
-              {news.map((article, i) => (
-                <a key={i} href={article.link} target="_blank" rel="noopener noreferrer" className="block px-4 py-3 rounded-lg border border-gray-100 hover:border-blue-200 hover:bg-blue-50/50 transition-colors">
-                  <p className="text-sm font-medium text-gray-900 line-clamp-2">{article.title}</p>
-                  <div className="flex items-center gap-2 mt-1.5 text-xs text-gray-500">
-                    {article.source && <span className="font-medium text-gray-600">{article.source}</span>}
-                    {article.source && article.pubDate && <span>&middot;</span>}
-                    {article.pubDate && <span>{formatNewsDate(article.pubDate)}</span>}
-                  </div>
-                </a>
-              ))}
-            </div>
-          ) : (
-            <p className="text-sm text-gray-400 py-2">No recent news found</p>
-          )}
-        </div>
-
-        {/* Location & Map */}
-        {mapLat && mapLng && (
-          <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
-            <div className="p-4 sm:p-6 pb-3 sm:pb-4">
-              <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-1 flex items-center gap-2">
+            {/* Notes & Tracking */}
+            <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">
+              <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4 flex items-center gap-2">
                 <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                 </svg>
-                {school.stadium_name ? school.stadium_name : "Location"}
+                Notes & Tracking
               </h2>
-              <p className="text-xs sm:text-sm text-gray-500">
-                {school.city}, {school.state} {school.zip}
-                {distanceFromHome != null && (
-                  <span className="ml-2 text-green-600 font-medium">
-                    &middot; {distanceFromHome.toLocaleString()} miles from home
-                  </span>
-                )}
-              </p>
+              <div className="space-y-4">
+                {/* Recruiting Status */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">Recruiting Status</label>
+                  <div className="flex flex-wrap gap-2">
+                    {RECRUITING_STATUSES.map((status) => (
+                      <button
+                        key={status}
+                        onClick={() => setRecruitingStatus(recruitingStatus === status ? "" : status)}
+                        className={`px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium border transition-colors ${
+                          recruitingStatus === status
+                            ? statusColor[status] || "bg-blue-50 text-blue-700 border-blue-300"
+                            : "bg-white text-gray-500 border-gray-200 hover:border-gray-300"
+                        }`}
+                      >
+                        {status}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Points of Contact */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">Points of Contact</label>
+                  <div className="flex flex-wrap gap-2">
+                    {CONTACT_OPTIONS.map((option) => (
+                      <button
+                        key={option}
+                        onClick={() => toggleSeenMe(option)}
+                        className={`px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium border transition-colors ${
+                          theyvSeenMe.includes(option)
+                            ? "bg-blue-50 text-blue-700 border-blue-300"
+                            : "bg-white text-gray-500 border-gray-200 hover:border-gray-300"
+                        }`}
+                      >
+                        {theyvSeenMe.includes(option) && (
+                          <svg className="w-3.5 h-3.5 inline mr-1 -mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                          </svg>
+                        )}
+                        {option}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Detail */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Detail</label>
+                  <textarea
+                    value={detail}
+                    onChange={(e) => setDetail(e.target.value)}
+                    rows={2}
+                    placeholder="Additional recruiting details..."
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-y"
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {/* Last Contacted */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Last Contacted</label>
+                    <input
+                      type="date"
+                      value={lastContacted}
+                      onChange={(e) => setLastContacted(e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    />
+                  </div>
+                </div>
+
+                {/* Notes */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Notes</label>
+                  <textarea
+                    value={notes}
+                    onChange={(e) => setNotes(e.target.value)}
+                    rows={3}
+                    placeholder="Notes about this program, camp visits, conversations with coaches..."
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-y"
+                  />
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <button
+                    onClick={saveAll}
+                    disabled={saving}
+                    className="flex-1 sm:flex-none px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 font-medium transition-colors text-sm"
+                  >
+                    {saving ? "Saving..." : "Save"}
+                  </button>
+                  {saved && (
+                    <span className="text-green-600 text-sm font-medium animate-pulse">Saved!</span>
+                  )}
+                </div>
+              </div>
             </div>
-            <iframe
-              title={`Map of ${school.stadium_name || school.name}`}
-              className="w-full h-48 sm:h-64 border-t border-gray-100"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              src={`https://maps.google.com/maps?q=${mapLat},${mapLng}&z=16&output=embed`}
-            />
-          </div>
+          </>
         )}
       </main>
     </div>
