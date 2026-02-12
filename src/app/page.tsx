@@ -325,22 +325,12 @@ export default function Home() {
 
         {/* Section label for My List */}
         {activeTab === "mylist" && !showingFallback && (
-          <div className="flex items-center justify-between">
-            <h2 className="text-lg sm:text-xl font-bold text-gray-900">Your Top Programs</h2>
-            <button
-              onClick={() => handleTabChange("D1")}
-              className="text-sm text-blue-600 hover:text-blue-800 font-medium"
-            >
-              Browse all D1 Programs &rarr;
-            </button>
-          </div>
+          <h2 className="text-lg sm:text-xl font-bold text-gray-900">Your Top Programs</h2>
         )}
 
         {/* Section label for fallback Top 25 */}
         {showingFallback && (
-          <div className="flex items-center justify-between">
-            <h2 className="text-lg sm:text-xl font-bold text-gray-900">Top 25 D1 Programs</h2>
-          </div>
+          <h2 className="text-lg sm:text-xl font-bold text-gray-900">Top 25 D1 Programs</h2>
         )}
 
         <SearchFilters
@@ -349,6 +339,21 @@ export default function Home() {
           onChange={setFilters}
           onZipSearch={handleZipSearch}
         />
+
+        {/* Browse all link - below filters, above results */}
+        {activeTab === "mylist" && (
+          <div>
+            <button
+              onClick={() => handleTabChange("D1")}
+              className="inline-flex items-center gap-1.5 text-sm text-blue-600 hover:text-blue-800 font-semibold"
+            >
+              Browse all D1 Programs
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+        )}
 
         <SchoolTable
           schools={paginated}
