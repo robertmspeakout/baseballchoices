@@ -394,19 +394,46 @@ export default function SchoolPage({
                   </svg>
                   Head Coach
                 </h2>
-                <div className="flex items-start gap-3">
-                  <div className="shrink-0 w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
-                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                    </svg>
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3">
+                    <div className="shrink-0 w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
+                      <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-sm sm:text-base text-gray-900 font-semibold">{school.head_coach_name || "N/A"}</p>
+                      {school.head_coach_email && (
+                        <a href={`mailto:${school.head_coach_email}`} className="text-xs sm:text-sm text-blue-600 hover:underline break-all">
+                          {school.head_coach_email}
+                        </a>
+                      )}
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-sm sm:text-base text-gray-900 font-semibold">{school.head_coach_name || "N/A"}</p>
-                    {school.head_coach_email && (
-                      <a href={`mailto:${school.head_coach_email}`} className="text-xs sm:text-sm text-blue-600 hover:underline break-all">
-                        {school.head_coach_email}
-                      </a>
-                    )}
+
+                  <div className="border-t border-gray-100 pt-4">
+                    <h3 className="text-sm font-semibold text-gray-700 mb-2 flex items-center gap-1.5">
+                      <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg>
+                      My Contact
+                    </h3>
+                    <div className="space-y-2">
+                      <input
+                        type="text"
+                        value={myContactName}
+                        onChange={(e) => setMyContactName(e.target.value)}
+                        placeholder="Contact name at this school"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      />
+                      <input
+                        type="email"
+                        value={myContactEmail}
+                        onChange={(e) => setMyContactEmail(e.target.value)}
+                        placeholder="Contact email"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -451,17 +478,6 @@ export default function SchoolPage({
                       <div>
                         <span>Follow on X</span>
                         <span className="block text-xs text-gray-500 font-normal">{school.x_account}</span>
-                      </div>
-                    </a>
-                  )}
-                  {school.recruiting_questionnaire_url && (
-                    <a href={school.recruiting_questionnaire_url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 px-4 py-3 bg-green-50 hover:bg-green-100 rounded-lg text-green-700 font-medium transition-colors">
-                      <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                      </svg>
-                      <div>
-                        <span>Recruiting Questionnaire</span>
-                        <span className="block text-xs text-green-500 font-normal">Fill out their prospect form</span>
                       </div>
                     </a>
                   )}
@@ -638,38 +654,6 @@ export default function SchoolPage({
         {/* ===== MY TRACKING TAB ===== */}
         {activeDetailTab === "tracking" && (
           <>
-            {/* My Contact at this school */}
-            <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">
-              <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4 flex items-center gap-2">
-                <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-                My Contact at {school.name}
-              </h2>
-              <div className="space-y-3">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Contact Name</label>
-                  <input
-                    type="text"
-                    value={myContactName}
-                    onChange={(e) => setMyContactName(e.target.value)}
-                    placeholder="Coach or contact name at this school"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Contact Email</label>
-                  <input
-                    type="email"
-                    value={myContactEmail}
-                    onChange={(e) => setMyContactEmail(e.target.value)}
-                    placeholder="Contact email"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  />
-                </div>
-              </div>
-            </div>
-
             {/* Notes & Tracking */}
             <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">
               <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4 flex items-center gap-2">
