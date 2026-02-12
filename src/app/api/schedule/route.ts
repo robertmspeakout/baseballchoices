@@ -46,13 +46,20 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ lastGame: null, upcoming: [] });
     }
 
-    // Find best match (prefer exact name match)
+    // Find best match (prefer exact name match, then includes, then first result)
+    const schoolLower = school.toLowerCase();
     const teamEntry =
       teams.find(
         (t: { team: { displayName: string } }) =>
-          t.team.displayName.toLowerCase() === school.toLowerCase()
-      ) || teams[0];
+          t.team.displayName.toLowerCase() === schoolLower
+      ) ||
+      teams.find(
+        (t: { team: { displayName: string } }) =>
+          t.team.displayName.toLowerCase().startsWith(schoolLower)
+      ) ||
+      teams[0];
     const teamId = teamEntry.team.id;
+    const teamDisplayName = teamEntry.team.displayName.toLowerCase();
 
     // Step 2: Fetch team schedule
     const scheduleUrl = `https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/teams/${teamId}/schedule`;
@@ -67,7 +74,6 @@ export async function GET(request: NextRequest) {
 
     const scheduleData = await scheduleRes.json();
     const events: ESPNEvent[] = scheduleData?.events || [];
-    const now = new Date();
 
     // Separate completed and upcoming games
     const completed: typeof parsedGames = [];
@@ -89,14 +95,13 @@ export async function GET(request: NextRequest) {
       if (!comp) continue;
 
       const isCompleted = comp.status?.type?.completed === true;
-      const gameDate = new Date(event.date);
 
-      // Find our team and opponent
+      // Find our team and opponent (match against ESPN's resolved team name)
       const ourTeam = comp.competitors?.find(
-        (c) => c.team.displayName.toLowerCase() === school.toLowerCase()
+        (c) => c.team.displayName.toLowerCase() === teamDisplayName
       );
       const opponent = comp.competitors?.find(
-        (c) => c.team.displayName.toLowerCase() !== school.toLowerCase()
+        (c) => c.team.displayName.toLowerCase() !== teamDisplayName
       );
 
       if (!ourTeam || !opponent) continue;
@@ -131,7 +136,7 @@ export async function GET(request: NextRequest) {
 
       if (isCompleted) {
         completed.push(game);
-      } else if (gameDate >= now) {
+      } else {
         upcoming.push(game);
       }
     }
