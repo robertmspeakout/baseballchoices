@@ -7,7 +7,7 @@
       "pick": 48,
       "team": "Minnesota Twins",
       "position": "LHP",
-      "current_level": "AA"
+      "current_level": "AAA"
     },
     {
       "name": "Zane Denton",
@@ -16,7 +16,7 @@
       "pick": 80,
       "team": "Milwaukee Brewers",
       "position": "3B",
-      "current_level": "AA"
+      "current_level": "AAA"
     },
     {
       "name": "Jim Jarvis",
@@ -54,7 +54,7 @@
       "pick": 19,
       "team": "Oakland Athletics",
       "position": "C",
-      "current_level": "AAA"
+      "current_level": "MLB"
     },
     {
       "name": "Chase Davis",
@@ -112,7 +112,7 @@
       "pick": 99,
       "team": "San Diego Padres",
       "position": "RHP",
-      "current_level": "AAA"
+      "current_level": "MLB"
     },
     {
       "name": "Peyton Stovall",
@@ -139,7 +139,7 @@
       "pick": 49,
       "team": "Kansas City Royals",
       "position": "3B",
-      "current_level": "AA"
+      "current_level": "AAA"
     },
     {
       "name": "Jalen Battles",
@@ -148,7 +148,7 @@
       "pick": 175,
       "team": "St. Louis Cardinals",
       "position": "SS",
-      "current_level": "AA"
+      "current_level": "AAA"
     },
     {
       "name": "Brady Slavens",
@@ -157,7 +157,7 @@
       "pick": 218,
       "team": "Baltimore Orioles",
       "position": "1B",
-      "current_level": "AA"
+      "current_level": "AAA"
     }
   ],
   "Auburn": [
@@ -186,7 +186,7 @@
       "pick": 147,
       "team": "Atlanta Braves",
       "position": "RHP",
-      "current_level": "AA"
+      "current_level": "AAA"
     },
     {
       "name": "Trace Bright",
@@ -195,7 +195,7 @@
       "pick": 159,
       "team": "Baltimore Orioles",
       "position": "RHP",
-      "current_level": "AA"
+      "current_level": "AAA"
     }
   ],
   "BYU": [
@@ -242,7 +242,7 @@
       "pick": 187,
       "team": "Milwaukee Brewers",
       "position": "RHP",
-      "current_level": "AA"
+      "current_level": "AAA"
     },
     {
       "name": "Austin Deming",
@@ -309,7 +309,7 @@
       "pick": 115,
       "team": "Miami Marlins",
       "position": "2B",
-      "current_level": "AA"
+      "current_level": "AAA"
     }
   ],
   "Cal Poly": [
@@ -351,7 +351,7 @@
       "pick": 85,
       "team": "San Diego Padres",
       "position": "1B",
-      "current_level": "AA"
+      "current_level": "AAA"
     },
     {
       "name": "Jared Horn",
@@ -492,7 +492,7 @@
       "pick": 61,
       "team": "Milwaukee Brewers",
       "position": "RHP",
-      "current_level": "High-A"
+      "current_level": "AA"
     },
     {
       "name": "Jacob Moore",
@@ -604,7 +604,7 @@
       "pick": 81,
       "team": "Pittsburgh Pirates",
       "position": "1B",
-      "current_level": "AA"
+      "current_level": "AAA"
     },
     {
       "name": "Nolan Nawrocki",
@@ -648,7 +648,7 @@
     },
     {
       "name": "Ian Happ",
-      "year": 2021,
+      "year": 2015,
       "round": 1,
       "pick": 9,
       "team": "Chicago Cubs",
@@ -709,7 +709,7 @@
       "pick": 88,
       "team": "Minnesota Twins",
       "position": "OF",
-      "current_level": "AA"
+      "current_level": "AAA"
     },
     {
       "name": "Ryan Brindle",
@@ -756,7 +756,7 @@
       "pick": 51,
       "team": "Chicago Cubs",
       "position": "LHP",
-      "current_level": "AA"
+      "current_level": "AAA"
     },
     {
       "name": "Luke Benge",
@@ -859,7 +859,7 @@
       "pick": 66,
       "team": "San Francisco Giants",
       "position": "LHP",
-      "current_level": "AA"
+      "current_level": "AAA"
     },
     {
       "name": "Jake Kuchmaner",
@@ -945,15 +945,6 @@
       "team": "Milwaukee Brewers",
       "position": "C",
       "current_level": "Single-A"
-    },
-    {
-      "name": "Nolan Schanuel",
-      "year": 2023,
-      "round": 6,
-      "pick": 178,
-      "team": "Kansas City Royals",
-      "position": "RHP",
-      "current_level": "High-A"
     },
     {
       "name": "Hunter Cooley",
@@ -1047,7 +1038,7 @@
       "pick": 93,
       "team": "Cincinnati Reds",
       "position": "C",
-      "current_level": "High-A"
+      "current_level": "AA"
     },
     {
       "name": "Hurston Waldrep",
@@ -1132,7 +1123,7 @@
       "pick": 96,
       "team": "San Francisco Giants",
       "position": "OF",
-      "current_level": "High-A"
+      "current_level": "AA"
     },
     {
       "name": "Parker Messick",
@@ -1322,7 +1313,7 @@
       "pick": 11,
       "team": "New York Mets",
       "position": "C",
-      "current_level": "AA"
+      "current_level": "AAA"
     },
     {
       "name": "Tre Phelps",
@@ -1499,7 +1490,7 @@
       "pick": 86,
       "team": "Milwaukee Brewers",
       "position": "RHP",
-      "current_level": "AA"
+      "current_level": "AAA"
     },
     {
       "name": "Scotty Scott",
@@ -1602,7 +1593,7 @@
       "pick": 139,
       "team": "Chicago White Sox",
       "position": "LHP",
-      "current_level": "AA"
+      "current_level": "AAA"
     },
     {
       "name": "Cam McDonald",
@@ -1761,7 +1752,7 @@
       "pick": 203,
       "team": "New York Mets",
       "position": "OF",
-      "current_level": "AA"
+      "current_level": "AAA"
     },
     {
       "name": "Peyton Williams",
@@ -1900,7 +1891,7 @@
       "pick": 209,
       "team": "Toronto Blue Jays",
       "position": "RHP",
-      "current_level": "AA"
+      "current_level": "AAA"
     },
     {
       "name": "Carson Klepzig",
@@ -1927,7 +1918,7 @@
       "pick": 95,
       "team": "Tampa Bay Rays",
       "position": "LHP",
-      "current_level": "AA"
+      "current_level": "AAA"
     },
     {
       "name": "Matt Robinett",
@@ -2032,7 +2023,7 @@
       "pick": 189,
       "team": "Cleveland Guardians",
       "position": "2B",
-      "current_level": "AA"
+      "current_level": "AAA"
     }
   ],
   "LSU": [
@@ -2080,15 +2071,6 @@
       "team": "Tampa Bay Rays",
       "position": "RHP",
       "current_level": "AAA"
-    },
-    {
-      "name": "Jared Jones",
-      "year": 2021,
-      "round": 2,
-      "pick": 44,
-      "team": "Pittsburgh Pirates",
-      "position": "RHP",
-      "current_level": "MLB"
     },
     {
       "name": "Tre Morgan",
@@ -2162,7 +2144,7 @@
       "pick": 88,
       "team": "Baltimore Orioles",
       "position": "RHP",
-      "current_level": "AA"
+      "current_level": "AAA"
     },
     {
       "name": "Trey Gibson",
@@ -2220,15 +2202,6 @@
     }
   ],
   "Long Beach State": [
-    {
-      "name": "Jared Jones",
-      "year": 2021,
-      "round": 2,
-      "pick": 44,
-      "team": "Pittsburgh Pirates",
-      "position": "RHP",
-      "current_level": "MLB"
-    },
     {
       "name": "Aidan Maldonado",
       "year": 2024,
@@ -2373,7 +2346,7 @@
       "pick": 217,
       "team": "St. Louis Cardinals",
       "position": "RHP",
-      "current_level": "AA"
+      "current_level": "AAA"
     },
     {
       "name": "Jeff Wilson",
@@ -2604,15 +2577,6 @@
       "current_level": "AA"
     },
     {
-      "name": "Gage Ziehl",
-      "year": 2021,
-      "round": 6,
-      "pick": 180,
-      "team": "Miami Marlins",
-      "position": "RHP",
-      "current_level": "AA"
-    },
-    {
       "name": "Andrew Walters",
       "year": 2023,
       "round": 4,
@@ -2673,17 +2637,8 @@
   ],
   "Minnesota": [
     {
-      "name": "Brooks Lee",
-      "year": 2022,
-      "round": 1,
-      "pick": 8,
-      "team": "Minnesota Twins",
-      "position": "SS",
-      "current_level": "MLB"
-    },
-    {
       "name": "Max Meyer",
-      "year": 2021,
+      "year": 2020,
       "round": 1,
       "pick": 3,
       "team": "Miami Marlins",
@@ -2716,15 +2671,6 @@
       "team": "Tampa Bay Rays",
       "position": "LHP",
       "current_level": "AA"
-    },
-    {
-      "name": "Drew Gilbert",
-      "year": 2021,
-      "round": 5,
-      "pick": 151,
-      "team": "Houston Astros",
-      "position": "OF",
-      "current_level": "AAA"
     },
     {
       "name": "Luke Smaila",
@@ -2771,7 +2717,7 @@
       "pick": 56,
       "team": "Houston Astros",
       "position": "SS",
-      "current_level": "AA"
+      "current_level": "AAA"
     },
     {
       "name": "Kellum Clark",
@@ -2874,7 +2820,7 @@
       "pick": 152,
       "team": "New York Yankees",
       "position": "OF",
-      "current_level": "AA"
+      "current_level": "AAA"
     },
     {
       "name": "LuJames Groover III",
@@ -2912,7 +2858,7 @@
       "pick": 80,
       "team": "Houston Astros",
       "position": "3B",
-      "current_level": "AA"
+      "current_level": "AAA"
     },
     {
       "name": "Emmett Olson",
@@ -3259,7 +3205,7 @@
       "pick": 86,
       "team": "Pittsburgh Pirates",
       "position": "3B",
-      "current_level": "AA"
+      "current_level": "AAA"
     },
     {
       "name": "John Michael Bertrand",
@@ -3440,7 +3386,7 @@
       "pick": 15,
       "team": "Milwaukee Brewers",
       "position": "SS",
-      "current_level": "AA"
+      "current_level": "AAA"
     },
     {
       "name": "Tim Elko",
@@ -3496,7 +3442,7 @@
       "pick": 175,
       "team": "Cincinnati Reds",
       "position": "RHP",
-      "current_level": "AA"
+      "current_level": "AAA"
     }
   ],
   "Oregon State": [
@@ -3516,7 +3462,7 @@
       "pick": 22,
       "team": "St. Louis Cardinals",
       "position": "LHP",
-      "current_level": "AAA"
+      "current_level": "MLB"
     },
     {
       "name": "Jacob Melton",
@@ -3534,7 +3480,7 @@
       "pick": 76,
       "team": "Baltimore Orioles",
       "position": "OF",
-      "current_level": "High-A"
+      "current_level": "AA"
     },
     {
       "name": "Wade Meckler",
@@ -3664,7 +3610,7 @@
       "pick": 210,
       "team": "San Francisco Giants",
       "position": "OF",
-      "current_level": "AA"
+      "current_level": "AAA"
     },
     {
       "name": "Anthony Bemboom",
@@ -3948,7 +3894,7 @@
       "pick": 147,
       "team": "Milwaukee Brewers",
       "position": "RHP",
-      "current_level": "AA"
+      "current_level": "AAA"
     },
     {
       "name": "Troy Becerra",
@@ -3958,15 +3904,6 @@
       "team": "Los Angeles Dodgers",
       "position": "OF",
       "current_level": "High-A"
-    },
-    {
-      "name": "Grant Richardson",
-      "year": 2022,
-      "round": 11,
-      "pick": 322,
-      "team": "Tampa Bay Rays",
-      "position": "OF",
-      "current_level": "AA"
     },
     {
       "name": "Carter Loewen",
@@ -4064,7 +4001,7 @@
     },
     {
       "name": "Brendan Donovan",
-      "year": 2021,
+      "year": 2018,
       "round": 7,
       "pick": 224,
       "team": "St. Louis Cardinals",
@@ -4145,15 +4082,6 @@
       "pick": 152,
       "team": "Philadelphia Phillies",
       "position": "RHP",
-      "current_level": "MLB"
-    },
-    {
-      "name": "Nick Gonzales",
-      "year": 2021,
-      "round": 1,
-      "pick": 7,
-      "team": "Pittsburgh Pirates",
-      "position": "2B",
       "current_level": "MLB"
     },
     {
@@ -4249,15 +4177,6 @@
       "team": "Tampa Bay Rays",
       "position": "C",
       "current_level": "AA"
-    },
-    {
-      "name": "Hurston Waldrep",
-      "year": 2022,
-      "round": 8,
-      "pick": 244,
-      "team": "Atlanta Braves",
-      "position": "RHP",
-      "current_level": "MLB"
     }
   ],
   "Stanford": [
@@ -4268,7 +4187,7 @@
       "pick": 20,
       "team": "Cleveland Guardians",
       "position": "OF",
-      "current_level": "AA"
+      "current_level": "AAA"
     },
     {
       "name": "Quinn Mathews",
@@ -4280,22 +4199,13 @@
       "current_level": "High-A"
     },
     {
-      "name": "Braden Montgomery",
-      "year": 2024,
-      "round": 1,
-      "pick": 12,
-      "team": "Boston Red Sox",
-      "position": "OF",
-      "current_level": "High-A"
-    },
-    {
       "name": "Alex Williams",
       "year": 2022,
       "round": 2,
       "pick": 58,
       "team": "San Francisco Giants",
       "position": "RHP",
-      "current_level": "AA"
+      "current_level": "AAA"
     },
     {
       "name": "Drew Bowser",
@@ -4337,7 +4247,7 @@
     },
     {
       "name": "Logan Gilbert",
-      "year": 2021,
+      "year": 2018,
       "round": 1,
       "pick": 14,
       "team": "Seattle Mariners",
@@ -4380,7 +4290,7 @@
       "pick": 30,
       "team": "Detroit Tigers",
       "position": "3B",
-      "current_level": "AA"
+      "current_level": "AAA"
     },
     {
       "name": "Tommy Sacco",
@@ -4418,7 +4328,7 @@
       "pick": 10,
       "team": "Cleveland Guardians",
       "position": "RHP",
-      "current_level": "AA"
+      "current_level": "AAA"
     },
     {
       "name": "Drew Beam",
@@ -4427,7 +4337,7 @@
       "pick": 27,
       "team": "St. Louis Cardinals",
       "position": "RHP",
-      "current_level": "AA"
+      "current_level": "AAA"
     },
     {
       "name": "Jordan Beck",
@@ -4445,7 +4355,7 @@
       "pick": 52,
       "team": "New York Mets",
       "position": "RHP",
-      "current_level": "AA"
+      "current_level": "AAA"
     },
     {
       "name": "Drew Gilbert",
@@ -4492,7 +4402,7 @@
       "pick": 21,
       "team": "Texas Rangers",
       "position": "RHP",
-      "current_level": "AA"
+      "current_level": "AAA"
     },
     {
       "name": "Lucas Gordon",
@@ -4501,7 +4411,7 @@
       "pick": 95,
       "team": "Chicago White Sox",
       "position": "RHP",
-      "current_level": "AA"
+      "current_level": "AAA"
     },
     {
       "name": "Murphy Stehly",
@@ -4557,7 +4467,7 @@
       "pick": 219,
       "team": "Tampa Bay Rays",
       "position": "OF",
-      "current_level": "High-A"
+      "current_level": "AA"
     }
   ],
   "Texas State": [
@@ -4597,7 +4507,7 @@
       "pick": 37,
       "team": "New York Yankees",
       "position": "RHP",
-      "current_level": "AA"
+      "current_level": "AAA"
     },
     {
       "name": "Kurt Wilson",
@@ -4606,7 +4516,7 @@
       "pick": 149,
       "team": "Kansas City Royals",
       "position": "SS",
-      "current_level": "AA"
+      "current_level": "AAA"
     },
     {
       "name": "Austin Green",
@@ -4904,7 +4814,7 @@
       "pick": 301,
       "team": "Detroit Tigers",
       "position": "OF",
-      "current_level": "High-A"
+      "current_level": "MLB"
     },
     {
       "name": "Tyler Osik",
@@ -5022,7 +4932,7 @@
   "UNLV": [
     {
       "name": "Bryson Stott",
-      "year": 2021,
+      "year": 2019,
       "round": 1,
       "pick": 14,
       "team": "Philadelphia Phillies",
@@ -5177,7 +5087,7 @@
       "pick": 2,
       "team": "Texas Rangers",
       "position": "RHP",
-      "current_level": "AAA"
+      "current_level": "MLB"
     },
     {
       "name": "Kumar Rocker",
@@ -5231,7 +5141,7 @@
       "pick": 99,
       "team": "Detroit Tigers",
       "position": "2B",
-      "current_level": "AA"
+      "current_level": "AAA"
     },
     {
       "name": "CJ Rodriguez",
@@ -5258,7 +5168,7 @@
       "pick": 158,
       "team": "Atlanta Braves",
       "position": "RHP",
-      "current_level": "AA"
+      "current_level": "AAA"
     }
   ],
   "Virginia": [
@@ -5278,7 +5188,7 @@
       "pick": 14,
       "team": "Boston Red Sox",
       "position": "C",
-      "current_level": "AA"
+      "current_level": "AAA"
     },
     {
       "name": "Jake Gelof",
@@ -5296,7 +5206,7 @@
       "pick": 77,
       "team": "Philadelphia Phillies",
       "position": "SS",
-      "current_level": "High-A"
+      "current_level": "AA"
     },
     {
       "name": "Casey Saucke",
@@ -5325,7 +5235,7 @@
       "pick": 94,
       "team": "Colorado Rockies",
       "position": "3B",
-      "current_level": "High-A"
+      "current_level": "AA"
     },
     {
       "name": "Drue Hackenberg",
@@ -5432,7 +5342,7 @@
       "pick": 169,
       "team": "Tampa Bay Rays",
       "position": "OF",
-      "current_level": "AA"
+      "current_level": "AAA"
     }
   ]
 }
