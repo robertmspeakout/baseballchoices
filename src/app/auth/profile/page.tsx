@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 
 const POSITIONS = [
@@ -31,6 +31,26 @@ export default function ProfilePage() {
 
   const profilePicRef = useRef<HTMLInputElement>(null);
   const backgroundPicRef = useRef<HTMLInputElement>(null);
+
+  // Load saved profile data on mount
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("nextbase_profile");
+      if (saved) {
+        const p = JSON.parse(saved);
+        if (p.playerName) setPlayerName(p.playerName);
+        if (p.gradYear) setGradYear(p.gradYear);
+        if (p.primaryPosition) setPrimaryPosition(p.primaryPosition);
+        if (p.secondaryPosition) setSecondaryPosition(p.secondaryPosition);
+        if (p.city) setCity(p.city);
+        if (p.state) setState(p.state);
+        if (p.highSchool) setHighSchool(p.highSchool);
+        if (p.travelBall) setTravelBall(p.travelBall);
+        if (p.profilePic) setProfilePic(p.profilePic);
+        if (p.backgroundPic) setBackgroundPic(p.backgroundPic);
+      }
+    } catch { /* ignore */ }
+  }, []);
 
   const handleFileUpload = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -66,11 +86,29 @@ export default function ProfilePage() {
     }
 
     setSaving(true);
-    // Simulate save
+    // Save profile to localStorage
+    try {
+      localStorage.setItem(
+        "nextbase_profile",
+        JSON.stringify({
+          playerName: playerName.trim(),
+          gradYear,
+          primaryPosition,
+          secondaryPosition,
+          city: city.trim(),
+          state,
+          highSchool: highSchool.trim(),
+          travelBall: travelBall.trim(),
+          profilePic,
+          backgroundPic,
+        })
+      );
+    } catch { /* ignore */ }
+
     setTimeout(() => {
       setSaving(false);
       window.location.href = "/";
-    }, 1500);
+    }, 1000);
   };
 
   return (

@@ -9,6 +9,7 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [googleNotice, setGoogleNotice] = useState(false);
 
   const handleEmailLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -20,7 +21,26 @@ export default function LoginPage() {
     }
 
     setLoading(true);
-    // Simulate login
+    // Check localStorage for registered account
+    try {
+      const stored = localStorage.getItem("nextbase_auth");
+      if (stored) {
+        const auth = JSON.parse(stored);
+        if (auth.email !== email) {
+          setTimeout(() => {
+            setLoading(false);
+            setError("No account found with this email.");
+          }, 800);
+          return;
+        }
+      }
+      // Mark as logged in
+      localStorage.setItem(
+        "nextbase_auth",
+        JSON.stringify({ email, loggedIn: true })
+      );
+    } catch { /* ignore */ }
+
     setTimeout(() => {
       setLoading(false);
       window.location.href = "/";
@@ -28,11 +48,7 @@ export default function LoginPage() {
   };
 
   const handleGoogleSignIn = () => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      window.location.href = "/";
-    }, 1200);
+    setGoogleNotice(true);
   };
 
   return (
@@ -74,6 +90,18 @@ export default function LoginPage() {
             </svg>
             Continue with Google
           </button>
+
+          {/* Google OAuth notice */}
+          {googleNotice && (
+            <div className="mt-3 flex items-start gap-2 px-4 py-3 bg-amber-50 border border-amber-200 rounded-xl">
+              <svg className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <p className="text-sm text-amber-800">
+                Google OAuth requires backend integration. For now, please sign in with email and password below.
+              </p>
+            </div>
+          )}
 
           <div className="flex items-center gap-3 my-6">
             <div className="flex-1 h-px bg-gray-200" />

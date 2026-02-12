@@ -10,6 +10,7 @@ export default function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [googleNotice, setGoogleNotice] = useState(false);
 
   const handleEmailRegister = (e: React.FormEvent) => {
     e.preventDefault();
@@ -29,6 +30,14 @@ export default function RegisterPage() {
     }
 
     setLoading(true);
+    // Store credentials in localStorage for testing
+    try {
+      localStorage.setItem(
+        "nextbase_auth",
+        JSON.stringify({ email, registered: true })
+      );
+    } catch { /* ignore */ }
+
     // Simulate sending verification email
     setTimeout(() => {
       setLoading(false);
@@ -37,12 +46,7 @@ export default function RegisterPage() {
   };
 
   const handleGoogleSignIn = () => {
-    setLoading(true);
-    // Simulate Google OAuth redirect
-    setTimeout(() => {
-      setLoading(false);
-      window.location.href = "/auth/profile";
-    }, 1200);
+    setGoogleNotice(true);
   };
 
   return (
@@ -85,6 +89,18 @@ export default function RegisterPage() {
             </svg>
             Continue with Google
           </button>
+
+          {/* Google OAuth notice */}
+          {googleNotice && (
+            <div className="mt-3 flex items-start gap-2 px-4 py-3 bg-amber-50 border border-amber-200 rounded-xl">
+              <svg className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <p className="text-sm text-amber-800">
+                Google OAuth requires backend integration. For now, please register with email and password below.
+              </p>
+            </div>
+          )}
 
           {/* Divider */}
           <div className="flex items-center gap-3 my-6">
