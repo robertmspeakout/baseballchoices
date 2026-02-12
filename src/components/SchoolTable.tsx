@@ -139,7 +139,7 @@ function MobileCard({
                 {school.name}
               </span>
               <p className="text-xs text-gray-500 truncate">
-                {school.mascot} &middot; {school.city}, {school.state}
+                {school.mascot ? `${school.mascot} · ` : ""}{school.city}, {school.state}
               </p>
             </div>
             {school.current_ranking && (
@@ -265,7 +265,7 @@ export default function SchoolTable({
                     {school.name}
                   </span>
                   <div className="text-xs text-gray-500">
-                    {school.mascot} &middot; {school.city}, {school.state}
+                    {school.mascot ? `${school.mascot} · ` : ""}{school.city}, {school.state}
                   </div>
                 </td>
                 <td className="px-3 py-3">{divisionBadge(school.division)}</td>
