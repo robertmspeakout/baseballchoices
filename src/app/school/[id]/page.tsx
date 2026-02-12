@@ -295,7 +295,7 @@ export default function SchoolPage({
             <div className="p-3 sm:p-4 text-center">
               <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Postseason</p>
               <p className="text-base sm:text-xl font-bold text-gray-900 mt-0.5 sm:mt-1">
-                {school.cws_appearances > 0 ? `${school.cws_appearances} CWS` : school.ncaa_regionals > 0 ? `${school.ncaa_regionals} Reg.` : "—"}
+                {school.cws_appearances > 0 ? `${school.cws_appearances} CWS` : school.ncaa_regionals > 0 ? `${school.ncaa_regionals} Reg.` : "None"}
               </p>
               {school.cws_appearances > 0 && school.ncaa_regionals > 0 && (
                 <p className="text-[10px] sm:text-xs text-gray-400 mt-0.5">{school.ncaa_regionals} Regionals</p>

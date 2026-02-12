@@ -111,9 +111,10 @@ export default function Home() {
     return schoolsWithUserData.filter((s) => s.division === activeTab);
   }, [activeTab, schoolsWithUserData]);
 
-  // Filter
+  // Filter — when searching, always search the full database
   const filtered = useMemo(() => {
-    return baseList.filter((school) => {
+    const source = filters.search ? schoolsWithUserData : baseList;
+    return source.filter((school) => {
       if (filters.search) {
         const term = filters.search.toLowerCase();
         const searchable = [school.name, school.city, school.state, school.conference, school.head_coach_name, school.mascot]
@@ -127,7 +128,7 @@ export default function Home() {
       if (filters.publicPrivate && school.public_private !== filters.publicPrivate) return false;
       return true;
     });
-  }, [baseList, filters]);
+  }, [baseList, schoolsWithUserData, filters]);
 
   // Sort
   const sorted = useMemo(() => {
