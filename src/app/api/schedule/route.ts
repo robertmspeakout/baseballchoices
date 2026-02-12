@@ -25,7 +25,7 @@ interface ESPNEvent {
 export async function GET(request: NextRequest) {
   const school = request.nextUrl.searchParams.get("school");
   if (!school) {
-    return NextResponse.json({ lastGame: null, upcoming: [] });
+    return NextResponse.json({ record: null, recentGames: [], upcoming: [] });
   }
 
   try {
@@ -37,13 +37,13 @@ export async function GET(request: NextRequest) {
     });
 
     if (!searchRes.ok) {
-      return NextResponse.json({ lastGame: null, upcoming: [] });
+      return NextResponse.json({ record: null, recentGames: [], upcoming: [] });
     }
 
     const searchData = await searchRes.json();
     const teams = searchData?.sports?.[0]?.leagues?.[0]?.teams;
     if (!teams || teams.length === 0) {
-      return NextResponse.json({ lastGame: null, upcoming: [] });
+      return NextResponse.json({ record: null, recentGames: [], upcoming: [] });
     }
 
     // Find best match (prefer exact name match, then includes, then first result)
@@ -69,7 +69,7 @@ export async function GET(request: NextRequest) {
     });
 
     if (!scheduleRes.ok) {
-      return NextResponse.json({ lastGame: null, upcoming: [] });
+      return NextResponse.json({ record: null, recentGames: [], upcoming: [] });
     }
 
     const scheduleData = await scheduleRes.json();
@@ -141,14 +141,19 @@ export async function GET(request: NextRequest) {
       }
     }
 
-    // Last completed game (most recent)
-    const lastGame = completed.length > 0 ? completed[completed.length - 1] : null;
+    // Win-loss record from all completed games
+    const wins = completed.filter(g => g.result === "W").length;
+    const losses = completed.filter(g => g.result === "L").length;
+    const record = completed.length > 0 ? `${wins}-${losses}` : null;
+
+    // Last 3 completed games (most recent first)
+    const recentGames = completed.slice(-3).reverse();
 
     // Next 3 upcoming games
     const next3 = upcoming.slice(0, 3);
 
-    return NextResponse.json({ lastGame, upcoming: next3 });
+    return NextResponse.json({ record, recentGames, upcoming: next3 });
   } catch {
-    return NextResponse.json({ lastGame: null, upcoming: [] });
+    return NextResponse.json({ record: null, recentGames: [], upcoming: [] });
   }
 }

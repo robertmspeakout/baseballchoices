@@ -115,7 +115,8 @@ export default function SchoolPage({
   const [newsLoading, setNewsLoading] = useState(true);
   const [draftExpanded, setDraftExpanded] = useState(false);
   const [activeDetailTab, setActiveDetailTab] = useState<"info" | "tracking">("info");
-  const [lastGame, setLastGame] = useState<ScheduleGame | null>(null);
+  const [currentRecord, setCurrentRecord] = useState<string | null>(null);
+  const [recentGames, setRecentGames] = useState<ScheduleGame[]>([]);
   const [upcomingGames, setUpcomingGames] = useState<ScheduleGame[]>([]);
   const [scheduleLoading, setScheduleLoading] = useState(true);
 
@@ -157,11 +158,13 @@ export default function SchoolPage({
     fetch(`/api/schedule?school=${encodeURIComponent(schoolData.name)}`)
       .then((r) => r.json())
       .then((data) => {
-        setLastGame(data.lastGame || null);
+        setCurrentRecord(data.record || null);
+        setRecentGames(data.recentGames || []);
         setUpcomingGames(data.upcoming || []);
       })
       .catch(() => {
-        setLastGame(null);
+        setCurrentRecord(null);
+        setRecentGames([]);
         setUpcomingGames([]);
       })
       .finally(() => setScheduleLoading(false));
@@ -327,7 +330,7 @@ export default function SchoolPage({
           <div className="grid grid-cols-3 sm:grid-cols-5 divide-x divide-y sm:divide-y-0 divide-gray-100">
             <div className="p-3 sm:p-4 text-center">
               <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Current Record</p>
-              <p className="text-base sm:text-xl font-bold text-gray-900 mt-0.5 sm:mt-1">0-0</p>
+              <p className="text-base sm:text-xl font-bold text-gray-900 mt-0.5 sm:mt-1">{currentRecord || "0-0"}</p>
               {school.last_season_record && (
                 <p className="text-[10px] sm:text-xs text-gray-400 mt-0.5">Last Season: {school.last_season_record}</p>
               )}
@@ -546,25 +549,50 @@ export default function SchoolPage({
                   </div>
                 ) : (
                   <div className="space-y-4">
-                    {/* Latest Game Result */}
-                    {lastGame && (
-                      <div className={`flex items-center gap-3 px-4 py-3 rounded-lg border ${
-                        lastGame.result === "W"
-                          ? "bg-green-50 border-green-200"
-                          : "bg-red-50 border-red-200"
-                      }`}>
-                        <span className={`text-lg font-extrabold ${
-                          lastGame.result === "W" ? "text-green-700" : "text-red-700"
-                        }`}>
-                          {lastGame.result}
-                        </span>
-                        <div className="flex-1 min-w-0">
-                          <p className="text-sm font-semibold text-gray-900">
-                            {lastGame.homeAway} {lastGame.opponent}
-                          </p>
-                          <p className="text-xs text-gray-500">{formatGameDate(lastGame.date)}</p>
+                    {/* Current Record */}
+                    {currentRecord && (
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm font-medium text-gray-500">Record:</span>
+                        <span className="text-lg font-bold text-gray-900">{currentRecord}</span>
+                      </div>
+                    )}
+
+                    {/* Recent Games Table (hidden if no completed games) */}
+                    {recentGames.length > 0 && (
+                      <div>
+                        <h3 className="text-sm font-semibold text-gray-700 mb-2">Recent Games</h3>
+                        <div className="overflow-x-auto">
+                          <table className="min-w-full divide-y divide-gray-100">
+                            <thead className="bg-gray-50">
+                              <tr>
+                                <th className="px-3 py-2 text-left text-xs font-semibold text-gray-600 uppercase">Result</th>
+                                <th className="px-3 py-2 text-left text-xs font-semibold text-gray-600 uppercase">Opponent</th>
+                                <th className="px-3 py-2 text-left text-xs font-semibold text-gray-600 uppercase">Score</th>
+                                <th className="px-3 py-2 text-left text-xs font-semibold text-gray-600 uppercase">Date</th>
+                              </tr>
+                            </thead>
+                            <tbody className="divide-y divide-gray-50">
+                              {recentGames.map((game, i) => (
+                                <tr key={i} className="hover:bg-blue-50/30">
+                                  <td className="px-3 py-2.5">
+                                    <span className={`inline-block px-2 py-0.5 rounded text-xs font-bold ${
+                                      game.result === "W"
+                                        ? "bg-green-100 text-green-800"
+                                        : "bg-red-100 text-red-800"
+                                    }`}>
+                                      {game.result}
+                                    </span>
+                                  </td>
+                                  <td className="px-3 py-2.5 text-sm font-medium text-gray-900 whitespace-nowrap">
+                                    {game.homeAway} {game.opponent}
+                                  </td>
+                                  <td className="px-3 py-2.5 text-sm font-semibold text-gray-700">{game.score}</td>
+                                  <td className="px-3 py-2.5 text-sm text-gray-500 whitespace-nowrap">{formatGameDate(game.date)}</td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
                         </div>
-                        <span className="text-lg font-bold text-gray-900">{lastGame.score}</span>
                       </div>
                     )}
 
@@ -597,7 +625,7 @@ export default function SchoolPage({
                           </table>
                         </div>
                       </div>
-                    ) : !lastGame ? (
+                    ) : recentGames.length === 0 ? (
                       <p className="text-sm text-gray-400 py-2">No schedule data available</p>
                     ) : null}
                   </div>
