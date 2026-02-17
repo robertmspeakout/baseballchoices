@@ -289,7 +289,7 @@ export default function SchoolTable({
             <option value="name">Name</option>
             <option value="conference">Conference</option>
             <option value="state">State</option>
-            <option value="ranking">Current Ranking</option>
+            <option value="ranking">National Ranking</option>
             <option value="priority">Priority</option>
             {distances && <option value="distance">Distance from Home</option>}
           </select>
@@ -323,7 +323,7 @@ export default function SchoolTable({
               <SortHeader label="State" column="state" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
               <th className="px-3 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Type</th>
               <SortHeader label="Record" column="record" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
-              <SortHeader label="Ranking" column="ranking" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
+              <SortHeader label="Natl Ranking" column="ranking" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
               {distances && (
                 <SortHeader label="From Home" column="distance" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
               )}

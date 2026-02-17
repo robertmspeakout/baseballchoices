@@ -219,7 +219,7 @@ export default function AdminPage() {
                   <th className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase">School</th>
                   <th className="px-3 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Div</th>
                   <th className="px-3 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Conference</th>
-                  <th className="px-3 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Rank</th>
+                  <th className="px-3 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Natl Ranking</th>
                   <th className="px-3 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Head Coach</th>
                   <th className="px-3 py-3 text-left text-xs font-semibold text-gray-600 uppercase">State</th>
                   <th className="px-3 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Record</th>
