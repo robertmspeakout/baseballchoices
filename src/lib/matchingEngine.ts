@@ -250,6 +250,19 @@ export function scoreSchool(
     score += Math.max(0, WEIGHTS.tier * (1 - minDist * 0.4));
   }
 
+  // --- Multiplier penalties for strong preferences ---
+  // When a user picks specific states, they MEAN it — apply a heavy penalty
+  // to schools outside those states so they always rank below matching ones.
+  if (prefs.preferredStates.length > 0 && !prefs.preferredStates.includes(school.state)) {
+    score *= 0.55;
+    reasons.length = 0; // clear reasons for non-matching schools
+  }
+
+  // Same for tier — wrong tier should significantly penalize
+  if (prefs.preferredTiers && prefs.preferredTiers.length > 0 && schoolTier && !prefs.preferredTiers.includes(schoolTier)) {
+    score *= 0.7;
+  }
+
   return {
     school,
     score: Math.round(Math.min(100, Math.max(0, score))),
