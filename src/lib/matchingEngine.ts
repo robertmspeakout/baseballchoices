@@ -114,14 +114,10 @@ export function scoreSchool(
     score += WEIGHTS.distance * 0.5;
   }
 
-  // --- State/Region (8 pts) ---
-  if (prefs.preferredStates.length === 0) {
-    score += WEIGHTS.stateRegion;
-  } else if (prefs.preferredStates.includes(school.state)) {
-    score += WEIGHTS.stateRegion;
+  // --- State/Region (hard-filtered, always full points) ---
+  score += WEIGHTS.stateRegion;
+  if (prefs.preferredStates.length > 0) {
     reasons.push(`Located in ${school.state} — one of your preferred states`);
-  } else {
-    // Not in preferred states = 0
   }
 
   // --- Tuition (13 pts) ---
@@ -227,27 +223,17 @@ export function scoreSchool(
     score += WEIGHTS.draftPicks; // Not important = full credit for all
   }
 
-  // --- Conference (5 pts) ---
-  if (prefs.preferredConferences.length === 0) {
-    score += WEIGHTS.conference;
-  } else if (prefs.preferredConferences.includes(school.conference)) {
-    score += WEIGHTS.conference;
+  // --- Conference (hard-filtered, always full points) ---
+  score += WEIGHTS.conference;
+  if (prefs.preferredConferences.length > 0) {
     reasons.push(`${school.conference} — one of your preferred conferences`);
   }
 
-  // --- Tier / Level (12 pts) ---
+  // --- Tier / Level (hard-filtered, always full points) ---
+  score += WEIGHTS.tier;
   const schoolTier = CONFERENCE_TIER[school.conference] || null;
-  if (!prefs.preferredTiers || prefs.preferredTiers.length === 0) {
-    score += WEIGHTS.tier; // No tier preference = full credit
-  } else if (schoolTier && prefs.preferredTiers.includes(schoolTier)) {
-    score += WEIGHTS.tier;
+  if (prefs.preferredTiers && prefs.preferredTiers.length > 0 && schoolTier) {
     reasons.push(`${schoolTier} conference (${school.conference})`);
-  } else if (schoolTier) {
-    // Adjacent tier gets partial credit
-    const tiers = ["Power", "High-Major", "Mid-Major", "Low-Major"];
-    const schoolIdx = tiers.indexOf(schoolTier);
-    const minDist = Math.min(...prefs.preferredTiers.map(t => Math.abs(tiers.indexOf(t) - schoolIdx)));
-    score += Math.max(0, WEIGHTS.tier * (1 - minDist * 0.4));
   }
 
   return {
@@ -283,6 +269,11 @@ export function getMatchResults(
       const tier = CONFERENCE_TIER[s.conference];
       return tier ? prefs.preferredTiers.includes(tier) : false;
     });
+  }
+
+  // Conference hard filter — only show schools in preferred conferences
+  if (prefs.preferredConferences.length > 0) {
+    filtered = filtered.filter((s) => prefs.preferredConferences.includes(s.conference));
   }
 
   // Score remaining schools
