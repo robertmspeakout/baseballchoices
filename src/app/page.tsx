@@ -415,6 +415,39 @@ export default function Home() {
 
       {/* Main content */}
       <main className="max-w-[1400px] mx-auto px-3 sm:px-6 py-4 sm:py-6 space-y-4 sm:space-y-6">
+        {/* Instructional box on home page */}
+        {activeTab === "home" && ratedCount === 0 && (
+          <div className="bg-blue-50 border border-blue-200 rounded-xl px-4 py-4 sm:py-5 text-center">
+            <h3 className="text-base sm:text-lg font-extrabold text-gray-900 mb-1">Where Will You Play?</h3>
+            <p className="text-xs sm:text-sm text-gray-600 mb-3">
+              Over {allSchools.length} programs are waiting. Rate schools with stars to build your personal list, or let our AI find your best fits.
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-2">
+              <Link
+                href="/match"
+                className="inline-flex items-center gap-1.5 px-4 py-2 bg-red-600 text-white rounded-lg text-sm font-bold hover:bg-red-700 transition-colors"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                </svg>
+                Find My Matches
+              </Link>
+              <button
+                onClick={() => handleTabChange("D1")}
+                className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-bold hover:bg-blue-700 transition-colors"
+              >
+                Browse D1
+              </button>
+              <button
+                onClick={() => handleTabChange("D2")}
+                className="px-4 py-2 bg-emerald-600 text-white rounded-lg text-sm font-bold hover:bg-emerald-700 transition-colors"
+              >
+                Browse D2
+              </button>
+            </div>
+          </div>
+        )}
+
         {/* Section labels */}
         {activeTab === "home" && (
           <h2 className="text-lg sm:text-xl font-bold text-gray-900">Top 25 D1 Programs</h2>

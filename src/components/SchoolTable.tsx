@@ -233,7 +233,7 @@ function MobileCard({
               </span>
             )}
           </div>
-          {/* Priority */}
+          {/* My Ranking */}
           <div className="mt-2 flex items-center gap-2" onClick={(e) => e.preventDefault()}>
             <StarRating
               value={school.priority}
@@ -290,7 +290,7 @@ export default function SchoolTable({
             <option value="conference">Conference</option>
             <option value="state">State</option>
             <option value="ranking">National Ranking</option>
-            <option value="priority">Priority</option>
+            <option value="priority">My Ranking</option>
             {distances && <option value="distance">Distance from Home</option>}
           </select>
           <button
@@ -318,6 +318,7 @@ export default function SchoolTable({
           <thead className="bg-gray-50">
             <tr>
               <SortHeader label="School" column="name" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
+              <SortHeader label="My Ranking" column="priority" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
               <th className="px-3 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Div</th>
               <SortHeader label="Conference" column="conference" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
               <SortHeader label="State" column="state" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
@@ -327,7 +328,6 @@ export default function SchoolTable({
               {distances && (
                 <SortHeader label="From Home" column="distance" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
               )}
-              <SortHeader label="Priority" column="priority" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
               <th className="px-3 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Coach</th>
             </tr>
           </thead>
@@ -348,6 +348,13 @@ export default function SchoolTable({
                     <div className="text-xs text-gray-500">
                       {school.mascot ? `${school.mascot} · ` : ""}{school.city}, {school.state}
                     </div>
+                  </td>
+                  <td className="px-3 py-3" onClick={(e) => e.stopPropagation()}>
+                    <StarRating
+                      value={school.priority}
+                      onChange={(v) => onPriorityChange(school.id, v)}
+                      size="sm"
+                    />
                   </td>
                   <td className="px-3 py-3">{divisionBadge(school.division)}</td>
                   <td className="px-3 py-3 text-sm text-gray-700">{school.conference}</td>
@@ -380,13 +387,6 @@ export default function SchoolTable({
                         : "-"}
                     </td>
                   )}
-                  <td className="px-3 py-3" onClick={(e) => e.stopPropagation()}>
-                    <StarRating
-                      value={school.priority}
-                      onChange={(v) => onPriorityChange(school.id, v)}
-                      size="sm"
-                    />
-                  </td>
                   <td className="px-3 py-3 text-sm text-gray-700 max-w-[140px] truncate">
                     {school.head_coach_name || "-"}
                   </td>
