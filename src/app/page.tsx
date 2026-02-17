@@ -85,7 +85,12 @@ export default function Home() {
     const states = [...new Set(allSchools.map((s) => s.state).filter(Boolean))].sort();
     const conferences = [...new Set(allSchools.map((s) => s.conference).filter(Boolean))].sort();
     const divisions = [...new Set(allSchools.map((s) => s.division))].sort();
-    return { states, conferences, divisions };
+    // Per-division conference lists
+    const divisionConferences: Record<string, string[]> = {};
+    for (const div of divisions) {
+      divisionConferences[div] = [...new Set(allSchools.filter((s) => s.division === div).map((s) => s.conference).filter(Boolean))].sort();
+    }
+    return { states, conferences, divisions, divisionConferences };
   }, []);
 
   // Merge schools with user data
@@ -376,12 +381,15 @@ export default function Home() {
           <h2 className="text-lg sm:text-xl font-bold text-gray-900">Top 25 D1 Programs</h2>
         )}
 
-        <SearchFilters
-          filters={filters}
-          filterOptions={filterOptions}
-          onChange={setFilters}
-          onZipSearch={handleZipSearch}
-        />
+        {activeTab !== "mylist" && (
+          <SearchFilters
+            filters={filters}
+            filterOptions={filterOptions}
+            onChange={setFilters}
+            onZipSearch={handleZipSearch}
+            activeTab={activeTab}
+          />
+        )}
 
         <SchoolTable
           schools={paginated}

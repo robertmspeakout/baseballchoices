@@ -13,6 +13,7 @@ interface FilterOptions {
   states: string[];
   conferences: string[];
   divisions: string[];
+  divisionConferences?: Record<string, string[]>;
 }
 
 interface SearchFiltersProps {
@@ -20,6 +21,7 @@ interface SearchFiltersProps {
   filterOptions: FilterOptions;
   onChange: (filters: Filters) => void;
   onZipSearch: (zip: string) => void;
+  activeTab?: string; // "mylist" | "D1" | "D2"
 }
 
 export default function SearchFilters({
@@ -27,10 +29,19 @@ export default function SearchFilters({
   filterOptions,
   onChange,
   onZipSearch,
+  activeTab,
 }: SearchFiltersProps) {
   const update = (key: keyof Filters, value: string) => {
     onChange({ ...filters, [key]: value });
   };
+
+  // When on a division tab, hide division dropdown and filter conferences to that division
+  const isDivisionTab = activeTab === "D1" || activeTab === "D2";
+  const visibleConferences = isDivisionTab
+    ? filterOptions.conferences.filter((c) =>
+        filterOptions.divisionConferences?.[activeTab!]?.includes(c) ?? true
+      )
+    : filterOptions.conferences;
 
   return (
     <div className="bg-white border border-gray-200 rounded-xl p-3 sm:p-6 shadow-sm space-y-3 sm:space-y-4">
@@ -61,19 +72,21 @@ export default function SearchFilters({
       </div>
 
       {/* Filter row */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-3">
-        <select
-          value={filters.division}
-          onChange={(e) => update("division", e.target.value)}
-          className="px-2.5 sm:px-3 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm text-gray-700 focus:ring-2 focus:ring-blue-500"
-        >
-          <option value="">All Divisions</option>
-          {filterOptions.divisions.map((d) => (
-            <option key={d} value={d}>
-              {d === "JUCO" ? "Junior College" : `Division ${d.replace("D", "")}`}
-            </option>
-          ))}
-        </select>
+      <div className={`grid grid-cols-2 sm:grid-cols-3 ${isDivisionTab ? "lg:grid-cols-4" : "lg:grid-cols-5"} gap-2 sm:gap-3`}>
+        {!isDivisionTab && (
+          <select
+            value={filters.division}
+            onChange={(e) => update("division", e.target.value)}
+            className="px-2.5 sm:px-3 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm text-gray-700 focus:ring-2 focus:ring-blue-500"
+          >
+            <option value="">All Divisions</option>
+            {filterOptions.divisions.map((d) => (
+              <option key={d} value={d}>
+                {d === "JUCO" ? "Junior College" : `Division ${d.replace("D", "")}`}
+              </option>
+            ))}
+          </select>
+        )}
 
         <select
           value={filters.state}
@@ -94,7 +107,7 @@ export default function SearchFilters({
           className="px-2.5 sm:px-3 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm text-gray-700 focus:ring-2 focus:ring-blue-500"
         >
           <option value="">All Conferences</option>
-          {filterOptions.conferences.map((c) => (
+          {visibleConferences.map((c) => (
             <option key={c} value={c}>
               {c}
             </option>
