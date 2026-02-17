@@ -2,6 +2,7 @@
 
 import { useEffect, useState, use } from "react";
 import Link from "next/link";
+import BrandLogo from "@/components/BrandLogo";
 import StarRating from "@/components/StarRating";
 import schoolsData from "@/data/schools.json";
 import draftPicksData from "@/data/draft-picks.json";
@@ -339,12 +340,7 @@ export default function SchoolPage({
               </svg>
               Back to Directory
             </Link>
-            <Link href="/" className="flex items-center gap-2 group">
-              <div className="w-7 h-7 rotate-45 rounded-sm bg-red-600 flex items-center justify-center group-hover:scale-105 transition-transform">
-                <span className="-rotate-45 text-[8px] font-black text-white" style={{ fontStyle: "italic" }}>NB</span>
-              </div>
-              <span className="text-sm font-bold tracking-tight text-white/70 group-hover:text-white transition-colors">Next<span className="text-red-400">Base</span></span>
-            </Link>
+            <BrandLogo size="sm" showTagline={false} />
           </div>
           <div className="flex items-end gap-4 sm:gap-5">
             <div className="shrink-0 w-16 h-16 sm:w-24 sm:h-24 rounded-2xl bg-white shadow-2xl flex items-center justify-center overflow-hidden border-2 border-white/80">

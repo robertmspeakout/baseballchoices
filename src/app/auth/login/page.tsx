@@ -60,7 +60,7 @@ export default function LoginPage() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </Link>
-          <h1 className="text-lg font-bold">NextBase</h1>
+          <span className="text-lg font-bold leading-none" style={{ fontFamily: "'Permanent Marker', cursive" }}><span style={{ color: "#E8857A" }}>NEXT</span><span style={{ color: "#F0C4A0" }}>BASE</span></span>
         </div>
       </header>
 

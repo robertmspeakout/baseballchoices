@@ -254,9 +254,7 @@ export default function ProfilePage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </Link>
-            <h1 className="text-lg font-black tracking-tight">
-              Next<span className="text-red-500">Base</span>
-            </h1>
+            <span className="text-lg font-bold leading-none" style={{ fontFamily: "'Permanent Marker', cursive" }}><span style={{ color: "#E8857A" }}>NEXT</span><span style={{ color: "#F0C4A0" }}>BASE</span></span>
           </div>
           <span className="text-xs text-white/60 bg-white/10 px-2.5 py-1 rounded-full border border-white/10">
             Step {step} of {TOTAL_STEPS}

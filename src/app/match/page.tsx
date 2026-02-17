@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useMemo } from "react";
 import Link from "next/link";
+import BrandLogo from "@/components/BrandLogo";
 import { loadProfile, loadPreferences, isProfileComplete, type PlayerProfile, type PlayerPreferences } from "@/lib/playerProfile";
 import { getMatchResults, type MatchResult } from "@/lib/matchingEngine";
 import { geocodeZip } from "@/lib/geo";
@@ -218,12 +219,7 @@ export default function MatchPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </Link>
-            <Link href="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 rotate-45 rounded-sm bg-red-600 flex items-center justify-center">
-                <span className="-rotate-45 text-xs font-black text-white" style={{ fontStyle: "italic" }}>NB</span>
-              </div>
-              <span className="text-sm font-bold tracking-tight">Next<span className="text-red-400">Base</span></span>
-            </Link>
+            <BrandLogo size="sm" showTagline={false} />
           </div>
 
           <h1 className="text-2xl sm:text-4xl font-black tracking-tight leading-tight">
@@ -428,12 +424,7 @@ export default function MatchPage() {
       {/* Footer */}
       <footer className="bg-gray-900 mt-8">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <Link href="/" className="flex items-center gap-2">
-            <div className="w-6 h-6 rotate-45 rounded-sm bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center">
-              <span className="-rotate-45 text-[7px] font-black text-white" style={{ fontStyle: "italic" }}>NB</span>
-            </div>
-            <span className="text-sm font-bold text-white tracking-tight">NEXTBASE</span>
-          </Link>
+          <BrandLogo size="sm" showTagline={false} />
           <p className="text-xs text-gray-500">Data for informational purposes only.</p>
         </div>
       </footer>
