@@ -254,27 +254,23 @@ export default function Home() {
           <div className="absolute -right-5 top-0 bottom-0 w-1 bg-red-500/40 skew-x-[-8deg]" />
         </div>
 
-        <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 py-6 sm:py-10">
-          <div className="flex items-center justify-between">
+        <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 pt-6 sm:pt-8 pb-8 sm:pb-14">
+          <div className="flex items-center justify-between mb-6 sm:mb-10">
             <BrandLogo size="lg" showTagline={true} />
-
-            {/* Stats selling point - desktop */}
-            <div className="hidden md:flex items-center gap-3">
-              <p className="text-sm md:text-base font-medium text-white/80 tracking-wide max-w-sm">
-                <span className="font-bold text-white">{allSchools.filter(s => s.division === "D1").length} D1 Programs.</span>
-                {" "}
-                <span className="font-bold text-white">{allSchools.filter(s => s.division === "D2").length} D2 Programs.</span>
-                {" "}
-                <span className="text-white/70">One place to find your fit.</span>
-              </p>
-              {ratedCount > 0 && (
-                <div className="text-center px-4 py-2 bg-red-600/20 backdrop-blur-md rounded-xl border border-red-500/30">
-                  <p className="text-2xl font-black text-red-400">{ratedCount}</p>
-                  <p className="text-[10px] font-bold uppercase tracking-wider text-red-300/60">Tracking</p>
-                </div>
-              )}
-            </div>
+            {ratedCount > 0 && (
+              <div className="text-center px-4 py-2 bg-red-600/20 backdrop-blur-md rounded-xl border border-red-500/30">
+                <p className="text-2xl font-black text-red-400">{ratedCount}</p>
+                <p className="text-[10px] font-bold uppercase tracking-wider text-red-300/60">Tracking</p>
+              </div>
+            )}
           </div>
+
+          {/* Big selling-point statement */}
+          <p className="text-lg sm:text-2xl md:text-3xl font-extrabold leading-snug max-w-2xl">
+            <span className="text-white">{allSchools.filter(s => s.division === "D1").length} D1 Programs. {allSchools.filter(s => s.division === "D2").length} D2 Programs.</span>
+            <br className="hidden sm:block" />
+            <span className="text-white/50 font-bold"> One place to find your fit.</span>
+          </p>
         </div>
         {/* Bottom edge - thick red accent bar */}
         <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-red-700 via-red-500 to-red-700" />
