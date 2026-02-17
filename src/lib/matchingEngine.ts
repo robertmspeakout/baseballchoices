@@ -250,19 +250,6 @@ export function scoreSchool(
     score += Math.max(0, WEIGHTS.tier * (1 - minDist * 0.4));
   }
 
-  // --- Multiplier penalties for strong preferences ---
-  // When a user picks specific states, they MEAN it — apply a heavy penalty
-  // to schools outside those states so they always rank below matching ones.
-  if (prefs.preferredStates.length > 0 && !prefs.preferredStates.includes(school.state)) {
-    score *= 0.55;
-    reasons.length = 0; // clear reasons for non-matching schools
-  }
-
-  // Same for tier — wrong tier should significantly penalize
-  if (prefs.preferredTiers && prefs.preferredTiers.length > 0 && schoolTier && !prefs.preferredTiers.includes(schoolTier)) {
-    score *= 0.7;
-  }
-
   return {
     school,
     score: Math.round(Math.min(100, Math.max(0, score))),
@@ -283,6 +270,19 @@ export function getMatchResults(
   // Division hard filter (if specific preference)
   if (prefs.divisionPreference !== "both") {
     filtered = filtered.filter((s) => s.division === prefs.divisionPreference);
+  }
+
+  // State/region hard filter — only show schools in preferred states
+  if (prefs.preferredStates.length > 0) {
+    filtered = filtered.filter((s) => prefs.preferredStates.includes(s.state));
+  }
+
+  // Tier hard filter — only show schools in preferred tiers
+  if (prefs.preferredTiers && prefs.preferredTiers.length > 0) {
+    filtered = filtered.filter((s) => {
+      const tier = CONFERENCE_TIER[s.conference];
+      return tier ? prefs.preferredTiers.includes(tier) : false;
+    });
   }
 
   // Score remaining schools

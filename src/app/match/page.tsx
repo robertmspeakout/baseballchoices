@@ -124,11 +124,13 @@ export default function MatchPage() {
     }
   }, []);
 
-  // Run matching
-  const results = useMemo(() => {
+  // Run matching — only show 90%+ matches
+  const allResults = useMemo(() => {
     if (!profile || !prefs) return [];
     return getMatchResults(allSchools, profile, prefs, homeCoords);
   }, [profile, prefs, homeCoords]);
+
+  const results = useMemo(() => allResults.filter((r) => r.score >= 90), [allResults]);
 
   const visibleResults = results.slice(0, showCount);
 
@@ -212,8 +214,8 @@ export default function MatchPage() {
               </svg>
             </Link>
             <Link href="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-red-600 flex items-center justify-center">
-                <span className="text-xs font-black text-white" style={{ fontStyle: "italic" }}>NB</span>
+              <div className="w-8 h-8 rotate-45 rounded-sm bg-red-600 flex items-center justify-center">
+                <span className="-rotate-45 text-xs font-black text-white" style={{ fontStyle: "italic" }}>NB</span>
               </div>
               <span className="text-sm font-bold tracking-tight">Next<span className="text-red-400">Base</span></span>
             </Link>
@@ -224,7 +226,7 @@ export default function MatchPage() {
           </h1>
           {profile?.playerName && (
             <p className="text-white/60 mt-1">
-              {results.length} programs matched for <span className="text-white font-semibold">{profile.playerName}</span>
+              {results.length} program{results.length !== 1 ? "s" : ""} scored 90% or higher for <span className="text-white font-semibold">{profile.playerName}</span>
             </p>
           )}
 
@@ -257,9 +259,9 @@ export default function MatchPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <h3 className="text-lg font-bold text-gray-900 mb-2">No Matches Found</h3>
+            <h3 className="text-lg font-bold text-gray-900 mb-2">No 90%+ Matches Found</h3>
             <p className="text-gray-600 mb-4">
-              Try broadening your preferences — select &quot;Both&quot; for divisions, remove state restrictions, or increase your distance range.
+              No programs scored 90% or higher with your current preferences. Try broadening your preferences — select &quot;Both&quot; for divisions, remove region restrictions, or adjust your tier/level settings.
             </p>
             <Link
               href="/auth/profile"
@@ -274,12 +276,10 @@ export default function MatchPage() {
             <div className="flex items-center justify-between mb-4">
               <div>
                 <h2 className="text-lg sm:text-xl font-black text-gray-900">
-                  {showAll ? "All Matches" : "Your Top 10 Matches"}
+                  {showAll ? "All 90%+ Matches" : "Your Top Matches"}
                 </h2>
                 <p className="text-sm text-gray-500">
-                  {showAll
-                    ? `${results.length} programs ranked by fit`
-                    : `${results.length} total programs matched`}
+                  Programs that scored a 90% match or higher
                 </p>
               </div>
               <Link
@@ -424,8 +424,8 @@ export default function MatchPage() {
       <footer className="bg-gray-900 mt-8">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-2">
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded-md bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center">
-              <span className="text-[8px] font-black text-white" style={{ fontStyle: "italic" }}>NB</span>
+            <div className="w-6 h-6 rotate-45 rounded-sm bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center">
+              <span className="-rotate-45 text-[7px] font-black text-white" style={{ fontStyle: "italic" }}>NB</span>
             </div>
             <span className="text-sm font-bold text-white tracking-tight">NEXTBASE</span>
           </Link>
