@@ -14,9 +14,9 @@ interface ESPNEvent {
     };
     competitors: {
       id: string;
-      team: { displayName: string; abbreviation: string; logo: string };
+      team: { id: string; displayName: string; abbreviation: string; logo: string };
       homeAway: string;
-      score?: string;
+      score?: string | { value: number; displayValue: string };
       winner?: boolean;
     }[];
   }[];
@@ -68,8 +68,7 @@ export async function GET(request: NextRequest) {
           t.team.abbreviation?.toLowerCase() === schoolLower
       ) ||
       teams[0];
-    const teamId = teamEntry.team.id;
-    const teamDisplayName = teamEntry.team.displayName.toLowerCase();
+    const teamId = String(teamEntry.team.id);
 
     // Step 2: Fetch team schedule
     const scheduleUrl = `https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/teams/${teamId}/schedule`;
@@ -84,6 +83,10 @@ export async function GET(request: NextRequest) {
 
     const scheduleData = await scheduleRes.json();
     const events: ESPNEvent[] = scheduleData?.events || [];
+
+    // Try to get record directly from ESPN's team data if available
+    const espnRecord = scheduleData?.team?.record?.items?.[0]?.summary ||
+      scheduleData?.team?.record?.displayValue || null;
 
     // Separate completed and upcoming games
     const completed: typeof parsedGames = [];
@@ -106,12 +109,12 @@ export async function GET(request: NextRequest) {
 
       const isCompleted = comp.status?.type?.completed === true;
 
-      // Find our team and opponent (match against ESPN's resolved team name)
+      // Find our team and opponent by team ID (more reliable than name matching)
       const ourTeam = comp.competitors?.find(
-        (c) => c.team.displayName.toLowerCase() === teamDisplayName
+        (c) => String(c.team?.id) === teamId || String(c.id) === teamId
       );
       const opponent = comp.competitors?.find(
-        (c) => c.team.displayName.toLowerCase() !== teamDisplayName
+        (c) => String(c.team?.id) !== teamId && String(c.id) !== teamId
       );
 
       if (!ourTeam || !opponent) continue;
@@ -126,11 +129,24 @@ export async function GET(request: NextRequest) {
         locationStr = ourTeam.homeAway === "home" ? "Home" : "Away";
       }
 
+      // Handle score as either string or object { value, displayValue }
+      const getScore = (s: string | { value: number; displayValue: string } | undefined | null): string | null => {
+        if (s == null) return null;
+        if (typeof s === "string") return s;
+        if (typeof s === "object" && "displayValue" in s) return s.displayValue;
+        if (typeof s === "object" && "value" in s) return String(s.value);
+        return String(s);
+      };
+
       let score: string | null = null;
       let result: string | null = null;
-      if (isCompleted && ourTeam.score != null && opponent.score != null) {
-        score = `${ourTeam.score}-${opponent.score}`;
-        result = ourTeam.winner ? "W" : "L";
+      const ourScore = getScore(ourTeam.score);
+      const oppScore = getScore(opponent.score);
+      if (isCompleted && ourScore != null && oppScore != null) {
+        score = `${ourScore}-${oppScore}`;
+        const ourNum = parseInt(ourScore, 10);
+        const oppNum = parseInt(oppScore, 10);
+        result = ourTeam.winner === true ? "W" : ourTeam.winner === false ? "L" : (ourNum > oppNum ? "W" : "L");
       }
 
       const game = {
@@ -151,10 +167,11 @@ export async function GET(request: NextRequest) {
       }
     }
 
-    // Win-loss record from all completed games
+    // Win-loss record: prefer ESPN's direct record, fall back to computed
     const wins = completed.filter(g => g.result === "W").length;
     const losses = completed.filter(g => g.result === "L").length;
-    const record = completed.length > 0 ? `${wins}-${losses}` : null;
+    const computedRecord = completed.length > 0 ? `${wins}-${losses}` : null;
+    const record = espnRecord || computedRecord;
 
     // Last 3 completed games (most recent first)
     const recentGames = completed.slice(-3).reverse();

@@ -273,9 +273,10 @@ export default function SchoolTable({
                 <td className="px-3 py-3 text-sm text-gray-700">{school.state}</td>
                 <td className="px-3 py-3 text-sm text-gray-700">{school.public_private}</td>
                 <td className="px-3 py-3 text-sm text-gray-700 text-center">
-                  <span className="font-medium">0-0</span>
-                  {school.last_season_record && (
-                    <div className="text-[10px] text-gray-400">{school.last_season_record}</div>
+                  {school.last_season_record ? (
+                    <span className="font-medium">{school.last_season_record}</span>
+                  ) : (
+                    <span className="text-gray-300">-</span>
                   )}
                 </td>
                 <td className="px-3 py-3 text-sm text-gray-700 text-center">

@@ -332,7 +332,7 @@ export default function SchoolPage({
           <div className="grid grid-cols-3 sm:grid-cols-5 divide-x divide-y sm:divide-y-0 divide-gray-100">
             <div className="p-3 sm:p-4 text-center">
               <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Current Record</p>
-              <p className="text-base sm:text-xl font-bold text-gray-900 mt-0.5 sm:mt-1">{currentRecord || "0-0"}</p>
+              <p className="text-base sm:text-xl font-bold text-gray-900 mt-0.5 sm:mt-1">{currentRecord || (scheduleLoading ? "..." : "-")}</p>
               {school.last_season_record && (
                 <p className="text-[10px] sm:text-xs text-gray-400 mt-0.5">Last Season: {school.last_season_record}</p>
               )}
