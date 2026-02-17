@@ -416,7 +416,7 @@ export default function Home() {
       {/* Main content */}
       <main className="max-w-[1400px] mx-auto px-3 sm:px-6 py-4 sm:py-6 space-y-4 sm:space-y-6">
         {/* Instructional box on home page */}
-        {activeTab === "home" && ratedCount === 0 && (
+        {activeTab === "home" && (
           <div className="bg-blue-50 border border-blue-200 rounded-xl px-4 py-4 sm:py-5 text-center">
             <h3 className="text-base sm:text-lg font-extrabold text-gray-900 mb-1">Where Will You Play?</h3>
             <p className="text-xs sm:text-sm text-gray-600 mb-3">
