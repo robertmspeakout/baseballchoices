@@ -205,7 +205,7 @@ export default function MatchPage() {
       <header className="relative text-white overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=1600&q=80')" }}
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1529768167801-9173d94c2a42?w=1600&q=80')" }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/30" />
         <div className="absolute inset-0 overflow-hidden">
