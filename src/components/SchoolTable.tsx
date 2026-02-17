@@ -354,6 +354,9 @@ export default function SchoolTable({
                       onChange={(v) => onPriorityChange(school.id, v)}
                       size="sm"
                     />
+                    {school.priority > 0 && (
+                      <div className="text-[10px] text-gray-500 font-medium mt-0.5 whitespace-nowrap">{priorityLabels[school.priority]}</div>
+                    )}
                   </td>
                   <td className="px-3 py-3">{divisionBadge(school.division)}</td>
                   <td className="px-3 py-3 text-sm text-gray-700">{school.conference}</td>
