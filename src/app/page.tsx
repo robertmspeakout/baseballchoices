@@ -268,17 +268,8 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Stats pills + Match CTA - desktop */}
+            {/* Stats pills - desktop */}
             <div className="hidden md:flex items-center gap-3">
-              <Link
-                href="/match"
-                className="flex items-center gap-2 px-5 py-3 bg-red-600 hover:bg-red-700 rounded-xl font-bold text-sm transition-colors border border-red-400/30 shadow-lg shadow-red-900/30"
-              >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
-                </svg>
-                Find My Matches
-              </Link>
               <div className="text-center px-4 py-2 bg-white/10 backdrop-blur-md rounded-xl border border-white/10">
                 <p className="text-2xl font-black">{allSchools.filter(s => s.division === "D1").length}</p>
                 <p className="text-[10px] font-bold uppercase tracking-wider text-white/50">D1 Programs</p>
@@ -295,19 +286,6 @@ export default function Home() {
               )}
             </div>
           </div>
-
-          {/* Mobile: Find My Matches CTA */}
-          <div className="md:hidden mt-3">
-            <Link
-              href="/match"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-red-600 hover:bg-red-700 rounded-lg font-bold text-sm transition-colors"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
-              </svg>
-              Find My Matches
-            </Link>
-          </div>
         </div>
         {/* Bottom edge - thick red accent bar */}
         <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-red-700 via-red-500 to-red-700" />
@@ -315,7 +293,7 @@ export default function Home() {
 
       {/* Tab Navigation */}
       <div className="bg-white/95 backdrop-blur-md border-b border-gray-200 sticky top-0 z-20">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 py-2 sm:py-2.5">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 py-2 sm:py-2.5 flex items-center justify-between">
           <div className="inline-flex bg-gray-100 rounded-xl p-1 gap-0.5">
             {TABS.map((tab) => (
               <button
@@ -340,6 +318,16 @@ export default function Home() {
               </button>
             ))}
           </div>
+          <Link
+            href="/match"
+            className="inline-flex items-center gap-1.5 px-4 sm:px-5 py-2 sm:py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-xl text-sm font-bold transition-colors shadow-sm"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+            </svg>
+            <span className="hidden sm:inline">Find My Matches</span>
+            <span className="sm:hidden">Matches</span>
+          </Link>
         </div>
       </div>
 
@@ -394,30 +382,6 @@ export default function Home() {
           onChange={setFilters}
           onZipSearch={handleZipSearch}
         />
-
-        {/* Browse all link - below filters, above results */}
-        {activeTab === "mylist" && (
-          <div className="flex gap-4">
-            <button
-              onClick={() => handleTabChange("D1")}
-              className="inline-flex items-center gap-1.5 text-sm text-blue-600 hover:text-blue-800 font-semibold"
-            >
-              Browse all D1 Programs
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-            <button
-              onClick={() => handleTabChange("D2")}
-              className="inline-flex items-center gap-1.5 text-sm text-blue-600 hover:text-blue-800 font-semibold"
-            >
-              Browse all D2 Programs
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-          </div>
-        )}
 
         <SchoolTable
           schools={paginated}
