@@ -559,11 +559,29 @@ export default function SchoolPage({
                       </div>
                     )}
 
-                    {/* Recent Games Table (hidden if no completed games) */}
+                    {/* Recent Games (hidden if no completed games) */}
                     {recentGames.length > 0 && (
                       <div>
                         <h3 className="text-sm font-semibold text-gray-700 mb-2">Recent Games</h3>
-                        <div className="overflow-x-auto">
+                        {/* Mobile: card layout */}
+                        <div className="sm:hidden space-y-2">
+                          {recentGames.map((game, i) => (
+                            <div key={i} className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                              <span className={`shrink-0 w-8 text-center px-1.5 py-0.5 rounded text-xs font-bold ${
+                                game.result === "W" ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"
+                              }`}>
+                                {game.result}
+                              </span>
+                              <div className="flex-1 min-w-0">
+                                <p className="text-sm font-medium text-gray-900 truncate">{game.homeAway} {game.opponent}</p>
+                                <p className="text-xs text-gray-500">{formatGameDate(game.date)}</p>
+                              </div>
+                              <span className="shrink-0 text-sm font-bold text-gray-700">{game.score}</span>
+                            </div>
+                          ))}
+                        </div>
+                        {/* Desktop: table layout */}
+                        <div className="hidden sm:block overflow-x-auto">
                           <table className="min-w-full divide-y divide-gray-100">
                             <thead className="bg-gray-50">
                               <tr>
@@ -578,18 +596,14 @@ export default function SchoolPage({
                                 <tr key={i} className="hover:bg-blue-50/30">
                                   <td className="px-3 py-2.5">
                                     <span className={`inline-block px-2 py-0.5 rounded text-xs font-bold ${
-                                      game.result === "W"
-                                        ? "bg-green-100 text-green-800"
-                                        : "bg-red-100 text-red-800"
+                                      game.result === "W" ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"
                                     }`}>
                                       {game.result}
                                     </span>
                                   </td>
-                                  <td className="px-3 py-2.5 text-sm font-medium text-gray-900 whitespace-nowrap">
-                                    {game.homeAway} {game.opponent}
-                                  </td>
+                                  <td className="px-3 py-2.5 text-sm font-medium text-gray-900">{game.homeAway} {game.opponent}</td>
                                   <td className="px-3 py-2.5 text-sm font-semibold text-gray-700">{game.score}</td>
-                                  <td className="px-3 py-2.5 text-sm text-gray-500 whitespace-nowrap">{formatGameDate(game.date)}</td>
+                                  <td className="px-3 py-2.5 text-sm text-gray-500">{formatGameDate(game.date)}</td>
                                 </tr>
                               ))}
                             </tbody>
@@ -598,11 +612,24 @@ export default function SchoolPage({
                       </div>
                     )}
 
-                    {/* Upcoming Games Table */}
+                    {/* Upcoming Games */}
                     {upcomingGames.length > 0 ? (
                       <div>
                         <h3 className="text-sm font-semibold text-gray-700 mb-2">Upcoming Games</h3>
-                        <div className="overflow-x-auto">
+                        {/* Mobile: card layout */}
+                        <div className="sm:hidden space-y-2">
+                          {upcomingGames.map((game, i) => (
+                            <div key={i} className="p-3 bg-gray-50 rounded-lg">
+                              <p className="text-sm font-medium text-gray-900">{game.homeAway} {game.opponent}</p>
+                              <div className="flex items-center gap-2 mt-1 text-xs text-gray-500">
+                                <span>{formatGameDate(game.date)} &middot; {formatGameTime(game.date)}</span>
+                              </div>
+                              {game.location && <p className="text-xs text-gray-400 mt-0.5 truncate">{game.location}</p>}
+                            </div>
+                          ))}
+                        </div>
+                        {/* Desktop: table layout */}
+                        <div className="hidden sm:block overflow-x-auto">
                           <table className="min-w-full divide-y divide-gray-100">
                             <thead className="bg-gray-50">
                               <tr>
@@ -614,11 +641,9 @@ export default function SchoolPage({
                             <tbody className="divide-y divide-gray-50">
                               {upcomingGames.map((game, i) => (
                                 <tr key={i} className="hover:bg-blue-50/30">
-                                  <td className="px-3 py-2.5 text-sm font-medium text-gray-900 whitespace-nowrap">
-                                    {game.homeAway} {game.opponent}
-                                  </td>
-                                  <td className="px-3 py-2.5 text-sm text-gray-600 whitespace-nowrap">{game.location || "TBD"}</td>
-                                  <td className="px-3 py-2.5 text-sm text-gray-600 whitespace-nowrap">
+                                  <td className="px-3 py-2.5 text-sm font-medium text-gray-900">{game.homeAway} {game.opponent}</td>
+                                  <td className="px-3 py-2.5 text-sm text-gray-600">{game.location || "TBD"}</td>
+                                  <td className="px-3 py-2.5 text-sm text-gray-600">
                                     {formatGameDate(game.date)} &middot; {formatGameTime(game.date)}
                                   </td>
                                 </tr>

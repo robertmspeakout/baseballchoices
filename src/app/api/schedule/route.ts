@@ -46,7 +46,7 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ record: null, recentGames: [], upcoming: [] });
     }
 
-    // Find best match (prefer exact name match, then includes, then first result)
+    // Find best match (prefer exact name match, then startsWith, then includes, then first result)
     const schoolLower = school.toLowerCase();
     const teamEntry =
       teams.find(
@@ -56,6 +56,16 @@ export async function GET(request: NextRequest) {
       teams.find(
         (t: { team: { displayName: string } }) =>
           t.team.displayName.toLowerCase().startsWith(schoolLower)
+      ) ||
+      teams.find(
+        (t: { team: { displayName: string } }) =>
+          t.team.displayName.toLowerCase().includes(schoolLower)
+      ) ||
+      teams.find(
+        (t: { team: { displayName: string; shortDisplayName: string; abbreviation: string } }) =>
+          schoolLower.includes(t.team.displayName.toLowerCase()) ||
+          t.team.shortDisplayName?.toLowerCase() === schoolLower ||
+          t.team.abbreviation?.toLowerCase() === schoolLower
       ) ||
       teams[0];
     const teamId = teamEntry.team.id;
