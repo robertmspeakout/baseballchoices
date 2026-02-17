@@ -53,6 +53,7 @@ interface SchoolDetail {
   cws_appearances: number;
   ncaa_regionals: number;
   recruiting_questionnaire_url: string | null;
+  nil_url: string | null;
 }
 
 interface NewsArticle {
@@ -340,7 +341,10 @@ export default function SchoolPage({
               </svg>
               Back to Directory
             </Link>
-            <BrandLogo size="sm" showTagline={false} />
+            <div className="flex items-center gap-3">
+              <Link href={`/admin`} className="text-[10px] text-white/30 hover:text-white/60 transition-colors">Edit</Link>
+              <BrandLogo size="sm" showTagline={false} />
+            </div>
           </div>
           <div className="flex items-end gap-4 sm:gap-5">
             <div className="shrink-0 w-16 h-16 sm:w-24 sm:h-24 rounded-2xl bg-white shadow-2xl flex items-center justify-center overflow-hidden border-2 border-white/80">
@@ -576,6 +580,17 @@ export default function SchoolPage({
                         <path d="M5 13.5c2-.8 4.5-1.2 7-1.2s5 .4 7 1.2" stroke="red" strokeWidth="1" strokeDasharray="1.5 1.5" />
                       </svg>
                       Program Website
+                    </a>
+                  )}
+                  {school.division === "D1" && school.nil_url && (
+                    <a href={school.nil_url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 px-4 py-3 bg-emerald-50 hover:bg-emerald-100 rounded-lg text-emerald-700 font-medium transition-colors">
+                      <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      <div>
+                        <span>NIL Information</span>
+                        <span className="block text-xs text-emerald-500 font-normal">Name, Image & Likeness</span>
+                      </div>
                     </a>
                   )}
                   {school.instagram && (

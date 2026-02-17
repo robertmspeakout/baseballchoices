@@ -1,0 +1,36 @@
+import { NextRequest, NextResponse } from "next/server";
+import fs from "fs";
+import path from "path";
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+const SCHOOLS_PATH = path.join(process.cwd(), "src/data/schools.json");
+
+export async function GET() {
+  const data = JSON.parse(fs.readFileSync(SCHOOLS_PATH, "utf8"));
+  return NextResponse.json(data);
+}
+
+// Update a single school by id
+export async function PUT(request: NextRequest) {
+  try {
+    const updated = await request.json();
+    if (!updated || !updated.id) {
+      return NextResponse.json({ error: "Missing school id" }, { status: 400 });
+    }
+
+    const data = JSON.parse(fs.readFileSync(SCHOOLS_PATH, "utf8"));
+    const idx = data.findIndex((s: any) => s.id === updated.id);
+    if (idx === -1) {
+      return NextResponse.json({ error: "School not found" }, { status: 404 });
+    }
+
+    // Merge updated fields into existing school
+    data[idx] = { ...data[idx], ...updated };
+    fs.writeFileSync(SCHOOLS_PATH, JSON.stringify(data, null, 2));
+
+    return NextResponse.json({ success: true, school: data[idx] });
+  } catch (err: any) {
+    return NextResponse.json({ error: err.message }, { status: 500 });
+  }
+}

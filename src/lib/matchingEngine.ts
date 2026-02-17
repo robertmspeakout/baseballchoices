@@ -38,7 +38,7 @@ export interface MatchResult {
 
 // Conference-to-tier mapping
 const CONFERENCE_TIER: Record<string, string> = {
-  "SEC": "Power", "ACC": "Power", "Big 12": "Power", "Big Ten": "Power",
+  "SEC": "Power", "ACC": "Power", "Big 12": "Power", "Big Ten": "Power", "Independent": "Power",
   "Sun Belt": "High-Major", "Big West": "High-Major", "American Athletic": "High-Major",
   "Pac-12": "High-Major", "Mountain West": "High-Major", "Big East": "High-Major",
   "WAC": "High-Major", "Conference USA": "High-Major",

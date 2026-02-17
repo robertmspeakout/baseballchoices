@@ -35,7 +35,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://acusports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://acusports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 140,
@@ -73,7 +74,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://goairforcefalcons.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://goairforcefalcons.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 304,
@@ -111,7 +113,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": null
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 13,
@@ -149,7 +152,8 @@
     "ncaa_regionals": 7,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://rolltide.com/sports/baseball/form/prospect-form"
+    "recruiting_questionnaire_url": "https://rolltide.com/sports/baseball/form/prospect-form",
+    "nil_url": null
   },
   {
     "id": 287,
@@ -187,7 +191,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://aamusports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://aamusports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 286,
@@ -225,7 +230,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://bamastatesports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://bamastatesports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 256,
@@ -263,7 +269,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://ualbanysports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://ualbanysports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 288,
@@ -301,7 +308,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://alcornsports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://alcornsports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 86,
@@ -339,7 +347,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://appstatesports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://appstatesports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 46,
@@ -353,7 +362,7 @@
     "division": "D1",
     "public_private": "Public",
     "conference": "Big 12",
-    "current_ranking": null,
+    "current_ranking": 24,
     "tuition": 12467,
     "instagram": "@arizonabaseball",
     "x_account": "@ArizonaBaseball",
@@ -377,7 +386,8 @@
     "ncaa_regionals": 20,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://arizonawildcats.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://arizonawildcats.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 45,
@@ -415,7 +425,8 @@
     "ncaa_regionals": 18,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://thesundevils.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://thesundevils.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 7,
@@ -429,7 +440,7 @@
     "division": "D1",
     "public_private": "Public",
     "conference": "SEC",
-    "current_ranking": 8,
+    "current_ranking": 7,
     "tuition": 9658,
     "instagram": "@razorbackbsb",
     "x_account": "@RazorbackBSB",
@@ -453,7 +464,8 @@
     "ncaa_regionals": 17,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://arkansasrazorbacks.com/sport/baseball/recruit-questionnaire/"
+    "recruiting_questionnaire_url": "https://arkansasrazorbacks.com/sport/baseball/recruit-questionnaire/",
+    "nil_url": null
   },
   {
     "id": 87,
@@ -491,7 +503,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://astateredwolves.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://astateredwolves.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 291,
@@ -529,7 +542,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://uapblionsroar.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://uapblionsroar.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 212,
@@ -567,7 +581,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://goarmywestpoint.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://goarmywestpoint.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 11,
@@ -581,7 +596,7 @@
     "division": "D1",
     "public_private": "Public",
     "conference": "SEC",
-    "current_ranking": 20,
+    "current_ranking": 9,
     "tuition": 11826,
     "instagram": "@auburnbaseball",
     "x_account": "@AuburnBaseball",
@@ -605,7 +620,8 @@
     "ncaa_regionals": 14,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://auburntigers.com/sports/baseball/form/prospect-form"
+    "recruiting_questionnaire_url": "https://auburntigers.com/sports/baseball/form/prospect-form",
+    "nil_url": null
   },
   {
     "id": 170,
@@ -643,7 +659,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://letsgopeay.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://letsgopeay.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 43,
@@ -681,7 +698,8 @@
     "ncaa_regionals": 2,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://byucougars.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://byucougars.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 305,
@@ -719,7 +737,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": null
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 40,
@@ -757,7 +776,8 @@
     "ncaa_regionals": 11,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://baylorbears.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://baylorbears.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 172,
@@ -795,7 +815,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://bellarmineknights.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://bellarmineknights.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 325,
@@ -833,7 +854,8 @@
     "ncaa_regionals": 2,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": null
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 292,
@@ -871,7 +893,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://bcuathletics.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://bcuathletics.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 255,
@@ -909,7 +932,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://bubearcats.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://bubearcats.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 31,
@@ -947,7 +971,8 @@
     "ncaa_regionals": 3,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://bceagles.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://bceagles.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 306,
@@ -985,7 +1010,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": null
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 148,
@@ -1023,7 +1049,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://bradleybraves.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://bradleybraves.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 223,
@@ -1061,7 +1088,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://brownbears.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://brownbears.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 258,
@@ -1099,7 +1127,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://bryantbulldogs.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://bryantbulldogs.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 214,
@@ -1137,7 +1166,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://bucknellbison.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://bucknellbison.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 113,
@@ -1175,7 +1205,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://butlersports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://butlersports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 128,
@@ -1213,7 +1244,8 @@
     "ncaa_regionals": 4,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://gopoly.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://gopoly.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 134,
@@ -1251,7 +1283,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://gorunners.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://gorunners.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 124,
@@ -1289,7 +1322,8 @@
     "ncaa_regionals": 15,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://fullertontitans.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://fullertontitans.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 133,
@@ -1327,7 +1361,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://gomatadors.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://gomatadors.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 32,
@@ -1365,7 +1400,8 @@
     "ncaa_regionals": 4,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://calbears.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://calbears.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 198,
@@ -1403,7 +1439,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://cbulancers.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://cbulancers.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 317,
@@ -1441,7 +1478,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": null
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 242,
@@ -1479,7 +1517,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://gogriffs.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://gogriffs.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 171,
@@ -1517,7 +1556,8 @@
     "ncaa_regionals": 1,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://ucasports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://ucasports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 262,
@@ -1555,7 +1595,8 @@
     "ncaa_regionals": 2,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://ccsubluedevils.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://ccsubluedevils.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 307,
@@ -1593,7 +1634,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": null
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 151,
@@ -1631,7 +1673,8 @@
     "ncaa_regionals": 3,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://cofcsports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://cofcsports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 295,
@@ -1669,7 +1712,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": null
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 73,
@@ -1707,7 +1751,8 @@
     "ncaa_regionals": 2,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://charlotte49ers.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://charlotte49ers.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 44,
@@ -1745,7 +1790,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://gobearcats.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://gobearcats.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 19,
@@ -1759,7 +1805,7 @@
     "division": "D1",
     "public_private": "Public",
     "conference": "ACC",
-    "current_ranking": 11,
+    "current_ranking": 19,
     "tuition": 15558,
     "instagram": "@clemsonbaseball",
     "x_account": "@ClemsonBaseball",
@@ -1783,7 +1829,8 @@
     "ncaa_regionals": 18,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://clemsontigers.com/sport/baseball/recruit-questionnaire/"
+    "recruiting_questionnaire_url": "https://clemsontigers.com/sport/baseball/recruit-questionnaire/",
+    "nil_url": null
   },
   {
     "id": 82,
@@ -1797,7 +1844,7 @@
     "division": "D1",
     "public_private": "Public",
     "conference": "Sun Belt",
-    "current_ranking": null,
+    "current_ranking": 6,
     "tuition": 12060,
     "instagram": "@ccubaseball",
     "x_account": "@CoastalBaseball",
@@ -1821,7 +1868,8 @@
     "ncaa_regionals": 10,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://goccusports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://goccusports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 219,
@@ -1859,7 +1907,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://gocolumbialions.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://gocolumbialions.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 106,
@@ -1897,7 +1946,8 @@
     "ncaa_regionals": 5,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://uconnhuskies.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://uconnhuskies.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 278,
@@ -1935,7 +1985,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://coppinstatesports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://coppinstatesports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 224,
@@ -1973,7 +2024,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://cornellbigred.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://cornellbigred.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 107,
@@ -2011,7 +2063,8 @@
     "ncaa_regionals": 6,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://gocreighton.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://gocreighton.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 142,
@@ -2049,7 +2102,8 @@
     "ncaa_regionals": 7,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://dbupatriots.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://dbupatriots.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 222,
@@ -2087,7 +2141,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://dartmouthsports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://dartmouthsports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 228,
@@ -2125,7 +2180,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://davidsonwildcats.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://davidsonwildcats.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 229,
@@ -2163,7 +2219,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://daytonflyers.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://daytonflyers.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 159,
@@ -2201,7 +2258,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://bluehens.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://bluehens.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 279,
@@ -2239,7 +2297,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://dsuhornets.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://dsuhornets.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 26,
@@ -2277,7 +2336,8 @@
     "ncaa_regionals": 6,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://goduke.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://goduke.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 176,
@@ -2315,7 +2375,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://etsubucs.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://etsubucs.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 68,
@@ -2353,7 +2414,8 @@
     "ncaa_regionals": 12,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://ecupirates.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://ecupirates.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 316,
@@ -2391,7 +2453,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": null
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 169,
@@ -2429,7 +2492,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://ekusports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://ekusports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 308,
@@ -2467,7 +2531,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": null
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 153,
@@ -2505,7 +2570,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://elonphoenix.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://elonphoenix.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 147,
@@ -2543,7 +2609,8 @@
     "ncaa_regionals": 3,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://gopurpleaces.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://gopurpleaces.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 74,
@@ -2581,7 +2648,8 @@
     "ncaa_regionals": 4,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://fausports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://fausports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 102,
@@ -2619,7 +2687,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://fiusports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://fiusports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 241,
@@ -2657,7 +2726,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://fairfieldstags.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://fairfieldstags.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 266,
@@ -2695,7 +2765,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://fduknights.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://fduknights.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 4,
@@ -2709,7 +2780,7 @@
     "division": "D1",
     "public_private": "Public",
     "conference": "SEC",
-    "current_ranking": 4,
+    "current_ranking": 13,
     "tuition": 6380,
     "instagram": "@gatorsbb",
     "x_account": "@GatorsBB",
@@ -2733,7 +2804,8 @@
     "ncaa_regionals": 20,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://floridagators.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://floridagators.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 294,
@@ -2771,7 +2843,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://famuathletics.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://famuathletics.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 167,
@@ -2809,7 +2882,8 @@
     "ncaa_regionals": 1,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://fgcuathletics.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://fgcuathletics.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 20,
@@ -2823,7 +2897,7 @@
     "division": "D1",
     "public_private": "Public",
     "conference": "ACC",
-    "current_ranking": 12,
+    "current_ranking": 16,
     "tuition": 6517,
     "instagram": "@nolebaseball",
     "x_account": "@FSUBaseball",
@@ -2847,7 +2921,8 @@
     "ncaa_regionals": 22,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://seminoles.com/sport/baseball/recruit-questionnaire/"
+    "recruiting_questionnaire_url": "https://seminoles.com/sport/baseball/recruit-questionnaire/",
+    "nil_url": null
   },
   {
     "id": 231,
@@ -2885,7 +2960,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://fordhamsports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://fordhamsports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 136,
@@ -2923,7 +2999,8 @@
     "ncaa_regionals": 8,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://gobulldogs.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://gobulldogs.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 296,
@@ -2961,7 +3038,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": null
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 227,
@@ -2999,7 +3077,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://gomason.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://gomason.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 235,
@@ -3037,7 +3116,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://gwsports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://gwsports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 112,
@@ -3075,7 +3155,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://guhoyas.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://guhoyas.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 12,
@@ -3089,7 +3170,7 @@
     "division": "D1",
     "public_private": "Public",
     "conference": "SEC",
-    "current_ranking": 22,
+    "current_ranking": 15,
     "tuition": 12080,
     "instagram": "@ugabaseball",
     "x_account": "@BaseballUGA",
@@ -3113,7 +3194,8 @@
     "ncaa_regionals": 13,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://georgiadogs.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://georgiadogs.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 84,
@@ -3151,7 +3233,8 @@
     "ncaa_regionals": 3,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://gseagles.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://gseagles.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 88,
@@ -3189,7 +3272,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://georgiastatesports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://georgiastatesports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 27,
@@ -3203,7 +3287,7 @@
     "division": "D1",
     "public_private": "Public",
     "conference": "ACC",
-    "current_ranking": null,
+    "current_ranking": 5,
     "tuition": 12682,
     "instagram": "@gtbaseball",
     "x_account": "@GTBaseball",
@@ -3227,7 +3311,8 @@
     "ncaa_regionals": 12,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://ramblinwreck.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://ramblinwreck.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 115,
@@ -3265,7 +3350,8 @@
     "ncaa_regionals": 4,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://gozags.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://gozags.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 284,
@@ -3303,7 +3389,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://gsutigers.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://gsutigers.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 193,
@@ -3341,7 +3428,8 @@
     "ncaa_regionals": 1,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://gculopes.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://gculopes.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 162,
@@ -3379,7 +3467,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://hamptonpirates.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://hamptonpirates.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 217,
@@ -3417,7 +3506,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://gocrimson.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://gocrimson.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 127,
@@ -3455,7 +3545,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://hawaiiathletics.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://hawaiiathletics.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 297,
@@ -3493,7 +3584,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": null
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 157,
@@ -3531,7 +3623,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://gohofstra.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://gohofstra.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 215,
@@ -3569,7 +3662,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://goholycross.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://goholycross.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 42,
@@ -3607,7 +3701,8 @@
     "ncaa_regionals": 7,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://uhcougars.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://uhcougars.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 190,
@@ -3645,7 +3740,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://hcuhuskies.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://hcuhuskies.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 63,
@@ -3683,7 +3779,8 @@
     "ncaa_regionals": 3,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://fightingillini.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://fightingillini.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 146,
@@ -3721,7 +3818,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://goredbirds.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://goredbirds.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 191,
@@ -3759,7 +3857,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://uiwcardinals.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://uiwcardinals.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 52,
@@ -3797,7 +3896,8 @@
     "ncaa_regionals": 5,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://iuhoosiers.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://iuhoosiers.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 144,
@@ -3835,7 +3935,8 @@
     "ncaa_regionals": 4,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://gosycamores.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://gosycamores.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 243,
@@ -3873,7 +3974,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://icgaels.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://icgaels.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 56,
@@ -3911,7 +4013,8 @@
     "ncaa_regionals": 3,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://hawkeyesports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://hawkeyesports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 285,
@@ -3949,7 +4052,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://jsutigers.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://jsutigers.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 164,
@@ -3987,7 +4091,8 @@
     "ncaa_regionals": 2,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://judolphins.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://judolphins.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 101,
@@ -4025,7 +4130,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://jsugamecocksports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://jsugamecocksports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 89,
@@ -4063,7 +4169,8 @@
     "ncaa_regionals": 3,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://jmusports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://jmusports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 49,
@@ -4101,7 +4208,8 @@
     "ncaa_regionals": 2,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://kuathletics.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://kuathletics.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 38,
@@ -4139,7 +4247,8 @@
     "ncaa_regionals": 3,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://kstatesports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://kstatesports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 103,
@@ -4177,7 +4286,8 @@
     "ncaa_regionals": 2,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://ksuowls.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://ksuowls.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 309,
@@ -4215,7 +4325,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": null
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 14,
@@ -4229,7 +4340,7 @@
     "division": "D1",
     "public_private": "Public",
     "conference": "SEC",
-    "current_ranking": null,
+    "current_ranking": 18,
     "tuition": 12360,
     "instagram": "@ukbaseball",
     "x_account": "@UKBaseball",
@@ -4253,7 +4364,8 @@
     "ncaa_regionals": 8,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://ukathletics.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://ukathletics.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 263,
@@ -4291,7 +4403,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://liuathletics.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://liuathletics.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 118,
@@ -4329,7 +4442,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://lmulions.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://lmulions.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 1,
@@ -4343,7 +4457,7 @@
     "division": "D1",
     "public_private": "Public",
     "conference": "SEC",
-    "current_ranking": 1,
+    "current_ranking": 2,
     "tuition": 11962,
     "instagram": "@lsubaseball",
     "x_account": "@LSUbaseball",
@@ -4367,7 +4481,8 @@
     "ncaa_regionals": 22,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://lsusports.net/sport/baseball/recruit-questionnaire/"
+    "recruiting_questionnaire_url": "https://lsusports.net/sport/baseball/recruit-questionnaire/",
+    "nil_url": "https://lsusports.net/nilsu/"
   },
   {
     "id": 234,
@@ -4405,7 +4520,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://goexplorers.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://goexplorers.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 216,
@@ -4443,7 +4559,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://goleopards.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://goleopards.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 189,
@@ -4481,7 +4598,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://lamarcardinals.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://lamarcardinals.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 268,
@@ -4519,7 +4637,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://lemoynesports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://lemoynesports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 213,
@@ -4557,7 +4676,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://lehighsports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://lehighsports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 96,
@@ -4595,7 +4715,8 @@
     "ncaa_regionals": 5,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://libertyflames.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://libertyflames.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 208,
@@ -4633,7 +4754,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://lindenwoodlions.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://lindenwoodlions.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 165,
@@ -4671,7 +4793,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://lipscombsports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://lipscombsports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 209,
@@ -4709,7 +4832,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://lrtrojans.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://lrtrojans.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 125,
@@ -4747,7 +4871,8 @@
     "ncaa_regionals": 8,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://longbeachstate.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://longbeachstate.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 298,
@@ -4785,7 +4910,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": null
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 83,
@@ -4823,7 +4949,8 @@
     "ncaa_regionals": 10,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://ragincajuns.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://ragincajuns.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 97,
@@ -4861,7 +4988,8 @@
     "ncaa_regionals": 6,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://latechsports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://latechsports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 90,
@@ -4899,7 +5027,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://ulmwarhawks.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://ulmwarhawks.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 24,
@@ -4913,7 +5042,7 @@
     "division": "D1",
     "public_private": "Public",
     "conference": "ACC",
-    "current_ranking": 17,
+    "current_ranking": 8,
     "tuition": 12246,
     "instagram": "@louisvillebsb",
     "x_account": "@LouisvilleBSB",
@@ -4937,7 +5066,8 @@
     "ncaa_regionals": 14,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://gocards.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://gocards.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 257,
@@ -4975,7 +5105,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://goblackbears.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://goblackbears.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 322,
@@ -5013,7 +5144,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": null
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 240,
@@ -5051,7 +5183,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://goredfoxes.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://goredfoxes.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 91,
@@ -5089,7 +5222,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://herdzone.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://herdzone.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 55,
@@ -5127,7 +5261,8 @@
     "ncaa_regionals": 6,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://umterps.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://umterps.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 281,
@@ -5165,7 +5300,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://umeshawks.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://umeshawks.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 236,
@@ -5203,7 +5339,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://umassathletics.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://umassathletics.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 185,
@@ -5241,7 +5378,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://mcneesesports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://mcneesesports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 71,
@@ -5279,7 +5417,8 @@
     "ncaa_regionals": 2,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://gotigersgo.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://gotigersgo.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 177,
@@ -5317,7 +5456,8 @@
     "ncaa_regionals": 2,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://mercerbears.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://mercerbears.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 326,
@@ -5355,7 +5495,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": null
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 265,
@@ -5393,7 +5534,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://merrimackathletics.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://merrimackathletics.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 21,
@@ -5407,7 +5549,7 @@
     "division": "D1",
     "public_private": "Private",
     "conference": "ACC",
-    "current_ranking": 13,
+    "current_ranking": 22,
     "tuition": 57194,
     "instagram": "@canesbaseball",
     "x_account": "@CanesBaseball",
@@ -5431,7 +5573,8 @@
     "ncaa_regionals": 20,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://miamihurricanes.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://miamihurricanes.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 310,
@@ -5469,7 +5612,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": null
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 51,
@@ -5507,7 +5651,8 @@
     "ncaa_regionals": 8,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://mgoblue.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://mgoblue.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 59,
@@ -5545,7 +5690,8 @@
     "ncaa_regionals": 2,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://msuspartans.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://msuspartans.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 100,
@@ -5583,7 +5729,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://goblueraiders.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://goblueraiders.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 249,
@@ -5621,7 +5768,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://mkepanthers.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://mkepanthers.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 57,
@@ -5659,7 +5807,8 @@
     "ncaa_regionals": 4,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://gophersports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://gophersports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 9,
@@ -5673,7 +5822,7 @@
     "division": "D1",
     "public_private": "Public",
     "conference": "SEC",
-    "current_ranking": 15,
+    "current_ranking": 4,
     "tuition": 9258,
     "instagram": "@hailstatebb",
     "x_account": "@HailStateBB",
@@ -5697,7 +5846,8 @@
     "ncaa_regionals": 18,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://hailstate.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://hailstate.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 293,
@@ -5735,7 +5885,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://mvsusports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://mvsusports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 15,
@@ -5773,7 +5924,8 @@
     "ncaa_regionals": 6,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://mutigers.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://mutigers.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 143,
@@ -5811,7 +5963,8 @@
     "ncaa_regionals": 5,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://missouristatebears.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://missouristatebears.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 161,
@@ -5849,7 +6002,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://monmouthhawks.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://monmouthhawks.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 203,
@@ -5887,7 +6041,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://msueagles.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://msueagles.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 323,
@@ -5925,7 +6080,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": null
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 204,
@@ -5963,7 +6119,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://goracers.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://goracers.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 163,
@@ -6001,7 +6158,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://ncataggies.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://ncataggies.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 22,
@@ -6015,7 +6173,7 @@
     "division": "D1",
     "public_private": "Public",
     "conference": "ACC",
-    "current_ranking": 14,
+    "current_ranking": 17,
     "tuition": 9128,
     "instagram": "@packbaseball",
     "x_account": "@NCStateBaseball",
@@ -6039,7 +6197,8 @@
     "ncaa_regionals": 11,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://gopack.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://gopack.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 259,
@@ -6077,7 +6236,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://njithighlanders.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://njithighlanders.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 75,
@@ -6115,7 +6275,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://navysports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://navysports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 54,
@@ -6153,7 +6314,8 @@
     "ncaa_regionals": 6,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://huskers.com/sport/baseball/recruit-questionnaire/"
+    "recruiting_questionnaire_url": "https://huskers.com/sport/baseball/recruit-questionnaire/",
+    "nil_url": null
   },
   {
     "id": 138,
@@ -6191,7 +6353,8 @@
     "ncaa_regionals": 2,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://nevadawolfpack.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://nevadawolfpack.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 327,
@@ -6229,7 +6392,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": null
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 139,
@@ -6267,7 +6431,8 @@
     "ncaa_regionals": 2,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://golobos.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://golobos.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 104,
@@ -6305,7 +6470,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://nmstatesports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://nmstatesports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 320,
@@ -6343,7 +6509,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": null
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 244,
@@ -6381,7 +6548,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://purpleeagles.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://purpleeagles.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 188,
@@ -6419,7 +6587,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://geauxcolonels.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://geauxcolonels.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 276,
@@ -6457,7 +6626,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://nsuspartans.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://nsuspartans.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 173,
@@ -6495,7 +6665,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://roarlions.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://roarlions.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 23,
@@ -6509,7 +6680,7 @@
     "division": "D1",
     "public_private": "Public",
     "conference": "ACC",
-    "current_ranking": 16,
+    "current_ranking": 11,
     "tuition": 8980,
     "instagram": "@diamondheels",
     "x_account": "@DiamondHeels",
@@ -6533,7 +6704,8 @@
     "ncaa_regionals": 16,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://goheels.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://goheels.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 272,
@@ -6571,7 +6743,8 @@
     "ncaa_regionals": 1,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://gobison.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://gobison.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 168,
@@ -6609,7 +6782,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://unfospreys.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://unfospreys.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 76,
@@ -6647,7 +6821,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://meangreensports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://meangreensports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 152,
@@ -6685,7 +6860,8 @@
     "ncaa_regionals": 4,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://nuhuskies.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://nuhuskies.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 319,
@@ -6723,7 +6899,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": null
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 311,
@@ -6761,7 +6938,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": null
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 248,
@@ -6799,7 +6977,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://nkunorse.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://nkunorse.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 62,
@@ -6837,7 +7016,8 @@
     "ncaa_regionals": 2,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://nusports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://nusports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 187,
@@ -6875,7 +7055,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://nsudemons.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://nsudemons.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 30,
@@ -6913,7 +7094,8 @@
     "ncaa_regionals": 11,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://und.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://und.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 252,
@@ -6951,7 +7133,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://goldengrizzlies.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://goldengrizzlies.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 312,
@@ -6989,7 +7172,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": null
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 53,
@@ -7027,7 +7211,8 @@
     "ncaa_regionals": 8,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://ohiostatebuckeyes.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://ohiostatebuckeyes.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 16,
@@ -7065,7 +7250,8 @@
     "ncaa_regionals": 14,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://soonersports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://soonersports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 36,
@@ -7079,7 +7265,7 @@
     "division": "D1",
     "public_private": "Public",
     "conference": "Big 12",
-    "current_ranking": 23,
+    "current_ranking": null,
     "tuition": 9018,
     "instagram": "@osubaseball",
     "x_account": "@OSUBaseball",
@@ -7103,7 +7289,8 @@
     "ncaa_regionals": 18,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://okstate.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://okstate.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 92,
@@ -7141,7 +7328,8 @@
     "ncaa_regionals": 5,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://odusports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://odusports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 8,
@@ -7155,7 +7343,7 @@
     "division": "D1",
     "public_private": "Public",
     "conference": "SEC",
-    "current_ranking": 10,
+    "current_ranking": null,
     "tuition": 8790,
     "instagram": "@olemissbaseball",
     "x_account": "@OleMissBSB",
@@ -7179,7 +7367,8 @@
     "ncaa_regionals": 14,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://olemisssports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://olemisssports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 271,
@@ -7217,7 +7406,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://omavs.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://omavs.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 270,
@@ -7255,7 +7445,8 @@
     "ncaa_regionals": 8,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://orugoldeneagles.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://orugoldeneagles.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 67,
@@ -7293,7 +7484,8 @@
     "ncaa_regionals": 6,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://goducks.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://goducks.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 50,
@@ -7306,8 +7498,8 @@
     "longitude": -123.262,
     "division": "D1",
     "public_private": "Public",
-    "conference": "Big Ten",
-    "current_ranking": 24,
+    "conference": "Independent",
+    "current_ranking": 12,
     "tuition": 11715,
     "instagram": "@beaverbaseball",
     "x_account": "@BeaverBaseball",
@@ -7331,7 +7523,8 @@
     "ncaa_regionals": 14,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://osubeavers.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://osubeavers.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": "https://osubeavers.com/feature/NIL"
   },
   {
     "id": 121,
@@ -7369,7 +7562,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://pacifictigers.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://pacifictigers.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 220,
@@ -7407,7 +7601,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://pennathletics.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://pennathletics.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 58,
@@ -7445,7 +7640,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://gopsusports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://gopsusports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 117,
@@ -7483,7 +7679,8 @@
     "ncaa_regionals": 8,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://pepperdinewaves.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://pepperdinewaves.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 315,
@@ -7521,7 +7718,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": null
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 123,
@@ -7559,7 +7757,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://portlandpilots.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://portlandpilots.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 290,
@@ -7597,7 +7796,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://pvpanthers.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://pvpanthers.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 299,
@@ -7635,7 +7835,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": null
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 221,
@@ -7673,7 +7874,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://goprincetontigers.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://goprincetontigers.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 60,
@@ -7711,7 +7913,8 @@
     "ncaa_regionals": 2,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://purduesports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://purduesports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 174,
@@ -7749,7 +7952,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://queensroyals.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://queensroyals.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 238,
@@ -7787,7 +7991,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://quinnipiacbobcats.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://quinnipiacbobcats.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 300,
@@ -7825,7 +8030,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": null
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 232,
@@ -7863,7 +8069,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://gorhody.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://gorhody.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 72,
@@ -7901,7 +8108,8 @@
     "ncaa_regionals": 14,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://riceowls.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://riceowls.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 226,
@@ -7939,7 +8147,8 @@
     "ncaa_regionals": 2,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://richmondspiders.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://richmondspiders.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 239,
@@ -7977,7 +8186,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://gobroncs.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://gobroncs.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 61,
@@ -8015,7 +8225,8 @@
     "ncaa_regionals": 2,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://scarletknights.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://scarletknights.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 205,
@@ -8053,7 +8264,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://gosoutheast.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://gosoutheast.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 206,
@@ -8091,7 +8303,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://siuecougars.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://siuecougars.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 324,
@@ -8129,7 +8342,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": null
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 264,
@@ -8167,7 +8381,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://sacredheartpioneers.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://sacredheartpioneers.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 230,
@@ -8205,7 +8420,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://sjuhawks.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://sjuhawks.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 233,
@@ -8243,7 +8459,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://slubillikens.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://slubillikens.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 122,
@@ -8281,7 +8498,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://smcgaels.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://smcgaels.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 245,
@@ -8319,7 +8537,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://saintpeterspeacocks.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://saintpeterspeacocks.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 98,
@@ -8357,7 +8576,8 @@
     "ncaa_regionals": 5,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://gobearkats.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://gobearkats.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 175,
@@ -8395,7 +8615,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://samfordsports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://samfordsports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 116,
@@ -8433,7 +8654,8 @@
     "ncaa_regionals": 4,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://usdtoreros.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://usdtoreros.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 135,
@@ -8471,7 +8693,8 @@
     "ncaa_regionals": 3,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://goaztecs.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://goaztecs.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 120,
@@ -8509,7 +8732,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://usfdons.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://usfdons.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 141,
@@ -8547,7 +8771,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://sjsuspartans.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://sjsuspartans.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 119,
@@ -8585,7 +8810,8 @@
     "ncaa_regionals": 5,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://santaclarabroncos.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://santaclarabroncos.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 328,
@@ -8623,7 +8849,8 @@
     "ncaa_regionals": 1,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": null
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 111,
@@ -8661,7 +8888,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://shupirates.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://shupirates.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 246,
@@ -8699,7 +8927,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://sienasaints.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://sienasaints.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 93,
@@ -8737,7 +8966,8 @@
     "ncaa_regionals": 5,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://usajaguars.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://usajaguars.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 10,
@@ -8751,7 +8981,7 @@
     "division": "D1",
     "public_private": "Public",
     "conference": "SEC",
-    "current_ranking": 18,
+    "current_ranking": null,
     "tuition": 12688,
     "instagram": "@gamecockbsb",
     "x_account": "@GamecockBSB",
@@ -8775,7 +9005,8 @@
     "ncaa_regionals": 18,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://gamecocksonline.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://gamecocksonline.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 273,
@@ -8813,7 +9044,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://gojacks.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://gojacks.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 77,
@@ -8851,7 +9083,8 @@
     "ncaa_regionals": 7,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://gousfbulls.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://gousfbulls.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 186,
@@ -8889,7 +9122,8 @@
     "ncaa_regionals": 4,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://lionsports.net/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://lionsports.net/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 283,
@@ -8927,7 +9161,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://gojagsports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://gojagsports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 145,
@@ -8965,7 +9200,8 @@
     "ncaa_regionals": 3,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://siusalukis.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://siusalukis.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 210,
@@ -9003,7 +9239,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://gousieagles.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://gousieagles.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 85,
@@ -9017,7 +9254,7 @@
     "division": "D1",
     "public_private": "Public",
     "conference": "Sun Belt",
-    "current_ranking": null,
+    "current_ranking": 20,
     "tuition": 9316,
     "instagram": "@southernmissbsb",
     "x_account": "@SouthernMissBSB",
@@ -9041,7 +9278,8 @@
     "ncaa_regionals": 12,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://southernmiss.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://southernmiss.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 237,
@@ -9079,7 +9317,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://gobonnies.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://gobonnies.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 110,
@@ -9117,7 +9356,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://redstormsports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://redstormsports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 318,
@@ -9155,7 +9395,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": null
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 25,
@@ -9169,7 +9410,7 @@
     "division": "D1",
     "public_private": "Private",
     "conference": "ACC",
-    "current_ranking": 19,
+    "current_ranking": null,
     "tuition": 61731,
     "instagram": "@stanfordbsb",
     "x_account": "@StanfordBSB",
@@ -9193,7 +9434,8 @@
     "ncaa_regionals": 20,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://gostanford.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://gostanford.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 194,
@@ -9231,7 +9473,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://sfajacks.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://sfajacks.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 166,
@@ -9269,7 +9512,8 @@
     "ncaa_regionals": 4,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://gohatters.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://gohatters.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 269,
@@ -9307,7 +9551,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://stonehillskyhawks.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://stonehillskyhawks.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 158,
@@ -9345,7 +9590,8 @@
     "ncaa_regionals": 2,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://stonybrookathletics.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://stonybrookathletics.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 35,
@@ -9359,7 +9605,7 @@
     "division": "D1",
     "public_private": "Private",
     "conference": "Big 12",
-    "current_ranking": 21,
+    "current_ranking": 10,
     "tuition": 55760,
     "instagram": "@tcubaseball",
     "x_account": "@TCU_Baseball",
@@ -9383,7 +9629,8 @@
     "ncaa_regionals": 11,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://gofrogs.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://gofrogs.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 196,
@@ -9421,7 +9668,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://tarletonsports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://tarletonsports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 78,
@@ -9459,7 +9707,8 @@
     "ncaa_regionals": 1,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://owlsports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://owlsports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 2,
@@ -9473,11 +9722,11 @@
     "division": "D1",
     "public_private": "Public",
     "conference": "SEC",
-    "current_ranking": 2,
+    "current_ranking": 14,
     "tuition": 13244,
     "instagram": "@vol_baseball",
     "x_account": "@Vol_Baseball",
-    "head_coach_name": "Tony Vitello",
+    "head_coach_name": "Josh Elander",
     "head_coach_email": "baseball@utk.edu",
     "assistant_coach_name": "Ross Kivett",
     "assistant_coach_email": "baseball@utk.edu",
@@ -9497,7 +9746,8 @@
     "ncaa_regionals": 11,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://utsports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://utsports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 211,
@@ -9535,7 +9785,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://tsutigers.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://tsutigers.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 202,
@@ -9573,7 +9824,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://ttusports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://ttusports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 6,
@@ -9587,11 +9839,11 @@
     "division": "D1",
     "public_private": "Public",
     "conference": "SEC",
-    "current_ranking": 6,
+    "current_ranking": 3,
     "tuition": 11448,
     "instagram": "@texasbaseball",
     "x_account": "@TexasBaseball",
-    "head_coach_name": "David Pierce",
+    "head_coach_name": "Jim Schlossnagle",
     "head_coach_email": "baseball@athletics.utexas.edu",
     "assistant_coach_name": "Sean Allen",
     "assistant_coach_email": "baseball@athletics.utexas.edu",
@@ -9611,7 +9863,8 @@
     "ncaa_regionals": 22,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://texassports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://texassports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 3,
@@ -9625,7 +9878,7 @@
     "division": "D1",
     "public_private": "Public",
     "conference": "SEC",
-    "current_ranking": 3,
+    "current_ranking": 25,
     "tuition": 12413,
     "instagram": "@aggiebaseball",
     "x_account": "@AggieBaseball",
@@ -9649,7 +9902,8 @@
     "ncaa_regionals": 14,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://12thman.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://12thman.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 192,
@@ -9687,7 +9941,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://goislanders.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://goislanders.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 289,
@@ -9725,7 +9980,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://tsusports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://tsusports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 94,
@@ -9763,7 +10019,8 @@
     "ncaa_regionals": 3,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://txstatebobcats.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://txstatebobcats.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 39,
@@ -9801,7 +10058,8 @@
     "ncaa_regionals": 10,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://texastech.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://texastech.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 178,
@@ -9839,7 +10097,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://citadelsports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://citadelsports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 313,
@@ -9877,7 +10136,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": null
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 156,
@@ -9915,7 +10175,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://towsontigers.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://towsontigers.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 95,
@@ -9953,7 +10214,8 @@
     "ncaa_regionals": 2,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://troytrojans.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://troytrojans.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 69,
@@ -9991,7 +10253,8 @@
     "ncaa_regionals": 10,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://tulanegreenwave.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://tulanegreenwave.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 79,
@@ -10029,7 +10292,8 @@
     "ncaa_regionals": 3,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://tulsahurricane.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://tulsahurricane.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 80,
@@ -10067,7 +10331,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://uabsports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://uabsports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 131,
@@ -10105,7 +10370,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://ucdavisaggies.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://ucdavisaggies.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 126,
@@ -10143,7 +10409,8 @@
     "ncaa_regionals": 6,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://ucirvinesports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://ucirvinesports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 130,
@@ -10181,7 +10448,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://gohighlanders.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://gohighlanders.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 132,
@@ -10219,7 +10487,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://ucsdtritons.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://ucsdtritons.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 129,
@@ -10257,7 +10526,8 @@
     "ncaa_regionals": 6,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://ucsbgauchos.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://ucsbgauchos.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 41,
@@ -10295,7 +10565,8 @@
     "ncaa_regionals": 5,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://ucfknights.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://ucfknights.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 65,
@@ -10309,7 +10580,7 @@
     "division": "D1",
     "public_private": "Public",
     "conference": "Big Ten",
-    "current_ranking": null,
+    "current_ranking": 1,
     "tuition": 13804,
     "instagram": "@uclabaseball",
     "x_account": "@UCLABaseball",
@@ -10333,7 +10604,8 @@
     "ncaa_regionals": 13,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://uclabruins.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://uclabruins.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 150,
@@ -10371,7 +10643,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://uicflames.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://uicflames.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 254,
@@ -10409,7 +10682,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://umbcretrievers.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://umbcretrievers.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 260,
@@ -10447,7 +10721,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://goriverhawks.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://goriverhawks.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 301,
@@ -10485,7 +10760,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": null
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 181,
@@ -10523,7 +10799,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://uncgspartans.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://uncgspartans.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 154,
@@ -10561,7 +10838,8 @@
     "ncaa_regionals": 4,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://uncwsports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://uncwsports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 137,
@@ -10599,7 +10877,8 @@
     "ncaa_regionals": 4,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://unlvrebels.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://unlvrebels.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 64,
@@ -10637,7 +10916,8 @@
     "ncaa_regionals": 15,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://usctrojans.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://usctrojans.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 302,
@@ -10675,7 +10955,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": null
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 197,
@@ -10713,7 +10994,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://utamavs.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://utamavs.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 207,
@@ -10751,7 +11033,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://utmsports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://utmsports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 321,
@@ -10789,7 +11072,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": null
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 81,
@@ -10827,7 +11111,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://goutsa.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://goutsa.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 48,
@@ -10865,7 +11150,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://utahutes.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://utahutes.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 201,
@@ -10903,7 +11189,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://utahtechblazers.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://utahtechblazers.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 200,
@@ -10941,7 +11228,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://wolverinegreen.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://wolverinegreen.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 225,
@@ -10979,7 +11267,8 @@
     "ncaa_regionals": 3,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://vcuathletics.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://vcuathletics.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 183,
@@ -11017,7 +11306,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://vmikeydets.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://vmikeydets.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 149,
@@ -11055,7 +11345,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://valpoathletics.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://valpoathletics.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 5,
@@ -11069,7 +11360,7 @@
     "division": "D1",
     "public_private": "Private",
     "conference": "SEC",
-    "current_ranking": 5,
+    "current_ranking": 23,
     "tuition": 60348,
     "instagram": "@vandybaseball",
     "x_account": "@VandyBoys",
@@ -11093,7 +11384,8 @@
     "ncaa_regionals": 14,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://vucommodores.com/sport/baseball/recruit-questionnaire/"
+    "recruiting_questionnaire_url": "https://vucommodores.com/sport/baseball/recruit-questionnaire/",
+    "nil_url": null
   },
   {
     "id": 109,
@@ -11131,7 +11423,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://villanova.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://villanova.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 18,
@@ -11145,11 +11438,11 @@
     "division": "D1",
     "public_private": "Public",
     "conference": "ACC",
-    "current_ranking": 9,
+    "current_ranking": null,
     "tuition": 19014,
     "instagram": "@uvabaseball",
     "x_account": "@UVABaseball",
-    "head_coach_name": "Brian O'Connor",
+    "head_coach_name": "Chris Pollard",
     "head_coach_email": "baseball@virginia.edu",
     "assistant_coach_name": "Drew Dickinson",
     "assistant_coach_email": "baseball@virginia.edu",
@@ -11169,7 +11462,8 @@
     "ncaa_regionals": 14,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://virginiasports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://virginiasports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 28,
@@ -11207,7 +11501,8 @@
     "ncaa_regionals": 7,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://hokiesports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://hokiesports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 267,
@@ -11245,7 +11540,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://wagnerathletics.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://wagnerathletics.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 17,
@@ -11259,7 +11555,7 @@
     "division": "D1",
     "public_private": "Private",
     "conference": "ACC",
-    "current_ranking": 7,
+    "current_ranking": 21,
     "tuition": 61788,
     "instagram": "@wakebaseball",
     "x_account": "@WakeBaseball",
@@ -11283,7 +11579,8 @@
     "ncaa_regionals": 10,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://godeacs.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://godeacs.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 66,
@@ -11321,7 +11618,8 @@
     "ncaa_regionals": 3,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://gohuskies.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://gohuskies.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 329,
@@ -11359,7 +11657,8 @@
     "ncaa_regionals": 16,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": null
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 330,
@@ -11397,7 +11696,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": null
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 37,
@@ -11435,7 +11735,8 @@
     "ncaa_regionals": 5,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://wvusports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://wvusports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 179,
@@ -11473,7 +11774,8 @@
     "ncaa_regionals": 2,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://catamountsports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://catamountsports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 275,
@@ -11511,7 +11813,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://goleathernecks.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://goleathernecks.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 99,
@@ -11549,7 +11852,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://wkusports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://wkusports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 314,
@@ -11587,7 +11891,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": null
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 70,
@@ -11625,7 +11930,8 @@
     "ncaa_regionals": 9,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://goshockers.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://goshockers.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 155,
@@ -11663,7 +11969,8 @@
     "ncaa_regionals": 1,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://tribeathletics.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://tribeathletics.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 303,
@@ -11701,7 +12008,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": null
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 182,
@@ -11739,7 +12047,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://woffordterriers.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://woffordterriers.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 247,
@@ -11777,7 +12086,8 @@
     "ncaa_regionals": 3,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://wsuraiders.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://wsuraiders.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 108,
@@ -11815,7 +12125,8 @@
     "ncaa_regionals": 2,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://goxavier.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://goxavier.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 218,
@@ -11853,7 +12164,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://yalebulldogs.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://yalebulldogs.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 250,
@@ -11891,7 +12203,8 @@
     "ncaa_regionals": 0,
     "roster_size": 35,
     "scholarship_limit": 11.7,
-    "recruiting_questionnaire_url": "https://ysusports.com/sports/baseball/form/recruit-questionnaire"
+    "recruiting_questionnaire_url": "https://ysusports.com/sports/baseball/form/recruit-questionnaire",
+    "nil_url": null
   },
   {
     "id": 331,
@@ -11928,8 +12241,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 332,
@@ -11966,8 +12280,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 333,
@@ -12004,8 +12319,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 334,
@@ -12042,8 +12358,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 335,
@@ -12080,8 +12397,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 336,
@@ -12118,8 +12436,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 337,
@@ -12156,8 +12475,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 338,
@@ -12194,8 +12514,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 531,
@@ -12232,8 +12553,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 532,
@@ -12270,8 +12592,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 339,
@@ -12308,8 +12631,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 340,
@@ -12346,8 +12670,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 341,
@@ -12384,8 +12709,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 342,
@@ -12422,8 +12748,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 343,
@@ -12460,8 +12787,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 344,
@@ -12498,8 +12826,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 345,
@@ -12536,8 +12865,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 346,
@@ -12574,8 +12904,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 347,
@@ -12612,8 +12943,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 348,
@@ -12650,8 +12982,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 349,
@@ -12688,8 +13021,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 350,
@@ -12726,8 +13060,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 351,
@@ -12764,8 +13099,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 352,
@@ -12802,8 +13138,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 353,
@@ -12840,8 +13177,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 354,
@@ -12878,8 +13216,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 533,
@@ -12916,8 +13255,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 358,
@@ -12954,8 +13294,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 359,
@@ -12992,8 +13333,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 361,
@@ -13030,8 +13372,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 382,
@@ -13068,8 +13411,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 362,
@@ -13106,8 +13450,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 363,
@@ -13144,8 +13489,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 356,
@@ -13182,8 +13528,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 360,
@@ -13220,8 +13567,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 365,
@@ -13258,8 +13606,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 355,
@@ -13296,8 +13645,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 366,
@@ -13334,8 +13684,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 367,
@@ -13372,8 +13723,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 368,
@@ -13410,8 +13762,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 369,
@@ -13448,8 +13801,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 534,
@@ -13486,8 +13840,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 535,
@@ -13524,8 +13879,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 370,
@@ -13562,8 +13918,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 371,
@@ -13600,8 +13957,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 536,
@@ -13638,8 +13996,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 372,
@@ -13676,8 +14035,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 357,
@@ -13714,8 +14074,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 373,
@@ -13752,8 +14113,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 374,
@@ -13790,8 +14152,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 375,
@@ -13828,8 +14191,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 376,
@@ -13866,8 +14230,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 377,
@@ -13904,8 +14269,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 378,
@@ -13942,8 +14308,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 379,
@@ -13980,8 +14347,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 380,
@@ -14018,8 +14386,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 381,
@@ -14056,8 +14425,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 383,
@@ -14094,8 +14464,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 384,
@@ -14132,8 +14503,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 385,
@@ -14170,8 +14542,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 386,
@@ -14208,8 +14581,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 387,
@@ -14246,8 +14620,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 388,
@@ -14284,8 +14659,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 389,
@@ -14322,8 +14698,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 390,
@@ -14360,8 +14737,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 391,
@@ -14398,8 +14776,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 392,
@@ -14436,8 +14815,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 393,
@@ -14474,8 +14854,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 394,
@@ -14512,8 +14893,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 395,
@@ -14550,8 +14932,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 396,
@@ -14588,8 +14971,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 397,
@@ -14626,8 +15010,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 398,
@@ -14664,8 +15049,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 399,
@@ -14702,8 +15088,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 400,
@@ -14740,8 +15127,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 401,
@@ -14778,8 +15166,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 402,
@@ -14816,8 +15205,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 403,
@@ -14854,8 +15244,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 404,
@@ -14892,8 +15283,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 538,
@@ -14930,8 +15322,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 405,
@@ -14968,8 +15361,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 406,
@@ -15006,8 +15400,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 407,
@@ -15044,8 +15439,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 408,
@@ -15082,8 +15478,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 409,
@@ -15120,8 +15517,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 410,
@@ -15158,8 +15556,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 411,
@@ -15196,8 +15595,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 412,
@@ -15234,8 +15634,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 413,
@@ -15272,8 +15673,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 414,
@@ -15310,8 +15712,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 415,
@@ -15348,8 +15751,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 416,
@@ -15386,8 +15790,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 417,
@@ -15424,8 +15829,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 418,
@@ -15462,8 +15868,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 419,
@@ -15500,8 +15907,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 420,
@@ -15538,8 +15946,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 539,
@@ -15576,8 +15985,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 421,
@@ -15614,8 +16024,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 422,
@@ -15652,8 +16063,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 423,
@@ -15690,8 +16102,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 424,
@@ -15728,8 +16141,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 425,
@@ -15766,8 +16180,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 541,
@@ -15804,8 +16219,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 542,
@@ -15842,8 +16258,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 426,
@@ -15880,8 +16297,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 427,
@@ -15918,8 +16336,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 428,
@@ -15956,8 +16375,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 429,
@@ -15994,8 +16414,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 430,
@@ -16032,8 +16453,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 431,
@@ -16070,8 +16492,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 432,
@@ -16108,8 +16531,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 434,
@@ -16146,8 +16570,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 433,
@@ -16184,8 +16609,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 435,
@@ -16222,8 +16648,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 436,
@@ -16260,8 +16687,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 437,
@@ -16298,8 +16726,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 439,
@@ -16336,8 +16765,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 440,
@@ -16374,8 +16804,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 438,
@@ -16412,8 +16843,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 441,
@@ -16450,8 +16882,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 442,
@@ -16488,8 +16921,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 443,
@@ -16526,8 +16960,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 461,
@@ -16564,8 +16999,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 444,
@@ -16602,8 +17038,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 445,
@@ -16640,8 +17077,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 446,
@@ -16678,8 +17116,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 543,
@@ -16716,8 +17155,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 447,
@@ -16754,8 +17194,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 448,
@@ -16792,8 +17233,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 449,
@@ -16830,8 +17272,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 450,
@@ -16868,8 +17311,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 451,
@@ -16906,8 +17350,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 452,
@@ -16944,8 +17389,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 453,
@@ -16982,8 +17428,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 544,
@@ -17020,8 +17467,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 545,
@@ -17058,8 +17506,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 454,
@@ -17096,8 +17545,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 455,
@@ -17134,8 +17584,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 456,
@@ -17172,8 +17623,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 458,
@@ -17210,8 +17662,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 457,
@@ -17248,8 +17701,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 459,
@@ -17286,8 +17740,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 460,
@@ -17324,8 +17779,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 547,
@@ -17362,8 +17818,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 462,
@@ -17400,8 +17857,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 548,
@@ -17438,8 +17896,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 463,
@@ -17476,8 +17935,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 464,
@@ -17514,8 +17974,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 465,
@@ -17552,8 +18013,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 550,
@@ -17590,8 +18052,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 466,
@@ -17628,8 +18091,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 467,
@@ -17666,8 +18130,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 468,
@@ -17704,8 +18169,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 469,
@@ -17742,8 +18208,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 470,
@@ -17780,8 +18247,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 471,
@@ -17818,8 +18286,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 472,
@@ -17856,8 +18325,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 473,
@@ -17894,8 +18364,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 474,
@@ -17932,8 +18403,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 475,
@@ -17970,8 +18442,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 476,
@@ -18008,8 +18481,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 477,
@@ -18046,8 +18520,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 478,
@@ -18084,8 +18559,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 479,
@@ -18122,8 +18598,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 551,
@@ -18160,8 +18637,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 480,
@@ -18198,8 +18676,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 481,
@@ -18236,8 +18715,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 482,
@@ -18274,8 +18754,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 483,
@@ -18312,8 +18793,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 484,
@@ -18350,8 +18832,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 485,
@@ -18388,8 +18871,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 486,
@@ -18426,8 +18910,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 487,
@@ -18464,8 +18949,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 488,
@@ -18502,8 +18988,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 489,
@@ -18540,8 +19027,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 490,
@@ -18578,8 +19066,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 505,
@@ -18616,8 +19105,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 509,
@@ -18654,8 +19144,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 512,
@@ -18692,8 +19183,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 513,
@@ -18730,8 +19222,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 491,
@@ -18768,8 +19261,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 492,
@@ -18806,8 +19300,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 493,
@@ -18844,8 +19339,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 494,
@@ -18882,8 +19378,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 495,
@@ -18920,8 +19417,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 496,
@@ -18958,8 +19456,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 497,
@@ -18996,8 +19495,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 498,
@@ -19034,8 +19534,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 499,
@@ -19072,8 +19573,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 500,
@@ -19110,8 +19612,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 501,
@@ -19148,8 +19651,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 502,
@@ -19186,8 +19690,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 552,
@@ -19224,8 +19729,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 503,
@@ -19262,8 +19768,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 504,
@@ -19300,8 +19807,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 506,
@@ -19338,8 +19846,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 507,
@@ -19376,8 +19885,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 508,
@@ -19414,8 +19924,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 510,
@@ -19452,8 +19963,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 511,
@@ -19490,8 +20002,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 514,
@@ -19528,8 +20041,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 515,
@@ -19566,8 +20080,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 516,
@@ -19604,8 +20119,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 517,
@@ -19642,8 +20158,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 518,
@@ -19680,8 +20197,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 364,
@@ -19718,8 +20236,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 555,
@@ -19756,8 +20275,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 519,
@@ -19794,8 +20314,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 520,
@@ -19832,8 +20353,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 522,
@@ -19870,8 +20392,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 523,
@@ -19908,8 +20431,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 524,
@@ -19946,8 +20470,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 525,
@@ -19984,8 +20509,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 526,
@@ -20022,8 +20548,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 527,
@@ -20060,8 +20587,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 528,
@@ -20098,8 +20626,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 530,
@@ -20136,8 +20665,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 537,
@@ -20174,8 +20704,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 540,
@@ -20212,8 +20743,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 546,
@@ -20250,8 +20782,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 549,
@@ -20288,8 +20821,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 554,
@@ -20326,8 +20860,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 553,
@@ -20364,8 +20899,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 556,
@@ -20402,8 +20938,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 557,
@@ -20440,8 +20977,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 521,
@@ -20478,8 +21016,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 529,
@@ -20516,8 +21055,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 561,
@@ -20554,8 +21094,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 562,
@@ -20592,8 +21133,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 563,
@@ -20630,8 +21172,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 571,
@@ -20668,8 +21211,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 572,
@@ -20706,8 +21250,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 564,
@@ -20744,8 +21289,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 565,
@@ -20782,8 +21328,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 567,
@@ -20820,8 +21367,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 566,
@@ -20858,8 +21406,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 558,
@@ -20896,8 +21445,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 568,
@@ -20934,8 +21484,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 559,
@@ -20972,8 +21523,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 569,
@@ -21010,8 +21562,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 570,
@@ -21048,8 +21601,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 573,
@@ -21086,8 +21640,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 574,
@@ -21124,8 +21679,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 575,
@@ -21162,8 +21718,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 576,
@@ -21200,8 +21757,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 577,
@@ -21238,8 +21796,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 578,
@@ -21276,8 +21835,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 579,
@@ -21314,8 +21874,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 580,
@@ -21352,8 +21913,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 560,
@@ -21390,8 +21952,9 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   },
   {
     "id": 581,
@@ -21428,7 +21991,8 @@
     "cws_appearances": 0,
     "ncaa_regionals": 0,
     "roster_size": 35,
-    "scholarship_limit": 9.0,
-    "recruiting_questionnaire_url": null
+    "scholarship_limit": 9,
+    "recruiting_questionnaire_url": null,
+    "nil_url": null
   }
 ]

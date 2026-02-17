@@ -412,9 +412,14 @@ export default function Home() {
       <footer className="bg-gray-900 mt-8">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-2">
           <BrandLogo size="sm" showTagline={false} />
-          <p className="text-xs text-gray-500">
-            Data for informational purposes only.
-          </p>
+          <div className="flex items-center gap-3">
+            <p className="text-xs text-gray-500">
+              Data for informational purposes only.
+            </p>
+            <Link href="/admin" className="text-xs text-gray-600 hover:text-gray-400 transition-colors">
+              Admin
+            </Link>
+          </div>
         </div>
       </footer>
     </div>

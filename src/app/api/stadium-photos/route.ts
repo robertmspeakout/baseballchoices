@@ -77,26 +77,35 @@ async function getWikipediaImages(query: string): Promise<{ url: string; caption
       const images = page?.images || [];
 
       // Filter for actual photos (not icons, logos, or SVGs)
+      // Also exclude non-baseball content (football, basketball, portraits, B&W historical)
       const photoImages = images
         .filter((img: any) => {
           const name = (img.title || "").toLowerCase();
-          return (
-            (name.endsWith(".jpg") || name.endsWith(".jpeg") || name.endsWith(".png")) &&
-            !name.includes("icon") &&
-            !name.includes("logo") &&
-            !name.includes("flag") &&
-            !name.includes("symbol") &&
-            !name.includes("commons-logo") &&
-            !name.includes("edit-clear") &&
-            !name.includes("ambox") &&
-            !name.includes("question_book") &&
-            !name.includes("wiki") &&
-            !name.includes("padlock") &&
-            !name.includes("crystal_clear") &&
-            !name.includes("nuvola") &&
-            !name.includes("gnome") &&
-            !name.includes("replacement")
-          );
+          if (!(name.endsWith(".jpg") || name.endsWith(".jpeg") || name.endsWith(".png"))) return false;
+          // Exclude UI/wiki assets
+          const uiExcludes = ["icon", "logo", "flag", "symbol", "commons-logo", "edit-clear",
+            "ambox", "question_book", "wiki", "padlock", "crystal_clear", "nuvola", "gnome",
+            "replacement", "cscr-", "disambig", "stub", "template", "info_sign", "red_pog",
+            "blue_pog", "map_marker", "locator", "pictogram", "coat_of_arms", "seal_of"];
+          if (uiExcludes.some(ex => name.includes(ex))) return false;
+          // Exclude other sports and irrelevant content
+          const sportExcludes = ["football", "basketball", "soccer", "hockey", "volleyball",
+            "lacrosse", "tennis", "golf", "swimming", "track", "wrestling", "gymnast"];
+          if (sportExcludes.some(ex => name.includes(ex))) return false;
+          // Exclude portraits, headshots, historical black & white photos
+          const miscExcludes = ["portrait", "headshot", "bust_of", "grave", "memorial",
+            "plaque", "signature", "autograph", "newspaper", "clipping"];
+          if (miscExcludes.some(ex => name.includes(ex))) return false;
+          return true;
+        })
+        // Prioritize images with baseball/stadium keywords
+        .sort((a: any, b: any) => {
+          const nameA = (a.title || "").toLowerCase();
+          const nameB = (b.title || "").toLowerCase();
+          const baseballTerms = ["baseball", "stadium", "field", "ballpark", "diamond", "dugout", "campus", "aerial", "panoram"];
+          const scoreA = baseballTerms.some(t => nameA.includes(t)) ? 1 : 0;
+          const scoreB = baseballTerms.some(t => nameB.includes(t)) ? 1 : 0;
+          return scoreB - scoreA;
         })
         .slice(0, 4);
 

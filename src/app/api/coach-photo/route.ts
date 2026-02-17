@@ -14,23 +14,22 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    // Strategy 1: Try Wikipedia for coach photo
-    // Many well-known college baseball coaches have Wikipedia pages with images
-    const wikiUrl = await tryWikipedia(`${name} baseball coach`);
+    // Strategy 1: Try ESPN's coaching staff (most reliable for sports)
+    const espnUrl = await tryESPN(school);
+    if (espnUrl) {
+      return NextResponse.json({ url: espnUrl });
+    }
+
+    // Strategy 2: Try Wikipedia with just the coach name
+    const wikiUrl = await tryWikipedia(name);
     if (wikiUrl) {
       return NextResponse.json({ url: wikiUrl });
     }
 
-    // Strategy 2: Try Wikipedia with school name included
+    // Strategy 3: Try Wikipedia with coach + school context
     const wikiUrl2 = await tryWikipedia(`${name} ${school} baseball`);
     if (wikiUrl2) {
       return NextResponse.json({ url: wikiUrl2 });
-    }
-
-    // Strategy 3: Try ESPN's coaching staff
-    const espnUrl = await tryESPN(school);
-    if (espnUrl) {
-      return NextResponse.json({ url: espnUrl });
     }
 
     // No photo found
@@ -73,8 +72,8 @@ async function tryWikipedia(query: string): Promise<string | null> {
 
 async function tryESPN(school: string): Promise<string | null> {
   try {
-    const espnSearchUrl = `https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/teams?limit=3&search=${encodeURIComponent(school)}`;
-    const espnRes = await fetch(espnSearchUrl, { cache: "no-store", signal: AbortSignal.timeout(5000) });
+    const espnSearchUrl = `https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/teams?limit=5&search=${encodeURIComponent(school)}`;
+    const espnRes = await fetch(espnSearchUrl, { cache: "no-store", signal: AbortSignal.timeout(8000) });
 
     if (!espnRes.ok) return null;
 
@@ -82,22 +81,44 @@ async function tryESPN(school: string): Promise<string | null> {
     const teams = espnData?.sports?.[0]?.leagues?.[0]?.teams || espnData?.teams || [];
     if (teams.length === 0) return null;
 
-    const team = teams[0].team || teams[0];
-    const teamId = team.id;
+    // Find best match by school name
+    const schoolLower = school.toLowerCase();
+    const normalize = (entry: any) => entry.team || entry;
+    const teamEntry = normalize(
+      teams.find((e: any) => normalize(e).displayName?.toLowerCase() === schoolLower) ||
+      teams.find((e: any) => normalize(e).displayName?.toLowerCase().includes(schoolLower)) ||
+      teams[0]
+    );
 
+    const teamId = String(teamEntry.id);
+
+    // Try the team detail endpoint (includes coaches)
     const teamUrl = `https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/teams/${teamId}`;
-    const teamRes = await fetch(teamUrl, { cache: "no-store", signal: AbortSignal.timeout(5000) });
+    const teamRes = await fetch(teamUrl, { cache: "no-store", signal: AbortSignal.timeout(8000) });
 
-    if (!teamRes.ok) return null;
+    if (teamRes.ok) {
+      const teamData = await teamRes.json();
+      const t = teamData?.team || teamData;
 
-    const teamData = await teamRes.json();
-    const t = teamData?.team || teamData;
-
-    const coaches = t?.coaches || [];
-    for (const coach of coaches) {
-      if (coach.headshot?.href) return coach.headshot.href;
-      if (coach.image?.href) return coach.image.href;
+      const coaches = t?.coaches || [];
+      for (const coach of coaches) {
+        if (coach.headshot?.href) return coach.headshot.href;
+        if (coach.image?.href) return coach.image.href;
+      }
     }
+
+    // Try the roster endpoint which sometimes has coach data
+    try {
+      const rosterUrl = `https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/teams/${teamId}/roster`;
+      const rosterRes = await fetch(rosterUrl, { cache: "no-store", signal: AbortSignal.timeout(5000) });
+      if (rosterRes.ok) {
+        const rosterData = await rosterRes.json();
+        const coaches = rosterData?.coaches || rosterData?.coach || [];
+        for (const coach of (Array.isArray(coaches) ? coaches : [coaches])) {
+          if (coach?.headshot?.href) return coach.headshot.href;
+        }
+      }
+    } catch { /* ignore */ }
 
     return null;
   } catch {
