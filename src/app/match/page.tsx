@@ -84,7 +84,8 @@ export default function MatchPage() {
   const [loading, setLoading] = useState(true);
   const [geocoding, setGeocoding] = useState(false);
   const [userData, setUserDataState] = useState<Record<string, UserData>>({});
-  const [showCount, setShowCount] = useState(25);
+  const [showCount, setShowCount] = useState(10);
+  const [showAll, setShowAll] = useState(false);
 
   // Load profile and preferences
   useEffect(() => {
@@ -269,12 +270,18 @@ export default function MatchPage() {
           </div>
         ) : (
           <>
-            {/* Results count bar */}
+            {/* Section header */}
             <div className="flex items-center justify-between mb-4">
-              <p className="text-sm text-gray-500">
-                Showing <span className="font-semibold text-gray-900">{Math.min(showCount, results.length)}</span> of{" "}
-                <span className="font-semibold text-gray-900">{results.length}</span> matches
-              </p>
+              <div>
+                <h2 className="text-lg sm:text-xl font-black text-gray-900">
+                  {showAll ? "All Matches" : "Your Top 10 Matches"}
+                </h2>
+                <p className="text-sm text-gray-500">
+                  {showAll
+                    ? `${results.length} programs ranked by fit`
+                    : `${results.length} total programs matched`}
+                </p>
+              </div>
               <Link
                 href="/auth/profile"
                 className="text-sm font-semibold text-red-600 hover:text-red-700"
@@ -388,11 +395,21 @@ export default function MatchPage() {
               })}
             </div>
 
-            {/* Load More */}
-            {showCount < results.length && (
+            {/* See All / Load More */}
+            {!showAll && results.length > 10 && (
               <div className="text-center mt-6">
                 <button
-                  onClick={() => setShowCount((c) => c + 25)}
+                  onClick={() => { setShowAll(true); setShowCount(50); }}
+                  className="px-8 py-3.5 bg-gray-900 text-white rounded-xl text-sm font-bold hover:bg-gray-800 transition-colors shadow-sm"
+                >
+                  See All {results.length} Matches
+                </button>
+              </div>
+            )}
+            {showAll && showCount < results.length && (
+              <div className="text-center mt-6">
+                <button
+                  onClick={() => setShowCount((c) => c + 50)}
                   className="px-6 py-3 bg-white border border-gray-300 rounded-xl text-sm font-bold text-gray-700 hover:bg-gray-50 hover:border-gray-400 transition-colors"
                 >
                   Show More ({results.length - showCount} remaining)
