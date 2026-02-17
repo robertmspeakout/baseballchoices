@@ -324,26 +324,15 @@ export default function Home() {
       <main className="max-w-[1400px] mx-auto px-3 sm:px-6 py-4 sm:py-6 space-y-4 sm:space-y-6">
         {/* My List empty state */}
         {showingFallback && (
-          <div className="bg-gradient-to-b from-blue-50 to-white border border-blue-200 rounded-xl p-6 sm:p-10 text-center">
-            {/* Stadium silhouette icon with animated glow */}
-            <div className="relative inline-block mb-4">
-              <div className="absolute inset-0 rounded-full bg-blue-400/30 animate-hero-pulse" />
-              <svg className="relative mx-auto w-14 h-14 text-blue-500" fill="none" viewBox="0 0 48 48">
-                {/* Stadium silhouette */}
-                <path d="M4 36V22c0-2 1-3 2-4l18-10 18 10c1 1 2 2 2 4v14" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" fill="none" />
-                <path d="M10 36V26h6v10M20 36V24h8v12M32 36V26h6v10" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
-                <circle cx="24" cy="14" r="2" fill="currentColor" />
-                <line x1="4" y1="36" x2="44" y2="36" stroke="currentColor" strokeWidth={2} strokeLinecap="round" />
-              </svg>
-            </div>
-            <h3 className="text-xl sm:text-2xl font-extrabold text-gray-900 mb-2">Where Will You Play?</h3>
-            <p className="text-sm sm:text-base text-gray-600 mb-5 max-w-md mx-auto">
-              Over {allSchools.length} programs are waiting. Let&apos;s find the ones that are the right fit for your game.
+          <div className="bg-blue-50 border border-blue-200 rounded-xl px-4 py-4 sm:py-5 text-center">
+            <h3 className="text-base sm:text-lg font-extrabold text-gray-900 mb-1">Where Will You Play?</h3>
+            <p className="text-xs sm:text-sm text-gray-600 mb-3">
+              Over {allSchools.length} programs are waiting. Let&apos;s find the ones that fit your game.
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-3">
+            <div className="flex flex-wrap items-center justify-center gap-2">
               <Link
                 href="/match"
-                className="inline-flex items-center gap-2 px-5 py-2.5 bg-red-600 text-white rounded-lg text-sm font-bold hover:bg-red-700 transition-colors shadow-md shadow-red-600/25"
+                className="inline-flex items-center gap-1.5 px-4 py-2 bg-red-600 text-white rounded-lg text-sm font-bold hover:bg-red-700 transition-colors"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
@@ -352,12 +341,15 @@ export default function Home() {
               </Link>
               <button
                 onClick={() => handleTabChange("D1")}
-                className="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 text-white rounded-lg text-sm font-bold hover:bg-blue-700 transition-colors shadow-md shadow-blue-600/25"
+                className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-bold hover:bg-blue-700 transition-colors"
               >
-                Browse All Programs
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
+                Browse D1
+              </button>
+              <button
+                onClick={() => handleTabChange("D2")}
+                className="px-4 py-2 bg-emerald-600 text-white rounded-lg text-sm font-bold hover:bg-emerald-700 transition-colors"
+              >
+                Browse D2
               </button>
             </div>
           </div>
