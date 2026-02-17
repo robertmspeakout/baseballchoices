@@ -35,13 +35,13 @@ export default function BrandLogo({ size = "lg", showTagline = true, linkHome = 
   const cfg = sizeConfig[size];
 
   const content = (
-    <div className={`flex flex-col ${cfg.gap} select-none`}>
+    <div className={`inline-flex flex-col ${cfg.gap} select-none`}>
       <div className={`${cfg.text} font-bold leading-none`} style={{ fontFamily: "'Permanent Marker', cursive" }}>
         <span className="text-red-500">NEXT</span>
         <span className="text-white">BASE</span>
       </div>
       {showTagline && (
-        <p className={`${cfg.tagline} uppercase font-semibold text-white/60`}>
+        <p className={`${cfg.tagline} uppercase font-semibold text-white/60 w-full`} style={{ textAlignLast: "justify" }}>
           Your Personal AI Recruiting Edge
         </p>
       )}
