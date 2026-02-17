@@ -241,40 +241,38 @@ export default function Home() {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <header className="relative text-white overflow-hidden">
-        {/* Full-bleed action photo background */}
+        {/* Full-bleed stadium photo background */}
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1529768167801-9173d94c2a42?w=1600&q=80')" }}
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1471295253337-3ceaaedca402?w=1920&q=80')" }}
         />
-        {/* Dramatic gradient overlay - lets the image show through */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/30" />
+        {/* Dramatic gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/30" />
         {/* Hot accent slash across the right side */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -right-10 top-0 bottom-0 w-2/5 bg-gradient-to-l from-red-600/25 to-transparent skew-x-[-8deg]" />
-          <div className="absolute -right-5 top-0 bottom-0 w-1 bg-red-500/50 skew-x-[-8deg]" />
+          <div className="absolute -right-10 top-0 bottom-0 w-2/5 bg-gradient-to-l from-red-600/20 to-transparent skew-x-[-8deg]" />
+          <div className="absolute -right-5 top-0 bottom-0 w-1 bg-red-500/40 skew-x-[-8deg]" />
         </div>
 
-        <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 py-6 sm:py-10">
-          <div className="flex items-center justify-between">
+        <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 py-8 sm:py-14">
+          <div className="flex flex-col items-center text-center gap-5 sm:gap-6">
             <BrandLogo size="lg" showTagline={true} />
 
-            {/* Stats pills - desktop */}
-            <div className="hidden md:flex items-center gap-3">
-              <div className="text-center px-4 py-2 bg-white/10 backdrop-blur-md rounded-xl border border-white/10">
-                <p className="text-2xl font-black">{allSchools.filter(s => s.division === "D1").length}</p>
-                <p className="text-[10px] font-bold uppercase tracking-wider text-white/50">D1 Programs</p>
+            {/* Stats selling point */}
+            <p className="text-sm sm:text-base md:text-lg font-medium text-white/80 tracking-wide max-w-xl">
+              <span className="font-bold text-white">{allSchools.filter(s => s.division === "D1").length} D1 Programs.</span>
+              {" "}
+              <span className="font-bold text-white">{allSchools.filter(s => s.division === "D2").length} D2 Programs.</span>
+              {" "}
+              <span className="text-white/70">One place to find your fit.</span>
+            </p>
+
+            {ratedCount > 0 && (
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-red-600/20 backdrop-blur-md rounded-full border border-red-500/30">
+                <span className="text-sm font-bold text-red-400">{ratedCount}</span>
+                <span className="text-xs font-medium text-red-300/80">programs tracked</span>
               </div>
-              <div className="text-center px-4 py-2 bg-white/10 backdrop-blur-md rounded-xl border border-white/10">
-                <p className="text-2xl font-black">{allSchools.filter(s => s.division === "D2").length}</p>
-                <p className="text-[10px] font-bold uppercase tracking-wider text-white/50">D2 Programs</p>
-              </div>
-              {ratedCount > 0 && (
-                <div className="text-center px-4 py-2 bg-red-600/20 backdrop-blur-md rounded-xl border border-red-500/30">
-                  <p className="text-2xl font-black text-red-400">{ratedCount}</p>
-                  <p className="text-[10px] font-bold uppercase tracking-wider text-red-300/60">Tracking</p>
-                </div>
-              )}
-            </div>
+            )}
           </div>
         </div>
         {/* Bottom edge - thick red accent bar */}
@@ -325,18 +323,26 @@ export default function Home() {
       <main className="max-w-[1400px] mx-auto px-3 sm:px-6 py-4 sm:py-6 space-y-4 sm:space-y-6">
         {/* My List empty state */}
         {showingFallback && (
-          <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 sm:p-6 text-center">
-            <svg className="mx-auto w-10 h-10 text-blue-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-            </svg>
-            <h3 className="text-base sm:text-lg font-bold text-blue-900 mb-1">Start Building Your List</h3>
-            <p className="text-sm text-blue-700 mb-3">
-              Rate programs with stars to add them here, or let us find your best-fit schools automatically.
+          <div className="bg-gradient-to-b from-blue-50 to-white border border-blue-200 rounded-xl p-6 sm:p-10 text-center">
+            {/* Stadium silhouette icon with animated glow */}
+            <div className="relative inline-block mb-4">
+              <div className="absolute inset-0 rounded-full bg-blue-400/30 animate-hero-pulse" />
+              <svg className="relative mx-auto w-14 h-14 text-blue-500" fill="none" viewBox="0 0 48 48">
+                {/* Stadium silhouette */}
+                <path d="M4 36V22c0-2 1-3 2-4l18-10 18 10c1 1 2 2 2 4v14" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                <path d="M10 36V26h6v10M20 36V24h8v12M32 36V26h6v10" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+                <circle cx="24" cy="14" r="2" fill="currentColor" />
+                <line x1="4" y1="36" x2="44" y2="36" stroke="currentColor" strokeWidth={2} strokeLinecap="round" />
+              </svg>
+            </div>
+            <h3 className="text-xl sm:text-2xl font-extrabold text-gray-900 mb-2">Where Will You Play?</h3>
+            <p className="text-sm sm:text-base text-gray-600 mb-5 max-w-md mx-auto">
+              Over {allSchools.length} programs are waiting. Let&apos;s find the ones that are the right fit for your game.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-3">
               <Link
                 href="/match"
-                className="inline-flex items-center gap-1.5 px-4 py-2 bg-red-600 text-white rounded-lg text-sm font-semibold hover:bg-red-700 transition-colors"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-red-600 text-white rounded-lg text-sm font-bold hover:bg-red-700 transition-colors shadow-md shadow-red-600/25"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
@@ -345,7 +351,7 @@ export default function Home() {
               </Link>
               <button
                 onClick={() => handleTabChange("D1")}
-                className="inline-flex items-center gap-1.5 px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-semibold hover:bg-blue-700 transition-colors"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 text-white rounded-lg text-sm font-bold hover:bg-blue-700 transition-colors shadow-md shadow-blue-600/25"
               >
                 Browse All Programs
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
