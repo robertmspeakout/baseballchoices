@@ -1,0 +1,114 @@
+// Player profile and preferences - stored in localStorage
+
+export interface PlayerProfile {
+  // Basic info (existing fields from current profile)
+  playerName: string;
+  gradYear: string;
+  primaryPosition: string;
+  secondaryPosition: string;
+  city: string;
+  state: string;
+  highSchool: string;
+  travelBall: string;
+  profilePic: string | null;
+  backgroundPic: string | null;
+  // Zip for distance
+  zipCode: string;
+  // Academics
+  gpa: number | null;
+  gpaType: "weighted" | "unweighted" | "";
+  satScore: number | null;
+  actScore: number | null;
+}
+
+export interface PlayerPreferences {
+  divisionPreference: "D1" | "D2" | "both";
+  maxDistanceFromHome: number | null; // miles, null = any
+  preferredStates: string[];
+  maxTuition: number | null; // dollars, null = any
+  schoolSize: "small" | "medium" | "large" | "any"; // small <5K, med 5-15K, large 15K+
+  publicPrivate: "public" | "private" | "any";
+  competitiveness: "top25" | "postseason" | "any";
+  // top25 = currently ranked or frequently ranked
+  // postseason = has regional/CWS appearances
+  draftImportance: "yes" | "no"; // wants a school that produces draft picks
+  preferredConferences: string[];
+}
+
+const PROFILE_KEY = "nextbase_profile";
+const PREFS_KEY = "nextbase_preferences";
+
+const DEFAULT_PROFILE: PlayerProfile = {
+  playerName: "",
+  gradYear: "",
+  primaryPosition: "",
+  secondaryPosition: "",
+  city: "",
+  state: "",
+  highSchool: "",
+  travelBall: "",
+  profilePic: null,
+  backgroundPic: null,
+  zipCode: "",
+  gpa: null,
+  gpaType: "",
+  satScore: null,
+  actScore: null,
+};
+
+const DEFAULT_PREFERENCES: PlayerPreferences = {
+  divisionPreference: "both",
+  maxDistanceFromHome: null,
+  preferredStates: [],
+  maxTuition: null,
+  schoolSize: "any",
+  publicPrivate: "any",
+  competitiveness: "any",
+  draftImportance: "no",
+  preferredConferences: [],
+};
+
+export function loadProfile(): PlayerProfile {
+  if (typeof window === "undefined") return DEFAULT_PROFILE;
+  try {
+    const raw = localStorage.getItem(PROFILE_KEY);
+    if (!raw) return DEFAULT_PROFILE;
+    return { ...DEFAULT_PROFILE, ...JSON.parse(raw) };
+  } catch {
+    return DEFAULT_PROFILE;
+  }
+}
+
+export function saveProfile(profile: Partial<PlayerProfile>) {
+  if (typeof window === "undefined") return;
+  const existing = loadProfile();
+  localStorage.setItem(PROFILE_KEY, JSON.stringify({ ...existing, ...profile }));
+}
+
+export function loadPreferences(): PlayerPreferences {
+  if (typeof window === "undefined") return DEFAULT_PREFERENCES;
+  try {
+    const raw = localStorage.getItem(PREFS_KEY);
+    if (!raw) return DEFAULT_PREFERENCES;
+    return { ...DEFAULT_PREFERENCES, ...JSON.parse(raw) };
+  } catch {
+    return DEFAULT_PREFERENCES;
+  }
+}
+
+export function savePreferences(prefs: Partial<PlayerPreferences>) {
+  if (typeof window === "undefined") return;
+  const existing = loadPreferences();
+  localStorage.setItem(PREFS_KEY, JSON.stringify({ ...existing, ...prefs }));
+}
+
+export function isProfileComplete(profile: PlayerProfile): boolean {
+  return !!(profile.playerName && profile.gradYear && profile.primaryPosition);
+}
+
+export function isPreferencesComplete(prefs: PlayerPreferences): boolean {
+  return prefs.divisionPreference !== "both" ||
+    prefs.maxDistanceFromHome !== null ||
+    prefs.maxTuition !== null ||
+    prefs.competitiveness !== "any";
+}

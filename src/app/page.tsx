@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import Link from "next/link";
 import SearchFilters from "@/components/SearchFilters";
 import SchoolTable from "@/components/SchoolTable";
 import schoolsData from "@/data/schools.json";
@@ -42,7 +43,7 @@ interface Filters {
 }
 
 const TABS = [
-  { key: "mylist", label: "My List" },
+  { key: "mylist", label: "My Top Programs" },
   { key: "D1", label: "Division I" },
   { key: "D2", label: "Division II" },
 ] as const;
@@ -267,8 +268,17 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Stats pills - desktop */}
+            {/* Stats pills + Match CTA - desktop */}
             <div className="hidden md:flex items-center gap-3">
+              <Link
+                href="/match"
+                className="flex items-center gap-2 px-5 py-3 bg-red-600 hover:bg-red-700 rounded-xl font-bold text-sm transition-colors border border-red-400/30 shadow-lg shadow-red-900/30"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                </svg>
+                Find My Matches
+              </Link>
               <div className="text-center px-4 py-2 bg-white/10 backdrop-blur-md rounded-xl border border-white/10">
                 <p className="text-2xl font-black">{allSchools.filter(s => s.division === "D1").length}</p>
                 <p className="text-[10px] font-bold uppercase tracking-wider text-white/50">D1 Programs</p>
@@ -284,6 +294,19 @@ export default function Home() {
                 </div>
               )}
             </div>
+          </div>
+
+          {/* Mobile: Find My Matches CTA */}
+          <div className="md:hidden mt-3">
+            <Link
+              href="/match"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-red-600 hover:bg-red-700 rounded-lg font-bold text-sm transition-colors"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+              </svg>
+              Find My Matches
+            </Link>
           </div>
         </div>
         {/* Bottom edge - thick red accent bar */}
@@ -330,17 +353,28 @@ export default function Home() {
             </svg>
             <h3 className="text-base sm:text-lg font-bold text-blue-900 mb-1">Start Building Your List</h3>
             <p className="text-sm text-blue-700 mb-3">
-              Rate programs with stars to add them to your personal list. Showing the Top 25 ranked D1 programs below to get you started.
+              Rate programs with stars to add them here, or let us find your best-fit schools automatically.
             </p>
-            <button
-              onClick={() => handleTabChange("D1")}
-              className="inline-flex items-center gap-1.5 px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-semibold hover:bg-blue-700 transition-colors"
-            >
-              Browse All D1 Programs
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              <Link
+                href="/match"
+                className="inline-flex items-center gap-1.5 px-4 py-2 bg-red-600 text-white rounded-lg text-sm font-semibold hover:bg-red-700 transition-colors"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                </svg>
+                Find My Matches
+              </Link>
+              <button
+                onClick={() => handleTabChange("D1")}
+                className="inline-flex items-center gap-1.5 px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-semibold hover:bg-blue-700 transition-colors"
+              >
+                Browse All Programs
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
           </div>
         )}
 
