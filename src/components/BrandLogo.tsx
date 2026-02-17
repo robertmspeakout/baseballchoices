@@ -39,8 +39,8 @@ export default function BrandLogo({ size = "lg", showTagline = true, linkHome = 
         <>
           <div className={cfg.spacer} />
           <p
-            className={`${cfg.tagline} absolute left-0 right-0 bottom-0 uppercase font-semibold text-white/60 whitespace-nowrap`}
-            style={{ textAlignLast: "justify" }}
+            className={`${cfg.tagline} absolute left-0 right-0 bottom-0 uppercase font-semibold text-white/60 whitespace-nowrap text-center`}
+            style={{ letterSpacing: "0.25em" }}
           >
             Your Personal AI Recruiting Edge
           </p>
