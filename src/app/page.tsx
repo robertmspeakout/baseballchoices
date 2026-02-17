@@ -233,64 +233,100 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <header className="relative bg-blue-950 text-white shadow-lg overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Inside_TD_Ameritrade_Park_Omaha.jpg/1600px-Inside_TD_Ameritrade_Park_Omaha.jpg')" }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-950/90 via-blue-900/80 to-blue-950/85" />
-        <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 py-5 sm:py-8">
-          <div className="flex items-center gap-3 sm:gap-5">
-            <div className="hidden sm:block bg-white/10 backdrop-blur rounded-2xl p-3 border border-white/10">
-              <svg className="w-12 h-12" viewBox="0 0 64 64" fill="none">
-                <circle cx="32" cy="32" r="28" stroke="white" strokeWidth="2.5" />
-                <path d="M18,8 Q28,20 28,32 Q28,44 18,56" stroke="white" strokeWidth="2" fill="none" />
-                <path d="M46,8 Q36,20 36,32 Q36,44 46,56" stroke="white" strokeWidth="2" fill="none" />
-                <line x1="20" y1="12" x2="24" y2="14" stroke="currentColor" strokeWidth="1.5" className="text-red-300" />
-                <line x1="19" y1="18" x2="23" y2="19" stroke="currentColor" strokeWidth="1.5" className="text-red-300" />
-                <line x1="19" y1="24" x2="24" y2="24" stroke="currentColor" strokeWidth="1.5" className="text-red-300" />
-                <line x1="19" y1="30" x2="24" y2="30" stroke="currentColor" strokeWidth="1.5" className="text-red-300" />
-                <line x1="19" y1="36" x2="24" y2="35" stroke="currentColor" strokeWidth="1.5" className="text-red-300" />
-                <line x1="19" y1="42" x2="23" y2="40" stroke="currentColor" strokeWidth="1.5" className="text-red-300" />
-                <line x1="20" y1="48" x2="24" y2="45" stroke="currentColor" strokeWidth="1.5" className="text-red-300" />
-                <line x1="44" y1="12" x2="40" y2="14" stroke="currentColor" strokeWidth="1.5" className="text-red-300" />
-                <line x1="45" y1="18" x2="41" y2="19" stroke="currentColor" strokeWidth="1.5" className="text-red-300" />
-                <line x1="45" y1="24" x2="40" y2="24" stroke="currentColor" strokeWidth="1.5" className="text-red-300" />
-                <line x1="45" y1="30" x2="40" y2="30" stroke="currentColor" strokeWidth="1.5" className="text-red-300" />
-                <line x1="45" y1="36" x2="40" y2="35" stroke="currentColor" strokeWidth="1.5" className="text-red-300" />
-                <line x1="45" y1="42" x2="41" y2="40" stroke="currentColor" strokeWidth="1.5" className="text-red-300" />
-                <line x1="44" y1="48" x2="40" y2="45" stroke="currentColor" strokeWidth="1.5" className="text-red-300" />
-              </svg>
+      <header className="relative text-white overflow-hidden">
+        {/* Multi-layer background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950" />
+        {/* Ambient glow effects */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute -top-20 -right-20 w-80 h-80 bg-gradient-to-br from-red-600/20 to-orange-500/10 rounded-full blur-3xl animate-pulse-glow" />
+          <div className="absolute -bottom-10 -left-10 w-60 h-60 bg-gradient-to-tr from-blue-600/15 to-cyan-400/10 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: "1s" }} />
+          {/* Diagonal accent */}
+          <div className="absolute top-0 right-0 h-full w-1/3 bg-gradient-to-l from-red-600/8 to-transparent skew-x-[-12deg] translate-x-20" />
+          {/* Subtle grid */}
+          <div className="absolute inset-0 opacity-[0.03]"
+            style={{
+              backgroundImage: "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
+              backgroundSize: "40px 40px",
+            }}
+          />
+        </div>
+
+        <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 py-4 sm:py-6">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3 sm:gap-4">
+              {/* Icon mark */}
+              <div className="relative animate-float">
+                <div className="w-11 h-11 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center shadow-lg shadow-red-900/30 border border-red-400/20">
+                  <svg className="w-6 h-6 sm:w-8 sm:h-8 text-white drop-shadow-sm" viewBox="0 0 32 32" fill="none">
+                    <circle cx="16" cy="16" r="13" stroke="currentColor" strokeWidth="2.5" />
+                    <path d="M9,4 Q14,11 14,16 Q14,21 9,28" stroke="currentColor" strokeWidth="1.5" fill="none" />
+                    <path d="M23,4 Q18,11 18,16 Q18,21 23,28" stroke="currentColor" strokeWidth="1.5" fill="none" />
+                  </svg>
+                </div>
+                <div className="absolute -inset-1 bg-red-500/20 rounded-xl blur-md -z-10" />
+              </div>
+              {/* Title */}
+              <div>
+                <h1 className="text-2xl sm:text-4xl font-black tracking-tight leading-none">
+                  <span
+                    className="bg-clip-text text-transparent animate-shimmer"
+                    style={{
+                      backgroundImage: "linear-gradient(90deg, #fff 0%, #fff 40%, #f87171 50%, #fff 60%, #fff 100%)",
+                      backgroundSize: "200% auto",
+                    }}
+                  >
+                    NEXTBASE
+                  </span>
+                </h1>
+                <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.2em] text-gray-400 mt-0.5">
+                  College Baseball Recruiting
+                </p>
+              </div>
             </div>
-            <div>
-              <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight">
-                NextBase
-              </h1>
-              <p className="text-blue-200 text-xs sm:text-base mt-0.5 sm:mt-1">
-                Your college baseball recruiting personal assistant
-              </p>
+
+            {/* Stats pills - desktop */}
+            <div className="hidden md:flex items-center gap-2">
+              <div className="flex items-center gap-1.5 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full px-3 py-1.5">
+                <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+                <span className="text-xs font-medium text-gray-300">{allSchools.filter(s => s.division === "D1").length} D1</span>
+              </div>
+              <div className="flex items-center gap-1.5 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full px-3 py-1.5">
+                <div className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" style={{ animationDelay: "0.5s" }} />
+                <span className="text-xs font-medium text-gray-300">{allSchools.filter(s => s.division === "D2").length} D2</span>
+              </div>
+              {ratedCount > 0 && (
+                <div className="flex items-center gap-1.5 bg-red-500/10 backdrop-blur-sm border border-red-500/20 rounded-full px-3 py-1.5">
+                  <span className="text-xs font-bold text-red-400">{ratedCount} tracked</span>
+                </div>
+              )}
             </div>
           </div>
         </div>
+        {/* Bottom accent line */}
+        <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-red-500/60 to-transparent" />
       </header>
 
       {/* Tab Navigation */}
-      <div className="bg-white border-b border-gray-200 sticky top-0 z-20">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 py-2.5 sm:py-3">
-          <div className="inline-flex bg-gray-100 rounded-lg p-1 gap-1">
+      <div className="bg-white/95 backdrop-blur-md border-b border-gray-200 sticky top-0 z-20">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 py-2 sm:py-2.5">
+          <div className="inline-flex bg-gray-100 rounded-xl p-1 gap-0.5">
             {TABS.map((tab) => (
               <button
                 key={tab.key}
                 onClick={() => handleTabChange(tab.key)}
-                className={`relative px-4 sm:px-6 py-2 sm:py-2.5 rounded-md text-sm sm:text-base font-semibold whitespace-nowrap transition-all ${
+                className={`relative px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg text-sm sm:text-base font-bold whitespace-nowrap transition-all duration-200 ${
                   activeTab === tab.key
-                    ? "bg-white text-blue-700 shadow-sm"
-                    : "text-gray-500 hover:text-gray-700 hover:bg-gray-50"
+                    ? "bg-gray-900 text-white shadow-md"
+                    : "text-gray-500 hover:text-gray-800 hover:bg-gray-50"
                 }`}
               >
                 {tab.label}
                 {tab.key === "mylist" && ratedCount > 0 && (
-                  <span className="ml-1.5 inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-xs font-bold bg-blue-100 text-blue-700">
+                  <span className={`ml-1.5 inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-xs font-bold ${
+                    activeTab === tab.key
+                      ? "bg-red-500 text-white"
+                      : "bg-gray-200 text-gray-600"
+                  }`}>
                     {ratedCount}
                   </span>
                 )}
@@ -399,10 +435,19 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-white border-t border-gray-200 mt-8">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 py-4 text-center text-sm text-gray-500">
-          NextBase &mdash; Your college baseball recruiting personal assistant.
-          Data for informational purposes only.
+      <footer className="bg-gray-900 mt-8">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-2">
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded-md bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center">
+              <svg className="w-3.5 h-3.5 text-white" viewBox="0 0 32 32" fill="none">
+                <circle cx="16" cy="16" r="13" stroke="currentColor" strokeWidth="2.5" />
+              </svg>
+            </div>
+            <span className="text-sm font-bold text-white tracking-tight">NEXTBASE</span>
+          </div>
+          <p className="text-xs text-gray-500">
+            Data for informational purposes only.
+          </p>
         </div>
       </footer>
     </div>

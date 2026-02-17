@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import StarRating from "./StarRating";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 interface School {
   id: number;
@@ -29,6 +29,38 @@ interface SchoolTableProps {
   sortDir: string;
   onSort: (column: string) => void;
   onPriorityChange: (schoolId: number, priority: number) => void;
+}
+
+// Hook to fetch current-season records for visible schools
+function useCurrentRecords(schools: School[]) {
+  const [records, setRecords] = useState<Record<string, string | null>>({});
+  const fetchedRef = useRef<Set<string>>(new Set());
+
+  useEffect(() => {
+    // Only fetch for D1 schools that we haven't fetched yet
+    const toFetch = schools
+      .filter((s) => s.division === "D1" && !fetchedRef.current.has(s.name))
+      .map((s) => s.name)
+      .slice(0, 25);
+
+    if (toFetch.length === 0) return;
+
+    // Mark as fetching
+    toFetch.forEach((n) => fetchedRef.current.add(n));
+
+    fetch(`/api/records?schools=${encodeURIComponent(toFetch.join(","))}`)
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.records) {
+          setRecords((prev) => ({ ...prev, ...data.records }));
+        }
+      })
+      .catch(() => {
+        // On error, don't retry
+      });
+  }, [schools]);
+
+  return records;
 }
 
 function SortHeader({
@@ -114,15 +146,35 @@ function SchoolLogo({ school }: { school: School }) {
   );
 }
 
+function RecordBadge({ record, loading }: { record: string | null | undefined; loading: boolean }) {
+  if (loading) {
+    return (
+      <span className="text-xs text-gray-300 bg-gray-50 px-2 py-0.5 rounded-full animate-pulse">
+        --
+      </span>
+    );
+  }
+  if (!record) return null;
+  return (
+    <span className="text-xs text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full font-semibold">
+      {record}
+    </span>
+  );
+}
+
 // Mobile card layout
 function MobileCard({
   school,
   distances,
   onPriorityChange,
+  currentRecord,
+  recordLoading,
 }: {
   school: School;
   distances: Record<number, number> | null;
   onPriorityChange: (schoolId: number, priority: number) => void;
+  currentRecord: string | null | undefined;
+  recordLoading: boolean;
 }) {
   return (
     <Link href={`/school/${school.id}`} className="block bg-white rounded-xl border border-gray-200 shadow-sm p-4 hover:border-blue-300 hover:shadow-md transition-all">
@@ -152,12 +204,10 @@ function MobileCard({
           <div className="flex flex-wrap items-center gap-1.5 mt-2">
             {divisionBadge(school.division)}
             <span className="text-xs text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full">{school.conference}</span>
-            {school.last_season_record && (
-              <span className="text-xs text-blue-700 bg-blue-50 px-2 py-0.5 rounded-full font-medium">Last: {school.last_season_record}</span>
-            )}
+            <RecordBadge record={currentRecord} loading={recordLoading} />
             {distances && distances[school.id] != null && (
               <span className="text-xs text-green-700 bg-green-50 px-2 py-0.5 rounded-full font-medium">
-                📍 {distances[school.id].toLocaleString()} mi from home
+                {distances[school.id].toLocaleString()} mi
               </span>
             )}
           </div>
@@ -186,6 +236,10 @@ export default function SchoolTable({
   onSort,
   onPriorityChange,
 }: SchoolTableProps) {
+  const currentRecords = useCurrentRecords(schools);
+  const hasAnyD1 = schools.some((s) => s.division === "D1");
+  const recordsLoading = hasAnyD1 && Object.keys(currentRecords).length === 0;
+
   if (schools.length === 0) {
     return (
       <div className="text-center py-16 text-gray-500">
@@ -230,6 +284,8 @@ export default function SchoolTable({
             school={school}
             distances={distances}
             onPriorityChange={onPriorityChange}
+            currentRecord={currentRecords[school.name]}
+            recordLoading={school.division === "D1" && recordsLoading}
           />
         ))}
       </div>
@@ -254,59 +310,67 @@ export default function SchoolTable({
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-100">
-            {schools.map((school) => (
-              <tr
-                key={school.id}
-                className="hover:bg-blue-50/50 transition-colors cursor-pointer"
-                onClick={() => window.location.href = `/school/${school.id}`}
-              >
-                <td className="px-3 py-3">
-                  <span className="text-blue-700 font-semibold">
-                    {school.name}
-                  </span>
-                  <div className="text-xs text-gray-500">
-                    {school.mascot ? `${school.mascot} · ` : ""}{school.city}, {school.state}
-                  </div>
-                </td>
-                <td className="px-3 py-3">{divisionBadge(school.division)}</td>
-                <td className="px-3 py-3 text-sm text-gray-700">{school.conference}</td>
-                <td className="px-3 py-3 text-sm text-gray-700">{school.state}</td>
-                <td className="px-3 py-3 text-sm text-gray-700">{school.public_private}</td>
-                <td className="px-3 py-3 text-sm text-gray-700 text-center">
-                  {school.last_season_record ? (
-                    <span className="font-medium">{school.last_season_record}</span>
-                  ) : (
-                    <span className="text-gray-300">-</span>
-                  )}
-                </td>
-                <td className="px-3 py-3 text-sm text-gray-700 text-center">
-                  {school.current_ranking ? (
-                    <span className="inline-block bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded-full text-xs font-bold">
-                      #{school.current_ranking}
+            {schools.map((school) => {
+              const rec = currentRecords[school.name];
+              const isD1 = school.division === "D1";
+              return (
+                <tr
+                  key={school.id}
+                  className="hover:bg-blue-50/50 transition-colors cursor-pointer"
+                  onClick={() => window.location.href = `/school/${school.id}`}
+                >
+                  <td className="px-3 py-3">
+                    <span className="text-blue-700 font-semibold">
+                      {school.name}
                     </span>
-                  ) : (
-                    <span className="text-gray-300">-</span>
-                  )}
-                </td>
-                {distances && (
-                  <td className="px-3 py-3 text-sm text-gray-700 text-right">
-                    {distances[school.id] != null
-                      ? `${distances[school.id].toLocaleString()} mi`
-                      : "-"}
+                    <div className="text-xs text-gray-500">
+                      {school.mascot ? `${school.mascot} · ` : ""}{school.city}, {school.state}
+                    </div>
                   </td>
-                )}
-                <td className="px-3 py-3" onClick={(e) => e.stopPropagation()}>
-                  <StarRating
-                    value={school.priority}
-                    onChange={(v) => onPriorityChange(school.id, v)}
-                    size="sm"
-                  />
-                </td>
-                <td className="px-3 py-3 text-sm text-gray-700 max-w-[140px] truncate">
-                  {school.head_coach_name || "-"}
-                </td>
-              </tr>
-            ))}
+                  <td className="px-3 py-3">{divisionBadge(school.division)}</td>
+                  <td className="px-3 py-3 text-sm text-gray-700">{school.conference}</td>
+                  <td className="px-3 py-3 text-sm text-gray-700">{school.state}</td>
+                  <td className="px-3 py-3 text-sm text-gray-700">{school.public_private}</td>
+                  <td className="px-3 py-3 text-sm text-gray-700 text-center">
+                    {isD1 && recordsLoading ? (
+                      <span className="text-gray-300 animate-pulse">--</span>
+                    ) : rec ? (
+                      <span className="font-semibold text-emerald-700">{rec}</span>
+                    ) : school.last_season_record ? (
+                      <span className="text-gray-400 text-xs">{school.last_season_record}</span>
+                    ) : (
+                      <span className="text-gray-300">-</span>
+                    )}
+                  </td>
+                  <td className="px-3 py-3 text-sm text-gray-700 text-center">
+                    {school.current_ranking ? (
+                      <span className="inline-block bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded-full text-xs font-bold">
+                        #{school.current_ranking}
+                      </span>
+                    ) : (
+                      <span className="text-gray-300">-</span>
+                    )}
+                  </td>
+                  {distances && (
+                    <td className="px-3 py-3 text-sm text-gray-700 text-right">
+                      {distances[school.id] != null
+                        ? `${distances[school.id].toLocaleString()} mi`
+                        : "-"}
+                    </td>
+                  )}
+                  <td className="px-3 py-3" onClick={(e) => e.stopPropagation()}>
+                    <StarRating
+                      value={school.priority}
+                      onChange={(v) => onPriorityChange(school.id, v)}
+                      size="sm"
+                    />
+                  </td>
+                  <td className="px-3 py-3 text-sm text-gray-700 max-w-[140px] truncate">
+                    {school.head_coach_name || "-"}
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>

@@ -1,26 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 
-interface ESPNEvent {
-  id: string;
-  date: string;
-  name: string;
-  shortName: string;
-  competitions: {
-    id: string;
-    date: string;
-    venue?: { fullName: string; city: string; state: string };
-    status: {
-      type: { completed: boolean; description: string };
-    };
-    competitors: {
-      id: string;
-      team: { id: string; displayName: string; abbreviation: string; logo: string };
-      homeAway: string;
-      score?: string | { value: number; displayValue: string };
-      winner?: boolean;
-    }[];
-  }[];
-}
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+export const dynamic = "force-dynamic"; // Never cache this route handler
 
 export async function GET(request: NextRequest) {
   const school = request.nextUrl.searchParams.get("school");
@@ -31,68 +13,95 @@ export async function GET(request: NextRequest) {
   try {
     // Step 1: Search for the ESPN team ID
     const searchUrl = `https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/teams?limit=5&search=${encodeURIComponent(school)}`;
-    const searchRes = await fetch(searchUrl, {
-      headers: { "User-Agent": "NextBase/1.0" },
-      next: { revalidate: 3600 },
-    });
+    const searchRes = await fetch(searchUrl, { cache: "no-store" });
 
     if (!searchRes.ok) {
+      console.error(`[schedule] ESPN search failed: ${searchRes.status} for "${school}"`);
       return NextResponse.json({ record: null, recentGames: [], upcoming: [] });
     }
 
     const searchData = await searchRes.json();
-    const teams = searchData?.sports?.[0]?.leagues?.[0]?.teams;
+
+    // ESPN returns teams at different paths depending on endpoint version
+    let teams: any[] | null =
+      searchData?.sports?.[0]?.leagues?.[0]?.teams ||
+      searchData?.teams ||
+      null;
+
     if (!teams || teams.length === 0) {
+      console.error(`[schedule] No ESPN teams found for "${school}"`);
       return NextResponse.json({ record: null, recentGames: [], upcoming: [] });
     }
 
-    // Find best match (prefer exact name match, then startsWith, then includes, then first result)
-    const schoolLower = school.toLowerCase();
-    const teamEntry =
-      teams.find(
-        (t: { team: { displayName: string } }) =>
-          t.team.displayName.toLowerCase() === schoolLower
-      ) ||
-      teams.find(
-        (t: { team: { displayName: string } }) =>
-          t.team.displayName.toLowerCase().startsWith(schoolLower)
-      ) ||
-      teams.find(
-        (t: { team: { displayName: string } }) =>
-          t.team.displayName.toLowerCase().includes(schoolLower)
-      ) ||
-      teams.find(
-        (t: { team: { displayName: string; shortDisplayName: string; abbreviation: string } }) =>
-          schoolLower.includes(t.team.displayName.toLowerCase()) ||
-          t.team.shortDisplayName?.toLowerCase() === schoolLower ||
-          t.team.abbreviation?.toLowerCase() === schoolLower
-      ) ||
-      teams[0];
-    const teamId = String(teamEntry.team.id);
+    // Each entry may be { team: {...} } or directly { id, displayName, ... }
+    const normalize = (entry: any) => entry.team || entry;
 
-    // Step 2: Fetch team schedule
-    const scheduleUrl = `https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/teams/${teamId}/schedule`;
-    const scheduleRes = await fetch(scheduleUrl, {
-      headers: { "User-Agent": "NextBase/1.0" },
-      next: { revalidate: 1800 }, // Cache 30 min
-    });
+    // Find best match
+    const schoolLower = school.toLowerCase();
+    const match = (fn: (t: any) => boolean) => teams!.find((e) => fn(normalize(e)));
+
+    const teamEntry = normalize(
+      match((t) => t.displayName?.toLowerCase() === schoolLower) ||
+      match((t) => t.displayName?.toLowerCase().startsWith(schoolLower)) ||
+      match((t) => t.displayName?.toLowerCase().includes(schoolLower)) ||
+      match((t) =>
+        schoolLower.includes(t.displayName?.toLowerCase() || "") ||
+        t.shortDisplayName?.toLowerCase() === schoolLower ||
+        t.abbreviation?.toLowerCase() === schoolLower
+      ) ||
+      { team: normalize(teams[0]) }
+    );
+
+    const teamId = String(teamEntry.id);
+
+    // Step 2: Fetch team info (for record) and schedule in parallel
+    const year = new Date().getFullYear();
+    const [teamRes, scheduleRes] = await Promise.all([
+      fetch(
+        `https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/teams/${teamId}`,
+        { cache: "no-store" }
+      ),
+      fetch(
+        `https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/teams/${teamId}/schedule?season=${year}`,
+        { cache: "no-store" }
+      ),
+    ]);
+
+    // Extract record from team endpoint
+    let espnRecord: string | null = null;
+    if (teamRes.ok) {
+      try {
+        const teamData = await teamRes.json();
+        const t = teamData?.team || teamData;
+        // record can be at t.record.items[0].summary or t.record (string)
+        if (t?.record?.items?.[0]?.summary) {
+          espnRecord = t.record.items[0].summary;
+        } else if (typeof t?.record === "string") {
+          espnRecord = t.record;
+        }
+      } catch { /* ignore */ }
+    }
 
     if (!scheduleRes.ok) {
-      return NextResponse.json({ record: null, recentGames: [], upcoming: [] });
+      console.error(`[schedule] ESPN schedule fetch failed: ${scheduleRes.status} for team ${teamId}`);
+      return NextResponse.json({ record: espnRecord, recentGames: [], upcoming: [] });
     }
 
     const scheduleData = await scheduleRes.json();
-    const events: ESPNEvent[] = scheduleData?.events || [];
+    const events: any[] = scheduleData?.events || [];
 
-    // Try to get record directly from ESPN's team data if available
-    const espnRecord = scheduleData?.team?.record?.items?.[0]?.summary ||
-      scheduleData?.team?.record?.displayValue || null;
+    // Also try to get record from schedule response
+    if (!espnRecord) {
+      const st = scheduleData?.team;
+      if (st?.record?.items?.[0]?.summary) {
+        espnRecord = st.record.items[0].summary;
+      } else if (st?.recordSummary) {
+        espnRecord = st.recordSummary;
+      }
+    }
 
-    // Separate completed and upcoming games
-    const completed: typeof parsedGames = [];
-    const upcoming: typeof parsedGames = [];
-
-    const parsedGames: {
+    // Parse games
+    type ParsedGame = {
       date: string;
       opponent: string;
       opponentLogo: string;
@@ -101,20 +110,25 @@ export async function GET(request: NextRequest) {
       score: string | null;
       result: string | null;
       completed: boolean;
-    }[] = [];
+    };
+
+    const completed: ParsedGame[] = [];
+    const upcoming: ParsedGame[] = [];
 
     for (const event of events) {
       const comp = event.competitions?.[0];
       if (!comp) continue;
 
       const isCompleted = comp.status?.type?.completed === true;
+      const competitors: any[] = comp.competitors || [];
+      if (competitors.length < 2) continue;
 
-      // Find our team and opponent by team ID (more reliable than name matching)
-      const ourTeam = comp.competitors?.find(
-        (c) => String(c.team?.id) === teamId || String(c.id) === teamId
+      // Find our team by id. Competitors have team.id or id
+      const ourTeam = competitors.find(
+        (c: any) => String(c.team?.id || c.id) === teamId
       );
-      const opponent = comp.competitors?.find(
-        (c) => String(c.team?.id) !== teamId && String(c.id) !== teamId
+      const opponent = competitors.find(
+        (c: any) => String(c.team?.id || c.id) !== teamId
       );
 
       if (!ourTeam || !opponent) continue;
@@ -122,37 +136,49 @@ export async function GET(request: NextRequest) {
       const venue = comp.venue;
       let locationStr = "";
       if (venue) {
-        locationStr = venue.fullName;
-        if (venue.city) locationStr += `, ${venue.city}`;
+        locationStr = venue.fullName || "";
+        if (venue.city) locationStr += locationStr ? `, ${venue.city}` : venue.city;
         if (venue.state) locationStr += `, ${venue.state}`;
       } else {
         locationStr = ourTeam.homeAway === "home" ? "Home" : "Away";
       }
 
-      // Handle score as either string or object { value, displayValue }
-      const getScore = (s: string | { value: number; displayValue: string } | undefined | null): string | null => {
-        if (s == null) return null;
+      // Extract score - handle string, number, or object formats
+      const extractScore = (c: any): string | null => {
+        const s = c.score;
+        if (s == null || s === "") return null;
+        if (typeof s === "number") return String(s);
         if (typeof s === "string") return s;
-        if (typeof s === "object" && "displayValue" in s) return s.displayValue;
-        if (typeof s === "object" && "value" in s) return String(s.value);
-        return String(s);
+        if (typeof s === "object") {
+          if (s.displayValue != null) return String(s.displayValue);
+          if (s.value != null) return String(s.value);
+        }
+        return null;
       };
 
       let score: string | null = null;
       let result: string | null = null;
-      const ourScore = getScore(ourTeam.score);
-      const oppScore = getScore(opponent.score);
-      if (isCompleted && ourScore != null && oppScore != null) {
-        score = `${ourScore}-${oppScore}`;
-        const ourNum = parseInt(ourScore, 10);
-        const oppNum = parseInt(oppScore, 10);
-        result = ourTeam.winner === true ? "W" : ourTeam.winner === false ? "L" : (ourNum > oppNum ? "W" : "L");
+
+      if (isCompleted) {
+        const ourScore = extractScore(ourTeam);
+        const oppScore = extractScore(opponent);
+        if (ourScore != null && oppScore != null) {
+          score = `${ourScore}-${oppScore}`;
+          const ourNum = parseInt(ourScore, 10);
+          const oppNum = parseInt(oppScore, 10);
+          if (ourTeam.winner === true) result = "W";
+          else if (ourTeam.winner === false) result = "L";
+          else result = ourNum > oppNum ? "W" : ourNum < oppNum ? "L" : "T";
+        } else {
+          // Completed but no score data — mark as completed without score
+          result = ourTeam.winner === true ? "W" : ourTeam.winner === false ? "L" : null;
+        }
       }
 
-      const game = {
+      const game: ParsedGame = {
         date: event.date,
-        opponent: opponent.team.displayName,
-        opponentLogo: opponent.team.logo || "",
+        opponent: opponent.team?.displayName || opponent.displayName || "TBD",
+        opponentLogo: opponent.team?.logo || opponent.team?.logos?.[0]?.href || "",
         location: locationStr,
         homeAway: ourTeam.homeAway === "home" ? "vs" : "@",
         score,
@@ -167,20 +193,24 @@ export async function GET(request: NextRequest) {
       }
     }
 
-    // Win-loss record: prefer ESPN's direct record, fall back to computed
-    const wins = completed.filter(g => g.result === "W").length;
-    const losses = completed.filter(g => g.result === "L").length;
-    const computedRecord = completed.length > 0 ? `${wins}-${losses}` : null;
-    const record = espnRecord || computedRecord;
+    // Compute record from games if ESPN didn't provide one
+    if (!espnRecord && completed.length > 0) {
+      const wins = completed.filter((g) => g.result === "W").length;
+      const losses = completed.filter((g) => g.result === "L").length;
+      espnRecord = `${wins}-${losses}`;
+    }
 
-    // Last 3 completed games (most recent first)
-    const recentGames = completed.slice(-3).reverse();
+    // Last 5 completed games (most recent first), next 5 upcoming
+    const recentGames = completed.slice(-5).reverse();
+    const next5 = upcoming.slice(0, 5);
 
-    // Next 3 upcoming games
-    const next3 = upcoming.slice(0, 3);
-
-    return NextResponse.json({ record, recentGames, upcoming: next3 });
-  } catch {
+    return NextResponse.json({
+      record: espnRecord,
+      recentGames,
+      upcoming: next5,
+    });
+  } catch (err) {
+    console.error(`[schedule] Error fetching schedule for "${school}":`, err);
     return NextResponse.json({ record: null, recentGames: [], upcoming: [] });
   }
 }

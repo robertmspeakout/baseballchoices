@@ -264,37 +264,45 @@ export default function SchoolPage({
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <header className="relative bg-blue-950 text-white overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url('${school.stadium_image_url || "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/2019CWSVanderbiltVsLouisville.jpg/1600px-2019CWSVanderbiltVsLouisville.jpg"}')` }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-blue-950/85 via-blue-950/40 to-blue-950/60" />
+      <header className="relative text-white overflow-hidden">
+        {/* Background layers */}
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950" />
+        {school.stadium_image_url && (
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
+            style={{ backgroundImage: `url('${school.stadium_image_url}')` }}
+          />
+        )}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute -top-20 -right-20 w-80 h-80 bg-gradient-to-br from-red-600/15 to-orange-500/5 rounded-full blur-3xl" />
+          <div className="absolute top-0 right-0 h-full w-1/3 bg-gradient-to-l from-red-600/5 to-transparent skew-x-[-12deg] translate-x-20" />
+        </div>
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 pt-4 pb-10 sm:pb-14">
-          <Link href="/" className="inline-flex items-center gap-2 text-white/80 hover:text-white text-sm transition-colors mb-6 sm:mb-10">
+          <Link href="/" className="inline-flex items-center gap-2 text-gray-400 hover:text-white text-sm font-medium transition-colors mb-6 sm:mb-10">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
             Back to Directory
           </Link>
-          <div className="flex items-end gap-3 sm:gap-4">
-            <div className="shrink-0 w-14 h-14 sm:w-20 sm:h-20 rounded-xl bg-white/20 backdrop-blur-sm border border-white/20 flex items-center justify-center overflow-hidden">
+          <div className="flex items-end gap-3 sm:gap-5">
+            <div className="shrink-0 w-14 h-14 sm:w-20 sm:h-20 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10 flex items-center justify-center overflow-hidden shadow-lg">
               {school.logo_url && !logoError ? (
                 <img src={school.logo_url} alt={`${school.name} logo`} className="w-11 h-11 sm:w-16 sm:h-16 object-contain" onError={() => setLogoError(true)} />
               ) : (
-                <span className="text-lg sm:text-2xl font-bold text-white/70">
+                <span className="text-lg sm:text-2xl font-black text-white/70">
                   {school.name.split(" ").map(w => w[0]).join("").slice(0, 3)}
                 </span>
               )}
             </div>
             <div className="min-w-0">
-              <h1 className="text-2xl sm:text-4xl font-extrabold text-white drop-shadow-lg truncate">{school.name}</h1>
-              <p className="text-sm sm:text-base text-white/80 drop-shadow truncate">
-                {school.mascot} &middot; {school.conference}
+              <h1 className="text-2xl sm:text-4xl font-black text-white tracking-tight truncate">{school.name}</h1>
+              <p className="text-sm sm:text-base text-gray-400 font-medium truncate">
+                {school.mascot ? `${school.mascot} · ` : ""}{school.conference}
               </p>
             </div>
           </div>
         </div>
+        <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-red-500/50 to-transparent" />
       </header>
 
       <main className="max-w-5xl mx-auto px-4 sm:px-6 py-4 sm:py-8 space-y-4 sm:space-y-6">
