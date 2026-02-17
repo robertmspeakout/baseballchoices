@@ -72,6 +72,45 @@ interface ScheduleGame {
   completed: boolean;
 }
 
+// Coach photo component - tries to load from school's athletics site, falls back to styled initials
+function CoachPhoto({ name, schoolName }: { name: string | null; schoolName: string }) {
+  const [imgSrc, setImgSrc] = useState<string | null>(null);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    if (!name) return;
+    // Try to find a coach headshot via our API
+    fetch(`/api/coach-photo?name=${encodeURIComponent(name)}&school=${encodeURIComponent(schoolName)}`)
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.url) setImgSrc(data.url);
+      })
+      .catch(() => {});
+  }, [name, schoolName]);
+
+  const initials = name
+    ? name.split(" ").map((w) => w[0]).filter(Boolean).join("").slice(0, 2).toUpperCase()
+    : "?";
+
+  if (imgSrc && !error) {
+    return (
+      <img
+        src={imgSrc}
+        alt={name || "Coach"}
+        className="shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-xl object-cover object-top shadow-md border-2 border-gray-100"
+        onError={() => setError(true)}
+      />
+    );
+  }
+
+  // Styled initials fallback with gradient
+  return (
+    <div className="shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-xl bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center shadow-md border-2 border-gray-200">
+      <span className="text-xl sm:text-2xl font-black text-white/80">{initials}</span>
+    </div>
+  );
+}
+
 const RECRUITING_STATUSES = [
   "Researching",
   "Reached Out",
@@ -265,44 +304,45 @@ export default function SchoolPage({
   return (
     <div className="min-h-screen bg-gray-50">
       <header className="relative text-white overflow-hidden">
-        {/* Background layers */}
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950" />
-        {school.stadium_image_url && (
-          <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
-            style={{ backgroundImage: `url('${school.stadium_image_url}')` }}
-          />
-        )}
+        {/* Background photo - stadium or default action shot */}
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url('${school.stadium_image_url || "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=1600&q=80"}')` }}
+        />
+        {/* Dramatic overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/40" />
+        {/* Red accent slash */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-20 -right-20 w-80 h-80 bg-gradient-to-br from-red-600/15 to-orange-500/5 rounded-full blur-3xl" />
-          <div className="absolute top-0 right-0 h-full w-1/3 bg-gradient-to-l from-red-600/5 to-transparent skew-x-[-12deg] translate-x-20" />
+          <div className="absolute -right-10 top-0 bottom-0 w-1/3 bg-gradient-to-l from-red-600/15 to-transparent skew-x-[-8deg]" />
         </div>
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 pt-4 pb-10 sm:pb-14">
-          <Link href="/" className="inline-flex items-center gap-2 text-gray-400 hover:text-white text-sm font-medium transition-colors mb-6 sm:mb-10">
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <Link href="/" className="inline-flex items-center gap-2 text-white/70 hover:text-white text-sm font-semibold transition-colors mb-6 sm:mb-10 group">
+            <svg className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
             Back to Directory
           </Link>
-          <div className="flex items-end gap-3 sm:gap-5">
-            <div className="shrink-0 w-14 h-14 sm:w-20 sm:h-20 rounded-xl bg-white/10 backdrop-blur-sm border border-white/10 flex items-center justify-center overflow-hidden shadow-lg">
+          <div className="flex items-end gap-4 sm:gap-5">
+            <div className="shrink-0 w-16 h-16 sm:w-24 sm:h-24 rounded-2xl bg-white shadow-2xl flex items-center justify-center overflow-hidden border-2 border-white/80">
               {school.logo_url && !logoError ? (
-                <img src={school.logo_url} alt={`${school.name} logo`} className="w-11 h-11 sm:w-16 sm:h-16 object-contain" onError={() => setLogoError(true)} />
+                <img src={school.logo_url} alt={`${school.name} logo`} className="w-12 h-12 sm:w-20 sm:h-20 object-contain" onError={() => setLogoError(true)} />
               ) : (
-                <span className="text-lg sm:text-2xl font-black text-white/70">
+                <span className="text-xl sm:text-3xl font-black text-gray-400">
                   {school.name.split(" ").map(w => w[0]).join("").slice(0, 3)}
                 </span>
               )}
             </div>
-            <div className="min-w-0">
-              <h1 className="text-2xl sm:text-4xl font-black text-white tracking-tight truncate">{school.name}</h1>
-              <p className="text-sm sm:text-base text-gray-400 font-medium truncate">
-                {school.mascot ? `${school.mascot} · ` : ""}{school.conference}
-              </p>
+            <div className="min-w-0 pb-1">
+              <h1 className="text-2xl sm:text-5xl font-black text-white tracking-tight truncate uppercase">{school.name}</h1>
+              <div className="flex items-center gap-2 mt-1">
+                {school.mascot && <span className="text-sm sm:text-base font-bold text-white/70">{school.mascot}</span>}
+                {school.mascot && <span className="text-white/30">|</span>}
+                <span className="text-sm sm:text-base font-bold text-red-400">{school.conference}</span>
+              </div>
             </div>
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-red-500/50 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-red-700 via-red-500 to-red-700" />
       </header>
 
       <main className="max-w-5xl mx-auto px-4 sm:px-6 py-4 sm:py-8 space-y-4 sm:space-y-6">
@@ -452,16 +492,13 @@ export default function SchoolPage({
                   Head Coach
                 </h2>
                 <div className="space-y-4">
-                  <div className="flex items-start gap-3">
-                    <div className="shrink-0 w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
-                      <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                      </svg>
-                    </div>
+                  <div className="flex items-start gap-4">
+                    <CoachPhoto name={school.head_coach_name} schoolName={school.name} />
                     <div>
-                      <p className="text-sm sm:text-base text-gray-900 font-semibold">{school.head_coach_name || "N/A"}</p>
+                      <p className="text-sm sm:text-base text-gray-900 font-bold">{school.head_coach_name || "N/A"}</p>
+                      <p className="text-xs text-gray-500">Head Coach</p>
                       {school.head_coach_email && (
-                        <a href={`mailto:${school.head_coach_email}`} className="text-xs sm:text-sm text-blue-600 hover:underline break-all">
+                        <a href={`mailto:${school.head_coach_email}`} className="text-xs sm:text-sm text-blue-600 hover:underline break-all mt-1 block">
                           {school.head_coach_email}
                         </a>
                       )}

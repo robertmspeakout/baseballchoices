@@ -234,76 +234,60 @@ export default function Home() {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <header className="relative text-white overflow-hidden">
-        {/* Multi-layer background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950" />
-        {/* Ambient glow effects */}
+        {/* Full-bleed action photo background */}
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=1600&q=80')" }}
+        />
+        {/* Dramatic gradient overlay - lets the image show through */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/30" />
+        {/* Hot accent slash across the right side */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-20 -right-20 w-80 h-80 bg-gradient-to-br from-red-600/20 to-orange-500/10 rounded-full blur-3xl animate-pulse-glow" />
-          <div className="absolute -bottom-10 -left-10 w-60 h-60 bg-gradient-to-tr from-blue-600/15 to-cyan-400/10 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: "1s" }} />
-          {/* Diagonal accent */}
-          <div className="absolute top-0 right-0 h-full w-1/3 bg-gradient-to-l from-red-600/8 to-transparent skew-x-[-12deg] translate-x-20" />
-          {/* Subtle grid */}
-          <div className="absolute inset-0 opacity-[0.03]"
-            style={{
-              backgroundImage: "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
-              backgroundSize: "40px 40px",
-            }}
-          />
+          <div className="absolute -right-10 top-0 bottom-0 w-2/5 bg-gradient-to-l from-red-600/25 to-transparent skew-x-[-8deg]" />
+          <div className="absolute -right-5 top-0 bottom-0 w-1 bg-red-500/50 skew-x-[-8deg]" />
         </div>
 
-        <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 py-4 sm:py-6">
+        <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 py-6 sm:py-10">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3 sm:gap-4">
-              {/* Icon mark */}
-              <div className="relative animate-float">
-                <div className="w-11 h-11 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center shadow-lg shadow-red-900/30 border border-red-400/20">
-                  <svg className="w-6 h-6 sm:w-8 sm:h-8 text-white drop-shadow-sm" viewBox="0 0 32 32" fill="none">
-                    <circle cx="16" cy="16" r="13" stroke="currentColor" strokeWidth="2.5" />
-                    <path d="M9,4 Q14,11 14,16 Q14,21 9,28" stroke="currentColor" strokeWidth="1.5" fill="none" />
-                    <path d="M23,4 Q18,11 18,16 Q18,21 23,28" stroke="currentColor" strokeWidth="1.5" fill="none" />
-                  </svg>
+            <div className="flex items-center gap-4 sm:gap-5">
+              {/* Brand mark - bold NB monogram */}
+              <div className="relative">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-red-600 flex items-center justify-center shadow-xl shadow-red-900/40 border-2 border-red-400/30 rotate-[-3deg] hover:rotate-0 transition-transform">
+                  <span className="text-xl sm:text-2xl font-black text-white tracking-tighter select-none" style={{ fontStyle: "italic" }}>NB</span>
                 </div>
-                <div className="absolute -inset-1 bg-red-500/20 rounded-xl blur-md -z-10" />
               </div>
-              {/* Title */}
+              {/* Title + tagline */}
               <div>
-                <h1 className="text-2xl sm:text-4xl font-black tracking-tight leading-none">
-                  <span
-                    className="bg-clip-text text-transparent animate-shimmer"
-                    style={{
-                      backgroundImage: "linear-gradient(90deg, #fff 0%, #fff 40%, #f87171 50%, #fff 60%, #fff 100%)",
-                      backgroundSize: "200% auto",
-                    }}
-                  >
-                    NEXTBASE
-                  </span>
+                <h1 className="text-3xl sm:text-5xl font-black tracking-tight leading-none uppercase">
+                  Next<span className="text-red-500">Base</span>
                 </h1>
-                <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.2em] text-gray-400 mt-0.5">
-                  College Baseball Recruiting
+                <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-white/60 mt-1">
+                  Your Recruiting Edge
                 </p>
               </div>
             </div>
 
             {/* Stats pills - desktop */}
-            <div className="hidden md:flex items-center gap-2">
-              <div className="flex items-center gap-1.5 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full px-3 py-1.5">
-                <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                <span className="text-xs font-medium text-gray-300">{allSchools.filter(s => s.division === "D1").length} D1</span>
+            <div className="hidden md:flex items-center gap-3">
+              <div className="text-center px-4 py-2 bg-white/10 backdrop-blur-md rounded-xl border border-white/10">
+                <p className="text-2xl font-black">{allSchools.filter(s => s.division === "D1").length}</p>
+                <p className="text-[10px] font-bold uppercase tracking-wider text-white/50">D1 Programs</p>
               </div>
-              <div className="flex items-center gap-1.5 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full px-3 py-1.5">
-                <div className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" style={{ animationDelay: "0.5s" }} />
-                <span className="text-xs font-medium text-gray-300">{allSchools.filter(s => s.division === "D2").length} D2</span>
+              <div className="text-center px-4 py-2 bg-white/10 backdrop-blur-md rounded-xl border border-white/10">
+                <p className="text-2xl font-black">{allSchools.filter(s => s.division === "D2").length}</p>
+                <p className="text-[10px] font-bold uppercase tracking-wider text-white/50">D2 Programs</p>
               </div>
               {ratedCount > 0 && (
-                <div className="flex items-center gap-1.5 bg-red-500/10 backdrop-blur-sm border border-red-500/20 rounded-full px-3 py-1.5">
-                  <span className="text-xs font-bold text-red-400">{ratedCount} tracked</span>
+                <div className="text-center px-4 py-2 bg-red-600/20 backdrop-blur-md rounded-xl border border-red-500/30">
+                  <p className="text-2xl font-black text-red-400">{ratedCount}</p>
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-red-300/60">Tracking</p>
                 </div>
               )}
             </div>
           </div>
         </div>
-        {/* Bottom accent line */}
-        <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-red-500/60 to-transparent" />
+        {/* Bottom edge - thick red accent bar */}
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-red-700 via-red-500 to-red-700" />
       </header>
 
       {/* Tab Navigation */}
