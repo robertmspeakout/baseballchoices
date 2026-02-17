@@ -263,7 +263,7 @@ export default function Home() {
                   Next<span className="text-red-500">Base</span>
                 </h1>
                 <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-white/60 mt-1">
-                  Your Recruiting Edge
+                  Your Personal AI Recruiting Edge
                 </p>
               </div>
             </div>
