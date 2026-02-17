@@ -13,7 +13,7 @@ export async function GET(request: NextRequest) {
   try {
     // Step 1: Search for the ESPN team ID
     const searchUrl = `https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/teams?limit=5&search=${encodeURIComponent(school)}`;
-    const searchRes = await fetch(searchUrl, { cache: "no-store" });
+    const searchRes = await fetch(searchUrl, { cache: "no-store", signal: AbortSignal.timeout(8000) });
 
     if (!searchRes.ok) {
       console.error(`[schedule] ESPN search failed: ${searchRes.status} for "${school}"`);
@@ -59,11 +59,11 @@ export async function GET(request: NextRequest) {
     const [teamRes, scheduleRes] = await Promise.all([
       fetch(
         `https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/teams/${teamId}`,
-        { cache: "no-store" }
+        { cache: "no-store", signal: AbortSignal.timeout(8000) }
       ),
       fetch(
         `https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/teams/${teamId}/schedule?season=${year}`,
-        { cache: "no-store" }
+        { cache: "no-store", signal: AbortSignal.timeout(8000) }
       ),
     ]);
 

@@ -35,28 +35,41 @@ interface SchoolTableProps {
 function useCurrentRecords(schools: School[]) {
   const [records, setRecords] = useState<Record<string, string | null>>({});
   const fetchedRef = useRef<Set<string>>(new Set());
+  const failedRef = useRef<Set<string>>(new Set());
 
   useEffect(() => {
-    // Only fetch for D1 schools that we haven't fetched yet
+    // Fetch for D1 and D2 schools that we haven't successfully fetched yet
     const toFetch = schools
-      .filter((s) => s.division === "D1" && !fetchedRef.current.has(s.name))
+      .filter((s) => (s.division === "D1" || s.division === "D2") && !fetchedRef.current.has(s.name) && !failedRef.current.has(s.name))
       .map((s) => s.name)
       .slice(0, 25);
 
     if (toFetch.length === 0) return;
 
-    // Mark as fetching
-    toFetch.forEach((n) => fetchedRef.current.add(n));
+    // Mark as in-flight (use failedRef temporarily, promote to fetchedRef on success)
+    const inFlight = new Set(toFetch);
 
     fetch(`/api/records?schools=${encodeURIComponent(toFetch.join(","))}`)
       .then((r) => r.json())
       .then((data) => {
         if (data.records) {
           setRecords((prev) => ({ ...prev, ...data.records }));
+          // Mark successfully fetched schools
+          for (const name of Object.keys(data.records)) {
+            fetchedRef.current.add(name);
+            inFlight.delete(name);
+          }
+        }
+        // Mark remaining as failed (allow retry on next render)
+        for (const name of inFlight) {
+          failedRef.current.add(name);
         }
       })
       .catch(() => {
-        // On error, don't retry
+        // On network error, mark all as failed so they can be retried
+        for (const name of inFlight) {
+          failedRef.current.add(name);
+        }
       });
   }, [schools]);
 
@@ -146,7 +159,7 @@ function SchoolLogo({ school }: { school: School }) {
   );
 }
 
-function RecordBadge({ record, loading }: { record: string | null | undefined; loading: boolean }) {
+function RecordBadge({ record, fallbackRecord, loading }: { record: string | null | undefined; fallbackRecord: string | null; loading: boolean }) {
   if (loading) {
     return (
       <span className="text-xs text-gray-300 bg-gray-50 px-2 py-0.5 rounded-full animate-pulse">
@@ -154,12 +167,21 @@ function RecordBadge({ record, loading }: { record: string | null | undefined; l
       </span>
     );
   }
-  if (!record) return null;
-  return (
-    <span className="text-xs text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full font-semibold">
-      {record}
-    </span>
-  );
+  if (record) {
+    return (
+      <span className="text-xs text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full font-semibold">
+        {record}
+      </span>
+    );
+  }
+  if (fallbackRecord) {
+    return (
+      <span className="text-xs text-gray-600 bg-gray-100 px-2 py-0.5 rounded-full font-medium">
+        {fallbackRecord}
+      </span>
+    );
+  }
+  return null;
 }
 
 // Mobile card layout
@@ -204,7 +226,7 @@ function MobileCard({
           <div className="flex flex-wrap items-center gap-1.5 mt-2">
             {divisionBadge(school.division)}
             <span className="text-xs text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full">{school.conference}</span>
-            <RecordBadge record={currentRecord} loading={recordLoading} />
+            <RecordBadge record={currentRecord} fallbackRecord={school.last_season_record} loading={recordLoading} />
             {distances && distances[school.id] != null && (
               <span className="text-xs text-green-700 bg-green-50 px-2 py-0.5 rounded-full font-medium">
                 {distances[school.id].toLocaleString()} mi
@@ -237,8 +259,8 @@ export default function SchoolTable({
   onPriorityChange,
 }: SchoolTableProps) {
   const currentRecords = useCurrentRecords(schools);
-  const hasAnyD1 = schools.some((s) => s.division === "D1");
-  const recordsLoading = hasAnyD1 && Object.keys(currentRecords).length === 0;
+  const hasAnyFetchable = schools.some((s) => s.division === "D1" || s.division === "D2");
+  const recordsLoading = hasAnyFetchable && Object.keys(currentRecords).length === 0;
 
   if (schools.length === 0) {
     return (
@@ -285,7 +307,7 @@ export default function SchoolTable({
             distances={distances}
             onPriorityChange={onPriorityChange}
             currentRecord={currentRecords[school.name]}
-            recordLoading={school.division === "D1" && recordsLoading}
+            recordLoading={(school.division === "D1" || school.division === "D2") && recordsLoading}
           />
         ))}
       </div>
@@ -312,7 +334,7 @@ export default function SchoolTable({
           <tbody className="bg-white divide-y divide-gray-100">
             {schools.map((school) => {
               const rec = currentRecords[school.name];
-              const isD1 = school.division === "D1";
+              const isFetchable = school.division === "D1" || school.division === "D2";
               return (
                 <tr
                   key={school.id}
@@ -332,12 +354,12 @@ export default function SchoolTable({
                   <td className="px-3 py-3 text-sm text-gray-700">{school.state}</td>
                   <td className="px-3 py-3 text-sm text-gray-700">{school.public_private}</td>
                   <td className="px-3 py-3 text-sm text-gray-700 text-center">
-                    {isD1 && recordsLoading ? (
+                    {isFetchable && recordsLoading ? (
                       <span className="text-gray-300 animate-pulse">--</span>
                     ) : rec ? (
                       <span className="font-semibold text-emerald-700">{rec}</span>
                     ) : school.last_season_record ? (
-                      <span className="text-gray-400 text-xs">{school.last_season_record}</span>
+                      <span className="font-medium text-gray-600">{school.last_season_record}</span>
                     ) : (
                       <span className="text-gray-300">-</span>
                     )}

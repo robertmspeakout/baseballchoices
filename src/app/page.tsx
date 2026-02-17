@@ -255,10 +255,10 @@ export default function Home() {
 
         <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 py-6 sm:py-10">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4 sm:gap-5">
+            <Link href="/" className="flex items-center gap-4 sm:gap-5 group">
               {/* Brand mark - baseball base (diamond) */}
               <div className="relative">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 rotate-45 rounded-md bg-red-600 flex items-center justify-center shadow-xl shadow-red-900/40 border-2 border-red-400/30 hover:scale-105 transition-transform">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 rotate-45 rounded-md bg-red-600 flex items-center justify-center shadow-xl shadow-red-900/40 border-2 border-red-400/30 group-hover:scale-105 transition-transform">
                   <span className="-rotate-45 text-xl sm:text-2xl font-black text-white tracking-tighter select-none" style={{ fontStyle: "italic" }}>NB</span>
                 </div>
               </div>
@@ -271,7 +271,7 @@ export default function Home() {
                   Your Personal AI Recruiting Edge
                 </p>
               </div>
-            </div>
+            </Link>
 
             {/* Stats pills - desktop */}
             <div className="hidden md:flex items-center gap-3">
@@ -427,12 +427,12 @@ export default function Home() {
       {/* Footer */}
       <footer className="bg-gray-900 mt-8">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <div className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
             <div className="w-6 h-6 rotate-45 rounded-sm bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center">
               <span className="-rotate-45 text-[7px] font-black text-white" style={{ fontStyle: "italic" }}>NB</span>
             </div>
             <span className="text-sm font-bold text-white tracking-tight">NEXTBASE</span>
-          </div>
+          </Link>
           <p className="text-xs text-gray-500">
             Data for informational purposes only.
           </p>

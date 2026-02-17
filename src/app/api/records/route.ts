@@ -25,7 +25,7 @@ export async function GET(request: NextRequest) {
   const fetchRecord = async (school: string): Promise<void> => {
     try {
       const searchUrl = `https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/teams?limit=3&search=${encodeURIComponent(school)}`;
-      const searchRes = await fetch(searchUrl, { cache: "no-store" });
+      const searchRes = await fetch(searchUrl, { cache: "no-store", signal: AbortSignal.timeout(8000) });
       if (!searchRes.ok) { records[school] = null; return; }
 
       const searchData = await searchRes.json();
@@ -46,7 +46,7 @@ export async function GET(request: NextRequest) {
       const teamId = String(teamEntry.id);
       const teamRes = await fetch(
         `https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/teams/${teamId}`,
-        { cache: "no-store" }
+        { cache: "no-store", signal: AbortSignal.timeout(8000) }
       );
 
       if (!teamRes.ok) { records[school] = null; return; }

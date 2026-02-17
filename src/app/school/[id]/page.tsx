@@ -158,6 +158,9 @@ export default function SchoolPage({
   const [recentGames, setRecentGames] = useState<ScheduleGame[]>([]);
   const [upcomingGames, setUpcomingGames] = useState<ScheduleGame[]>([]);
   const [scheduleLoading, setScheduleLoading] = useState(true);
+  const [facilityPhotos, setFacilityPhotos] = useState<{ url: string; caption: string }[]>([]);
+  const [photosLoading, setPhotosLoading] = useState(true);
+  const [lightboxIdx, setLightboxIdx] = useState<number | null>(null);
 
   useEffect(() => {
     const ud = getUserData(parseInt(id));
@@ -207,6 +210,19 @@ export default function SchoolPage({
         setUpcomingGames([]);
       })
       .finally(() => setScheduleLoading(false));
+  }, [schoolData]);
+
+  // Fetch stadium/facilities photos
+  useEffect(() => {
+    if (!schoolData) return;
+    setPhotosLoading(true);
+    const params = new URLSearchParams({ school: schoolData.name });
+    if (schoolData.stadium_name) params.set("stadium", schoolData.stadium_name);
+    fetch(`/api/stadium-photos?${params}`)
+      .then((r) => r.json())
+      .then((data) => setFacilityPhotos(data.photos || []))
+      .catch(() => setFacilityPhotos([]))
+      .finally(() => setPhotosLoading(false));
   }, [schoolData]);
 
   const savePriority = (newPriority: number) => {
@@ -316,12 +332,20 @@ export default function SchoolPage({
           <div className="absolute -right-10 top-0 bottom-0 w-1/3 bg-gradient-to-l from-red-600/15 to-transparent skew-x-[-8deg]" />
         </div>
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 pt-4 pb-10 sm:pb-14">
-          <Link href="/" className="inline-flex items-center gap-2 text-white/70 hover:text-white text-sm font-semibold transition-colors mb-6 sm:mb-10 group">
-            <svg className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-            Back to Directory
-          </Link>
+          <div className="flex items-center justify-between mb-6 sm:mb-10">
+            <Link href="/" className="inline-flex items-center gap-2 text-white/70 hover:text-white text-sm font-semibold transition-colors group">
+              <svg className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              Back to Directory
+            </Link>
+            <Link href="/" className="flex items-center gap-2 group">
+              <div className="w-7 h-7 rotate-45 rounded-sm bg-red-600 flex items-center justify-center group-hover:scale-105 transition-transform">
+                <span className="-rotate-45 text-[8px] font-black text-white" style={{ fontStyle: "italic" }}>NB</span>
+              </div>
+              <span className="text-sm font-bold tracking-tight text-white/70 group-hover:text-white transition-colors">Next<span className="text-red-400">Base</span></span>
+            </Link>
+          </div>
           <div className="flex items-end gap-4 sm:gap-5">
             <div className="shrink-0 w-16 h-16 sm:w-24 sm:h-24 rounded-2xl bg-white shadow-2xl flex items-center justify-center overflow-hidden border-2 border-white/80">
               {school.logo_url && !logoError ? (
@@ -379,10 +403,15 @@ export default function SchoolPage({
           {/* Quick stats */}
           <div className="grid grid-cols-3 sm:grid-cols-5 divide-x divide-y sm:divide-y-0 divide-gray-100">
             <div className="p-3 sm:p-4 text-center">
-              <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Current Record</p>
-              <p className="text-base sm:text-xl font-bold text-gray-900 mt-0.5 sm:mt-1">{currentRecord || (scheduleLoading ? "..." : "-")}</p>
-              {school.last_season_record && (
+              <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">{currentRecord ? "Current Record" : "Record"}</p>
+              <p className="text-base sm:text-xl font-bold text-gray-900 mt-0.5 sm:mt-1">
+                {currentRecord || school.last_season_record || (scheduleLoading ? "..." : "-")}
+              </p>
+              {currentRecord && school.last_season_record && (
                 <p className="text-[10px] sm:text-xs text-gray-400 mt-0.5">Last Season: {school.last_season_record}</p>
+              )}
+              {!currentRecord && school.last_season_record && !scheduleLoading && (
+                <p className="text-[10px] sm:text-xs text-gray-400 mt-0.5">Last Season</p>
               )}
             </div>
             <div className="p-3 sm:p-4 text-center">
@@ -837,6 +866,91 @@ export default function SchoolPage({
                   referrerPolicy="no-referrer-when-downgrade"
                   src={`https://maps.google.com/maps?q=${mapLat},${mapLng}&z=16&output=embed`}
                 />
+
+                {/* Stadium & Facilities Photos */}
+                {facilityPhotos.length > 0 && (
+                  <div className="p-4 sm:p-6 border-t border-gray-100">
+                    <h3 className="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-1.5">
+                      <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                      Stadium & Facilities
+                    </h3>
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                      {facilityPhotos.map((photo, i) => (
+                        <button
+                          key={i}
+                          onClick={() => setLightboxIdx(i)}
+                          className="relative aspect-[4/3] rounded-lg overflow-hidden bg-gray-100 hover:opacity-90 transition-opacity group"
+                        >
+                          <img
+                            src={photo.url}
+                            alt={photo.caption}
+                            className="w-full h-full object-cover"
+                            loading="lazy"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {photosLoading && (
+                  <div className="p-4 border-t border-gray-100">
+                    <div className="flex items-center gap-2 text-sm text-gray-400">
+                      <div className="animate-spin rounded-full h-4 w-4 border-2 border-gray-200 border-t-blue-600" />
+                      Loading photos...
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Photo lightbox */}
+            {lightboxIdx !== null && facilityPhotos[lightboxIdx] && (
+              <div
+                className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
+                onClick={() => setLightboxIdx(null)}
+              >
+                <div className="relative max-w-3xl w-full" onClick={(e) => e.stopPropagation()}>
+                  <img
+                    src={facilityPhotos[lightboxIdx].url}
+                    alt={facilityPhotos[lightboxIdx].caption}
+                    className="w-full rounded-lg shadow-2xl"
+                  />
+                  {facilityPhotos[lightboxIdx].caption && (
+                    <p className="text-white/80 text-sm text-center mt-3">{facilityPhotos[lightboxIdx].caption}</p>
+                  )}
+                  <button
+                    onClick={() => setLightboxIdx(null)}
+                    className="absolute -top-3 -right-3 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg text-gray-700 hover:text-gray-900"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                  {/* Nav arrows */}
+                  {facilityPhotos.length > 1 && (
+                    <>
+                      <button
+                        onClick={() => setLightboxIdx((lightboxIdx - 1 + facilityPhotos.length) % facilityPhotos.length)}
+                        className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 rounded-full flex items-center justify-center text-white hover:bg-black/70"
+                      >
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                        </svg>
+                      </button>
+                      <button
+                        onClick={() => setLightboxIdx((lightboxIdx + 1) % facilityPhotos.length)}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 rounded-full flex items-center justify-center text-white hover:bg-black/70"
+                      >
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </button>
+                    </>
+                  )}
+                </div>
               </div>
             )}
           </>
