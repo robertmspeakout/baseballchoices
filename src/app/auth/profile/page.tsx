@@ -17,42 +17,27 @@ const US_STATES = [
 ];
 
 const REGIONS: Record<string, string[]> = {
-  "Pacific NW": ["WA","OR","AK","ID"],
-  "West": ["CA","NV","HI","UT","CO","MT","WY"],
-  "Southwest": ["AZ","NM","TX","OK"],
-  "Northern Midwest": ["ND","SD","NE","MN","IA","WI","KS"],
-  "Great Lakes": ["MI","IL","IN","OH","MO"],
-  "Southeast": ["FL","GA","SC","NC","AL","MS","TN","AR","LA","KY","VA","WV"],
-  "Mid-Atlantic": ["NY","PA","NJ","DE","MD"],
-  "New England": ["CT","MA","RI","VT","NH","ME"],
+  "Northeast": ["ME","NH","VT","MA","RI","CT","NY","NJ","PA"],
+  "Mid-Atlantic": ["DE","MD","VA","WV","NC","SC"],
+  "Southeast": ["GA","FL","AL","MS","TN","KY"],
+  "Midwest": ["OH","MI","IN","IL","WI","MN","IA","MO"],
+  "Great Plains": ["ND","SD","NE","KS","OK"],
+  "Texas": ["TX"],
+  "Mountain West": ["MT","ID","WY","CO","UT","NV","NM","AZ"],
+  "Pacific NW": ["WA","OR","AK"],
+  "California": ["CA","HI"],
 };
 
-// Tile-grid map positions: [col, row]
-const STATE_GRID: Record<string, [number, number]> = {
-  ME: [11, 0],
-  VT: [10, 1], NH: [11, 1],
-  WA: [1, 2], ID: [2, 2], MT: [3, 2], ND: [4, 2], MN: [5, 2], WI: [6, 2], MI: [8, 2], NY: [10, 2], MA: [11, 2],
-  OR: [1, 3], NV: [2, 3], WY: [3, 3], SD: [4, 3], IA: [5, 3], IL: [6, 3], IN: [7, 3], OH: [8, 3], PA: [9, 3], NJ: [10, 3], CT: [11, 3],
-  CA: [1, 4], UT: [2, 4], CO: [3, 4], NE: [4, 4], MO: [5, 4], KY: [6, 4], WV: [7, 4], VA: [8, 4], MD: [9, 4], DE: [10, 4], RI: [11, 4],
-  AZ: [2, 5], NM: [3, 5], KS: [4, 5], AR: [5, 5], TN: [6, 5], NC: [7, 5], SC: [8, 5],
-  HI: [0, 6], TX: [3, 6], OK: [4, 6], LA: [5, 6], MS: [6, 6], AL: [7, 6], GA: [8, 6],
-  AK: [0, 7], FL: [8, 7],
+const CONFERENCE_TIERS: Record<string, string[]> = {
+  "Power": ["SEC", "ACC", "Big 12", "Big Ten"],
+  "High-Major": ["Sun Belt", "Big West", "American Athletic", "Pac-12", "Mountain West", "Big East", "WAC", "Conference USA", "West Coast"],
+  "Mid-Major": ["Missouri Valley", "Atlantic 10", "CAA", "Southern", "MAC", "Ohio Valley", "OVC", "Horizon", "MAAC", "Summit", "Big Sky", "Southland"],
+  "Low-Major": ["SWAC", "MEAC", "Patriot", "NEC", "Ivy League", "America East", "Big South", "Northeast", "ASUN"],
 };
 
-const REGION_COLORS: Record<string, { bg: string; hover: string; selected: string; text: string }> = {
-  "Pacific NW":        { bg: "fill-blue-100",    hover: "fill-blue-200",    selected: "fill-blue-500",    text: "text-blue-600" },
-  "West":              { bg: "fill-teal-100",    hover: "fill-teal-200",    selected: "fill-teal-500",    text: "text-teal-600" },
-  "Southwest":         { bg: "fill-orange-100",  hover: "fill-orange-200",  selected: "fill-orange-500",  text: "text-orange-600" },
-  "Northern Midwest":  { bg: "fill-indigo-100",  hover: "fill-indigo-200",  selected: "fill-indigo-500",  text: "text-indigo-600" },
-  "Great Lakes":       { bg: "fill-cyan-100",    hover: "fill-cyan-200",    selected: "fill-cyan-500",    text: "text-cyan-600" },
-  "Southeast":         { bg: "fill-rose-100",    hover: "fill-rose-200",    selected: "fill-rose-500",    text: "text-rose-600" },
-  "Mid-Atlantic":      { bg: "fill-violet-100",  hover: "fill-violet-200",  selected: "fill-violet-500",  text: "text-violet-600" },
-  "New England":       { bg: "fill-emerald-100", hover: "fill-emerald-200", selected: "fill-emerald-500", text: "text-emerald-600" },
-};
-
-function getRegionForState(st: string): string | null {
-  for (const [region, states] of Object.entries(REGIONS)) {
-    if (states.includes(st)) return region;
+function getTierForConference(conf: string): string | null {
+  for (const [tier, confs] of Object.entries(CONFERENCE_TIERS)) {
+    if (confs.includes(conf)) return tier;
   }
   return null;
 }
@@ -75,71 +60,14 @@ const TUITION_OPTIONS = [
 
 const MAJOR_CONFERENCES = [
   "SEC", "ACC", "Big 12", "Big Ten", "Pac-12",
-  "AAC", "A-10", "Big East", "Big West", "C-USA",
-  "CAA", "Horizon", "Ivy", "MAAC", "MAC",
-  "MVC", "Mountain West", "OVC", "Patriot", "SoCon",
-  "Sun Belt", "Summit", "WAC", "WCC",
+  "American Athletic", "Sun Belt", "Big West", "Big East", "Mountain West",
+  "WAC", "Conference USA", "West Coast",
+  "Atlantic 10", "Missouri Valley", "CAA", "Southern", "MAC",
+  "Ohio Valley", "Horizon", "MAAC", "Summit", "Big Sky",
+  "Patriot", "Ivy League", "SWAC", "MEAC", "NEC", "ASUN",
 ];
 
 const TOTAL_STEPS = 3;
-
-const CELL = 34;
-const GAP = 2;
-
-function RegionMap({
-  selectedStates,
-  hoveredRegion,
-  onHoverRegion,
-  onToggleRegion,
-}: {
-  selectedStates: string[];
-  hoveredRegion: string | null;
-  onHoverRegion: (r: string | null) => void;
-  onToggleRegion: (r: string) => void;
-}) {
-  const width = 12 * (CELL + GAP) + GAP;
-  const height = 8 * (CELL + GAP) + GAP;
-
-  return (
-    <svg viewBox={`0 0 ${width} ${height}`} className="w-full max-w-md mx-auto" role="img" aria-label="US Region Map">
-      {Object.entries(STATE_GRID).map(([st, [col, row]]) => {
-        const region = getRegionForState(st);
-        if (!region) return null;
-        const colors = REGION_COLORS[region];
-        const isSelected = selectedStates.includes(st);
-        const isHovered = hoveredRegion === region;
-        const x = GAP + col * (CELL + GAP);
-        const y = GAP + row * (CELL + GAP);
-
-        let fillClass = colors.bg;
-        if (isSelected) fillClass = colors.selected;
-        else if (isHovered) fillClass = colors.hover;
-
-        return (
-          <g
-            key={st}
-            className="cursor-pointer"
-            onMouseEnter={() => onHoverRegion(region)}
-            onMouseLeave={() => onHoverRegion(null)}
-            onClick={() => onToggleRegion(region)}
-          >
-            <rect
-              x={x} y={y} width={CELL} height={CELL} rx={4}
-              className={`${fillClass} transition-colors duration-150 stroke-white stroke-1`}
-            />
-            <text
-              x={x + CELL / 2} y={y + CELL / 2 + 1}
-              textAnchor="middle" dominantBaseline="middle"
-              className={`text-[9px] font-bold pointer-events-none select-none ${isSelected ? "fill-white" : "fill-gray-600"}`}
-            >
-              {st}
-            </text>
-          </g>
-        );
-      })}
-    </svg>
-  );
-}
 
 export default function ProfilePage() {
   const [step, setStep] = useState(1);
@@ -175,7 +103,7 @@ export default function ProfilePage() {
   const [competitiveness, setCompetitiveness] = useState<"top25" | "postseason" | "any">("any");
   const [draftImportance, setDraftImportance] = useState<"yes" | "no">("no");
   const [preferredConferences, setPreferredConferences] = useState<string[]>([]);
-  const [hoveredRegion, setHoveredRegion] = useState<string | null>(null);
+  const [preferredTiers, setPreferredTiers] = useState<string[]>([]);
 
   const profilePicRef = useRef<HTMLInputElement>(null);
   const backgroundPicRef = useRef<HTMLInputElement>(null);
@@ -209,6 +137,7 @@ export default function ProfilePage() {
     setCompetitiveness(prefs.competitiveness);
     setDraftImportance(prefs.draftImportance);
     setPreferredConferences(prefs.preferredConferences);
+    setPreferredTiers((prefs as any).preferredTiers || []);
   }, []);
 
   const handleFileUpload = (
@@ -246,6 +175,12 @@ export default function ProfilePage() {
   const toggleConference = (conf: string) => {
     setPreferredConferences((prev) =>
       prev.includes(conf) ? prev.filter((c) => c !== conf) : [...prev, conf]
+    );
+  };
+
+  const toggleTier = (tier: string) => {
+    setPreferredTiers((prev) =>
+      prev.includes(tier) ? prev.filter((t) => t !== tier) : [...prev, tier]
     );
   };
 
@@ -308,6 +243,7 @@ export default function ProfilePage() {
         competitiveness,
         draftImportance,
         preferredConferences,
+        preferredTiers,
       });
     }
   };
@@ -706,56 +642,61 @@ export default function ProfilePage() {
               </div>
             </div>
 
-            {/* Region Map */}
+            {/* Regions */}
             <div>
-              <label className={labelClass}>Preferred Regions <span className="text-gray-400 font-normal">(tap regions to select)</span></label>
-              <RegionMap
-                selectedStates={preferredStates}
-                hoveredRegion={hoveredRegion}
-                onHoverRegion={setHoveredRegion}
-                onToggleRegion={toggleRegion}
-              />
-              {/* Region legend */}
-              <div className="flex flex-wrap gap-1.5 mt-3">
-                {Object.entries(REGIONS).map(([region, states]) => {
-                  const count = states.filter((s) => preferredStates.includes(s)).length;
-                  const colors = REGION_COLORS[region];
+              <label className={labelClass}>Preferred Regions <span className="text-gray-400 font-normal">(optional)</span></label>
+              <div className="flex flex-wrap gap-2">
+                {Object.keys(REGIONS).map((region) => {
+                  const states = REGIONS[region];
+                  const allSelected = states.every((s) => preferredStates.includes(s));
                   return (
                     <button
                       key={region}
                       type="button"
                       onClick={() => toggleRegion(region)}
-                      onMouseEnter={() => setHoveredRegion(region)}
-                      onMouseLeave={() => setHoveredRegion(null)}
-                      className={`px-2.5 py-1 rounded-md text-[11px] font-bold transition-all ${
-                        count === states.length
-                          ? `${colors.text} bg-current/10 ring-1 ring-current/30`
-                          : count > 0
-                          ? `${colors.text} bg-current/5`
-                          : "text-gray-400 bg-gray-50 hover:bg-gray-100"
+                      className={`px-3 py-2 rounded-xl text-xs font-bold transition-all ${
+                        allSelected
+                          ? "bg-gray-900 text-white shadow-md"
+                          : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                       }`}
                     >
-                      {region} {count > 0 && <span className="opacity-60">({count})</span>}
+                      {region}
                     </button>
                   );
                 })}
               </div>
-              {preferredStates.length > 0 && (
-                <div className="flex flex-wrap gap-1 mt-2">
-                  {preferredStates.sort().map((s) => (
-                    <span key={s} className="inline-flex items-center gap-0.5 px-1.5 py-0.5 bg-red-50 text-red-700 rounded text-[10px] font-bold">
-                      {s}
-                      <button type="button" onClick={() => toggleState(s)} className="hover:text-red-900 ml-0.5">&times;</button>
-                    </span>
-                  ))}
-                </div>
-              )}
             </div>
 
-            {/* Conferences — only for D1 */}
+            {/* Level / Tier — only for D1 */}
             {divisionPref !== "D2" && (
               <div>
-                <label className={labelClass}>Preferred D1 Conferences <span className="text-gray-400 font-normal">(optional)</span></label>
+                <label className={labelClass}>Level</label>
+                <div className="space-y-2">
+                  {Object.entries(CONFERENCE_TIERS).map(([tier, confs]) => (
+                    <button
+                      key={tier}
+                      type="button"
+                      onClick={() => toggleTier(tier)}
+                      className={`w-full text-left px-4 py-3 rounded-xl transition-all border ${
+                        preferredTiers.includes(tier)
+                          ? "bg-gray-900 text-white border-gray-900 shadow-md"
+                          : "bg-white text-gray-700 border-gray-200 hover:border-gray-300 hover:bg-gray-50"
+                      }`}
+                    >
+                      <span className="text-sm font-bold">{tier}</span>
+                      <span className={`block text-xs mt-0.5 ${preferredTiers.includes(tier) ? "text-white/60" : "text-gray-400"}`}>
+                        {confs.slice(0, 5).join(", ")}{confs.length > 5 ? ` +${confs.length - 5} more` : ""}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Specific Conferences — only for D1, optional detail */}
+            {divisionPref !== "D2" && (
+              <div>
+                <label className={labelClass}>Specific Conferences <span className="text-gray-400 font-normal">(optional — for fine-tuning)</span></label>
                 <div className="flex flex-wrap gap-1.5">
                   {MAJOR_CONFERENCES.map((conf) => (
                     <button

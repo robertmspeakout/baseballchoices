@@ -33,6 +33,7 @@ export interface PlayerPreferences {
   // postseason = has regional/CWS appearances
   draftImportance: "yes" | "no"; // wants a school that produces draft picks
   preferredConferences: string[];
+  preferredTiers: string[]; // "Power", "High-Major", "Mid-Major", "Low-Major"
 }
 
 const PROFILE_KEY = "nextbase_profile";
@@ -66,6 +67,7 @@ const DEFAULT_PREFERENCES: PlayerPreferences = {
   competitiveness: "any",
   draftImportance: "no",
   preferredConferences: [],
+  preferredTiers: [],
 };
 
 export function loadProfile(): PlayerProfile {

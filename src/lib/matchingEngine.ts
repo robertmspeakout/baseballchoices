@@ -36,18 +36,34 @@ export interface MatchResult {
   reasons: string[]; // human-readable match reasons
 }
 
+// Conference-to-tier mapping
+const CONFERENCE_TIER: Record<string, string> = {
+  "SEC": "Power", "ACC": "Power", "Big 12": "Power", "Big Ten": "Power",
+  "Sun Belt": "High-Major", "Big West": "High-Major", "American Athletic": "High-Major",
+  "Pac-12": "High-Major", "Mountain West": "High-Major", "Big East": "High-Major",
+  "WAC": "High-Major", "Conference USA": "High-Major", "West Coast": "High-Major",
+  "Missouri Valley": "Mid-Major", "Atlantic 10": "Mid-Major", "CAA": "Mid-Major",
+  "Southern": "Mid-Major", "MAC": "Mid-Major", "Ohio Valley": "Mid-Major", "OVC": "Mid-Major",
+  "Horizon": "Mid-Major", "MAAC": "Mid-Major", "Summit": "Mid-Major", "Big Sky": "Mid-Major",
+  "Southland": "Mid-Major",
+  "SWAC": "Low-Major", "MEAC": "Low-Major", "Patriot": "Low-Major", "NEC": "Low-Major",
+  "Ivy League": "Low-Major", "America East": "Low-Major", "Big South": "Low-Major",
+  "Northeast": "Low-Major", "ASUN": "Low-Major",
+};
+
 // Weights for each scoring category (must sum to 100)
 const WEIGHTS = {
-  division: 15,
-  distance: 15,
-  stateRegion: 8,
-  tuition: 13,
-  schoolSize: 7,
-  publicPrivate: 5,
-  academics: 10,
-  competitiveness: 15,
-  draftPicks: 7,
+  division: 12,
+  distance: 14,
+  stateRegion: 7,
+  tuition: 12,
+  schoolSize: 6,
+  publicPrivate: 4,
+  academics: 9,
+  competitiveness: 13,
+  draftPicks: 6,
   conference: 5,
+  tier: 12,
 };
 
 function categorizeSize(enrollment: number | null): "small" | "medium" | "large" | null {
@@ -217,6 +233,21 @@ export function scoreSchool(
   } else if (prefs.preferredConferences.includes(school.conference)) {
     score += WEIGHTS.conference;
     reasons.push(`${school.conference} — one of your preferred conferences`);
+  }
+
+  // --- Tier / Level (12 pts) ---
+  const schoolTier = CONFERENCE_TIER[school.conference] || null;
+  if (!prefs.preferredTiers || prefs.preferredTiers.length === 0) {
+    score += WEIGHTS.tier; // No tier preference = full credit
+  } else if (schoolTier && prefs.preferredTiers.includes(schoolTier)) {
+    score += WEIGHTS.tier;
+    reasons.push(`${schoolTier} conference (${school.conference})`);
+  } else if (schoolTier) {
+    // Adjacent tier gets partial credit
+    const tiers = ["Power", "High-Major", "Mid-Major", "Low-Major"];
+    const schoolIdx = tiers.indexOf(schoolTier);
+    const minDist = Math.min(...prefs.preferredTiers.map(t => Math.abs(tiers.indexOf(t) - schoolIdx)));
+    score += Math.max(0, WEIGHTS.tier * (1 - minDist * 0.4));
   }
 
   return {
