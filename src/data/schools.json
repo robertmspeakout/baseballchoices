@@ -11896,7 +11896,7 @@
   {
     "id": 331,
     "name": "Academy of Art",
-    "mascot": null,
+    "mascot": "Urban Knights",
     "city": "San Francisco",
     "state": "CA",
     "zip": null,
@@ -11934,7 +11934,7 @@
   {
     "id": 332,
     "name": "Adams State",
-    "mascot": null,
+    "mascot": "Grizzlies",
     "city": "Alamosa",
     "state": "CO",
     "zip": null,
@@ -11972,7 +11972,7 @@
   {
     "id": 333,
     "name": "Adelphi",
-    "mascot": null,
+    "mascot": "Panthers",
     "city": "Garden City",
     "state": "NY",
     "zip": null,
@@ -12010,7 +12010,7 @@
   {
     "id": 334,
     "name": "Albany State",
-    "mascot": null,
+    "mascot": "Golden Rams",
     "city": "Albany",
     "state": "GA",
     "zip": null,
@@ -12048,7 +12048,7 @@
   {
     "id": 335,
     "name": "American International",
-    "mascot": null,
+    "mascot": "Yellow Jackets",
     "city": "Springfield",
     "state": "MA",
     "zip": null,
@@ -12086,7 +12086,7 @@
   {
     "id": 336,
     "name": "Anderson (SC)",
-    "mascot": null,
+    "mascot": "Trojans",
     "city": "Anderson",
     "state": "SC",
     "zip": null,
@@ -12124,7 +12124,7 @@
   {
     "id": 337,
     "name": "Angelo State",
-    "mascot": null,
+    "mascot": "Rams",
     "city": "San Angelo",
     "state": "TX",
     "zip": null,
@@ -12162,7 +12162,7 @@
   {
     "id": 338,
     "name": "Arkansas Tech",
-    "mascot": null,
+    "mascot": "Wonder Boys",
     "city": "Russellville",
     "state": "AR",
     "zip": null,
@@ -12200,7 +12200,7 @@
   {
     "id": 531,
     "name": "Arkansas-Fort Smith",
-    "mascot": null,
+    "mascot": "Lions",
     "city": "Fort Smith",
     "state": "AR",
     "zip": null,
@@ -12238,7 +12238,7 @@
   {
     "id": 532,
     "name": "Arkansas-Monticello",
-    "mascot": null,
+    "mascot": "Boll Weevils",
     "city": "Monticello",
     "state": "AR",
     "zip": null,
@@ -12276,7 +12276,7 @@
   {
     "id": 339,
     "name": "Ashland",
-    "mascot": null,
+    "mascot": "Eagles",
     "city": "Ashland",
     "state": "OH",
     "zip": null,
@@ -12314,7 +12314,7 @@
   {
     "id": 340,
     "name": "Assumption",
-    "mascot": null,
+    "mascot": "Greyhounds",
     "city": "Worcester",
     "state": "MA",
     "zip": null,
@@ -12352,7 +12352,7 @@
   {
     "id": 341,
     "name": "Auburn Montgomery",
-    "mascot": null,
+    "mascot": "Warhawks",
     "city": "Montgomery",
     "state": "AL",
     "zip": null,
@@ -12390,7 +12390,7 @@
   {
     "id": 342,
     "name": "Augusta",
-    "mascot": null,
+    "mascot": "Jaguars",
     "city": "Augusta",
     "state": "GA",
     "zip": null,
@@ -12428,7 +12428,7 @@
   {
     "id": 343,
     "name": "Augustana (SD)",
-    "mascot": null,
+    "mascot": "Vikings",
     "city": "Sioux Falls",
     "state": "SD",
     "zip": null,
@@ -12466,7 +12466,7 @@
   {
     "id": 344,
     "name": "Azusa Pacific",
-    "mascot": null,
+    "mascot": "Cougars",
     "city": "Azusa",
     "state": "CA",
     "zip": null,
@@ -12504,7 +12504,7 @@
   {
     "id": 345,
     "name": "Barry",
-    "mascot": null,
+    "mascot": "Buccaneers",
     "city": "Miami",
     "state": "FL",
     "zip": null,
@@ -12542,7 +12542,7 @@
   {
     "id": 346,
     "name": "Barton",
-    "mascot": null,
+    "mascot": "Bulldogs",
     "city": "Wilson",
     "state": "NC",
     "zip": null,
@@ -12580,7 +12580,7 @@
   {
     "id": 347,
     "name": "Belmont Abbey",
-    "mascot": null,
+    "mascot": "Crusaders",
     "city": "Belmont",
     "state": "NC",
     "zip": null,
@@ -12618,7 +12618,7 @@
   {
     "id": 348,
     "name": "Bemidji State",
-    "mascot": null,
+    "mascot": "Beavers",
     "city": "Bemidji",
     "state": "MN",
     "zip": null,
@@ -12656,7 +12656,7 @@
   {
     "id": 349,
     "name": "Benedict",
-    "mascot": null,
+    "mascot": "Tigers",
     "city": "Columbia",
     "state": "SC",
     "zip": null,
@@ -12694,7 +12694,7 @@
   {
     "id": 350,
     "name": "Bentley",
-    "mascot": null,
+    "mascot": "Falcons",
     "city": "Waltham",
     "state": "MA",
     "zip": null,
@@ -12732,7 +12732,7 @@
   {
     "id": 351,
     "name": "Biola",
-    "mascot": null,
+    "mascot": "Eagles",
     "city": "La Mirada",
     "state": "CA",
     "zip": null,
@@ -12770,7 +12770,7 @@
   {
     "id": 352,
     "name": "Bloomfield",
-    "mascot": null,
+    "mascot": "Bears",
     "city": "Bloomfield",
     "state": "NJ",
     "zip": null,
@@ -12808,7 +12808,7 @@
   {
     "id": 353,
     "name": "Bloomsburg",
-    "mascot": null,
+    "mascot": "Huskies",
     "city": "Bloomsburg",
     "state": "PA",
     "zip": null,
@@ -12846,7 +12846,7 @@
   {
     "id": 354,
     "name": "Bluefield State",
-    "mascot": null,
+    "mascot": "Big Blues",
     "city": "Bluefield",
     "state": "WV",
     "zip": null,
@@ -12884,7 +12884,7 @@
   {
     "id": 533,
     "name": "Bridgeport",
-    "mascot": null,
+    "mascot": "Purple Knights",
     "city": "Bridgeport",
     "state": "CT",
     "zip": null,
@@ -12922,7 +12922,7 @@
   {
     "id": 358,
     "name": "CSU Dominguez Hills",
-    "mascot": null,
+    "mascot": "Toros",
     "city": "Carson",
     "state": "CA",
     "zip": null,
@@ -12960,7 +12960,7 @@
   {
     "id": 359,
     "name": "CSU East Bay",
-    "mascot": null,
+    "mascot": "Pioneers",
     "city": "Hayward",
     "state": "CA",
     "zip": null,
@@ -12998,7 +12998,7 @@
   {
     "id": 361,
     "name": "CSU Monterey Bay",
-    "mascot": null,
+    "mascot": "Otters",
     "city": "Seaside",
     "state": "CA",
     "zip": null,
@@ -13036,7 +13036,7 @@
   {
     "id": 382,
     "name": "CSU Pueblo",
-    "mascot": null,
+    "mascot": "ThunderWolves",
     "city": "Pueblo",
     "state": "CO",
     "zip": null,
@@ -13074,7 +13074,7 @@
   {
     "id": 362,
     "name": "CSU San Bernardino",
-    "mascot": null,
+    "mascot": "Coyotes",
     "city": "San Bernardino",
     "state": "CA",
     "zip": null,
@@ -13112,7 +13112,7 @@
   {
     "id": 363,
     "name": "CSU San Marcos",
-    "mascot": null,
+    "mascot": "Cougars",
     "city": "San Marcos",
     "state": "CA",
     "zip": null,
@@ -13150,7 +13150,7 @@
   {
     "id": 356,
     "name": "Cal Poly Pomona",
-    "mascot": null,
+    "mascot": "Broncos",
     "city": "Pomona",
     "state": "CA",
     "zip": null,
@@ -13188,7 +13188,7 @@
   {
     "id": 360,
     "name": "Cal State LA",
-    "mascot": null,
+    "mascot": "Golden Eagles",
     "city": "Los Angeles",
     "state": "CA",
     "zip": null,
@@ -13226,7 +13226,7 @@
   {
     "id": 365,
     "name": "Cal U (PA)",
-    "mascot": null,
+    "mascot": "Vulcans",
     "city": "California",
     "state": "PA",
     "zip": null,
@@ -13264,7 +13264,7 @@
   {
     "id": 355,
     "name": "Caldwell",
-    "mascot": null,
+    "mascot": "Cougars",
     "city": "Caldwell",
     "state": "NJ",
     "zip": null,
@@ -13302,7 +13302,7 @@
   {
     "id": 366,
     "name": "Cameron",
-    "mascot": null,
+    "mascot": "Aggies",
     "city": "Lawton",
     "state": "OK",
     "zip": null,
@@ -13340,7 +13340,7 @@
   {
     "id": 367,
     "name": "Carson-Newman",
-    "mascot": null,
+    "mascot": "Eagles",
     "city": "Jefferson City",
     "state": "TN",
     "zip": null,
@@ -13378,7 +13378,7 @@
   {
     "id": 368,
     "name": "Catawba",
-    "mascot": null,
+    "mascot": "Indians",
     "city": "Salisbury",
     "state": "NC",
     "zip": null,
@@ -13416,7 +13416,7 @@
   {
     "id": 369,
     "name": "Cedarville",
-    "mascot": null,
+    "mascot": "Yellow Jackets",
     "city": "Cedarville",
     "state": "OH",
     "zip": null,
@@ -13454,7 +13454,7 @@
   {
     "id": 534,
     "name": "Central Missouri",
-    "mascot": null,
+    "mascot": "Mules",
     "city": "Warrensburg",
     "state": "MO",
     "zip": null,
@@ -13492,7 +13492,7 @@
   {
     "id": 535,
     "name": "Central Oklahoma",
-    "mascot": null,
+    "mascot": "Bronchos",
     "city": "Edmond",
     "state": "OK",
     "zip": null,
@@ -13530,7 +13530,7 @@
   {
     "id": 370,
     "name": "Central Washington",
-    "mascot": null,
+    "mascot": "Wildcats",
     "city": "Ellensburg",
     "state": "WA",
     "zip": null,
@@ -13568,7 +13568,7 @@
   {
     "id": 371,
     "name": "Chaminade",
-    "mascot": null,
+    "mascot": "Silverswords",
     "city": "Honolulu",
     "state": "HI",
     "zip": null,
@@ -13606,7 +13606,7 @@
   {
     "id": 536,
     "name": "Charleston (WV)",
-    "mascot": null,
+    "mascot": "Golden Eagles",
     "city": "Charleston",
     "state": "WV",
     "zip": null,
@@ -13644,7 +13644,7 @@
   {
     "id": 372,
     "name": "Chestnut Hill",
-    "mascot": null,
+    "mascot": "Griffins",
     "city": "Philadelphia",
     "state": "PA",
     "zip": null,
@@ -13682,7 +13682,7 @@
   {
     "id": 357,
     "name": "Chico State",
-    "mascot": null,
+    "mascot": "Wildcats",
     "city": "Chico",
     "state": "CA",
     "zip": null,
@@ -13720,7 +13720,7 @@
   {
     "id": 373,
     "name": "Chowan",
-    "mascot": null,
+    "mascot": "Hawks",
     "city": "Murfreesboro",
     "state": "NC",
     "zip": null,
@@ -13758,7 +13758,7 @@
   {
     "id": 374,
     "name": "Christian Brothers",
-    "mascot": null,
+    "mascot": "Buccaneers",
     "city": "Memphis",
     "state": "TN",
     "zip": null,
@@ -13796,7 +13796,7 @@
   {
     "id": 375,
     "name": "Claflin",
-    "mascot": null,
+    "mascot": "Panthers",
     "city": "Orangeburg",
     "state": "SC",
     "zip": null,
@@ -13834,7 +13834,7 @@
   {
     "id": 376,
     "name": "Clarion",
-    "mascot": null,
+    "mascot": "Golden Eagles",
     "city": "Clarion",
     "state": "PA",
     "zip": null,
@@ -13872,7 +13872,7 @@
   {
     "id": 377,
     "name": "Clark Atlanta",
-    "mascot": null,
+    "mascot": "Panthers",
     "city": "Atlanta",
     "state": "GA",
     "zip": null,
@@ -13910,7 +13910,7 @@
   {
     "id": 378,
     "name": "Coker",
-    "mascot": null,
+    "mascot": "Cobras",
     "city": "Hartsville",
     "state": "SC",
     "zip": null,
@@ -13948,7 +13948,7 @@
   {
     "id": 379,
     "name": "Colorado Christian",
-    "mascot": null,
+    "mascot": "Cougars",
     "city": "Lakewood",
     "state": "CO",
     "zip": null,
@@ -13986,7 +13986,7 @@
   {
     "id": 380,
     "name": "Colorado Mesa",
-    "mascot": null,
+    "mascot": "Mavericks",
     "city": "Grand Junction",
     "state": "CO",
     "zip": null,
@@ -14024,7 +14024,7 @@
   {
     "id": 381,
     "name": "Colorado Mines",
-    "mascot": null,
+    "mascot": "Orediggers",
     "city": "Golden",
     "state": "CO",
     "zip": null,
@@ -14062,7 +14062,7 @@
   {
     "id": 383,
     "name": "Columbus State",
-    "mascot": null,
+    "mascot": "Cougars",
     "city": "Columbus",
     "state": "GA",
     "zip": null,
@@ -14100,7 +14100,7 @@
   {
     "id": 384,
     "name": "Concord",
-    "mascot": null,
+    "mascot": "Mountain Lions",
     "city": "Athens",
     "state": "WV",
     "zip": null,
@@ -14138,7 +14138,7 @@
   {
     "id": 385,
     "name": "Concordia Irvine",
-    "mascot": null,
+    "mascot": "Eagles",
     "city": "Irvine",
     "state": "CA",
     "zip": null,
@@ -14176,7 +14176,7 @@
   {
     "id": 386,
     "name": "Concordia St. Paul",
-    "mascot": null,
+    "mascot": "Golden Bears",
     "city": "Saint Paul",
     "state": "MN",
     "zip": null,
@@ -14214,7 +14214,7 @@
   {
     "id": 387,
     "name": "D'Youville",
-    "mascot": null,
+    "mascot": "Saints",
     "city": "Buffalo",
     "state": "NY",
     "zip": null,
@@ -14252,7 +14252,7 @@
   {
     "id": 388,
     "name": "Davenport",
-    "mascot": null,
+    "mascot": "Panthers",
     "city": "Grand Rapids",
     "state": "MI",
     "zip": null,
@@ -14290,7 +14290,7 @@
   {
     "id": 389,
     "name": "Davis & Elkins",
-    "mascot": null,
+    "mascot": "Senators",
     "city": "Elkins",
     "state": "WV",
     "zip": null,
@@ -14328,7 +14328,7 @@
   {
     "id": 390,
     "name": "Delta State",
-    "mascot": null,
+    "mascot": "Statesmen",
     "city": "Cleveland",
     "state": "MS",
     "zip": null,
@@ -14366,7 +14366,7 @@
   {
     "id": 391,
     "name": "Dominican (NY)",
-    "mascot": null,
+    "mascot": "Chargers",
     "city": "Orangeburg",
     "state": "NY",
     "zip": null,
@@ -14404,7 +14404,7 @@
   {
     "id": 392,
     "name": "Drury",
-    "mascot": null,
+    "mascot": "Panthers",
     "city": "Springfield",
     "state": "MO",
     "zip": null,
@@ -14442,7 +14442,7 @@
   {
     "id": 393,
     "name": "East Central",
-    "mascot": null,
+    "mascot": "Tigers",
     "city": "Ada",
     "state": "OK",
     "zip": null,
@@ -14480,7 +14480,7 @@
   {
     "id": 394,
     "name": "East Stroudsburg",
-    "mascot": null,
+    "mascot": "Warriors",
     "city": "East Stroudsburg",
     "state": "PA",
     "zip": null,
@@ -14518,7 +14518,7 @@
   {
     "id": 395,
     "name": "Eastern New Mexico",
-    "mascot": null,
+    "mascot": "Greyhounds",
     "city": "Portales",
     "state": "NM",
     "zip": null,
@@ -14556,7 +14556,7 @@
   {
     "id": 396,
     "name": "Eckerd",
-    "mascot": null,
+    "mascot": "Tritons",
     "city": "Saint Petersburg",
     "state": "FL",
     "zip": null,
@@ -14594,7 +14594,7 @@
   {
     "id": 397,
     "name": "Edward Waters",
-    "mascot": null,
+    "mascot": "Tigers",
     "city": "Jacksonville",
     "state": "FL",
     "zip": null,
@@ -14632,7 +14632,7 @@
   {
     "id": 398,
     "name": "Embry-Riddle",
-    "mascot": null,
+    "mascot": "Eagles",
     "city": "Daytona Beach",
     "state": "FL",
     "zip": null,
@@ -14670,7 +14670,7 @@
   {
     "id": 399,
     "name": "Emmanuel (GA)",
-    "mascot": null,
+    "mascot": "Lions",
     "city": "Franklin Springs",
     "state": "GA",
     "zip": null,
@@ -14708,7 +14708,7 @@
   {
     "id": 400,
     "name": "Emory & Henry",
-    "mascot": null,
+    "mascot": "Wasps",
     "city": "Emory",
     "state": "VA",
     "zip": null,
@@ -14746,7 +14746,7 @@
   {
     "id": 401,
     "name": "Emporia State",
-    "mascot": null,
+    "mascot": "Hornets",
     "city": "Emporia",
     "state": "KS",
     "zip": null,
@@ -14784,7 +14784,7 @@
   {
     "id": 402,
     "name": "Erskine",
-    "mascot": null,
+    "mascot": "Flying Fleet",
     "city": "Due West",
     "state": "SC",
     "zip": null,
@@ -14822,7 +14822,7 @@
   {
     "id": 403,
     "name": "Fairmont State",
-    "mascot": null,
+    "mascot": "Falcons",
     "city": "Fairmont",
     "state": "WV",
     "zip": null,
@@ -14860,7 +14860,7 @@
   {
     "id": 404,
     "name": "Felician",
-    "mascot": null,
+    "mascot": "Golden Falcons",
     "city": "Rutherford",
     "state": "NJ",
     "zip": null,
@@ -14898,7 +14898,7 @@
   {
     "id": 538,
     "name": "Findlay",
-    "mascot": null,
+    "mascot": "Oilers",
     "city": "Findlay",
     "state": "OH",
     "zip": null,
@@ -14936,7 +14936,7 @@
   {
     "id": 405,
     "name": "Flagler",
-    "mascot": null,
+    "mascot": "Saints",
     "city": "Saint Augustine",
     "state": "FL",
     "zip": null,
@@ -14974,7 +14974,7 @@
   {
     "id": 406,
     "name": "Florida Southern",
-    "mascot": null,
+    "mascot": "Moccasins",
     "city": "Lakeland",
     "state": "FL",
     "zip": null,
@@ -15012,7 +15012,7 @@
   {
     "id": 407,
     "name": "Florida Tech",
-    "mascot": null,
+    "mascot": "Panthers",
     "city": "Melbourne",
     "state": "FL",
     "zip": null,
@@ -15050,7 +15050,7 @@
   {
     "id": 408,
     "name": "Fort Hays State",
-    "mascot": null,
+    "mascot": "Tigers",
     "city": "Hays",
     "state": "KS",
     "zip": null,
@@ -15088,7 +15088,7 @@
   {
     "id": 409,
     "name": "Francis Marion",
-    "mascot": null,
+    "mascot": "Patriots",
     "city": "Florence",
     "state": "SC",
     "zip": null,
@@ -15126,7 +15126,7 @@
   {
     "id": 410,
     "name": "Franklin Pierce",
-    "mascot": null,
+    "mascot": "Ravens",
     "city": "Rindge",
     "state": "NH",
     "zip": null,
@@ -15164,7 +15164,7 @@
   {
     "id": 411,
     "name": "Fresno Pacific",
-    "mascot": null,
+    "mascot": "Sunbirds",
     "city": "Fresno",
     "state": "CA",
     "zip": null,
@@ -15202,7 +15202,7 @@
   {
     "id": 412,
     "name": "Frostburg State",
-    "mascot": null,
+    "mascot": "Bobcats",
     "city": "Frostburg",
     "state": "MD",
     "zip": null,
@@ -15240,7 +15240,7 @@
   {
     "id": 413,
     "name": "Gannon",
-    "mascot": null,
+    "mascot": "Golden Knights",
     "city": "Erie",
     "state": "PA",
     "zip": null,
@@ -15278,7 +15278,7 @@
   {
     "id": 414,
     "name": "Georgia College",
-    "mascot": null,
+    "mascot": "Bobcats",
     "city": "Milledgeville",
     "state": "GA",
     "zip": null,
@@ -15316,7 +15316,7 @@
   {
     "id": 415,
     "name": "Georgia Southwestern",
-    "mascot": null,
+    "mascot": "Hurricanes",
     "city": "Americus",
     "state": "GA",
     "zip": null,
@@ -15354,7 +15354,7 @@
   {
     "id": 416,
     "name": "Georgian Court",
-    "mascot": null,
+    "mascot": "Lions",
     "city": "Lakewood",
     "state": "NJ",
     "zip": null,
@@ -15392,7 +15392,7 @@
   {
     "id": 417,
     "name": "Glenville State",
-    "mascot": null,
+    "mascot": "Pioneers",
     "city": "Glenville",
     "state": "WV",
     "zip": null,
@@ -15430,7 +15430,7 @@
   {
     "id": 418,
     "name": "Goldey-Beacom",
-    "mascot": null,
+    "mascot": "Lightning",
     "city": "Wilmington",
     "state": "DE",
     "zip": null,
@@ -15468,7 +15468,7 @@
   {
     "id": 419,
     "name": "Grand Valley State",
-    "mascot": null,
+    "mascot": "Lakers",
     "city": "Allendale",
     "state": "MI",
     "zip": null,
@@ -15506,7 +15506,7 @@
   {
     "id": 420,
     "name": "Harding",
-    "mascot": null,
+    "mascot": "Bisons",
     "city": "Searcy",
     "state": "AR",
     "zip": null,
@@ -15544,7 +15544,7 @@
   {
     "id": 539,
     "name": "Hawaii Hilo",
-    "mascot": null,
+    "mascot": "Vulcans",
     "city": "Hilo",
     "state": "HI",
     "zip": null,
@@ -15582,7 +15582,7 @@
   {
     "id": 421,
     "name": "Hawaii Pacific",
-    "mascot": null,
+    "mascot": "Sharks",
     "city": "Honolulu",
     "state": "HI",
     "zip": null,
@@ -15620,7 +15620,7 @@
   {
     "id": 422,
     "name": "Henderson State",
-    "mascot": null,
+    "mascot": "Reddies",
     "city": "Arkadelphia",
     "state": "AR",
     "zip": null,
@@ -15658,7 +15658,7 @@
   {
     "id": 423,
     "name": "Hillsdale",
-    "mascot": null,
+    "mascot": "Chargers",
     "city": "Hillsdale",
     "state": "MI",
     "zip": null,
@@ -15696,7 +15696,7 @@
   {
     "id": 424,
     "name": "Holy Family",
-    "mascot": null,
+    "mascot": "Tigers",
     "city": "Philadelphia",
     "state": "PA",
     "zip": null,
@@ -15734,7 +15734,7 @@
   {
     "id": 425,
     "name": "IUP",
-    "mascot": null,
+    "mascot": "Crimson Hawks",
     "city": "Indiana",
     "state": "PA",
     "zip": null,
@@ -15772,7 +15772,7 @@
   {
     "id": 541,
     "name": "Indianapolis",
-    "mascot": null,
+    "mascot": "Greyhounds",
     "city": "Indianapolis",
     "state": "IN",
     "zip": null,
@@ -15810,7 +15810,7 @@
   {
     "id": 542,
     "name": "Jamestown",
-    "mascot": null,
+    "mascot": "Jimmies",
     "city": "Jamestown",
     "state": "ND",
     "zip": null,
@@ -15848,7 +15848,7 @@
   {
     "id": 426,
     "name": "Kentucky State",
-    "mascot": null,
+    "mascot": "Thorobreds",
     "city": "Frankfort",
     "state": "KY",
     "zip": null,
@@ -15886,7 +15886,7 @@
   {
     "id": 427,
     "name": "Kentucky Wesleyan",
-    "mascot": null,
+    "mascot": "Panthers",
     "city": "Owensboro",
     "state": "KY",
     "zip": null,
@@ -15924,7 +15924,7 @@
   {
     "id": 428,
     "name": "King (TN)",
-    "mascot": null,
+    "mascot": "Tornado",
     "city": "Bristol",
     "state": "TN",
     "zip": null,
@@ -15962,7 +15962,7 @@
   {
     "id": 429,
     "name": "Kutztown",
-    "mascot": null,
+    "mascot": "Golden Bears",
     "city": "Kutztown",
     "state": "PA",
     "zip": null,
@@ -16000,7 +16000,7 @@
   {
     "id": 430,
     "name": "Lake Erie",
-    "mascot": null,
+    "mascot": "Storm",
     "city": "Painesville",
     "state": "OH",
     "zip": null,
@@ -16038,7 +16038,7 @@
   {
     "id": 431,
     "name": "Lander",
-    "mascot": null,
+    "mascot": "Bearcats",
     "city": "Greenwood",
     "state": "SC",
     "zip": null,
@@ -16076,7 +16076,7 @@
   {
     "id": 432,
     "name": "Lane",
-    "mascot": null,
+    "mascot": "Dragons",
     "city": "Jackson",
     "state": "TN",
     "zip": null,
@@ -16114,7 +16114,7 @@
   {
     "id": 434,
     "name": "LeMoyne-Owen",
-    "mascot": null,
+    "mascot": "Magicians",
     "city": "Memphis",
     "state": "TN",
     "zip": null,
@@ -16152,7 +16152,7 @@
   {
     "id": 433,
     "name": "Lee",
-    "mascot": null,
+    "mascot": "Flames",
     "city": "Cleveland",
     "state": "TN",
     "zip": null,
@@ -16190,7 +16190,7 @@
   {
     "id": 435,
     "name": "Lenoir-Rhyne",
-    "mascot": null,
+    "mascot": "Bears",
     "city": "Hickory",
     "state": "NC",
     "zip": null,
@@ -16228,7 +16228,7 @@
   {
     "id": 436,
     "name": "Lewis",
-    "mascot": null,
+    "mascot": "Flyers",
     "city": "Romeoville",
     "state": "IL",
     "zip": null,
@@ -16266,7 +16266,7 @@
   {
     "id": 437,
     "name": "Limestone",
-    "mascot": null,
+    "mascot": "Saints",
     "city": "Gaffney",
     "state": "SC",
     "zip": null,
@@ -16304,7 +16304,7 @@
   {
     "id": 439,
     "name": "Lincoln (MO)",
-    "mascot": null,
+    "mascot": "Blue Tigers",
     "city": "Jefferson City",
     "state": "MO",
     "zip": null,
@@ -16342,7 +16342,7 @@
   {
     "id": 440,
     "name": "Lincoln (PA)",
-    "mascot": null,
+    "mascot": "Lions",
     "city": "Lincoln University",
     "state": "PA",
     "zip": null,
@@ -16380,7 +16380,7 @@
   {
     "id": 438,
     "name": "Lincoln Memorial",
-    "mascot": null,
+    "mascot": "Railsplitters",
     "city": "Harrogate",
     "state": "TN",
     "zip": null,
@@ -16418,7 +16418,7 @@
   {
     "id": 441,
     "name": "Lock Haven",
-    "mascot": null,
+    "mascot": "Bald Eagles",
     "city": "Lock Haven",
     "state": "PA",
     "zip": null,
@@ -16456,7 +16456,7 @@
   {
     "id": 442,
     "name": "Lubbock Christian",
-    "mascot": null,
+    "mascot": "Chaparrals",
     "city": "Lubbock",
     "state": "TX",
     "zip": null,
@@ -16494,7 +16494,7 @@
   {
     "id": 443,
     "name": "Lynn",
-    "mascot": null,
+    "mascot": "Fighting Knights",
     "city": "Boca Raton",
     "state": "FL",
     "zip": null,
@@ -16532,7 +16532,7 @@
   {
     "id": 461,
     "name": "MSU Billings",
-    "mascot": null,
+    "mascot": "Yellowjackets",
     "city": "Billings",
     "state": "MT",
     "zip": null,
@@ -16570,7 +16570,7 @@
   {
     "id": 444,
     "name": "Malone",
-    "mascot": null,
+    "mascot": "Pioneers",
     "city": "Canton",
     "state": "OH",
     "zip": null,
@@ -16608,7 +16608,7 @@
   {
     "id": 445,
     "name": "Mansfield",
-    "mascot": null,
+    "mascot": "Mountaineers",
     "city": "Mansfield",
     "state": "PA",
     "zip": null,
@@ -16646,7 +16646,7 @@
   {
     "id": 446,
     "name": "Mars Hill",
-    "mascot": null,
+    "mascot": "Lions",
     "city": "Mars Hill",
     "state": "NC",
     "zip": null,
@@ -16684,7 +16684,7 @@
   {
     "id": 543,
     "name": "Mary",
-    "mascot": null,
+    "mascot": "Marauders",
     "city": "Bismarck",
     "state": "ND",
     "zip": null,
@@ -16722,7 +16722,7 @@
   {
     "id": 447,
     "name": "Maryville",
-    "mascot": null,
+    "mascot": "Saints",
     "city": "Saint Louis",
     "state": "MO",
     "zip": null,
@@ -16760,7 +16760,7 @@
   {
     "id": 448,
     "name": "McKendree",
-    "mascot": null,
+    "mascot": "Bearcats",
     "city": "Lebanon",
     "state": "IL",
     "zip": null,
@@ -16798,7 +16798,7 @@
   {
     "id": 449,
     "name": "Menlo",
-    "mascot": null,
+    "mascot": "Oaks",
     "city": "Atherton",
     "state": "CA",
     "zip": null,
@@ -16836,7 +16836,7 @@
   {
     "id": 450,
     "name": "Mercy",
-    "mascot": null,
+    "mascot": "Mavericks",
     "city": "Dobbs Ferry",
     "state": "NY",
     "zip": null,
@@ -16874,7 +16874,7 @@
   {
     "id": 451,
     "name": "Metro State Denver",
-    "mascot": null,
+    "mascot": "Roadrunners",
     "city": "Denver",
     "state": "CO",
     "zip": null,
@@ -16912,7 +16912,7 @@
   {
     "id": 452,
     "name": "Miles",
-    "mascot": null,
+    "mascot": "Golden Bears",
     "city": "Fairfield",
     "state": "AL",
     "zip": null,
@@ -16950,7 +16950,7 @@
   {
     "id": 453,
     "name": "Millersville",
-    "mascot": null,
+    "mascot": "Marauders",
     "city": "Millersville",
     "state": "PA",
     "zip": null,
@@ -16988,7 +16988,7 @@
   {
     "id": 544,
     "name": "Minnesota Crookston",
-    "mascot": null,
+    "mascot": "Golden Eagles",
     "city": "Crookston",
     "state": "MN",
     "zip": null,
@@ -17026,7 +17026,7 @@
   {
     "id": 545,
     "name": "Minnesota Duluth",
-    "mascot": null,
+    "mascot": "Bulldogs",
     "city": "Duluth",
     "state": "MN",
     "zip": null,
@@ -17064,7 +17064,7 @@
   {
     "id": 454,
     "name": "Minnesota State",
-    "mascot": null,
+    "mascot": "Mavericks",
     "city": "Mankato",
     "state": "MN",
     "zip": null,
@@ -17102,7 +17102,7 @@
   {
     "id": 455,
     "name": "Minot State",
-    "mascot": null,
+    "mascot": "Beavers",
     "city": "Minot",
     "state": "ND",
     "zip": null,
@@ -17140,7 +17140,7 @@
   {
     "id": 456,
     "name": "Mississippi College",
-    "mascot": null,
+    "mascot": "Choctaws",
     "city": "Clinton",
     "state": "MS",
     "zip": null,
@@ -17178,7 +17178,7 @@
   {
     "id": 458,
     "name": "Missouri S&T",
-    "mascot": null,
+    "mascot": "Miners",
     "city": "Rolla",
     "state": "MO",
     "zip": null,
@@ -17216,7 +17216,7 @@
   {
     "id": 457,
     "name": "Missouri Southern",
-    "mascot": null,
+    "mascot": "Lions",
     "city": "Joplin",
     "state": "MO",
     "zip": null,
@@ -17254,7 +17254,7 @@
   {
     "id": 459,
     "name": "Missouri Western",
-    "mascot": null,
+    "mascot": "Griffons",
     "city": "Saint Joseph",
     "state": "MO",
     "zip": null,
@@ -17292,7 +17292,7 @@
   {
     "id": 460,
     "name": "Molloy",
-    "mascot": null,
+    "mascot": "Lions",
     "city": "Rockville Centre",
     "state": "NY",
     "zip": null,
@@ -17330,7 +17330,7 @@
   {
     "id": 547,
     "name": "Montevallo",
-    "mascot": null,
+    "mascot": "Falcons",
     "city": "Montevallo",
     "state": "AL",
     "zip": null,
@@ -17368,7 +17368,7 @@
   {
     "id": 462,
     "name": "Morehouse",
-    "mascot": null,
+    "mascot": "Maroon Tigers",
     "city": "Atlanta",
     "state": "GA",
     "zip": null,
@@ -17406,7 +17406,7 @@
   {
     "id": 548,
     "name": "Mount Olive",
-    "mascot": null,
+    "mascot": "Trojans",
     "city": "Mount Olive",
     "state": "NC",
     "zip": null,
@@ -17444,7 +17444,7 @@
   {
     "id": 463,
     "name": "New Mexico Highlands",
-    "mascot": null,
+    "mascot": "Cowboys",
     "city": "Las Vegas",
     "state": "NM",
     "zip": null,
@@ -17482,7 +17482,7 @@
   {
     "id": 464,
     "name": "Newberry",
-    "mascot": null,
+    "mascot": "Wolves",
     "city": "Newberry",
     "state": "SC",
     "zip": null,
@@ -17520,7 +17520,7 @@
   {
     "id": 465,
     "name": "Newman",
-    "mascot": null,
+    "mascot": "Jets",
     "city": "Wichita",
     "state": "KS",
     "zip": null,
@@ -17558,7 +17558,7 @@
   {
     "id": 550,
     "name": "North Georgia",
-    "mascot": null,
+    "mascot": "Nighthawks",
     "city": "Dahlonega",
     "state": "GA",
     "zip": null,
@@ -17596,7 +17596,7 @@
   {
     "id": 466,
     "name": "North Greenville",
-    "mascot": null,
+    "mascot": "Crusaders",
     "city": "Tigerville",
     "state": "SC",
     "zip": null,
@@ -17634,7 +17634,7 @@
   {
     "id": 467,
     "name": "Northeastern State",
-    "mascot": null,
+    "mascot": "RiverHawks",
     "city": "Tahlequah",
     "state": "OK",
     "zip": null,
@@ -17672,7 +17672,7 @@
   {
     "id": 468,
     "name": "Northern State",
-    "mascot": null,
+    "mascot": "Wolves",
     "city": "Aberdeen",
     "state": "SD",
     "zip": null,
@@ -17710,7 +17710,7 @@
   {
     "id": 469,
     "name": "Northwest Missouri State",
-    "mascot": null,
+    "mascot": "Bearcats",
     "city": "Maryville",
     "state": "MO",
     "zip": null,
@@ -17748,7 +17748,7 @@
   {
     "id": 470,
     "name": "Northwest Nazarene",
-    "mascot": null,
+    "mascot": "Nighthawks",
     "city": "Nampa",
     "state": "ID",
     "zip": null,
@@ -17786,7 +17786,7 @@
   {
     "id": 471,
     "name": "Northwestern Oklahoma State",
-    "mascot": null,
+    "mascot": "Rangers",
     "city": "Alva",
     "state": "OK",
     "zip": null,
@@ -17824,7 +17824,7 @@
   {
     "id": 472,
     "name": "Northwood",
-    "mascot": null,
+    "mascot": "Timberwolves",
     "city": "Midland",
     "state": "MI",
     "zip": null,
@@ -17862,7 +17862,7 @@
   {
     "id": 473,
     "name": "Nova Southeastern",
-    "mascot": null,
+    "mascot": "Sharks",
     "city": "Fort Lauderdale",
     "state": "FL",
     "zip": null,
@@ -17900,7 +17900,7 @@
   {
     "id": 474,
     "name": "Ohio Dominican",
-    "mascot": null,
+    "mascot": "Panthers",
     "city": "Columbus",
     "state": "OH",
     "zip": null,
@@ -17938,7 +17938,7 @@
   {
     "id": 475,
     "name": "Oklahoma Baptist",
-    "mascot": null,
+    "mascot": "Bison",
     "city": "Shawnee",
     "state": "OK",
     "zip": null,
@@ -17976,7 +17976,7 @@
   {
     "id": 476,
     "name": "Oklahoma Christian",
-    "mascot": null,
+    "mascot": "Eagles",
     "city": "Edmond",
     "state": "OK",
     "zip": null,
@@ -18014,7 +18014,7 @@
   {
     "id": 477,
     "name": "Ouachita Baptist",
-    "mascot": null,
+    "mascot": "Tigers",
     "city": "Arkadelphia",
     "state": "AR",
     "zip": null,
@@ -18052,7 +18052,7 @@
   {
     "id": 478,
     "name": "Pace",
-    "mascot": null,
+    "mascot": "Setters",
     "city": "New York",
     "state": "NY",
     "zip": null,
@@ -18090,7 +18090,7 @@
   {
     "id": 479,
     "name": "Palm Beach Atlantic",
-    "mascot": null,
+    "mascot": "Sailfish",
     "city": "West Palm Beach",
     "state": "FL",
     "zip": null,
@@ -18128,7 +18128,7 @@
   {
     "id": 551,
     "name": "Pitt-Johnstown",
-    "mascot": null,
+    "mascot": "Mountain Cats",
     "city": "Johnstown",
     "state": "PA",
     "zip": null,
@@ -18166,7 +18166,7 @@
   {
     "id": 480,
     "name": "Pittsburg State",
-    "mascot": null,
+    "mascot": "Gorillas",
     "city": "Pittsburg",
     "state": "KS",
     "zip": null,
@@ -18204,7 +18204,7 @@
   {
     "id": 481,
     "name": "Point Loma",
-    "mascot": null,
+    "mascot": "Sea Lions",
     "city": "San Diego",
     "state": "CA",
     "zip": null,
@@ -18242,7 +18242,7 @@
   {
     "id": 482,
     "name": "Point Park",
-    "mascot": null,
+    "mascot": "Pioneers",
     "city": "Pittsburgh",
     "state": "PA",
     "zip": null,
@@ -18280,7 +18280,7 @@
   {
     "id": 483,
     "name": "Post",
-    "mascot": null,
+    "mascot": "Eagles",
     "city": "Waterbury",
     "state": "CT",
     "zip": null,
@@ -18318,7 +18318,7 @@
   {
     "id": 484,
     "name": "Purdue Northwest",
-    "mascot": null,
+    "mascot": "Pride",
     "city": "Hammond",
     "state": "IN",
     "zip": null,
@@ -18356,7 +18356,7 @@
   {
     "id": 485,
     "name": "Quincy",
-    "mascot": null,
+    "mascot": "Hawks",
     "city": "Quincy",
     "state": "IL",
     "zip": null,
@@ -18394,7 +18394,7 @@
   {
     "id": 486,
     "name": "Regis",
-    "mascot": null,
+    "mascot": "Rangers",
     "city": "Denver",
     "state": "CO",
     "zip": null,
@@ -18432,7 +18432,7 @@
   {
     "id": 487,
     "name": "Rockhurst",
-    "mascot": null,
+    "mascot": "Hawks",
     "city": "Kansas City",
     "state": "MO",
     "zip": null,
@@ -18470,7 +18470,7 @@
   {
     "id": 488,
     "name": "Rogers State",
-    "mascot": null,
+    "mascot": "Hillcats",
     "city": "Claremore",
     "state": "OK",
     "zip": null,
@@ -18508,7 +18508,7 @@
   {
     "id": 489,
     "name": "Rollins",
-    "mascot": null,
+    "mascot": "Tars",
     "city": "Winter Park",
     "state": "FL",
     "zip": null,
@@ -18546,7 +18546,7 @@
   {
     "id": 490,
     "name": "Roosevelt",
-    "mascot": null,
+    "mascot": "Lakers",
     "city": "Chicago",
     "state": "IL",
     "zip": null,
@@ -18584,7 +18584,7 @@
   {
     "id": 505,
     "name": "SE Oklahoma State",
-    "mascot": null,
+    "mascot": "Savage Storm",
     "city": "Durant",
     "state": "OK",
     "zip": null,
@@ -18622,7 +18622,7 @@
   {
     "id": 509,
     "name": "SNHU",
-    "mascot": null,
+    "mascot": "Penmen",
     "city": "Manchester",
     "state": "NH",
     "zip": null,
@@ -18660,7 +18660,7 @@
   {
     "id": 512,
     "name": "SW Minnesota State",
-    "mascot": null,
+    "mascot": "Mustangs",
     "city": "Marshall",
     "state": "MN",
     "zip": null,
@@ -18698,7 +18698,7 @@
   {
     "id": 513,
     "name": "SW Oklahoma State",
-    "mascot": null,
+    "mascot": "Bulldogs",
     "city": "Weatherford",
     "state": "OK",
     "zip": null,
@@ -18736,7 +18736,7 @@
   {
     "id": 491,
     "name": "Saginaw Valley State",
-    "mascot": null,
+    "mascot": "Cardinals",
     "city": "University Center",
     "state": "MI",
     "zip": null,
@@ -18774,7 +18774,7 @@
   {
     "id": 492,
     "name": "Saint Anselm",
-    "mascot": null,
+    "mascot": "Hawks",
     "city": "Manchester",
     "state": "NH",
     "zip": null,
@@ -18812,7 +18812,7 @@
   {
     "id": 493,
     "name": "Saint Leo",
-    "mascot": null,
+    "mascot": "Lions",
     "city": "Saint Leo",
     "state": "FL",
     "zip": null,
@@ -18850,7 +18850,7 @@
   {
     "id": 494,
     "name": "Saint Martin's",
-    "mascot": null,
+    "mascot": "Saints",
     "city": "Lacey",
     "state": "WA",
     "zip": null,
@@ -18888,7 +18888,7 @@
   {
     "id": 495,
     "name": "Saint Michael's",
-    "mascot": null,
+    "mascot": "Purple Knights",
     "city": "Colchester",
     "state": "VT",
     "zip": null,
@@ -18926,7 +18926,7 @@
   {
     "id": 496,
     "name": "Salem",
-    "mascot": null,
+    "mascot": "Tigers",
     "city": "Salem",
     "state": "WV",
     "zip": null,
@@ -18964,7 +18964,7 @@
   {
     "id": 497,
     "name": "San Francisco State",
-    "mascot": null,
+    "mascot": "Gators",
     "city": "San Francisco",
     "state": "CA",
     "zip": null,
@@ -19002,7 +19002,7 @@
   {
     "id": 498,
     "name": "Savannah State",
-    "mascot": null,
+    "mascot": "Tigers",
     "city": "Savannah",
     "state": "GA",
     "zip": null,
@@ -19040,7 +19040,7 @@
   {
     "id": 499,
     "name": "Seton Hill",
-    "mascot": null,
+    "mascot": "Griffins",
     "city": "Greensburg",
     "state": "PA",
     "zip": null,
@@ -19078,7 +19078,7 @@
   {
     "id": 500,
     "name": "Shepherd",
-    "mascot": null,
+    "mascot": "Rams",
     "city": "Shepherdstown",
     "state": "WV",
     "zip": null,
@@ -19116,7 +19116,7 @@
   {
     "id": 501,
     "name": "Shippensburg",
-    "mascot": null,
+    "mascot": "Raiders",
     "city": "Shippensburg",
     "state": "PA",
     "zip": null,
@@ -19154,7 +19154,7 @@
   {
     "id": 502,
     "name": "Shorter",
-    "mascot": null,
+    "mascot": "Hawks",
     "city": "Rome",
     "state": "GA",
     "zip": null,
@@ -19192,7 +19192,7 @@
   {
     "id": 552,
     "name": "Sioux Falls",
-    "mascot": null,
+    "mascot": "Cougars",
     "city": "Sioux Falls",
     "state": "SD",
     "zip": null,
@@ -19230,7 +19230,7 @@
   {
     "id": 503,
     "name": "Slippery Rock",
-    "mascot": null,
+    "mascot": "The Rock",
     "city": "Slippery Rock",
     "state": "PA",
     "zip": null,
@@ -19268,7 +19268,7 @@
   {
     "id": 504,
     "name": "Sonoma State",
-    "mascot": null,
+    "mascot": "Seawolves",
     "city": "Rohnert Park",
     "state": "CA",
     "zip": null,
@@ -19306,7 +19306,7 @@
   {
     "id": 506,
     "name": "Southern Arkansas",
-    "mascot": null,
+    "mascot": "Muleriders",
     "city": "Magnolia",
     "state": "AR",
     "zip": null,
@@ -19344,7 +19344,7 @@
   {
     "id": 507,
     "name": "Southern Connecticut",
-    "mascot": null,
+    "mascot": "Owls",
     "city": "New Haven",
     "state": "CT",
     "zip": null,
@@ -19382,7 +19382,7 @@
   {
     "id": 508,
     "name": "Southern Nazarene",
-    "mascot": null,
+    "mascot": "Crimson Storm",
     "city": "Bethany",
     "state": "OK",
     "zip": null,
@@ -19420,7 +19420,7 @@
   {
     "id": 510,
     "name": "Southern Wesleyan",
-    "mascot": null,
+    "mascot": "Warriors",
     "city": "Central",
     "state": "SC",
     "zip": null,
@@ -19458,7 +19458,7 @@
   {
     "id": 511,
     "name": "Southwest Baptist",
-    "mascot": null,
+    "mascot": "Bearcats",
     "city": "Bolivar",
     "state": "MO",
     "zip": null,
@@ -19496,7 +19496,7 @@
   {
     "id": 514,
     "name": "Spring Hill",
-    "mascot": null,
+    "mascot": "Badgers",
     "city": "Mobile",
     "state": "AL",
     "zip": null,
@@ -19534,7 +19534,7 @@
   {
     "id": 515,
     "name": "St. Cloud State",
-    "mascot": null,
+    "mascot": "Huskies",
     "city": "Saint Cloud",
     "state": "MN",
     "zip": null,
@@ -19572,7 +19572,7 @@
   {
     "id": 516,
     "name": "St. Edward's",
-    "mascot": null,
+    "mascot": "Hilltoppers",
     "city": "Austin",
     "state": "TX",
     "zip": null,
@@ -19610,7 +19610,7 @@
   {
     "id": 517,
     "name": "St. Mary's (TX)",
-    "mascot": null,
+    "mascot": "Rattlers",
     "city": "San Antonio",
     "state": "TX",
     "zip": null,
@@ -19648,7 +19648,7 @@
   {
     "id": 518,
     "name": "St. Thomas Aquinas",
-    "mascot": null,
+    "mascot": "Spartans",
     "city": "Sparkill",
     "state": "NY",
     "zip": null,
@@ -19686,7 +19686,7 @@
   {
     "id": 364,
     "name": "Stanislaus State",
-    "mascot": null,
+    "mascot": "Warriors",
     "city": "Turlock",
     "state": "CA",
     "zip": null,
@@ -19724,7 +19724,7 @@
   {
     "id": 555,
     "name": "Tampa",
-    "mascot": null,
+    "mascot": "Spartans",
     "city": "Tampa",
     "state": "FL",
     "zip": null,
@@ -19762,7 +19762,7 @@
   {
     "id": 519,
     "name": "Texas A&M International",
-    "mascot": null,
+    "mascot": "Dustdevils",
     "city": "Laredo",
     "state": "TX",
     "zip": null,
@@ -19800,7 +19800,7 @@
   {
     "id": 520,
     "name": "Texas A&M-Kingsville",
-    "mascot": null,
+    "mascot": "Javelinas",
     "city": "Kingsville",
     "state": "TX",
     "zip": null,
@@ -19838,7 +19838,7 @@
   {
     "id": 522,
     "name": "Thomas Jefferson",
-    "mascot": null,
+    "mascot": "Rams",
     "city": "Philadelphia",
     "state": "PA",
     "zip": null,
@@ -19876,7 +19876,7 @@
   {
     "id": 523,
     "name": "Thomas More",
-    "mascot": null,
+    "mascot": "Saints",
     "city": "Crestview Hills",
     "state": "KY",
     "zip": null,
@@ -19914,7 +19914,7 @@
   {
     "id": 524,
     "name": "Tiffin",
-    "mascot": null,
+    "mascot": "Dragons",
     "city": "Tiffin",
     "state": "OH",
     "zip": null,
@@ -19952,7 +19952,7 @@
   {
     "id": 525,
     "name": "Trevecca Nazarene",
-    "mascot": null,
+    "mascot": "Trojans",
     "city": "Nashville",
     "state": "TN",
     "zip": null,
@@ -19990,7 +19990,7 @@
   {
     "id": 526,
     "name": "Truman State",
-    "mascot": null,
+    "mascot": "Bulldogs",
     "city": "Kirksville",
     "state": "MO",
     "zip": null,
@@ -20028,7 +20028,7 @@
   {
     "id": 527,
     "name": "Tusculum",
-    "mascot": null,
+    "mascot": "Pioneers",
     "city": "Greeneville",
     "state": "TN",
     "zip": null,
@@ -20066,7 +20066,7 @@
   {
     "id": 528,
     "name": "Tuskegee",
-    "mascot": null,
+    "mascot": "Golden Tigers",
     "city": "Tuskegee",
     "state": "AL",
     "zip": null,
@@ -20104,7 +20104,7 @@
   {
     "id": 530,
     "name": "UAH",
-    "mascot": null,
+    "mascot": "Chargers",
     "city": "Huntsville",
     "state": "AL",
     "zip": null,
@@ -20142,7 +20142,7 @@
   {
     "id": 537,
     "name": "UCCS",
-    "mascot": null,
+    "mascot": "Mountain Lions",
     "city": "Colorado Springs",
     "state": "CO",
     "zip": null,
@@ -20180,7 +20180,7 @@
   {
     "id": 540,
     "name": "UIS",
-    "mascot": null,
+    "mascot": "Prairie Stars",
     "city": "Springfield",
     "state": "IL",
     "zip": null,
@@ -20218,7 +20218,7 @@
   {
     "id": 546,
     "name": "UMSL",
-    "mascot": null,
+    "mascot": "Tritons",
     "city": "Saint Louis",
     "state": "MO",
     "zip": null,
@@ -20256,7 +20256,7 @@
   {
     "id": 549,
     "name": "UNC Pembroke",
-    "mascot": null,
+    "mascot": "Braves",
     "city": "Pembroke",
     "state": "NC",
     "zip": null,
@@ -20294,7 +20294,7 @@
   {
     "id": 554,
     "name": "USC Aiken",
-    "mascot": null,
+    "mascot": "Pacers",
     "city": "Aiken",
     "state": "SC",
     "zip": null,
@@ -20332,7 +20332,7 @@
   {
     "id": 553,
     "name": "USC Beaufort",
-    "mascot": null,
+    "mascot": "Sand Sharks",
     "city": "Bluffton",
     "state": "SC",
     "zip": null,
@@ -20370,7 +20370,7 @@
   {
     "id": 556,
     "name": "UT Permian Basin",
-    "mascot": null,
+    "mascot": "Falcons",
     "city": "Odessa",
     "state": "TX",
     "zip": null,
@@ -20408,7 +20408,7 @@
   {
     "id": 557,
     "name": "UT Tyler",
-    "mascot": null,
+    "mascot": "Patriots",
     "city": "Tyler",
     "state": "TX",
     "zip": null,
@@ -20446,7 +20446,7 @@
   {
     "id": 521,
     "name": "UVA Wise",
-    "mascot": null,
+    "mascot": "Cavaliers",
     "city": "Wise",
     "state": "VA",
     "zip": null,
@@ -20484,7 +20484,7 @@
   {
     "id": 529,
     "name": "Union (TN)",
-    "mascot": null,
+    "mascot": "Bulldogs",
     "city": "Jackson",
     "state": "TN",
     "zip": null,
@@ -20522,7 +20522,7 @@
   {
     "id": 561,
     "name": "Upper Iowa",
-    "mascot": null,
+    "mascot": "Peacocks",
     "city": "Fayette",
     "state": "IA",
     "zip": null,
@@ -20560,7 +20560,7 @@
   {
     "id": 562,
     "name": "Valdosta State",
-    "mascot": null,
+    "mascot": "Blazers",
     "city": "Valdosta",
     "state": "GA",
     "zip": null,
@@ -20598,7 +20598,7 @@
   {
     "id": 563,
     "name": "Virginia State",
-    "mascot": null,
+    "mascot": "Trojans",
     "city": "Petersburg",
     "state": "VA",
     "zip": null,
@@ -20636,7 +20636,7 @@
   {
     "id": 571,
     "name": "WV State",
-    "mascot": null,
+    "mascot": "Yellow Jackets",
     "city": "Institute",
     "state": "WV",
     "zip": null,
@@ -20674,7 +20674,7 @@
   {
     "id": 572,
     "name": "WV Wesleyan",
-    "mascot": null,
+    "mascot": "Bobcats",
     "city": "Buckhannon",
     "state": "WV",
     "zip": null,
@@ -20712,7 +20712,7 @@
   {
     "id": 564,
     "name": "Walsh",
-    "mascot": null,
+    "mascot": "Cavaliers",
     "city": "North Canton",
     "state": "OH",
     "zip": null,
@@ -20750,7 +20750,7 @@
   {
     "id": 565,
     "name": "Washburn",
-    "mascot": null,
+    "mascot": "Ichabods",
     "city": "Topeka",
     "state": "KS",
     "zip": null,
@@ -20788,7 +20788,7 @@
   {
     "id": 567,
     "name": "Wayne State (MI)",
-    "mascot": null,
+    "mascot": "Warriors",
     "city": "Detroit",
     "state": "MI",
     "zip": null,
@@ -20826,7 +20826,7 @@
   {
     "id": 566,
     "name": "Wayne State (NE)",
-    "mascot": null,
+    "mascot": "Wildcats",
     "city": "Wayne",
     "state": "NE",
     "zip": null,
@@ -20864,7 +20864,7 @@
   {
     "id": 558,
     "name": "West Alabama",
-    "mascot": null,
+    "mascot": "Tigers",
     "city": "Livingston",
     "state": "AL",
     "zip": null,
@@ -20902,7 +20902,7 @@
   {
     "id": 568,
     "name": "West Chester",
-    "mascot": null,
+    "mascot": "Golden Rams",
     "city": "West Chester",
     "state": "PA",
     "zip": null,
@@ -20940,7 +20940,7 @@
   {
     "id": 559,
     "name": "West Florida",
-    "mascot": null,
+    "mascot": "Argonauts",
     "city": "Pensacola",
     "state": "FL",
     "zip": null,
@@ -20978,7 +20978,7 @@
   {
     "id": 569,
     "name": "West Liberty",
-    "mascot": null,
+    "mascot": "Hilltoppers",
     "city": "West Liberty",
     "state": "WV",
     "zip": null,
@@ -21016,7 +21016,7 @@
   {
     "id": 570,
     "name": "West Texas A&M",
-    "mascot": null,
+    "mascot": "Buffaloes",
     "city": "Canyon",
     "state": "TX",
     "zip": null,
@@ -21054,7 +21054,7 @@
   {
     "id": 573,
     "name": "Western Oregon",
-    "mascot": null,
+    "mascot": "Wolves",
     "city": "Monmouth",
     "state": "OR",
     "zip": null,
@@ -21092,7 +21092,7 @@
   {
     "id": 574,
     "name": "Westmont",
-    "mascot": null,
+    "mascot": "Warriors",
     "city": "Santa Barbara",
     "state": "CA",
     "zip": null,
@@ -21130,7 +21130,7 @@
   {
     "id": 575,
     "name": "Wheeling",
-    "mascot": null,
+    "mascot": "Cardinals",
     "city": "Wheeling",
     "state": "WV",
     "zip": null,
@@ -21168,7 +21168,7 @@
   {
     "id": 576,
     "name": "William Jessup",
-    "mascot": null,
+    "mascot": "Warriors",
     "city": "Rocklin",
     "state": "CA",
     "zip": null,
@@ -21206,7 +21206,7 @@
   {
     "id": 577,
     "name": "William Jewell",
-    "mascot": null,
+    "mascot": "Cardinals",
     "city": "Liberty",
     "state": "MO",
     "zip": null,
@@ -21244,7 +21244,7 @@
   {
     "id": 578,
     "name": "Wilmington (DE)",
-    "mascot": null,
+    "mascot": "Wildcats",
     "city": "New Castle",
     "state": "DE",
     "zip": null,
@@ -21282,7 +21282,7 @@
   {
     "id": 579,
     "name": "Wingate",
-    "mascot": null,
+    "mascot": "Bulldogs",
     "city": "Wingate",
     "state": "NC",
     "zip": null,
@@ -21320,7 +21320,7 @@
   {
     "id": 580,
     "name": "Winona State",
-    "mascot": null,
+    "mascot": "Warriors",
     "city": "Winona",
     "state": "MN",
     "zip": null,
@@ -21358,7 +21358,7 @@
   {
     "id": 560,
     "name": "Wisconsin-Parkside",
-    "mascot": null,
+    "mascot": "Rangers",
     "city": "Kenosha",
     "state": "WI",
     "zip": null,
@@ -21396,7 +21396,7 @@
   {
     "id": 581,
     "name": "Young Harris",
-    "mascot": null,
+    "mascot": "Mountain Lions",
     "city": "Young Harris",
     "state": "GA",
     "zip": null,
