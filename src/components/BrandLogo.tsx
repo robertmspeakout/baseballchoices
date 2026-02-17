@@ -1,10 +1,5 @@
 import Link from "next/link";
 
-// Colors matched from brand image:
-// "NEXT" = warm pink/salmon
-// "BASE" = warm peach/cream
-// Tagline = muted gold/tan
-
 type BrandSize = "sm" | "md" | "lg";
 
 interface BrandLogoProps {
@@ -16,18 +11,18 @@ interface BrandLogoProps {
 const sizeConfig = {
   sm: {
     text: "text-lg sm:text-xl",
-    tagline: "text-[7px] sm:text-[8px] tracking-[0.2em]",
-    gap: "gap-0",
+    tagline: "text-[7px] sm:text-[8px]",
+    spacer: "h-2.5",
   },
   md: {
     text: "text-2xl sm:text-3xl",
-    tagline: "text-[9px] sm:text-[10px] tracking-[0.25em]",
-    gap: "gap-0.5",
+    tagline: "text-[8px] sm:text-[9px]",
+    spacer: "h-3",
   },
   lg: {
     text: "text-4xl sm:text-6xl",
-    tagline: "text-[10px] sm:text-xs tracking-[0.3em]",
-    gap: "gap-1",
+    tagline: "text-[9px] sm:text-[11px]",
+    spacer: "h-4 sm:h-5",
   },
 };
 
@@ -35,15 +30,21 @@ export default function BrandLogo({ size = "lg", showTagline = true, linkHome = 
   const cfg = sizeConfig[size];
 
   const content = (
-    <div className={`inline-flex flex-col ${cfg.gap} select-none`}>
-      <div className={`${cfg.text} font-bold leading-none`} style={{ fontFamily: "'Permanent Marker', cursive" }}>
+    <div className="relative inline-block select-none">
+      <div className={`${cfg.text} font-bold leading-none whitespace-nowrap`} style={{ fontFamily: "'Permanent Marker', cursive" }}>
         <span className="text-red-500">NEXT</span>
         <span className="text-white">BASE</span>
       </div>
       {showTagline && (
-        <p className={`${cfg.tagline} uppercase font-semibold text-white/60 w-full`} style={{ textAlignLast: "justify" }}>
-          Your Personal AI Recruiting Edge
-        </p>
+        <>
+          <div className={cfg.spacer} />
+          <p
+            className={`${cfg.tagline} absolute left-0 right-0 bottom-0 uppercase font-semibold text-white/60 whitespace-nowrap`}
+            style={{ textAlignLast: "justify" }}
+          >
+            Your Personal AI Recruiting Edge
+          </p>
+        </>
       )}
     </div>
   );
