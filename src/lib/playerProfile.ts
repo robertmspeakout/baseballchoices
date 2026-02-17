@@ -1,5 +1,29 @@
 // Player profile and preferences - stored in localStorage
 
+// Region-to-states mapping (single source of truth)
+export const REGIONS: Record<string, string[]> = {
+  "Northeast": ["ME","NH","VT","MA","RI","CT","NY","NJ","PA"],
+  "Mid-Atlantic": ["DE","MD","VA","WV","NC","SC"],
+  "Southeast": ["GA","FL","AL","MS","TN","KY"],
+  "Midwest": ["OH","MI","IN","IL","WI","MN","IA","MO"],
+  "Great Plains": ["ND","SD","NE","KS","OK"],
+  "Texas": ["TX"],
+  "Mountain West": ["MT","ID","WY","CO","UT","NV","NM","AZ"],
+  "Pacific NW": ["WA","OR","AK"],
+  "California": ["CA","HI"],
+};
+
+// Convert region names to state codes
+export function regionsToStates(regions: string[]): string[] {
+  const states: string[] = [];
+  for (const region of regions) {
+    if (REGIONS[region]) {
+      states.push(...REGIONS[region]);
+    }
+  }
+  return states;
+}
+
 export interface PlayerProfile {
   // Basic info (existing fields from current profile)
   playerName: string;
@@ -24,7 +48,7 @@ export interface PlayerProfile {
 export interface PlayerPreferences {
   divisionPreference: "D1" | "D2" | "both";
   maxDistanceFromHome: number | null; // miles, null = any
-  preferredStates: string[];
+  preferredRegions: string[]; // Region names like "Pacific NW", "Southeast"
   maxTuition: number | null; // dollars, null = any
   schoolSize: "small" | "medium" | "large" | "any"; // small <5K, med 5-15K, large 15K+
   publicPrivate: "public" | "private" | "any";
@@ -60,7 +84,7 @@ const DEFAULT_PROFILE: PlayerProfile = {
 const DEFAULT_PREFERENCES: PlayerPreferences = {
   divisionPreference: "both",
   maxDistanceFromHome: null,
-  preferredStates: [],
+  preferredRegions: [],
   maxTuition: null,
   schoolSize: "any",
   publicPrivate: "any",

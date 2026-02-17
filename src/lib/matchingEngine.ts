@@ -1,7 +1,7 @@
 // Client-side school matching engine
 // Scores all schools against player preferences using weighted criteria
 
-import { type PlayerProfile, type PlayerPreferences } from "./playerProfile";
+import { type PlayerProfile, type PlayerPreferences, regionsToStates } from "./playerProfile";
 import { haversineDistance } from "./geo";
 
 interface SchoolData {
@@ -114,10 +114,10 @@ export function scoreSchool(
     score += WEIGHTS.distance * 0.5;
   }
 
-  // --- State/Region (hard-filtered, always full points) ---
+  // --- Region (hard-filtered, always full points) ---
   score += WEIGHTS.stateRegion;
-  if (prefs.preferredStates.length > 0) {
-    reasons.push(`Located in ${school.state} — one of your preferred states`);
+  if (prefs.preferredRegions.length > 0) {
+    reasons.push(`Located in ${school.state} — in your preferred region`);
   }
 
   // --- Tuition (13 pts) ---
@@ -258,9 +258,10 @@ export function getMatchResults(
     filtered = filtered.filter((s) => s.division === prefs.divisionPreference);
   }
 
-  // State/region hard filter — only show schools in preferred states
-  if (prefs.preferredStates.length > 0) {
-    filtered = filtered.filter((s) => prefs.preferredStates.includes(s.state));
+  // Region hard filter — convert region names to states, then filter
+  if (prefs.preferredRegions.length > 0) {
+    const allowedStates = regionsToStates(prefs.preferredRegions);
+    filtered = filtered.filter((s) => allowedStates.includes(s.state));
   }
 
   // Tier hard filter — only show schools in preferred tiers

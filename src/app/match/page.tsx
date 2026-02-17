@@ -190,7 +190,12 @@ export default function MatchPage() {
     if (prefs.maxTuition) prefSummary.push(`Under $${(prefs.maxTuition / 1000).toFixed(0)}K`);
     if (prefs.schoolSize !== "any") prefSummary.push(`${prefs.schoolSize} school`);
     if (prefs.competitiveness !== "any") prefSummary.push(prefs.competitiveness === "top25" ? "Top 25" : "Postseason");
-    if (prefs.preferredStates.length > 0) prefSummary.push(`${prefs.preferredStates.length} states`);
+    if (prefs.preferredRegions && prefs.preferredRegions.length > 0) {
+      prefSummary.push(prefs.preferredRegions.join(", "));
+    }
+    if (prefs.preferredTiers && prefs.preferredTiers.length > 0) {
+      prefSummary.push(prefs.preferredTiers.join(", "));
+    }
   }
 
   return (

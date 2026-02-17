@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import { loadProfile, saveProfile, loadPreferences, savePreferences, type PlayerProfile, type PlayerPreferences } from "@/lib/playerProfile";
+import { loadProfile, saveProfile, loadPreferences, savePreferences, REGIONS, type PlayerProfile, type PlayerPreferences } from "@/lib/playerProfile";
 
 const POSITIONS = [
   "RHP", "LHP", "C", "1B", "2B", "3B", "SS", "LF", "CF", "RF", "DH", "UTL",
@@ -15,18 +15,6 @@ const US_STATES = [
   "KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY",
   "NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY",
 ];
-
-const REGIONS: Record<string, string[]> = {
-  "Northeast": ["ME","NH","VT","MA","RI","CT","NY","NJ","PA"],
-  "Mid-Atlantic": ["DE","MD","VA","WV","NC","SC"],
-  "Southeast": ["GA","FL","AL","MS","TN","KY"],
-  "Midwest": ["OH","MI","IN","IL","WI","MN","IA","MO"],
-  "Great Plains": ["ND","SD","NE","KS","OK"],
-  "Texas": ["TX"],
-  "Mountain West": ["MT","ID","WY","CO","UT","NV","NM","AZ"],
-  "Pacific NW": ["WA","OR","AK"],
-  "California": ["CA","HI"],
-};
 
 const CONFERENCE_TIERS: Record<string, string[]> = {
   "Power": ["SEC", "ACC", "Big 12", "Big Ten"],
@@ -96,7 +84,7 @@ export default function ProfilePage() {
   // Step 3: Preferences
   const [divisionPref, setDivisionPref] = useState<"D1" | "D2" | "both">("both");
   const [maxDistance, setMaxDistance] = useState<number | null>(null);
-  const [preferredStates, setPreferredStates] = useState<string[]>([]);
+  const [preferredRegions, setPreferredRegions] = useState<string[]>([]);
   const [maxTuition, setMaxTuition] = useState<number | null>(null);
   const [schoolSize, setSchoolSize] = useState<"small" | "medium" | "large" | "any">("any");
   const [publicPrivate, setPublicPrivate] = useState<"public" | "private" | "any">("any");
@@ -130,7 +118,7 @@ export default function ProfilePage() {
     const prefs = loadPreferences();
     setDivisionPref(prefs.divisionPreference);
     setMaxDistance(prefs.maxDistanceFromHome);
-    setPreferredStates(prefs.preferredStates);
+    setPreferredRegions(prefs.preferredRegions || []);
     setMaxTuition(prefs.maxTuition);
     setSchoolSize(prefs.schoolSize);
     setPublicPrivate(prefs.publicPrivate);
@@ -156,20 +144,10 @@ export default function ProfilePage() {
     setError("");
   };
 
-  const toggleState = (st: string) => {
-    setPreferredStates((prev) =>
-      prev.includes(st) ? prev.filter((s) => s !== st) : [...prev, st]
-    );
-  };
-
   const toggleRegion = (region: string) => {
-    const states = REGIONS[region];
-    const allSelected = states.every((s) => preferredStates.includes(s));
-    if (allSelected) {
-      setPreferredStates((prev) => prev.filter((s) => !states.includes(s)));
-    } else {
-      setPreferredStates((prev) => [...new Set([...prev, ...states])]);
-    }
+    setPreferredRegions((prev) =>
+      prev.includes(region) ? prev.filter((r) => r !== region) : [...prev, region]
+    );
   };
 
   const toggleConference = (conf: string) => {
@@ -236,7 +214,7 @@ export default function ProfilePage() {
       savePreferences({
         divisionPreference: divisionPref,
         maxDistanceFromHome: maxDistance,
-        preferredStates,
+        preferredRegions,
         maxTuition,
         schoolSize,
         publicPrivate,
@@ -646,24 +624,20 @@ export default function ProfilePage() {
             <div>
               <label className={labelClass}>Preferred Regions <span className="text-gray-400 font-normal">(optional)</span></label>
               <div className="flex flex-wrap gap-2">
-                {Object.keys(REGIONS).map((region) => {
-                  const states = REGIONS[region];
-                  const allSelected = states.every((s) => preferredStates.includes(s));
-                  return (
-                    <button
-                      key={region}
-                      type="button"
-                      onClick={() => toggleRegion(region)}
-                      className={`px-3 py-2 rounded-xl text-xs font-bold transition-all ${
-                        allSelected
-                          ? "bg-gray-900 text-white shadow-md"
-                          : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-                      }`}
-                    >
-                      {region}
-                    </button>
-                  );
-                })}
+                {Object.keys(REGIONS).map((region) => (
+                  <button
+                    key={region}
+                    type="button"
+                    onClick={() => toggleRegion(region)}
+                    className={`px-3 py-2 rounded-xl text-xs font-bold transition-all ${
+                      preferredRegions.includes(region)
+                        ? "bg-gray-900 text-white shadow-md"
+                        : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                    }`}
+                  >
+                    {region}
+                  </button>
+                ))}
               </div>
             </div>
 
