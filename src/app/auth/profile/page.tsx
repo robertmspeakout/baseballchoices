@@ -30,8 +30,8 @@ const REGIONS: Record<string, string[]> = {
 
 const CONFERENCE_TIERS: Record<string, string[]> = {
   "Power": ["SEC", "ACC", "Big 12", "Big Ten"],
-  "High-Major": ["Sun Belt", "Big West", "American Athletic", "Pac-12", "Mountain West", "Big East", "WAC", "Conference USA", "West Coast"],
-  "Mid-Major": ["Missouri Valley", "Atlantic 10", "CAA", "Southern", "MAC", "Ohio Valley", "OVC", "Horizon", "MAAC", "Summit", "Big Sky", "Southland"],
+  "High-Major": ["Sun Belt", "Big West", "American Athletic", "Pac-12", "Mountain West", "Big East", "WAC", "Conference USA"],
+  "Mid-Major": ["West Coast", "Missouri Valley", "Atlantic 10", "CAA", "Southern", "MAC", "Ohio Valley", "OVC", "Horizon", "MAAC", "Summit", "Big Sky", "Southland"],
   "Low-Major": ["SWAC", "MEAC", "Patriot", "NEC", "Ivy League", "America East", "Big South", "Northeast", "ASUN"],
 };
 
