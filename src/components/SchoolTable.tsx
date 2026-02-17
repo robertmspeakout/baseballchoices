@@ -322,7 +322,6 @@ export default function SchoolTable({
               <th className="px-3 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Div</th>
               <SortHeader label="Conference" column="conference" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
               <SortHeader label="State" column="state" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
-              <th className="px-3 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Type</th>
               <SortHeader label="Record" column="record" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
               <SortHeader label="Natl Ranking" column="ranking" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
               {distances && (
@@ -359,7 +358,6 @@ export default function SchoolTable({
                   <td className="px-3 py-3">{divisionBadge(school.division)}</td>
                   <td className="px-3 py-3 text-sm text-gray-700">{school.conference}</td>
                   <td className="px-3 py-3 text-sm text-gray-700">{school.state}</td>
-                  <td className="px-3 py-3 text-sm text-gray-700">{school.public_private}</td>
                   <td className="px-3 py-3 text-sm text-gray-700 text-center">
                     {isFetchable && recordsLoading ? (
                       <span className="text-gray-300 animate-pulse">--</span>
