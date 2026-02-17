@@ -254,25 +254,26 @@ export default function Home() {
           <div className="absolute -right-5 top-0 bottom-0 w-1 bg-red-500/40 skew-x-[-8deg]" />
         </div>
 
-        <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 py-8 sm:py-14">
-          <div className="flex flex-col items-center text-center gap-5 sm:gap-6">
+        <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 py-6 sm:py-10">
+          <div className="flex items-center justify-between">
             <BrandLogo size="lg" showTagline={true} />
 
-            {/* Stats selling point */}
-            <p className="text-sm sm:text-base md:text-lg font-medium text-white/80 tracking-wide max-w-xl">
-              <span className="font-bold text-white">{allSchools.filter(s => s.division === "D1").length} D1 Programs.</span>
-              {" "}
-              <span className="font-bold text-white">{allSchools.filter(s => s.division === "D2").length} D2 Programs.</span>
-              {" "}
-              <span className="text-white/70">One place to find your fit.</span>
-            </p>
-
-            {ratedCount > 0 && (
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-red-600/20 backdrop-blur-md rounded-full border border-red-500/30">
-                <span className="text-sm font-bold text-red-400">{ratedCount}</span>
-                <span className="text-xs font-medium text-red-300/80">programs tracked</span>
-              </div>
-            )}
+            {/* Stats selling point - desktop */}
+            <div className="hidden md:flex items-center gap-3">
+              <p className="text-sm md:text-base font-medium text-white/80 tracking-wide max-w-sm">
+                <span className="font-bold text-white">{allSchools.filter(s => s.division === "D1").length} D1 Programs.</span>
+                {" "}
+                <span className="font-bold text-white">{allSchools.filter(s => s.division === "D2").length} D2 Programs.</span>
+                {" "}
+                <span className="text-white/70">One place to find your fit.</span>
+              </p>
+              {ratedCount > 0 && (
+                <div className="text-center px-4 py-2 bg-red-600/20 backdrop-blur-md rounded-xl border border-red-500/30">
+                  <p className="text-2xl font-black text-red-400">{ratedCount}</p>
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-red-300/60">Tracking</p>
+                </div>
+              )}
+            </div>
           </div>
         </div>
         {/* Bottom edge - thick red accent bar */}
