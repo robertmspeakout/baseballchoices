@@ -712,7 +712,7 @@ export default function SchoolPage({
                         <h3 className="text-sm font-semibold text-gray-700 mb-2">Upcoming Games</h3>
                         {/* Mobile: card layout */}
                         <div className="sm:hidden space-y-2">
-                          {upcomingGames.map((game, i) => (
+                          {upcomingGames.slice(0, 3).map((game, i) => (
                             <div key={i} className="p-3 bg-gray-50 rounded-lg">
                               <p className="text-sm font-medium text-gray-900">{game.homeAway} {game.opponent}</p>
                               <div className="flex items-center gap-2 mt-1 text-xs text-gray-500">
@@ -733,7 +733,7 @@ export default function SchoolPage({
                               </tr>
                             </thead>
                             <tbody className="divide-y divide-gray-50">
-                              {upcomingGames.map((game, i) => (
+                              {upcomingGames.slice(0, 3).map((game, i) => (
                                 <tr key={i} className="hover:bg-blue-50/30">
                                   <td className="px-3 py-2.5 text-sm font-medium text-gray-900">{game.homeAway} {game.opponent}</td>
                                   <td className="px-3 py-2.5 text-sm text-gray-600">{game.location || "TBD"}</td>

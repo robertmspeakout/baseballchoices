@@ -262,10 +262,10 @@ export default function Home() {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <header className="relative text-white overflow-hidden">
-        {/* Full-bleed stadium photo background */}
+        {/* Full-bleed home plate photo background */}
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1471295253337-3ceaaedca402?w=1920&q=80')" }}
+          style={{ backgroundImage: "url('/hero-homeplate.jpg')" }}
         />
         {/* Dramatic gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/30" />
@@ -278,12 +278,6 @@ export default function Home() {
         <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 py-6 sm:py-10">
           <div className="flex items-center justify-between">
             <BrandLogo size="lg" showTagline={true} />
-            {ratedCount > 0 && (
-              <div className="text-center px-4 py-2 bg-red-600/20 backdrop-blur-md rounded-xl border border-red-500/30">
-                <p className="text-2xl font-black text-red-400">{ratedCount}</p>
-                <p className="text-[10px] font-bold uppercase tracking-wider text-red-300/60">Tracking</p>
-              </div>
-            )}
           </div>
         </div>
         {/* Bottom edge - thick red accent bar */}
