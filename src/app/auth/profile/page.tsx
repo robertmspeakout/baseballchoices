@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { loadProfile, saveProfile, loadPreferences, savePreferences, REGIONS } from "@/lib/playerProfile";
+import ImageCropModal from "@/components/ImageCropModal";
 
 const POSITIONS = [
   "RHP", "LHP", "C", "1B", "2B", "3B", "SS", "LF", "CF", "RF", "DH", "UTL",
@@ -80,6 +81,10 @@ export default function ProfilePage() {
 
   const profilePicRef = useRef<HTMLInputElement>(null);
   const backgroundPicRef = useRef<HTMLInputElement>(null);
+
+  // Crop modal state
+  const [cropImage, setCropImage] = useState<string | null>(null);
+  const [cropTarget, setCropTarget] = useState<"profile" | "background">("profile");
 
   // Load saved data on mount - from DB if authenticated, else localStorage
   useEffect(() => {
@@ -166,7 +171,7 @@ export default function ProfilePage() {
 
   const handleFileUpload = (
     e: React.ChangeEvent<HTMLInputElement>,
-    setter: (url: string | null) => void
+    target: "profile" | "background"
   ) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -175,9 +180,20 @@ export default function ProfilePage() {
       return;
     }
     const reader = new FileReader();
-    reader.onload = () => setter(reader.result as string);
+    reader.onload = () => {
+      if (target === "profile") {
+        // Open crop modal for profile pics
+        setCropImage(reader.result as string);
+        setCropTarget("profile");
+      } else {
+        // Background pics apply directly (bg-cover handles fit)
+        setBackgroundPic(reader.result as string);
+      }
+    };
     reader.readAsDataURL(file);
     setError("");
+    // Reset the input so re-selecting the same file triggers onChange
+    e.target.value = "";
   };
 
   const toggleRegion = (region: string) => {
@@ -325,7 +341,7 @@ export default function ProfilePage() {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
       {/* Header */}
-      <header className="relative bg-gray-900 text-white overflow-hidden">
+      <header className="relative bg-gray-900 text-white overflow-visible">
         {backgroundPic && (
           <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('${backgroundPic}')` }} />
         )}
@@ -355,7 +371,7 @@ export default function ProfilePage() {
             </svg>
             {backgroundPic ? "Change" : "Add Background"}
           </button>
-          <input ref={backgroundPicRef} type="file" accept="image/*" className="hidden" onChange={(e) => handleFileUpload(e, setBackgroundPic)} />
+          <input ref={backgroundPicRef} type="file" accept="image/*" className="hidden" onChange={(e) => handleFileUpload(e, "background")} />
         </div>
 
         <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 z-10">
@@ -378,7 +394,7 @@ export default function ProfilePage() {
               </svg>
             </div>
           </button>
-          <input ref={profilePicRef} type="file" accept="image/*" className="hidden" onChange={(e) => handleFileUpload(e, setProfilePic)} />
+          <input ref={profilePicRef} type="file" accept="image/*" className="hidden" onChange={(e) => handleFileUpload(e, "profile")} />
         </div>
       </header>
 
@@ -668,6 +684,23 @@ export default function ProfilePage() {
           </button>
         )}
       </main>
+
+      {/* Crop modal */}
+      {cropImage && (
+        <ImageCropModal
+          imageUrl={cropImage}
+          circular={cropTarget === "profile"}
+          onSave={(croppedUrl) => {
+            if (cropTarget === "profile") {
+              setProfilePic(croppedUrl);
+            } else {
+              setBackgroundPic(croppedUrl);
+            }
+            setCropImage(null);
+          }}
+          onCancel={() => setCropImage(null)}
+        />
+      )}
     </div>
   );
 }
