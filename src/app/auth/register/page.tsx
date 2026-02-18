@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { signIn } from "next-auth/react";
+import { login } from "../login/actions";
 
 const POSITIONS = [
   "RHP", "LHP", "C", "1B", "2B", "3B", "SS", "OF", "DH", "Utility",
@@ -64,21 +64,18 @@ export default function RegisterPage() {
         return;
       }
 
-      // Auto sign-in after registration
-      const result = await signIn("credentials", {
-        email,
-        password,
-        redirect: false,
-      });
-
-      if (result?.error) {
-        setError("Account created but sign-in failed. Please log in.");
-        setLoading(false);
+      // Auto sign-in after registration via server action
+      try {
+        const loginResult = await login(email, password, "/auth/profile");
+        if (loginResult?.error) {
+          setError("Account created but sign-in failed. Please log in.");
+          setLoading(false);
+          return;
+        }
+      } catch {
+        // Server action throws NEXT_REDIRECT on success — redirect happens automatically
         return;
       }
-
-      // Redirect to profile to complete recruiting assessment
-      window.location.href = "/auth/profile";
     } catch {
       setError("Something went wrong. Please try again.");
       setLoading(false);

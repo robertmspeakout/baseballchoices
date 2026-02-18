@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { signIn } from "next-auth/react";
 import { Suspense } from "react";
+import { login } from "./actions";
 
 function LoginForm() {
   const searchParams = useSearchParams();
@@ -27,23 +27,15 @@ function LoginForm() {
     setLoading(true);
 
     try {
-      const result = await signIn("credentials", {
-        email,
-        password,
-        redirect: false,
-      });
-
+      const result = await login(email, password, callbackUrl);
       if (result?.error) {
-        setError("Invalid email or password.");
+        setError(result.error);
         setLoading(false);
         return;
       }
-
-      // Redirect back to where they came from
-      window.location.href = callbackUrl;
     } catch {
-      setError("Something went wrong. Please try again.");
-      setLoading(false);
+      // Server action throws NEXT_REDIRECT on success — redirect happens automatically
+      return;
     }
   };
 

@@ -1,0 +1,63 @@
+{
+  "hero": {
+    "headline": "The Recruiting Process\nJust Got Simpler.",
+    "subtext": "Built by a real baseball dad for real baseball families. Take control of your recruiting journey today with the only AI powered app built to organize, match, and guide your entire recruiting process — on your terms.",
+    "ctaButton": "Create Your Free Profile",
+    "secondaryButton": "See How It Works",
+    "footerNote": "Join 500+ college baseball programs and growing!"
+  },
+  "statsBar": {
+    "items": [
+      { "value": "564+", "label": "Programs" },
+      { "value": "D1, D2", "label": "& D3" },
+      { "value": "AI-Powered", "label": "Matching" }
+    ]
+  },
+  "howItWorks": {
+    "title": "How ExtraBase Works",
+    "steps": [
+      {
+        "emoji": "📋",
+        "title": "Build Your Profile",
+        "description": "Enter your stats, academics, position, and preferred regions. Takes less than 5 minutes."
+      },
+      {
+        "emoji": "🤖",
+        "title": "Get AI Matches",
+        "description": "Our AI analyzes 564 programs and surfaces the ones most likely to recruit a player like you."
+      },
+      {
+        "emoji": "⭐",
+        "title": "Build Your List",
+        "description": "Rate programs, track your interest level, and organize your entire recruiting journey in one place."
+      }
+    ]
+  },
+  "testimonial": {
+    "quote": "It was really hard to keep track of everything that was going on during my recruiting process. My parents and I couldn't keep up. I wanted one place where I could see and track everything. I wish my dad had made this for me before I committed!",
+    "attribution": "Jack M., Class of 2027 D1 Commit"
+  },
+  "pricing": {
+    "title": "Simple Pricing. No Surprises.",
+    "planName": "ExtraBase Full Access",
+    "price": "$19.99",
+    "period": "per year",
+    "subtitle": "Start free for 5 days, then just $19.99 per year. Cancel anytime.",
+    "features": [
+      "Access to all 564+ college programs",
+      "AI-powered program matching",
+      "Personal program rankings and lists",
+      "Track your recruiting journey in one place",
+      "Built by baseball parents who lived this process"
+    ],
+    "ctaButton": "Start My Free Trial",
+    "footerNote": "No credit card required."
+  },
+  "whyWeBuiltThis": {
+    "title": "Why We Built This",
+    "paragraphs": [
+      "We were baseball parents sitting at a kitchen table with a talented and stressed out kid, a browser full of YouTube videos that promised to help, and absolutely no system to manage any of it. To help, I built a really complicated and cumbersome spreadsheet. We used it, it helped, but it wasn't enough. We had a recruit who was overwhelmed and a process that felt like it was controlling us instead of the other way around.",
+      "We looked for a tool that could help us organize programs, track interest levels, compare options, and make sense of it all. We couldn't find one. So we built it...for all of our sanity."
+    ]
+  }
+}

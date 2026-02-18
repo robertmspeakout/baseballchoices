@@ -10,6 +10,7 @@ import SchoolTable from "@/components/SchoolTable";
 import schoolsData from "@/data/schools.json";
 import { getAllUserData, setUserData, type UserData } from "@/lib/userData";
 import { haversineDistance, geocodeZip } from "@/lib/geo";
+import marketingContent from "@/data/marketing.json";
 import { loadProfile } from "@/lib/playerProfile";
 
 interface School {
@@ -506,6 +507,7 @@ export default function Home() {
       </header>
 
       {/* ── Landing sections (home tab, non-logged-in only) ──────────────── */}
+      {/* All text below is driven by src/data/marketing.json — edit that file to change copy */}
       {activeTab === "home" && !isLoggedIn && (
         <>
           {/* Hero */}
@@ -516,68 +518,56 @@ export default function Home() {
             <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 50% 40%, rgba(245,197,24,0.08) 0%, transparent 70%)" }} />
             <div className="relative max-w-3xl mx-auto px-4 sm:px-6">
               <h2 className="text-3xl sm:text-5xl font-black text-white leading-tight mb-4">
-                The Recruiting Process<br />Just Got Simpler.
+                {marketingContent.hero.headline.split("\n").map((line, i, arr) => (
+                  <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
+                ))}
               </h2>
               <p className="text-base sm:text-lg text-gray-400 mb-6 max-w-xl mx-auto">
-                Built by a real baseball dad for real baseball families. Take control of your recruiting journey today with the only AI powered app built to organize, match, and guide your entire recruiting process &mdash; on your terms.
+                {marketingContent.hero.subtext}
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
                 <Link
                   href="/auth/register"
                   className="px-6 py-3 bg-[#CC0000] text-white rounded-xl text-sm font-bold hover:bg-red-700 transition-colors"
                 >
-                  Create Your Free Profile
+                  {marketingContent.hero.ctaButton}
                 </Link>
                 <a
                   href="#how-it-works"
                   className="px-6 py-3 border-2 border-white/30 text-white rounded-xl text-sm font-bold hover:border-white/60 transition-colors"
                   onClick={(e) => { e.preventDefault(); document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" }); }}
                 >
-                  See How It Works
+                  {marketingContent.hero.secondaryButton}
                 </a>
               </div>
-              <p className="text-xs text-gray-500">Join 500+ college baseball programs and growing!</p>
+              <p className="text-xs text-gray-500">{marketingContent.hero.footerNote}</p>
             </div>
           </section>
 
           {/* Stats Bar */}
           <section className="bg-[#111] py-2 sm:py-4">
             <div className="max-w-[1400px] mx-auto px-4 sm:px-6 flex flex-row items-center justify-center divide-x divide-white/20 text-center">
-              <div className="px-3 sm:px-8">
-                <span className="text-white font-bold text-xs sm:text-lg">564+</span>
-                <span className="text-gray-400 text-[10px] sm:text-sm ml-1">Programs</span>
-              </div>
-              <div className="px-3 sm:px-8">
-                <span className="text-white font-bold text-xs sm:text-lg">D1, D2</span>
-                <span className="text-gray-400 text-[10px] sm:text-sm ml-1">&amp; D3</span>
-              </div>
-              <div className="px-3 sm:px-8">
-                <span className="text-white font-bold text-xs sm:text-lg">AI-Powered</span>
-                <span className="text-gray-400 text-[10px] sm:text-sm ml-1">Matching</span>
-              </div>
+              {marketingContent.statsBar.items.map((item, i) => (
+                <div key={i} className="px-3 sm:px-8">
+                  <span className="text-white font-bold text-xs sm:text-lg">{item.value}</span>
+                  <span className="text-gray-400 text-[10px] sm:text-sm ml-1">{item.label}</span>
+                </div>
+              ))}
             </div>
           </section>
 
           {/* How It Works */}
           <section id="how-it-works" className="bg-gray-100 py-12 sm:py-16">
             <div className="max-w-[1400px] mx-auto px-4 sm:px-6">
-              <h2 className="text-2xl sm:text-3xl font-black text-gray-900 text-center mb-10">How ExtraBase Works</h2>
+              <h2 className="text-2xl sm:text-3xl font-black text-gray-900 text-center mb-10">{marketingContent.howItWorks.title}</h2>
               <div className="grid sm:grid-cols-3 gap-6 sm:gap-8">
-                <div className="bg-white rounded-2xl p-6 text-center shadow-sm border border-gray-200">
-                  <div className="text-4xl mb-4">&#128203;</div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">Build Your Profile</h3>
-                  <p className="text-sm text-gray-600">Enter your stats, academics, position, and preferred regions. Takes less than 5 minutes.</p>
-                </div>
-                <div className="bg-white rounded-2xl p-6 text-center shadow-sm border border-gray-200">
-                  <div className="text-4xl mb-4">&#129302;</div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">Get AI Matches</h3>
-                  <p className="text-sm text-gray-600">Our AI analyzes 564 programs and surfaces the ones most likely to recruit a player like you.</p>
-                </div>
-                <div className="bg-white rounded-2xl p-6 text-center shadow-sm border border-gray-200">
-                  <div className="text-4xl mb-4">&#11088;</div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">Build Your List</h3>
-                  <p className="text-sm text-gray-600">Rate programs, track your interest level, and organize your entire recruiting journey in one place.</p>
-                </div>
+                {marketingContent.howItWorks.steps.map((step, i) => (
+                  <div key={i} className="bg-white rounded-2xl p-6 text-center shadow-sm border border-gray-200">
+                    <div className="text-4xl mb-4">{step.emoji}</div>
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">{step.title}</h3>
+                    <p className="text-sm text-gray-600">{step.description}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </section>
@@ -586,10 +576,10 @@ export default function Home() {
           <section className="bg-[#1a1a2e] py-10 sm:py-14">
             <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
               <p className="text-base sm:text-lg text-white italic leading-relaxed mb-4">
-                &ldquo;It was really hard to keep track of everything that was going on during my recruiting process. My parents and I couldn&apos;t keep up. I wanted one place where I could see and track everything. I wish my dad had made this for me before I committed!&rdquo;
+                &ldquo;{marketingContent.testimonial.quote}&rdquo;
               </p>
               <p className="text-sm text-gray-400">
-                &mdash; Jack M., Class of 2027 D1 Commit
+                &mdash; {marketingContent.testimonial.attribution}
               </p>
             </div>
           </section>
@@ -597,22 +587,16 @@ export default function Home() {
           {/* Pricing */}
           <section className="bg-gray-100 py-12 sm:py-16">
             <div className="max-w-lg mx-auto px-4 sm:px-6 text-center">
-              <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mb-8">Simple Pricing. No Surprises.</h2>
+              <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mb-8">{marketingContent.pricing.title}</h2>
               <div className="bg-white rounded-2xl border-2 border-gray-200 p-6 sm:p-8 shadow-sm">
-                <h3 className="text-lg font-bold text-gray-900 mb-2">ExtraBase Full Access</h3>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{marketingContent.pricing.planName}</h3>
                 <div className="flex items-baseline justify-center gap-1 mb-3">
-                  <span className="text-4xl font-black text-gray-900">$19.99</span>
-                  <span className="text-sm text-gray-500">per year</span>
+                  <span className="text-4xl font-black text-gray-900">{marketingContent.pricing.price}</span>
+                  <span className="text-sm text-gray-500">{marketingContent.pricing.period}</span>
                 </div>
-                <p className="text-sm text-gray-500 mb-6">Start free for 5 days, then just $19.99 per year. Cancel anytime.</p>
+                <p className="text-sm text-gray-500 mb-6">{marketingContent.pricing.subtitle}</p>
                 <ul className="space-y-3 text-left mb-6">
-                  {[
-                    "Access to all 564+ college programs",
-                    "AI-powered program matching",
-                    "Personal program rankings and lists",
-                    "Track your recruiting journey in one place",
-                    "Built by baseball parents who lived this process",
-                  ].map((feature) => (
+                  {marketingContent.pricing.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-2.5">
                       <svg className="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -622,9 +606,9 @@ export default function Home() {
                   ))}
                 </ul>
                 <Link href="/auth/register" className="block w-full px-4 py-3.5 bg-[#CC0000] text-white rounded-xl text-sm font-bold hover:bg-red-700 transition-colors shadow-sm text-center">
-                  Start My Free Trial
+                  {marketingContent.pricing.ctaButton}
                 </Link>
-                <p className="text-xs text-gray-400 mt-3">No credit card required.</p>
+                <p className="text-xs text-gray-400 mt-3">{marketingContent.pricing.footerNote}</p>
               </div>
             </div>
           </section>
@@ -632,7 +616,7 @@ export default function Home() {
           {/* Why We Built This */}
           <section className="bg-white py-12 sm:py-16">
             <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
-              <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mb-4">Why We Built This</h2>
+              <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mb-4">{marketingContent.whyWeBuiltThis.title}</h2>
               <div className="mb-6">
                 <img
                   src="/images/family.jpg"
@@ -640,12 +624,11 @@ export default function Home() {
                   className="mx-auto rounded-full w-40 h-40 sm:w-48 sm:h-48 object-cover object-top shadow-lg border-4 border-gray-200"
                 />
               </div>
-              <p className="text-base text-gray-600 leading-relaxed mb-4">
-                We were baseball parents sitting at a kitchen table with a talented and stressed out kid, a browser full of YouTube videos that promised to help, and absolutely no system to manage any of it. To help, I built a really complicated and cumbersome spreadsheet. We used it, it helped, but it wasn&apos;t enough. We had a recruit who was overwhelmed and a process that felt like it was controlling us instead of the other way around.
-              </p>
-              <p className="text-base text-gray-600 leading-relaxed">
-                We looked for a tool that could help us organize programs, track interest levels, compare options, and make sense of it all. We couldn&apos;t find one. So we built it...for all of our sanity.
-              </p>
+              {marketingContent.whyWeBuiltThis.paragraphs.map((paragraph, i) => (
+                <p key={i} className={`text-base text-gray-600 leading-relaxed${i < marketingContent.whyWeBuiltThis.paragraphs.length - 1 ? " mb-4" : ""}`}>
+                  {paragraph}
+                </p>
+              ))}
             </div>
           </section>
         </>
@@ -733,53 +716,32 @@ export default function Home() {
           <h3 className="text-base font-bold text-gray-700 mt-2">All My Ranked Programs</h3>
         )}
 
-        {!isLoggedIn ? (
-          /* Auth gate when not logged in */
-          <div className="relative">
-            <div className="overflow-hidden" style={{ maxHeight: activeTab === "home" ? 620 : 500 }}>
-              <div className={activeTab !== "home" ? "blur-sm pointer-events-none opacity-60" : ""}>
-                <SchoolTable
-                  schools={paginated}
-                  distances={distances}
-                  sortBy={sortBy}
-                  sortDir={sortDir}
-                  onSort={handleSort}
-                  onPriorityChange={handlePriorityChange}
-                />
+        {!isLoggedIn && activeTab !== "home" ? (
+          /* Auth gate when not logged in on non-home tabs */
+          <div className="flex justify-center py-12">
+            <div className="bg-white rounded-2xl shadow-xl border border-gray-200 p-6 sm:p-8 text-center max-w-md mx-4">
+              <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center mx-auto mb-4">
+                <svg className="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
               </div>
-            </div>
-            <div className={`absolute left-0 right-0 pointer-events-none ${
-              activeTab === "home"
-                ? "bottom-0 h-72 bg-gradient-to-t from-gray-50 via-gray-50/95 to-transparent"
-                : "inset-0 bg-gradient-to-t from-gray-50 via-gray-50/95 to-transparent"
-            }`} />
-            <div className={`absolute left-0 right-0 flex justify-center pointer-events-none ${
-              activeTab === "home" ? "bottom-0 items-end pb-6" : "inset-0 items-center"
-            }`}>
-              <div className="pointer-events-auto bg-white rounded-2xl shadow-xl border border-gray-200 p-6 sm:p-8 text-center max-w-md mx-4">
-                <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                  </svg>
-                </div>
-                <p className="text-sm text-gray-700 font-medium mb-4">
-                  Create a free account to access all {allSchools.length} programs and unlock AI matching.
-                </p>
-                <Link
-                  href="/auth/register"
-                  className="inline-block px-6 py-2.5 bg-[#CC0000] text-white rounded-xl text-sm font-bold hover:bg-red-700 transition-colors mb-2"
-                >
-                  Sign Up Free
+              <p className="text-sm text-gray-700 font-medium mb-4">
+                Create a free account to access all {allSchools.length} programs and unlock AI matching.
+              </p>
+              <Link
+                href="/auth/register"
+                className="inline-block px-6 py-2.5 bg-[#CC0000] text-white rounded-xl text-sm font-bold hover:bg-red-700 transition-colors mb-2"
+              >
+                Sign Up Free
+              </Link>
+              <div>
+                <Link href="/auth/login" className="text-xs text-gray-500 hover:text-gray-700 transition-colors">
+                  Already have an account? Log in
                 </Link>
-                <div>
-                  <Link href="/auth/login" className="text-xs text-gray-500 hover:text-gray-700 transition-colors">
-                    Already have an account? Log in
-                  </Link>
-                </div>
               </div>
             </div>
           </div>
-        ) : (
+        ) : isLoggedIn ? (
           <SchoolTable
             schools={paginated}
             distances={distances}
@@ -788,7 +750,7 @@ export default function Home() {
             onSort={handleSort}
             onPriorityChange={handlePriorityChange}
           />
-        )}
+        ) : null}
 
         {/* Pagination */}
         {totalPages > 1 && (activeTab !== "home" || isLoggedIn) && (
