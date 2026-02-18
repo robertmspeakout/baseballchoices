@@ -53,6 +53,88 @@ const PAGE_SIZE = 50;
 const allSchools = schoolsData as School[];
 
 /* ── VIP Card Component ─────────────────────────────────── */
+/* ── VIP Carousel with arrows + touch scroll ────────────── */
+function VIPCarousel({ schools }: { schools: (School & { priority: number })[] }) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+
+  const vipSchools = schools.filter((s) => s.priority === 5);
+
+  const checkScroll = () => {
+    const el = scrollRef.current;
+    if (!el) return;
+    setCanScrollLeft(el.scrollLeft > 4);
+    setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 4);
+  };
+
+  useEffect(() => {
+    checkScroll();
+    const el = scrollRef.current;
+    if (el) el.addEventListener("scroll", checkScroll, { passive: true });
+    window.addEventListener("resize", checkScroll);
+    return () => {
+      el?.removeEventListener("scroll", checkScroll);
+      window.removeEventListener("resize", checkScroll);
+    };
+  }, [vipSchools.length]);
+
+  const scroll = (dir: "left" | "right") => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const cardWidth = el.querySelector<HTMLElement>(":scope > *")?.offsetWidth || 300;
+    el.scrollBy({ left: dir === "left" ? -cardWidth - 16 : cardWidth + 16, behavior: "smooth" });
+  };
+
+  if (vipSchools.length === 0) return null;
+
+  return (
+    <div className="mb-8">
+      <div className="flex items-center gap-2 mb-4">
+        <svg className="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+        <h3 className="text-lg font-bold text-gray-900">VIP Programs</h3>
+      </div>
+
+      <div className="relative">
+        {/* Left arrow */}
+        {canScrollLeft && (
+          <button
+            onClick={() => scroll("left")}
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 z-10 w-9 h-9 rounded-full bg-white shadow-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors"
+          >
+            <svg className="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+          </button>
+        )}
+
+        {/* Scrollable cards */}
+        <div
+          ref={scrollRef}
+          data-vip-scroll=""
+          className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2 -mx-1 px-1"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        >
+          <style>{`[data-vip-scroll]::-webkit-scrollbar { display: none; }`}</style>
+          {vipSchools.map((school) => (
+            <div key={school.id} className="snap-start shrink-0 w-72 sm:w-80">
+              <VIPCard school={school} />
+            </div>
+          ))}
+        </div>
+
+        {/* Right arrow */}
+        {canScrollRight && (
+          <button
+            onClick={() => scroll("right")}
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 z-10 w-9 h-9 rounded-full bg-white shadow-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors"
+          >
+            <svg className="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+          </button>
+        )}
+      </div>
+    </div>
+  );
+}
+
 function VIPCard({ school }: { school: School & { priority: number; high_academic?: boolean } }) {
   const [logoError, setLogoError] = useState(false);
   const [record, setRecord] = useState<string | null>(null);
@@ -547,32 +629,16 @@ export default function Home() {
           />
         )}
 
-        {/* VIP Cards Section — only on mylist tab */}
-        {activeTab === "mylist" && (() => {
-          const vipSchools = sorted.filter((s) => s.priority === 5);
-          if (vipSchools.length === 0) return null;
-          return (
-            <div className="mb-8">
-              <div className="flex items-center gap-2 mb-4">
-                <svg className="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                <h3 className="text-lg font-bold text-gray-900">VIP Programs</h3>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {vipSchools.map((school) => (
-                  <VIPCard key={school.id} school={school} />
-                ))}
-              </div>
-            </div>
-          );
-        })()}
+        {/* VIP Cards Carousel — only on mylist tab */}
+        {activeTab === "mylist" && <VIPCarousel schools={sorted} />}
 
-        {/* Other ranked programs header — only on mylist when there are non-VIP programs */}
-        {activeTab === "mylist" && sorted.some((s) => s.priority === 5) && paginated.some((s) => s.priority < 5) && (
+        {/* All Ranked Programs header — only on mylist when VIP exists */}
+        {activeTab === "mylist" && sorted.some((s) => s.priority === 5) && (
           <h3 className="text-base font-bold text-gray-700 mt-2">All Ranked Programs</h3>
         )}
 
         <SchoolTable
-          schools={activeTab === "mylist" ? paginated.filter((s) => s.priority < 5) : paginated}
+          schools={paginated}
           distances={distances}
           sortBy={sortBy}
           sortDir={sortDir}
