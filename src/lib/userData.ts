@@ -60,3 +60,19 @@ export function setUserData(schoolId: number, updates: Partial<UserData>) {
 export function getAllUserData(): Record<string, UserData> {
   return loadAll();
 }
+
+// ── Database-backed methods for logged-in users ──
+
+export async function fetchUserDataFromDB(): Promise<Record<string, UserData>> {
+  const res = await fetch("/api/user/schooldata");
+  if (!res.ok) return {};
+  return res.json();
+}
+
+export async function saveUserDataToDB(schoolId: number, updates: Partial<UserData>): Promise<void> {
+  await fetch("/api/user/schooldata", {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ schoolId, ...updates }),
+  });
+}

@@ -8,7 +8,8 @@ import AuthGate from "@/components/AuthGate";
 import StarRating from "@/components/StarRating";
 import schoolsData from "@/data/schools.json";
 import draftPicksData from "@/data/draft-picks.json";
-import { getUserData, setUserData } from "@/lib/userData";
+import { useSession } from "next-auth/react";
+import { getUserData, setUserData, fetchUserDataFromDB, saveUserDataToDB } from "@/lib/userData";
 import { haversineDistance } from "@/lib/geo";
 
 interface DraftPick {
@@ -140,6 +141,8 @@ export default function SchoolPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = use(params);
+  const { data: session, status: authStatus } = useSession();
+  const isLoggedIn = authStatus === "authenticated" && !!session?.user;
   const schoolData = (schoolsData as SchoolDetail[]).find((s) => s.id === parseInt(id));
 
   const [priority, setPriority] = useState(0);
@@ -174,7 +177,9 @@ export default function SchoolPage({
   });
 
   useEffect(() => {
-    const ud = getUserData(parseInt(id));
+    const schoolId = parseInt(id);
+    // Load from localStorage first (instant)
+    const ud = getUserData(schoolId);
     setPriority(ud.priority);
     setNotes(ud.notes);
     setLastContacted(ud.last_contacted || "");
@@ -190,6 +195,29 @@ export default function SchoolPage({
       myContactEmail: ud.my_contact_email || "",
     };
 
+    // If logged in, also fetch from DB (overwrites localStorage values)
+    if (isLoggedIn) {
+      fetchUserDataFromDB().then((dbData) => {
+        const dbSchool = dbData[schoolId];
+        if (dbSchool) {
+          setPriority(dbSchool.priority);
+          setNotes(dbSchool.notes);
+          setLastContacted(dbSchool.last_contacted || "");
+          setRecruitingStatus(dbSchool.recruiting_status || "");
+          setTheyvSeenMe(dbSchool.theyve_seen_me || []);
+          setDetail(dbSchool.detail || "");
+          setMyContactName(dbSchool.my_contact_name || "");
+          setMyContactEmail(dbSchool.my_contact_email || "");
+          savedSnapshot.current = {
+            notes: dbSchool.notes, lastContacted: dbSchool.last_contacted || "",
+            recruitingStatus: dbSchool.recruiting_status || "", theyvSeenMe: dbSchool.theyve_seen_me || [],
+            detail: dbSchool.detail || "", myContactName: dbSchool.my_contact_name || "",
+            myContactEmail: dbSchool.my_contact_email || "",
+          };
+        }
+      }).catch(() => {});
+    }
+
     try {
       const saved = localStorage.getItem("nextbase_homeZip");
       if (saved && schoolData?.latitude && schoolData?.longitude) {
@@ -199,7 +227,7 @@ export default function SchoolPage({
     } catch { /* ignore */ }
 
     setMounted(true);
-  }, [id, schoolData]);
+  }, [id, schoolData, isLoggedIn]);
 
   useEffect(() => {
     if (!schoolData) return;
@@ -245,13 +273,16 @@ export default function SchoolPage({
   const savePriority = (newPriority: number) => {
     setPriority(newPriority);
     setUserData(parseInt(id), { priority: newPriority });
+    if (isLoggedIn) {
+      saveUserDataToDB(parseInt(id), { priority: newPriority }).catch(() => {});
+    }
     setSaved(true);
     setTimeout(() => setSaved(false), 2000);
   };
 
-  const saveAll = () => {
+  const saveAll = async () => {
     setSaving(true);
-    setUserData(parseInt(id), {
+    const updates = {
       notes,
       last_contacted: lastContacted || null,
       recruiting_status: recruitingStatus,
@@ -259,7 +290,13 @@ export default function SchoolPage({
       detail,
       my_contact_name: myContactName,
       my_contact_email: myContactEmail,
-    });
+    };
+    setUserData(parseInt(id), updates);
+    if (isLoggedIn) {
+      try {
+        await saveUserDataToDB(parseInt(id), updates);
+      } catch { /* localStorage is the fallback */ }
+    }
     savedSnapshot.current = {
       notes, lastContacted, recruitingStatus, theyvSeenMe,
       detail, myContactName, myContactEmail,
