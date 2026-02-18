@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import BrandLogo from "@/components/BrandLogo";
 import SearchFilters from "@/components/SearchFilters";
@@ -51,6 +51,103 @@ type TabKey = "home" | "mylist" | "D1" | "D2";
 
 const PAGE_SIZE = 50;
 const allSchools = schoolsData as School[];
+
+/* ── VIP Card Component ─────────────────────────────────── */
+function VIPCard({ school }: { school: School & { priority: number; high_academic?: boolean } }) {
+  const [logoError, setLogoError] = useState(false);
+  const [record, setRecord] = useState<string | null>(null);
+  const fetched = useRef(false);
+
+  useEffect(() => {
+    if (fetched.current || !school.name) return;
+    fetched.current = true;
+    fetch(`/api/records?schools=${encodeURIComponent(school.name)}`)
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.records?.[school.name]) setRecord(data.records[school.name]);
+      })
+      .catch(() => {});
+  }, [school.name]);
+
+  const displayRecord = record || school.last_season_record;
+
+  return (
+    <Link href={`/school/${school.id}`} className="group block">
+      <div className="relative bg-gray-900 rounded-2xl overflow-hidden border border-gray-700 hover:border-red-500/60 transition-all duration-200 hover:shadow-lg hover:shadow-red-500/10">
+        {/* Red top accent */}
+        <div className="h-1 bg-gradient-to-r from-red-700 via-red-500 to-red-700" />
+
+        <div className="p-5 flex flex-col items-center text-center">
+          {/* Stars */}
+          <div className="flex items-center gap-0.5 mb-3">
+            {[1, 2, 3, 4, 5].map((s) => (
+              <svg key={s} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+            ))}
+            <span className="ml-1.5 text-xs font-semibold text-yellow-400/80 uppercase tracking-wide">VIP Choice</span>
+          </div>
+
+          {/* Logo */}
+          <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-white flex items-center justify-center mb-4 shadow-lg group-hover:scale-105 transition-transform">
+            {school.logo_url && !logoError ? (
+              <img
+                src={school.logo_url}
+                alt={`${school.name} logo`}
+                className="w-20 h-20 sm:w-24 sm:h-24 object-contain"
+                onError={() => setLogoError(true)}
+              />
+            ) : (
+              <span className="text-2xl sm:text-3xl font-black text-gray-400">
+                {school.name.split(" ").map((w) => w[0]).join("").slice(0, 3)}
+              </span>
+            )}
+          </div>
+
+          {/* School name */}
+          <h4 className="text-lg sm:text-xl font-black text-white mb-0.5 group-hover:text-red-400 transition-colors">
+            {school.name.toUpperCase()}
+          </h4>
+          <p className="text-sm text-gray-400 mb-3">{school.mascot}</p>
+
+          {/* Info pills */}
+          <div className="flex flex-wrap items-center justify-center gap-1.5 mb-3 text-xs">
+            <span className="px-2 py-0.5 rounded-full bg-gray-800 text-gray-300 font-medium">{school.division}</span>
+            <span className="text-gray-600">·</span>
+            <span className="px-2 py-0.5 rounded-full bg-gray-800 text-gray-300 font-medium">{school.conference}</span>
+            <span className="text-gray-600">·</span>
+            <span className="px-2 py-0.5 rounded-full bg-gray-800 text-gray-300 font-medium">{school.city}, {school.state}</span>
+          </div>
+
+          {/* Record & Ranking */}
+          <div className="flex items-center justify-center gap-3 text-sm mb-3">
+            {displayRecord && (
+              <span className="text-gray-300">Record: <span className="font-semibold text-white">{displayRecord}</span></span>
+            )}
+            {school.current_ranking && (
+              <span className="text-gray-300">Rank: <span className="font-semibold text-red-400">#{school.current_ranking}</span></span>
+            )}
+          </div>
+
+          {/* High Academic badge */}
+          {(school as any).high_academic && (
+            <div className="flex items-center gap-1.5 px-2.5 py-1 bg-yellow-500/10 border border-yellow-500/30 rounded-full mb-3">
+              <svg className="w-3.5 h-3.5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+              <span className="text-xs font-semibold text-yellow-400">High Academic</span>
+            </div>
+          )}
+
+          {/* View Details button */}
+          <div className="px-4 py-1.5 rounded-lg bg-red-600/20 text-red-400 text-xs font-semibold uppercase tracking-wide group-hover:bg-red-600 group-hover:text-white transition-all">
+            View Details
+          </div>
+        </div>
+      </div>
+    </Link>
+  );
+}
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<TabKey>("home");
@@ -455,8 +552,32 @@ export default function Home() {
           />
         )}
 
+        {/* VIP Cards Section — only on mylist tab */}
+        {activeTab === "mylist" && (() => {
+          const vipSchools = sorted.filter((s) => s.priority === 5);
+          if (vipSchools.length === 0) return null;
+          return (
+            <div className="mb-8">
+              <div className="flex items-center gap-2 mb-4">
+                <svg className="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                <h3 className="text-lg font-bold text-gray-900">VIP Programs</h3>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {vipSchools.map((school) => (
+                  <VIPCard key={school.id} school={school} />
+                ))}
+              </div>
+            </div>
+          );
+        })()}
+
+        {/* Other ranked programs header — only on mylist when there are non-VIP programs */}
+        {activeTab === "mylist" && sorted.some((s) => s.priority === 5) && paginated.some((s) => s.priority < 5) && (
+          <h3 className="text-base font-bold text-gray-700 mt-2">All Ranked Programs</h3>
+        )}
+
         <SchoolTable
-          schools={paginated}
+          schools={activeTab === "mylist" ? paginated.filter((s) => s.priority < 5) : paginated}
           distances={distances}
           sortBy={sortBy}
           sortDir={sortDir}
