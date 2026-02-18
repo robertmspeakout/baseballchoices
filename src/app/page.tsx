@@ -504,7 +504,7 @@ export default function Home() {
                 The Recruiting Process<br />Just Got Simpler.
               </h2>
               <p className="text-base sm:text-lg text-gray-400 mb-6 max-w-xl mx-auto">
-                Built by a baseball dad for baseball families. Take control of your recruiting journey today with the only AI powered app built to organize, match, and guide your entire recruiting process &mdash; on your terms.
+                Built by a real baseball dad for real baseball families. Take control of your recruiting journey today with the only AI powered app built to organize, match, and guide your entire recruiting process &mdash; on your terms.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
                 <Link
@@ -526,19 +526,19 @@ export default function Home() {
           </section>
 
           {/* Stats Bar */}
-          <section className="bg-[#111] py-4">
-            <div className="max-w-[1400px] mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-0 sm:divide-x sm:divide-white/20 text-center">
-              <div className="px-8">
-                <span className="text-white font-bold text-lg">564+</span>
-                <span className="text-gray-400 text-sm ml-1.5">College Programs</span>
+          <section className="bg-[#111] py-2 sm:py-4">
+            <div className="max-w-[1400px] mx-auto px-4 sm:px-6 flex flex-row items-center justify-center divide-x divide-white/20 text-center">
+              <div className="px-3 sm:px-8">
+                <span className="text-white font-bold text-xs sm:text-lg">564+</span>
+                <span className="text-gray-400 text-[10px] sm:text-sm ml-1">Programs</span>
               </div>
-              <div className="px-8">
-                <span className="text-white font-bold text-lg">D1, D2</span>
-                <span className="text-gray-400 text-sm ml-1.5">and D3 Coverage</span>
+              <div className="px-3 sm:px-8">
+                <span className="text-white font-bold text-xs sm:text-lg">D1, D2</span>
+                <span className="text-gray-400 text-[10px] sm:text-sm ml-1">&amp; D3</span>
               </div>
-              <div className="px-8">
-                <span className="text-white font-bold text-lg">AI-Powered</span>
-                <span className="text-gray-400 text-sm ml-1.5">Matching</span>
+              <div className="px-3 sm:px-8">
+                <span className="text-white font-bold text-xs sm:text-lg">AI-Powered</span>
+                <span className="text-gray-400 text-[10px] sm:text-sm ml-1">Matching</span>
               </div>
             </div>
           </section>
