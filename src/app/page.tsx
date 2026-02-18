@@ -571,7 +571,7 @@ export default function Home() {
           <section className="bg-[#1a1a2e] py-10 sm:py-14">
             <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
               <p className="text-base sm:text-lg text-white italic leading-relaxed mb-4">
-                &ldquo;My parents had to build me a spreadsheet to keep track of my recruiting. ExtraBase makes it easy, and gives me total control.&rdquo;
+                &ldquo;It was really hard to keep track of everything that was going on during my recruiting process. My parents and I couldn&apos;t keep up. I wanted one place where I could see and track everything. I wish my dad had made this for me before I committed!&rdquo;
               </p>
               <p className="text-sm text-gray-400">
                 &mdash; Jack M., Class of 2027 D1 Commit
