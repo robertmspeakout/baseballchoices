@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useMemo } from "react";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import BrandLogo from "@/components/BrandLogo";
 import SiteNav from "@/components/SiteNav";
@@ -80,6 +81,7 @@ function StarRatingInline({ value, onChange }: { value: number; onChange: (v: nu
 }
 
 export default function MatchPage() {
+  const { data: session, status } = useSession();
   const [profile, setProfile] = useState<PlayerProfile | null>(null);
   const [prefs, setPrefs] = useState<PlayerPreferences | null>(null);
   const [homeCoords, setHomeCoords] = useState<{ lat: number; lng: number } | null>(null);
@@ -89,42 +91,97 @@ export default function MatchPage() {
   const [showCount, setShowCount] = useState(10);
   const [showAll, setShowAll] = useState(false);
 
-  // Load profile and preferences
+  // Load profile and preferences (from DB if logged in, localStorage otherwise)
   useEffect(() => {
-    const p = loadProfile();
-    const pr = loadPreferences();
-    setProfile(p);
-    setPrefs(pr);
-    setUserDataState(getAllUserData());
+    if (status === "loading") return;
 
-    // Geocode zip
-    if (p.zipCode) {
-      setGeocoding(true);
-      // Check localStorage cache first
-      const cached = localStorage.getItem("nextbase_homeZip");
-      if (cached) {
+    async function loadData() {
+      let p: PlayerProfile = loadProfile();
+      let pr: PlayerPreferences = loadPreferences();
+
+      if (status === "authenticated" && session?.user) {
         try {
-          const c = JSON.parse(cached);
-          if (c.zip === p.zipCode && c.lat && c.lng) {
-            setHomeCoords({ lat: c.lat, lng: c.lng });
-            setGeocoding(false);
-            setLoading(false);
-            return;
+          const [profileRes, prefsRes] = await Promise.all([
+            fetch("/api/user/profile"),
+            fetch("/api/user/preferences"),
+          ]);
+          const dbProfile = profileRes.ok ? await profileRes.json() : null;
+          const dbPrefs = prefsRes.ok ? await prefsRes.json() : null;
+
+          if (dbProfile && dbProfile.primaryPosition) {
+            const firstName = (session.user as Record<string, unknown>).firstName as string || "";
+            p = {
+              playerName: firstName,
+              gradYear: dbProfile.gradYear?.toString() || "",
+              primaryPosition: dbProfile.primaryPosition || "",
+              secondaryPosition: dbProfile.secondaryPosition || "",
+              city: dbProfile.city || "",
+              state: dbProfile.state || "",
+              zipCode: dbProfile.zipCode || "",
+              highSchool: dbProfile.highSchool || "",
+              travelBall: dbProfile.travelBall || "",
+              profilePic: null,
+              backgroundPic: null,
+              gpa: dbProfile.gpa ? parseFloat(dbProfile.gpa) : null,
+              gpaType: dbProfile.gpaType || "",
+              satScore: dbProfile.satScore ? parseInt(dbProfile.satScore) : null,
+              actScore: dbProfile.actScore ? parseInt(dbProfile.actScore) : null,
+            };
           }
-        } catch { /* ignore */ }
-      }
-      geocodeZip(p.zipCode).then((coords) => {
-        if (coords) {
-          setHomeCoords(coords);
-          localStorage.setItem("nextbase_homeZip", JSON.stringify({ zip: p.zipCode, ...coords }));
+
+          if (dbPrefs && dbPrefs.divisionPreference) {
+            pr = {
+              divisionPreference: dbPrefs.divisionPreference || "both",
+              maxDistanceFromHome: dbPrefs.maxDistanceFromHome || null,
+              preferredRegions: dbPrefs.preferredRegions || [],
+              maxTuition: dbPrefs.maxTuition || null,
+              schoolSize: dbPrefs.schoolSize || "any",
+              highAcademic: dbPrefs.highAcademic || false,
+              competitiveness: dbPrefs.competitiveness || "any",
+              draftImportance: dbPrefs.draftImportance || "no",
+              preferredConferences: dbPrefs.preferredConferences || [],
+              preferredTiers: dbPrefs.preferredTiers || [],
+            };
+          }
+        } catch {
+          // Fall back to localStorage data already loaded
         }
-        setGeocoding(false);
+      }
+
+      setProfile(p);
+      setPrefs(pr);
+      setUserDataState(getAllUserData());
+
+      // Geocode zip
+      if (p.zipCode) {
+        setGeocoding(true);
+        const cached = localStorage.getItem("nextbase_homeZip");
+        if (cached) {
+          try {
+            const c = JSON.parse(cached);
+            if (c.zip === p.zipCode && c.lat && c.lng) {
+              setHomeCoords({ lat: c.lat, lng: c.lng });
+              setGeocoding(false);
+              setLoading(false);
+              return;
+            }
+          } catch { /* ignore */ }
+        }
+        geocodeZip(p.zipCode).then((coords) => {
+          if (coords) {
+            setHomeCoords(coords);
+            localStorage.setItem("nextbase_homeZip", JSON.stringify({ zip: p.zipCode, ...coords }));
+          }
+          setGeocoding(false);
+          setLoading(false);
+        });
+      } else {
         setLoading(false);
-      });
-    } else {
-      setLoading(false);
+      }
     }
-  }, []);
+
+    loadData();
+  }, [status, session]);
 
   // Run matching — only show 90%+ matches
   const allResults = useMemo(() => {

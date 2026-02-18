@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
 
 const NAV_ITEMS = [
@@ -39,9 +40,12 @@ interface SiteNavProps {
 }
 
 export default function SiteNav({ active, variant = "light", onNavigate }: SiteNavProps) {
+  const { data: session } = useSession();
   const [open, setOpen] = useState(false);
 
   const isLight = variant === "light";
+  const isLoggedIn = !!session?.user;
+  const firstName = (session?.user as Record<string, unknown>)?.firstName as string | undefined;
 
   const isLocalNav = (href: string) => href === "/" || href.startsWith("/#");
 
@@ -52,15 +56,31 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
     }
   };
 
+  const handleSignOut = () => {
+    setOpen(false);
+    signOut({ callbackUrl: "/" });
+  };
+
   return (
     <div className="relative flex items-center gap-2">
-      {/* Desktop sign-up button — always visible */}
-      <Link
-        href="/auth/register"
-        className="hidden sm:inline-flex items-center px-4 py-2 bg-[#CC0000] text-white rounded-lg text-xs font-bold hover:bg-red-700 transition-colors"
-      >
-        Sign Up
-      </Link>
+      {/* Desktop button */}
+      {isLoggedIn ? (
+        <span className={`hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold ${
+          isLight ? "text-gray-600 bg-gray-100" : "text-white/80 bg-white/10"
+        }`}>
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+          </svg>
+          {firstName || "Account"}
+        </span>
+      ) : (
+        <Link
+          href="/auth/register"
+          className="hidden sm:inline-flex items-center px-4 py-2 bg-[#CC0000] text-white rounded-lg text-xs font-bold hover:bg-red-700 transition-colors"
+        >
+          Sign Up
+        </Link>
+      )}
       <button
         onClick={() => setOpen((o) => !o)}
         className={`p-2 rounded-lg transition-colors ${
@@ -102,7 +122,6 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
                   : "text-white/80 hover:text-white hover:bg-white/10 border-white/5"
             }`;
 
-            // On the home page (onNavigate provided), use client-side tab switching
             if (onNavigate && isLocalNav(item.href)) {
               return (
                 <button
@@ -119,7 +138,6 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
               );
             }
 
-            // On other pages, use <a> for hash links to force full navigation
             if (isLocalNav(item.href)) {
               return (
                 <a
@@ -134,7 +152,6 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
               );
             }
 
-            // For non-hash links (e.g. /match), use Next.js Link
             return (
               <Link
                 key={item.label}
@@ -147,14 +164,63 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
               </Link>
             );
           })}
-          {/* Sign Up inside mobile dropdown */}
-          <Link
-            href="/auth/register"
-            onClick={() => setOpen(false)}
-            className="sm:hidden w-full flex items-center justify-center gap-2 px-4 py-3 text-sm font-bold bg-[#CC0000] text-white hover:bg-red-700 transition-colors"
-          >
-            Sign Up
-          </Link>
+
+          {/* Auth section */}
+          {isLoggedIn ? (
+            <>
+              <Link
+                href="/auth/profile"
+                onClick={() => setOpen(false)}
+                className={`w-full flex items-center gap-2 px-4 py-3 text-sm font-bold transition-colors border-b ${
+                  isLight
+                    ? "text-gray-700 hover:bg-gray-50 border-gray-100"
+                    : "text-white/80 hover:text-white hover:bg-white/10 border-white/5"
+                }`}
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+                My Profile
+              </Link>
+              <button
+                onClick={handleSignOut}
+                className={`w-full flex items-center gap-2 px-4 py-3 text-sm font-bold transition-colors ${
+                  isLight
+                    ? "text-red-600 hover:bg-red-50"
+                    : "text-red-400 hover:bg-red-500/10"
+                }`}
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                </svg>
+                Log Out
+              </button>
+            </>
+          ) : (
+            <>
+              <Link
+                href="/auth/login"
+                onClick={() => setOpen(false)}
+                className={`w-full flex items-center gap-2 px-4 py-3 text-sm font-bold transition-colors border-b ${
+                  isLight
+                    ? "text-gray-700 hover:bg-gray-50 border-gray-100"
+                    : "text-white/80 hover:text-white hover:bg-white/10 border-white/5"
+                }`}
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+                </svg>
+                Log In
+              </Link>
+              <Link
+                href="/auth/register"
+                onClick={() => setOpen(false)}
+                className="w-full flex items-center justify-center gap-2 px-4 py-3 text-sm font-bold bg-[#CC0000] text-white hover:bg-red-700 transition-colors"
+              >
+                Sign Up Free
+              </Link>
+            </>
+          )}
         </div>
       )}
     </div>

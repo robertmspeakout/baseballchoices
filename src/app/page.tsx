@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import BrandLogo from "@/components/BrandLogo";
 import SiteNav from "@/components/SiteNav";
@@ -228,6 +229,8 @@ function VIPCard({ school }: { school: School & { priority: number; high_academi
 }
 
 export default function Home() {
+  const { data: session, status } = useSession();
+  const isLoggedIn = status === "authenticated" && !!session?.user;
   const [activeTab, setActiveTab] = useState<TabKey>("home");
   const [page, setPage] = useState(1);
   const [sortBy, setSortBy] = useState("ranking");
@@ -253,6 +256,11 @@ export default function Home() {
     if (profile.playerName) {
       setPlayerFirstName(profile.playerName.trim().split(/\s+/)[0]);
     }
+    // Use session firstName if available
+    if (isLoggedIn && session?.user) {
+      const fn = (session.user as Record<string, unknown>).firstName as string;
+      if (fn) setPlayerFirstName(fn);
+    }
     // Restore active tab from URL hash on mount
     const hash = window.location.hash.replace("#", "");
     if (["mylist", "D1", "D2"].includes(hash)) {
@@ -270,7 +278,7 @@ export default function Home() {
     window.addEventListener("hashchange", onHashChange);
     setMounted(true);
     return () => window.removeEventListener("hashchange", onHashChange);
-  }, []);
+  }, [isLoggedIn, session]);
 
   // Count rated programs
   const ratedCount = useMemo(() => {
@@ -283,6 +291,13 @@ export default function Home() {
       handleTabChange("home");
     }
   }, [ratedCount, activeTab]);
+
+  // If logged in with rated programs and on home (no hash), auto-switch to mylist
+  useEffect(() => {
+    if (isLoggedIn && ratedCount > 0 && activeTab === "home" && !window.location.hash) {
+      handleTabChange("mylist");
+    }
+  }, [isLoggedIn, ratedCount]);
 
   // Compute filter options from data
   const filterOptions = useMemo(() => {
@@ -490,8 +505,8 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-red-700 via-red-500 to-red-700" />
       </header>
 
-      {/* ── Landing sections (home tab only) ──────────────── */}
-      {activeTab === "home" && (
+      {/* ── Landing sections (home tab, non-logged-in only) ──────────────── */}
+      {activeTab === "home" && !isLoggedIn && (
         <>
           {/* Hero */}
           <section
@@ -641,9 +656,13 @@ export default function Home() {
         {/* Instructional box on home page */}
         {activeTab === "home" && (
           <div className="bg-blue-50 border border-blue-200 rounded-xl px-4 py-4 sm:py-5 text-center">
-            <h3 className="text-base sm:text-lg font-extrabold text-gray-900 mb-1">Where Will You Play Next?</h3>
+            <h3 className="text-base sm:text-lg font-extrabold text-gray-900 mb-1">
+              {isLoggedIn && playerFirstName ? `Welcome back, ${playerFirstName}!` : "Where Will You Play Next?"}
+            </h3>
             <p className="text-xs sm:text-sm text-gray-600 mb-3">
-              Over {allSchools.length} baseball programs are waiting. Rate schools with stars to build your personal list, or let our AI find your best fits.
+              {isLoggedIn
+                ? "Rate schools with stars to build your personal list, or let our AI find your best fits."
+                : `Over ${allSchools.length} baseball programs are waiting. Rate schools with stars to build your personal list, or let our AI find your best fits.`}
             </p>
             <div className="grid grid-cols-2 gap-2 max-w-md mx-auto sm:flex sm:flex-wrap sm:justify-center sm:max-w-none">
               <button
@@ -716,7 +735,7 @@ export default function Home() {
           <h3 className="text-base font-bold text-gray-700 mt-2">All My Ranked Programs</h3>
         )}
 
-        {activeTab === "home" ? (
+        {activeTab === "home" && !isLoggedIn ? (
           <div className="relative">
             <div className="overflow-hidden" style={{ maxHeight: 620 }}>
               <SchoolTable
@@ -766,7 +785,7 @@ export default function Home() {
         )}
 
         {/* Pagination */}
-        {totalPages > 1 && activeTab !== "home" && (
+        {totalPages > 1 && (activeTab !== "home" || isLoggedIn) && (
           <div className="flex justify-center items-center gap-1.5 sm:gap-2">
             <button
               onClick={() => setPage((p) => Math.max(1, p - 1))}
