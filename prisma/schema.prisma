@@ -1,0 +1,82 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id              String   @id @default(cuid())
+  firstName       String
+  lastName        String
+  email           String   @unique
+  passwordHash    String
+  role            String   @default("USER")
+  trialExpiresAt  DateTime
+  membershipActive Boolean @default(false)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  profile    Profile?
+  preferences Preferences?
+  schoolData  UserSchoolData[]
+}
+
+model Profile {
+  id                String  @id @default(cuid())
+  userId            String  @unique
+  gradYear          Int?
+  primaryPosition   String?
+  secondaryPosition String?
+  city              String?
+  state             String?
+  zipCode           String?
+  highSchool        String?
+  travelBall        String?
+  gpa               String?
+  gpaType           String?
+  satScore          String?
+  actScore          String?
+  profileComplete   Boolean @default(false)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Preferences {
+  id                   String  @id @default(cuid())
+  userId               String  @unique
+  divisionPreference   String?
+  maxDistanceFromHome  Int?
+  preferredRegions     String?
+  maxTuition           Int?
+  schoolSize           String?
+  highAcademic         Boolean @default(false)
+  competitiveness      String?
+  draftImportance      String?
+  preferredConferences String?
+  preferredTiers       String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model UserSchoolData {
+  id               String   @id @default(cuid())
+  userId           String
+  schoolId         Int
+  priority         Int      @default(0)
+  notes            String   @default("")
+  lastContacted    String?
+  recruitingStatus String?
+  theyveSeenMe     String?
+  detail           String?
+  myContactName    String?
+  myContactEmail   String?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, schoolId])
+}

@@ -579,6 +579,41 @@ export default function Home() {
             </div>
           </section>
 
+          {/* Pricing */}
+          <section className="bg-gray-100 py-12 sm:py-16">
+            <div className="max-w-lg mx-auto px-4 sm:px-6 text-center">
+              <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mb-8">Simple Pricing. No Surprises.</h2>
+              <div className="bg-white rounded-2xl border-2 border-gray-200 p-6 sm:p-8 shadow-sm">
+                <h3 className="text-lg font-bold text-gray-900 mb-2">ExtraBase Full Access</h3>
+                <div className="flex items-baseline justify-center gap-1 mb-3">
+                  <span className="text-4xl font-black text-gray-900">$19.99</span>
+                  <span className="text-sm text-gray-500">per year</span>
+                </div>
+                <p className="text-sm text-gray-500 mb-6">Start free for 5 days, then just $19.99 per year. Cancel anytime.</p>
+                <ul className="space-y-3 text-left mb-6">
+                  {[
+                    "Access to all 564+ college programs",
+                    "AI-powered program matching",
+                    "Personal program rankings and lists",
+                    "Track your recruiting journey in one place",
+                    "Built by baseball parents who lived this process",
+                  ].map((feature) => (
+                    <li key={feature} className="flex items-start gap-2.5">
+                      <svg className="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span className="text-sm text-gray-700">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Link href="/auth/register" className="block w-full px-4 py-3.5 bg-[#CC0000] text-white rounded-xl text-sm font-bold hover:bg-red-700 transition-colors shadow-sm text-center">
+                  Start My Free Trial
+                </Link>
+                <p className="text-xs text-gray-400 mt-3">No credit card required.</p>
+              </div>
+            </div>
+          </section>
+
           {/* Why We Built This */}
           <section className="bg-white py-12 sm:py-16">
             <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
@@ -591,7 +626,7 @@ export default function Home() {
                 />
               </div>
               <p className="text-base text-gray-600 leading-relaxed mb-4">
-                We were baseball parents sitting at a kitchen table with a talented and stressed out kid, a browser full of YouTube videos that promised to help, and absolutely no system to manage any of it. We had a spreadsheet that stopped working, a recruit who was overwhelmed, and a process that felt like it was controlling us instead of the other way around.
+                We were baseball parents sitting at a kitchen table with a talented and stressed out kid, a browser full of YouTube videos that promised to help, and absolutely no system to manage any of it. To help, I built a really complicated and cumbersome spreadsheet. We used it, it helped, but it wasn&apos;t enough. We had a recruit who was overwhelmed and a process that felt like it was controlling us instead of the other way around.
               </p>
               <p className="text-base text-gray-600 leading-relaxed">
                 We looked for a tool that could help us organize programs, track interest levels, compare options, and make sense of it all. We couldn&apos;t find one. So we built it...for all of our sanity.

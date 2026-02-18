@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
-import { loadProfile, saveProfile, loadPreferences, savePreferences, REGIONS, type PlayerProfile, type PlayerPreferences } from "@/lib/playerProfile";
+import { loadProfile, saveProfile, loadPreferences, savePreferences, REGIONS } from "@/lib/playerProfile";
 
 const POSITIONS = [
   "RHP", "LHP", "C", "1B", "2B", "3B", "SS", "LF", "CF", "RF", "DH", "UTL",
@@ -23,13 +24,6 @@ const CONFERENCE_TIERS: Record<string, string[]> = {
   "Low-Major": ["SWAC", "MEAC", "Patriot", "NEC", "Ivy League", "America East", "Big South", "Northeast", "ASUN"],
 };
 
-function getTierForConference(conf: string): string | null {
-  for (const [tier, confs] of Object.entries(CONFERENCE_TIERS)) {
-    if (confs.includes(conf)) return tier;
-  }
-  return null;
-}
-
 const DISTANCE_OPTIONS = [
   { value: null, label: "Anywhere" },
   { value: 100, label: "100 mi" },
@@ -49,6 +43,7 @@ const TUITION_OPTIONS = [
 const TOTAL_STEPS = 3;
 
 export default function ProfilePage() {
+  const { data: session, update: updateSession } = useSession();
   const [step, setStep] = useState(1);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
@@ -86,36 +81,88 @@ export default function ProfilePage() {
   const profilePicRef = useRef<HTMLInputElement>(null);
   const backgroundPicRef = useRef<HTMLInputElement>(null);
 
-  // Load saved data on mount
+  // Load saved data on mount - from DB if authenticated, else localStorage
   useEffect(() => {
-    const p = loadProfile();
-    setPlayerName(p.playerName);
-    setGradYear(p.gradYear);
-    setPrimaryPosition(p.primaryPosition);
-    setSecondaryPosition(p.secondaryPosition);
-    setCity(p.city);
-    setState(p.state);
-    setZipCode(p.zipCode);
-    setHighSchool(p.highSchool);
-    setTravelBall(p.travelBall);
-    setProfilePic(p.profilePic);
-    setBackgroundPic(p.backgroundPic);
-    setGpa(p.gpa != null ? String(p.gpa) : "");
-    setGpaType(p.gpaType);
-    setSatScore(p.satScore != null ? String(p.satScore) : "");
-    setActScore(p.actScore != null ? String(p.actScore) : "");
+    const loadFromDB = async () => {
+      try {
+        const [profRes, prefsRes] = await Promise.all([
+          fetch("/api/user/profile"),
+          fetch("/api/user/preferences"),
+        ]);
+        const prof = await profRes.json();
+        const prefs = await prefsRes.json();
 
-    const prefs = loadPreferences();
-    setDivisionPref(prefs.divisionPreference);
-    setMaxDistance(prefs.maxDistanceFromHome);
-    setPreferredRegions(prefs.preferredRegions || []);
-    setMaxTuition(prefs.maxTuition);
-    setSchoolSize(prefs.schoolSize);
-    setHighAcademic(prefs.highAcademic || false);
-    setCompetitiveness(prefs.competitiveness);
-    setDraftImportance(prefs.draftImportance);
-    setPreferredTiers((prefs as any).preferredTiers || []);
-  }, []);
+        if (prof) {
+          if (session?.user?.firstName) {
+            setPlayerName(session.user.name || "");
+          }
+          setGradYear(prof.gradYear ? String(prof.gradYear) : "");
+          setPrimaryPosition(prof.primaryPosition || "");
+          setSecondaryPosition(prof.secondaryPosition || "");
+          setCity(prof.city || "");
+          setState(prof.state || "");
+          setZipCode(prof.zipCode || "");
+          setHighSchool(prof.highSchool || "");
+          setTravelBall(prof.travelBall || "");
+          setGpa(prof.gpa || "");
+          setGpaType(prof.gpaType || "");
+          setSatScore(prof.satScore || "");
+          setActScore(prof.actScore || "");
+        }
+
+        if (prefs) {
+          setDivisionPref(prefs.divisionPreference || "both");
+          setMaxDistance(prefs.maxDistanceFromHome);
+          setPreferredRegions(prefs.preferredRegions || []);
+          setMaxTuition(prefs.maxTuition);
+          setSchoolSize(prefs.schoolSize || "any");
+          setHighAcademic(prefs.highAcademic || false);
+          setCompetitiveness(prefs.competitiveness || "any");
+          setDraftImportance(prefs.draftImportance || "no");
+          setPreferredTiers(prefs.preferredTiers || []);
+        }
+      } catch {
+        // Fall back to localStorage
+        loadFromLocalStorage();
+      }
+    };
+
+    const loadFromLocalStorage = () => {
+      const p = loadProfile();
+      setPlayerName(p.playerName);
+      setGradYear(p.gradYear);
+      setPrimaryPosition(p.primaryPosition);
+      setSecondaryPosition(p.secondaryPosition);
+      setCity(p.city);
+      setState(p.state);
+      setZipCode(p.zipCode);
+      setHighSchool(p.highSchool);
+      setTravelBall(p.travelBall);
+      setProfilePic(p.profilePic);
+      setBackgroundPic(p.backgroundPic);
+      setGpa(p.gpa != null ? String(p.gpa) : "");
+      setGpaType(p.gpaType);
+      setSatScore(p.satScore != null ? String(p.satScore) : "");
+      setActScore(p.actScore != null ? String(p.actScore) : "");
+
+      const prefs = loadPreferences();
+      setDivisionPref(prefs.divisionPreference);
+      setMaxDistance(prefs.maxDistanceFromHome);
+      setPreferredRegions(prefs.preferredRegions || []);
+      setMaxTuition(prefs.maxTuition);
+      setSchoolSize(prefs.schoolSize);
+      setHighAcademic(prefs.highAcademic || false);
+      setCompetitiveness(prefs.competitiveness);
+      setDraftImportance(prefs.draftImportance);
+      setPreferredTiers(((prefs as unknown) as Record<string, unknown>).preferredTiers as string[] || []);
+    };
+
+    if (session?.user) {
+      loadFromDB();
+    } else {
+      loadFromLocalStorage();
+    }
+  }, [session]);
 
   const handleFileUpload = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -157,7 +204,6 @@ export default function ProfilePage() {
 
   const nextStep = () => {
     if (!validateStep()) return;
-    // Save current step data
     saveCurrentStep();
     if (step < TOTAL_STEPS) {
       setStep(step + 1);
@@ -174,6 +220,7 @@ export default function ProfilePage() {
   };
 
   const saveCurrentStep = () => {
+    // Always save to localStorage for backward compat with match page
     if (step === 1 || step === 2) {
       saveProfile({
         playerName: playerName.trim(),
@@ -207,11 +254,64 @@ export default function ProfilePage() {
         preferredTiers,
       });
     }
+
+    // Also save to DB if authenticated
+    if (session?.user) {
+      if (step === 1 || step === 2) {
+        fetch("/api/user/profile", {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            gradYear, primaryPosition, secondaryPosition,
+            city: city.trim(), state, zipCode: zipCode.trim(),
+            highSchool: highSchool.trim(), travelBall: travelBall.trim(),
+            gpa, gpaType, satScore, actScore,
+          }),
+        }).catch(() => {});
+      }
+      if (step === 3) {
+        fetch("/api/user/preferences", {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            divisionPreference: divisionPref,
+            maxDistanceFromHome: maxDistance,
+            preferredRegions,
+            maxTuition,
+            schoolSize,
+            highAcademic,
+            competitiveness,
+            draftImportance,
+            preferredConferences: [],
+            preferredTiers,
+          }),
+        }).catch(() => {});
+      }
+    }
   };
 
-  const handleFinish = () => {
+  const handleFinish = async () => {
     setSaving(true);
     saveCurrentStep();
+
+    // Mark profile as complete in DB
+    if (session?.user) {
+      try {
+        await fetch("/api/user/profile", {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            gradYear, primaryPosition, secondaryPosition,
+            city: city.trim(), state, zipCode: zipCode.trim(),
+            highSchool: highSchool.trim(), travelBall: travelBall.trim(),
+            gpa, gpaType, satScore, actScore,
+            profileComplete: true,
+          }),
+        });
+        await updateSession({ profileComplete: true });
+      } catch { /* continue anyway */ }
+    }
+
     setTimeout(() => {
       setSaving(false);
       window.location.href = "/match";
@@ -398,28 +498,12 @@ export default function ProfilePage() {
 
             <div>
               <label className={labelClass}>SAT Score <span className="text-gray-400 font-normal">(optional)</span></label>
-              <input
-                type="number"
-                min="400"
-                max="1600"
-                value={satScore}
-                onChange={(e) => setSatScore(e.target.value)}
-                placeholder="400-1600"
-                className={inputClass}
-              />
+              <input type="number" min="400" max="1600" value={satScore} onChange={(e) => setSatScore(e.target.value)} placeholder="400-1600" className={inputClass} />
             </div>
 
             <div>
               <label className={labelClass}>ACT Score <span className="text-gray-400 font-normal">(optional)</span></label>
-              <input
-                type="number"
-                min="1"
-                max="36"
-                value={actScore}
-                onChange={(e) => setActScore(e.target.value)}
-                placeholder="1-36"
-                className={inputClass}
-              />
+              <input type="number" min="1" max="36" value={actScore} onChange={(e) => setActScore(e.target.value)} placeholder="1-36" className={inputClass} />
             </div>
 
             <div className="bg-gray-50 rounded-xl p-4 border border-gray-200">
@@ -438,204 +522,108 @@ export default function ProfilePage() {
               <p className="text-sm text-gray-500 mt-1">Tell us your ideal school and we&apos;ll find matches</p>
             </div>
 
-            {/* Division */}
             <div>
               <label className={labelClass}>Division Preference</label>
               <div className="flex gap-2">
                 {(["D1", "D2", "both"] as const).map((d) => (
-                  <button
-                    key={d}
-                    type="button"
-                    onClick={() => setDivisionPref(d)}
-                    className={`flex-1 py-2.5 rounded-xl text-sm font-bold transition-all ${
-                      divisionPref === d
-                        ? "bg-gray-900 text-white shadow-md"
-                        : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-                    }`}
-                  >
+                  <button key={d} type="button" onClick={() => setDivisionPref(d)}
+                    className={`flex-1 py-2.5 rounded-xl text-sm font-bold transition-all ${divisionPref === d ? "bg-gray-900 text-white shadow-md" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}>
                     {d === "both" ? "Both" : d === "D1" ? "Division I" : "Division II"}
                   </button>
                 ))}
               </div>
             </div>
 
-            {/* Distance */}
             <div>
               <label className={labelClass}>Max Distance from Home</label>
               <div className="flex flex-wrap gap-2">
                 {DISTANCE_OPTIONS.map((opt) => (
-                  <button
-                    key={String(opt.value)}
-                    type="button"
-                    onClick={() => setMaxDistance(opt.value)}
-                    className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all ${
-                      maxDistance === opt.value
-                        ? "bg-gray-900 text-white shadow-md"
-                        : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-                    }`}
-                  >
+                  <button key={String(opt.value)} type="button" onClick={() => setMaxDistance(opt.value)}
+                    className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all ${maxDistance === opt.value ? "bg-gray-900 text-white shadow-md" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}>
                     {opt.label}
                   </button>
                 ))}
               </div>
             </div>
 
-            {/* Tuition */}
             <div>
               <label className={labelClass}>Tuition Budget (per year)</label>
               <div className="flex flex-wrap gap-2">
                 {TUITION_OPTIONS.map((opt) => (
-                  <button
-                    key={String(opt.value)}
-                    type="button"
-                    onClick={() => setMaxTuition(opt.value)}
-                    className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all ${
-                      maxTuition === opt.value
-                        ? "bg-gray-900 text-white shadow-md"
-                        : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-                    }`}
-                  >
+                  <button key={String(opt.value)} type="button" onClick={() => setMaxTuition(opt.value)}
+                    className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all ${maxTuition === opt.value ? "bg-gray-900 text-white shadow-md" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}>
                     {opt.label}
                   </button>
                 ))}
               </div>
             </div>
 
-            {/* School Size */}
             <div>
               <label className={labelClass}>School Size</label>
               <div className="flex gap-2">
-                {([
-                  { v: "any", l: "Any" },
-                  { v: "small", l: "Small (<5K)" },
-                  { v: "medium", l: "Mid (5-15K)" },
-                  { v: "large", l: "Large (15K+)" },
-                ] as const).map(({ v, l }) => (
-                  <button
-                    key={v}
-                    type="button"
-                    onClick={() => setSchoolSize(v)}
-                    className={`flex-1 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
-                      schoolSize === v
-                        ? "bg-gray-900 text-white shadow-md"
-                        : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-                    }`}
-                  >
+                {([{ v: "any", l: "Any" }, { v: "small", l: "Small (<5K)" }, { v: "medium", l: "Mid (5-15K)" }, { v: "large", l: "Large (15K+)" }] as const).map(({ v, l }) => (
+                  <button key={v} type="button" onClick={() => setSchoolSize(v)}
+                    className={`flex-1 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all ${schoolSize === v ? "bg-gray-900 text-white shadow-md" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}>
                     {l}
                   </button>
                 ))}
               </div>
             </div>
 
-            {/* High Academic Institution */}
             <div>
               <label className={labelClass}>High Academic Institution</label>
-              <button
-                type="button"
-                onClick={() => setHighAcademic(!highAcademic)}
-                className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
-                  highAcademic
-                    ? "bg-yellow-50 text-yellow-900 border-2 border-yellow-400 shadow-sm"
-                    : "bg-gray-100 text-gray-600 hover:bg-gray-200 border-2 border-transparent"
-                }`}
-              >
-                <span className={`w-5 h-5 rounded flex items-center justify-center ${
-                  highAcademic ? "bg-yellow-400 text-white" : "bg-gray-300 text-transparent"
-                }`}>
-                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                  </svg>
+              <button type="button" onClick={() => setHighAcademic(!highAcademic)}
+                className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${highAcademic ? "bg-yellow-50 text-yellow-900 border-2 border-yellow-400 shadow-sm" : "bg-gray-100 text-gray-600 hover:bg-gray-200 border-2 border-transparent"}`}>
+                <span className={`w-5 h-5 rounded flex items-center justify-center ${highAcademic ? "bg-yellow-400 text-white" : "bg-gray-300 text-transparent"}`}>
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
                 </span>
                 Only show high-academic institutions
               </button>
             </div>
 
-            {/* Competitiveness */}
             <div>
               <label className={labelClass}>Program Competitiveness</label>
               <div className="flex gap-2">
-                {([
-                  { v: "any", l: "Any Level" },
-                  { v: "postseason", l: "Postseason Contender" },
-                  { v: "top25", l: "Top 25" },
-                ] as const).map(({ v, l }) => (
-                  <button
-                    key={v}
-                    type="button"
-                    onClick={() => setCompetitiveness(v)}
-                    className={`flex-1 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
-                      competitiveness === v
-                        ? "bg-gray-900 text-white shadow-md"
-                        : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-                    }`}
-                  >
+                {([{ v: "any", l: "Any Level" }, { v: "postseason", l: "Postseason Contender" }, { v: "top25", l: "Top 25" }] as const).map(({ v, l }) => (
+                  <button key={v} type="button" onClick={() => setCompetitiveness(v)}
+                    className={`flex-1 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all ${competitiveness === v ? "bg-gray-900 text-white shadow-md" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}>
                     {l}
                   </button>
                 ))}
               </div>
             </div>
 
-            {/* Draft picks */}
             <div>
               <label className={labelClass}>Is playing pro ball a goal?</label>
               <div className="flex gap-2">
-                {([
-                  { v: "no", l: "Not a priority" },
-                  { v: "yes", l: "I want to go pro!" },
-                ] as const).map(({ v, l }) => (
-                  <button
-                    key={v}
-                    type="button"
-                    onClick={() => setDraftImportance(v)}
-                    className={`flex-1 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
-                      draftImportance === v
-                        ? "bg-gray-900 text-white shadow-md"
-                        : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-                    }`}
-                  >
+                {([{ v: "no", l: "Not a priority" }, { v: "yes", l: "I want to go pro!" }] as const).map(({ v, l }) => (
+                  <button key={v} type="button" onClick={() => setDraftImportance(v)}
+                    className={`flex-1 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all ${draftImportance === v ? "bg-gray-900 text-white shadow-md" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}>
                     {l}
                   </button>
                 ))}
               </div>
             </div>
 
-            {/* Regions */}
             <div>
               <label className={labelClass}>Preferred Regions <span className="text-gray-400 font-normal">(optional)</span></label>
               <div className="flex flex-wrap gap-2">
                 {Object.keys(REGIONS).map((region) => (
-                  <button
-                    key={region}
-                    type="button"
-                    onClick={() => toggleRegion(region)}
-                    className={`px-3 py-2 rounded-xl text-xs font-bold transition-all ${
-                      preferredRegions.includes(region)
-                        ? "bg-gray-900 text-white shadow-md"
-                        : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-                    }`}
-                  >
+                  <button key={region} type="button" onClick={() => toggleRegion(region)}
+                    className={`px-3 py-2 rounded-xl text-xs font-bold transition-all ${preferredRegions.includes(region) ? "bg-gray-900 text-white shadow-md" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}>
                     {region}
                   </button>
                 ))}
               </div>
             </div>
 
-            {/* Level / Tier — only for D1 */}
             {divisionPref !== "D2" && (
               <div>
                 <label className={labelClass}>Level</label>
                 <div className="space-y-2">
                   {Object.entries(CONFERENCE_TIERS).map(([tier, confs]) => (
-                    <button
-                      key={tier}
-                      type="button"
-                      onClick={() => toggleTier(tier)}
-                      className={`w-full text-left px-4 py-3 rounded-xl transition-all border ${
-                        preferredTiers.includes(tier)
-                          ? "bg-gray-900 text-white border-gray-900 shadow-md"
-                          : "bg-white text-gray-700 border-gray-200 hover:border-gray-300 hover:bg-gray-50"
-                      }`}
-                    >
+                    <button key={tier} type="button" onClick={() => toggleTier(tier)}
+                      className={`w-full text-left px-4 py-3 rounded-xl transition-all border ${preferredTiers.includes(tier) ? "bg-gray-900 text-white border-gray-900 shadow-md" : "bg-white text-gray-700 border-gray-200 hover:border-gray-300 hover:bg-gray-50"}`}>
                       <span className="text-sm font-bold">{tier}</span>
                       <span className={`block text-xs mt-0.5 ${preferredTiers.includes(tier) ? "text-white/60" : "text-gray-400"}`}>
                         {confs.slice(0, 5).join(", ")}{confs.length > 5 ? ` +${confs.length - 5} more` : ""}
@@ -645,11 +633,9 @@ export default function ProfilePage() {
                 </div>
               </div>
             )}
-
           </div>
         )}
 
-        {/* Error */}
         {error && (
           <div className="flex items-center gap-2 px-4 py-3 bg-red-50 border border-red-200 rounded-xl mt-4">
             <svg className="w-4 h-4 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -659,29 +645,20 @@ export default function ProfilePage() {
           </div>
         )}
 
-        {/* Navigation buttons */}
         <div className="flex gap-3 mt-8">
           {step > 1 && (
             <button type="button" onClick={prevStep} className="flex-1 px-4 py-3.5 border border-gray-300 text-gray-700 rounded-xl text-sm font-semibold hover:bg-gray-50 transition-colors">
               Back
             </button>
           )}
-          <button
-            type="button"
-            onClick={nextStep}
-            disabled={saving}
-            className={`flex-1 px-4 py-3.5 bg-red-600 text-white rounded-xl text-sm font-bold hover:bg-red-700 transition-colors disabled:opacity-50 shadow-sm ${step === 1 ? "" : ""}`}
-          >
+          <button type="button" onClick={nextStep} disabled={saving}
+            className="flex-1 px-4 py-3.5 bg-red-600 text-white rounded-xl text-sm font-bold hover:bg-red-700 transition-colors disabled:opacity-50 shadow-sm">
             {saving ? (
               <span className="flex items-center justify-center gap-2">
                 <div className="animate-spin rounded-full h-4 w-4 border-2 border-white/30 border-t-white" />
                 Finding matches...
               </span>
-            ) : step === TOTAL_STEPS ? (
-              "Find My Matches"
-            ) : (
-              "Continue"
-            )}
+            ) : step === TOTAL_STEPS ? "Find My Matches" : "Continue"}
           </button>
         </div>
 
