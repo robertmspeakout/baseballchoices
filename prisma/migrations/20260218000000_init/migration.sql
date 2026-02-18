@@ -1,20 +1,22 @@
 -- CreateTable
 CREATE TABLE "User" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+    "id" TEXT NOT NULL,
     "firstName" TEXT NOT NULL,
     "lastName" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "passwordHash" TEXT NOT NULL,
     "role" TEXT NOT NULL DEFAULT 'USER',
-    "trialExpiresAt" DATETIME NOT NULL,
+    "trialExpiresAt" TIMESTAMP(3) NOT NULL,
     "membershipActive" BOOLEAN NOT NULL DEFAULT false,
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" DATETIME NOT NULL
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "Profile" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+    "id" TEXT NOT NULL,
     "userId" TEXT NOT NULL,
     "gradYear" INTEGER,
     "primaryPosition" TEXT,
@@ -29,12 +31,13 @@ CREATE TABLE "Profile" (
     "satScore" TEXT,
     "actScore" TEXT,
     "profileComplete" BOOLEAN NOT NULL DEFAULT false,
-    CONSTRAINT "Profile_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE CASCADE ON UPDATE CASCADE
+
+    CONSTRAINT "Profile_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "Preferences" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+    "id" TEXT NOT NULL,
     "userId" TEXT NOT NULL,
     "divisionPreference" TEXT,
     "maxDistanceFromHome" INTEGER,
@@ -46,12 +49,13 @@ CREATE TABLE "Preferences" (
     "draftImportance" TEXT,
     "preferredConferences" TEXT,
     "preferredTiers" TEXT,
-    CONSTRAINT "Preferences_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE CASCADE ON UPDATE CASCADE
+
+    CONSTRAINT "Preferences_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "UserSchoolData" (
-    "id" TEXT NOT NULL PRIMARY KEY,
+    "id" TEXT NOT NULL,
     "userId" TEXT NOT NULL,
     "schoolId" INTEGER NOT NULL,
     "priority" INTEGER NOT NULL DEFAULT 0,
@@ -62,9 +66,10 @@ CREATE TABLE "UserSchoolData" (
     "detail" TEXT,
     "myContactName" TEXT,
     "myContactEmail" TEXT,
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updatedAt" DATETIME NOT NULL,
-    CONSTRAINT "UserSchoolData_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE CASCADE ON UPDATE CASCADE
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "UserSchoolData_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
@@ -78,3 +83,12 @@ CREATE UNIQUE INDEX "Preferences_userId_key" ON "Preferences"("userId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "UserSchoolData_userId_schoolId_key" ON "UserSchoolData"("userId", "schoolId");
+
+-- AddForeignKey
+ALTER TABLE "Profile" ADD CONSTRAINT "Profile_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Preferences" ADD CONSTRAINT "Preferences_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "UserSchoolData" ADD CONSTRAINT "UserSchoolData_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
