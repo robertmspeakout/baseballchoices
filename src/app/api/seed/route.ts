@@ -15,7 +15,7 @@ export async function GET(request: Request) {
   }
 
   try {
-    const trial = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000); // 30 days
+    const trial = new Date(Date.now() + 100 * 365 * 24 * 60 * 60 * 1000); // effectively indefinite
     const testHash = await hashPassword("123456789!");
 
     const user = await prisma.user.upsert({

@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
     }
 
     const passwordHash = await hashPassword(password);
-    const trialExpiresAt = new Date(Date.now() + 5 * 24 * 60 * 60 * 1000); // 5 days
+    const trialExpiresAt = new Date(Date.now() + 100 * 365 * 24 * 60 * 60 * 1000); // effectively indefinite
 
     // Check if this is the owner email
     const role = email.toLowerCase() === OWNER_EMAIL.toLowerCase() ? "OWNER" : "USER";
