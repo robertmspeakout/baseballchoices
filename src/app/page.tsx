@@ -265,7 +265,7 @@ export default function Home() {
         {/* Full-bleed baseball photo background */}
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1629219644109-b4df0ab25a7b?w=1920&q=80')" }}
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1508802551395-fbecf2af43b1?w=1920&q=80')" }}
         />
         {/* Left-to-right gradient for logo contrast */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
