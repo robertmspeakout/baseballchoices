@@ -8,8 +8,8 @@ const NAV_ITEMS = [
   { label: "Home", href: "/", icon: null },
   { label: "My Top Programs", href: "/#mylist", icon: "star" },
   { label: "My AI Matches", href: "/match", icon: "sparkle" },
-  { label: "All Division 1", href: "/#D1", icon: null },
-  { label: "All Division 2", href: "/#D2", icon: null },
+  { label: "Browse Division 1", href: "/#D1", icon: null },
+  { label: "Browse Division 2", href: "/#D2", icon: null },
 ];
 
 function StarIcon({ className }: { className?: string }) {
