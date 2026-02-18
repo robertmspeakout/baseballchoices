@@ -472,7 +472,6 @@ export default function Home() {
           <div className="flex items-start justify-between">
             <div>
               <BrandLogo size="lg" showTagline={true} onClick={() => { handleTabChange("home"); window.scrollTo({ top: 0, behavior: "smooth" }); }} />
-              <p className="text-xs text-white/50 mt-2 max-w-xs">Built by a baseball dad in Utah who lived this process and knew there had to be a better way.</p>
             </div>
             <SiteNav
               variant="dark"
@@ -504,8 +503,11 @@ export default function Home() {
               <h2 className="text-3xl sm:text-5xl font-black text-white leading-tight mb-4">
                 The Recruiting Process<br />Just Got Simpler.
               </h2>
-              <p className="text-base sm:text-lg text-gray-400 mb-6 max-w-xl mx-auto">
+              <p className="text-base sm:text-lg text-gray-400 mb-4 max-w-xl mx-auto">
                 Take control of your recruiting journey today with the only AI powered app built to organize, match, and guide your entire recruiting process &mdash; on your terms.
+              </p>
+              <p className="text-sm text-gray-500 italic mb-6 max-w-xl mx-auto">
+                Built by a baseball dad in Utah who lived this process and knew there had to be a better way.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
                 <Link
@@ -586,13 +588,16 @@ export default function Home() {
               <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mb-4">Why We Built This</h2>
               <div className="mb-6">
                 <img
-                  src="/images/family.png"
+                  src="/images/family.jpg"
                   alt="The family behind ExtraBase"
-                  className="mx-auto rounded-xl shadow-md max-w-full h-auto"
+                  className="mx-auto rounded-full w-40 h-40 sm:w-48 sm:h-48 object-cover shadow-lg border-4 border-gray-200"
                 />
               </div>
+              <p className="text-base text-gray-600 leading-relaxed mb-4">
+                We were baseball parents sitting at a kitchen table with a talented and stressed out kid, a browser full of YouTube videos that promised to help, and absolutely no system to manage any of it. We had a spreadsheet that stopped working, a recruit who was overwhelmed, and a process that felt like it was controlling us instead of the other way around.
+              </p>
               <p className="text-base text-gray-600 leading-relaxed">
-                We are baseball parents. There, we said it! And we love it. We also had a young recruit with the whole world of college baseball in front of him and none of us knew where to start. We built ExtraBase from the lessons we learned during that process &mdash; for the kids, their parents, and all of our sanity.
+                We looked for a tool that could help us organize programs, track interest levels, compare options, and make sense of it all. We couldn&apos;t find one. So we built it...for all of our sanity.
               </p>
             </div>
           </section>
