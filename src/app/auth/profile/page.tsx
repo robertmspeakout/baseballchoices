@@ -46,15 +46,6 @@ const TUITION_OPTIONS = [
   { value: 50000, label: "Under $50K" },
 ];
 
-const MAJOR_CONFERENCES = [
-  "SEC", "ACC", "Big 12", "Big Ten", "Pac-12",
-  "American Athletic", "Sun Belt", "Big West", "Big East", "Mountain West",
-  "WAC", "Conference USA", "West Coast",
-  "Atlantic 10", "Missouri Valley", "CAA", "Southern", "MAC",
-  "Ohio Valley", "Horizon", "MAAC", "Summit", "Big Sky",
-  "Patriot", "Ivy League", "SWAC", "MEAC", "NEC", "ASUN",
-];
-
 const TOTAL_STEPS = 3;
 
 export default function ProfilePage() {
@@ -87,10 +78,9 @@ export default function ProfilePage() {
   const [preferredRegions, setPreferredRegions] = useState<string[]>([]);
   const [maxTuition, setMaxTuition] = useState<number | null>(null);
   const [schoolSize, setSchoolSize] = useState<"small" | "medium" | "large" | "any">("any");
-  const [publicPrivate, setPublicPrivate] = useState<"public" | "private" | "any">("any");
+  const [highAcademic, setHighAcademic] = useState(false);
   const [competitiveness, setCompetitiveness] = useState<"top25" | "postseason" | "any">("any");
   const [draftImportance, setDraftImportance] = useState<"yes" | "no">("no");
-  const [preferredConferences, setPreferredConferences] = useState<string[]>([]);
   const [preferredTiers, setPreferredTiers] = useState<string[]>([]);
 
   const profilePicRef = useRef<HTMLInputElement>(null);
@@ -121,10 +111,9 @@ export default function ProfilePage() {
     setPreferredRegions(prefs.preferredRegions || []);
     setMaxTuition(prefs.maxTuition);
     setSchoolSize(prefs.schoolSize);
-    setPublicPrivate(prefs.publicPrivate);
+    setHighAcademic(prefs.highAcademic || false);
     setCompetitiveness(prefs.competitiveness);
     setDraftImportance(prefs.draftImportance);
-    setPreferredConferences(prefs.preferredConferences);
     setPreferredTiers((prefs as any).preferredTiers || []);
   }, []);
 
@@ -147,12 +136,6 @@ export default function ProfilePage() {
   const toggleRegion = (region: string) => {
     setPreferredRegions((prev) =>
       prev.includes(region) ? prev.filter((r) => r !== region) : [...prev, region]
-    );
-  };
-
-  const toggleConference = (conf: string) => {
-    setPreferredConferences((prev) =>
-      prev.includes(conf) ? prev.filter((c) => c !== conf) : [...prev, conf]
     );
   };
 
@@ -217,10 +200,10 @@ export default function ProfilePage() {
         preferredRegions,
         maxTuition,
         schoolSize,
-        publicPrivate,
+        highAcademic,
         competitiveness,
         draftImportance,
-        preferredConferences,
+        preferredConferences: [],
         preferredTiers,
       });
     }
@@ -544,29 +527,27 @@ export default function ProfilePage() {
               </div>
             </div>
 
-            {/* Public/Private */}
+            {/* High Academic Institution */}
             <div>
-              <label className={labelClass}>Public or Private?</label>
-              <div className="flex gap-2">
-                {([
-                  { v: "any", l: "Either" },
-                  { v: "public", l: "Public" },
-                  { v: "private", l: "Private" },
-                ] as const).map(({ v, l }) => (
-                  <button
-                    key={v}
-                    type="button"
-                    onClick={() => setPublicPrivate(v)}
-                    className={`flex-1 py-2.5 rounded-xl text-sm font-semibold transition-all ${
-                      publicPrivate === v
-                        ? "bg-gray-900 text-white shadow-md"
-                        : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-                    }`}
-                  >
-                    {l}
-                  </button>
-                ))}
-              </div>
+              <label className={labelClass}>High Academic Institution</label>
+              <button
+                type="button"
+                onClick={() => setHighAcademic(!highAcademic)}
+                className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
+                  highAcademic
+                    ? "bg-yellow-50 text-yellow-900 border-2 border-yellow-400 shadow-sm"
+                    : "bg-gray-100 text-gray-600 hover:bg-gray-200 border-2 border-transparent"
+                }`}
+              >
+                <span className={`w-5 h-5 rounded flex items-center justify-center ${
+                  highAcademic ? "bg-yellow-400 text-white" : "bg-gray-300 text-transparent"
+                }`}>
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                  </svg>
+                </span>
+                Only show high-academic institutions
+              </button>
             </div>
 
             {/* Competitiveness */}
@@ -665,28 +646,6 @@ export default function ProfilePage() {
               </div>
             )}
 
-            {/* Specific Conferences — only for D1, optional detail */}
-            {divisionPref !== "D2" && (
-              <div>
-                <label className={labelClass}>Specific Conferences <span className="text-gray-400 font-normal">(optional — for fine-tuning)</span></label>
-                <div className="flex flex-wrap gap-1.5">
-                  {MAJOR_CONFERENCES.map((conf) => (
-                    <button
-                      key={conf}
-                      type="button"
-                      onClick={() => toggleConference(conf)}
-                      className={`px-2.5 py-1.5 rounded-lg text-xs font-semibold transition-all ${
-                        preferredConferences.includes(conf)
-                          ? "bg-gray-900 text-white"
-                          : "bg-gray-100 text-gray-500 hover:bg-gray-200"
-                      }`}
-                    >
-                      {conf}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
           </div>
         )}
 

@@ -190,6 +190,7 @@ export default function MatchPage() {
     if (prefs.maxDistanceFromHome) prefSummary.push(`Within ${prefs.maxDistanceFromHome} mi`);
     if (prefs.maxTuition) prefSummary.push(`Under $${(prefs.maxTuition / 1000).toFixed(0)}K`);
     if (prefs.schoolSize !== "any") prefSummary.push(`${prefs.schoolSize} school`);
+    if (prefs.highAcademic) prefSummary.push("High Academic");
     if (prefs.competitiveness !== "any") prefSummary.push(prefs.competitiveness === "top25" ? "Top 25" : "Postseason");
     if (prefs.preferredRegions && prefs.preferredRegions.length > 0) {
       prefSummary.push(prefs.preferredRegions.join(", "));
@@ -425,7 +426,7 @@ export default function MatchPage() {
       <footer className="bg-gray-900 mt-8">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-2">
           <BrandLogo size="sm" showTagline={false} />
-          <p className="text-xs text-gray-500">Data for informational purposes only.</p>
+          <p className="text-xs text-gray-500">ExtraBase is a product of JackJack Enterprises. Data is for informational purposes only. Go be great!</p>
         </div>
       </footer>
     </div>

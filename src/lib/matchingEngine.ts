@@ -27,6 +27,7 @@ interface SchoolData {
   mlb_draft_picks: number;
   scholarship_limit: number;
   head_coach_name: string | null;
+  high_academic: boolean;
 }
 
 export interface MatchResult {
@@ -58,7 +59,7 @@ const WEIGHTS = {
   stateRegion: 7,
   tuition: 12,
   schoolSize: 6,
-  publicPrivate: 4,
+  highAcademic: 4,
   academics: 9,
   competitiveness: 13,
   draftPicks: 6,
@@ -158,9 +159,12 @@ export function scoreSchool(
     }
   }
 
-  // --- Public/Private (5 pts) ---
-  if (prefs.publicPrivate === "any" || school.public_private?.toLowerCase() === prefs.publicPrivate) {
-    score += WEIGHTS.publicPrivate;
+  // --- High Academic (5 pts) ---
+  if (!prefs.highAcademic) {
+    score += WEIGHTS.highAcademic; // Not filtering = full credit
+  } else if (school.high_academic) {
+    score += WEIGHTS.highAcademic;
+    reasons.push("High-Academic Institution");
   }
 
   // --- Academic Fit (10 pts) ---
@@ -223,11 +227,8 @@ export function scoreSchool(
     score += WEIGHTS.draftPicks; // Not important = full credit for all
   }
 
-  // --- Conference (hard-filtered, always full points) ---
+  // --- Conference (always full points) ---
   score += WEIGHTS.conference;
-  if (prefs.preferredConferences.length > 0) {
-    reasons.push(`${school.conference} — one of your preferred conferences`);
-  }
 
   // --- Tier / Level (hard-filtered, always full points) ---
   score += WEIGHTS.tier;
@@ -270,11 +271,6 @@ export function getMatchResults(
       const tier = CONFERENCE_TIER[s.conference];
       return tier ? prefs.preferredTiers.includes(tier) : false;
     });
-  }
-
-  // Conference hard filter — only show schools in preferred conferences
-  if (prefs.preferredConferences.length > 0) {
-    filtered = filtered.filter((s) => prefs.preferredConferences.includes(s.conference));
   }
 
   // Score remaining schools

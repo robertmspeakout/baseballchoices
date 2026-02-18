@@ -51,7 +51,7 @@ export interface PlayerPreferences {
   preferredRegions: string[]; // Region names like "Pacific NW", "Southeast"
   maxTuition: number | null; // dollars, null = any
   schoolSize: "small" | "medium" | "large" | "any"; // small <5K, med 5-15K, large 15K+
-  publicPrivate: "public" | "private" | "any";
+  highAcademic: boolean;
   competitiveness: "top25" | "postseason" | "any";
   // top25 = currently ranked or frequently ranked
   // postseason = has regional/CWS appearances
@@ -87,7 +87,7 @@ const DEFAULT_PREFERENCES: PlayerPreferences = {
   preferredRegions: [],
   maxTuition: null,
   schoolSize: "any",
-  publicPrivate: "any",
+  highAcademic: false,
   competitiveness: "any",
   draftImportance: "no",
   preferredConferences: [],

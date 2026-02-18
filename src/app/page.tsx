@@ -150,7 +150,7 @@ export default function Home() {
       }
       if (filters.state && school.state !== filters.state) return false;
       if (filters.conference && school.conference !== filters.conference) return false;
-      if (filters.publicPrivate && school.public_private !== filters.publicPrivate) return false;
+      if (filters.publicPrivate === "highAcademic" && !(school as any).high_academic) return false;
       return true;
     });
   }, [baseList, schoolsWithUserData, filters]);
@@ -420,7 +420,7 @@ export default function Home() {
           <div className="bg-blue-50 border border-blue-200 rounded-xl px-4 py-4 sm:py-5 text-center">
             <h3 className="text-base sm:text-lg font-extrabold text-gray-900 mb-1">Where Will You Play?</h3>
             <p className="text-xs sm:text-sm text-gray-600 mb-3">
-              Over {allSchools.length} programs are waiting. Rate schools with stars to build your personal list, or let our AI find your best fits.
+              Over {allSchools.length} baseball programs are waiting. Rate schools with stars to build your personal list, or let our AI find your best fits.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-2">
               <Link
@@ -434,13 +434,13 @@ export default function Home() {
               </Link>
               <button
                 onClick={() => handleTabChange("D1")}
-                className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-bold hover:bg-blue-700 transition-colors"
+                className="px-4 py-2 bg-gray-700 text-white rounded-lg text-sm font-bold hover:bg-red-600 transition-colors"
               >
                 Browse D1
               </button>
               <button
                 onClick={() => handleTabChange("D2")}
-                className="px-4 py-2 bg-emerald-600 text-white rounded-lg text-sm font-bold hover:bg-emerald-700 transition-colors"
+                className="px-4 py-2 bg-gray-700 text-white rounded-lg text-sm font-bold hover:bg-red-600 transition-colors"
               >
                 Browse D2
               </button>
@@ -505,7 +505,7 @@ export default function Home() {
           <BrandLogo size="sm" showTagline={false} />
           <div className="flex items-center gap-3">
             <p className="text-xs text-gray-500">
-              Data for informational purposes only.
+              ExtraBase is a product of JackJack Enterprises. Data is for informational purposes only. Go be great!
             </p>
             <Link href="/admin" className="text-xs text-gray-600 hover:text-gray-400 transition-colors">
               Admin
