@@ -11,7 +11,7 @@ export async function GET(request: NextRequest) {
     const rssUrl = `https://news.google.com/rss/search?q=${query}&hl=en-US&gl=US&ceid=US:en`;
 
     const res = await fetch(rssUrl, {
-      headers: { "User-Agent": "NextBase/1.0" },
+      headers: { "User-Agent": "ExtraBase/1.0" },
       next: { revalidate: 3600 }, // Cache for 1 hour
     });
 

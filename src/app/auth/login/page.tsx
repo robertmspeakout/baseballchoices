@@ -73,7 +73,7 @@ export default function LoginPage() {
               </svg>
             </div>
             <h2 className="text-2xl font-bold text-gray-900">Welcome Back</h2>
-            <p className="text-sm text-gray-500 mt-1">Sign in to your NextBase account</p>
+            <p className="text-sm text-gray-500 mt-1">Sign in to your ExtraBase account</p>
           </div>
 
           {/* Google Sign In */}

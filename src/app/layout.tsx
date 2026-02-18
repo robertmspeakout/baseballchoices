@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "NextBase - College Baseball Recruiting Directory",
+  title: "ExtraBase - College Baseball Recruiting Directory",
   description:
     "Search and track college baseball programs across D1, D2, D3 and JUCO. Your college baseball recruiting personal assistant.",
 };
