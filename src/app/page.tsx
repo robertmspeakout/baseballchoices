@@ -639,12 +639,9 @@ export default function Home() {
         )}
         {activeTab === "mylist" && (
           <>
-            <div>
-              <h2 className="text-lg sm:text-xl font-bold text-gray-900">
-                {playerFirstName ? `${playerFirstName}'s Top Programs` : "My Top Programs"}
-              </h2>
-              <p className="text-xs sm:text-sm text-gray-500">All Four and Five Star Ranked Programs</p>
-            </div>
+            <h2 className="text-lg sm:text-xl font-bold text-gray-900">
+              {playerFirstName ? `${playerFirstName}'s Top Programs` : "My Top Programs"}
+            </h2>
             <div className="flex flex-wrap items-center gap-2">
               <button
                 onClick={() => handleTabChange("mylist")}
@@ -697,6 +694,9 @@ export default function Home() {
         )}
 
         {/* VIP Cards Carousel — only on mylist tab */}
+        {activeTab === "mylist" && sorted.some((s) => s.priority >= 4) && (
+          <h3 className="text-sm font-semibold text-gray-500">All Four and Five Star Ranked Programs</h3>
+        )}
         {activeTab === "mylist" && <VIPCarousel schools={sorted} />}
 
         {/* All Ranked Programs header — only on mylist when VIP exists */}
