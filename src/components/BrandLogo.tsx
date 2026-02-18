@@ -21,8 +21,8 @@ const sizeConfig = {
   },
   lg: {
     text: "text-4xl sm:text-6xl",
-    tagline: "text-[9px] sm:text-[11px]",
-    spacer: "h-4 sm:h-5",
+    tagline: "text-sm sm:text-xl",
+    spacer: "h-5 sm:h-7",
   },
 };
 
