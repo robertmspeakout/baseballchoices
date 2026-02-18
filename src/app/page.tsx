@@ -230,7 +230,13 @@ function VIPCard({ school }: { school: School & { priority: number; high_academi
 }
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState<TabKey>("home");
+  const [activeTab, setActiveTab] = useState<TabKey>(() => {
+    if (typeof window !== "undefined") {
+      const hash = window.location.hash.replace("#", "") as TabKey;
+      if (["home", "mylist", "D1", "D2"].includes(hash)) return hash;
+    }
+    return "home";
+  });
   const [page, setPage] = useState(1);
   const [sortBy, setSortBy] = useState("ranking");
   const [sortDir, setSortDir] = useState("asc");
@@ -372,6 +378,7 @@ export default function Home() {
   // Set default sort when switching tabs
   const handleTabChange = (tab: TabKey) => {
     setActiveTab(tab);
+    window.history.replaceState(null, "", tab === "home" ? "/" : `#${tab}`);
     if (tab === "home") {
       setSortBy("ranking");
       setSortDir("asc");
@@ -449,7 +456,7 @@ export default function Home() {
 
         <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 py-6 sm:py-10">
           <div className="flex items-center justify-between">
-            <BrandLogo size="lg" showTagline={true} />
+            <BrandLogo size="lg" showTagline={true} onClick={() => { handleTabChange("home"); window.scrollTo({ top: 0, behavior: "smooth" }); }} />
           </div>
         </div>
         {/* Bottom edge - thick red accent bar */}
@@ -676,7 +683,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="bg-gray-900 mt-8">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <BrandLogo size="sm" showTagline={false} />
+          <BrandLogo size="sm" showTagline={false} onClick={() => { handleTabChange("home"); window.scrollTo({ top: 0, behavior: "smooth" }); }} />
           <div className="flex items-center gap-3">
             <p className="text-xs text-gray-500">
               ExtraBase is a product of JackJack Enterprises. Data is for informational purposes only. Go be great!

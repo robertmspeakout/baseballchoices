@@ -6,6 +6,7 @@ interface BrandLogoProps {
   size?: BrandSize;
   showTagline?: boolean;
   linkHome?: boolean;
+  onClick?: () => void;
 }
 
 const sizeConfig = {
@@ -26,7 +27,7 @@ const sizeConfig = {
   },
 };
 
-export default function BrandLogo({ size = "lg", showTagline = true, linkHome = true }: BrandLogoProps) {
+export default function BrandLogo({ size = "lg", showTagline = true, linkHome = true, onClick }: BrandLogoProps) {
   const cfg = sizeConfig[size];
 
   const content = (
@@ -51,7 +52,16 @@ export default function BrandLogo({ size = "lg", showTagline = true, linkHome = 
 
   if (linkHome) {
     return (
-      <Link href="/" className="hover:opacity-90 transition-opacity">
+      <Link
+        href="/"
+        className="hover:opacity-90 transition-opacity"
+        onClick={(e) => {
+          if (onClick) {
+            e.preventDefault();
+            onClick();
+          }
+        }}
+      >
         {content}
       </Link>
     );

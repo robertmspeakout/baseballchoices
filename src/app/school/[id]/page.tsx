@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, use } from "react";
+import { useEffect, useRef, useState, use } from "react";
 import Link from "next/link";
 import BrandLogo from "@/components/BrandLogo";
 import StarRating from "@/components/StarRating";
@@ -165,6 +165,12 @@ export default function SchoolPage({
   const [photosLoading, setPhotosLoading] = useState(true);
   const [lightboxIdx, setLightboxIdx] = useState<number | null>(null);
 
+  // Track last-saved values so we can detect unsaved changes
+  const savedSnapshot = useRef({
+    notes: "", lastContacted: "", recruitingStatus: "",
+    theyvSeenMe: [] as string[], detail: "", myContactName: "", myContactEmail: "",
+  });
+
   useEffect(() => {
     const ud = getUserData(parseInt(id));
     setPriority(ud.priority);
@@ -175,6 +181,12 @@ export default function SchoolPage({
     setDetail(ud.detail || "");
     setMyContactName(ud.my_contact_name || "");
     setMyContactEmail(ud.my_contact_email || "");
+    savedSnapshot.current = {
+      notes: ud.notes, lastContacted: ud.last_contacted || "",
+      recruitingStatus: ud.recruiting_status || "", theyvSeenMe: ud.theyve_seen_me || [],
+      detail: ud.detail || "", myContactName: ud.my_contact_name || "",
+      myContactEmail: ud.my_contact_email || "",
+    };
 
     try {
       const saved = localStorage.getItem("nextbase_homeZip");
@@ -246,10 +258,24 @@ export default function SchoolPage({
       my_contact_name: myContactName,
       my_contact_email: myContactEmail,
     });
+    savedSnapshot.current = {
+      notes, lastContacted, recruitingStatus, theyvSeenMe,
+      detail, myContactName, myContactEmail,
+    };
     setSaving(false);
     setSaved(true);
     setTimeout(() => setSaved(false), 2000);
   };
+
+  const hasUnsavedChanges = mounted && (
+    notes !== savedSnapshot.current.notes ||
+    lastContacted !== savedSnapshot.current.lastContacted ||
+    recruitingStatus !== savedSnapshot.current.recruitingStatus ||
+    JSON.stringify(theyvSeenMe) !== JSON.stringify(savedSnapshot.current.theyvSeenMe) ||
+    detail !== savedSnapshot.current.detail ||
+    myContactName !== savedSnapshot.current.myContactName ||
+    myContactEmail !== savedSnapshot.current.myContactEmail
+  );
 
   const toggleSeenMe = (option: string) => {
     setTheyvSeenMe((prev) =>
@@ -1058,11 +1084,21 @@ export default function SchoolPage({
                   />
                 </div>
 
+                {hasUnsavedChanges && !saved && (
+                  <div className="flex items-center gap-2 px-3 py-2 bg-amber-50 border border-amber-300 rounded-lg">
+                    <svg className="w-4 h-4 text-amber-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4.5c-.77-.833-2.694-.833-3.464 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                    </svg>
+                    <span className="text-amber-800 text-sm font-medium">You have unsaved changes</span>
+                  </div>
+                )}
                 <div className="flex items-center gap-3">
                   <button
                     onClick={saveAll}
                     disabled={saving}
-                    className="flex-1 sm:flex-none px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 font-medium transition-colors text-sm"
+                    className={`flex-1 sm:flex-none px-6 py-2.5 text-white rounded-lg disabled:opacity-50 font-medium transition-colors text-sm ${
+                      hasUnsavedChanges && !saved ? "bg-amber-600 hover:bg-amber-700 animate-pulse" : "bg-blue-600 hover:bg-blue-700"
+                    }`}
                   >
                     {saving ? "Saving..." : "Save"}
                   </button>
