@@ -273,6 +273,11 @@ export function getMatchResults(
     });
   }
 
+  // High Academic hard filter — only show high-academic schools
+  if (prefs.highAcademic) {
+    filtered = filtered.filter((s) => s.high_academic);
+  }
+
   // Score remaining schools
   const results = filtered.map((school) =>
     scoreSchool(school, profile, prefs, homeCoords)

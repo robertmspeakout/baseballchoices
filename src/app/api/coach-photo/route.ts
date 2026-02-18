@@ -51,7 +51,14 @@ async function tryWikipedia(query: string): Promise<string | null> {
     if (results.length === 0) return null;
 
     // Try to get the page image (thumbnail) for each result
+    // Only accept results that are likely about the person (check title/snippet for relevance)
     for (const result of results) {
+      const title = (result.title || "").toLowerCase();
+      const snippet = (result.snippet || "").toLowerCase();
+      // Skip results that are clearly not about a person (vehicles, places, companies, etc.)
+      const irrelevant = ["aircraft", "airplane", "airline", "airport", "ship", "locomotive", "building", "stadium", "bridge", "company", "disambiguation"];
+      if (irrelevant.some((word) => title.includes(word) || snippet.includes(word))) continue;
+
       const pageId = result.pageid;
       const imageUrl = `https://en.wikipedia.org/w/api.php?action=query&pageids=${pageId}&prop=pageimages&pithumbsize=300&format=json&origin=*`;
       const imageRes = await fetch(imageUrl, { signal: AbortSignal.timeout(5000) });
@@ -60,6 +67,9 @@ async function tryWikipedia(query: string): Promise<string | null> {
       const imageData = await imageRes.json();
       const page = imageData?.query?.pages?.[pageId];
       if (page?.thumbnail?.source) {
+        // Skip images that look like non-person content
+        const imgSrc = page.thumbnail.source.toLowerCase();
+        if (irrelevant.some((word) => imgSrc.includes(word))) continue;
         return page.thumbnail.source;
       }
     }

@@ -213,8 +213,11 @@ function VIPCard({ school }: { school: School & { priority: number; high_academi
 
           {/* Head Coach */}
           {school.head_coach_name && (
-            <p className="text-sm text-gray-400 mb-3">Head Coach: <span className="font-semibold text-white">{school.head_coach_name}</span></p>
+            <p className="text-sm text-gray-400 mb-1">Head Coach: <span className="font-semibold text-white">{school.head_coach_name}</span></p>
           )}
+
+          {/* Recruiting Status */}
+          <p className="text-sm text-gray-400 mb-3">Recruiting Status: <span className="font-semibold text-white">{(school as any).recruiting_status || "None"}</span></p>
 
           {/* View Details button */}
           <div className="px-4 py-1.5 rounded-lg bg-red-600/20 text-red-400 text-xs font-semibold uppercase tracking-wide group-hover:bg-red-600 group-hover:text-white transition-all">
@@ -278,8 +281,8 @@ export default function Home() {
   // Merge schools with user data
   const schoolsWithUserData = useMemo(() => {
     return allSchools.map((school) => {
-      const ud = userData[school.id] || { priority: 0, notes: "", last_contacted: null };
-      return { ...school, priority: ud.priority, notes: ud.notes, last_contacted: ud.last_contacted, last_season_record: school.last_season_record, logo_url: school.logo_url };
+      const ud = userData[school.id] || { priority: 0, notes: "", last_contacted: null, recruiting_status: "" };
+      return { ...school, priority: ud.priority, notes: ud.notes, last_contacted: ud.last_contacted, recruiting_status: ud.recruiting_status || "", last_season_record: school.last_season_record, logo_url: school.logo_url };
     });
   }, [userData]);
 
