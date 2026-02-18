@@ -224,7 +224,7 @@ export default function MatchPage() {
       <main className="max-w-[1400px] mx-auto px-3 sm:px-6 py-4 sm:py-6 space-y-4">
         {/* Page title */}
         <h2 className="text-xl sm:text-2xl font-black text-gray-900">
-          {profile?.playerName ? `${profile.playerName.split(" ")[0]}'s Top Matches` : "Your Top Matches"}
+          {profile?.playerName ? `${profile.playerName.split(" ")[0]}'s AI Matches` : "Your AI Matches"}
         </h2>
 
         {/* Active preference filters */}
