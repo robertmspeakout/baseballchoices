@@ -323,10 +323,10 @@ export default function SchoolPage({
   return (
     <div className="min-h-screen bg-gray-50">
       <header className="relative text-white overflow-hidden">
-        {/* Background photo - stadium or default action shot */}
+        {/* Background photo - first facility photo, stadium image, or default action shot */}
         <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url('${school.stadium_image_url || "https://images.unsplash.com/photo-1529768167801-9173d94c2a42?w=1600&q=80"}')` }}
+          className="absolute inset-0 bg-cover bg-center transition-[background-image] duration-700"
+          style={{ backgroundImage: `url('${facilityPhotos[0]?.url || school.stadium_image_url || "https://images.unsplash.com/photo-1529768167801-9173d94c2a42?w=1600&q=80"}')` }}
         />
         {/* Dramatic overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/40" />
