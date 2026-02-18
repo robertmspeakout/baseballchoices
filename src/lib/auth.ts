@@ -1,6 +1,6 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import { compare } from "bcryptjs";
+import { verifyPassword } from "@/lib/password";
 import { prisma } from "@/lib/prisma";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
@@ -22,7 +22,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
         if (!user) return null;
 
-        const passwordMatch = await compare(
+        const passwordMatch = await verifyPassword(
           credentials.password as string,
           user.passwordHash
         );

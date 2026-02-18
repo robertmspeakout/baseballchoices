@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { hash } from "bcryptjs";
+import { hashPassword } from "@/lib/password";
 import { prisma } from "@/lib/prisma";
 
 const OWNER_EMAIL = "robertjmunsoniii@gmail.com";
@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "An account with this email already exists" }, { status: 409 });
     }
 
-    const passwordHash = await hash(password, 12);
+    const passwordHash = await hashPassword(password);
     const trialExpiresAt = new Date(Date.now() + 5 * 24 * 60 * 60 * 1000); // 5 days
 
     // Check if this is the owner email
