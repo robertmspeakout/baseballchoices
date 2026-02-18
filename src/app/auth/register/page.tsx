@@ -64,8 +64,20 @@ export default function RegisterPage() {
         return;
       }
 
-      // Redirect to email verification page
-      window.location.href = `/auth/verify?email=${encodeURIComponent(email.toLowerCase())}`;
+      // Auto sign-in after registration
+      const result = await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
+      });
+
+      if (result?.error) {
+        setError("Account created but sign-in failed. Please log in.");
+        setLoading(false);
+        return;
+      }
+
+      window.location.href = "/auth/profile";
     } catch {
       setError("Something went wrong. Please try again.");
       setLoading(false);

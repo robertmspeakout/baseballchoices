@@ -1,13 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { hashPassword } from "@/lib/password";
 import { prisma } from "@/lib/prisma";
-import { sendVerificationEmail } from "@/lib/email";
 
 const OWNER_EMAIL = "robertjmunsoniii@gmail.com";
-
-function generateCode(): string {
-  return Math.floor(100000 + Math.random() * 900000).toString();
-}
 
 export async function POST(request: NextRequest) {
   try {
@@ -55,22 +50,9 @@ export async function POST(request: NextRequest) {
       include: { profile: true },
     });
 
-    // Generate verification code and send email
-    const code = generateCode();
-    await prisma.verificationToken.create({
-      data: {
-        email: email.toLowerCase(),
-        code,
-        expiresAt: new Date(Date.now() + 15 * 60 * 1000), // 15 minutes
-      },
-    });
-
-    try {
-      await sendVerificationEmail(email.toLowerCase(), code, firstName);
-    } catch (emailErr) {
-      console.error("Failed to send verification email:", emailErr);
-      // Don't block registration if email fails — they can resend
-    }
+    // TODO: Enable email verification once domain is verified with Resend
+    // Generate verification code, store token, and send email
+    // See: src/lib/email.ts, src/app/api/auth/verify/route.ts, src/app/api/auth/resend-code/route.ts
 
     return NextResponse.json({
       id: user.id,
