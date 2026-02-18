@@ -639,9 +639,12 @@ export default function Home() {
         )}
         {activeTab === "mylist" && (
           <>
-            <h2 className="text-lg sm:text-xl font-bold text-gray-900">
-              {playerFirstName ? `${playerFirstName}'s Top Programs` : "My Top Programs"}
-            </h2>
+            <div>
+              <h2 className="text-lg sm:text-xl font-bold text-gray-900">
+                {playerFirstName ? `${playerFirstName}'s Top Programs` : "My Top Programs"}
+              </h2>
+              <p className="text-xs sm:text-sm text-gray-500">All Four and Five Star Ranked Programs</p>
+            </div>
             <div className="flex flex-wrap items-center gap-2">
               <button
                 onClick={() => handleTabChange("mylist")}
