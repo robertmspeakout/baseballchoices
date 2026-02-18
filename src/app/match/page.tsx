@@ -207,26 +207,26 @@ export default function MatchPage() {
       <header className="relative text-white overflow-visible z-30">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1529768167801-9173d94c2a42?w=1600&q=80')" }}
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1629219644109-b4df0ab25a7b?w=1920&q=80')" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/30" />
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -right-10 top-0 bottom-0 w-2/5 bg-gradient-to-l from-red-600/25 to-transparent skew-x-[-8deg]" />
-        </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
 
-        <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 py-6 sm:py-8">
-          <div className="flex items-center justify-between mb-4">
-            <BrandLogo size="sm" showTagline={false} />
+        <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 py-6 sm:py-10">
+          <div className="flex items-start justify-between">
+            <BrandLogo size="md" showTagline={false} />
             <SiteNav variant="dark" active="My AI Matches" />
           </div>
-
-          <div className="h-2" />
         </div>
         <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-red-700 via-red-500 to-red-700" />
       </header>
 
       {/* Results */}
       <main className="max-w-[1400px] mx-auto px-3 sm:px-6 py-4 sm:py-6 space-y-4">
+        {/* Page title */}
+        <h2 className="text-xl sm:text-2xl font-black text-gray-900">
+          {profile?.playerName ? `${profile.playerName.split(" ")[0]}'s Top Matches` : "Your Top Matches"}
+        </h2>
+
         {/* Active preference filters */}
         {prefSummary.length > 0 && (
           <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
@@ -269,11 +269,7 @@ export default function MatchPage() {
           </div>
         ) : (
           <>
-            {/* Section header */}
-            <h2 className="text-xl sm:text-2xl font-black text-gray-900">
-              {profile?.playerName ? `${profile.playerName.split(" ")[0]}'s Top Matches` : "Your Top Matches"}
-            </h2>
-            <p className="text-sm text-gray-500 mb-4">
+            <p className="text-sm text-gray-500">
               90% or above matches
             </p>
 
