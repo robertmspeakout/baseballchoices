@@ -63,17 +63,8 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
 
   return (
     <div className="relative flex items-center gap-2">
-      {/* Desktop auth buttons */}
-      {isLoggedIn ? (
-        <Link href="/auth/profile" className={`hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors ${
-          isLight ? "text-gray-600 bg-gray-100 hover:bg-gray-200" : "text-white/80 bg-white/10 hover:bg-white/20"
-        }`}>
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-          </svg>
-          {firstName || "Account"}
-        </Link>
-      ) : (
+      {/* Desktop auth buttons — only for logged-out users */}
+      {!isLoggedIn && (
         <div className="hidden sm:flex items-center gap-2">
           <Link
             href="/auth/login"
@@ -191,6 +182,21 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
                 My Profile
+              </Link>
+              <Link
+                href="/auth/account"
+                onClick={() => setOpen(false)}
+                className={`w-full flex items-center gap-2 px-4 py-3 text-sm font-bold transition-colors border-b ${
+                  isLight
+                    ? "text-gray-700 hover:bg-gray-50 border-gray-100"
+                    : "text-white/80 hover:text-white hover:bg-white/10 border-white/5"
+                }`}
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                My Account
               </Link>
               <button
                 onClick={handleSignOut}

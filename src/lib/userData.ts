@@ -76,3 +76,11 @@ export async function saveUserDataToDB(schoolId: number, updates: Partial<UserDa
     body: JSON.stringify({ schoolId, ...updates }),
   });
 }
+
+export async function bulkSyncToDB(data: Record<string, UserData>): Promise<void> {
+  await fetch("/api/user/schooldata", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+}

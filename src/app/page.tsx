@@ -8,7 +8,7 @@ import SiteNav from "@/components/SiteNav";
 import SearchFilters from "@/components/SearchFilters";
 import SchoolTable from "@/components/SchoolTable";
 import schoolsData from "@/data/schools.json";
-import { getAllUserData, setUserData, fetchUserDataFromDB, saveUserDataToDB, type UserData } from "@/lib/userData";
+import { getAllUserData, setUserData, fetchUserDataFromDB, saveUserDataToDB, bulkSyncToDB, type UserData } from "@/lib/userData";
 import { haversineDistance, geocodeZip } from "@/lib/geo";
 import marketingContent from "@/data/marketing.json";
 import { loadProfile } from "@/lib/playerProfile";
@@ -256,15 +256,20 @@ export default function Home() {
     // Start with localStorage data (instant, avoids blank flash)
     setUserDataState(getAllUserData());
 
-    // If logged in, also fetch from DB and merge (DB wins)
+    // If logged in, fetch from DB and sync
     if (isLoggedIn) {
+      const localData = getAllUserData();
+      const localHasData = Object.values(localData).some((ud) => ud.priority > 0);
+
       fetchUserDataFromDB().then((dbData) => {
-        if (Object.keys(dbData).length > 0) {
-          // Merge DB data over localStorage and persist locally too
-          setUserDataState((prev) => {
-            const merged = { ...prev, ...dbData };
-            return merged;
-          });
+        const dbHasData = Object.keys(dbData).length > 0;
+
+        if (dbHasData) {
+          // DB has data — DB wins, merge over localStorage
+          setUserDataState((prev) => ({ ...prev, ...dbData }));
+        } else if (localHasData) {
+          // DB is empty but localStorage has rankings — one-time sync to DB
+          bulkSyncToDB(localData).catch(() => {});
         }
       }).catch(() => {});
     }
