@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import BrandLogo from "@/components/BrandLogo";
+import SiteNav from "@/components/SiteNav";
 import SearchFilters from "@/components/SearchFilters";
 import SchoolTable from "@/components/SchoolTable";
 import schoolsData from "@/data/schools.json";
@@ -243,7 +244,6 @@ export default function Home() {
   const [distances, setDistances] = useState<Record<number, number> | null>(null);
   const [userData, setUserDataState] = useState<Record<string, UserData>>({});
   const [mounted, setMounted] = useState(false);
-  const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [filters, setFilters] = useState<Filters>({
     search: "",
     division: "",
@@ -457,119 +457,22 @@ export default function Home() {
         <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 py-6 sm:py-10">
           <div className="flex items-center justify-between">
             <BrandLogo size="lg" showTagline={true} onClick={() => { handleTabChange("home"); window.scrollTo({ top: 0, behavior: "smooth" }); }} />
+            <SiteNav
+              variant="dark"
+              active={activeTab === "home" ? "Home" : activeTab === "mylist" ? "My Top Programs" : activeTab === "D1" ? "All Division 1" : activeTab === "D2" ? "All Division 2" : undefined}
+              onNavigate={(href) => {
+                const tab = href === "/" ? "home" : href === "/#mylist" ? "mylist" : href === "/#D1" ? "D1" : href === "/#D2" ? "D2" : null;
+                if (tab) {
+                  handleTabChange(tab as TabKey);
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+              }}
+            />
           </div>
         </div>
         {/* Bottom edge - thick red accent bar */}
         <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-red-700 via-red-500 to-red-700" />
       </header>
-
-      {/* Tab Navigation */}
-      <div className="bg-white/95 backdrop-blur-md border-b border-gray-200 sticky top-0 z-20">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 py-2 sm:py-2.5 flex items-center justify-between">
-          {/* Desktop: inline nav items */}
-          <div className="hidden sm:flex items-center gap-1">
-            <div className="inline-flex bg-gray-100 rounded-xl p-1 gap-0.5">
-              <button
-                onClick={() => { handleTabChange("home"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-                className={`px-5 py-2.5 rounded-lg text-base font-bold whitespace-nowrap transition-all duration-200 ${
-                  activeTab === "home"
-                    ? "bg-gray-900 text-white shadow-md"
-                    : "text-gray-500 hover:text-gray-800 hover:bg-gray-50"
-                }`}
-              >
-                Home
-              </button>
-              {tabs.map((tab) => (
-                <button
-                  key={tab.key}
-                  onClick={() => handleTabChange(tab.key)}
-                  className={`relative px-5 py-2.5 rounded-lg text-base font-bold whitespace-nowrap transition-all duration-200 ${
-                    activeTab === tab.key
-                      ? "bg-gray-900 text-white shadow-md"
-                      : "text-gray-500 hover:text-gray-800 hover:bg-gray-50"
-                  }`}
-                >
-                  {tab.label}
-                  {tab.key === "mylist" && ratedCount > 0 && (
-                    <span className={`ml-1.5 inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-xs font-bold ${
-                      activeTab === tab.key
-                        ? "bg-red-500 text-white"
-                        : "bg-gray-200 text-gray-600"
-                    }`}>
-                      {ratedCount}
-                    </span>
-                  )}
-                </button>
-              ))}
-              <Link
-                href="/match"
-                className="px-5 py-2.5 rounded-lg text-base font-bold whitespace-nowrap transition-all duration-200 text-gray-500 hover:text-gray-800 hover:bg-gray-50"
-              >
-                My AI Matches
-              </Link>
-            </div>
-          </div>
-
-          {/* Mobile: hamburger accordion */}
-          <div className="sm:hidden relative">
-            <button
-              onClick={() => setMobileNavOpen((o) => !o)}
-              className="p-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors"
-              aria-label="Navigation menu"
-            >
-              {mobileNavOpen ? (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              ) : (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              )}
-            </button>
-            {mobileNavOpen && (
-              <div className="absolute left-0 top-full mt-1 w-56 bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden z-50">
-                <button
-                  onClick={() => { handleTabChange("home"); setMobileNavOpen(false); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-                  className={`w-full text-left block px-4 py-3 text-sm font-bold transition-colors border-b border-gray-100 ${
-                    activeTab === "home" ? "bg-gray-900 text-white" : "text-gray-700 hover:bg-gray-50"
-                  }`}
-                >
-                  Home
-                </button>
-                {tabs.map((tab) => (
-                  <button
-                    key={tab.key}
-                    onClick={() => { handleTabChange(tab.key); setMobileNavOpen(false); }}
-                    className={`w-full text-left block px-4 py-3 text-sm font-bold transition-colors border-b border-gray-100 ${
-                      activeTab === tab.key ? "bg-gray-900 text-white" : "text-gray-700 hover:bg-gray-50"
-                    }`}
-                  >
-                    {tab.label}
-                    {tab.key === "mylist" && ratedCount > 0 && (
-                      <span className={`ml-2 inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-xs font-bold ${
-                        activeTab === tab.key ? "bg-red-500 text-white" : "bg-gray-200 text-gray-600"
-                      }`}>
-                        {ratedCount}
-                      </span>
-                    )}
-                  </button>
-                ))}
-                <Link
-                  href="/match"
-                  onClick={() => setMobileNavOpen(false)}
-                  className="block px-4 py-3 text-sm font-bold text-gray-700 hover:bg-gray-50 transition-colors"
-                >
-                  My AI Matches
-                </Link>
-              </div>
-            )}
-          </div>
-
-          {/* Right side - empty for now on desktop, keeps layout balanced */}
-          <div className="hidden sm:block" />
-        </div>
-      </div>
 
       {/* Main content */}
       <main className="max-w-[1400px] mx-auto px-3 sm:px-6 py-4 sm:py-6 space-y-4 sm:space-y-6">
@@ -586,9 +489,9 @@ export default function Home() {
                 className="inline-flex items-center gap-1.5 px-4 py-2 bg-red-600 text-white rounded-lg text-sm font-bold hover:bg-red-700 transition-colors"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
                 </svg>
-                Find My Matches
+                My AI Matches
               </Link>
               <div className="flex items-center gap-2">
                 <button
