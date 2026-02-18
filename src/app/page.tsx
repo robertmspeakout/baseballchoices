@@ -499,10 +499,10 @@ export default function Home() {
             <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 50% 40%, rgba(245,197,24,0.08) 0%, transparent 70%)" }} />
             <div className="relative max-w-3xl mx-auto px-4 sm:px-6">
               <h2 className="text-3xl sm:text-5xl font-black text-white leading-tight mb-4">
-                Stop Guessing.<br />Start Getting Recruited.
+                The Recruiting Process<br />Just Got Simpler.
               </h2>
               <p className="text-base sm:text-lg text-gray-400 mb-8 max-w-xl mx-auto">
-                ExtraBase matches you to college programs based on your stats, your goals, and your game &mdash; powered by AI.
+                Take control of your recruiting journey today with the only AI powered app built to organize, match, and guide your entire recruiting process &mdash; on your terms.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
                 <Link
@@ -519,7 +519,7 @@ export default function Home() {
                   See How It Works
                 </a>
               </div>
-              <p className="text-xs text-gray-500">Join 3,200+ recruits already building their lists.</p>
+              <p className="text-xs text-gray-500">Join 500+ college baseball programs and growing!</p>
             </div>
           </section>
 
@@ -569,10 +569,10 @@ export default function Home() {
           <section className="bg-[#1a1a2e] py-10 sm:py-14">
             <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
               <p className="text-base sm:text-lg text-white italic leading-relaxed mb-4">
-                &ldquo;I went from having no idea where to start to having a list of 12 realistic programs in one afternoon. ExtraBase changed everything for me.&rdquo;
+                &ldquo;My parents had to build me a spreadsheet to keep track of my recruiting. ExtraBase makes it easy, and gives me total control.&rdquo;
               </p>
               <p className="text-sm text-gray-400">
-                &mdash; Jake M., Shortstop, Class of 2026, Committed to Grand Canyon University
+                &mdash; Jack M., Class of 2027 D1 Commit
               </p>
             </div>
           </section>
