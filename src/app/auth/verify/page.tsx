@@ -166,7 +166,7 @@ export default function VerifyPage() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </Link>
-          <span className="text-lg font-bold leading-none" style={{ fontFamily: "'Permanent Marker', cursive" }}><span className="text-red-500">NEXT</span><span className="text-white">BASE</span></span>
+          <span className="text-lg font-bold leading-none" style={{ fontFamily: "'Permanent Marker', cursive" }}><span className="text-red-500">EXTRA</span><span className="text-white">BASE</span></span>
         </div>
       </header>
 
