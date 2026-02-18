@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, useState, use } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import BrandLogo from "@/components/BrandLogo";
+import SiteNav from "@/components/SiteNav";
 import StarRating from "@/components/StarRating";
 import schoolsData from "@/data/schools.json";
 import draftPicksData from "@/data/draft-picks.json";
@@ -139,9 +139,7 @@ export default function SchoolPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = use(params);
-  const router = useRouter();
   const schoolData = (schoolsData as SchoolDetail[]).find((s) => s.id === parseInt(id));
-  const [detailNavOpen, setDetailNavOpen] = useState(false);
 
   const [priority, setPriority] = useState(0);
   const [notes, setNotes] = useState("");
@@ -366,61 +364,10 @@ export default function SchoolPage({
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 pt-4 pb-10 sm:pb-14">
           <div className="flex items-center justify-between mb-6 sm:mb-10">
             <div className="flex items-center gap-3">
-              <BrandLogo size="sm" showTagline={false} onClick={() => router.push("/")} />
+              <BrandLogo size="sm" showTagline={false} />
               <Link href="/admin" className="text-[10px] text-white/30 hover:text-white/60 transition-colors">Edit</Link>
             </div>
-
-            {/* Desktop nav */}
-            <div className="hidden sm:flex items-center gap-1 bg-black/30 backdrop-blur-sm rounded-xl p-1">
-              {[
-                { label: "Home", href: "/" },
-                { label: "My Top Programs", href: "/#mylist" },
-                { label: "Division I", href: "/#D1" },
-                { label: "Division II", href: "/#D2" },
-                { label: "AI Matches", href: "/match" },
-              ].map((item) => (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  className="px-3 py-1.5 rounded-lg text-xs font-bold text-white/70 hover:text-white hover:bg-white/15 transition-colors whitespace-nowrap"
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </div>
-
-            {/* Mobile nav toggle */}
-            <div className="sm:hidden relative">
-              <button
-                onClick={() => setDetailNavOpen((o) => !o)}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-black/30 backdrop-blur-sm text-white/80 text-sm font-bold"
-              >
-                Menu
-                <svg className={`w-4 h-4 transition-transform ${detailNavOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              {detailNavOpen && (
-                <div className="absolute right-0 top-full mt-1 w-48 bg-gray-900/95 backdrop-blur-md rounded-xl border border-white/10 shadow-2xl overflow-hidden z-30">
-                  {[
-                    { label: "Home", href: "/" },
-                    { label: "My Top Programs", href: "/#mylist" },
-                    { label: "Division I", href: "/#D1" },
-                    { label: "Division II", href: "/#D2" },
-                    { label: "AI Matches", href: "/match" },
-                  ].map((item) => (
-                    <Link
-                      key={item.label}
-                      href={item.href}
-                      onClick={() => setDetailNavOpen(false)}
-                      className="block px-4 py-2.5 text-sm font-bold text-white/80 hover:text-white hover:bg-white/10 transition-colors border-b border-white/5 last:border-0"
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
+            <SiteNav variant="dark" />
           </div>
           <div className="flex items-end gap-4 sm:gap-5">
             <div className="shrink-0 w-16 h-16 sm:w-24 sm:h-24 rounded-2xl bg-white shadow-2xl flex items-center justify-center overflow-hidden border-2 border-white/80">

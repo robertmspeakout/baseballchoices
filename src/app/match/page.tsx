@@ -3,6 +3,7 @@
 import { useEffect, useState, useMemo } from "react";
 import Link from "next/link";
 import BrandLogo from "@/components/BrandLogo";
+import SiteNav from "@/components/SiteNav";
 import { loadProfile, loadPreferences, isProfileComplete, type PlayerProfile, type PlayerPreferences } from "@/lib/playerProfile";
 import { getMatchResults, type MatchResult } from "@/lib/matchingEngine";
 import { geocodeZip } from "@/lib/geo";
@@ -214,13 +215,9 @@ export default function MatchPage() {
         </div>
 
         <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 py-6 sm:py-8">
-          <div className="flex items-center gap-3 mb-4">
-            <Link href="/" className="text-white/60 hover:text-white transition-colors">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-            </Link>
+          <div className="flex items-center justify-between mb-4">
             <BrandLogo size="sm" showTagline={false} />
+            <SiteNav variant="dark" active="My AI Matches" />
           </div>
 
           <h1 className="text-2xl sm:text-4xl font-black tracking-tight leading-tight">

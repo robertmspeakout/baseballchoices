@@ -44,8 +44,8 @@ interface Filters {
 }
 
 const TABS_BASE = [
-  { key: "D1", label: "Division I" },
-  { key: "D2", label: "Division II" },
+  { key: "D1", label: "All Division 1" },
+  { key: "D2", label: "All Division 2" },
 ] as const;
 type TabKey = "home" | "mylist" | "D1" | "D2";
 
@@ -465,29 +465,25 @@ export default function Home() {
 
       {/* Tab Navigation */}
       <div className="bg-white/95 backdrop-blur-md border-b border-gray-200 sticky top-0 z-20">
-        {/* Desktop nav */}
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 py-2 sm:py-2.5 hidden sm:flex items-center justify-between">
-          <div className="inline-flex items-center gap-1">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 py-2 sm:py-2.5 flex items-center justify-between">
+          {/* Desktop: inline nav items */}
+          <div className="hidden sm:flex items-center gap-1">
             <div className="inline-flex bg-gray-100 rounded-xl p-1 gap-0.5">
-              {/* Home button */}
               <button
                 onClick={() => { handleTabChange("home"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-                className={`p-2.5 rounded-lg transition-all duration-200 ${
+                className={`px-5 py-2.5 rounded-lg text-base font-bold whitespace-nowrap transition-all duration-200 ${
                   activeTab === "home"
                     ? "bg-gray-900 text-white shadow-md"
-                    : "text-gray-400 hover:text-gray-800 hover:bg-gray-50"
+                    : "text-gray-500 hover:text-gray-800 hover:bg-gray-50"
                 }`}
-                title="Home"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                </svg>
+                Home
               </button>
               {tabs.map((tab) => (
                 <button
                   key={tab.key}
                   onClick={() => handleTabChange(tab.key)}
-                  className={`relative px-6 py-2.5 rounded-lg text-base font-bold whitespace-nowrap transition-all duration-200 ${
+                  className={`relative px-5 py-2.5 rounded-lg text-base font-bold whitespace-nowrap transition-all duration-200 ${
                     activeTab === tab.key
                       ? "bg-gray-900 text-white shadow-md"
                       : "text-gray-500 hover:text-gray-800 hover:bg-gray-50"
@@ -505,84 +501,73 @@ export default function Home() {
                   )}
                 </button>
               ))}
+              <Link
+                href="/match"
+                className="px-5 py-2.5 rounded-lg text-base font-bold whitespace-nowrap transition-all duration-200 text-gray-500 hover:text-gray-800 hover:bg-gray-50"
+              >
+                My AI Matches
+              </Link>
             </div>
           </div>
-          <Link
-            href="/match"
-            className="inline-flex items-center gap-1.5 px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-xl text-sm font-bold transition-colors shadow-sm"
-          >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
-            </svg>
-            Find My Matches
-          </Link>
-        </div>
 
-        {/* Mobile nav - accordion style */}
-        <div className="sm:hidden">
-          <div className="flex items-center justify-between px-4 py-2">
-            <div className="flex items-center gap-1">
-              <button
-                onClick={() => { handleTabChange("home"); setMobileNavOpen(false); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-                className={`p-2 rounded-lg transition-colors ${
-                  activeTab === "home"
-                    ? "bg-gray-900 text-white"
-                    : "text-gray-400 hover:text-gray-800 hover:bg-gray-100"
-                }`}
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                </svg>
-              </button>
-              <button
-                onClick={() => setMobileNavOpen((o) => !o)}
-                className="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-100 text-sm font-bold text-gray-800"
-              >
-                {activeTab === "home" ? "Top 25" : tabs.find((t) => t.key === activeTab)?.label || "Browse"}
-                {activeTab === "mylist" && ratedCount > 0 && (
-                  <span className="inline-flex items-center justify-center min-w-[18px] h-4 px-1 rounded-full text-[10px] font-bold bg-red-500 text-white">
-                    {ratedCount}
-                  </span>
-                )}
-                <svg className={`w-4 h-4 text-gray-400 transition-transform ${mobileNavOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-            </div>
-            <Link
-              href="/match"
-              className="inline-flex items-center gap-1.5 px-3 py-2 bg-red-600 hover:bg-red-700 text-white rounded-xl text-sm font-bold transition-colors shadow-sm"
+          {/* Mobile: hamburger accordion */}
+          <div className="sm:hidden relative">
+            <button
+              onClick={() => setMobileNavOpen((o) => !o)}
+              className="p-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors"
+              aria-label="Navigation menu"
             >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
-              </svg>
-              AI Matches
-            </Link>
-          </div>
-          {mobileNavOpen && (
-            <div className="border-t border-gray-100 px-4 py-2 space-y-1">
-              {tabs.map((tab) => (
+              {mobileNavOpen ? (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
+            </button>
+            {mobileNavOpen && (
+              <div className="absolute left-0 top-full mt-1 w-56 bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden z-50">
                 <button
-                  key={tab.key}
-                  onClick={() => { handleTabChange(tab.key); setMobileNavOpen(false); }}
-                  className={`w-full text-left px-4 py-2.5 rounded-lg text-sm font-bold transition-colors ${
-                    activeTab === tab.key
-                      ? "bg-gray-900 text-white"
-                      : "text-gray-600 hover:bg-gray-100"
+                  onClick={() => { handleTabChange("home"); setMobileNavOpen(false); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+                  className={`w-full text-left block px-4 py-3 text-sm font-bold transition-colors border-b border-gray-100 ${
+                    activeTab === "home" ? "bg-gray-900 text-white" : "text-gray-700 hover:bg-gray-50"
                   }`}
                 >
-                  {tab.label}
-                  {tab.key === "mylist" && ratedCount > 0 && (
-                    <span className={`ml-2 inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-xs font-bold ${
-                      activeTab === tab.key ? "bg-red-500 text-white" : "bg-gray-200 text-gray-600"
-                    }`}>
-                      {ratedCount}
-                    </span>
-                  )}
+                  Home
                 </button>
-              ))}
-            </div>
-          )}
+                {tabs.map((tab) => (
+                  <button
+                    key={tab.key}
+                    onClick={() => { handleTabChange(tab.key); setMobileNavOpen(false); }}
+                    className={`w-full text-left block px-4 py-3 text-sm font-bold transition-colors border-b border-gray-100 ${
+                      activeTab === tab.key ? "bg-gray-900 text-white" : "text-gray-700 hover:bg-gray-50"
+                    }`}
+                  >
+                    {tab.label}
+                    {tab.key === "mylist" && ratedCount > 0 && (
+                      <span className={`ml-2 inline-flex items-center justify-center min-w-[20px] h-5 px-1.5 rounded-full text-xs font-bold ${
+                        activeTab === tab.key ? "bg-red-500 text-white" : "bg-gray-200 text-gray-600"
+                      }`}>
+                        {ratedCount}
+                      </span>
+                    )}
+                  </button>
+                ))}
+                <Link
+                  href="/match"
+                  onClick={() => setMobileNavOpen(false)}
+                  className="block px-4 py-3 text-sm font-bold text-gray-700 hover:bg-gray-50 transition-colors"
+                >
+                  My AI Matches
+                </Link>
+              </div>
+            )}
+          </div>
+
+          {/* Right side - empty for now on desktop, keeps layout balanced */}
+          <div className="hidden sm:block" />
         </div>
       </div>
 
