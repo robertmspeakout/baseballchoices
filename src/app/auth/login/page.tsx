@@ -9,6 +9,7 @@ import { signIn } from "next-auth/react";
 function LoginForm() {
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get("callbackUrl") || "/";
+  const verified = searchParams.get("verified") === "1";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -60,6 +61,15 @@ function LoginForm() {
         <h2 className="text-2xl font-bold text-gray-900">Welcome Back</h2>
         <p className="text-sm text-gray-500 mt-1">Sign in to your ExtraBase account</p>
       </div>
+
+      {verified && (
+        <div className="flex items-center gap-2 px-4 py-3 bg-green-50 border border-green-200 rounded-xl mb-4">
+          <svg className="w-4 h-4 text-green-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+          </svg>
+          <p className="text-sm text-green-700 font-medium">Email verified! Please sign in to continue.</p>
+        </div>
+      )}
 
       <form onSubmit={handleLogin} className="space-y-4">
         <div>

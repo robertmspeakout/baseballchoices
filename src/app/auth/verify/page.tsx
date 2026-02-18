@@ -10,6 +10,7 @@ function VerifyForm() {
   const [code, setCode] = useState(["", "", "", "", "", ""]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [resending, setResending] = useState(false);
   const [resent, setResent] = useState(false);
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
@@ -51,7 +52,7 @@ function VerifyForm() {
     }
   };
 
-  const handleVerify = (e: React.FormEvent) => {
+  const handleVerify = async (e: React.FormEvent) => {
     e.preventDefault();
     const fullCode = code.join("");
     if (fullCode.length < 6) {
@@ -60,16 +61,58 @@ function VerifyForm() {
     }
 
     setLoading(true);
-    // Simulate verification
-    setTimeout(() => {
+    setError("");
+
+    try {
+      const res = await fetch("/api/auth/verify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, code: fullCode }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.error || "Verification failed. Please try again.");
+        setLoading(false);
+        return;
+      }
+
+      // Success — redirect to profile setup
+      window.location.href = "/auth/login?verified=1";
+    } catch {
+      setError("Something went wrong. Please try again.");
       setLoading(false);
-      window.location.href = "/auth/profile";
-    }, 1200);
+    }
   };
 
-  const handleResend = () => {
-    setResent(true);
-    setTimeout(() => setResent(false), 3000);
+  const handleResend = async () => {
+    if (resending || !email) return;
+    setResending(true);
+    setError("");
+
+    try {
+      const res = await fetch("/api/auth/resend-code", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.error || "Failed to resend code.");
+        setResending(false);
+        return;
+      }
+
+      setResent(true);
+      setResending(false);
+      setTimeout(() => setResent(false), 3000);
+    } catch {
+      setError("Failed to resend code. Please try again.");
+      setResending(false);
+    }
   };
 
   return (
@@ -103,7 +146,7 @@ function VerifyForm() {
                 value={digit}
                 onChange={(e) => handleChange(i, e.target.value)}
                 onKeyDown={(e) => handleKeyDown(i, e)}
-                className="w-11 h-14 sm:w-12 sm:h-16 text-center text-xl font-bold border border-gray-300 rounded-xl text-gray-900 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="w-11 h-14 sm:w-12 sm:h-16 text-center text-xl font-bold border border-gray-300 rounded-xl text-gray-900 focus:ring-2 focus:ring-red-500 focus:border-red-500"
               />
             ))}
           </div>
@@ -121,7 +164,7 @@ function VerifyForm() {
         <button
           type="submit"
           disabled={loading}
-          className="w-full px-4 py-3 bg-blue-600 text-white rounded-xl text-sm font-semibold hover:bg-blue-700 transition-colors disabled:opacity-50 shadow-sm"
+          className="w-full px-4 py-3 bg-red-600 text-white rounded-xl text-sm font-semibold hover:bg-red-700 transition-colors disabled:opacity-50 shadow-sm"
         >
           {loading ? (
             <span className="flex items-center justify-center gap-2">
@@ -140,8 +183,12 @@ function VerifyForm() {
           {resent ? (
             <span className="text-green-600 font-medium">Code resent!</span>
           ) : (
-            <button onClick={handleResend} className="text-blue-600 hover:text-blue-800 font-medium">
-              Resend code
+            <button
+              onClick={handleResend}
+              disabled={resending}
+              className="text-red-600 hover:text-red-800 font-medium disabled:opacity-50"
+            >
+              {resending ? "Sending..." : "Resend code"}
             </button>
           )}
         </p>
@@ -159,7 +206,7 @@ function VerifyForm() {
 export default function VerifyPage() {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-      <header className="bg-blue-950 text-white">
+      <header className="bg-gray-900 text-white">
         <div className="max-w-md mx-auto px-4 py-4 flex items-center gap-3">
           <Link href="/auth/register" className="text-white/70 hover:text-white transition-colors">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -171,7 +218,7 @@ export default function VerifyPage() {
       </header>
 
       <main className="flex-1 flex items-start justify-center px-4 py-8 sm:py-12">
-        <Suspense fallback={<div className="animate-spin rounded-full h-8 w-8 border-4 border-blue-200 border-t-blue-600" />}>
+        <Suspense fallback={<div className="animate-spin rounded-full h-8 w-8 border-4 border-gray-200 border-t-red-600" />}>
           <VerifyForm />
         </Suspense>
       </main>

@@ -9,20 +9,31 @@ datasource db {
 }
 
 model User {
-  id              String   @id @default(cuid())
-  firstName       String
-  lastName        String
-  email           String   @unique
-  passwordHash    String
-  role            String   @default("USER")
-  trialExpiresAt  DateTime
-  membershipActive Boolean @default(false)
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+  id               String   @id @default(cuid())
+  firstName        String
+  lastName         String
+  email            String   @unique
+  passwordHash     String
+  role             String   @default("USER")
+  emailVerified    Boolean  @default(false)
+  trialExpiresAt   DateTime
+  membershipActive Boolean  @default(false)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
 
   profile    Profile?
   preferences Preferences?
   schoolData  UserSchoolData[]
+}
+
+model VerificationToken {
+  id        String   @id @default(cuid())
+  email     String
+  code      String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([email, code])
 }
 
 model Profile {

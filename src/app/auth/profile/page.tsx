@@ -341,7 +341,7 @@ export default function ProfilePage() {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
       {/* Header */}
-      <header className="relative bg-gray-900 text-white overflow-visible">
+      <header className="relative bg-gray-900 text-white overflow-visible z-10">
         {backgroundPic && (
           <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('${backgroundPic}')` }} />
         )}
