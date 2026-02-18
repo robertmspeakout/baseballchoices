@@ -85,28 +85,55 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
           {NAV_ITEMS.map((item) => {
             const isActive = active === item.label;
             const Icon = item.icon ? iconMap[item.icon] : null;
+            const cls = `flex items-center gap-2 px-4 py-3 text-sm font-bold transition-colors border-b last:border-0 ${
+              isLight
+                ? isActive
+                  ? "bg-gray-900 text-white border-gray-200"
+                  : "text-gray-700 hover:bg-gray-50 border-gray-100"
+                : isActive
+                  ? "bg-white/15 text-white border-white/5"
+                  : "text-white/80 hover:text-white hover:bg-white/10 border-white/5"
+            }`;
 
+            // On the home page (onNavigate provided), use client-side tab switching
+            if (onNavigate && isLocalNav(item.href)) {
+              return (
+                <button
+                  key={item.label}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleClick(item);
+                  }}
+                  className={cls}
+                >
+                  {Icon && <Icon className="w-4 h-4" />}
+                  {item.label}
+                </button>
+              );
+            }
+
+            // On other pages, use <a> for hash links to force full navigation
+            if (isLocalNav(item.href)) {
+              return (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  className={cls}
+                >
+                  {Icon && <Icon className="w-4 h-4" />}
+                  {item.label}
+                </a>
+              );
+            }
+
+            // For non-hash links (e.g. /match), use Next.js Link
             return (
               <Link
                 key={item.label}
                 href={item.href}
-                onClick={(e) => {
-                  if (onNavigate && isLocalNav(item.href)) {
-                    e.preventDefault();
-                    handleClick(item);
-                  } else {
-                    handleClick(item);
-                  }
-                }}
-                className={`flex items-center gap-2 px-4 py-3 text-sm font-bold transition-colors border-b last:border-0 ${
-                  isLight
-                    ? isActive
-                      ? "bg-gray-900 text-white border-gray-200"
-                      : "text-gray-700 hover:bg-gray-50 border-gray-100"
-                    : isActive
-                      ? "bg-white/15 text-white border-white/5"
-                      : "text-white/80 hover:text-white hover:bg-white/10 border-white/5"
-                }`}
+                onClick={() => setOpen(false)}
+                className={cls}
               >
                 {Icon && <Icon className="w-4 h-4" />}
                 {item.label}

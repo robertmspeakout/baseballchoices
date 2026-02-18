@@ -258,7 +258,18 @@ export default function Home() {
     if (["mylist", "D1", "D2"].includes(hash)) {
       setActiveTab(hash as TabKey);
     }
+    // Listen for hash changes (e.g. navigating back from /match to /#mylist)
+    const onHashChange = () => {
+      const h = window.location.hash.replace("#", "");
+      if (["mylist", "D1", "D2"].includes(h)) {
+        setActiveTab(h as TabKey);
+      } else if (!h) {
+        setActiveTab("home");
+      }
+    };
+    window.addEventListener("hashchange", onHashChange);
     setMounted(true);
+    return () => window.removeEventListener("hashchange", onHashChange);
   }, []);
 
   // Count rated programs
@@ -482,7 +493,7 @@ export default function Home() {
         {/* Instructional box on home page */}
         {activeTab === "home" && (
           <div className="bg-blue-50 border border-blue-200 rounded-xl px-4 py-4 sm:py-5 text-center">
-            <h3 className="text-base sm:text-lg font-extrabold text-gray-900 mb-1">Where Will You Play?</h3>
+            <h3 className="text-base sm:text-lg font-extrabold text-gray-900 mb-1">Where Will You Play Next?</h3>
             <p className="text-xs sm:text-sm text-gray-600 mb-3">
               Over {allSchools.length} baseball programs are waiting. Rate schools with stars to build your personal list, or let our AI find your best fits.
             </p>
