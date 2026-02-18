@@ -556,7 +556,7 @@ export default function Home() {
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
               </svg>
-              Matches
+              AI Matches
             </Link>
           </div>
           {mobileNavOpen && (
@@ -595,7 +595,7 @@ export default function Home() {
             <p className="text-xs sm:text-sm text-gray-600 mb-3">
               Over {allSchools.length} baseball programs are waiting. Rate schools with stars to build your personal list, or let our AI find your best fits.
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-2">
+            <div className="flex flex-col items-center gap-2">
               <Link
                 href="/match"
                 className="inline-flex items-center gap-1.5 px-4 py-2 bg-red-600 text-white rounded-lg text-sm font-bold hover:bg-red-700 transition-colors"
@@ -605,18 +605,20 @@ export default function Home() {
                 </svg>
                 Find My Matches
               </Link>
-              <button
-                onClick={() => handleTabChange("D1")}
-                className="px-4 py-2 bg-gray-700 text-white rounded-lg text-sm font-bold hover:bg-red-600 transition-colors"
-              >
-                Browse D1
-              </button>
-              <button
-                onClick={() => handleTabChange("D2")}
-                className="px-4 py-2 bg-gray-700 text-white rounded-lg text-sm font-bold hover:bg-red-600 transition-colors"
-              >
-                Browse D2
-              </button>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => handleTabChange("D1")}
+                  className="px-4 py-2 bg-gray-700 text-white rounded-lg text-sm font-bold hover:bg-red-600 transition-colors"
+                >
+                  Browse D1
+                </button>
+                <button
+                  onClick={() => handleTabChange("D2")}
+                  className="px-4 py-2 bg-gray-700 text-white rounded-lg text-sm font-bold hover:bg-red-600 transition-colors"
+                >
+                  Browse D2
+                </button>
+              </div>
             </div>
           </div>
         )}
