@@ -204,7 +204,7 @@ export default function MatchPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <header className="relative text-white overflow-hidden">
+      <header className="relative text-white overflow-visible z-30">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1529768167801-9173d94c2a42?w=1600&q=80')" }}

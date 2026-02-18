@@ -349,7 +349,7 @@ export default function SchoolPage({
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <header className="relative text-white overflow-hidden">
+      <header className="relative text-white overflow-visible z-30">
         {/* Background photo - first facility photo, stadium image, or default action shot */}
         <div
           className="absolute inset-0 bg-cover bg-center transition-[background-image] duration-700"
@@ -362,7 +362,7 @@ export default function SchoolPage({
           <div className="absolute -right-10 top-0 bottom-0 w-1/3 bg-gradient-to-l from-red-600/15 to-transparent skew-x-[-8deg]" />
         </div>
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 pt-4 pb-10 sm:pb-14">
-          <div className="flex items-center justify-between mb-6 sm:mb-10">
+          <div className="flex items-start justify-between mb-6 sm:mb-10">
             <div className="flex items-center gap-3">
               <BrandLogo size="sm" showTagline={false} />
               <Link href="/admin" className="text-[10px] text-white/30 hover:text-white/60 transition-colors">Edit</Link>

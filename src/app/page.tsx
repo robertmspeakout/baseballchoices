@@ -445,7 +445,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <header className="relative text-white overflow-hidden">
+      <header className="relative text-white overflow-visible z-30">
         {/* Full-bleed baseball photo background */}
         <div
           className="absolute inset-0 bg-cover bg-center"
@@ -455,7 +455,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
 
         <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 py-6 sm:py-10">
-          <div className="flex items-center justify-between">
+          <div className="flex items-start justify-between">
             <BrandLogo size="lg" showTagline={true} onClick={() => { handleTabChange("home"); window.scrollTo({ top: 0, behavior: "smooth" }); }} />
             <SiteNav
               variant="dark"
