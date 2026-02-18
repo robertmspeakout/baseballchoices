@@ -462,7 +462,7 @@ export default function Home() {
     setDistances(dists);
   };
 
-  if (!mounted) {
+  if (!mounted || status === "loading") {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="animate-spin rounded-full h-10 w-10 border-4 border-blue-200 border-t-blue-600" />
@@ -508,7 +508,7 @@ export default function Home() {
 
       {/* ── Landing sections (home tab, non-logged-in only) ──────────────── */}
       {/* All text below is driven by src/data/marketing.json — edit that file to change copy */}
-      {activeTab === "home" && !isLoggedIn && (
+      {activeTab === "home" && status === "unauthenticated" && (
         <>
           {/* Hero */}
           <section
@@ -540,7 +540,9 @@ export default function Home() {
                   {marketingContent.hero.secondaryButton}
                 </a>
               </div>
-              <p className="text-xs text-gray-500">{marketingContent.hero.footerNote}</p>
+              {"footerNote" in marketingContent.hero && (
+                <p className="text-xs text-gray-500">{(marketingContent.hero as Record<string, string>).footerNote}</p>
+              )}
             </div>
           </section>
 
@@ -716,7 +718,7 @@ export default function Home() {
           <h3 className="text-base font-bold text-gray-700 mt-2">All My Ranked Programs</h3>
         )}
 
-        {!isLoggedIn && activeTab !== "home" ? (
+        {status === "unauthenticated" && activeTab !== "home" ? (
           /* Auth gate when not logged in on non-home tabs */
           <div className="flex justify-center py-12">
             <div className="bg-white rounded-2xl shadow-xl border border-gray-200 p-6 sm:p-8 text-center max-w-md mx-4">

@@ -33,13 +33,14 @@ function LoginForm() {
         redirect: false,
       });
 
-      if (result?.error) {
+      if (!result || result.error || !result.ok) {
         setError("Invalid email or password.");
         setLoading(false);
         return;
       }
 
-      window.location.href = callbackUrl;
+      // Full page navigation to pick up the new session cookie
+      window.location.replace(callbackUrl);
     } catch {
       setError("Something went wrong. Please try again.");
       setLoading(false);
