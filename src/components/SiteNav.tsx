@@ -85,7 +85,7 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
           {NAV_ITEMS.map((item) => {
             const isActive = active === item.label;
             const Icon = item.icon ? iconMap[item.icon] : null;
-            const cls = `flex items-center gap-2 px-4 py-3 text-sm font-bold transition-colors border-b last:border-0 ${
+            const cls = `w-full flex items-center gap-2 px-4 py-3 text-sm font-bold transition-colors border-b last:border-0 ${
               isLight
                 ? isActive
                   ? "bg-gray-900 text-white border-gray-200"
