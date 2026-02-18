@@ -1,5 +1,4 @@
 import { scrypt, randomBytes, timingSafeEqual } from "crypto";
-import bcrypt from "bcryptjs";
 
 const SALT_LENGTH = 16;
 const KEY_LENGTH = 64;
@@ -14,13 +13,7 @@ export function hashPassword(password: string): Promise<string> {
   });
 }
 
-export async function verifyPassword(password: string, stored: string): Promise<boolean> {
-  // Support legacy bcrypt hashes (starts with $2a$ or $2b$)
-  if (stored.startsWith("$2")) {
-    return bcrypt.compare(password, stored);
-  }
-
-  // New scrypt-based hashes (salt:hash format)
+export function verifyPassword(password: string, stored: string): Promise<boolean> {
   return new Promise((resolve, reject) => {
     const [salt, hash] = stored.split(":");
     if (!salt || !hash) {
