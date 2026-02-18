@@ -543,6 +543,12 @@ export default function Home() {
             {playerFirstName ? `${playerFirstName}'s Top Programs` : "My Top Programs"}
           </h2>
         )}
+        {activeTab === "D1" && (
+          <h2 className="text-lg sm:text-xl font-bold text-gray-900">Division 1 Programs</h2>
+        )}
+        {activeTab === "D2" && (
+          <h2 className="text-lg sm:text-xl font-bold text-gray-900">Division 2 Programs</h2>
+        )}
 
         {showDivisionFilters && (
           <SearchFilters

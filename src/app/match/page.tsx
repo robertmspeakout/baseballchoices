@@ -220,14 +220,7 @@ export default function MatchPage() {
             <SiteNav variant="dark" active="My AI Matches" />
           </div>
 
-          <h1 className="text-2xl sm:text-4xl font-black tracking-tight leading-tight">
-            Your Top Matches
-          </h1>
-          {profile?.playerName && (
-            <p className="text-white/60 mt-1">
-              {results.length} program{results.length !== 1 ? "s" : ""} — 90% or above matches for <span className="text-white font-semibold">{profile.playerName}</span>
-            </p>
-          )}
+          <div className="h-2" />
         </div>
         <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-red-700 via-red-500 to-red-700" />
       </header>
@@ -277,22 +270,12 @@ export default function MatchPage() {
         ) : (
           <>
             {/* Section header */}
-            <div className="flex items-center justify-between mb-4">
-              <div>
-                <h2 className="text-lg sm:text-xl font-black text-gray-900">
-                  {showAll ? "All 90%+ Matches" : "Your Top Matches"}
-                </h2>
-                <p className="text-sm text-gray-500">
-                  90% or above matches
-                </p>
-              </div>
-              <Link
-                href="/auth/profile"
-                className="text-sm font-semibold text-red-600 hover:text-red-700"
-              >
-                Edit Preferences
-              </Link>
-            </div>
+            <h2 className="text-xl sm:text-2xl font-black text-gray-900">
+              {profile?.playerName ? `${profile.playerName.split(" ")[0]}'s Top Matches` : "Your Top Matches"}
+            </h2>
+            <p className="text-sm text-gray-500 mb-4">
+              90% or above matches
+            </p>
 
             {/* Match cards */}
             <div className="grid gap-3">
