@@ -262,18 +262,13 @@ export default function Home() {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <header className="relative text-white overflow-hidden">
-        {/* Full-bleed home plate photo background */}
+        {/* Full-bleed baseball photo background */}
         <div
-          className="absolute inset-0 bg-cover bg-bottom"
-          style={{ backgroundImage: "url('/hero-homeplate.jpg')" }}
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1629219644109-b4df0ab25a7b?w=1920&q=80')" }}
         />
-        {/* Dramatic gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/30" />
-        {/* Hot accent slash across the right side */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -right-10 top-0 bottom-0 w-2/5 bg-gradient-to-l from-red-600/20 to-transparent skew-x-[-8deg]" />
-          <div className="absolute -right-5 top-0 bottom-0 w-1 bg-red-500/40 skew-x-[-8deg]" />
-        </div>
+        {/* Left-to-right gradient for logo contrast */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
 
         <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 py-6 sm:py-10">
           <div className="flex items-center justify-between">
