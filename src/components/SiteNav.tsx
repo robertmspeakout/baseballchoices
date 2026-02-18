@@ -63,7 +63,7 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
 
   return (
     <div className="relative flex items-center gap-2">
-      {/* Desktop button */}
+      {/* Desktop auth buttons */}
       {isLoggedIn ? (
         <span className={`hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold ${
           isLight ? "text-gray-600 bg-gray-100" : "text-white/80 bg-white/10"
@@ -74,12 +74,22 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
           {firstName || "Account"}
         </span>
       ) : (
-        <Link
-          href="/auth/register"
-          className="hidden sm:inline-flex items-center px-4 py-2 bg-[#CC0000] text-white rounded-lg text-xs font-bold hover:bg-red-700 transition-colors"
-        >
-          Sign Up
-        </Link>
+        <div className="hidden sm:flex items-center gap-2">
+          <Link
+            href="/auth/login"
+            className={`inline-flex items-center px-3 py-2 rounded-lg text-xs font-bold transition-colors ${
+              isLight ? "text-gray-700 hover:bg-gray-100" : "text-white/80 hover:bg-white/10"
+            }`}
+          >
+            Log In
+          </Link>
+          <Link
+            href="/auth/register"
+            className="inline-flex items-center px-4 py-2 bg-[#CC0000] text-white rounded-lg text-xs font-bold hover:bg-red-700 transition-colors"
+          >
+            Sign Up
+          </Link>
+        </div>
       )}
       <button
         onClick={() => setOpen((o) => !o)}

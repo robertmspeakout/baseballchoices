@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import BrandLogo from "@/components/BrandLogo";
 import SiteNav from "@/components/SiteNav";
+import AuthGate from "@/components/AuthGate";
 import { loadProfile, loadPreferences, isProfileComplete, type PlayerProfile, type PlayerPreferences } from "@/lib/playerProfile";
 import { getMatchResults, type MatchResult } from "@/lib/matchingEngine";
 import { geocodeZip } from "@/lib/geo";
@@ -259,6 +260,7 @@ export default function MatchPage() {
   }
 
   return (
+    <AuthGate>
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <header className="relative text-white overflow-visible z-30">
@@ -468,5 +470,6 @@ export default function MatchPage() {
         </div>
       </footer>
     </div>
+    </AuthGate>
   );
 }

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, use } from "react";
 import Link from "next/link";
 import BrandLogo from "@/components/BrandLogo";
 import SiteNav from "@/components/SiteNav";
+import AuthGate from "@/components/AuthGate";
 import StarRating from "@/components/StarRating";
 import schoolsData from "@/data/schools.json";
 import draftPicksData from "@/data/draft-picks.json";
@@ -348,6 +349,7 @@ export default function SchoolPage({
   }
 
   return (
+    <AuthGate>
     <div className="min-h-screen bg-gray-50">
       <header className="relative text-white overflow-visible z-30">
         {/* Background photo - first facility photo, stadium image, or default action shot */}
@@ -1108,5 +1110,6 @@ export default function SchoolPage({
         )}
       </main>
     </div>
+    </AuthGate>
   );
 }

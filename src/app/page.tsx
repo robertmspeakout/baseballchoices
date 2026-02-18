@@ -653,16 +653,14 @@ export default function Home() {
 
       {/* Main content */}
       <main className="max-w-[1400px] mx-auto px-3 sm:px-6 py-4 sm:py-6 space-y-4 sm:space-y-6">
-        {/* Instructional box on home page */}
-        {activeTab === "home" && (
+        {/* Instructional box — logged-in users only */}
+        {activeTab === "home" && isLoggedIn && (
           <div className="bg-blue-50 border border-blue-200 rounded-xl px-4 py-4 sm:py-5 text-center">
             <h3 className="text-base sm:text-lg font-extrabold text-gray-900 mb-1">
-              {isLoggedIn && playerFirstName ? `Welcome back, ${playerFirstName}!` : "Where Will You Play Next?"}
+              {playerFirstName ? `Welcome back, ${playerFirstName}!` : "Welcome back!"}
             </h3>
             <p className="text-xs sm:text-sm text-gray-600 mb-3">
-              {isLoggedIn
-                ? "Rate schools with stars to build your personal list, or let our AI find your best fits."
-                : `Over ${allSchools.length} baseball programs are waiting. Rate schools with stars to build your personal list, or let our AI find your best fits.`}
+              Rate schools with stars to build your personal list, or let our AI find your best fits.
             </p>
             <div className="grid grid-cols-2 gap-2 max-w-md mx-auto sm:flex sm:flex-wrap sm:justify-center sm:max-w-none">
               <button
@@ -701,8 +699,8 @@ export default function Home() {
           </div>
         )}
 
-        {/* Section labels */}
-        {activeTab === "home" && (
+        {/* Section labels — only for logged-in on home, always for other tabs */}
+        {activeTab === "home" && isLoggedIn && (
           <h2 className="text-lg sm:text-xl font-bold text-gray-900">Top 25 D1 Programs</h2>
         )}
         {activeTab === "mylist" && (
@@ -735,21 +733,29 @@ export default function Home() {
           <h3 className="text-base font-bold text-gray-700 mt-2">All My Ranked Programs</h3>
         )}
 
-        {activeTab === "home" && !isLoggedIn ? (
+        {!isLoggedIn ? (
+          /* Auth gate when not logged in */
           <div className="relative">
-            <div className="overflow-hidden" style={{ maxHeight: 620 }}>
-              <SchoolTable
-                schools={paginated}
-                distances={distances}
-                sortBy={sortBy}
-                sortDir={sortDir}
-                onSort={handleSort}
-                onPriorityChange={handlePriorityChange}
-              />
+            <div className="overflow-hidden" style={{ maxHeight: activeTab === "home" ? 620 : 500 }}>
+              <div className={activeTab !== "home" ? "blur-sm pointer-events-none opacity-60" : ""}>
+                <SchoolTable
+                  schools={paginated}
+                  distances={distances}
+                  sortBy={sortBy}
+                  sortDir={sortDir}
+                  onSort={handleSort}
+                  onPriorityChange={handlePriorityChange}
+                />
+              </div>
             </div>
-            {/* Fade + blur overlay */}
-            <div className="absolute bottom-0 left-0 right-0 h-72 bg-gradient-to-t from-gray-50 via-gray-50/95 to-transparent pointer-events-none" />
-            <div className="absolute bottom-0 left-0 right-0 flex items-end justify-center pb-6 pointer-events-none">
+            <div className={`absolute left-0 right-0 pointer-events-none ${
+              activeTab === "home"
+                ? "bottom-0 h-72 bg-gradient-to-t from-gray-50 via-gray-50/95 to-transparent"
+                : "inset-0 bg-gradient-to-t from-gray-50 via-gray-50/95 to-transparent"
+            }`} />
+            <div className={`absolute left-0 right-0 flex justify-center pointer-events-none ${
+              activeTab === "home" ? "bottom-0 items-end pb-6" : "inset-0 items-center"
+            }`}>
               <div className="pointer-events-auto bg-white rounded-2xl shadow-xl border border-gray-200 p-6 sm:p-8 text-center max-w-md mx-4">
                 <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center mx-auto mb-4">
                   <svg className="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -757,7 +763,7 @@ export default function Home() {
                   </svg>
                 </div>
                 <p className="text-sm text-gray-700 font-medium mb-4">
-                  Create a free account to see all {allSchools.length} programs and unlock AI matching.
+                  Create a free account to access all {allSchools.length} programs and unlock AI matching.
                 </p>
                 <Link
                   href="/auth/register"
