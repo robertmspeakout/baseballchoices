@@ -470,7 +470,10 @@ export default function Home() {
 
         <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 py-6 sm:py-10">
           <div className="flex items-start justify-between">
-            <BrandLogo size="lg" showTagline={true} onClick={() => { handleTabChange("home"); window.scrollTo({ top: 0, behavior: "smooth" }); }} />
+            <div>
+              <BrandLogo size="lg" showTagline={true} onClick={() => { handleTabChange("home"); window.scrollTo({ top: 0, behavior: "smooth" }); }} />
+              <p className="text-xs text-white/50 mt-2 max-w-xs">Built by a baseball dad in Utah who lived this process and knew there had to be a better way.</p>
+            </div>
             <SiteNav
               variant="dark"
               active={activeTab === "home" ? "Home" : activeTab === "mylist" ? "My Top Programs" : activeTab === "D1" ? "All Division 1" : activeTab === "D2" ? "All Division 2" : undefined}
@@ -573,6 +576,23 @@ export default function Home() {
               </p>
               <p className="text-sm text-gray-400">
                 &mdash; Jack M., Class of 2027 D1 Commit
+              </p>
+            </div>
+          </section>
+
+          {/* Why We Built This */}
+          <section className="bg-white py-12 sm:py-16">
+            <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+              <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mb-4">Why We Built This</h2>
+              <div className="mb-6">
+                <img
+                  src="/images/family.png"
+                  alt="The family behind ExtraBase"
+                  className="mx-auto rounded-xl shadow-md max-w-full h-auto"
+                />
+              </div>
+              <p className="text-base text-gray-600 leading-relaxed">
+                We are baseball parents. There, we said it! And we love it. We also had a young recruit with the whole world of college baseball in front of him and none of us knew where to start. We built ExtraBase from the lessons we learned during that process &mdash; for the kids, their parents, and all of our sanity.
               </p>
             </div>
           </section>
