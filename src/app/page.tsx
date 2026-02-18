@@ -880,7 +880,6 @@ export default function Home() {
               <a href="#" className="hover:text-white transition-colors">Pricing</a>
               <a href="#" className="hover:text-white transition-colors">Contact</a>
               <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-              <Link href="/admin" className="text-gray-600 hover:text-gray-400 transition-colors">Admin</Link>
             </div>
           </div>
           <p className="text-xs text-gray-500 text-center sm:text-left">
