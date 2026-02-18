@@ -264,7 +264,7 @@ export default function Home() {
       <header className="relative text-white overflow-hidden">
         {/* Full-bleed home plate photo background */}
         <div
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-cover bg-bottom"
           style={{ backgroundImage: "url('/hero-homeplate.jpg')" }}
         />
         {/* Dramatic gradient overlay */}
