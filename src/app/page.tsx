@@ -228,13 +228,7 @@ function VIPCard({ school }: { school: School & { priority: number; high_academi
 }
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState<TabKey>(() => {
-    if (typeof window !== "undefined") {
-      const hash = window.location.hash.replace("#", "") as TabKey;
-      if (["home", "mylist", "D1", "D2"].includes(hash)) return hash;
-    }
-    return "home";
-  });
+  const [activeTab, setActiveTab] = useState<TabKey>("home");
   const [page, setPage] = useState(1);
   const [sortBy, setSortBy] = useState("ranking");
   const [sortDir, setSortDir] = useState("asc");
@@ -258,6 +252,11 @@ export default function Home() {
     const profile = loadProfile();
     if (profile.playerName) {
       setPlayerFirstName(profile.playerName.trim().split(/\s+/)[0]);
+    }
+    // Restore active tab from URL hash on mount
+    const hash = window.location.hash.replace("#", "");
+    if (["mylist", "D1", "D2"].includes(hash)) {
+      setActiveTab(hash as TabKey);
     }
     setMounted(true);
   }, []);
