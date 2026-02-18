@@ -53,7 +53,14 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
   };
 
   return (
-    <div className="relative">
+    <div className="relative flex items-center gap-2">
+      {/* Desktop sign-up button — always visible */}
+      <Link
+        href="/auth/register"
+        className="hidden sm:inline-flex items-center px-4 py-2 bg-[#CC0000] text-white rounded-lg text-xs font-bold hover:bg-red-700 transition-colors"
+      >
+        Sign Up
+      </Link>
       <button
         onClick={() => setOpen((o) => !o)}
         className={`p-2 rounded-lg transition-colors ${
@@ -140,6 +147,14 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
               </Link>
             );
           })}
+          {/* Sign Up inside mobile dropdown */}
+          <Link
+            href="/auth/register"
+            onClick={() => setOpen(false)}
+            className="sm:hidden w-full flex items-center justify-center gap-2 px-4 py-3 text-sm font-bold bg-[#CC0000] text-white hover:bg-red-700 transition-colors"
+          >
+            Sign Up
+          </Link>
         </div>
       )}
     </div>
