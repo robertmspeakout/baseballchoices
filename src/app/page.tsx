@@ -503,11 +503,8 @@ export default function Home() {
               <h2 className="text-3xl sm:text-5xl font-black text-white leading-tight mb-4">
                 The Recruiting Process<br />Just Got Simpler.
               </h2>
-              <p className="text-base sm:text-lg text-gray-400 mb-4 max-w-xl mx-auto">
-                Take control of your recruiting journey today with the only AI powered app built to organize, match, and guide your entire recruiting process &mdash; on your terms.
-              </p>
-              <p className="text-sm text-gray-500 italic mb-6 max-w-xl mx-auto">
-                Built by a baseball dad in Utah who lived this process and knew there had to be a better way.
+              <p className="text-base sm:text-lg text-gray-400 mb-6 max-w-xl mx-auto">
+                Built by a baseball dad for baseball families. Take control of your recruiting journey today with the only AI powered app built to organize, match, and guide your entire recruiting process &mdash; on your terms.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
                 <Link
@@ -590,7 +587,7 @@ export default function Home() {
                 <img
                   src="/images/family.jpg"
                   alt="The family behind ExtraBase"
-                  className="mx-auto rounded-full w-40 h-40 sm:w-48 sm:h-48 object-cover shadow-lg border-4 border-gray-200"
+                  className="mx-auto rounded-full w-40 h-40 sm:w-48 sm:h-48 object-cover object-top shadow-lg border-4 border-gray-200"
                 />
               </div>
               <p className="text-base text-gray-600 leading-relaxed mb-4">
