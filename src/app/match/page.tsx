@@ -213,7 +213,7 @@ export default function MatchPage() {
 
         <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 py-6 sm:py-10">
           <div className="flex items-start justify-between">
-            <BrandLogo size="md" showTagline={false} />
+            <BrandLogo size="lg" showTagline={true} />
             <SiteNav variant="dark" active="My AI Matches" />
           </div>
         </div>
