@@ -225,32 +225,37 @@ export default function MatchPage() {
           </h1>
           {profile?.playerName && (
             <p className="text-white/60 mt-1">
-              {results.length} program{results.length !== 1 ? "s" : ""} scored 90% or higher for <span className="text-white font-semibold">{profile.playerName}</span>
+              {results.length} program{results.length !== 1 ? "s" : ""} — 90% or above matches for <span className="text-white font-semibold">{profile.playerName}</span>
             </p>
-          )}
-
-          {/* Preference pills */}
-          {prefSummary.length > 0 && (
-            <div className="flex flex-wrap gap-2 mt-3">
-              {prefSummary.map((p, i) => (
-                <span key={i} className="px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full text-xs font-semibold border border-white/10">
-                  {p}
-                </span>
-              ))}
-              <Link
-                href="/auth/profile"
-                className="px-3 py-1 bg-red-600/30 backdrop-blur-sm rounded-full text-xs font-semibold border border-red-400/30 text-red-300 hover:bg-red-600/50 transition-colors"
-              >
-                Edit Preferences
-              </Link>
-            </div>
           )}
         </div>
         <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-red-700 via-red-500 to-red-700" />
       </header>
 
       {/* Results */}
-      <main className="max-w-[1400px] mx-auto px-3 sm:px-6 py-4 sm:py-6">
+      <main className="max-w-[1400px] mx-auto px-3 sm:px-6 py-4 sm:py-6 space-y-4">
+        {/* Active preference filters */}
+        {prefSummary.length > 0 && (
+          <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
+            <div className="flex items-center justify-between mb-2">
+              <h3 className="text-sm font-bold text-gray-700">Your Preferences</h3>
+              <Link
+                href="/auth/profile"
+                className="text-sm font-semibold text-red-600 hover:text-red-700 transition-colors"
+              >
+                Edit Preferences
+              </Link>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {prefSummary.map((p, i) => (
+                <span key={i} className="px-3 py-1 bg-gray-100 rounded-full text-xs font-semibold text-gray-700 border border-gray-200">
+                  {p}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+
         {results.length === 0 ? (
           <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8 text-center">
             <div className="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center mx-auto mb-4">
@@ -278,7 +283,7 @@ export default function MatchPage() {
                   {showAll ? "All 90%+ Matches" : "Your Top Matches"}
                 </h2>
                 <p className="text-sm text-gray-500">
-                  Programs that scored a 90% match or higher
+                  90% or above matches
                 </p>
               </div>
               <Link
