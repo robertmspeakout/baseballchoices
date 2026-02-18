@@ -1,7 +1,8 @@
 {
   "hero": {
     "headline": "The Recruiting Process\nJust Got Simpler.",
-    "subtext": "Built by a real baseball dad for real baseball families.\nTake control of your recruiting journey today with the only AI powered app built to organize, match, and guide your entire recruiting process — on your terms.",
+    "subtext": "Built by a real baseball dad for real baseball families.",
+    "subtext": "Take control of your recruiting journey today with the only AI powered app built to organize, match, and guide your entire recruiting process — on your terms.",
     "ctaButton": "Create Your Free Profile",
     "secondaryButton": "See How It Works",
     "footerNote": "Join 500+ college baseball programs and growing!"
@@ -24,7 +25,7 @@
       {
        "emoji": "⭐",
         "title": "Build Your List",
-        "description": "Browse all divions, rate and prioritize your top programs, track recruiting updates, and organize your entire recruiting journey in one place."
+        "description": "Research programs, rate your top schools, track recruiting updates, and organize your recruiting journey in one place."
       },
       {
          "emoji": "🤖",
@@ -56,7 +57,7 @@
   "whyWeBuiltThis": {
     "title": "Why We Built This",
     "paragraphs": [
-      "We were baseball parents sitting at a kitchen table with a talented and stressed out kid, a phone full of texts, an inbox full of invites, and absolutely no system to manage any of it. To help, I built a really complicated and cumbersome spreadsheet. We used it, it helped, but it wasn't enough. We had a recruit who was overwhelmed and a process that felt like it was controlling us instead of the other way around.",
+      "We were baseball parents sitting at our kitchen table in Utah with a talented and stressed out kid, a phone full of texts, an inbox full of invites, and absolutely no system to manage any of it. To help, I built a really complicated and cumbersome spreadsheet. We used it, it helped, but it wasn't enough. We had a recruit who was overwhelmed and a process that felt like it was controlling us instead of the other way around.",
       "We looked for a tool that could help us organize programs, track interest levels, compare options, and make sense of it all. We couldn't find one. So we built it...for all of our sanity."
     ]
   }
