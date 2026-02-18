@@ -64,14 +64,8 @@ function VIPCarousel({ schools }: { schools: (School & { priority: number })[] }
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
 
-  // Show priority-5 schools first; if none, show the highest-rated schools
-  let vipSchools = schools.filter((s) => s.priority === 5);
-  if (vipSchools.length === 0) {
-    const maxPriority = Math.max(...schools.map((s) => s.priority), 0);
-    if (maxPriority > 0) {
-      vipSchools = schools.filter((s) => s.priority === maxPriority);
-    }
-  }
+  // Show 4- and 5-star schools as featured cards
+  const vipSchools = schools.filter((s) => s.priority >= 4);
 
   const checkScroll = () => {
     const el = scrollRef.current;
