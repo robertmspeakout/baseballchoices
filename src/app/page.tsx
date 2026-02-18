@@ -493,7 +493,7 @@ export default function Home() {
         <>
           {/* Hero */}
           <section
-            className="relative py-16 sm:py-24 text-center overflow-hidden"
+            className="relative py-12 sm:py-19 text-center overflow-hidden"
             style={{ background: "linear-gradient(135deg, #1a1a2e 0%, #0d0d0d 100%)" }}
           >
             <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 50% 40%, rgba(245,197,24,0.08) 0%, transparent 70%)" }} />
@@ -501,7 +501,7 @@ export default function Home() {
               <h2 className="text-3xl sm:text-5xl font-black text-white leading-tight mb-4">
                 The Recruiting Process<br />Just Got Simpler.
               </h2>
-              <p className="text-base sm:text-lg text-gray-400 mb-8 max-w-xl mx-auto">
+              <p className="text-base sm:text-lg text-gray-400 mb-6 max-w-xl mx-auto">
                 Take control of your recruiting journey today with the only AI powered app built to organize, match, and guide your entire recruiting process &mdash; on your terms.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
