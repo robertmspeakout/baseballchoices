@@ -565,7 +565,7 @@ export default function Home() {
 
         {/* All Ranked Programs header — only on mylist when VIP exists */}
         {activeTab === "mylist" && sorted.some((s) => s.priority === 5) && (
-          <h3 className="text-base font-bold text-gray-700 mt-2">All Ranked Programs</h3>
+          <h3 className="text-base font-bold text-gray-700 mt-2">All My Ranked Programs</h3>
         )}
 
         <SchoolTable
