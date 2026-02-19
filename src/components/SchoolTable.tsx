@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import StarRating from "./StarRating";
 import { useState, useEffect, useRef } from "react";
 
@@ -275,6 +276,7 @@ export default function SchoolTable({
   onSort,
   onPriorityChange,
 }: SchoolTableProps) {
+  const router = useRouter();
   const currentRecords = useCurrentRecords(schools);
   const hasAnyFetchable = schools.some((s) => s.division === "D1" || s.division === "D2");
   const recordsLoading = hasAnyFetchable && Object.keys(currentRecords).length === 0;
@@ -355,7 +357,7 @@ export default function SchoolTable({
                 <tr
                   key={school.id}
                   className="hover:bg-blue-50/50 transition-colors cursor-pointer"
-                  onClick={() => window.location.href = `/school/${school.id}`}
+                  onClick={() => router.push(`/school/${school.id}`)}
                 >
                   <td className="px-3 py-3">
                     <span className="text-blue-700 font-semibold">
