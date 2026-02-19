@@ -288,7 +288,7 @@ export default function MatchPage() {
           <h2 className="text-xl sm:text-2xl font-black text-gray-900">
             {profile?.playerName ? `${profile.playerName.split(" ")[0]}'s AI Matches` : "Your AI Matches"}
           </h2>
-          <div className="relative sm:inline-block">
+          <div className="relative block sm:inline-block">
             <select
               value="match"
               onChange={(e) => {

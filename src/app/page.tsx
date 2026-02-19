@@ -692,7 +692,7 @@ export default function Home() {
                  activeTab === "D2" ? "All Division 2 Baseball Programs" :
                  "All Division 3 Baseball Programs"}
               </h2>
-              <div className="relative sm:inline-block">
+              <div className="relative block sm:inline-block">
               <select
                 value={activeTab === "mylist" ? "mylist" : activeTab}
                 onChange={(e) => {
