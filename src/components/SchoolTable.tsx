@@ -19,6 +19,7 @@ interface School {
   last_contacted: string | null;
   head_coach_name: string | null;
   logo_url?: string | null;
+  website?: string | null;
   last_season_record: string | null;
 }
 
@@ -141,14 +142,30 @@ function divisionBadge(division: string) {
 }
 
 function SchoolLogo({ school }: { school: School }) {
-  const [error, setError] = useState(false);
-  if (school.logo_url && !error) {
+  const [src, setSrc] = useState(school.logo_url || null);
+  const triedFallback = useRef(false);
+
+  function handleError() {
+    if (!triedFallback.current && school.website) {
+      triedFallback.current = true;
+      try {
+        const domain = new URL(school.website).hostname;
+        setSrc(`https://www.google.com/s2/favicons?domain=${domain}&sz=128`);
+      } catch {
+        setSrc(null);
+      }
+    } else {
+      setSrc(null);
+    }
+  }
+
+  if (src) {
     return (
       <img
-        src={school.logo_url}
+        src={src}
         alt=""
         className="w-10 h-10 object-contain"
-        onError={() => setError(true)}
+        onError={handleError}
       />
     );
   }

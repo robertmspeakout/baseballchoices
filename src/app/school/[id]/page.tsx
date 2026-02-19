@@ -157,7 +157,8 @@ export default function SchoolPage({
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [logoError, setLogoError] = useState(false);
+  const [logoSrc, setLogoSrc] = useState<string | null>(schoolData?.logo_url || null);
+  const triedLogoFallback = useRef(false);
   const [distanceFromHome, setDistanceFromHome] = useState<number | null>(null);
   const [userZip, setUserZip] = useState<string | null>(null);
   const [news, setNews] = useState<NewsArticle[]>([]);
@@ -444,8 +445,18 @@ export default function SchoolPage({
         <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
           <div className="p-4 sm:p-6 flex items-center gap-4 sm:gap-5 border-b border-gray-100">
             <div className="shrink-0 w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-gray-50 flex items-center justify-center overflow-hidden border border-gray-200">
-              {school.logo_url && !logoError ? (
-                <img src={school.logo_url} alt={`${school.name} logo`} className="w-16 h-16 sm:w-20 sm:h-20 object-contain" onError={() => setLogoError(true)} />
+              {logoSrc ? (
+                <img src={logoSrc} alt={`${school.name} logo`} className="w-16 h-16 sm:w-20 sm:h-20 object-contain" onError={() => {
+                  if (!triedLogoFallback.current && school.website) {
+                    triedLogoFallback.current = true;
+                    try {
+                      const domain = new URL(school.website).hostname;
+                      setLogoSrc(`https://www.google.com/s2/favicons?domain=${domain}&sz=128`);
+                    } catch { setLogoSrc(null); }
+                  } else {
+                    setLogoSrc(null);
+                  }
+                }} />
               ) : (
                 <span className="text-2xl sm:text-3xl font-black text-gray-400">
                   {school.name.split(" ").map(w => w[0]).join("").slice(0, 3)}
