@@ -758,16 +758,16 @@ export default function SchoolPage({
 
               {/* SAT / ACT middle 50% */}
               <div className="grid grid-cols-2 gap-3">
-                <div className="bg-blue-50 border border-blue-100 rounded-lg p-3">
-                  <p className="text-[10px] sm:text-xs text-blue-600 uppercase font-semibold">SAT Middle 50%</p>
+                <div className="bg-gray-50 rounded-lg p-3">
+                  <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">SAT Middle 50%</p>
                   <p className="text-lg font-bold text-gray-900 mt-0.5">
                     {academicsData?.scorecard?.sat_25 != null && academicsData?.scorecard?.sat_75 != null
                       ? `${academicsData.scorecard.sat_25}–${academicsData.scorecard.sat_75}`
                       : "Not reported"}
                   </p>
                 </div>
-                <div className="bg-blue-50 border border-blue-100 rounded-lg p-3">
-                  <p className="text-[10px] sm:text-xs text-blue-600 uppercase font-semibold">ACT Middle 50%</p>
+                <div className="bg-gray-50 rounded-lg p-3">
+                  <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">ACT Middle 50%</p>
                   <p className="text-lg font-bold text-gray-900 mt-0.5">
                     {academicsData?.scorecard?.act_25 != null && academicsData?.scorecard?.act_75 != null
                       ? `${academicsData.scorecard.act_25}–${academicsData.scorecard.act_75}`
@@ -777,24 +777,24 @@ export default function SchoolPage({
               </div>
 
               {/* NCAA Baseball APR */}
-              <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+              <div className="bg-gray-50 rounded-lg p-4">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-xs sm:text-sm font-bold text-green-800 uppercase">NCAA Baseball APR</p>
-                    <p className="text-[10px] sm:text-xs text-green-600 mt-0.5">Score out of 1,000. Programs below 930 face NCAA penalties.</p>
+                    <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">NCAA Baseball APR</p>
+                    <p className="text-[10px] sm:text-xs text-gray-400 mt-0.5">Score out of 1,000. Programs below 930 face NCAA penalties.</p>
                   </div>
                   <div className="text-right">
                     <p className={`text-2xl sm:text-3xl font-black ${
                       academicsData?.apr?.apr != null
                         ? academicsData.apr.apr >= 930
-                          ? "text-green-700"
+                          ? "text-gray-900"
                           : "text-red-600"
                         : "text-gray-400"
                     }`}>
                       {academicsData?.apr?.apr != null ? academicsData.apr.apr : "Not reported"}
                     </p>
                     {academicsData?.apr?.year && (
-                      <p className="text-[10px] text-green-500">{academicsData.apr.year} data</p>
+                      <p className="text-[10px] text-gray-400">{academicsData.apr.year} data</p>
                     )}
                   </div>
                 </div>
