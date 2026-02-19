@@ -115,6 +115,8 @@ function ProfileForm({ initialStep }: { initialStep: number }) {
           setGpaType(prof.gpaType || "");
           setSatScore(prof.satScore || "");
           setActScore(prof.actScore || "");
+          if (prof.profilePic) setProfilePic(prof.profilePic);
+          if (prof.backgroundPic) setBackgroundPic(prof.backgroundPic);
         }
 
         if (prefs) {
@@ -189,7 +191,16 @@ function ProfileForm({ initialStep }: { initialStep: number }) {
         setCropTarget("profile");
       } else {
         // Background pics apply directly (bg-cover handles fit)
-        setBackgroundPic(reader.result as string);
+        const bgUrl = reader.result as string;
+        setBackgroundPic(bgUrl);
+        saveProfile({ backgroundPic: bgUrl });
+        if (session?.user) {
+          fetch("/api/user/profile", {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ backgroundPic: bgUrl }),
+          }).catch(() => {});
+        }
       }
     };
     reader.readAsDataURL(file);
@@ -284,6 +295,7 @@ function ProfileForm({ initialStep }: { initialStep: number }) {
             city: city.trim(), state, zipCode: zipCode.trim(),
             highSchool: highSchool.trim(), travelBall: travelBall.trim(),
             gpa, gpaType, satScore, actScore,
+            profilePic, backgroundPic,
           }),
         }).catch(() => {});
       }
@@ -323,6 +335,7 @@ function ProfileForm({ initialStep }: { initialStep: number }) {
             city: city.trim(), state, zipCode: zipCode.trim(),
             highSchool: highSchool.trim(), travelBall: travelBall.trim(),
             gpa, gpaType, satScore, actScore,
+            profilePic, backgroundPic,
             profileComplete: true,
           }),
         });
@@ -695,8 +708,24 @@ function ProfileForm({ initialStep }: { initialStep: number }) {
           onSave={(croppedUrl) => {
             if (cropTarget === "profile") {
               setProfilePic(croppedUrl);
+              saveProfile({ profilePic: croppedUrl });
+              if (session?.user) {
+                fetch("/api/user/profile", {
+                  method: "PUT",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ profilePic: croppedUrl }),
+                }).catch(() => {});
+              }
             } else {
               setBackgroundPic(croppedUrl);
+              saveProfile({ backgroundPic: croppedUrl });
+              if (session?.user) {
+                fetch("/api/user/profile", {
+                  method: "PUT",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ backgroundPic: croppedUrl }),
+                }).catch(() => {});
+              }
             }
             setCropImage(null);
           }}

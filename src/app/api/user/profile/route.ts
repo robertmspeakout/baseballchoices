@@ -26,25 +26,23 @@ export async function PUT(request: NextRequest) {
     gradYear, primaryPosition, secondaryPosition,
     city, state, zipCode, highSchool, travelBall,
     gpa, gpaType, satScore, actScore, profileComplete,
+    profilePic, backgroundPic,
   } = body;
+
+  const data = {
+    gradYear: gradYear ? parseInt(gradYear) : null,
+    primaryPosition, secondaryPosition,
+    city, state, zipCode, highSchool, travelBall,
+    gpa, gpaType, satScore, actScore,
+    profileComplete: profileComplete ?? false,
+    ...(profilePic !== undefined ? { profilePic } : {}),
+    ...(backgroundPic !== undefined ? { backgroundPic } : {}),
+  };
 
   const profile = await prisma.profile.upsert({
     where: { userId: session.user.id },
-    update: {
-      gradYear: gradYear ? parseInt(gradYear) : null,
-      primaryPosition, secondaryPosition,
-      city, state, zipCode, highSchool, travelBall,
-      gpa, gpaType, satScore, actScore,
-      profileComplete: profileComplete ?? false,
-    },
-    create: {
-      userId: session.user.id,
-      gradYear: gradYear ? parseInt(gradYear) : null,
-      primaryPosition, secondaryPosition,
-      city, state, zipCode, highSchool, travelBall,
-      gpa, gpaType, satScore, actScore,
-      profileComplete: profileComplete ?? false,
-    },
+    update: data,
+    create: { userId: session.user.id, ...data },
   });
 
   return NextResponse.json(profile);
