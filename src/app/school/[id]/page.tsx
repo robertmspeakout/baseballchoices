@@ -175,7 +175,6 @@ export default function SchoolPage({
   const [facilityPhotos, setFacilityPhotos] = useState<{ url: string; caption: string }[]>([]);
   const [photosLoading, setPhotosLoading] = useState(true);
   const [lightboxIdx, setLightboxIdx] = useState<number | null>(null);
-  const [schoolDescription, setSchoolDescription] = useState<string | null>(null);
 
   // Track last-saved values so we can detect unsaved changes
   const savedSnapshot = useRef({
@@ -266,15 +265,19 @@ export default function SchoolPage({
 
   useEffect(() => {
     if (!schoolData) return;
-    fetch(`/api/school-description?school=${encodeURIComponent(schoolData.name)}`)
+    // Only fetch stadium photos when we have a stadium name for accurate results
+    if (!schoolData.stadium_name) {
+      setFacilityPhotos([]);
+      setPhotosLoading(false);
+      return;
+    }
+    setPhotosLoading(true);
+    fetch(`/api/stadium-photos?school=${encodeURIComponent(schoolData.name)}&stadium=${encodeURIComponent(schoolData.stadium_name)}&mascot=${encodeURIComponent(schoolData.mascot || "")}`)
       .then((r) => r.json())
-      .then((data) => setSchoolDescription(data.description || null))
-      .catch(() => setSchoolDescription(null));
+      .then((data) => setFacilityPhotos(data.photos || []))
+      .catch(() => setFacilityPhotos([]))
+      .finally(() => setPhotosLoading(false));
   }, [schoolData]);
-
-  // Stadium photos disabled — Wikipedia results were too unreliable
-  // (e.g. "Portland" returned municipal stadiums, not University of Portland)
-  // Re-enable when curated stadium_image_url data is available in schools.json
 
   const savePriority = (newPriority: number) => {
     setPriority(newPriority);
@@ -681,9 +684,6 @@ export default function SchoolPage({
             <div className="border-t border-gray-100 p-4 sm:p-6">
               {school.public_private && (
                 <p className="text-xs font-medium text-gray-500 mb-3">{school.public_private === "Private" ? "Private Institution" : "Public Institution"}</p>
-              )}
-              {schoolDescription && (
-                <p className="text-sm text-gray-600 mb-4 leading-relaxed">{schoolDescription}</p>
               )}
               {school.high_academic && (
                 <div className="flex items-center gap-2 mb-4 px-3 py-2 bg-yellow-50 border border-yellow-200 rounded-lg">
