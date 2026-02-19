@@ -472,7 +472,7 @@ export default function SchoolPage({
               <div className="flex items-center gap-2">
                 <StarRating value={priority} onChange={savePriority} size="md" />
                 <span className="text-sm text-gray-500 font-medium">
-                  {priority === 0 && <em className="text-gray-400">Tap stars to rate your interest in this program</em>}
+                  {priority === 0 && <em className="text-gray-400">Tap stars to rate your interest</em>}
                   {priority === 1 && "Mildly Interested"}
                   {priority === 2 && "Interested"}
                   {priority === 3 && "Very Interested"}
