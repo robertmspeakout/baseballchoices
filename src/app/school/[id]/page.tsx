@@ -175,6 +175,21 @@ export default function SchoolPage({
   const [facilityPhotos, setFacilityPhotos] = useState<{ url: string; caption: string }[]>([]);
   const [photosLoading, setPhotosLoading] = useState(true);
   const [lightboxIdx, setLightboxIdx] = useState<number | null>(null);
+  const [academicsData, setAcademicsData] = useState<{
+    scorecard: {
+      matched_name: string;
+      student_faculty_ratio: number | null;
+      in_state_tuition: number | null;
+      out_of_state_tuition: number | null;
+      avg_net_price: number | null;
+      aid_percentage: number | null;
+      sat_25: number | null;
+      sat_75: number | null;
+      act_25: number | null;
+      act_75: number | null;
+    } | null;
+    apr: { school_name: string; apr: number; year: string } | null;
+  } | null>(null);
 
   // Track last-saved values so we can detect unsaved changes
   const savedSnapshot = useRef({
@@ -277,6 +292,14 @@ export default function SchoolPage({
       .then((data) => setFacilityPhotos(data.photos || []))
       .catch(() => setFacilityPhotos([]))
       .finally(() => setPhotosLoading(false));
+  }, [schoolData]);
+
+  useEffect(() => {
+    if (!schoolData) return;
+    fetch(`/api/academics-data?school=${encodeURIComponent(schoolData.name)}&state=${encodeURIComponent(schoolData.state || "")}`)
+      .then((r) => r.json())
+      .then((data) => setAcademicsData(data))
+      .catch(() => setAcademicsData(null));
   }, [schoolData]);
 
   const savePriority = (newPriority: number) => {
@@ -675,40 +698,105 @@ export default function SchoolPage({
             </svg>
           </button>
           {academicsOpen && (
-            <div className="border-t border-gray-100 p-4 sm:p-6">
+            <div className="border-t border-gray-100 p-4 sm:p-6 space-y-4">
               {school.public_private && (
-                <p className="text-xs font-medium text-gray-500 mb-3">{school.public_private === "Private" ? "Private Institution" : "Public Institution"}{distanceFromHome != null && <> | {distanceFromHome.toLocaleString()} miles from home</>}</p>
+                <p className="text-xs font-medium text-gray-500">{school.public_private === "Private" ? "Private Institution" : "Public Institution"}{distanceFromHome != null && <> | {distanceFromHome.toLocaleString()} miles from home</>}</p>
               )}
               {school.high_academic && (
-                <div className="flex items-center gap-2 mb-4 px-3 py-2 bg-yellow-50 border border-yellow-200 rounded-lg">
+                <div className="flex items-center gap-2 px-3 py-2 bg-yellow-50 border border-yellow-200 rounded-lg">
                   <svg className="w-5 h-5 text-yellow-500 shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                   </svg>
                   <span className="text-sm font-semibold text-yellow-800">High-Academic Institution</span>
                 </div>
               )}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                {school.enrollment && (
+
+              {/* Stat cards grid */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                {school.enrollment != null && (
                   <div className="bg-gray-50 rounded-lg p-3">
                     <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Enrollment</p>
                     <p className="text-lg font-bold text-gray-900">{school.enrollment.toLocaleString()}</p>
                   </div>
                 )}
-                {school.acceptance_rate && (
+                {school.acceptance_rate != null && (
                   <div className="bg-gray-50 rounded-lg p-3">
                     <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Acceptance Rate</p>
                     <p className="text-lg font-bold text-gray-900">{school.acceptance_rate}%</p>
                   </div>
                 )}
-                {school.graduation_rate && (
+                {school.graduation_rate != null && (
                   <div className="bg-gray-50 rounded-lg p-3">
                     <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Graduation Rate</p>
                     <p className="text-lg font-bold text-gray-900">{school.graduation_rate}%</p>
                   </div>
                 )}
                 <div className="bg-gray-50 rounded-lg p-3">
-                  <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Tuition</p>
-                  <p className="text-lg font-bold text-gray-900">{school.tuition ? `$${(school.tuition).toLocaleString()}` : "N/A"}</p>
+                  <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Student : Faculty</p>
+                  <p className="text-lg font-bold text-gray-900">{academicsData?.scorecard?.student_faculty_ratio != null ? `${academicsData.scorecard.student_faculty_ratio}:1` : "Not reported"}</p>
+                </div>
+                <div className="bg-gray-50 rounded-lg p-3">
+                  <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">In-State Tuition</p>
+                  <p className="text-lg font-bold text-gray-900">{school.tuition ? `$${school.tuition.toLocaleString()}` : "N/A"}</p>
+                </div>
+                <div className="bg-gray-50 rounded-lg p-3">
+                  <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Out-of-State Tuition</p>
+                  <p className="text-lg font-bold text-gray-900">{academicsData?.scorecard?.out_of_state_tuition != null ? `$${academicsData.scorecard.out_of_state_tuition.toLocaleString()}` : "Not reported"}</p>
+                </div>
+                <div className="bg-gray-50 rounded-lg p-3">
+                  <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Avg Financial Aid</p>
+                  <p className="text-lg font-bold text-gray-900">{academicsData?.scorecard?.avg_net_price != null ? `$${academicsData.scorecard.avg_net_price.toLocaleString()}` : "Not reported"}</p>
+                  {academicsData?.scorecard?.avg_net_price != null && (
+                    <p className="text-[9px] text-gray-400 mt-0.5">Avg net price after aid</p>
+                  )}
+                </div>
+                <div className="bg-gray-50 rounded-lg p-3">
+                  <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Receiving Aid</p>
+                  <p className="text-lg font-bold text-gray-900">{academicsData?.scorecard?.aid_percentage != null ? `${academicsData.scorecard.aid_percentage}%` : "Not reported"}</p>
+                </div>
+              </div>
+
+              {/* SAT / ACT middle 50% */}
+              <div className="grid grid-cols-2 gap-3">
+                <div className="bg-blue-50 border border-blue-100 rounded-lg p-3">
+                  <p className="text-[10px] sm:text-xs text-blue-600 uppercase font-semibold">SAT Middle 50%</p>
+                  <p className="text-lg font-bold text-gray-900 mt-0.5">
+                    {academicsData?.scorecard?.sat_25 != null && academicsData?.scorecard?.sat_75 != null
+                      ? `${academicsData.scorecard.sat_25}–${academicsData.scorecard.sat_75}`
+                      : "Not reported"}
+                  </p>
+                </div>
+                <div className="bg-blue-50 border border-blue-100 rounded-lg p-3">
+                  <p className="text-[10px] sm:text-xs text-blue-600 uppercase font-semibold">ACT Middle 50%</p>
+                  <p className="text-lg font-bold text-gray-900 mt-0.5">
+                    {academicsData?.scorecard?.act_25 != null && academicsData?.scorecard?.act_75 != null
+                      ? `${academicsData.scorecard.act_25}–${academicsData.scorecard.act_75}`
+                      : "Not reported"}
+                  </p>
+                </div>
+              </div>
+
+              {/* NCAA Baseball APR */}
+              <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-xs sm:text-sm font-bold text-green-800 uppercase">NCAA Baseball APR</p>
+                    <p className="text-[10px] sm:text-xs text-green-600 mt-0.5">Score out of 1,000. Programs below 930 face NCAA penalties.</p>
+                  </div>
+                  <div className="text-right">
+                    <p className={`text-2xl sm:text-3xl font-black ${
+                      academicsData?.apr?.apr != null
+                        ? academicsData.apr.apr >= 930
+                          ? "text-green-700"
+                          : "text-red-600"
+                        : "text-gray-400"
+                    }`}>
+                      {academicsData?.apr?.apr != null ? academicsData.apr.apr : "Not reported"}
+                    </p>
+                    {academicsData?.apr?.year && (
+                      <p className="text-[10px] text-green-500">{academicsData.apr.year} data</p>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
