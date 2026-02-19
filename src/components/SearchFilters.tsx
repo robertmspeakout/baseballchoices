@@ -83,7 +83,7 @@ export default function SearchFilters({
             onChange={(e) => update("division", e.target.value)}
             className="px-2.5 sm:px-3 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm text-gray-700 focus:ring-2 focus:ring-blue-500"
           >
-            <option value="">All Divisions</option>
+            <option value="">Divisions</option>
             {filterOptions.divisions.map((d) => (
               <option key={d} value={d}>
                 {d === "JUCO" ? "Junior College" : `Division ${d.replace("D", "")}`}
@@ -97,7 +97,7 @@ export default function SearchFilters({
           onChange={(e) => update("conference", e.target.value)}
           className="px-2.5 sm:px-3 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm text-gray-700 focus:ring-2 focus:ring-blue-500"
         >
-          <option value="">All Conferences</option>
+          <option value="">Conferences</option>
           {visibleConferences.map((c) => (
             <option key={c} value={c}>
               {c}
@@ -110,7 +110,7 @@ export default function SearchFilters({
           onChange={(e) => update("region", e.target.value)}
           className="px-2.5 sm:px-3 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm text-gray-700 focus:ring-2 focus:ring-blue-500"
         >
-          <option value="">All Regions</option>
+          <option value="">Regions</option>
           {REGION_NAMES.map((r) => (
             <option key={r} value={r}>
               {r}
@@ -123,7 +123,7 @@ export default function SearchFilters({
           onChange={(e) => update("state", e.target.value)}
           className="px-2.5 sm:px-3 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm text-gray-700 focus:ring-2 focus:ring-blue-500"
         >
-          <option value="">All States</option>
+          <option value="">States</option>
           {filterOptions.states.map((s) => (
             <option key={s} value={s}>
               {s}
