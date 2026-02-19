@@ -113,7 +113,7 @@ const priorityLabels: Record<number, string> = {
   2: "Interested",
   3: "Very Interested",
   4: "Top Choice",
-  5: "VIP Choice",
+  5: "VIP",
 };
 
 function divisionBadge(division: string) {

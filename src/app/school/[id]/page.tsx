@@ -162,7 +162,7 @@ export default function SchoolPage({
   const [news, setNews] = useState<NewsArticle[]>([]);
   const [newsLoading, setNewsLoading] = useState(true);
   const [draftExpanded, setDraftExpanded] = useState(false);
-  const [trackerOpen, setTrackerOpen] = useState(true);
+  const [trackerOpen, setTrackerOpen] = useState(false);
   const [academicsOpen, setAcademicsOpen] = useState(false);
   const [coachOpen, setCoachOpen] = useState(false);
   const [linksOpen, setLinksOpen] = useState(false);
@@ -175,6 +175,7 @@ export default function SchoolPage({
   const [facilityPhotos, setFacilityPhotos] = useState<{ url: string; caption: string }[]>([]);
   const [photosLoading, setPhotosLoading] = useState(true);
   const [lightboxIdx, setLightboxIdx] = useState<number | null>(null);
+  const [schoolDescription, setSchoolDescription] = useState<string | null>(null);
 
   // Track last-saved values so we can detect unsaved changes
   const savedSnapshot = useRef({
@@ -261,6 +262,14 @@ export default function SchoolPage({
         setUpcomingGames([]);
       })
       .finally(() => setScheduleLoading(false));
+  }, [schoolData]);
+
+  useEffect(() => {
+    if (!schoolData) return;
+    fetch(`/api/school-description?school=${encodeURIComponent(schoolData.name)}`)
+      .then((r) => r.json())
+      .then((data) => setSchoolDescription(data.description || null))
+      .catch(() => setSchoolDescription(null));
   }, [schoolData]);
 
   // Stadium photos disabled — Wikipedia results were too unreliable
@@ -415,10 +424,14 @@ export default function SchoolPage({
             </div>
             <div className="min-w-0 flex-1">
               <h1 className="text-xl sm:text-3xl font-black text-gray-900 tracking-tight truncate uppercase">{school.name}</h1>
-              <div className="flex items-center gap-2 mt-0.5">
+              <div className="flex items-center gap-2 mt-0.5 flex-wrap">
                 {school.mascot && <span className="text-sm font-semibold text-gray-500">{school.mascot}</span>}
                 {school.mascot && <span className="text-gray-300">|</span>}
                 <span className="text-sm font-semibold text-blue-600">{school.conference}</span>
+                {(school.city || school.state) && <span className="text-gray-300">|</span>}
+                {(school.city || school.state) && (
+                  <span className="text-sm font-semibold text-gray-500">{school.city}{school.city && school.state ? ", " : ""}{school.state}</span>
+                )}
               </div>
             </div>
           </div>
@@ -427,9 +440,6 @@ export default function SchoolPage({
               <span className={`px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs sm:text-sm font-semibold border ${divColor[school.division] || "bg-gray-100 text-gray-800"}`}>
                 {divLabel[school.division] || school.division}
               </span>
-              <span className="text-xs sm:text-sm text-gray-500">{school.public_private}</span>
-              <span className="text-xs text-gray-400">&middot;</span>
-              <span className="text-xs sm:text-sm text-gray-500">{school.city}, {school.state}</span>
               {distanceFromHome != null && (
                 <span className="inline-flex items-center gap-1 text-xs font-medium text-green-700 bg-green-50 border border-green-200 px-2 py-0.5 rounded-full">
                   <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
@@ -445,13 +455,13 @@ export default function SchoolPage({
                 {priority === 2 && "Interested"}
                 {priority === 3 && "Very Interested"}
                 {priority === 4 && "Top Choice"}
-                {priority === 5 && "VIP Choice"}
+                {priority === 5 && "VIP"}
               </span>
             </div>
           </div>
 
           {/* Quick stats */}
-          <div className="grid grid-cols-3 sm:grid-cols-5 divide-x divide-y sm:divide-y-0 divide-gray-100">
+          <div className="grid grid-cols-2 sm:grid-cols-4 divide-x divide-y sm:divide-y-0 divide-gray-100">
             <div className="p-3 sm:p-4 text-center">
               <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">{currentRecord ? "Current Record" : "Record"}</p>
               <p className="text-base sm:text-xl font-bold text-gray-900 mt-0.5 sm:mt-1">
@@ -477,11 +487,7 @@ export default function SchoolPage({
                 <p className="text-[10px] sm:text-xs text-gray-400 mt-0.5">{school.ncaa_regionals} Regionals</p>
               )}
             </div>
-            <div className="p-3 sm:p-4 text-center col-span-1 hidden sm:block">
-              <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Type</p>
-              <p className="text-base sm:text-xl font-bold text-gray-900 mt-0.5 sm:mt-1">{school.public_private}</p>
-            </div>
-            <div className="p-3 sm:p-4 text-center col-span-1 hidden sm:block">
+            <div className="p-3 sm:p-4 text-center">
               <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Draft Picks</p>
               <p className="text-base sm:text-xl font-bold text-gray-900 mt-0.5 sm:mt-1">
                 {draftPicksCount}
@@ -673,6 +679,12 @@ export default function SchoolPage({
           </button>
           {academicsOpen && (
             <div className="border-t border-gray-100 p-4 sm:p-6">
+              {school.public_private && (
+                <p className="text-xs font-medium text-gray-500 mb-3">{school.public_private === "Private" ? "Private Institution" : "Public Institution"}</p>
+              )}
+              {schoolDescription && (
+                <p className="text-sm text-gray-600 mb-4 leading-relaxed">{schoolDescription}</p>
+              )}
               {school.high_academic && (
                 <div className="flex items-center gap-2 mb-4 px-3 py-2 bg-yellow-50 border border-yellow-200 rounded-lg">
                   <svg className="w-5 h-5 text-yellow-500 shrink-0" fill="currentColor" viewBox="0 0 20 20">

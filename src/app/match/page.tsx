@@ -455,7 +455,7 @@ export default function MatchPage() {
                         <StarRatingInline value={priority} onChange={(v) => handlePriorityChange(s.id, v)} />
                         {priority > 0 && (
                           <span className="text-xs text-gray-500 font-medium">
-                            {["", "Mildly Interested", "Interested", "Very Interested", "Top Choice", "VIP Choice"][priority]}
+                            {["", "Mildly Interested", "Interested", "Very Interested", "Top Choice", "VIP"][priority]}
                           </span>
                         )}
                       </div>
