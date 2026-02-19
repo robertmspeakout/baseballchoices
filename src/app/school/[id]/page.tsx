@@ -58,6 +58,7 @@ interface SchoolDetail {
   recruiting_questionnaire_url: string | null;
   nil_url: string | null;
   high_academic: boolean;
+  primary_color?: string | null;
 }
 
 interface NewsArticle {
@@ -161,7 +162,7 @@ export default function SchoolPage({
   const [news, setNews] = useState<NewsArticle[]>([]);
   const [newsLoading, setNewsLoading] = useState(true);
   const [draftExpanded, setDraftExpanded] = useState(false);
-  const [trackerOpen, setTrackerOpen] = useState(false);
+  const [trackerOpen, setTrackerOpen] = useState(true);
   const [currentRecord, setCurrentRecord] = useState<string | null>(null);
   const [recentGames, setRecentGames] = useState<ScheduleGame[]>([]);
   const [upcomingGames, setUpcomingGames] = useState<ScheduleGame[]>([]);
@@ -379,52 +380,44 @@ export default function SchoolPage({
   return (
     <AuthGate>
     <div className="min-h-screen bg-gray-50">
-      <header className="relative text-white overflow-visible z-30">
-        {/* Background photo - first facility photo, stadium image, or default action shot */}
+      <header className="relative text-white overflow-x-clip overflow-y-visible z-30">
         <div
-          className="absolute inset-0 bg-cover bg-center transition-[background-image] duration-700"
-          style={{ backgroundImage: `url('${school.stadium_image_url || "https://images.unsplash.com/photo-1529768167801-9173d94c2a42?w=1600&q=80"}')` }}
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1629219644109-b4df0ab25a7b?w=1920&q=80')" }}
         />
-        {/* Dramatic overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/40" />
-        {/* Red accent slash */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -right-10 top-0 bottom-0 w-1/3 bg-gradient-to-l from-red-600/15 to-transparent skew-x-[-8deg]" />
-        </div>
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 pt-4 pb-10 sm:pb-14">
-          <div className="flex items-start justify-between mb-6 sm:mb-10">
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
+          <div className="flex items-start justify-between">
             <div className="flex items-center gap-3">
               <BrandLogo size="sm" showTagline={false} />
-              <Link href="/admin" className="text-[10px] text-white/30 hover:text-white/60 transition-colors">Edit</Link>
             </div>
             <SiteNav variant="dark" />
           </div>
-          <div className="flex items-end gap-4 sm:gap-5">
-            <div className="shrink-0 w-16 h-16 sm:w-24 sm:h-24 rounded-2xl bg-white shadow-2xl flex items-center justify-center overflow-hidden border-2 border-white/80">
+        </div>
+      </header>
+
+      <main className="max-w-5xl mx-auto px-4 sm:px-6 py-4 sm:py-8 space-y-4 sm:space-y-6">
+        {/* School identity card */}
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+          <div className="p-4 sm:p-6 flex items-center gap-4 sm:gap-5 border-b border-gray-100">
+            <div className="shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gray-50 flex items-center justify-center overflow-hidden border border-gray-200">
               {school.logo_url && !logoError ? (
-                <img src={school.logo_url} alt={`${school.name} logo`} className="w-12 h-12 sm:w-20 sm:h-20 object-contain" onError={() => setLogoError(true)} />
+                <img src={school.logo_url} alt={`${school.name} logo`} className="w-12 h-12 sm:w-16 sm:h-16 object-contain" onError={() => setLogoError(true)} />
               ) : (
-                <span className="text-xl sm:text-3xl font-black text-gray-400">
+                <span className="text-xl sm:text-2xl font-black text-gray-400">
                   {school.name.split(" ").map(w => w[0]).join("").slice(0, 3)}
                 </span>
               )}
             </div>
-            <div className="min-w-0 pb-1">
-              <h1 className="text-2xl sm:text-5xl font-black text-white tracking-tight truncate uppercase">{school.name}</h1>
-              <div className="flex items-center gap-2 mt-1">
-                {school.mascot && <span className="text-sm sm:text-base font-bold text-white/70">{school.mascot}</span>}
-                {school.mascot && <span className="text-white/30">|</span>}
-                <span className="text-sm sm:text-base font-bold text-red-400">{school.conference}</span>
+            <div className="min-w-0 flex-1">
+              <h1 className="text-xl sm:text-3xl font-black text-gray-900 tracking-tight truncate uppercase">{school.name}</h1>
+              <div className="flex items-center gap-2 mt-0.5">
+                {school.mascot && <span className="text-sm font-semibold text-gray-500">{school.mascot}</span>}
+                {school.mascot && <span className="text-gray-300">|</span>}
+                <span className="text-sm font-semibold text-blue-600">{school.conference}</span>
               </div>
             </div>
           </div>
-        </div>
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-red-700 via-red-500 to-red-700" />
-      </header>
-
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 py-4 sm:py-8 space-y-4 sm:space-y-6">
-        {/* School info card */}
-        <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden -mt-6 relative z-10">
           <div className="p-4 sm:p-6 border-b border-gray-100">
             <div className="flex flex-wrap items-center gap-2 mb-2">
               <span className={`px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs sm:text-sm font-semibold border ${divColor[school.division] || "bg-gray-100 text-gray-800"}`}>
@@ -495,29 +488,33 @@ export default function SchoolPage({
         </div>
 
         {/* ===== RECRUITING TRACKER — Collapsible Banner ===== */}
-        <div className="rounded-xl border-2 border-red-200 shadow-sm overflow-hidden">
+        {(() => {
+          const schoolColor = school.primary_color || "#1e3a5f";
+          return (
+        <div className="rounded-xl border-2 shadow-sm overflow-hidden" style={{ borderColor: `${schoolColor}40` }}>
           {/* Banner header — always visible */}
           <button
             onClick={() => setTrackerOpen(!trackerOpen)}
-            className="w-full flex items-center gap-3 px-4 sm:px-6 py-3.5 bg-red-600 hover:bg-red-700 transition-colors text-left"
+            className="w-full flex items-center gap-3 px-4 sm:px-6 py-3.5 transition-opacity hover:opacity-90 text-left"
+            style={{ backgroundColor: schoolColor }}
           >
             <svg className="w-5 h-5 text-white shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
             </svg>
             <div className="flex-1 min-w-0">
-              <span className="text-white font-bold text-sm sm:text-base">Recruiting Tracker</span>
+              <span className="text-white font-bold text-sm sm:text-base">My Notes: Recruiting Tracker</span>
               {/* Status summary */}
               <div className="flex flex-wrap items-center gap-x-3 gap-y-0.5 mt-0.5">
                 {recruitingStatus ? (
-                  <span className="text-red-100 text-xs sm:text-sm">{recruitingStatus}</span>
+                  <span className="text-white/80 text-xs sm:text-sm">{recruitingStatus}</span>
                 ) : (
-                  <span className="text-red-200 text-xs sm:text-sm italic">No status set — click to update</span>
+                  <span className="text-white/60 text-xs sm:text-sm italic">No status set — click to update</span>
                 )}
                 {lastContacted && (
-                  <span className="text-red-200 text-xs">Last contacted: {lastContacted}</span>
+                  <span className="text-white/60 text-xs">Last contacted: {lastContacted}</span>
                 )}
                 {notes && (
-                  <span className="text-red-200 text-xs truncate max-w-[200px]">{notes}</span>
+                  <span className="text-white/60 text-xs truncate max-w-[200px]">{notes}</span>
                 )}
               </div>
             </div>
@@ -531,7 +528,7 @@ export default function SchoolPage({
 
           {/* Expanded form */}
           {trackerOpen && (
-            <div className="bg-red-50/40 border-t border-red-200 p-4 sm:p-6">
+            <div className="border-t p-4 sm:p-6" style={{ backgroundColor: `${schoolColor}08`, borderColor: `${schoolColor}30` }}>
               <div className="space-y-4">
                 {/* Recruiting Status */}
                 <div>
@@ -585,7 +582,28 @@ export default function SchoolPage({
                       type="date"
                       value={lastContacted}
                       onChange={(e) => setLastContacted(e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    />
+                  </div>
+                </div>
+
+                {/* My Contact at this school */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">My Contact at {school.name}</label>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    <input
+                      type="text"
+                      value={myContactName}
+                      onChange={(e) => setMyContactName(e.target.value)}
+                      placeholder="Contact name at this school"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    />
+                    <input
+                      type="email"
+                      value={myContactEmail}
+                      onChange={(e) => setMyContactEmail(e.target.value)}
+                      placeholder="Contact email"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                     />
                   </div>
                 </div>
@@ -597,7 +615,7 @@ export default function SchoolPage({
                     onChange={(e) => setNotes(e.target.value)}
                     rows={3}
                     placeholder="Notes about this program, camp visits, conversations with coaches..."
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-red-500 focus:border-red-500 resize-y"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-y"
                   />
                 </div>
 
@@ -622,8 +640,9 @@ export default function SchoolPage({
                     onClick={saveAll}
                     disabled={saving}
                     className={`flex-1 sm:flex-none px-6 py-2.5 text-white rounded-lg disabled:opacity-50 font-medium transition-colors text-sm ${
-                      hasUnsavedChanges && !saved ? "bg-amber-600 hover:bg-amber-700 animate-pulse" : "bg-red-600 hover:bg-red-700"
+                      hasUnsavedChanges && !saved ? "bg-amber-600 hover:bg-amber-700 animate-pulse" : "hover:opacity-90"
                     }`}
+                    style={!(hasUnsavedChanges && !saved) ? { backgroundColor: schoolColor } : undefined}
                   >
                     {saving ? "Saving..." : "Save Changes"}
                   </button>
@@ -632,6 +651,8 @@ export default function SchoolPage({
             </div>
           )}
         </div>
+          );
+        })()}
 
         {/* ===== PROGRAM INFO SECTIONS ===== */}
         {/* Academics & School Info */}
@@ -700,30 +721,6 @@ export default function SchoolPage({
                     </div>
                   </div>
 
-                  <div className="border-t border-gray-100 pt-4">
-                    <h3 className="text-sm font-semibold text-gray-700 mb-2 flex items-center gap-1.5">
-                      <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
-                      </svg>
-                      My Contact at {school.name}
-                    </h3>
-                    <div className="space-y-2">
-                      <input
-                        type="text"
-                        value={myContactName}
-                        onChange={(e) => setMyContactName(e.target.value)}
-                        placeholder="Contact name at this school"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                      />
-                      <input
-                        type="email"
-                        value={myContactEmail}
-                        onChange={(e) => setMyContactEmail(e.target.value)}
-                        placeholder="Contact email"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                      />
-                    </div>
-                  </div>
                 </div>
               </div>
 
