@@ -458,7 +458,7 @@ export default function SchoolPage({
                 {school.mascot && <span className="text-sm font-semibold text-gray-500">{school.mascot}</span>}
                 {school.mascot && <span className="text-gray-500">|</span>}
                 <span className="text-sm font-semibold text-gray-500">{school.conference}</span>
-                <span className="text-gray-300">|</span>
+                <span className="text-gray-500">|</span>
                 <span className="text-sm font-semibold text-gray-500">{divLabel[school.division] || school.division}</span>
               </div>
               {(school.city || school.state) && (
