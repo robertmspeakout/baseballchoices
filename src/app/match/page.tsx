@@ -288,7 +288,7 @@ export default function MatchPage() {
           <h2 className="text-xl sm:text-2xl font-black text-gray-900">
             {profile?.playerName ? `${profile.playerName.split(" ")[0]}'s AI Matches` : "Your AI Matches"}
           </h2>
-          <div className="relative inline-block">
+          <div className="relative sm:inline-block">
             <select
               value="match"
               onChange={(e) => {
@@ -300,7 +300,7 @@ export default function MatchPage() {
                   router.push(`/#${val}`);
                 }
               }}
-              className="appearance-none bg-gray-50 border border-gray-400 rounded-lg px-4 py-3 pr-10 text-sm font-semibold text-gray-900 focus:outline-none focus:border-[#CC0000] focus:ring-1 focus:ring-[#CC0000] cursor-pointer"
+              className="w-full sm:w-auto appearance-none bg-gray-50 border border-gray-400 rounded-lg px-4 py-3 pr-10 text-sm font-semibold text-gray-900 focus:outline-none focus:border-[#CC0000] focus:ring-1 focus:ring-[#CC0000] cursor-pointer"
             >
               <option value="mylist">My Top Programs</option>
               <option value="match">My AI Matches</option>
