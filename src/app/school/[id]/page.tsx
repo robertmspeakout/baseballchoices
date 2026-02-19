@@ -443,12 +443,6 @@ export default function SchoolPage({
               <span className={`px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs sm:text-sm font-semibold border ${divColor[school.division] || "bg-gray-100 text-gray-800"}`}>
                 {divLabel[school.division] || school.division}
               </span>
-              {distanceFromHome != null && (
-                <span className="inline-flex items-center gap-1 text-xs font-medium text-green-700 bg-green-50 border border-green-200 px-2 py-0.5 rounded-full">
-                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-                  {distanceFromHome.toLocaleString()} miles from home
-                </span>
-              )}
             </div>
             <div className="flex items-center gap-2">
               <StarRating value={priority} onChange={savePriority} size="sm" />
