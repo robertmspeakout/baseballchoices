@@ -458,7 +458,7 @@ export default function SchoolPage({
                 <span className="text-sm font-semibold text-gray-500">{divLabel[school.division] || school.division}</span>
               </div>
               {(school.city || school.state) && (
-                   <p className="text-xs font-medium text-gray-500">Location: {school.city}{school.city && school.state ? ", " : ""}{school.state}{distanceFromHome != null && <> | {distanceFromHome.toLocaleString()} miles from home</>}</p>
+                   <p className="text-sm font-semibold text-gray-500">{school.city}{school.city && school.state ? ", " : ""}{school.state}{distanceFromHome != null && <> | {distanceFromHome.toLocaleString()} miles from home</>}</p>
               )}
             </div>
           </div>
