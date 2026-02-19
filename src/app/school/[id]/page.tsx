@@ -467,16 +467,19 @@ export default function SchoolPage({
                 {divLabel[school.division] || school.division}
               </span>
             </div>
-            <div className="flex items-center gap-2">
-              <StarRating value={priority} onChange={savePriority} size="sm" />
-              <span className="text-xs text-gray-500 font-medium">
-                {priority === 0 && "Not Rated"}
-                {priority === 1 && "Mildly Interested"}
-                {priority === 2 && "Interested"}
-                {priority === 3 && "Very Interested"}
-                {priority === 4 && "Top Choice"}
-                {priority === 5 && "VIP"}
-              </span>
+            <div>
+              <p className="text-[10px] uppercase tracking-wide text-gray-400 font-medium mb-1">Rate Your Interest</p>
+              <div className="flex items-center gap-2">
+                <StarRating value={priority} onChange={savePriority} size="sm" />
+                <span className="text-xs text-gray-500 font-medium">
+                  {priority === 0 && <em className="text-gray-400">Tap stars to rate your interest in this program</em>}
+                  {priority === 1 && "Mildly Interested"}
+                  {priority === 2 && "Interested"}
+                  {priority === 3 && "Very Interested"}
+                  {priority === 4 && "Top Choice"}
+                  {priority === 5 && "VIP"}
+                </span>
+              </div>
             </div>
           </div>
 
