@@ -458,7 +458,7 @@ export default function SchoolPage({
                 <span className="text-sm font-semibold text-gray-500">{divLabel[school.division] || school.division}</span>
               </div>
               {(school.city || school.state) && (
-                <p className="text-sm text-gray-400 mt-0.5">{school.city}{school.city && school.state ? ", " : ""}{school.state}</p>
+                   <p className="text-xs font-medium text-gray-500">Location: {school.city}{school.city && school.state ? ", " : ""}{school.state}{distanceFromHome != null && <> | {distanceFromHome.toLocaleString()} miles from home</>}</p>
               )}
             </div>
           </div>
@@ -702,7 +702,7 @@ export default function SchoolPage({
                 <p className="text-xs font-medium text-gray-500">Location: {school.city}{school.city && school.state ? ", " : ""}{school.state}{distanceFromHome != null && <> | {distanceFromHome.toLocaleString()} miles from home</>}</p>
               )}
               {school.public_private && (
-                <p className="text-xs font-medium text-gray-500">{school.public_private === "Private" ? "Private Institution" : "Public Institution"}</p>
+                <p className="text-xs font-medium text-gray-500">{school.public_private === "Private" ? "Type: Private Institution" : "Type: Public Institution"}</p>
               )}
               {school.high_academic && (
                 <div className="flex items-center gap-2 px-3 py-2 bg-yellow-50 border border-yellow-200 rounded-lg">
