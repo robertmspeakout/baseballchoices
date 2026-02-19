@@ -51,8 +51,9 @@ interface Filters {
 const TABS_BASE = [
   { key: "D1", label: "All Division 1" },
   { key: "D2", label: "All Division 2" },
+  { key: "D3", label: "All Division 3" },
 ] as const;
-type TabKey = "home" | "mylist" | "D1" | "D2";
+type TabKey = "home" | "mylist" | "D1" | "D2" | "D3";
 
 const PAGE_SIZE = 50;
 const allSchools = schoolsData as School[];
@@ -286,13 +287,13 @@ export default function Home() {
     }
     // Restore active tab from URL hash on mount
     const hash = window.location.hash.replace("#", "");
-    if (["mylist", "D1", "D2"].includes(hash)) {
+    if (["mylist", "D1", "D2", "D3"].includes(hash)) {
       setActiveTab(hash as TabKey);
     }
     // Listen for hash changes (e.g. navigating back from /match to /#mylist)
     const onHashChange = () => {
       const h = window.location.hash.replace("#", "");
-      if (["mylist", "D1", "D2"].includes(h)) {
+      if (["mylist", "D1", "D2", "D3"].includes(h)) {
         setActiveTab(h as TabKey);
       } else if (!h) {
         setActiveTab("home");
@@ -507,7 +508,7 @@ export default function Home() {
     );
   }
 
-  const showDivisionFilters = activeTab === "D1" || activeTab === "D2";
+  const showDivisionFilters = activeTab === "D1" || activeTab === "D2" || activeTab === "D3";
 
   return (
     <div className="min-h-screen bg-gray-50 overflow-x-hidden">
@@ -528,9 +529,9 @@ export default function Home() {
             </div>
             <SiteNav
               variant="dark"
-              active={activeTab === "home" ? "Home" : activeTab === "mylist" ? "My Top Programs" : activeTab === "D1" ? "All Division 1" : activeTab === "D2" ? "All Division 2" : undefined}
+              active={activeTab === "home" ? "Home" : activeTab === "mylist" ? "My Top Programs" : activeTab === "D1" ? "All Division 1" : activeTab === "D2" ? "All Division 2" : activeTab === "D3" ? "All Division 3" : undefined}
               onNavigate={(href) => {
-                const tab = href === "/" ? (isLoggedIn ? "mylist" : "home") : href === "/#mylist" ? "mylist" : href === "/#D1" ? "D1" : href === "/#D2" ? "D2" : null;
+                const tab = href === "/" ? (isLoggedIn ? "mylist" : "home") : href === "/#mylist" ? "mylist" : href === "/#D1" ? "D1" : href === "/#D2" ? "D2" : href === "/#D3" ? "D3" : null;
                 if (tab) {
                   handleTabChange(tab as TabKey);
                   window.scrollTo({ top: 0, behavior: "smooth" });
@@ -704,93 +705,34 @@ export default function Home() {
                 </svg>
                 My AI Matches
               </Link>
-              <button
-                onClick={() => handleTabChange("D1")}
-                className="px-2.5 py-1.5 sm:px-4 sm:py-2 bg-gray-700 text-white rounded-lg text-xs sm:text-sm font-bold hover:bg-gray-800 transition-colors whitespace-nowrap"
-              >
-                Browse D1 Programs
-              </button>
-              <button
-                onClick={() => handleTabChange("D2")}
-                className="px-2.5 py-1.5 sm:px-4 sm:py-2 bg-gray-700 text-white rounded-lg text-xs sm:text-sm font-bold hover:bg-gray-800 transition-colors whitespace-nowrap"
-              >
-                Browse D2 Programs
-              </button>
             </div>
+            <p className="text-sm text-gray-600">
+              Browse: <button onClick={() => handleTabChange("D1")} className="text-blue-600 font-semibold hover:underline">Division I</button>{" | "}<button onClick={() => handleTabChange("D2")} className="text-blue-600 font-semibold hover:underline">Division II</button>{" | "}<button onClick={() => handleTabChange("D3")} className="text-blue-600 font-semibold hover:underline">Division III</button>
+            </p>
           </>
         )}
         {activeTab === "D1" && (
           <>
             <h2 className="text-lg sm:text-xl font-bold text-gray-900">All Division 1 Baseball Programs</h2>
-            <div className="flex flex-wrap items-center gap-2">
-              <button
-                onClick={() => handleTabChange("mylist")}
-                className="inline-flex items-center justify-center gap-1 px-2.5 py-1.5 sm:gap-1.5 sm:px-4 sm:py-2 bg-[#CC0000] text-white rounded-lg text-xs sm:text-sm font-bold hover:bg-red-700 transition-colors whitespace-nowrap"
-              >
-                <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                </svg>
-                My Top Programs
-              </button>
-              <Link
-                href="/match"
-                className="inline-flex items-center justify-center gap-1 px-2.5 py-1.5 sm:gap-1.5 sm:px-4 sm:py-2 bg-[#CC0000] text-white rounded-lg text-xs sm:text-sm font-bold hover:bg-red-700 transition-colors whitespace-nowrap"
-              >
-                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
-                </svg>
-                My AI Matches
-              </Link>
-              <button
-                onClick={() => handleTabChange("D1")}
-                className="px-2.5 py-1.5 sm:px-4 sm:py-2 bg-gray-700 text-white rounded-lg text-xs sm:text-sm font-bold hover:bg-gray-800 transition-colors whitespace-nowrap"
-              >
-                Browse D1 Programs
-              </button>
-              <button
-                onClick={() => handleTabChange("D2")}
-                className="px-2.5 py-1.5 sm:px-4 sm:py-2 bg-gray-700 text-white rounded-lg text-xs sm:text-sm font-bold hover:bg-gray-800 transition-colors whitespace-nowrap"
-              >
-                Browse D2 Programs
-              </button>
-            </div>
+            <p className="text-sm text-gray-600">
+              Browse: <span className="text-gray-900 font-semibold">Division I</span>{" | "}<button onClick={() => handleTabChange("D2")} className="text-blue-600 font-semibold hover:underline">Division II</button>{" | "}<button onClick={() => handleTabChange("D3")} className="text-blue-600 font-semibold hover:underline">Division III</button>
+            </p>
           </>
         )}
         {activeTab === "D2" && (
           <>
             <h2 className="text-lg sm:text-xl font-bold text-gray-900">All Division 2 Baseball Programs</h2>
-            <div className="flex flex-wrap items-center gap-2">
-              <button
-                onClick={() => handleTabChange("mylist")}
-                className="inline-flex items-center justify-center gap-1 px-2.5 py-1.5 sm:gap-1.5 sm:px-4 sm:py-2 bg-[#CC0000] text-white rounded-lg text-xs sm:text-sm font-bold hover:bg-red-700 transition-colors whitespace-nowrap"
-              >
-                <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                </svg>
-                My Top Programs
-              </button>
-              <Link
-                href="/match"
-                className="inline-flex items-center justify-center gap-1 px-2.5 py-1.5 sm:gap-1.5 sm:px-4 sm:py-2 bg-[#CC0000] text-white rounded-lg text-xs sm:text-sm font-bold hover:bg-red-700 transition-colors whitespace-nowrap"
-              >
-                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
-                </svg>
-                My AI Matches
-              </Link>
-              <button
-                onClick={() => handleTabChange("D1")}
-                className="px-2.5 py-1.5 sm:px-4 sm:py-2 bg-gray-700 text-white rounded-lg text-xs sm:text-sm font-bold hover:bg-gray-800 transition-colors whitespace-nowrap"
-              >
-                Browse D1 Programs
-              </button>
-              <button
-                onClick={() => handleTabChange("D2")}
-                className="px-2.5 py-1.5 sm:px-4 sm:py-2 bg-gray-700 text-white rounded-lg text-xs sm:text-sm font-bold hover:bg-gray-800 transition-colors whitespace-nowrap"
-              >
-                Browse D2 Programs
-              </button>
-            </div>
+            <p className="text-sm text-gray-600">
+              Browse: <button onClick={() => handleTabChange("D1")} className="text-blue-600 font-semibold hover:underline">Division I</button>{" | "}<span className="text-gray-900 font-semibold">Division II</span>{" | "}<button onClick={() => handleTabChange("D3")} className="text-blue-600 font-semibold hover:underline">Division III</button>
+            </p>
+          </>
+        )}
+        {activeTab === "D3" && (
+          <>
+            <h2 className="text-lg sm:text-xl font-bold text-gray-900">All Division 3 Baseball Programs</h2>
+            <p className="text-sm text-gray-600">
+              Browse: <button onClick={() => handleTabChange("D1")} className="text-blue-600 font-semibold hover:underline">Division I</button>{" | "}<button onClick={() => handleTabChange("D2")} className="text-blue-600 font-semibold hover:underline">Division II</button>{" | "}<span className="text-gray-900 font-semibold">Division III</span>
+            </p>
           </>
         )}
 
@@ -826,22 +768,11 @@ export default function Home() {
               </div>
               <h3 className="text-lg font-bold text-gray-900 mb-2">No programs ranked yet</h3>
               <p className="text-sm text-gray-600 mb-6">
-                Start building your list! Browse Division 1 and Division 2 programs and use the star ratings to rank your favorites.
+                Start building your list! Browse programs by division and use the star ratings to rank your favorites.
               </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-                <button
-                  onClick={() => handleTabChange("D1")}
-                  className="w-full sm:w-auto px-6 py-3 bg-[#CC0000] text-white rounded-xl text-sm font-bold hover:bg-red-700 transition-colors"
-                >
-                  Browse D1 Programs
-                </button>
-                <button
-                  onClick={() => handleTabChange("D2")}
-                  className="w-full sm:w-auto px-6 py-3 bg-gray-700 text-white rounded-xl text-sm font-bold hover:bg-gray-800 transition-colors"
-                >
-                  Browse D2 Programs
-                </button>
-              </div>
+              <p className="text-sm text-gray-600">
+                Browse: <button onClick={() => handleTabChange("D1")} className="text-blue-600 font-semibold hover:underline">Division I</button>{" | "}<button onClick={() => handleTabChange("D2")} className="text-blue-600 font-semibold hover:underline">Division II</button>{" | "}<button onClick={() => handleTabChange("D3")} className="text-blue-600 font-semibold hover:underline">Division III</button>
+              </p>
             </div>
           </div>
         )}
