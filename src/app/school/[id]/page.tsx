@@ -386,14 +386,13 @@ export default function SchoolPage({
           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1629219644109-b4df0ab25a7b?w=1920&q=80')" }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
+        <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 py-6 sm:py-10">
           <div className="flex items-start justify-between">
-            <div className="flex items-center gap-3">
-              <BrandLogo size="sm" showTagline={false} />
-            </div>
+            <BrandLogo size="lg" showTagline={true} />
             <SiteNav variant="dark" />
           </div>
         </div>
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-red-700 via-red-500 to-red-700" />
       </header>
 
       <main className="max-w-5xl mx-auto px-4 sm:px-6 py-4 sm:py-8 space-y-4 sm:space-y-6">
