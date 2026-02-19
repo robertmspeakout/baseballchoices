@@ -93,19 +93,6 @@ export default function SearchFilters({
         )}
 
         <select
-          value={filters.state}
-          onChange={(e) => update("state", e.target.value)}
-          className="px-2.5 sm:px-3 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm text-gray-700 focus:ring-2 focus:ring-blue-500"
-        >
-          <option value="">All States</option>
-          {filterOptions.states.map((s) => (
-            <option key={s} value={s}>
-              {s}
-            </option>
-          ))}
-        </select>
-
-        <select
           value={filters.conference}
           onChange={(e) => update("conference", e.target.value)}
           className="px-2.5 sm:px-3 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm text-gray-700 focus:ring-2 focus:ring-blue-500"
@@ -114,6 +101,32 @@ export default function SearchFilters({
           {visibleConferences.map((c) => (
             <option key={c} value={c}>
               {c}
+            </option>
+          ))}
+        </select>
+
+        <select
+          value={filters.region}
+          onChange={(e) => update("region", e.target.value)}
+          className="px-2.5 sm:px-3 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm text-gray-700 focus:ring-2 focus:ring-blue-500"
+        >
+          <option value="">All Regions</option>
+          {REGION_NAMES.map((r) => (
+            <option key={r} value={r}>
+              {r}
+            </option>
+          ))}
+        </select>
+
+        <select
+          value={filters.state}
+          onChange={(e) => update("state", e.target.value)}
+          className="px-2.5 sm:px-3 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm text-gray-700 focus:ring-2 focus:ring-blue-500"
+        >
+          <option value="">All States</option>
+          {filterOptions.states.map((s) => (
+            <option key={s} value={s}>
+              {s}
             </option>
           ))}
         </select>
@@ -131,20 +144,6 @@ export default function SearchFilters({
           </svg>
           High Academic
         </button>
-
-        {/* Region */}
-        <select
-          value={filters.region}
-          onChange={(e) => update("region", e.target.value)}
-          className="px-2.5 sm:px-3 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm text-gray-700 focus:ring-2 focus:ring-blue-500"
-        >
-          <option value="">All Regions</option>
-          {REGION_NAMES.map((r) => (
-            <option key={r} value={r}>
-              {r}
-            </option>
-          ))}
-        </select>
 
       </div>
     </div>
