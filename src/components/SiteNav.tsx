@@ -8,9 +8,9 @@ const NAV_ITEMS = [
   { label: "Home", href: "/", icon: null },
   { label: "My Top Programs", href: "/#mylist", icon: "star" },
   { label: "My AI Matches", href: "/match", icon: "sparkle" },
-  { label: "D1 Programs", href: "/#D1", icon: null },
-  { label: "D2 Programs", href: "/#D2", icon: null },
-  { label: "D3 Programs", href: "/#D3", icon: null },
+  { label: "DI Programs", href: "/#D1", icon: null },
+  { label: "DII Programs", href: "/#D2", icon: null },
+  { label: "DIII Programs", href: "/#D3", icon: null },
 ];
 
 function StarIcon({ className }: { className?: string }) {
