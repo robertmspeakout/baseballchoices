@@ -283,13 +283,11 @@ export default function MatchPage() {
 
       {/* Results */}
       <main className="max-w-[1400px] mx-auto px-3 sm:px-6 py-4 sm:py-6 space-y-4">
-        {/* Page title */}
-        <h2 className="text-xl sm:text-2xl font-black text-gray-900">
-          {profile?.playerName ? `${profile.playerName.split(" ")[0]}'s AI Matches` : "Your AI Matches"}
-        </h2>
-
-        {/* Section dropdown */}
-        <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
+        {/* Page title + Section dropdown */}
+        <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm space-y-3">
+          <h2 className="text-xl sm:text-2xl font-black text-gray-900">
+            {profile?.playerName ? `${profile.playerName.split(" ")[0]}'s AI Matches` : "Your AI Matches"}
+          </h2>
           <div className="relative inline-block">
             <select
               value="match"

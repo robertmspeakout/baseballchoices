@@ -685,13 +685,13 @@ export default function Home() {
         )}
         {(activeTab === "mylist" || activeTab === "D1" || activeTab === "D2" || activeTab === "D3") && (
           <>
-            <h2 className="text-lg sm:text-xl font-bold text-gray-900">
-              {activeTab === "mylist" ? (playerFirstName ? `${playerFirstName}'s Top Programs` : "My Top Programs") :
-               activeTab === "D1" ? "All Division 1 Baseball Programs" :
-               activeTab === "D2" ? "All Division 2 Baseball Programs" :
-               "All Division 3 Baseball Programs"}
-            </h2>
-            <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
+            <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm space-y-3">
+              <h2 className="text-lg sm:text-xl font-bold text-gray-900">
+                {activeTab === "mylist" ? (playerFirstName ? `${playerFirstName}'s Top Programs` : "My Top Programs") :
+                 activeTab === "D1" ? "All Division 1 Baseball Programs" :
+                 activeTab === "D2" ? "All Division 2 Baseball Programs" :
+                 "All Division 3 Baseball Programs"}
+              </h2>
               <div className="relative inline-block">
               <select
                 value={activeTab === "mylist" ? "mylist" : activeTab}
