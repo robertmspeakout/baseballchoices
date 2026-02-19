@@ -136,10 +136,11 @@ function VIPCarousel({ schools }: { schools: (School & { priority: number })[] }
   );
 }
 
-function VIPCard({ school }: { school: School & { priority: number; high_academic?: boolean } }) {
+function VIPCard({ school }: { school: School & { priority: number; high_academic?: boolean; recruiting_status?: string } }) {
   const [logoError, setLogoError] = useState(false);
   const [record, setRecord] = useState<string | null>(null);
   const fetched = useRef(false);
+  const hasOffer = school.recruiting_status === "Offer";
 
   useEffect(() => {
     if (fetched.current || !school.name) return;
@@ -156,9 +157,9 @@ function VIPCard({ school }: { school: School & { priority: number; high_academi
 
   return (
     <Link href={`/school/${school.id}`} className="group block">
-      <div className="relative bg-gray-900 rounded-2xl overflow-hidden border border-gray-700 hover:border-red-500/60 transition-all duration-200 hover:shadow-lg hover:shadow-red-500/10">
-        {/* Red top accent */}
-        <div className="h-1 bg-gradient-to-r from-red-700 via-red-500 to-red-700" />
+      <div className={`relative rounded-2xl overflow-hidden transition-all duration-200 hover:shadow-lg ${hasOffer ? "bg-gradient-to-b from-yellow-900/90 to-gray-900 border-2 border-yellow-500/60 hover:border-yellow-400 hover:shadow-yellow-500/20 ring-1 ring-yellow-500/20" : "bg-gray-900 border border-gray-700 hover:border-red-500/60 hover:shadow-red-500/10"}`}>
+        {/* Top accent */}
+        <div className={`h-1 ${hasOffer ? "bg-gradient-to-r from-yellow-600 via-yellow-400 to-yellow-600" : "bg-gradient-to-r from-red-700 via-red-500 to-red-700"}`} />
 
         <div className="p-5 flex flex-col items-center text-center">
           {/* Stars — show as many as the school's priority rating */}
@@ -218,10 +219,10 @@ function VIPCard({ school }: { school: School & { priority: number; high_academi
           )}
 
           {/* Recruiting Status */}
-          <p className="text-sm text-gray-400 mb-3">Recruiting Status: <span className="font-semibold text-white">{(school as any).recruiting_status || "None"}</span></p>
+          <p className="text-sm text-gray-400 mb-3">Recruiting Status: <span className={`font-semibold ${hasOffer ? "text-yellow-400" : "text-white"}`}>{school.recruiting_status || "None"}</span></p>
 
           {/* View Details button */}
-          <div className="px-4 py-1.5 rounded-lg bg-red-600/20 text-red-400 text-xs font-semibold uppercase tracking-wide group-hover:bg-red-600 group-hover:text-white transition-all">
+          <div className={`px-4 py-1.5 rounded-lg text-xs font-semibold uppercase tracking-wide transition-all ${hasOffer ? "bg-yellow-600/20 text-yellow-400 group-hover:bg-yellow-600 group-hover:text-white" : "bg-red-600/20 text-red-400 group-hover:bg-red-600 group-hover:text-white"}`}>
             View Details
           </div>
         </div>
@@ -687,7 +688,7 @@ export default function Home() {
             <div className="flex flex-wrap items-center gap-2">
               <button
                 onClick={() => handleTabChange("mylist")}
-                className="inline-flex items-center justify-center gap-1.5 px-4 py-2 bg-[#CC0000] text-white rounded-lg text-sm font-bold hover:bg-red-700 transition-colors whitespace-nowrap"
+                className="inline-flex items-center justify-center gap-1 px-2.5 py-1.5 sm:gap-1.5 sm:px-4 sm:py-2 bg-[#CC0000] text-white rounded-lg text-xs sm:text-sm font-bold hover:bg-red-700 transition-colors whitespace-nowrap"
               >
                 <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
@@ -696,7 +697,7 @@ export default function Home() {
               </button>
               <Link
                 href="/match"
-                className="inline-flex items-center justify-center gap-1.5 px-4 py-2 bg-[#CC0000] text-white rounded-lg text-sm font-bold hover:bg-red-700 transition-colors whitespace-nowrap"
+                className="inline-flex items-center justify-center gap-1 px-2.5 py-1.5 sm:gap-1.5 sm:px-4 sm:py-2 bg-[#CC0000] text-white rounded-lg text-xs sm:text-sm font-bold hover:bg-red-700 transition-colors whitespace-nowrap"
               >
                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
@@ -705,13 +706,13 @@ export default function Home() {
               </Link>
               <button
                 onClick={() => handleTabChange("D1")}
-                className="px-4 py-2 bg-gray-700 text-white rounded-lg text-sm font-bold hover:bg-gray-800 transition-colors whitespace-nowrap"
+                className="px-2.5 py-1.5 sm:px-4 sm:py-2 bg-gray-700 text-white rounded-lg text-xs sm:text-sm font-bold hover:bg-gray-800 transition-colors whitespace-nowrap"
               >
                 Browse D1 Programs
               </button>
               <button
                 onClick={() => handleTabChange("D2")}
-                className="px-4 py-2 bg-gray-700 text-white rounded-lg text-sm font-bold hover:bg-gray-800 transition-colors whitespace-nowrap"
+                className="px-2.5 py-1.5 sm:px-4 sm:py-2 bg-gray-700 text-white rounded-lg text-xs sm:text-sm font-bold hover:bg-gray-800 transition-colors whitespace-nowrap"
               >
                 Browse D2 Programs
               </button>
@@ -724,7 +725,7 @@ export default function Home() {
             <div className="flex flex-wrap items-center gap-2">
               <button
                 onClick={() => handleTabChange("mylist")}
-                className="inline-flex items-center justify-center gap-1.5 px-4 py-2 bg-[#CC0000] text-white rounded-lg text-sm font-bold hover:bg-red-700 transition-colors whitespace-nowrap"
+                className="inline-flex items-center justify-center gap-1 px-2.5 py-1.5 sm:gap-1.5 sm:px-4 sm:py-2 bg-[#CC0000] text-white rounded-lg text-xs sm:text-sm font-bold hover:bg-red-700 transition-colors whitespace-nowrap"
               >
                 <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
@@ -733,7 +734,7 @@ export default function Home() {
               </button>
               <Link
                 href="/match"
-                className="inline-flex items-center justify-center gap-1.5 px-4 py-2 bg-[#CC0000] text-white rounded-lg text-sm font-bold hover:bg-red-700 transition-colors whitespace-nowrap"
+                className="inline-flex items-center justify-center gap-1 px-2.5 py-1.5 sm:gap-1.5 sm:px-4 sm:py-2 bg-[#CC0000] text-white rounded-lg text-xs sm:text-sm font-bold hover:bg-red-700 transition-colors whitespace-nowrap"
               >
                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
@@ -742,13 +743,13 @@ export default function Home() {
               </Link>
               <button
                 onClick={() => handleTabChange("D1")}
-                className="px-4 py-2 bg-gray-700 text-white rounded-lg text-sm font-bold hover:bg-gray-800 transition-colors whitespace-nowrap"
+                className="px-2.5 py-1.5 sm:px-4 sm:py-2 bg-gray-700 text-white rounded-lg text-xs sm:text-sm font-bold hover:bg-gray-800 transition-colors whitespace-nowrap"
               >
                 Browse D1 Programs
               </button>
               <button
                 onClick={() => handleTabChange("D2")}
-                className="px-4 py-2 bg-gray-700 text-white rounded-lg text-sm font-bold hover:bg-gray-800 transition-colors whitespace-nowrap"
+                className="px-2.5 py-1.5 sm:px-4 sm:py-2 bg-gray-700 text-white rounded-lg text-xs sm:text-sm font-bold hover:bg-gray-800 transition-colors whitespace-nowrap"
               >
                 Browse D2 Programs
               </button>
@@ -761,7 +762,7 @@ export default function Home() {
             <div className="flex flex-wrap items-center gap-2">
               <button
                 onClick={() => handleTabChange("mylist")}
-                className="inline-flex items-center justify-center gap-1.5 px-4 py-2 bg-[#CC0000] text-white rounded-lg text-sm font-bold hover:bg-red-700 transition-colors whitespace-nowrap"
+                className="inline-flex items-center justify-center gap-1 px-2.5 py-1.5 sm:gap-1.5 sm:px-4 sm:py-2 bg-[#CC0000] text-white rounded-lg text-xs sm:text-sm font-bold hover:bg-red-700 transition-colors whitespace-nowrap"
               >
                 <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
@@ -770,7 +771,7 @@ export default function Home() {
               </button>
               <Link
                 href="/match"
-                className="inline-flex items-center justify-center gap-1.5 px-4 py-2 bg-[#CC0000] text-white rounded-lg text-sm font-bold hover:bg-red-700 transition-colors whitespace-nowrap"
+                className="inline-flex items-center justify-center gap-1 px-2.5 py-1.5 sm:gap-1.5 sm:px-4 sm:py-2 bg-[#CC0000] text-white rounded-lg text-xs sm:text-sm font-bold hover:bg-red-700 transition-colors whitespace-nowrap"
               >
                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
@@ -779,13 +780,13 @@ export default function Home() {
               </Link>
               <button
                 onClick={() => handleTabChange("D1")}
-                className="px-4 py-2 bg-gray-700 text-white rounded-lg text-sm font-bold hover:bg-gray-800 transition-colors whitespace-nowrap"
+                className="px-2.5 py-1.5 sm:px-4 sm:py-2 bg-gray-700 text-white rounded-lg text-xs sm:text-sm font-bold hover:bg-gray-800 transition-colors whitespace-nowrap"
               >
                 Browse D1 Programs
               </button>
               <button
                 onClick={() => handleTabChange("D2")}
-                className="px-4 py-2 bg-gray-700 text-white rounded-lg text-sm font-bold hover:bg-gray-800 transition-colors whitespace-nowrap"
+                className="px-2.5 py-1.5 sm:px-4 sm:py-2 bg-gray-700 text-white rounded-lg text-xs sm:text-sm font-bold hover:bg-gray-800 transition-colors whitespace-nowrap"
               >
                 Browse D2 Programs
               </button>
@@ -911,9 +912,6 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
             <BrandLogo size="sm" showTagline={false} onClick={() => { handleTabChange(isLoggedIn ? "mylist" : "home"); window.scrollTo({ top: 0, behavior: "smooth" }); }} />
             <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-gray-400">
-              <a href="#" className="hover:text-white transition-colors">About</a>
-              <a href="#how-it-works" onClick={(e) => { e.preventDefault(); handleTabChange("home"); setTimeout(() => document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth" }), 100); }} className="hover:text-white transition-colors">How It Works</a>
-              <a href="#" className="hover:text-white transition-colors">Pricing</a>
               <a href="#" className="hover:text-white transition-colors">Contact</a>
               <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
             </div>

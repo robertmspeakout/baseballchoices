@@ -2,7 +2,9 @@
 
 import { useState, useRef, useEffect } from "react";
 import { useSession } from "next-auth/react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
+import { Suspense } from "react";
 import { loadProfile, saveProfile, loadPreferences, savePreferences, REGIONS } from "@/lib/playerProfile";
 import ImageCropModal from "@/components/ImageCropModal";
 
@@ -43,9 +45,9 @@ const TUITION_OPTIONS = [
 
 const TOTAL_STEPS = 3;
 
-export default function ProfilePage() {
+function ProfileForm({ initialStep }: { initialStep: number }) {
   const { data: session, update: updateSession } = useSession();
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(initialStep);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
 
@@ -702,5 +704,20 @@ export default function ProfilePage() {
         />
       )}
     </div>
+  );
+}
+
+function ProfilePageInner() {
+  const searchParams = useSearchParams();
+  const startStep = parseInt(searchParams.get("step") || "1", 10);
+  const initialStep = [1, 2, 3].includes(startStep) ? startStep : 1;
+  return <ProfileForm initialStep={initialStep} />;
+}
+
+export default function ProfilePage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin rounded-full h-10 w-10 border-4 border-gray-200 border-t-red-600" /></div>}>
+      <ProfilePageInner />
+    </Suspense>
   );
 }

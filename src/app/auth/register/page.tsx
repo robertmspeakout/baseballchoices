@@ -77,7 +77,7 @@ export default function RegisterPage() {
         return;
       }
 
-      window.location.href = "/auth/profile";
+      window.location.href = "/";
     } catch {
       setError("Something went wrong. Please try again.");
       setLoading(false);

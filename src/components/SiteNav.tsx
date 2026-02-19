@@ -110,7 +110,7 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
               : "bg-gray-900/95 backdrop-blur-md border-white/10"
           }`}
         >
-          {NAV_ITEMS.map((item) => {
+          {NAV_ITEMS.filter((item) => !(isLoggedIn && item.label === "Home")).map((item) => {
             const isActive = active === item.label;
             const Icon = item.icon ? iconMap[item.icon] : null;
             const cls = `w-full flex items-center gap-2 px-4 py-3 text-sm font-bold transition-colors border-b last:border-0 ${
