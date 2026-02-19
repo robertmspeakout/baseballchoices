@@ -399,8 +399,8 @@ export default function SchoolPage({
     <div className="min-h-screen bg-gray-50">
       <header className="relative text-white overflow-x-clip overflow-y-visible z-30">
         <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1629219644109-b4df0ab25a7b?w=1920&q=80')" }}
+          className="absolute inset-0 bg-cover bg-center transition-opacity duration-700"
+          style={{ backgroundImage: `url('${facilityPhotos.length > 0 ? facilityPhotos[0].url : "https://images.unsplash.com/photo-1629219644109-b4df0ab25a7b?w=1920&q=80"}')` }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
         <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 py-6 sm:py-10">
