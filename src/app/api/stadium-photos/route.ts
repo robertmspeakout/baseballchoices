@@ -8,6 +8,7 @@ export const dynamic = "force-dynamic";
 export async function GET(request: NextRequest) {
   const school = request.nextUrl.searchParams.get("school");
   const stadium = request.nextUrl.searchParams.get("stadium");
+  const mascot = request.nextUrl.searchParams.get("mascot");
 
   if (!school) {
     return NextResponse.json({ photos: [] });
@@ -22,7 +23,14 @@ export async function GET(request: NextRequest) {
       photos.push(...stadiumPhotos);
     }
 
-    // If no stadium name or no results, try "[school] baseball stadium"
+    // If no stadium name or no results, try with mascot for disambiguation
+    // e.g. "Portland Pilots baseball stadium" instead of just "Portland baseball stadium"
+    if (photos.length === 0 && mascot) {
+      const fallback = await getStadiumImages(`${school} ${mascot} baseball stadium`);
+      photos.push(...fallback);
+    }
+
+    // Final fallback without mascot
     if (photos.length === 0) {
       const fallback = await getStadiumImages(`${school} baseball stadium`);
       photos.push(...fallback);

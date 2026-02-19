@@ -262,6 +262,7 @@ export default function SchoolPage({
     if (!schoolData) return;
     setPhotosLoading(true);
     const params = new URLSearchParams({ school: schoolData.name });
+    if (schoolData.mascot) params.set("mascot", schoolData.mascot);
     if (schoolData.stadium_name) params.set("stadium", schoolData.stadium_name);
     fetch(`/api/stadium-photos?${params}`)
       .then((r) => r.json())
@@ -503,15 +504,16 @@ export default function SchoolPage({
           </div>
         </div>
 
-        {/* Detail Tab Navigation */}
+        {/* Unified tabbed section */}
         <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
-          <nav className="flex -mb-px">
+          {/* Tab bar */}
+          <nav className="flex border-b border-gray-200">
             <button
               onClick={() => setActiveDetailTab("info")}
-              className={`flex-1 px-4 py-3 text-sm sm:text-base font-semibold text-center transition-colors ${
+              className={`flex-1 px-4 py-3.5 text-sm sm:text-base font-semibold text-center transition-colors ${
                 activeDetailTab === "info"
-                  ? "text-blue-700 border-b-2 border-blue-700 bg-blue-50/50"
-                  : "text-gray-500 hover:text-gray-700 border-b-2 border-transparent"
+                  ? "text-blue-700 border-b-[3px] border-blue-600 bg-white -mb-px"
+                  : "text-gray-400 hover:text-gray-600 bg-gray-50"
               }`}
             >
               <svg className="w-4 h-4 inline mr-1.5 -mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -521,10 +523,10 @@ export default function SchoolPage({
             </button>
             <button
               onClick={() => setActiveDetailTab("tracking")}
-              className={`flex-1 px-4 py-3 text-sm sm:text-base font-bold text-center transition-colors ${
+              className={`flex-1 px-4 py-3.5 text-sm sm:text-base font-bold text-center transition-colors ${
                 activeDetailTab === "tracking"
-                  ? "bg-red-600 text-white border-b-2 border-red-700"
-                  : "bg-red-50 text-red-700 border-b-2 border-transparent hover:bg-red-100"
+                  ? "text-white bg-red-600 border-b-[3px] border-red-700 -mb-px"
+                  : "text-red-600 bg-red-50 hover:bg-red-100"
               }`}
             >
               <svg className="w-4 h-4 inline mr-1.5 -mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -533,13 +535,12 @@ export default function SchoolPage({
               Recruiting Tracker
             </button>
           </nav>
-        </div>
 
-        {/* ===== PROGRAM INFO TAB ===== */}
-        {activeDetailTab === "info" && (
-          <>
-            {/* Academics & School Info */}
-            <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">
+          {/* ===== PROGRAM INFO TAB ===== */}
+          {activeDetailTab === "info" && (
+            <div className="divide-y divide-gray-200">
+              {/* Academics & School Info */}
+              <div className="p-4 sm:p-6">
               <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4 flex items-center gap-2">
                 <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5z" />
@@ -581,9 +582,9 @@ export default function SchoolPage({
               </div>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-gray-200">
               {/* Head Coach */}
-              <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">
+              <div className="p-4 sm:p-6">
                 <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4 flex items-center gap-2">
                   <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
@@ -632,7 +633,7 @@ export default function SchoolPage({
               </div>
 
               {/* Links & Social */}
-              <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">
+              <div className="p-4 sm:p-6">
                 <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4 flex items-center gap-2">
                   <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
@@ -690,7 +691,7 @@ export default function SchoolPage({
             </div>
 
             {/* Latest Game & Upcoming Schedule */}
-            <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+            <div>
               <div className="p-4 sm:p-6">
                 <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4 flex items-center gap-2">
                   <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -819,7 +820,7 @@ export default function SchoolPage({
             {draftPicksCount > 0 && (() => {
               const picks = ((draftPicksData as Record<string, DraftPick[]>)[school.name] || []).filter(p => p.year >= draftCutoffYear);
               return (
-                <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+                <div>
                   <div className="p-4 sm:p-6">
                     <div className="flex items-center gap-3">
                       <img
@@ -890,7 +891,7 @@ export default function SchoolPage({
             })()}
 
             {/* Latest News */}
-            <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">
+            <div className="p-4 sm:p-6">
               <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4 flex items-center gap-2">
                 <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
@@ -922,7 +923,7 @@ export default function SchoolPage({
 
             {/* Location & Map */}
             {mapLat && mapLng && (
-              <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+              <div>
                 <div className="p-4 sm:p-6 pb-3 sm:pb-4">
                   <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-1 flex items-center gap-2">
                     <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -979,61 +980,12 @@ export default function SchoolPage({
               </div>
             )}
 
-            {/* Photo lightbox */}
-            {lightboxIdx !== null && facilityPhotos[lightboxIdx] && (
-              <div
-                className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
-                onClick={() => setLightboxIdx(null)}
-              >
-                <div className="relative max-w-3xl w-full" onClick={(e) => e.stopPropagation()}>
-                  <img
-                    src={facilityPhotos[lightboxIdx].url}
-                    alt={facilityPhotos[lightboxIdx].caption}
-                    className="w-full rounded-lg shadow-2xl"
-                  />
-                  {facilityPhotos[lightboxIdx].caption && (
-                    <p className="text-white/80 text-sm text-center mt-3">{facilityPhotos[lightboxIdx].caption}</p>
-                  )}
-                  <button
-                    onClick={() => setLightboxIdx(null)}
-                    className="absolute -top-3 -right-3 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg text-gray-700 hover:text-gray-900"
-                  >
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                  </button>
-                  {/* Nav arrows */}
-                  {facilityPhotos.length > 1 && (
-                    <>
-                      <button
-                        onClick={() => setLightboxIdx((lightboxIdx - 1 + facilityPhotos.length) % facilityPhotos.length)}
-                        className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 rounded-full flex items-center justify-center text-white hover:bg-black/70"
-                      >
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                        </svg>
-                      </button>
-                      <button
-                        onClick={() => setLightboxIdx((lightboxIdx + 1) % facilityPhotos.length)}
-                        className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 rounded-full flex items-center justify-center text-white hover:bg-black/70"
-                      >
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      </button>
-                    </>
-                  )}
-                </div>
-              </div>
-            )}
-          </>
-        )}
+            </div>
+          )}
 
-        {/* ===== MY TRACKING TAB ===== */}
-        {activeDetailTab === "tracking" && (
-          <>
-            {/* Recruiting Tracker */}
-            <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">
+          {/* ===== MY TRACKING TAB ===== */}
+          {activeDetailTab === "tracking" && (
+            <div className="p-4 sm:p-6">
               <div className="space-y-4">
                 {/* Recruiting Status */}
                 <div>
@@ -1134,7 +1086,54 @@ export default function SchoolPage({
                 </div>
               </div>
             </div>
-          </>
+          )}
+        </div>{/* end unified tabbed card */}
+
+        {/* Photo lightbox */}
+        {lightboxIdx !== null && facilityPhotos[lightboxIdx] && (
+          <div
+            className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
+            onClick={() => setLightboxIdx(null)}
+          >
+            <div className="relative max-w-3xl w-full" onClick={(e) => e.stopPropagation()}>
+              <img
+                src={facilityPhotos[lightboxIdx].url}
+                alt={facilityPhotos[lightboxIdx].caption}
+                className="w-full rounded-lg shadow-2xl"
+              />
+              {facilityPhotos[lightboxIdx].caption && (
+                <p className="text-white/80 text-sm text-center mt-3">{facilityPhotos[lightboxIdx].caption}</p>
+              )}
+              <button
+                onClick={() => setLightboxIdx(null)}
+                className="absolute -top-3 -right-3 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg text-gray-700 hover:text-gray-900"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+              {facilityPhotos.length > 1 && (
+                <>
+                  <button
+                    onClick={() => setLightboxIdx((lightboxIdx - 1 + facilityPhotos.length) % facilityPhotos.length)}
+                    className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 rounded-full flex items-center justify-center text-white hover:bg-black/70"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                    </svg>
+                  </button>
+                  <button
+                    onClick={() => setLightboxIdx((lightboxIdx + 1) % facilityPhotos.length)}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/50 rounded-full flex items-center justify-center text-white hover:bg-black/70"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+                </>
+              )}
+            </div>
+          </div>
         )}
       </main>
 
