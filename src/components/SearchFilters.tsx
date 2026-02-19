@@ -45,7 +45,7 @@ export default function SearchFilters({
   };
 
   // When on a division tab, hide division dropdown and filter conferences to that division
-  const isDivisionTab = activeTab === "D1" || activeTab === "D2";
+  const isDivisionTab = activeTab === "D1" || activeTab === "D2" || activeTab === "D3";
   const visibleConferences = isDivisionTab
     ? filterOptions.conferences.filter((c) =>
         filterOptions.divisionConferences?.[activeTab!]?.includes(c) ?? true
