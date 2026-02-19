@@ -453,7 +453,7 @@ export default function SchoolPage({
               <div className="flex items-center gap-2 mt-0.5 flex-wrap">
                 {school.mascot && <span className="text-sm font-semibold text-gray-500">{school.mascot}</span>}
                 {school.mascot && <span className="text-gray-500">|</span>}
-                <span className="text-sm font-semibold text-blue-600">{school.conference}</span>
+                <span className="text-sm font-semibold text-gray-500">{school.conference}</span>
                 <span className="text-gray-300">|</span>
                 <span className="text-sm font-semibold text-gray-500">{divLabel[school.division] || school.division}</span>
               </div>
