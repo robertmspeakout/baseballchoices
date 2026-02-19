@@ -706,9 +706,11 @@ export default function Home() {
                 My AI Matches
               </Link>
             </div>
-            <p className="text-sm text-gray-600">
-              Browse: <button onClick={() => handleTabChange("D1")} className="text-blue-600 font-semibold hover:underline">Division I</button>{" | "}<button onClick={() => handleTabChange("D2")} className="text-blue-600 font-semibold hover:underline">Division II</button>{" | "}<button onClick={() => handleTabChange("D3")} className="text-blue-600 font-semibold hover:underline">Division III</button>
-            </p>
+            <div className="flex items-center gap-2">
+              <button onClick={() => handleTabChange("D1")} className="px-4 py-1.5 rounded-full text-xs font-semibold border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 transition-colors">DI</button>
+              <button onClick={() => handleTabChange("D2")} className="px-4 py-1.5 rounded-full text-xs font-semibold border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 transition-colors">DII</button>
+              <button onClick={() => handleTabChange("D3")} className="px-4 py-1.5 rounded-full text-xs font-semibold border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 transition-colors">DIII</button>
+            </div>
           </>
         )}
         {activeTab === "D1" && (
@@ -734,9 +736,11 @@ export default function Home() {
                 My AI Matches
               </Link>
             </div>
-            <p className="text-sm text-gray-600">
-              Browse: <span className="text-gray-900 font-semibold">Division I</span>{" | "}<button onClick={() => handleTabChange("D2")} className="text-blue-600 font-semibold hover:underline">Division II</button>{" | "}<button onClick={() => handleTabChange("D3")} className="text-blue-600 font-semibold hover:underline">Division III</button>
-            </p>
+            <div className="flex items-center gap-2">
+              <span className="px-4 py-1.5 rounded-full text-xs font-semibold bg-gray-900 text-white">DIVISION I</span>
+              <button onClick={() => handleTabChange("D2")} className="px-4 py-1.5 rounded-full text-xs font-semibold border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 transition-colors">DII</button>
+              <button onClick={() => handleTabChange("D3")} className="px-4 py-1.5 rounded-full text-xs font-semibold border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 transition-colors">DIII</button>
+            </div>
           </>
         )}
         {activeTab === "D2" && (
@@ -762,9 +766,11 @@ export default function Home() {
                 My AI Matches
               </Link>
             </div>
-            <p className="text-sm text-gray-600">
-              Browse: <button onClick={() => handleTabChange("D1")} className="text-blue-600 font-semibold hover:underline">Division I</button>{" | "}<span className="text-gray-900 font-semibold">Division II</span>{" | "}<button onClick={() => handleTabChange("D3")} className="text-blue-600 font-semibold hover:underline">Division III</button>
-            </p>
+            <div className="flex items-center gap-2">
+              <button onClick={() => handleTabChange("D1")} className="px-4 py-1.5 rounded-full text-xs font-semibold border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 transition-colors">DI</button>
+              <span className="px-4 py-1.5 rounded-full text-xs font-semibold bg-gray-900 text-white">DIVISION II</span>
+              <button onClick={() => handleTabChange("D3")} className="px-4 py-1.5 rounded-full text-xs font-semibold border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 transition-colors">DIII</button>
+            </div>
           </>
         )}
         {activeTab === "D3" && (
@@ -790,9 +796,11 @@ export default function Home() {
                 My AI Matches
               </Link>
             </div>
-            <p className="text-sm text-gray-600">
-              Browse: <button onClick={() => handleTabChange("D1")} className="text-blue-600 font-semibold hover:underline">Division I</button>{" | "}<button onClick={() => handleTabChange("D2")} className="text-blue-600 font-semibold hover:underline">Division II</button>{" | "}<span className="text-gray-900 font-semibold">Division III</span>
-            </p>
+            <div className="flex items-center gap-2">
+              <button onClick={() => handleTabChange("D1")} className="px-4 py-1.5 rounded-full text-xs font-semibold border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 transition-colors">DI</button>
+              <button onClick={() => handleTabChange("D2")} className="px-4 py-1.5 rounded-full text-xs font-semibold border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 transition-colors">DII</button>
+              <span className="px-4 py-1.5 rounded-full text-xs font-semibold bg-gray-900 text-white">DIVISION III</span>
+            </div>
           </>
         )}
 
