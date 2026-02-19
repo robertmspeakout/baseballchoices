@@ -304,9 +304,9 @@ export default function MatchPage() {
             >
               <option value="mylist">My Top Programs</option>
               <option value="match">My AI Matches</option>
-              <option value="D1">D1 Programs</option>
-              <option value="D2">D2 Programs</option>
-              <option value="D3">D3 Programs</option>
+              <option value="D1">DI Programs</option>
+              <option value="D2">DII Programs</option>
+              <option value="D3">DIII Programs</option>
               <option value="JUCO" disabled>JUCO Programs</option>
             </select>
             <svg className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#CC0000]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
