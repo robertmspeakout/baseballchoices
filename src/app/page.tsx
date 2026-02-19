@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import BrandLogo from "@/components/BrandLogo";
 import SiteNav from "@/components/SiteNav";
 import SearchFilters from "@/components/SearchFilters";
@@ -233,6 +234,7 @@ function VIPCard({ school }: { school: School & { priority: number; high_academi
 }
 
 export default function Home() {
+  const router = useRouter();
   const { data: session, status } = useSession();
   const isLoggedIn = status === "authenticated" && !!session?.user;
   const [activeTab, setActiveTab] = useState<TabKey>("home");
@@ -681,125 +683,37 @@ export default function Home() {
         {activeTab === "home" && isLoggedIn && (
           <h2 className="text-lg sm:text-xl font-bold text-gray-900">Top 25 D1 Programs</h2>
         )}
-        {activeTab === "mylist" && (
+        {(activeTab === "mylist" || activeTab === "D1" || activeTab === "D2" || activeTab === "D3") && (
           <>
             <h2 className="text-lg sm:text-xl font-bold text-gray-900">
-              {playerFirstName ? `${playerFirstName}'s Top Programs` : "My Top Programs"}
+              {activeTab === "mylist" ? (playerFirstName ? `${playerFirstName}'s Top Programs` : "My Top Programs") :
+               activeTab === "D1" ? "All Division 1 Baseball Programs" :
+               activeTab === "D2" ? "All Division 2 Baseball Programs" :
+               "All Division 3 Baseball Programs"}
             </h2>
-            <div className="flex flex-wrap items-center gap-2">
-              <button
-                onClick={() => handleTabChange("mylist")}
-                className="inline-flex items-center justify-center gap-1 px-2.5 py-1.5 sm:gap-1.5 sm:px-4 sm:py-2 bg-[#CC0000] text-white rounded-lg text-xs sm:text-sm font-bold hover:bg-red-700 transition-colors whitespace-nowrap"
+            <div className="relative">
+              <select
+                value={activeTab === "mylist" ? "mylist" : activeTab}
+                onChange={(e) => {
+                  const val = e.target.value;
+                  if (val === "match") {
+                    router.push("/match");
+                  } else {
+                    handleTabChange(val as TabKey);
+                  }
+                }}
+                className="w-full appearance-none bg-gray-50 border border-gray-400 rounded-lg px-4 py-3 pr-10 text-sm font-semibold text-gray-900 focus:outline-none focus:border-[#CC0000] focus:ring-1 focus:ring-[#CC0000] cursor-pointer"
               >
-                <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                </svg>
-                My Top Programs
-              </button>
-              <Link
-                href="/match"
-                className="inline-flex items-center justify-center gap-1 px-2.5 py-1.5 sm:gap-1.5 sm:px-4 sm:py-2 bg-[#CC0000] text-white rounded-lg text-xs sm:text-sm font-bold hover:bg-red-700 transition-colors whitespace-nowrap"
-              >
-                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
-                </svg>
-                My AI Matches
-              </Link>
-            </div>
-            <div className="flex items-center gap-2">
-              <button onClick={() => handleTabChange("D1")} className="px-4 py-1.5 rounded-full text-xs font-semibold border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 transition-colors">DI</button>
-              <button onClick={() => handleTabChange("D2")} className="px-4 py-1.5 rounded-full text-xs font-semibold border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 transition-colors">DII</button>
-              <button onClick={() => handleTabChange("D3")} className="px-4 py-1.5 rounded-full text-xs font-semibold border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 transition-colors">DIII</button>
-            </div>
-          </>
-        )}
-        {activeTab === "D1" && (
-          <>
-            <h2 className="text-lg sm:text-xl font-bold text-gray-900">All Division 1 Baseball Programs</h2>
-            <div className="flex flex-wrap items-center gap-2">
-              <button
-                onClick={() => handleTabChange("mylist")}
-                className="inline-flex items-center justify-center gap-1 px-2.5 py-1.5 sm:gap-1.5 sm:px-4 sm:py-2 bg-[#CC0000] text-white rounded-lg text-xs sm:text-sm font-bold hover:bg-red-700 transition-colors whitespace-nowrap"
-              >
-                <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                </svg>
-                My Top Programs
-              </button>
-              <Link
-                href="/match"
-                className="inline-flex items-center justify-center gap-1 px-2.5 py-1.5 sm:gap-1.5 sm:px-4 sm:py-2 bg-[#CC0000] text-white rounded-lg text-xs sm:text-sm font-bold hover:bg-red-700 transition-colors whitespace-nowrap"
-              >
-                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
-                </svg>
-                My AI Matches
-              </Link>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="px-4 py-1.5 rounded-full text-xs font-semibold bg-gray-900 text-white">DIVISION I</span>
-              <button onClick={() => handleTabChange("D2")} className="px-4 py-1.5 rounded-full text-xs font-semibold border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 transition-colors">DII</button>
-              <button onClick={() => handleTabChange("D3")} className="px-4 py-1.5 rounded-full text-xs font-semibold border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 transition-colors">DIII</button>
-            </div>
-          </>
-        )}
-        {activeTab === "D2" && (
-          <>
-            <h2 className="text-lg sm:text-xl font-bold text-gray-900">All Division 2 Baseball Programs</h2>
-            <div className="flex flex-wrap items-center gap-2">
-              <button
-                onClick={() => handleTabChange("mylist")}
-                className="inline-flex items-center justify-center gap-1 px-2.5 py-1.5 sm:gap-1.5 sm:px-4 sm:py-2 bg-[#CC0000] text-white rounded-lg text-xs sm:text-sm font-bold hover:bg-red-700 transition-colors whitespace-nowrap"
-              >
-                <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                </svg>
-                My Top Programs
-              </button>
-              <Link
-                href="/match"
-                className="inline-flex items-center justify-center gap-1 px-2.5 py-1.5 sm:gap-1.5 sm:px-4 sm:py-2 bg-[#CC0000] text-white rounded-lg text-xs sm:text-sm font-bold hover:bg-red-700 transition-colors whitespace-nowrap"
-              >
-                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
-                </svg>
-                My AI Matches
-              </Link>
-            </div>
-            <div className="flex items-center gap-2">
-              <button onClick={() => handleTabChange("D1")} className="px-4 py-1.5 rounded-full text-xs font-semibold border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 transition-colors">DI</button>
-              <span className="px-4 py-1.5 rounded-full text-xs font-semibold bg-gray-900 text-white">DIVISION II</span>
-              <button onClick={() => handleTabChange("D3")} className="px-4 py-1.5 rounded-full text-xs font-semibold border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 transition-colors">DIII</button>
-            </div>
-          </>
-        )}
-        {activeTab === "D3" && (
-          <>
-            <h2 className="text-lg sm:text-xl font-bold text-gray-900">All Division 3 Baseball Programs</h2>
-            <div className="flex flex-wrap items-center gap-2">
-              <button
-                onClick={() => handleTabChange("mylist")}
-                className="inline-flex items-center justify-center gap-1 px-2.5 py-1.5 sm:gap-1.5 sm:px-4 sm:py-2 bg-[#CC0000] text-white rounded-lg text-xs sm:text-sm font-bold hover:bg-red-700 transition-colors whitespace-nowrap"
-              >
-                <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                </svg>
-                My Top Programs
-              </button>
-              <Link
-                href="/match"
-                className="inline-flex items-center justify-center gap-1 px-2.5 py-1.5 sm:gap-1.5 sm:px-4 sm:py-2 bg-[#CC0000] text-white rounded-lg text-xs sm:text-sm font-bold hover:bg-red-700 transition-colors whitespace-nowrap"
-              >
-                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
-                </svg>
-                My AI Matches
-              </Link>
-            </div>
-            <div className="flex items-center gap-2">
-              <button onClick={() => handleTabChange("D1")} className="px-4 py-1.5 rounded-full text-xs font-semibold border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 transition-colors">DI</button>
-              <button onClick={() => handleTabChange("D2")} className="px-4 py-1.5 rounded-full text-xs font-semibold border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 transition-colors">DII</button>
-              <span className="px-4 py-1.5 rounded-full text-xs font-semibold bg-gray-900 text-white">DIVISION III</span>
+                <option value="mylist">My Top Programs</option>
+                <option value="match">My AI Matches</option>
+                <option value="D1">D1 Programs</option>
+                <option value="D2">D2 Programs</option>
+                <option value="D3">D3 Programs</option>
+                <option value="JUCO" disabled>JUCO Programs</option>
+              </select>
+              <svg className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#CC0000]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
             </div>
           </>
         )}
