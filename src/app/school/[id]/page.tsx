@@ -464,7 +464,7 @@ export default function SchoolPage({
           </div>
           <div className="p-4 sm:p-6 border-b border-gray-100">
             <div>
-              <p className="text-[10px] uppercase tracking-wide text-gray-400 font-medium mb-1">Rate Your Interest</p>
+              <p className="text-[12px] tracking-wide text-gray-400 font-medium mb-1">Rate ThiS Program!</p>
               <div className="flex items-center gap-2">
                 <StarRating value={priority} onChange={savePriority} size="md" />
                 <span className="text-sm text-gray-500 font-medium">
