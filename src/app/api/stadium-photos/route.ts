@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
 
-// Fetches stadium/facilities photos from Wikipedia/Wikimedia Commons
+// Fetches stadium photos only from Wikipedia/Wikimedia Commons
 export async function GET(request: NextRequest) {
   const school = request.nextUrl.searchParams.get("school");
   const stadium = request.nextUrl.searchParams.get("stadium");
@@ -16,32 +16,16 @@ export async function GET(request: NextRequest) {
   try {
     const photos: { url: string; caption: string }[] = [];
 
-    // Strategy 1: Search Wikipedia for the stadium page and get images
+    // Only search for the stadium itself — no generic school/campus images
     if (stadium) {
-      const stadiumPhotos = await getWikipediaImages(stadium);
+      const stadiumPhotos = await getStadiumImages(stadium);
       photos.push(...stadiumPhotos);
     }
 
-    // Strategy 2: Search for "[school] baseball" Wikipedia page
-    if (photos.length < 3) {
-      const schoolPhotos = await getWikipediaImages(`${school} baseball`);
-      for (const p of schoolPhotos) {
-        if (photos.length >= 4) break;
-        if (!photos.some((existing) => existing.url === p.url)) {
-          photos.push(p);
-        }
-      }
-    }
-
-    // Strategy 3: Search for the school itself
-    if (photos.length < 2) {
-      const campusPhotos = await getWikipediaImages(school);
-      for (const p of campusPhotos) {
-        if (photos.length >= 4) break;
-        if (!photos.some((existing) => existing.url === p.url)) {
-          photos.push(p);
-        }
-      }
+    // If no stadium name or no results, try "[school] baseball stadium"
+    if (photos.length === 0) {
+      const fallback = await getStadiumImages(`${school} baseball stadium`);
+      photos.push(...fallback);
     }
 
     return NextResponse.json({ photos: photos.slice(0, 4) });
@@ -50,7 +34,7 @@ export async function GET(request: NextRequest) {
   }
 }
 
-async function getWikipediaImages(query: string): Promise<{ url: string; caption: string }[]> {
+async function getStadiumImages(query: string): Promise<{ url: string; caption: string }[]> {
   try {
     // Search Wikipedia for the query
     const searchUrl = `https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${encodeURIComponent(query)}&srlimit=2&format=json&origin=*`;
@@ -76,41 +60,35 @@ async function getWikipediaImages(query: string): Promise<{ url: string; caption
       const page = Object.values(pages)[0] as any;
       const images = page?.images || [];
 
-      // Filter for actual photos (not icons, logos, or SVGs)
-      // Also exclude non-baseball content (football, basketball, portraits, B&W historical)
-      const photoImages = images
-        .filter((img: any) => {
-          const name = (img.title || "").toLowerCase();
-          if (!(name.endsWith(".jpg") || name.endsWith(".jpeg") || name.endsWith(".png"))) return false;
-          // Exclude UI/wiki assets
-          const uiExcludes = ["icon", "logo", "flag", "symbol", "commons-logo", "edit-clear",
-            "ambox", "question_book", "wiki", "padlock", "crystal_clear", "nuvola", "gnome",
-            "replacement", "cscr-", "disambig", "stub", "template", "info_sign", "red_pog",
-            "blue_pog", "map_marker", "locator", "pictogram", "coat_of_arms", "seal_of"];
-          if (uiExcludes.some(ex => name.includes(ex))) return false;
-          // Exclude other sports and irrelevant content
-          const sportExcludes = ["football", "basketball", "soccer", "hockey", "volleyball",
-            "lacrosse", "tennis", "golf", "swimming", "track", "wrestling", "gymnast"];
-          if (sportExcludes.some(ex => name.includes(ex))) return false;
-          // Exclude portraits, headshots, historical black & white photos
-          const miscExcludes = ["portrait", "headshot", "bust_of", "grave", "memorial",
-            "plaque", "signature", "autograph", "newspaper", "clipping"];
-          if (miscExcludes.some(ex => name.includes(ex))) return false;
-          return true;
-        })
-        // Prioritize images with baseball/stadium keywords
-        .sort((a: any, b: any) => {
-          const nameA = (a.title || "").toLowerCase();
-          const nameB = (b.title || "").toLowerCase();
-          const baseballTerms = ["baseball", "stadium", "field", "ballpark", "diamond", "dugout", "campus", "aerial", "panoram"];
-          const scoreA = baseballTerms.some(t => nameA.includes(t)) ? 1 : 0;
-          const scoreB = baseballTerms.some(t => nameB.includes(t)) ? 1 : 0;
-          return scoreB - scoreA;
-        })
-        .slice(0, 4);
+      // Strict filter: ONLY keep images with stadium/field/ballpark keywords
+      const stadiumImages = images.filter((img: any) => {
+        const name = (img.title || "").toLowerCase();
+        // Must be a photo file
+        if (!(name.endsWith(".jpg") || name.endsWith(".jpeg") || name.endsWith(".png"))) return false;
+        // Exclude UI/wiki assets
+        const uiExcludes = ["icon", "logo", "flag", "symbol", "commons-logo", "edit-clear",
+          "ambox", "question_book", "wiki", "padlock", "crystal_clear", "nuvola", "gnome",
+          "replacement", "cscr-", "disambig", "stub", "template", "info_sign", "red_pog",
+          "blue_pog", "map_marker", "locator", "pictogram", "coat_of_arms", "seal_of"];
+        if (uiExcludes.some(ex => name.includes(ex))) return false;
+        // Exclude non-baseball sports
+        const sportExcludes = ["football", "basketball", "soccer", "hockey", "volleyball",
+          "lacrosse", "tennis", "golf", "swimming", "track", "wrestling", "gymnast"];
+        if (sportExcludes.some(ex => name.includes(ex))) return false;
+        // Exclude portraits, headshots, misc
+        const miscExcludes = ["portrait", "headshot", "bust_of", "grave", "memorial",
+          "plaque", "signature", "autograph", "newspaper", "clipping", "coach", "player",
+          "roster", "team_photo", "uniform", "jersey", "cap_insignia", "hat_logo"];
+        if (miscExcludes.some(ex => name.includes(ex))) return false;
+        // MUST have a stadium/field/venue keyword in the filename
+        const stadiumTerms = ["stadium", "field", "ballpark", "diamond", "park", "arena",
+          "complex", "facility", "aerial", "panoram", "venue", "dugout", "grandstand",
+          "press_box", "scoreboard", "bleacher", "outfield", "infield", "stands"];
+        return stadiumTerms.some(t => name.includes(t));
+      }).slice(0, 4);
 
       // Get actual image URLs via imageinfo
-      for (const img of photoImages) {
+      for (const img of stadiumImages) {
         if (photos.length >= 4) break;
         try {
           const infoUrl = `https://en.wikipedia.org/w/api.php?action=query&titles=${encodeURIComponent(img.title)}&prop=imageinfo&iiprop=url|extmetadata&iiurlwidth=600&format=json&origin=*`;
@@ -123,7 +101,6 @@ async function getWikipediaImages(query: string): Promise<{ url: string; caption
           const imageInfo = infoPage?.imageinfo?.[0];
 
           if (imageInfo) {
-            // Use the thumbnail URL (scaled to 600px) if available, otherwise the full URL
             const url = imageInfo.thumburl || imageInfo.url;
             const caption = imageInfo.extmetadata?.ImageDescription?.value?.replace(/<[^>]*>/g, "") ||
                           img.title.replace("File:", "").replace(/\.[^.]+$/, "").replace(/_/g, " ");
