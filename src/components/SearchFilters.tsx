@@ -1,13 +1,8 @@
 "use client";
 
-const RECRUITING_STATUSES = [
-  "Researching",
-  "Reached Out",
-  "In Contact",
-  "Mutual Interest",
-  "Offer",
-  "Committed",
-];
+import { REGIONS } from "@/lib/playerProfile";
+
+const REGION_NAMES = Object.keys(REGIONS);
 
 interface Filters {
   search: string;
@@ -16,7 +11,7 @@ interface Filters {
   conference: string;
   publicPrivate: string;
   zip: string;
-  recruitingStatus: string;
+  region: string;
 }
 
 interface FilterOptions {
@@ -31,7 +26,7 @@ interface SearchFiltersProps {
   filterOptions: FilterOptions;
   onChange: (filters: Filters) => void;
   onZipSearch: (zip: string) => void;
-  activeTab?: string; // "mylist" | "D1" | "D2"
+  activeTab?: string; // "mylist" | "D1" | "D2" | "D3"
 }
 
 export default function SearchFilters({
@@ -137,16 +132,16 @@ export default function SearchFilters({
           High Academic
         </button>
 
-        {/* Recruiting Status */}
+        {/* Region */}
         <select
-          value={filters.recruitingStatus}
-          onChange={(e) => update("recruitingStatus", e.target.value)}
+          value={filters.region}
+          onChange={(e) => update("region", e.target.value)}
           className="px-2.5 sm:px-3 py-2 border border-gray-300 rounded-lg text-xs sm:text-sm text-gray-700 focus:ring-2 focus:ring-blue-500"
         >
-          <option value="">Recruiting Status</option>
-          {RECRUITING_STATUSES.map((s) => (
-            <option key={s} value={s}>
-              {s}
+          <option value="">All Regions</option>
+          {REGION_NAMES.map((r) => (
+            <option key={r} value={r}>
+              {r}
             </option>
           ))}
         </select>

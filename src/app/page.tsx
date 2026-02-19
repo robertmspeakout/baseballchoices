@@ -12,7 +12,7 @@ import schoolsData from "@/data/schools.json";
 import { getAllUserData, setUserData, fetchUserDataFromDB, saveUserDataToDB, bulkSyncToDB, type UserData } from "@/lib/userData";
 import { haversineDistance, geocodeZip } from "@/lib/geo";
 import marketingContent from "@/data/marketing.json";
-import { loadProfile } from "@/lib/playerProfile";
+import { loadProfile, REGIONS } from "@/lib/playerProfile";
 
 interface School {
   id: number;
@@ -46,7 +46,7 @@ interface Filters {
   conference: string;
   publicPrivate: string;
   zip: string;
-  recruitingStatus: string;
+  region: string;
 }
 
 const TABS_BASE = [
@@ -252,7 +252,7 @@ export default function Home() {
     conference: "",
     publicPrivate: "",
     zip: "",
-    recruitingStatus: "",
+    region: "",
   });
 
   // Load user data on mount — from DB for logged-in users, localStorage for guests
@@ -381,7 +381,7 @@ export default function Home() {
       if (filters.state && school.state !== filters.state) return false;
       if (filters.conference && school.conference !== filters.conference) return false;
       if (filters.publicPrivate === "highAcademic" && !(school as any).high_academic) return false;
-      if (filters.recruitingStatus && (school as any).recruiting_status !== filters.recruitingStatus) return false;
+      if (filters.region && REGIONS[filters.region] && !REGIONS[filters.region].includes(school.state)) return false;
       return true;
     });
   }, [baseList, schoolsWithUserData, filters]);
@@ -453,7 +453,7 @@ export default function Home() {
       setSortBy("name");
       setSortDir("asc");
     }
-    setFilters((f) => ({ ...f, search: "", state: "", conference: "", publicPrivate: "", recruitingStatus: "" }));
+    setFilters((f) => ({ ...f, search: "", state: "", conference: "", publicPrivate: "", region: "" }));
   };
 
   const handleSort = (column: string) => {
