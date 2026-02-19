@@ -691,7 +691,7 @@ export default function Home() {
                activeTab === "D2" ? "All Division 2 Baseball Programs" :
                "All Division 3 Baseball Programs"}
             </h2>
-            <div className="relative">
+            <div className="relative inline-block">
               <select
                 value={activeTab === "mylist" ? "mylist" : activeTab}
                 onChange={(e) => {
@@ -702,7 +702,7 @@ export default function Home() {
                     handleTabChange(val as TabKey);
                   }
                 }}
-                className="w-full appearance-none bg-gray-50 border border-gray-400 rounded-lg px-4 py-3 pr-10 text-sm font-semibold text-gray-900 focus:outline-none focus:border-[#CC0000] focus:ring-1 focus:ring-[#CC0000] cursor-pointer"
+                className="appearance-none bg-gray-50 border border-gray-400 rounded-lg px-4 py-3 pr-10 text-sm font-semibold text-gray-900 focus:outline-none focus:border-[#CC0000] focus:ring-1 focus:ring-[#CC0000] cursor-pointer"
               >
                 <option value="mylist">My Top Programs</option>
                 <option value="match">My AI Matches</option>
