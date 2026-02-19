@@ -464,7 +464,7 @@ export default function SchoolPage({
           </div>
           <div className="p-4 sm:p-6 border-b border-gray-100">
             <div>
-              <p className="text-[12px] tracking-wide text-gray-400 font-medium mb-1">Rate ThiS Program!</p>
+              <p className="text-[12px] tracking-wide text-gray-500 font-medium mb-1">Rate This Program!</p>
               <div className="flex items-center gap-2">
                 <StarRating value={priority} onChange={savePriority} size="md" />
                 <span className="text-sm text-gray-500 font-medium">
@@ -746,7 +746,7 @@ export default function SchoolPage({
                   <p className="text-lg font-bold text-gray-900">{academicsData?.scorecard?.out_of_state_tuition != null ? `$${academicsData.scorecard.out_of_state_tuition.toLocaleString()}` : "Not reported"}</p>
                 </div>
                 <div className="bg-gray-50 rounded-lg p-3">
-                  <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Avg Financial Aid</p>
+                  <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Avg Tuition</p>
                   <p className="text-lg font-bold text-gray-900">{academicsData?.scorecard?.avg_net_price != null ? `$${academicsData.scorecard.avg_net_price.toLocaleString()}` : "Not reported"}</p>
                   {academicsData?.scorecard?.avg_net_price != null && (
                     <p className="text-[9px] text-gray-400 mt-0.5">Avg net price after aid</p>
