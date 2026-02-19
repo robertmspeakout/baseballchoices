@@ -462,7 +462,7 @@ export default function SchoolPage({
                 <span className="text-sm font-semibold text-gray-500">{divLabel[school.division] || school.division}</span>
               </div>
               {(school.city || school.state) && (
-                   <p className="text-sm font-semibold text-gray-500">{school.city}{school.city && school.state ? ", " : ""}{school.state}{distanceFromHome != null && <> | {distanceFromHome.toLocaleString()} miles from home</>}</p>
+                   <p className="text-sm font-semibold text-gray-500"><a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${school.name} ${school.city || ""} ${school.state || ""}`)}`} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{school.city}{school.city && school.state ? ", " : ""}{school.state}</a>{distanceFromHome != null && <> | <a href={`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(userZip || "")}&destination=${encodeURIComponent(`${school.name} ${school.city || ""} ${school.state || ""}`)}&travelmode=driving`} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{distanceFromHome.toLocaleString()} miles from home</a></>}</p>
               )}
             </div>
           </div>
