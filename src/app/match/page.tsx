@@ -463,7 +463,7 @@ export default function MatchPage() {
                         href={`/school/${s.id}`}
                         className="text-xs font-semibold text-red-600 hover:text-red-700"
                       >
-                        View Details →
+                        View & Edit →
                       </Link>
                     </div>
                   </div>

@@ -223,7 +223,7 @@ function VIPCard({ school }: { school: School & { priority: number; high_academi
 
           {/* View Details button */}
           <div className={`px-4 py-1.5 rounded-lg text-xs font-semibold uppercase tracking-wide transition-all ${hasOffer ? "bg-yellow-600/20 text-yellow-400 group-hover:bg-yellow-600 group-hover:text-white" : "bg-red-600/20 text-red-400 group-hover:bg-red-600 group-hover:text-white"}`}>
-            View Details
+            View & Edit
           </div>
         </div>
       </div>
