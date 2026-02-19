@@ -50,9 +50,9 @@ interface Filters {
 }
 
 const TABS_BASE = [
-  { key: "D1", label: "All Division 1" },
-  { key: "D2", label: "All Division 2" },
-  { key: "D3", label: "All Division 3" },
+  { key: "D1", label: "All Division I" },
+  { key: "D2", label: "All Division II" },
+  { key: "D3", label: "All Division III" },
 ] as const;
 type TabKey = "home" | "mylist" | "D1" | "D2" | "D3";
 
