@@ -691,7 +691,8 @@ export default function Home() {
                activeTab === "D2" ? "All Division 2 Baseball Programs" :
                "All Division 3 Baseball Programs"}
             </h2>
-            <div className="relative inline-block">
+            <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
+              <div className="relative inline-block">
               <select
                 value={activeTab === "mylist" ? "mylist" : activeTab}
                 onChange={(e) => {
@@ -714,6 +715,7 @@ export default function Home() {
               <svg className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#CC0000]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
+              </div>
             </div>
           </>
         )}

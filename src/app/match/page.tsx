@@ -289,30 +289,32 @@ export default function MatchPage() {
         </h2>
 
         {/* Section dropdown */}
-        <div className="relative inline-block">
-          <select
-            value="match"
-            onChange={(e) => {
-              const val = e.target.value;
-              if (val === "match") return;
-              if (val === "mylist") {
-                router.push("/#mylist");
-              } else {
-                router.push(`/#${val}`);
-              }
-            }}
-            className="appearance-none bg-gray-50 border border-gray-400 rounded-lg px-4 py-3 pr-10 text-sm font-semibold text-gray-900 focus:outline-none focus:border-[#CC0000] focus:ring-1 focus:ring-[#CC0000] cursor-pointer"
-          >
-            <option value="mylist">My Top Programs</option>
-            <option value="match">My AI Matches</option>
-            <option value="D1">D1 Programs</option>
-            <option value="D2">D2 Programs</option>
-            <option value="D3">D3 Programs</option>
-            <option value="JUCO" disabled>JUCO Programs</option>
-          </select>
-          <svg className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#CC0000]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-          </svg>
+        <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
+          <div className="relative inline-block">
+            <select
+              value="match"
+              onChange={(e) => {
+                const val = e.target.value;
+                if (val === "match") return;
+                if (val === "mylist") {
+                  router.push("/#mylist");
+                } else {
+                  router.push(`/#${val}`);
+                }
+              }}
+              className="appearance-none bg-gray-50 border border-gray-400 rounded-lg px-4 py-3 pr-10 text-sm font-semibold text-gray-900 focus:outline-none focus:border-[#CC0000] focus:ring-1 focus:ring-[#CC0000] cursor-pointer"
+            >
+              <option value="mylist">My Top Programs</option>
+              <option value="match">My AI Matches</option>
+              <option value="D1">D1 Programs</option>
+              <option value="D2">D2 Programs</option>
+              <option value="D3">D3 Programs</option>
+              <option value="JUCO" disabled>JUCO Programs</option>
+            </select>
+            <svg className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#CC0000]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
         </div>
 
         {/* Active preference filters */}
