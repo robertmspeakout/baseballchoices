@@ -163,6 +163,11 @@ export default function SchoolPage({
   const [newsLoading, setNewsLoading] = useState(true);
   const [draftExpanded, setDraftExpanded] = useState(false);
   const [trackerOpen, setTrackerOpen] = useState(true);
+  const [academicsOpen, setAcademicsOpen] = useState(false);
+  const [coachOpen, setCoachOpen] = useState(false);
+  const [linksOpen, setLinksOpen] = useState(false);
+  const [scheduleOpen, setScheduleOpen] = useState(false);
+  const [newsOpen, setNewsOpen] = useState(false);
   const [currentRecord, setCurrentRecord] = useState<string | null>(null);
   const [recentGames, setRecentGames] = useState<ScheduleGame[]>([]);
   const [upcomingGames, setUpcomingGames] = useState<ScheduleGame[]>([]);
@@ -655,14 +660,19 @@ export default function SchoolPage({
 
         {/* ===== PROGRAM INFO SECTIONS ===== */}
         {/* Academics & School Info */}
-        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">
-          <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4 flex items-center gap-2">
-                <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-                </svg>
-                Academics & School Info
-              </h2>
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+          <button onClick={() => setAcademicsOpen(!academicsOpen)} className="w-full flex items-center gap-2 p-4 sm:p-6 text-left hover:bg-gray-50 transition-colors">
+            <svg className="w-5 h-5 text-gray-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5z" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+            </svg>
+            <span className="flex-1 text-base sm:text-lg font-bold text-gray-900">Academics & School Info</span>
+            <svg className={`w-5 h-5 text-gray-400 shrink-0 transition-transform ${academicsOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          {academicsOpen && (
+            <div className="border-t border-gray-100 p-4 sm:p-6">
               {school.high_academic && (
                 <div className="flex items-center gap-2 mb-4 px-3 py-2 bg-yellow-50 border border-yellow-200 rounded-lg">
                   <svg className="w-5 h-5 text-yellow-500 shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -696,125 +706,142 @@ export default function SchoolPage({
                 </div>
               </div>
             </div>
+          )}
+        </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
-          {/* Head Coach */}
-          <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">
-                <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4 flex items-center gap-2">
-                  <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                  </svg>
-                  Head Coach
-                </h2>
-                <div className="space-y-4">
-                  <div className="flex items-start gap-4">
-                    <CoachPhoto name={school.head_coach_name} schoolName={school.name} />
-                    <div>
-                      <p className="text-sm sm:text-base text-gray-900 font-bold">{school.head_coach_name || "N/A"}</p>
-                      <p className="text-xs text-gray-500">Head Coach</p>
-                      {school.head_coach_email && (
-                        <a href={`mailto:${school.head_coach_email}`} className="text-xs sm:text-sm text-blue-600 hover:underline break-all mt-1 block">
-                          {school.head_coach_email}
-                        </a>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className="border-t border-gray-100 pt-4">
-                    <h3 className="text-sm font-semibold text-gray-700 mb-2 flex items-center gap-1.5">
-                      <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
-                      </svg>
-                      My Contact at {school.name}
-                    </h3>
-                    <div className="space-y-2">
-                      <input
-                        type="text"
-                        value={myContactName}
-                        onChange={(e) => setMyContactName(e.target.value)}
-                        placeholder="Contact name at this school"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                      />
-                      <input
-                        type="email"
-                        value={myContactEmail}
-                        onChange={(e) => setMyContactEmail(e.target.value)}
-                        placeholder="Contact email"
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                      />
-                    </div>
+        {/* Coaching Staff */}
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+          <button onClick={() => setCoachOpen(!coachOpen)} className="w-full flex items-center gap-2 p-4 sm:p-6 text-left hover:bg-gray-50 transition-colors">
+            <svg className="w-5 h-5 text-gray-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+            <span className="flex-1 text-base sm:text-lg font-bold text-gray-900">Coaching Staff</span>
+            <svg className={`w-5 h-5 text-gray-400 shrink-0 transition-transform ${coachOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          {coachOpen && (
+            <div className="border-t border-gray-100 p-4 sm:p-6">
+              <div className="space-y-4">
+                <div className="flex items-start gap-4">
+                  <CoachPhoto name={school.head_coach_name} schoolName={school.name} />
+                  <div>
+                    <p className="text-sm sm:text-base text-gray-900 font-bold">{school.head_coach_name || "N/A"}</p>
+                    <p className="text-xs text-gray-500">Head Coach</p>
+                    {school.head_coach_email && (
+                      <a href={`mailto:${school.head_coach_email}`} className="text-xs sm:text-sm text-blue-600 hover:underline break-all mt-1 block">
+                        {school.head_coach_email}
+                      </a>
+                    )}
                   </div>
                 </div>
-              </div>
 
-          {/* Links & Social */}
-          <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">
-                <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4 flex items-center gap-2">
-                  <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-                  </svg>
-                  Links & Social
-                </h2>
-                <div className="space-y-3">
-                  {school.website && (
-                    <a href={school.website} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 px-4 py-3 bg-blue-50 hover:bg-blue-100 rounded-lg text-blue-700 font-medium transition-colors">
-                      <svg className="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none">
-                        <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5" />
-                        <path d="M12 2c-2 3-3 6-3 10s1 7 3 10m0-20c2 3 3 6 3 10s-1 7-3 10" stroke="currentColor" strokeWidth="1.5" />
-                        <path d="M4 9c2.5 1 5 1.5 8 1.5s5.5-.5 8-1.5M4 15c2.5-1 5-1.5 8-1.5s5.5.5 8 1.5" stroke="currentColor" strokeWidth="1" />
-                        <path d="M5 10.5c2 .8 4.5 1.2 7 1.2s5-.4 7-1.2" stroke="red" strokeWidth="1" strokeDasharray="1.5 1.5" />
-                        <path d="M5 13.5c2-.8 4.5-1.2 7-1.2s5 .4 7 1.2" stroke="red" strokeWidth="1" strokeDasharray="1.5 1.5" />
-                      </svg>
-                      Program Website
-                    </a>
-                  )}
-                  {school.division === "D1" && school.nil_url && (
-                    <a href={school.nil_url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 px-4 py-3 bg-emerald-50 hover:bg-emerald-100 rounded-lg text-emerald-700 font-medium transition-colors">
-                      <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      <div>
-                        <span>NIL Information</span>
-                        <span className="block text-xs text-emerald-500 font-normal">Name, Image & Likeness</span>
-                      </div>
-                    </a>
-                  )}
-                  {school.instagram && (
-                    <a href={`https://instagram.com/${school.instagram.replace("@", "")}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-purple-50 to-pink-50 hover:from-purple-100 hover:to-pink-100 rounded-lg text-purple-700 font-medium transition-colors">
-                      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
-                      </svg>
-                      <div>
-                        <span>Follow on Instagram</span>
-                        <span className="block text-xs text-purple-500 font-normal">{school.instagram}</span>
-                      </div>
-                    </a>
-                  )}
-                  {school.x_account && (
-                    <a href={`https://x.com/${school.x_account.replace("@", "")}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 px-4 py-3 bg-gray-50 hover:bg-gray-100 rounded-lg text-gray-800 font-medium transition-colors">
-                      <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                      </svg>
-                      <div>
-                        <span>Follow on X</span>
-                        <span className="block text-xs text-gray-500 font-normal">{school.x_account}</span>
-                      </div>
-                    </a>
-                  )}
+                <div className="border-t border-gray-100 pt-4">
+                  <h3 className="text-sm font-semibold text-gray-700 mb-2 flex items-center gap-1.5">
+                    <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    My Contact at {school.name}
+                  </h3>
+                  <div className="space-y-2">
+                    <input
+                      type="text"
+                      value={myContactName}
+                      onChange={(e) => setMyContactName(e.target.value)}
+                      placeholder="Contact name at this school"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    />
+                    <input
+                      type="email"
+                      value={myContactEmail}
+                      onChange={(e) => setMyContactEmail(e.target.value)}
+                      placeholder="Contact email"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
+          )}
+        </div>
 
-        {/* Latest Game & Upcoming Schedule */}
+        {/* Links & Social */}
         <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
-          <div className="p-4 sm:p-6">
-                <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4 flex items-center gap-2">
-                  <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                  Schedule
-                </h2>
+          <button onClick={() => setLinksOpen(!linksOpen)} className="w-full flex items-center gap-2 p-4 sm:p-6 text-left hover:bg-gray-50 transition-colors">
+            <svg className="w-5 h-5 text-gray-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+            </svg>
+            <span className="flex-1 text-base sm:text-lg font-bold text-gray-900">Links & Social</span>
+            <svg className={`w-5 h-5 text-gray-400 shrink-0 transition-transform ${linksOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          {linksOpen && (
+            <div className="border-t border-gray-100 p-4 sm:p-6">
+              <div className="space-y-3">
+                {school.website && (
+                  <a href={school.website} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 px-4 py-3 bg-blue-50 hover:bg-blue-100 rounded-lg text-blue-700 font-medium transition-colors">
+                    <svg className="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none">
+                      <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5" />
+                      <path d="M12 2c-2 3-3 6-3 10s1 7 3 10m0-20c2 3 3 6 3 10s-1 7-3 10" stroke="currentColor" strokeWidth="1.5" />
+                      <path d="M4 9c2.5 1 5 1.5 8 1.5s5.5-.5 8-1.5M4 15c2.5-1 5-1.5 8-1.5s5.5.5 8 1.5" stroke="currentColor" strokeWidth="1" />
+                      <path d="M5 10.5c2 .8 4.5 1.2 7 1.2s5-.4 7-1.2" stroke="red" strokeWidth="1" strokeDasharray="1.5 1.5" />
+                      <path d="M5 13.5c2-.8 4.5-1.2 7-1.2s5 .4 7 1.2" stroke="red" strokeWidth="1" strokeDasharray="1.5 1.5" />
+                    </svg>
+                    Program Website
+                  </a>
+                )}
+                {school.division === "D1" && school.nil_url && (
+                  <a href={school.nil_url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 px-4 py-3 bg-emerald-50 hover:bg-emerald-100 rounded-lg text-emerald-700 font-medium transition-colors">
+                    <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <div>
+                      <span>NIL Information</span>
+                      <span className="block text-xs text-emerald-500 font-normal">Name, Image & Likeness</span>
+                    </div>
+                  </a>
+                )}
+                {school.instagram && (
+                  <a href={`https://instagram.com/${school.instagram.replace("@", "")}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-purple-50 to-pink-50 hover:from-purple-100 hover:to-pink-100 rounded-lg text-purple-700 font-medium transition-colors">
+                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                    </svg>
+                    <div>
+                      <span>Follow on Instagram</span>
+                      <span className="block text-xs text-purple-500 font-normal">{school.instagram}</span>
+                    </div>
+                  </a>
+                )}
+                {school.x_account && (
+                  <a href={`https://x.com/${school.x_account.replace("@", "")}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 px-4 py-3 bg-gray-50 hover:bg-gray-100 rounded-lg text-gray-800 font-medium transition-colors">
+                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </svg>
+                    <div>
+                      <span>Follow on X</span>
+                      <span className="block text-xs text-gray-500 font-normal">{school.x_account}</span>
+                    </div>
+                  </a>
+                )}
+              </div>
+            </div>
+          )}
+        </div>
 
+        {/* Schedule */}
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+          <button onClick={() => setScheduleOpen(!scheduleOpen)} className="w-full flex items-center gap-2 p-4 sm:p-6 text-left hover:bg-gray-50 transition-colors">
+            <svg className="w-5 h-5 text-gray-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            <span className="flex-1 text-base sm:text-lg font-bold text-gray-900">Schedule</span>
+            <svg className={`w-5 h-5 text-gray-400 shrink-0 transition-transform ${scheduleOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          {scheduleOpen && (
+          <div className="border-t border-gray-100 p-4 sm:p-6">
                 {scheduleLoading ? (
                   <div className="flex items-center gap-2 text-sm text-gray-400 py-4">
                     <div className="animate-spin rounded-full h-4 w-4 border-2 border-gray-200 border-t-blue-600" />
@@ -929,6 +956,7 @@ export default function SchoolPage({
                   </div>
                 )}
               </div>
+          )}
             </div>
 
         {/* MLB Draft Picks — collapsible table */}
@@ -1006,13 +1034,18 @@ export default function SchoolPage({
             })()}
 
         {/* Latest News */}
-        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">
-              <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4 flex items-center gap-2">
-                <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
-                </svg>
-                Latest News
-              </h2>
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+          <button onClick={() => setNewsOpen(!newsOpen)} className="w-full flex items-center gap-2 p-4 sm:p-6 text-left hover:bg-gray-50 transition-colors">
+            <svg className="w-5 h-5 text-gray-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+            </svg>
+            <span className="flex-1 text-base sm:text-lg font-bold text-gray-900">Latest News</span>
+            <svg className={`w-5 h-5 text-gray-400 shrink-0 transition-transform ${newsOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          {newsOpen && (
+            <div className="border-t border-gray-100 p-4 sm:p-6">
               {newsLoading ? (
                 <div className="flex items-center gap-2 text-sm text-gray-400 py-4">
                   <div className="animate-spin rounded-full h-4 w-4 border-2 border-gray-200 border-t-blue-600" />
@@ -1035,6 +1068,8 @@ export default function SchoolPage({
                 <p className="text-sm text-gray-400 py-2">No recent news found</p>
               )}
             </div>
+          )}
+        </div>
 
         {/* Location & Map */}
         {mapLat && mapLng && (
