@@ -381,8 +381,8 @@ export default function SchoolPage({
   const mapLng = school.stadium_longitude || school.longitude;
 
   const divLabel: Record<string, string> = {
-    D1: "Division I", D2: "Division II",
-    D3: "Division III", JUCO: "Junior College",
+    D1: "NCAA Division I", D2: "NCAA Division II",
+    D3: "NCAA Division III", JUCO: "Junior College",
   };
   const divColor: Record<string, string> = {
     D1: "bg-blue-100 text-blue-800 border-blue-200",
@@ -458,11 +458,11 @@ export default function SchoolPage({
                 {school.mascot && <span className="text-sm font-semibold text-gray-500">{school.mascot}</span>}
                 {school.mascot && <span className="text-gray-500">|</span>}
                 <span className="text-sm font-semibold text-gray-500">{school.conference}</span>
-                <span className="text-gray-500">|</span>
+                <span className="text-gray-300">|</span>
                 <span className="text-sm font-semibold text-gray-500">{divLabel[school.division] || school.division}</span>
               </div>
               {(school.city || school.state) && (
-                   <p className="text-sm font-semibold text-gray-500"><a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${school.name} ${school.city || ""} ${school.state || ""}`)}`} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{school.city}{school.city && school.state ? ", " : ""}</p>
+                   <p className="text-sm font-semibold text-gray-500"><a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${school.name} ${school.city || ""} ${school.state || ""}`)}`} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{school.city}{school.city && school.state ? ", " : ""}{school.state}</a>{distanceFromHome != null && <> | <a href={`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(userZip || "")}&destination=${encodeURIComponent(`${school.name} ${school.city || ""} ${school.state || ""}`)}&travelmode=driving`} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{distanceFromHome.toLocaleString()} miles from home</a></>}</p>
               )}
             </div>
           </div>
@@ -472,7 +472,7 @@ export default function SchoolPage({
               <div className="flex items-center gap-2">
                 <StarRating value={priority} onChange={savePriority} size="md" />
                 <span className="text-sm text-gray-500 font-medium">
-                  {priority === 0 && <em className="text-gray-400">Tap stars to rate your interest</em>}
+                  {priority === 0 && <em className="text-gray-400">Tap stars to rate your interest...</em>}
                   {priority === 1 && "Mildly Interested"}
                   {priority === 2 && "Interested"}
                   {priority === 3 && "Very Interested"}
@@ -1289,3 +1289,4 @@ export default function SchoolPage({
     </AuthGate>
   );
 }
+
