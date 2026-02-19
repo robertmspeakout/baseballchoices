@@ -159,6 +159,7 @@ export default function SchoolPage({
   const [mounted, setMounted] = useState(false);
   const [logoError, setLogoError] = useState(false);
   const [distanceFromHome, setDistanceFromHome] = useState<number | null>(null);
+  const [userZip, setUserZip] = useState<string | null>(null);
   const [news, setNews] = useState<NewsArticle[]>([]);
   const [newsLoading, setNewsLoading] = useState(true);
   const [draftExpanded, setDraftExpanded] = useState(false);
@@ -241,9 +242,12 @@ export default function SchoolPage({
 
     try {
       const saved = localStorage.getItem("nextbase_homeZip");
-      if (saved && schoolData?.latitude && schoolData?.longitude) {
-        const { lat, lng } = JSON.parse(saved);
-        setDistanceFromHome(haversineDistance(lat, lng, schoolData.latitude, schoolData.longitude));
+      if (saved) {
+        const { zip, lat, lng } = JSON.parse(saved);
+        if (zip) setUserZip(zip);
+        if (lat && lng && schoolData?.latitude && schoolData?.longitude) {
+          setDistanceFromHome(haversineDistance(lat, lng, schoolData.latitude, schoolData.longitude));
+        }
       }
     } catch { /* ignore */ }
 
@@ -699,7 +703,7 @@ export default function SchoolPage({
           {academicsOpen && (
             <div className="border-t border-gray-100 p-4 sm:p-6 space-y-4">
               {(school.city || school.state) && (
-                <p className="text-xs font-medium text-gray-500">Location: {school.city}{school.city && school.state ? ", " : ""}{school.state}{distanceFromHome != null && <> | {distanceFromHome.toLocaleString()} miles from home</>}</p>
+                <p className="text-xs font-medium text-gray-500">Location: <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${school.name} ${school.city || ""} ${school.state || ""}`)}`} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{school.city}{school.city && school.state ? ", " : ""}{school.state}</a>{distanceFromHome != null && <> | <a href={`https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(userZip || "")}&destination=${encodeURIComponent(`${school.name} ${school.city || ""} ${school.state || ""}`)}&travelmode=driving`} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{distanceFromHome.toLocaleString()} miles from home</a></>}</p>
               )}
               {school.public_private && (
                 <p className="text-xs font-medium text-gray-500">{school.public_private === "Private" ? "Type: Private Institution" : "Type: Public Institution"}</p>
