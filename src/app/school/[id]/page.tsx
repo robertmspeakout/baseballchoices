@@ -439,11 +439,11 @@ export default function SchoolPage({
         {/* School identity card */}
         <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
           <div className="p-4 sm:p-6 flex items-center gap-4 sm:gap-5 border-b border-gray-100">
-            <div className="shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gray-50 flex items-center justify-center overflow-hidden border border-gray-200">
+            <div className="shrink-0 w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-gray-50 flex items-center justify-center overflow-hidden border border-gray-200">
               {school.logo_url && !logoError ? (
-                <img src={school.logo_url} alt={`${school.name} logo`} className="w-12 h-12 sm:w-16 sm:h-16 object-contain" onError={() => setLogoError(true)} />
+                <img src={school.logo_url} alt={`${school.name} logo`} className="w-16 h-16 sm:w-20 sm:h-20 object-contain" onError={() => setLogoError(true)} />
               ) : (
-                <span className="text-xl sm:text-2xl font-black text-gray-400">
+                <span className="text-2xl sm:text-3xl font-black text-gray-400">
                   {school.name.split(" ").map(w => w[0]).join("").slice(0, 3)}
                 </span>
               )}
@@ -454,24 +454,20 @@ export default function SchoolPage({
                 {school.mascot && <span className="text-sm font-semibold text-gray-500">{school.mascot}</span>}
                 {school.mascot && <span className="text-gray-300">|</span>}
                 <span className="text-sm font-semibold text-blue-600">{school.conference}</span>
-                {(school.city || school.state) && <span className="text-gray-300">|</span>}
-                {(school.city || school.state) && (
-                  <span className="text-sm font-semibold text-gray-500">{school.city}{school.city && school.state ? ", " : ""}{school.state}</span>
-                )}
+                <span className="text-gray-300">|</span>
+                <span className="text-sm font-semibold text-gray-500">{divLabel[school.division] || school.division}</span>
               </div>
+              {(school.city || school.state) && (
+                <p className="text-sm text-gray-400 mt-0.5">{school.city}{school.city && school.state ? ", " : ""}{school.state}</p>
+              )}
             </div>
           </div>
           <div className="p-4 sm:p-6 border-b border-gray-100">
-            <div className="flex flex-wrap items-center gap-2 mb-2">
-              <span className={`px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs sm:text-sm font-semibold border ${divColor[school.division] || "bg-gray-100 text-gray-800"}`}>
-                {divLabel[school.division] || school.division}
-              </span>
-            </div>
             <div>
               <p className="text-[10px] uppercase tracking-wide text-gray-400 font-medium mb-1">Rate Your Interest</p>
               <div className="flex items-center gap-2">
-                <StarRating value={priority} onChange={savePriority} size="sm" />
-                <span className="text-xs text-gray-500 font-medium">
+                <StarRating value={priority} onChange={savePriority} size="md" />
+                <span className="text-sm text-gray-500 font-medium">
                   {priority === 0 && <em className="text-gray-400">Tap stars to rate your interest in this program</em>}
                   {priority === 1 && "Mildly Interested"}
                   {priority === 2 && "Interested"}
