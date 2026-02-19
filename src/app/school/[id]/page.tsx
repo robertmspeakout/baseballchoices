@@ -161,7 +161,7 @@ export default function SchoolPage({
   const [news, setNews] = useState<NewsArticle[]>([]);
   const [newsLoading, setNewsLoading] = useState(true);
   const [draftExpanded, setDraftExpanded] = useState(false);
-  const [activeDetailTab, setActiveDetailTab] = useState<"info" | "tracking">("info");
+  const [trackerOpen, setTrackerOpen] = useState(false);
   const [currentRecord, setCurrentRecord] = useState<string | null>(null);
   const [recentGames, setRecentGames] = useState<ScheduleGame[]>([]);
   const [upcomingGames, setUpcomingGames] = useState<ScheduleGame[]>([]);
@@ -257,19 +257,9 @@ export default function SchoolPage({
       .finally(() => setScheduleLoading(false));
   }, [schoolData]);
 
-  // Fetch stadium/facilities photos
-  useEffect(() => {
-    if (!schoolData) return;
-    setPhotosLoading(true);
-    const params = new URLSearchParams({ school: schoolData.name });
-    if (schoolData.mascot) params.set("mascot", schoolData.mascot);
-    if (schoolData.stadium_name) params.set("stadium", schoolData.stadium_name);
-    fetch(`/api/stadium-photos?${params}`)
-      .then((r) => r.json())
-      .then((data) => setFacilityPhotos(data.photos || []))
-      .catch(() => setFacilityPhotos([]))
-      .finally(() => setPhotosLoading(false));
-  }, [schoolData]);
+  // Stadium photos disabled — Wikipedia results were too unreliable
+  // (e.g. "Portland" returned municipal stadiums, not University of Portland)
+  // Re-enable when curated stadium_image_url data is available in schools.json
 
   const savePriority = (newPriority: number) => {
     setPriority(newPriority);
@@ -393,7 +383,7 @@ export default function SchoolPage({
         {/* Background photo - first facility photo, stadium image, or default action shot */}
         <div
           className="absolute inset-0 bg-cover bg-center transition-[background-image] duration-700"
-          style={{ backgroundImage: `url('${facilityPhotos[0]?.url || school.stadium_image_url || "https://images.unsplash.com/photo-1529768167801-9173d94c2a42?w=1600&q=80"}')` }}
+          style={{ backgroundImage: `url('${school.stadium_image_url || "https://images.unsplash.com/photo-1529768167801-9173d94c2a42?w=1600&q=80"}')` }}
         />
         {/* Dramatic overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/40" />
@@ -504,44 +494,149 @@ export default function SchoolPage({
           </div>
         </div>
 
-        {/* Unified tabbed section */}
-        <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
-          {/* Tab bar */}
-          <nav className="flex border-b border-gray-200">
-            <button
-              onClick={() => setActiveDetailTab("info")}
-              className={`flex-1 px-4 py-3.5 text-sm sm:text-base font-semibold text-center transition-colors ${
-                activeDetailTab === "info"
-                  ? "text-blue-700 border-b-[3px] border-blue-600 bg-white -mb-px"
-                  : "text-gray-400 hover:text-gray-600 bg-gray-50"
-              }`}
+        {/* ===== RECRUITING TRACKER — Collapsible Banner ===== */}
+        <div className="rounded-xl border-2 border-red-200 shadow-sm overflow-hidden">
+          {/* Banner header — always visible */}
+          <button
+            onClick={() => setTrackerOpen(!trackerOpen)}
+            className="w-full flex items-center gap-3 px-4 sm:px-6 py-3.5 bg-red-600 hover:bg-red-700 transition-colors text-left"
+          >
+            <svg className="w-5 h-5 text-white shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+            </svg>
+            <div className="flex-1 min-w-0">
+              <span className="text-white font-bold text-sm sm:text-base">Recruiting Tracker</span>
+              {/* Status summary */}
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-0.5 mt-0.5">
+                {recruitingStatus ? (
+                  <span className="text-red-100 text-xs sm:text-sm">{recruitingStatus}</span>
+                ) : (
+                  <span className="text-red-200 text-xs sm:text-sm italic">No status set — click to update</span>
+                )}
+                {lastContacted && (
+                  <span className="text-red-200 text-xs">Last contacted: {lastContacted}</span>
+                )}
+                {notes && (
+                  <span className="text-red-200 text-xs truncate max-w-[200px]">{notes}</span>
+                )}
+              </div>
+            </div>
+            <svg
+              className={`w-5 h-5 text-white shrink-0 transition-transform ${trackerOpen ? "rotate-180" : ""}`}
+              fill="none" stroke="currentColor" viewBox="0 0 24 24"
             >
-              <svg className="w-4 h-4 inline mr-1.5 -mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-              </svg>
-              Program Info
-            </button>
-            <button
-              onClick={() => setActiveDetailTab("tracking")}
-              className={`flex-1 px-4 py-3.5 text-sm sm:text-base font-bold text-center transition-colors ${
-                activeDetailTab === "tracking"
-                  ? "text-white bg-red-600 border-b-[3px] border-red-700 -mb-px"
-                  : "text-red-600 bg-red-50 hover:bg-red-100"
-              }`}
-            >
-              <svg className="w-4 h-4 inline mr-1.5 -mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-              </svg>
-              Recruiting Tracker
-            </button>
-          </nav>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
 
-          {/* ===== PROGRAM INFO TAB ===== */}
-          {activeDetailTab === "info" && (
-            <div className="divide-y divide-gray-200">
-              {/* Academics & School Info */}
-              <div className="p-4 sm:p-6">
-              <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4 flex items-center gap-2">
+          {/* Expanded form */}
+          {trackerOpen && (
+            <div className="bg-red-50/40 border-t border-red-200 p-4 sm:p-6">
+              <div className="space-y-4">
+                {/* Recruiting Status */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">Recruiting Status</label>
+                  <div className="flex flex-wrap gap-2">
+                    {RECRUITING_STATUSES.map((status) => (
+                      <button
+                        key={status}
+                        onClick={() => setRecruitingStatus(recruitingStatus === status ? "" : status)}
+                        className={`px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium border transition-colors ${
+                          recruitingStatus === status
+                            ? statusColor[status] || "bg-blue-50 text-blue-700 border-blue-300"
+                            : "bg-white text-gray-500 border-gray-200 hover:border-gray-300"
+                        }`}
+                      >
+                        {status}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Points of Contact */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">Points of Contact</label>
+                  <div className="flex flex-wrap gap-2">
+                    {CONTACT_OPTIONS.map((option) => (
+                      <button
+                        key={option}
+                        onClick={() => toggleSeenMe(option)}
+                        className={`px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium border transition-colors ${
+                          theyvSeenMe.includes(option)
+                            ? "bg-blue-50 text-blue-700 border-blue-300"
+                            : "bg-white text-gray-500 border-gray-200 hover:border-gray-300"
+                        }`}
+                      >
+                        {theyvSeenMe.includes(option) && (
+                          <svg className="w-3.5 h-3.5 inline mr-1 -mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                          </svg>
+                        )}
+                        {option}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Last Contacted</label>
+                    <input
+                      type="date"
+                      value={lastContacted}
+                      onChange={(e) => setLastContacted(e.target.value)}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Notes</label>
+                  <textarea
+                    value={notes}
+                    onChange={(e) => setNotes(e.target.value)}
+                    rows={3}
+                    placeholder="Notes about this program, camp visits, conversations with coaches..."
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-red-500 focus:border-red-500 resize-y"
+                  />
+                </div>
+
+                {hasUnsavedChanges && !saved && (
+                  <div className="flex items-center gap-2 px-3 py-2 bg-amber-50 border border-amber-300 rounded-lg">
+                    <svg className="w-4 h-4 text-amber-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4.5c-.77-.833-2.694-.833-3.464 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                    </svg>
+                    <span className="text-amber-800 text-sm font-medium">You have unsaved changes</span>
+                  </div>
+                )}
+                {saved && (
+                  <div className="flex items-center gap-2 px-4 py-3 bg-green-50 border border-green-200 rounded-lg">
+                    <svg className="w-5 h-5 text-green-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="text-green-800 text-sm font-semibold">Changes saved successfully</span>
+                  </div>
+                )}
+                <div className="flex items-center gap-3">
+                  <button
+                    onClick={saveAll}
+                    disabled={saving}
+                    className={`flex-1 sm:flex-none px-6 py-2.5 text-white rounded-lg disabled:opacity-50 font-medium transition-colors text-sm ${
+                      hasUnsavedChanges && !saved ? "bg-amber-600 hover:bg-amber-700 animate-pulse" : "bg-red-600 hover:bg-red-700"
+                    }`}
+                  >
+                    {saving ? "Saving..." : "Save Changes"}
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* ===== PROGRAM INFO SECTIONS ===== */}
+        {/* Academics & School Info */}
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">
+          <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4 flex items-center gap-2">
                 <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
@@ -582,9 +677,9 @@ export default function SchoolPage({
               </div>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-gray-200">
-              {/* Head Coach */}
-              <div className="p-4 sm:p-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+          {/* Head Coach */}
+          <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">
                 <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4 flex items-center gap-2">
                   <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
@@ -632,8 +727,8 @@ export default function SchoolPage({
                 </div>
               </div>
 
-              {/* Links & Social */}
-              <div className="p-4 sm:p-6">
+          {/* Links & Social */}
+          <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">
                 <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4 flex items-center gap-2">
                   <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
@@ -690,9 +785,9 @@ export default function SchoolPage({
               </div>
             </div>
 
-            {/* Latest Game & Upcoming Schedule */}
-            <div>
-              <div className="p-4 sm:p-6">
+        {/* Latest Game & Upcoming Schedule */}
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+          <div className="p-4 sm:p-6">
                 <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4 flex items-center gap-2">
                   <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -816,12 +911,12 @@ export default function SchoolPage({
               </div>
             </div>
 
-            {/* MLB Draft Picks — collapsible table */}
-            {draftPicksCount > 0 && (() => {
-              const picks = ((draftPicksData as Record<string, DraftPick[]>)[school.name] || []).filter(p => p.year >= draftCutoffYear);
-              return (
-                <div>
-                  <div className="p-4 sm:p-6">
+        {/* MLB Draft Picks — collapsible table */}
+        {draftPicksCount > 0 && (() => {
+          const picks = ((draftPicksData as Record<string, DraftPick[]>)[school.name] || []).filter(p => p.year >= draftCutoffYear);
+          return (
+            <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+              <div className="p-4 sm:p-6">
                     <div className="flex items-center gap-3">
                       <img
                         src="https://www.mlbstatic.com/team-logos/league-on-dark/1.svg"
@@ -890,8 +985,8 @@ export default function SchoolPage({
               );
             })()}
 
-            {/* Latest News */}
-            <div className="p-4 sm:p-6">
+        {/* Latest News */}
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 sm:p-6">
               <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-3 sm:mb-4 flex items-center gap-2">
                 <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
@@ -921,9 +1016,9 @@ export default function SchoolPage({
               )}
             </div>
 
-            {/* Location & Map */}
-            {mapLat && mapLng && (
-              <div>
+        {/* Location & Map */}
+        {mapLat && mapLng && (
+          <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
                 <div className="p-4 sm:p-6 pb-3 sm:pb-4">
                   <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-1 flex items-center gap-2">
                     <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -979,115 +1074,6 @@ export default function SchoolPage({
                 )}
               </div>
             )}
-
-            </div>
-          )}
-
-          {/* ===== MY TRACKING TAB ===== */}
-          {activeDetailTab === "tracking" && (
-            <div className="p-4 sm:p-6">
-              <div className="space-y-4">
-                {/* Recruiting Status */}
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">Recruiting Status</label>
-                  <div className="flex flex-wrap gap-2">
-                    {RECRUITING_STATUSES.map((status) => (
-                      <button
-                        key={status}
-                        onClick={() => setRecruitingStatus(recruitingStatus === status ? "" : status)}
-                        className={`px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium border transition-colors ${
-                          recruitingStatus === status
-                            ? statusColor[status] || "bg-blue-50 text-blue-700 border-blue-300"
-                            : "bg-white text-gray-500 border-gray-200 hover:border-gray-300"
-                        }`}
-                      >
-                        {status}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Points of Contact */}
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">Points of Contact</label>
-                  <div className="flex flex-wrap gap-2">
-                    {CONTACT_OPTIONS.map((option) => (
-                      <button
-                        key={option}
-                        onClick={() => toggleSeenMe(option)}
-                        className={`px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium border transition-colors ${
-                          theyvSeenMe.includes(option)
-                            ? "bg-blue-50 text-blue-700 border-blue-300"
-                            : "bg-white text-gray-500 border-gray-200 hover:border-gray-300"
-                        }`}
-                      >
-                        {theyvSeenMe.includes(option) && (
-                          <svg className="w-3.5 h-3.5 inline mr-1 -mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                          </svg>
-                        )}
-                        {option}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {/* Last Contacted */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Last Contacted</label>
-                    <input
-                      type="date"
-                      value={lastContacted}
-                      onChange={(e) => setLastContacted(e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    />
-                  </div>
-                </div>
-
-                {/* Notes */}
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Notes</label>
-                  <textarea
-                    value={notes}
-                    onChange={(e) => setNotes(e.target.value)}
-                    rows={3}
-                    placeholder="Notes about this program, camp visits, conversations with coaches..."
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-y"
-                  />
-                </div>
-
-                {hasUnsavedChanges && !saved && (
-                  <div className="flex items-center gap-2 px-3 py-2 bg-amber-50 border border-amber-300 rounded-lg">
-                    <svg className="w-4 h-4 text-amber-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4.5c-.77-.833-2.694-.833-3.464 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z" />
-                    </svg>
-                    <span className="text-amber-800 text-sm font-medium">You have unsaved changes</span>
-                  </div>
-                )}
-                {saved && (
-                  <div className="flex items-center gap-2 px-4 py-3 bg-green-50 border border-green-200 rounded-lg">
-                    <svg className="w-5 h-5 text-green-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-green-800 text-sm font-semibold">Changes saved successfully</span>
-                  </div>
-                )}
-                <div className="flex items-center gap-3">
-                  <button
-                    onClick={saveAll}
-                    disabled={saving}
-                    className={`flex-1 sm:flex-none px-6 py-2.5 text-white rounded-lg disabled:opacity-50 font-medium transition-colors text-sm ${
-                      hasUnsavedChanges && !saved ? "bg-amber-600 hover:bg-amber-700 animate-pulse" : "bg-blue-600 hover:bg-blue-700"
-                    }`}
-                  >
-                    {saving ? "Saving..." : "Save"}
-                  </button>
-                </div>
-              </div>
-            </div>
-          )}
-        </div>{/* end unified tabbed card */}
 
         {/* Photo lightbox */}
         {lightboxIdx !== null && facilityPhotos[lightboxIdx] && (
