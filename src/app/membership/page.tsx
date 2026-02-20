@@ -82,7 +82,7 @@ export default function MembershipPage() {
 
                 <ul className="space-y-3 mb-6">
                   {[
-                    "Full access to 564+ college baseball programs",
+                    "Full access to 927+ college baseball programs",
                     "AI-powered program matching",
                     "Unlimited school tracking & notes",
                     "Coach contact information",

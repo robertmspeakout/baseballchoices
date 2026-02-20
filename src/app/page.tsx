@@ -591,7 +591,7 @@ export default function Home() {
             <div className="max-w-[1400px] mx-auto px-4 sm:px-6 flex flex-row items-center justify-center divide-x divide-white/20 text-center">
               {marketingContent.statsBar.items.map((item, i) => (
                 <div key={i} className="px-3 sm:px-8">
-                  <span className="text-white font-bold text-xs sm:text-lg">{item.value}</span>
+                  <span className="text-white font-bold text-xs sm:text-lg">{item.label === "Programs" ? `${allSchools.length}+` : item.value}</span>
                   <span className="text-gray-400 text-[10px] sm:text-sm ml-1">{item.label}</span>
                 </div>
               ))}
@@ -643,7 +643,7 @@ export default function Home() {
                       <svg className="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
-                      <span className="text-sm text-gray-700">{feature}</span>
+                      <span className="text-sm text-gray-700">{feature.replace(/564\+/, `${allSchools.length}+`)}</span>
                     </li>
                   ))}
                 </ul>
