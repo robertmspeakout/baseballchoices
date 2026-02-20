@@ -531,7 +531,7 @@ export default function Home() {
             </div>
             <SiteNav
               variant="dark"
-              active={activeTab === "home" ? "Home" : activeTab === "mylist" ? "My Top Programs" : activeTab === "D1" ? "All Division 1" : activeTab === "D2" ? "All Division 2" : activeTab === "D3" ? "All Division 3" : undefined}
+              active={activeTab === "home" ? "Home" : activeTab === "mylist" ? "My Top Programs" : activeTab === "D1" ? "All Division I" : activeTab === "D2" ? "All Division 2" : activeTab === "D3" ? "All Division 3" : undefined}
               onNavigate={(href) => {
                 const tab = href === "/" ? (isLoggedIn ? "mylist" : "home") : href === "/#mylist" ? "mylist" : href === "/#D1" ? "D1" : href === "/#D2" ? "D2" : href === "/#D3" ? "D3" : null;
                 if (tab) {
@@ -688,9 +688,9 @@ export default function Home() {
             <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm space-y-3">
               <h2 className="text-lg sm:text-xl font-bold text-gray-900">
                 {activeTab === "mylist" ? (playerFirstName ? `${playerFirstName}'s Top Programs` : "My Top Programs") :
-                 activeTab === "D1" ? "All Division 1 Baseball Programs" :
-                 activeTab === "D2" ? "All Division 2 Baseball Programs" :
-                 "All Division 3 Baseball Programs"}
+                 activeTab === "D1" ? "All Division I Baseball Programs" :
+                 activeTab === "D2" ? "All Division II Baseball Programs" :
+                 "All Division III Baseball Programs"}
               </h2>
               <div className="relative block sm:inline-block">
               <select
