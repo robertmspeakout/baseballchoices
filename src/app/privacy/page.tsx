@@ -87,7 +87,7 @@ export default function PrivacyPage() {
       <footer className="bg-gray-900 mt-8">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 py-5 space-y-3">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
-            <BrandLogo size="sm" showTagline={false} onClick={() => { handleTabChange(isLoggedIn ? "mylist" : "home"); window.scrollTo({ top: 0, behavior: "smooth" }); }} />
+            <BrandLogo size="sm" showTagline={false} />
             <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-gray-400">
               <a href="#" className="hover:text-white transition-colors">Contact</a>
               <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
