@@ -80,20 +80,22 @@ interface ScheduleGame {
 }
 
 // Coach photo component - tries to load from school's athletics site, falls back to styled initials
-function CoachPhoto({ name, schoolName }: { name: string | null; schoolName: string }) {
+function CoachPhoto({ name, schoolName, website }: { name: string | null; schoolName: string; website?: string | null }) {
   const [imgSrc, setImgSrc] = useState<string | null>(null);
   const [error, setError] = useState(false);
 
   useEffect(() => {
     if (!name) return;
     // Try to find a coach headshot via our API
-    fetch(`/api/coach-photo?name=${encodeURIComponent(name)}&school=${encodeURIComponent(schoolName)}`)
+    const params = new URLSearchParams({ name, school: schoolName });
+    if (website) params.set("website", website);
+    fetch(`/api/coach-photo?${params}`)
       .then((r) => r.json())
       .then((data) => {
         if (data.url) setImgSrc(data.url);
       })
       .catch(() => {});
-  }, [name, schoolName]);
+  }, [name, schoolName, website]);
 
   const initials = name
     ? name.split(" ").map((w) => w[0]).filter(Boolean).join("").slice(0, 2).toUpperCase()
@@ -837,7 +839,7 @@ export default function SchoolPage({
             <div className="border-t border-gray-100 p-4 sm:p-6">
               <div className="space-y-4">
                 <div className="flex items-start gap-4">
-                  <CoachPhoto name={school.head_coach_name} schoolName={school.name} />
+                  <CoachPhoto name={school.head_coach_name} schoolName={school.name} website={school.website} />
                   <div>
                     <p className="text-sm sm:text-base text-gray-900 font-bold">{school.head_coach_name || "N/A"}</p>
                     <p className="text-xs text-gray-500">Head Coach</p>
