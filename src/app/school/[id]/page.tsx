@@ -43,6 +43,8 @@ interface SchoolDetail {
   x_account: string | null;
   head_coach_name: string | null;
   head_coach_email: string | null;
+  head_coach_tenure_start: number | null;
+  head_coach_record: string | null;
   assistant_coach_name: string | null;
   assistant_coach_email: string | null;
   website: string | null;
@@ -79,46 +81,6 @@ interface ScheduleGame {
   completed: boolean;
 }
 
-// Coach photo component - tries to load from school's athletics site, falls back to styled initials
-function CoachPhoto({ name, schoolName, website }: { name: string | null; schoolName: string; website?: string | null }) {
-  const [imgSrc, setImgSrc] = useState<string | null>(null);
-  const [error, setError] = useState(false);
-
-  useEffect(() => {
-    if (!name) return;
-    // Try to find a coach headshot via our API
-    const params = new URLSearchParams({ name, school: schoolName });
-    if (website) params.set("website", website);
-    fetch(`/api/coach-photo?${params}`)
-      .then((r) => r.json())
-      .then((data) => {
-        if (data.url) setImgSrc(data.url);
-      })
-      .catch(() => {});
-  }, [name, schoolName, website]);
-
-  const initials = name
-    ? name.split(" ").map((w) => w[0]).filter(Boolean).join("").slice(0, 2).toUpperCase()
-    : "?";
-
-  if (imgSrc && !error) {
-    return (
-      <img
-        src={imgSrc}
-        alt={name || "Coach"}
-        className="shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-xl object-cover object-top shadow-md border-2 border-gray-100"
-        onError={() => setError(true)}
-      />
-    );
-  }
-
-  // Styled initials fallback with gradient
-  return (
-    <div className="shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-xl bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center shadow-md border-2 border-gray-200">
-      <span className="text-xl sm:text-2xl font-black text-white/80">{initials}</span>
-    </div>
-  );
-}
 
 const RECRUITING_STATUSES = [
   "Researching",
@@ -838,17 +800,22 @@ export default function SchoolPage({
           {coachOpen && (
             <div className="border-t border-gray-100 p-4 sm:p-6">
               <div className="space-y-4">
-                <div className="flex items-start gap-4">
-                  <CoachPhoto name={school.head_coach_name} schoolName={school.name} website={school.website} />
-                  <div>
-                    <p className="text-sm sm:text-base text-gray-900 font-bold">{school.head_coach_name || "N/A"}</p>
-                    <p className="text-xs text-gray-500">Head Coach</p>
-                    {school.head_coach_email && (
-                      <a href={`mailto:${school.head_coach_email}`} className="text-xs sm:text-sm text-blue-600 hover:underline break-all mt-1 block">
-                        {school.head_coach_email}
-                      </a>
-                    )}
-                  </div>
+                <div>
+                  <p className="text-sm sm:text-base text-gray-900 font-bold">{school.head_coach_name || "N/A"}</p>
+                  <p className="text-xs text-gray-500">Head Coach</p>
+                  {school.head_coach_tenure_start && (() => {
+                    const n = new Date().getFullYear() - school.head_coach_tenure_start + 1;
+                    const s = (n % 100 >= 11 && n % 100 <= 13) ? "th" : ["th","st","nd","rd"][n % 10] || "th";
+                    return <p className="text-xs text-gray-600 mt-1">{n}{s} Season ({school.head_coach_tenure_start}&ndash;Present)</p>;
+                  })()}
+                  {school.head_coach_record && (
+                    <p className="text-xs text-gray-600">Career Record: {school.head_coach_record}</p>
+                  )}
+                  {school.head_coach_email && (
+                    <a href={`mailto:${school.head_coach_email}`} className="text-xs sm:text-sm text-blue-600 hover:underline break-all mt-1 block">
+                      {school.head_coach_email}
+                    </a>
+                  )}
                 </div>
 
                 <div className="border-t border-gray-100 pt-4">
