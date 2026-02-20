@@ -828,7 +828,7 @@ export default function Home() {
             <BrandLogo size="sm" showTagline={false} onClick={() => { handleTabChange(isLoggedIn ? "mylist" : "home"); window.scrollTo({ top: 0, behavior: "smooth" }); }} />
             <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-gray-400">
               <a href="#" className="hover:text-white transition-colors">Contact</a>
-              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+              <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
             </div>
           </div>
           <p className="text-xs text-gray-500 text-center sm:text-left">
