@@ -458,9 +458,11 @@ export default function SchoolPage({
                   }
                 }} />
               ) : (
-                <span className="text-2xl sm:text-3xl font-black text-gray-400">
-                  {school.name.split(" ").map(w => w[0]).join("").slice(0, 3)}
-                </span>
+                <svg className="w-12 h-12 sm:w-16 sm:h-16 text-gray-300" viewBox="0 0 24 24" fill="currentColor">
+                  <circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                  <path d="M6.5 3.5C8.5 6 9 9.5 8 13s-3.5 6-5.5 7.5" fill="none" stroke="currentColor" strokeWidth="1.2" />
+                  <path d="M17.5 3.5C15.5 6 15 9.5 16 13s3.5 6 5.5 7.5" fill="none" stroke="currentColor" strokeWidth="1.2" />
+                </svg>
               )}
             </div>
             <div className="min-w-0 flex-1">
