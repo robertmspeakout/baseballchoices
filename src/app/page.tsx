@@ -732,7 +732,7 @@ export default function Home() {
 
         {/* VIP Cards Carousel — only on mylist tab */}
         {activeTab === "mylist" && sorted.some((s) => s.priority >= 4) && (
-          <h3 className="text-sm font-semibold text-gray-500">All Four and Five Star Ranked Programs</h3>
+          <h3 className="text-base font-bold text-gray-700 mt-2">Four & Five Star Programs</h3>
         )}
         {activeTab === "mylist" && <VIPCarousel schools={sorted} />}
 
