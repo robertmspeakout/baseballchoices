@@ -43,7 +43,7 @@
     "period": "per year",
     "subtitle": "Start free for 5 days, then just $19.99 per year. Cancel anytime.",
     "features": [
-      "Access to all 564+ college programs",
+      "Access to all {allSchools.length} college programs",
       "AI-powered program matching",
       "Personal program rankings and lists",
       "Track your recruiting journey in one place",
