@@ -4,6 +4,12 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
 
+// Coaches whose Wikipedia results return incorrect photos.
+// These will skip the Wikipedia lookup and fall back to styled initials.
+const WIKIPEDIA_BLOCKLIST = new Set([
+  "luke isaacson|grinnell", // Returns wrong person's photo
+]);
+
 // Try multiple sources for coach headshot photos
 export async function GET(request: NextRequest) {
   const name = request.nextUrl.searchParams.get("name");
@@ -13,6 +19,9 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ url: null });
   }
 
+  const blockKey = `${name.toLowerCase()}|${school.toLowerCase()}`;
+  const skipWikipedia = WIKIPEDIA_BLOCKLIST.has(blockKey);
+
   try {
     // Strategy 1: Try ESPN's coaching staff (most reliable for sports)
     const espnUrl = await tryESPN(school);
@@ -20,16 +29,18 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ url: espnUrl });
     }
 
-    // Strategy 2: Try Wikipedia with just the coach name
-    const wikiUrl = await tryWikipedia(name);
-    if (wikiUrl) {
-      return NextResponse.json({ url: wikiUrl });
-    }
+    if (!skipWikipedia) {
+      // Strategy 2: Try Wikipedia with just the coach name
+      const wikiUrl = await tryWikipedia(name);
+      if (wikiUrl) {
+        return NextResponse.json({ url: wikiUrl });
+      }
 
-    // Strategy 3: Try Wikipedia with coach + school context
-    const wikiUrl2 = await tryWikipedia(`${name} ${school} baseball`);
-    if (wikiUrl2) {
-      return NextResponse.json({ url: wikiUrl2 });
+      // Strategy 3: Try Wikipedia with coach + school context
+      const wikiUrl2 = await tryWikipedia(`${name} ${school} baseball`);
+      if (wikiUrl2) {
+        return NextResponse.json({ url: wikiUrl2 });
+      }
     }
 
     // No photo found
