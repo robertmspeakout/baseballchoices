@@ -300,7 +300,7 @@ const academics = {
   "Youngstown State": { enrollment: 11300, acceptance_rate: 75, graduation_rate: 39 },
 };
 
-// ── CWS appearances (all-time) & NCAA Tournament Regionals (since 2000) ──
+// ── CWS appearances (all-time) & NCAA Tournament Regionals (all-time) ──
 const postseason = {
   "Alabama": { cws_appearances: 4, ncaa_regionals: 7 },
   "Arizona": { cws_appearances: 18, ncaa_regionals: 20 },
@@ -410,7 +410,7 @@ const postseason = {
   "Tulane": { cws_appearances: 5, ncaa_regionals: 10 },
   "Tulsa": { cws_appearances: 0, ncaa_regionals: 3 },
   "UC Irvine": { cws_appearances: 2, ncaa_regionals: 6 },
-  "UC Santa Barbara": { cws_appearances: 2, ncaa_regionals: 6 },
+  "UC Santa Barbara": { cws_appearances: 1, ncaa_regionals: 11 },
   "UCF": { cws_appearances: 0, ncaa_regionals: 5 },
   "UCLA": { cws_appearances: 6, ncaa_regionals: 13 },
   "UNC Wilmington": { cws_appearances: 0, ncaa_regionals: 4 },
