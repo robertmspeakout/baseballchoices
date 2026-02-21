@@ -410,7 +410,7 @@ const postseason = {
   "Tulane": { cws_appearances: 5, ncaa_regionals: 10 },
   "Tulsa": { cws_appearances: 0, ncaa_regionals: 3 },
   "UC Irvine": { cws_appearances: 2, ncaa_regionals: 6 },
-  "UC Santa Barbara": { cws_appearances: 1, ncaa_regionals: 11 },
+  "UC Santa Barbara": { cws_appearances: 1, ncaa_regionals: 14 },
   "UCF": { cws_appearances: 0, ncaa_regionals: 5 },
   "UCLA": { cws_appearances: 6, ncaa_regionals: 13 },
   "UNC Wilmington": { cws_appearances: 0, ncaa_regionals: 4 },
