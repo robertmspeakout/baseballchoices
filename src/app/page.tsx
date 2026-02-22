@@ -32,6 +32,8 @@ interface School {
   x_account: string | null;
   head_coach_name: string | null;
   head_coach_email: string | null;
+  head_coach_tenure_start: number | null;
+  head_coach_record: string | null;
   assistant_coach_name: string | null;
   assistant_coach_email: string | null;
   website: string | null;

@@ -24,6 +24,8 @@ interface School {
   x_account: string | null;
   head_coach_name: string | null;
   head_coach_email: string | null;
+  head_coach_tenure_start: number | null;
+  head_coach_record: string | null;
   assistant_coach_name: string | null;
   assistant_coach_email: string | null;
   website: string | null;
@@ -60,6 +62,8 @@ const EDITABLE_FIELDS: { key: string; label: string; type: "text" | "number" | "
   { key: "graduation_rate", label: "Graduation Rate (%)", type: "number" },
   { key: "head_coach_name", label: "Head Coach", type: "text" },
   { key: "head_coach_email", label: "Head Coach Email", type: "text" },
+  { key: "head_coach_tenure_start", label: "Coach Tenure Start Year", type: "number" },
+  { key: "head_coach_record", label: "Coach Career Record", type: "text" },
   { key: "assistant_coach_name", label: "Assistant Coach", type: "text" },
   { key: "assistant_coach_email", label: "Asst. Coach Email", type: "text" },
   { key: "last_season_record", label: "Last Season Record", type: "text" },
