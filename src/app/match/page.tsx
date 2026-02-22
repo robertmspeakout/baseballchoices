@@ -4,8 +4,8 @@ import { useEffect, useState, useMemo } from "react";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import BrandLogo from "@/components/BrandLogo";
-import SiteNav from "@/components/SiteNav";
+import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
 import AuthGate from "@/components/AuthGate";
 import { loadProfile, loadPreferences, isProfileComplete, type PlayerProfile, type PlayerPreferences } from "@/lib/playerProfile";
 import { getMatchResults, type MatchResult } from "@/lib/matchingEngine";
@@ -266,22 +266,7 @@ export default function MatchPage() {
   return (
     <AuthGate>
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="relative text-white overflow-visible z-30">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1629219644109-b4df0ab25a7b?w=1920&q=80')" }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
-
-        <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 py-6 sm:py-10">
-          <div className="flex items-start justify-between">
-            <BrandLogo size="lg" showTagline={true} />
-            <SiteNav variant="dark" active="My AI Matches" />
-          </div>
-        </div>
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-red-700 via-red-500 to-red-700" />
-      </header>
+      <SiteHeader activeNav="My AI Matches" />
 
       {/* Results */}
       <main className="max-w-[1400px] mx-auto px-3 sm:px-6 py-4 sm:py-6 space-y-4">
@@ -493,13 +478,7 @@ export default function MatchPage() {
         )}
       </main>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 mt-8">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <BrandLogo size="sm" showTagline={false} />
-          <p className="text-xs text-gray-500">ExtraBase is a product of JackJack Enterprises. Data is for informational purposes only. Go be great!</p>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
     </AuthGate>
   );
