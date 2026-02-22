@@ -393,7 +393,7 @@ const postseason = {
   "South Alabama": { cws_appearances: 1, ncaa_regionals: 5 },
   "South Carolina": { cws_appearances: 11, ncaa_regionals: 18 },
   "South Florida": { cws_appearances: 2, ncaa_regionals: 7 },
-  "Southeastern Louisiana": { cws_appearances: 0, ncaa_regionals: 4 },
+  "Southeastern Louisiana": { cws_appearances: 0, ncaa_regionals: 6 },
   "Southern Illinois": { cws_appearances: 0, ncaa_regionals: 3 },
   "Southern Miss": { cws_appearances: 3, ncaa_regionals: 12 },
   "Stanford": { cws_appearances: 17, ncaa_regionals: 20 },
@@ -485,6 +485,7 @@ const postseason = {
   "Western Kentucky": { cws_appearances: 0, ncaa_regionals: 5 },
   "Winthrop": { cws_appearances: 0, ncaa_regionals: 5 },
   "Wofford": { cws_appearances: 0, ncaa_regionals: 2 },
+  "New Orleans": { cws_appearances: 1, ncaa_regionals: 12 },
 };
 
 // ── Recruiting questionnaire URL patterns ──
