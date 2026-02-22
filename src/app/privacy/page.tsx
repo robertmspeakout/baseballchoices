@@ -1,8 +1,7 @@
 "use client";
 
-import Link from "next/link";
-import BrandLogo from "@/components/BrandLogo";
-import SiteNav from "@/components/SiteNav";
+import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
 
 const sections = [
   {
@@ -45,22 +44,7 @@ const sections = [
 export default function PrivacyPage() {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-      {/* Header */}
-      <header className="relative text-white overflow-visible z-30">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1629219644109-b4df0ab25a7b?w=1920&q=80')" }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
-
-        <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 py-6 sm:py-10">
-          <div className="flex items-start justify-between">
-            <BrandLogo size="lg" showTagline={true} />
-            <SiteNav variant="dark" />
-          </div>
-        </div>
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-red-700 via-red-500 to-red-700" />
-      </header>
+      <SiteHeader />
 
       {/* Content */}
       <main className="flex-1 max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12 w-full">
@@ -83,21 +67,7 @@ export default function PrivacyPage() {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 mt-8">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 py-5 space-y-3">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
-            <BrandLogo size="sm" showTagline={false} />
-            <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-gray-400">
-              <a href="#" className="hover:text-white transition-colors">Contact</a>
-              <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
-            </div>
-          </div>
-          <p className="text-xs text-gray-500 text-center sm:text-left">
-            ExtraBase is a product of JackJack Enterprises. Data is for informational purposes only. Go be great!
-          </p>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

@@ -4,8 +4,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import BrandLogo from "@/components/BrandLogo";
-import SiteNav from "@/components/SiteNav";
+import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
 import SearchFilters from "@/components/SearchFilters";
 import SchoolTable from "@/components/SchoolTable";
 import schoolsData from "@/data/schools.json";
@@ -516,37 +516,17 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gray-50 overflow-x-hidden">
-      {/* Header */}
-      <header className="relative text-white overflow-x-clip overflow-y-visible z-30">
-        {/* Full-bleed baseball photo background */}
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1629219644109-b4df0ab25a7b?w=1920&q=80')" }}
-        />
-        {/* Left-to-right gradient for logo contrast */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
-
-        <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 py-6 sm:py-10">
-          <div className="flex items-start justify-between">
-            <div>
-              <BrandLogo size="lg" showTagline={true} onClick={() => { handleTabChange(isLoggedIn ? "mylist" : "home"); window.scrollTo({ top: 0, behavior: "smooth" }); }} />
-            </div>
-            <SiteNav
-              variant="dark"
-              active={activeTab === "home" ? "Home" : activeTab === "mylist" ? "My Top Programs" : activeTab === "D1" ? "All Division I" : activeTab === "D2" ? "All Division 2" : activeTab === "D3" ? "All Division 3" : undefined}
-              onNavigate={(href) => {
-                const tab = href === "/" ? (isLoggedIn ? "mylist" : "home") : href === "/#mylist" ? "mylist" : href === "/#D1" ? "D1" : href === "/#D2" ? "D2" : href === "/#D3" ? "D3" : null;
-                if (tab) {
-                  handleTabChange(tab as TabKey);
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                }
-              }}
-            />
-          </div>
-        </div>
-        {/* Bottom edge - thick red accent bar */}
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-red-700 via-red-500 to-red-700" />
-      </header>
+      <SiteHeader
+        activeNav={activeTab === "home" ? "Home" : activeTab === "mylist" ? "My Top Programs" : activeTab === "D1" ? "All Division I" : activeTab === "D2" ? "All Division 2" : activeTab === "D3" ? "All Division 3" : undefined}
+        onLogoClick={() => { handleTabChange(isLoggedIn ? "mylist" : "home"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+        onNavigate={(href) => {
+          const tab = href === "/" ? (isLoggedIn ? "mylist" : "home") : href === "/#mylist" ? "mylist" : href === "/#D1" ? "D1" : href === "/#D2" ? "D2" : href === "/#D3" ? "D3" : null;
+          if (tab) {
+            handleTabChange(tab as TabKey);
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }
+        }}
+      />
 
       {/* ── Landing sections (home tab, non-logged-in only) ──────────────── */}
       {/* All text below is driven by src/data/marketing.json — edit that file to change copy */}
@@ -823,21 +803,7 @@ export default function Home() {
         )}
       </main>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 mt-8">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 py-5 space-y-3">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
-            <BrandLogo size="sm" showTagline={false} onClick={() => { handleTabChange(isLoggedIn ? "mylist" : "home"); window.scrollTo({ top: 0, behavior: "smooth" }); }} />
-            <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-gray-400">
-              <a href="#" className="hover:text-white transition-colors">Contact</a>
-              <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
-            </div>
-          </div>
-          <p className="text-xs text-gray-500 text-center sm:text-left">
-            ExtraBase is a product of JackJack Enterprises. Data is for informational purposes only. Go be great!
-          </p>
-        </div>
-      </footer>
+      <SiteFooter onLogoClick={() => { handleTabChange(isLoggedIn ? "mylist" : "home"); window.scrollTo({ top: 0, behavior: "smooth" }); }} />
     </div>
   );
 }
