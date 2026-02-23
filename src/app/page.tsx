@@ -56,8 +56,9 @@ const TABS_BASE = [
   { key: "D1", label: "All Division I" },
   { key: "D2", label: "All Division II" },
   { key: "D3", label: "All Division III" },
+  { key: "JUCO", label: "All JUCO" },
 ] as const;
-type TabKey = "home" | "mylist" | "D1" | "D2" | "D3";
+type TabKey = "home" | "mylist" | "D1" | "D2" | "D3" | "JUCO";
 
 const PAGE_SIZE = 50;
 const allSchools = schoolsData as School[];
@@ -308,13 +309,13 @@ export default function Home() {
     }
     // Restore active tab from URL hash on mount
     const hash = window.location.hash.replace("#", "");
-    if (["mylist", "D1", "D2", "D3"].includes(hash)) {
+    if (["mylist", "D1", "D2", "D3", "JUCO"].includes(hash)) {
       setActiveTab(hash as TabKey);
     }
     // Listen for hash changes (e.g. navigating back from /match to /#mylist)
     const onHashChange = () => {
       const h = window.location.hash.replace("#", "");
-      if (["mylist", "D1", "D2", "D3"].includes(h)) {
+      if (["mylist", "D1", "D2", "D3", "JUCO"].includes(h)) {
         setActiveTab(h as TabKey);
       } else if (!h) {
         setActiveTab("home");
@@ -530,16 +531,16 @@ export default function Home() {
     );
   }
 
-  const showDivisionFilters = activeTab === "D1" || activeTab === "D2" || activeTab === "D3";
+  const showDivisionFilters = activeTab === "D1" || activeTab === "D2" || activeTab === "D3" || activeTab === "JUCO";
 
   return (
     <div className="min-h-screen bg-gray-50 overflow-x-hidden">
       <SiteHeader
         backgroundImage={userBgPic || undefined}
-        activeNav={activeTab === "home" ? "Home" : activeTab === "mylist" ? "My Top Programs" : activeTab === "D1" ? "All Division I" : activeTab === "D2" ? "All Division 2" : activeTab === "D3" ? "All Division 3" : undefined}
+        activeNav={activeTab === "home" ? "Home" : activeTab === "mylist" ? "My Top Programs" : activeTab === "D1" ? "All Division I" : activeTab === "D2" ? "All Division 2" : activeTab === "D3" ? "All Division 3" : activeTab === "JUCO" ? "All JUCO" : undefined}
         onLogoClick={() => { handleTabChange(isLoggedIn ? "mylist" : "home"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
         onNavigate={(href) => {
-          const tab = href === "/" ? (isLoggedIn ? "mylist" : "home") : href === "/#mylist" ? "mylist" : href === "/#D1" ? "D1" : href === "/#D2" ? "D2" : href === "/#D3" ? "D3" : null;
+          const tab = href === "/" ? (isLoggedIn ? "mylist" : "home") : href === "/#mylist" ? "mylist" : href === "/#D1" ? "D1" : href === "/#D2" ? "D2" : href === "/#D3" ? "D3" : href === "/#JUCO" ? "JUCO" : null;
           if (tab) {
             handleTabChange(tab as TabKey);
             window.scrollTo({ top: 0, behavior: "smooth" });
@@ -705,7 +706,7 @@ export default function Home() {
                 <option value="D1">Division I Programs</option>
                 <option value="D2">Division II Programs</option>
                 <option value="D3">Division III Programs</option>
-                <option value="JUCO" disabled>JUCO Programs</option>
+                <option value="JUCO">JUCO Programs</option>
               </select>
               <svg className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#CC0000]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -750,7 +751,7 @@ export default function Home() {
                 Start building your list! Browse programs by division and use the star ratings to rank your favorites.
               </p>
               <p className="text-sm text-gray-600">
-                Browse: <button onClick={() => handleTabChange("D1")} className="text-blue-600 font-semibold hover:underline">Division I</button>{" | "}<button onClick={() => handleTabChange("D2")} className="text-blue-600 font-semibold hover:underline">Division II</button>{" | "}<button onClick={() => handleTabChange("D3")} className="text-blue-600 font-semibold hover:underline">Division III</button>
+                Browse: <button onClick={() => handleTabChange("D1")} className="text-blue-600 font-semibold hover:underline">Division I</button>{" | "}<button onClick={() => handleTabChange("D2")} className="text-blue-600 font-semibold hover:underline">Division II</button>{" | "}<button onClick={() => handleTabChange("D3")} className="text-blue-600 font-semibold hover:underline">Division III</button>{" | "}<button onClick={() => handleTabChange("JUCO")} className="text-blue-600 font-semibold hover:underline">JUCO</button>
               </p>
             </div>
           </div>

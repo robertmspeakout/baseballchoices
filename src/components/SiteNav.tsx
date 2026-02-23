@@ -11,6 +11,7 @@ const NAV_ITEMS = [
   { label: "DI Programs", href: "/#D1", icon: null },
   { label: "DII Programs", href: "/#D2", icon: null },
   { label: "DIII Programs", href: "/#D3", icon: null },
+  { label: "JUCO Programs", href: "/#JUCO", icon: null },
 ];
 
 function StarIcon({ className }: { className?: string }) {
