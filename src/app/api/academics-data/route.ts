@@ -6,8 +6,9 @@ export const dynamic = "force-dynamic";
 
 const SCORECARD_KEY = process.env.COLLEGE_SCORECARD_API_KEY || "DEMO_KEY";
 
-// In-memory cache for scorecard results (24h TTL)
+// In-memory cache (24h TTL)
 const scorecardCache = new Map<string, { data: any; ts: number }>();
+const programsCache = new Map<string, { data: any; ts: number }>();
 const CACHE_TTL = 24 * 60 * 60 * 1000;
 
 // ─── Main handler ───────────────────────────────────────────────
@@ -19,15 +20,17 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ scorecard: null, programs: [] });
   }
 
-  const result = await fetchScorecard(school, state);
+  const scorecardResult = await fetchScorecard(school, state);
+  const scorecard = scorecardResult?.scorecard ?? null;
+  const scorecardId = scorecardResult?.id ?? null;
 
-  return NextResponse.json({
-    scorecard: result?.scorecard ?? null,
-    programs: result?.programs ?? [],
-  });
+  // Fetch programs using the school's Scorecard ID (separate call)
+  const programs = scorecardId ? await fetchPrograms(scorecardId) : [];
+
+  return NextResponse.json({ scorecard, programs });
 }
 
-// ─── College Scorecard API ──────────────────────────────────────
+// ─── College Scorecard API — school data ────────────────────────
 const SCORECARD_FIELDS = [
   "school.name",
   "school.city",
@@ -48,7 +51,6 @@ const SCORECARD_FIELDS = [
   "latest.admissions.sat_scores.75th_percentile.math",
   "latest.admissions.act_scores.25th_percentile.cumulative",
   "latest.admissions.act_scores.75th_percentile.cumulative",
-  "latest.programs.cip_4_digit",
 ].join(",");
 
 async function fetchScorecard(school: string, state: string) {
@@ -59,7 +61,6 @@ async function fetchScorecard(school: string, state: string) {
   }
 
   try {
-    // Build search URL — use school.search for fuzzy matching, state to narrow results
     const params = new URLSearchParams({
       "school.search": school,
       _per_page: "5",
@@ -71,14 +72,13 @@ async function fetchScorecard(school: string, state: string) {
     }
 
     const url = `https://api.data.gov/ed/collegescorecard/v1/schools?${params}`;
-    const res = await fetch(url, { signal: AbortSignal.timeout(10000) });
+    const res = await fetch(url, { signal: AbortSignal.timeout(8000) });
     if (!res.ok) return null;
 
     const data = await res.json();
     const results = data?.results || [];
     if (results.length === 0) return null;
 
-    // Pick the best match — prefer name containing our search term, largest enrollment
     const normalizedSearch = school.toLowerCase();
     const bestMatch =
       results.find(
@@ -92,7 +92,6 @@ async function fetchScorecard(school: string, state: string) {
 
     if (!bestMatch) return null;
 
-    // Extract and reshape the data
     const sat25Reading =
       bestMatch["latest.admissions.sat_scores.25th_percentile.critical_reading"];
     const sat75Reading =
@@ -102,7 +101,6 @@ async function fetchScorecard(school: string, state: string) {
     const sat75Math =
       bestMatch["latest.admissions.sat_scores.75th_percentile.math"];
 
-    // Composite SAT = reading + math percentiles
     const sat25 =
       sat25Reading != null && sat25Math != null
         ? sat25Reading + sat25Math
@@ -112,13 +110,11 @@ async function fetchScorecard(school: string, state: string) {
         ? sat75Reading + sat75Math
         : null;
 
-    // For "average financial aid", compute from net price
     const netPricePublic = bestMatch["latest.cost.avg_net_price.public"];
     const netPricePrivate = bestMatch["latest.cost.avg_net_price.private"];
     const netPriceOverall = bestMatch["latest.cost.avg_net_price.overall"];
     const avgNetPrice = netPriceOverall ?? netPricePublic ?? netPricePrivate;
 
-    // For "% receiving financial aid", combine Pell + federal loan rates
     const pellRate = bestMatch["latest.aid.pell_grant_rate"];
     const loanRate = bestMatch["latest.aid.federal_loan_rate"];
     const aidPercentage =
@@ -140,8 +136,39 @@ async function fetchScorecard(school: string, state: string) {
       act_75: bestMatch["latest.admissions.act_scores.75th_percentile.cumulative"] ?? null,
     };
 
-    // Extract programs — deduplicate by title, only Bachelor's degrees (level 3)
-    const rawPrograms: any[] = bestMatch["latest.programs.cip_4_digit"] || [];
+    const result = { scorecard, id: bestMatch["id"] };
+    scorecardCache.set(cacheKey, { data: result, ts: Date.now() });
+    return result;
+  } catch {
+    return null;
+  }
+}
+
+// ─── College Scorecard API — programs/majors ────────────────────
+async function fetchPrograms(scorecardId: number): Promise<{ title: string; code: string }[]> {
+  const cacheKey = `programs-${scorecardId}`;
+  const cached = programsCache.get(cacheKey);
+  if (cached && Date.now() - cached.ts < CACHE_TTL) {
+    return cached.data;
+  }
+
+  try {
+    // Fetch the specific school by ID with only program data
+    const params = new URLSearchParams({
+      id: String(scorecardId),
+      fields: "latest.programs.cip_4_digit",
+      api_key: SCORECARD_KEY,
+    });
+
+    const url = `https://api.data.gov/ed/collegescorecard/v1/schools?${params}`;
+    const res = await fetch(url, { signal: AbortSignal.timeout(10000) });
+    if (!res.ok) return [];
+
+    const data = await res.json();
+    const results = data?.results || [];
+    if (results.length === 0) return [];
+
+    const rawPrograms: any[] = results[0]?.["latest.programs.cip_4_digit"] || [];
     const seenTitles = new Set<string>();
     const programs: { title: string; code: string }[] = [];
 
@@ -149,7 +176,7 @@ async function fetchScorecard(school: string, state: string) {
       const title = prog?.title;
       const code = prog?.code;
       const level = prog?.credential?.level;
-      // Level 3 = Bachelor's degree; include all if no level data
+      // Level 3 = Bachelor's degree; include all if no level info
       if (title && !seenTitles.has(title) && (level === 3 || level == null)) {
         seenTitles.add(title);
         programs.push({ title, code: code || "" });
@@ -157,11 +184,9 @@ async function fetchScorecard(school: string, state: string) {
     }
 
     programs.sort((a, b) => a.title.localeCompare(b.title));
-
-    const result = { scorecard, programs };
-    scorecardCache.set(cacheKey, { data: result, ts: Date.now() });
-    return result;
+    programsCache.set(cacheKey, { data: programs, ts: Date.now() });
+    return programs;
   } catch {
-    return null;
+    return [];
   }
 }
