@@ -1,0 +1,2386 @@
+{
+  "Alabama A&M University": {
+    "school_name": "Alabama A&M University",
+    "apr": 923,
+    "year": "2018-19",
+    "squad_size": 81,
+    "eligibility_rate": 0.900621118,
+    "retention_rate": 0.9144736842
+  },
+  "University of Alabama at Birmingham": {
+    "school_name": "University of Alabama at Birmingham",
+    "apr": 993,
+    "year": "2018-19",
+    "squad_size": 111,
+    "eligibility_rate": 0.995412844,
+    "retention_rate": 0.9860465116
+  },
+  "Alabama State University": {
+    "school_name": "Alabama State University",
+    "apr": 938,
+    "year": "2018-19",
+    "squad_size": 91,
+    "eligibility_rate": 0.938547486,
+    "retention_rate": 0.936416185
+  },
+  "University of Alabama": {
+    "school_name": "University of Alabama",
+    "apr": 988,
+    "year": "2018-19",
+    "squad_size": 110,
+    "eligibility_rate": 0.9952830189,
+    "retention_rate": 0.9743589744
+  },
+  "Auburn University": {
+    "school_name": "Auburn University",
+    "apr": 970,
+    "year": "2018-19",
+    "squad_size": 106,
+    "eligibility_rate": 0.9903846154,
+    "retention_rate": 0.9274611399
+  },
+  "Jacksonville State University": {
+    "school_name": "Jacksonville State University",
+    "apr": 955,
+    "year": "2018-19",
+    "squad_size": 120,
+    "eligibility_rate": 0.9466666667,
+    "retention_rate": 0.9502262443
+  },
+  "University of North Alabama": {
+    "school_name": "University of North Alabama",
+    "apr": 1000,
+    "year": "2018-19",
+    "squad_size": 28,
+    "eligibility_rate": 1,
+    "retention_rate": 0.9807692308
+  },
+  "Samford University": {
+    "school_name": "Samford University",
+    "apr": 990,
+    "year": "2018-19",
+    "squad_size": 108,
+    "eligibility_rate": 0.9951456311,
+    "retention_rate": 0.9794871795
+  },
+  "University of South Alabama": {
+    "school_name": "University of South Alabama",
+    "apr": 981,
+    "year": "2018-19",
+    "squad_size": 110,
+    "eligibility_rate": 0.9906976744,
+    "retention_rate": 0.9646464646
+  },
+  "Troy University": {
+    "school_name": "Troy University",
+    "apr": 986,
+    "year": "2018-19",
+    "squad_size": 116,
+    "eligibility_rate": 0.9866071429,
+    "retention_rate": 0.9724770642
+  },
+  "Arizona State University": {
+    "school_name": "Arizona State University",
+    "apr": 976,
+    "year": "2018-19",
+    "squad_size": 101,
+    "eligibility_rate": 1,
+    "retention_rate": 0.9435028249
+  },
+  "University of Arizona": {
+    "school_name": "University of Arizona",
+    "apr": 974,
+    "year": "2018-19",
+    "squad_size": 108,
+    "eligibility_rate": 0.9902439024,
+    "retention_rate": 0.9462365591
+  },
+  "Grand Canyon University": {
+    "school_name": "Grand Canyon University",
+    "apr": 979,
+    "year": "2018-19",
+    "squad_size": 100,
+    "eligibility_rate": 1,
+    "retention_rate": 0.956043956
+  },
+  "University of Arkansas at Little Rock": {
+    "school_name": "University of Arkansas at Little Rock",
+    "apr": 985,
+    "year": "2018-19",
+    "squad_size": 104,
+    "eligibility_rate": 0.9853658537,
+    "retention_rate": 0.9677419355
+  },
+  "University of Arkansas, Fayetteville": {
+    "school_name": "University of Arkansas, Fayetteville",
+    "apr": 971,
+    "year": "2018-19",
+    "squad_size": 113,
+    "eligibility_rate": 0.9954545455,
+    "retention_rate": 0.9393939394
+  },
+  "University of Arkansas, Pine Bluff": {
+    "school_name": "University of Arkansas, Pine Bluff",
+    "apr": 963,
+    "year": "2018-19",
+    "squad_size": 90,
+    "eligibility_rate": 0.9887640449,
+    "retention_rate": 0.9360465116
+  },
+  "Arkansas State University": {
+    "school_name": "Arkansas State University",
+    "apr": 970,
+    "year": "2018-19",
+    "squad_size": 112,
+    "eligibility_rate": 0.9862385321,
+    "retention_rate": 0.9425837321
+  },
+  "University of Central Arkansas": {
+    "school_name": "University of Central Arkansas",
+    "apr": 960,
+    "year": "2018-19",
+    "squad_size": 109,
+    "eligibility_rate": 0.966507177,
+    "retention_rate": 0.9371727749
+  },
+  "California Baptist University": {
+    "school_name": "California Baptist University",
+    "apr": 990,
+    "year": "2018-19",
+    "squad_size": 26,
+    "eligibility_rate": 0.96,
+    "retention_rate": 0.9795918367
+  },
+  "California Polytechnic State University": {
+    "school_name": "California Polytechnic State University",
+    "apr": 979,
+    "year": "2018-19",
+    "squad_size": 104,
+    "eligibility_rate": 0.9779411765,
+    "retention_rate": 0.9698492462
+  },
+  "California State University, Bakersfield": {
+    "school_name": "California State University, Bakersfield",
+    "apr": 961,
+    "year": "2018-19",
+    "squad_size": 105,
+    "eligibility_rate": 0.9807692308,
+    "retention_rate": 0.9343434343
+  },
+  "California State University, Fresno": {
+    "school_name": "California State University, Fresno",
+    "apr": 981,
+    "year": "2018-19",
+    "squad_size": 112,
+    "eligibility_rate": 0.9953917051,
+    "retention_rate": 0.9655172414
+  },
+  "California State University, Fullerton": {
+    "school_name": "California State University, Fullerton",
+    "apr": 952,
+    "year": "2018-19",
+    "squad_size": 110,
+    "eligibility_rate": 0.9770642202,
+    "retention_rate": 0.9195979899
+  },
+  "Long Beach State University": {
+    "school_name": "Long Beach State University",
+    "apr": 962,
+    "year": "2018-19",
+    "squad_size": 105,
+    "eligibility_rate": 0.9757281553,
+    "retention_rate": 0.932642487
+  },
+  "California State University, Northridge": {
+    "school_name": "California State University, Northridge",
+    "apr": 950,
+    "year": "2018-19",
+    "squad_size": 111,
+    "eligibility_rate": 0.9433962264,
+    "retention_rate": 0.9264705882
+  },
+  "California State University, Sacramento": {
+    "school_name": "California State University, Sacramento",
+    "apr": 965,
+    "year": "2018-19",
+    "squad_size": 111,
+    "eligibility_rate": 0.9807692308,
+    "retention_rate": 0.943877551
+  },
+  "University of California, Berkeley": {
+    "school_name": "University of California, Berkeley",
+    "apr": 974,
+    "year": "2018-19",
+    "squad_size": 92,
+    "eligibility_rate": 0.9782608696,
+    "retention_rate": 0.9700598802
+  },
+  "University of California, Davis": {
+    "school_name": "University of California, Davis",
+    "apr": 989,
+    "year": "2018-19",
+    "squad_size": 99,
+    "eligibility_rate": 0.9872773537,
+    "retention_rate": 0.989769821
+  },
+  "University of California, Irvine": {
+    "school_name": "University of California, Irvine",
+    "apr": 982,
+    "year": "2018-19",
+    "squad_size": 100,
+    "eligibility_rate": 0.9848484848,
+    "retention_rate": 0.9627659574
+  },
+  "University of California, Los Angeles": {
+    "school_name": "University of California, Los Angeles",
+    "apr": 987,
+    "year": "2018-19",
+    "squad_size": 103,
+    "eligibility_rate": 0.9900990099,
+    "retention_rate": 0.9639175258
+  },
+  "University of California, Riverside": {
+    "school_name": "University of California, Riverside",
+    "apr": 969,
+    "year": "2018-19",
+    "squad_size": 115,
+    "eligibility_rate": 0.9657534247,
+    "retention_rate": 0.9383886256
+  },
+  "University of California, Santa Barbara": {
+    "school_name": "University of California, Santa Barbara",
+    "apr": 959,
+    "year": "2018-19",
+    "squad_size": 108,
+    "eligibility_rate": 0.980952381,
+    "retention_rate": 0.9356435644
+  },
+  "Loyola Marymount University": {
+    "school_name": "Loyola Marymount University",
+    "apr": 970,
+    "year": "2018-19",
+    "squad_size": 103,
+    "eligibility_rate": 0.9950980392,
+    "retention_rate": 0.9444444444
+  },
+  "University of the Pacific": {
+    "school_name": "University of the Pacific",
+    "apr": 959,
+    "year": "2018-19",
+    "squad_size": 90,
+    "eligibility_rate": 0.9885057471,
+    "retention_rate": 0.9221556886
+  },
+  "Pepperdine University": {
+    "school_name": "Pepperdine University",
+    "apr": 981,
+    "year": "2018-19",
+    "squad_size": 84,
+    "eligibility_rate": 0.9879518072,
+    "retention_rate": 0.9620253165
+  },
+  "San Diego State University": {
+    "school_name": "San Diego State University",
+    "apr": 982,
+    "year": "2018-19",
+    "squad_size": 105,
+    "eligibility_rate": 0.9896373057,
+    "retention_rate": 0.9682539683
+  },
+  "University of San Diego": {
+    "school_name": "University of San Diego",
+    "apr": 977,
+    "year": "2018-19",
+    "squad_size": 92,
+    "eligibility_rate": 0.9831460674,
+    "retention_rate": 0.9573170732
+  },
+  "University of San Francisco": {
+    "school_name": "University of San Francisco",
+    "apr": 981,
+    "year": "2018-19",
+    "squad_size": 95,
+    "eligibility_rate": 0.9946236559,
+    "retention_rate": 0.9662921348
+  },
+  "San Jose State University": {
+    "school_name": "San Jose State University",
+    "apr": 940,
+    "year": "2018-19",
+    "squad_size": 105,
+    "eligibility_rate": 0.9591836735,
+    "retention_rate": 0.9135135135
+  },
+  "Santa Clara University": {
+    "school_name": "Santa Clara University",
+    "apr": 969,
+    "year": "2018-19",
+    "squad_size": 86,
+    "eligibility_rate": 0.9940298507,
+    "retention_rate": 0.9428571429
+  },
+  "Saint Mary's College of California": {
+    "school_name": "Saint Mary's College of California",
+    "apr": 976,
+    "year": "2018-19",
+    "squad_size": 98,
+    "eligibility_rate": 1,
+    "retention_rate": 0.9459459459
+  },
+  "University of Southern California": {
+    "school_name": "University of Southern California",
+    "apr": 987,
+    "year": "2018-19",
+    "squad_size": 80,
+    "eligibility_rate": 1,
+    "retention_rate": 0.9722222222
+  },
+  "University of Northern Colorado": {
+    "school_name": "University of Northern Colorado",
+    "apr": 975,
+    "year": "2018-19",
+    "squad_size": 62,
+    "eligibility_rate": 0.9754098361,
+    "retention_rate": 0.975
+  },
+  "U.S. Air Force Academy": {
+    "school_name": "U.S. Air Force Academy",
+    "apr": 994,
+    "year": "2018-19",
+    "squad_size": 136,
+    "eligibility_rate": 0.9889705882,
+    "retention_rate": 0.9963099631
+  },
+  "Central Connecticut State University": {
+    "school_name": "Central Connecticut State University",
+    "apr": 967,
+    "year": "2018-19",
+    "squad_size": 102,
+    "eligibility_rate": 0.9444444444,
+    "retention_rate": 0.9484536082
+  },
+  "University of Connecticut": {
+    "school_name": "University of Connecticut",
+    "apr": 982,
+    "year": "2018-19",
+    "squad_size": 102,
+    "eligibility_rate": 1,
+    "retention_rate": 0.9526315789
+  },
+  "Fairfield University": {
+    "school_name": "Fairfield University",
+    "apr": 997,
+    "year": "2018-19",
+    "squad_size": 89,
+    "eligibility_rate": 1,
+    "retention_rate": 0.9943181818
+  },
+  "University of Hartford": {
+    "school_name": "University of Hartford",
+    "apr": 994,
+    "year": "2018-19",
+    "squad_size": 84,
+    "eligibility_rate": 1,
+    "retention_rate": 0.9872611465
+  },
+  "Quinnipiac University": {
+    "school_name": "Quinnipiac University",
+    "apr": 985,
+    "year": "2018-19",
+    "squad_size": 99,
+    "eligibility_rate": 0.9949238579,
+    "retention_rate": 0.9690721649
+  },
+  "Sacred Heart University": {
+    "school_name": "Sacred Heart University",
+    "apr": 984,
+    "year": "2018-19",
+    "squad_size": 79,
+    "eligibility_rate": 0.9936305732,
+    "retention_rate": 0.9677419355
+  },
+  "Yale University": {
+    "school_name": "Yale University",
+    "apr": 1000,
+    "year": "2018-19",
+    "squad_size": 108,
+    "eligibility_rate": 1,
+    "retention_rate": 1
+  },
+  "Delaware State University": {
+    "school_name": "Delaware State University",
+    "apr": 955,
+    "year": "2018-19",
+    "squad_size": 85,
+    "eligibility_rate": 0.9685534591,
+    "retention_rate": 0.9407894737
+  },
+  "University of Delaware": {
+    "school_name": "University of Delaware",
+    "apr": 987,
+    "year": "2018-19",
+    "squad_size": 100,
+    "eligibility_rate": 0.9949238579,
+    "retention_rate": 0.9792746114
+  },
+  "George Washington University": {
+    "school_name": "George Washington University",
+    "apr": 981,
+    "year": "2018-19",
+    "squad_size": 80,
+    "eligibility_rate": 0.9937106918,
+    "retention_rate": 0.9612903226
+  },
+  "Georgetown University": {
+    "school_name": "Georgetown University",
+    "apr": 988,
+    "year": "2018-19",
+    "squad_size": 64,
+    "eligibility_rate": 1,
+    "retention_rate": 0.9756097561
+  },
+  "Bethune-Cookman University": {
+    "school_name": "Bethune-Cookman University",
+    "apr": 944,
+    "year": "2018-19",
+    "squad_size": 102,
+    "eligibility_rate": 0.960199005,
+    "retention_rate": 0.921875
+  },
+  "University of Central Florida": {
+    "school_name": "University of Central Florida",
+    "apr": 963,
+    "year": "2018-19",
+    "squad_size": 122,
+    "eligibility_rate": 0.982300885,
+    "retention_rate": 0.9375
+  },
+  "Florida A&M University": {
+    "school_name": "Florida A&M University",
+    "apr": 966,
+    "year": "2018-19",
+    "squad_size": 105,
+    "eligibility_rate": 0.9710144928,
+    "retention_rate": 0.9512195122
+  },
+  "Florida Atlantic University": {
+    "school_name": "Florida Atlantic University",
+    "apr": 990,
+    "year": "2018-19",
+    "squad_size": 109,
+    "eligibility_rate": 0.9953051643,
+    "retention_rate": 0.9639175258
+  },
+  "Florida International University": {
+    "school_name": "Florida International University",
+    "apr": 990,
+    "year": "2018-19",
+    "squad_size": 102,
+    "eligibility_rate": 0.9851485149,
+    "retention_rate": 0.9732620321
+  },
+  "Florida State University": {
+    "school_name": "Florida State University",
+    "apr": 971,
+    "year": "2018-19",
+    "squad_size": 109,
+    "eligibility_rate": 0.9907407407,
+    "retention_rate": 0.9444444444
+  },
+  "University of Florida": {
+    "school_name": "University of Florida",
+    "apr": 976,
+    "year": "2018-19",
+    "squad_size": 102,
+    "eligibility_rate": 1,
+    "retention_rate": 0.9425287356
+  },
+  "Jacksonville University": {
+    "school_name": "Jacksonville University",
+    "apr": 978,
+    "year": "2018-19",
+    "squad_size": 106,
+    "eligibility_rate": 0.990430622,
+    "retention_rate": 0.960591133
+  },
+  "University of Miami (Florida)": {
+    "school_name": "University of Miami (Florida)",
+    "apr": 976,
+    "year": "2018-19",
+    "squad_size": 92,
+    "eligibility_rate": 1,
+    "retention_rate": 0.9415584416
+  },
+  "University of North Florida": {
+    "school_name": "University of North Florida",
+    "apr": 989,
+    "year": "2018-19",
+    "squad_size": 100,
+    "eligibility_rate": 0.9896373057,
+    "retention_rate": 0.9781420765
+  },
+  "University of South Florida": {
+    "school_name": "University of South Florida",
+    "apr": 979,
+    "year": "2018-19",
+    "squad_size": 100,
+    "eligibility_rate": 0.9896373057,
+    "retention_rate": 0.9555555556
+  },
+  "Stetson University": {
+    "school_name": "Stetson University",
+    "apr": 974,
+    "year": "2018-19",
+    "squad_size": 101,
+    "eligibility_rate": 0.9899497487,
+    "retention_rate": 0.9567567568
+  },
+  "Georgia Institute of Technology": {
+    "school_name": "Georgia Institute of Technology",
+    "apr": 988,
+    "year": "2018-19",
+    "squad_size": 108,
+    "eligibility_rate": 0.9952606635,
+    "retention_rate": 0.9797979798
+  },
+  "Georgia Southern University": {
+    "school_name": "Georgia Southern University",
+    "apr": 981,
+    "year": "2018-19",
+    "squad_size": 110,
+    "eligibility_rate": 0.9768518519,
+    "retention_rate": 0.9658536585
+  },
+  "Georgia State University": {
+    "school_name": "Georgia State University",
+    "apr": 972,
+    "year": "2018-19",
+    "squad_size": 116,
+    "eligibility_rate": 0.9818181818,
+    "retention_rate": 0.9622641509
+  },
+  "University of Georgia": {
+    "school_name": "University of Georgia",
+    "apr": 995,
+    "year": "2018-19",
+    "squad_size": 112,
+    "eligibility_rate": 0.9907834101,
+    "retention_rate": 0.9796954315
+  },
+  "Mercer University": {
+    "school_name": "Mercer University",
+    "apr": 1000,
+    "year": "2018-19",
+    "squad_size": 110,
+    "eligibility_rate": 0.995412844,
+    "retention_rate": 0.9951219512
+  },
+  "University of Hawaii, Manoa": {
+    "school_name": "University of Hawaii, Manoa",
+    "apr": 979,
+    "year": "2018-19",
+    "squad_size": 110,
+    "eligibility_rate": 0.9905660377,
+    "retention_rate": 0.9573459716
+  },
+  "Bradley University": {
+    "school_name": "Bradley University",
+    "apr": 1000,
+    "year": "2018-19",
+    "squad_size": 105,
+    "eligibility_rate": 1,
+    "retention_rate": 1
+  },
+  "Chicago State University": {
+    "school_name": "Chicago State University",
+    "apr": 969,
+    "year": "2018-19",
+    "squad_size": 99,
+    "eligibility_rate": 0.9695431472,
+    "retention_rate": 0.9468085106
+  },
+  "Eastern Illinois University": {
+    "school_name": "Eastern Illinois University",
+    "apr": 970,
+    "year": "2018-19",
+    "squad_size": 113,
+    "eligibility_rate": 0.9680365297,
+    "retention_rate": 0.9624413146
+  },
+  "University of Illinois at Chicago": {
+    "school_name": "University of Illinois at Chicago",
+    "apr": 993,
+    "year": "2018-19",
+    "squad_size": 109,
+    "eligibility_rate": 1,
+    "retention_rate": 0.9851485149
+  },
+  "University of Illinois Urbana-Champaign": {
+    "school_name": "University of Illinois Urbana-Champaign",
+    "apr": 995,
+    "year": "2018-19",
+    "squad_size": 100,
+    "eligibility_rate": 0.9949494949,
+    "retention_rate": 0.9891891892
+  },
+  "Illinois State University": {
+    "school_name": "Illinois State University",
+    "apr": 997,
+    "year": "2018-19",
+    "squad_size": 104,
+    "eligibility_rate": 0.995,
+    "retention_rate": 0.9842105263
+  },
+  "Northern Illinois University": {
+    "school_name": "Northern Illinois University",
+    "apr": 975,
+    "year": "2018-19",
+    "squad_size": 114,
+    "eligibility_rate": 0.9816513761,
+    "retention_rate": 0.9579439252
+  },
+  "Northwestern University": {
+    "school_name": "Northwestern University",
+    "apr": 1000,
+    "year": "2018-19",
+    "squad_size": 90,
+    "eligibility_rate": 1,
+    "retention_rate": 1
+  },
+  "Southern Illinois University at Carbondale": {
+    "school_name": "Southern Illinois University at Carbondale",
+    "apr": 991,
+    "year": "2018-19",
+    "squad_size": 111,
+    "eligibility_rate": 0.9954751131,
+    "retention_rate": 0.9812206573
+  },
+  "Southern Illinois University Edwardsville": {
+    "school_name": "Southern Illinois University Edwardsville",
+    "apr": 986,
+    "year": "2018-19",
+    "squad_size": 112,
+    "eligibility_rate": 0.9908256881,
+    "retention_rate": 0.9813084112
+  },
+  "Western Illinois University": {
+    "school_name": "Western Illinois University",
+    "apr": 970,
+    "year": "2018-19",
+    "squad_size": 104,
+    "eligibility_rate": 0.9850746269,
+    "retention_rate": 0.9285714286
+  },
+  "Ball State University": {
+    "school_name": "Ball State University",
+    "apr": 978,
+    "year": "2018-19",
+    "squad_size": 106,
+    "eligibility_rate": 0.990430622,
+    "retention_rate": 0.9653465347
+  },
+  "Butler University": {
+    "school_name": "Butler University",
+    "apr": 990,
+    "year": "2018-19",
+    "squad_size": 104,
+    "eligibility_rate": 0.9855072464,
+    "retention_rate": 0.9902439024
+  },
+  "University of Evansville": {
+    "school_name": "University of Evansville",
+    "apr": 962,
+    "year": "2018-19",
+    "squad_size": 95,
+    "eligibility_rate": 0.9735449735,
+    "retention_rate": 0.95
+  },
+  "Purdue University Fort Wayne": {
+    "school_name": "Purdue University Fort Wayne",
+    "apr": 964,
+    "year": "2018-19",
+    "squad_size": 100,
+    "eligibility_rate": 0.9695431472,
+    "retention_rate": 0.9533678756
+  },
+  "Indiana State University": {
+    "school_name": "Indiana State University",
+    "apr": 968,
+    "year": "2018-19",
+    "squad_size": 104,
+    "eligibility_rate": 0.9902912621,
+    "retention_rate": 0.9333333333
+  },
+  "Indiana University, Bloomington": {
+    "school_name": "Indiana University, Bloomington",
+    "apr": 965,
+    "year": "2018-19",
+    "squad_size": 109,
+    "eligibility_rate": 0.9857819905,
+    "retention_rate": 0.9432989691
+  },
+  "University of Notre Dame": {
+    "school_name": "University of Notre Dame",
+    "apr": 990,
+    "year": "2018-19",
+    "squad_size": 79,
+    "eligibility_rate": 0.9872611465,
+    "retention_rate": 0.9931506849
+  },
+  "Valparaiso University": {
+    "school_name": "Valparaiso University",
+    "apr": 983,
+    "year": "2018-19",
+    "squad_size": 105,
+    "eligibility_rate": 1,
+    "retention_rate": 0.9603960396
+  },
+  "University of Iowa": {
+    "school_name": "University of Iowa",
+    "apr": 964,
+    "year": "2018-19",
+    "squad_size": 115,
+    "eligibility_rate": 0.9813084112,
+    "retention_rate": 0.9420289855
+  },
+  "University of Kansas": {
+    "school_name": "University of Kansas",
+    "apr": 976,
+    "year": "2018-19",
+    "squad_size": 114,
+    "eligibility_rate": 0.9859813084,
+    "retention_rate": 0.9563106796
+  },
+  "Kansas State University": {
+    "school_name": "Kansas State University",
+    "apr": 966,
+    "year": "2018-19",
+    "squad_size": 120,
+    "eligibility_rate": 0.9910714286,
+    "retention_rate": 0.9336492891
+  },
+  "Wichita State University": {
+    "school_name": "Wichita State University",
+    "apr": 986,
+    "year": "2018-19",
+    "squad_size": 113,
+    "eligibility_rate": 0.990990991,
+    "retention_rate": 0.9696969697
+  },
+  "Eastern Kentucky University": {
+    "school_name": "Eastern Kentucky University",
+    "apr": 990,
+    "year": "2018-19",
+    "squad_size": 99,
+    "eligibility_rate": 1,
+    "retention_rate": 0.9732620321
+  },
+  "University of Kentucky": {
+    "school_name": "University of Kentucky",
+    "apr": 973,
+    "year": "2018-19",
+    "squad_size": 104,
+    "eligibility_rate": 0.9949494949,
+    "retention_rate": 0.9494382022
+  },
+  "University of Louisville": {
+    "school_name": "University of Louisville",
+    "apr": 993,
+    "year": "2018-19",
+    "squad_size": 109,
+    "eligibility_rate": 1,
+    "retention_rate": 0.9845360825
+  },
+  "Morehead State University": {
+    "school_name": "Morehead State University",
+    "apr": 968,
+    "year": "2018-19",
+    "squad_size": 122,
+    "eligibility_rate": 0.9873417722,
+    "retention_rate": 0.9429824561
+  },
+  "Murray State University": {
+    "school_name": "Murray State University",
+    "apr": 989,
+    "year": "2018-19",
+    "squad_size": 99,
+    "eligibility_rate": 0.9947368421,
+    "retention_rate": 0.9781420765
+  },
+  "Northern Kentucky University": {
+    "school_name": "Northern Kentucky University",
+    "apr": 991,
+    "year": "2018-19",
+    "squad_size": 89,
+    "eligibility_rate": 0.9885714286,
+    "retention_rate": 0.9821428571
+  },
+  "Western Kentucky University": {
+    "school_name": "Western Kentucky University",
+    "apr": 965,
+    "year": "2018-19",
+    "squad_size": 106,
+    "eligibility_rate": 0.9855769231,
+    "retention_rate": 0.943877551
+  },
+  "Grambling State University": {
+    "school_name": "Grambling State University",
+    "apr": 948,
+    "year": "2018-19",
+    "squad_size": 92,
+    "eligibility_rate": 0.9344262295,
+    "retention_rate": 0.9555555556
+  },
+  "Louisiana State University": {
+    "school_name": "Louisiana State University",
+    "apr": 973,
+    "year": "2018-19",
+    "squad_size": 110,
+    "eligibility_rate": 0.9952606635,
+    "retention_rate": 0.9421052632
+  },
+  "Louisiana Tech University": {
+    "school_name": "Louisiana Tech University",
+    "apr": 976,
+    "year": "2018-19",
+    "squad_size": 115,
+    "eligibility_rate": 0.9861431871,
+    "retention_rate": 0.9610705596
+  },
+  "McNeese State University": {
+    "school_name": "McNeese State University",
+    "apr": 995,
+    "year": "2018-19",
+    "squad_size": 108,
+    "eligibility_rate": 0.9952380952,
+    "retention_rate": 0.9855072464
+  },
+  "University of New Orleans": {
+    "school_name": "University of New Orleans",
+    "apr": 957,
+    "year": "2018-19",
+    "squad_size": 98,
+    "eligibility_rate": 0.9842105263,
+    "retention_rate": 0.9269662921
+  },
+  "Nicholls State University": {
+    "school_name": "Nicholls State University",
+    "apr": 969,
+    "year": "2018-19",
+    "squad_size": 107,
+    "eligibility_rate": 0.9764150943,
+    "retention_rate": 0.9420289855
+  },
+  "University of Louisiana Monroe": {
+    "school_name": "University of Louisiana Monroe",
+    "apr": 974,
+    "year": "2018-19",
+    "squad_size": 103,
+    "eligibility_rate": 0.9848484848,
+    "retention_rate": 0.962962963
+  },
+  "Northwestern State University": {
+    "school_name": "Northwestern State University",
+    "apr": 981,
+    "year": "2018-19",
+    "squad_size": 110,
+    "eligibility_rate": 0.9906976744,
+    "retention_rate": 0.9707317073
+  },
+  "Southeastern Louisiana University": {
+    "school_name": "Southeastern Louisiana University",
+    "apr": 980,
+    "year": "2018-19",
+    "squad_size": 107,
+    "eligibility_rate": 0.995215311,
+    "retention_rate": 0.9502487562
+  },
+  "Southern University, Baton Rouge": {
+    "school_name": "Southern University, Baton Rouge",
+    "apr": 951,
+    "year": "2018-19",
+    "squad_size": 82,
+    "eligibility_rate": 0.9290322581,
+    "retention_rate": 0.9350649351
+  },
+  "University of Louisiana at Lafayette": {
+    "school_name": "University of Louisiana at Lafayette",
+    "apr": 951,
+    "year": "2018-19",
+    "squad_size": 115,
+    "eligibility_rate": 0.9590909091,
+    "retention_rate": 0.9333333333
+  },
+  "Tulane University": {
+    "school_name": "Tulane University",
+    "apr": 965,
+    "year": "2018-19",
+    "squad_size": 91,
+    "eligibility_rate": 0.9943181818,
+    "retention_rate": 0.9337349398
+  },
+  "University of Maine, Orono": {
+    "school_name": "University of Maine, Orono",
+    "apr": 974,
+    "year": "2018-19",
+    "squad_size": 100,
+    "eligibility_rate": 0.9744897959,
+    "retention_rate": 0.9685863874
+  },
+  "Coppin State University": {
+    "school_name": "Coppin State University",
+    "apr": 957,
+    "year": "2018-19",
+    "squad_size": 65,
+    "eligibility_rate": 0.9612403101,
+    "retention_rate": 0.9523809524
+  },
+  "University of Maryland, Baltimore County": {
+    "school_name": "University of Maryland, Baltimore County",
+    "apr": 949,
+    "year": "2018-19",
+    "squad_size": 105,
+    "eligibility_rate": 0.9648241206,
+    "retention_rate": 0.9285714286
+  },
+  "University of Maryland, College Park": {
+    "school_name": "University of Maryland, College Park",
+    "apr": 971,
+    "year": "2018-19",
+    "squad_size": 113,
+    "eligibility_rate": 0.9813953488,
+    "retention_rate": 0.9611650485
+  },
+  "University of Maryland Eastern Shore": {
+    "school_name": "University of Maryland Eastern Shore",
+    "apr": 944,
+    "year": "2018-19",
+    "squad_size": 64,
+    "eligibility_rate": 0.9527559055,
+    "retention_rate": 0.928
+  },
+  "Mount St. Mary's University": {
+    "school_name": "Mount St. Mary's University",
+    "apr": 979,
+    "year": "2018-19",
+    "squad_size": 98,
+    "eligibility_rate": 0.9795918367,
+    "retention_rate": 0.9792746114
+  },
+  "Towson University": {
+    "school_name": "Towson University",
+    "apr": 997,
+    "year": "2018-19",
+    "squad_size": 75,
+    "eligibility_rate": 0.9933333333,
+    "retention_rate": 0.9931972789
+  },
+  "U.S. Naval Academy": {
+    "school_name": "U.S. Naval Academy",
+    "apr": 991,
+    "year": "2018-19",
+    "squad_size": 113,
+    "eligibility_rate": 0.990990991,
+    "retention_rate": 0.990990991
+  },
+  "Boston College": {
+    "school_name": "Boston College",
+    "apr": 992,
+    "year": "2018-19",
+    "squad_size": 98,
+    "eligibility_rate": 1,
+    "retention_rate": 0.9842931937
+  },
+  "Harvard University": {
+    "school_name": "Harvard University",
+    "apr": 998,
+    "year": "2018-19",
+    "squad_size": 116,
+    "eligibility_rate": 1,
+    "retention_rate": 0.9956140351
+  },
+  "College of the Holy Cross": {
+    "school_name": "College of the Holy Cross",
+    "apr": 1000,
+    "year": "2018-19",
+    "squad_size": 16,
+    "eligibility_rate": 1,
+    "retention_rate": 1
+  },
+  "University of Massachusetts Lowell": {
+    "school_name": "University of Massachusetts Lowell",
+    "apr": 982,
+    "year": "2018-19",
+    "squad_size": 100,
+    "eligibility_rate": 0.9848484848,
+    "retention_rate": 0.9735449735
+  },
+  "University of Massachusetts, Amherst": {
+    "school_name": "University of Massachusetts, Amherst",
+    "apr": 984,
+    "year": "2018-19",
+    "squad_size": 32,
+    "eligibility_rate": 0.9841269841,
+    "retention_rate": 0.935483871
+  },
+  "Northeastern University": {
+    "school_name": "Northeastern University",
+    "apr": 1000,
+    "year": "2018-19",
+    "squad_size": 109,
+    "eligibility_rate": 1,
+    "retention_rate": 1
+  },
+  "Central Michigan University": {
+    "school_name": "Central Michigan University",
+    "apr": 986,
+    "year": "2018-19",
+    "squad_size": 112,
+    "eligibility_rate": 0.9907407407,
+    "retention_rate": 0.9705882353
+  },
+  "Eastern Michigan University": {
+    "school_name": "Eastern Michigan University",
+    "apr": 964,
+    "year": "2018-19",
+    "squad_size": 111,
+    "eligibility_rate": 0.9627906977,
+    "retention_rate": 0.9466019417
+  },
+  "University of Michigan": {
+    "school_name": "University of Michigan",
+    "apr": 1000,
+    "year": "2018-19",
+    "squad_size": 90,
+    "eligibility_rate": 1,
+    "retention_rate": 1
+  },
+  "Michigan State University": {
+    "school_name": "Michigan State University",
+    "apr": 974,
+    "year": "2018-19",
+    "squad_size": 111,
+    "eligibility_rate": 0.9624413146,
+    "retention_rate": 0.9803921569
+  },
+  "Oakland University": {
+    "school_name": "Oakland University",
+    "apr": 970,
+    "year": "2018-19",
+    "squad_size": 101,
+    "eligibility_rate": 0.985,
+    "retention_rate": 0.9543147208
+  },
+  "Western Michigan University": {
+    "school_name": "Western Michigan University",
+    "apr": 986,
+    "year": "2018-19",
+    "squad_size": 114,
+    "eligibility_rate": 0.9772727273,
+    "retention_rate": 0.9768518519
+  },
+  "University of Minnesota, Twin Cities": {
+    "school_name": "University of Minnesota, Twin Cities",
+    "apr": 1000,
+    "year": "2018-19",
+    "squad_size": 108,
+    "eligibility_rate": 1,
+    "retention_rate": 0.9901477833
+  },
+  "Alcorn State University": {
+    "school_name": "Alcorn State University",
+    "apr": 965,
+    "year": "2018-19",
+    "squad_size": 87,
+    "eligibility_rate": 0.9655172414,
+    "retention_rate": 0.9590643275
+  },
+  "Jackson State University": {
+    "school_name": "Jackson State University",
+    "apr": 943,
+    "year": "2018-19",
+    "squad_size": 87,
+    "eligibility_rate": 0.9590643275,
+    "retention_rate": 0.925
+  },
+  "University of Mississippi": {
+    "school_name": "University of Mississippi",
+    "apr": 985,
+    "year": "2018-19",
+    "squad_size": 107,
+    "eligibility_rate": 1,
+    "retention_rate": 0.9505494505
+  },
+  "Mississippi Valley State University": {
+    "school_name": "Mississippi Valley State University",
+    "apr": 934,
+    "year": "2018-19",
+    "squad_size": 71,
+    "eligibility_rate": 0.9565217391,
+    "retention_rate": 0.9097744361
+  },
+  "Mississippi State University": {
+    "school_name": "Mississippi State University",
+    "apr": 969,
+    "year": "2018-19",
+    "squad_size": 115,
+    "eligibility_rate": 0.9954545455,
+    "retention_rate": 0.9411764706
+  },
+  "The University of Southern Mississippi": {
+    "school_name": "The University of Southern Mississippi",
+    "apr": 981,
+    "year": "2018-19",
+    "squad_size": 113,
+    "eligibility_rate": 0.99543379,
+    "retention_rate": 0.961352657
+  },
+  "University of Missouri, Columbia": {
+    "school_name": "University of Missouri, Columbia",
+    "apr": 974,
+    "year": "2018-19",
+    "squad_size": 107,
+    "eligibility_rate": 0.9901960784,
+    "retention_rate": 0.9508196721
+  },
+  "Saint Louis University": {
+    "school_name": "Saint Louis University",
+    "apr": 966,
+    "year": "2018-19",
+    "squad_size": 107,
+    "eligibility_rate": 0.985645933,
+    "retention_rate": 0.9393939394
+  },
+  "Southeast Missouri State University": {
+    "school_name": "Southeast Missouri State University",
+    "apr": 980,
+    "year": "2018-19",
+    "squad_size": 117,
+    "eligibility_rate": 0.9736842105,
+    "retention_rate": 0.972972973
+  },
+  "Missouri State University": {
+    "school_name": "Missouri State University",
+    "apr": 961,
+    "year": "2018-19",
+    "squad_size": 117,
+    "eligibility_rate": 0.9691629956,
+    "retention_rate": 0.9483568075
+  },
+  "Creighton University": {
+    "school_name": "Creighton University",
+    "apr": 950,
+    "year": "2018-19",
+    "squad_size": 114,
+    "eligibility_rate": 0.963800905,
+    "retention_rate": 0.9306930693
+  },
+  "University of Nebraska Omaha": {
+    "school_name": "University of Nebraska Omaha",
+    "apr": 972,
+    "year": "2018-19",
+    "squad_size": 102,
+    "eligibility_rate": 0.9803921569,
+    "retention_rate": 0.9587628866
+  },
+  "University of Nebraska, Lincoln": {
+    "school_name": "University of Nebraska, Lincoln",
+    "apr": 989,
+    "year": "2018-19",
+    "squad_size": 121,
+    "eligibility_rate": 0.9955357143,
+    "retention_rate": 0.9815668203
+  },
+  "University of Nevada, Las Vegas": {
+    "school_name": "University of Nevada, Las Vegas",
+    "apr": 978,
+    "year": "2018-19",
+    "squad_size": 109,
+    "eligibility_rate": 0.980952381,
+    "retention_rate": 0.9744897959
+  },
+  "University of Nevada, Reno": {
+    "school_name": "University of Nevada, Reno",
+    "apr": 954,
+    "year": "2018-19",
+    "squad_size": 112,
+    "eligibility_rate": 0.9627906977,
+    "retention_rate": 0.9356435644
+  },
+  "Dartmouth College": {
+    "school_name": "Dartmouth College",
+    "apr": 990,
+    "year": "2018-19",
+    "squad_size": 127,
+    "eligibility_rate": 0.9959758551,
+    "retention_rate": 0.983706721
+  },
+  "Fairleigh Dickinson University, Metropolitan Campus": {
+    "school_name": "Fairleigh Dickinson University, Metropolitan Campus",
+    "apr": 954,
+    "year": "2018-19",
+    "squad_size": 93,
+    "eligibility_rate": 0.9835164835,
+    "retention_rate": 0.9230769231
+  },
+  "Monmouth University": {
+    "school_name": "Monmouth University",
+    "apr": 986,
+    "year": "2018-19",
+    "squad_size": 94,
+    "eligibility_rate": 0.9892473118,
+    "retention_rate": 0.9836065574
+  },
+  "New Jersey Institute of Technology": {
+    "school_name": "New Jersey Institute of Technology",
+    "apr": 983,
+    "year": "2018-19",
+    "squad_size": 102,
+    "eligibility_rate": 0.9852216749,
+    "retention_rate": 0.9747474747
+  },
+  "Princeton University": {
+    "school_name": "Princeton University",
+    "apr": 993,
+    "year": "2018-19",
+    "squad_size": 106,
+    "eligibility_rate": 0.995215311,
+    "retention_rate": 0.9903846154
+  },
+  "Rider University": {
+    "school_name": "Rider University",
+    "apr": 989,
+    "year": "2018-19",
+    "squad_size": 93,
+    "eligibility_rate": 0.9891891892,
+    "retention_rate": 0.9835164835
+  },
+  "Rutgers, The State University of New Jersey, New Brunswick": {
+    "school_name": "Rutgers, The State University of New Jersey, New Brunswick",
+    "apr": 973,
+    "year": "2018-19",
+    "squad_size": 105,
+    "eligibility_rate": 0.9855072464,
+    "retention_rate": 0.960591133
+  },
+  "Saint Peter's University": {
+    "school_name": "Saint Peter's University",
+    "apr": 965,
+    "year": "2018-19",
+    "squad_size": 81,
+    "eligibility_rate": 0.98125,
+    "retention_rate": 0.9487179487
+  },
+  "Seton Hall University": {
+    "school_name": "Seton Hall University",
+    "apr": 1000,
+    "year": "2018-19",
+    "squad_size": 103,
+    "eligibility_rate": 1,
+    "retention_rate": 0.9898477157
+  },
+  "University of New Mexico": {
+    "school_name": "University of New Mexico",
+    "apr": 965,
+    "year": "2018-19",
+    "squad_size": 109,
+    "eligibility_rate": 0.9855769231,
+    "retention_rate": 0.9371727749
+  },
+  "New Mexico State University": {
+    "school_name": "New Mexico State University",
+    "apr": 974,
+    "year": "2018-19",
+    "squad_size": 98,
+    "eligibility_rate": 0.9790575916,
+    "retention_rate": 0.9518716578
+  },
+  "Canisius College": {
+    "school_name": "Canisius College",
+    "apr": 984,
+    "year": "2018-19",
+    "squad_size": 99,
+    "eligibility_rate": 1,
+    "retention_rate": 0.9680851064
+  },
+  "Columbia University-Barnard College": {
+    "school_name": "Columbia University-Barnard College",
+    "apr": 1000,
+    "year": "2018-19",
+    "squad_size": 106,
+    "eligibility_rate": 1,
+    "retention_rate": 1
+  },
+  "Cornell University": {
+    "school_name": "Cornell University",
+    "apr": 989,
+    "year": "2018-19",
+    "squad_size": 95,
+    "eligibility_rate": 0.9894736842,
+    "retention_rate": 0.9841269841
+  },
+  "Fordham University": {
+    "school_name": "Fordham University",
+    "apr": 1000,
+    "year": "2018-19",
+    "squad_size": 88,
+    "eligibility_rate": 1,
+    "retention_rate": 1
+  },
+  "Hofstra University": {
+    "school_name": "Hofstra University",
+    "apr": 983,
+    "year": "2018-19",
+    "squad_size": 90,
+    "eligibility_rate": 0.9832402235,
+    "retention_rate": 0.9763313609
+  },
+  "Iona College": {
+    "school_name": "Iona College",
+    "apr": 990,
+    "year": "2018-19",
+    "squad_size": 98,
+    "eligibility_rate": 0.9896373057,
+    "retention_rate": 0.9840425532
+  },
+  "Long Island University": {
+    "school_name": "Long Island University",
+    "apr": 995,
+    "year": "2018-19",
+    "squad_size": 98,
+    "eligibility_rate": 0.9948717949,
+    "retention_rate": 0.9739583333
+  },
+  "Manhattan College": {
+    "school_name": "Manhattan College",
+    "apr": 991,
+    "year": "2018-19",
+    "squad_size": 108,
+    "eligibility_rate": 0.9953488372,
+    "retention_rate": 0.9857819905
+  },
+  "Marist College": {
+    "school_name": "Marist College",
+    "apr": 982,
+    "year": "2018-19",
+    "squad_size": 101,
+    "eligibility_rate": 0.9949494949,
+    "retention_rate": 0.9690721649
+  },
+  "Niagara University": {
+    "school_name": "Niagara University",
+    "apr": 994,
+    "year": "2018-19",
+    "squad_size": 83,
+    "eligibility_rate": 1,
+    "retention_rate": 0.9874213836
+  },
+  "St. Bonaventure University": {
+    "school_name": "St. Bonaventure University",
+    "apr": 980,
+    "year": "2018-19",
+    "squad_size": 104,
+    "eligibility_rate": 0.9851485149,
+    "retention_rate": 0.958974359
+  },
+  "Siena College": {
+    "school_name": "Siena College",
+    "apr": 965,
+    "year": "2018-19",
+    "squad_size": 81,
+    "eligibility_rate": 0.9813664596,
+    "retention_rate": 0.9426751592
+  },
+  "St. John's University (New York)": {
+    "school_name": "St. John's University (New York)",
+    "apr": 982,
+    "year": "2018-19",
+    "squad_size": 105,
+    "eligibility_rate": 0.9855769231,
+    "retention_rate": 0.9789473684
+  },
+  "University at Albany": {
+    "school_name": "University at Albany",
+    "apr": 982,
+    "year": "2018-19",
+    "squad_size": 101,
+    "eligibility_rate": 0.9849246231,
+    "retention_rate": 0.9693877551
+  },
+  "Binghamton University": {
+    "school_name": "Binghamton University",
+    "apr": 988,
+    "year": "2018-19",
+    "squad_size": 102,
+    "eligibility_rate": 0.9802955665,
+    "retention_rate": 0.9899497487
+  },
+  "Stony Brook University": {
+    "school_name": "Stony Brook University",
+    "apr": 969,
+    "year": "2018-19",
+    "squad_size": 109,
+    "eligibility_rate": 0.9858490566,
+    "retention_rate": 0.9509803922
+  },
+  "U.S. Military Academy": {
+    "school_name": "U.S. Military Academy",
+    "apr": 997,
+    "year": "2018-19",
+    "squad_size": 94,
+    "eligibility_rate": 0.9946808511,
+    "retention_rate": 1
+  },
+  "Wagner College": {
+    "school_name": "Wagner College",
+    "apr": 971,
+    "year": "2018-19",
+    "squad_size": 95,
+    "eligibility_rate": 0.9840425532,
+    "retention_rate": 0.9569892473
+  },
+  "Appalachian State University": {
+    "school_name": "Appalachian State University",
+    "apr": 971,
+    "year": "2018-19",
+    "squad_size": 100,
+    "eligibility_rate": 0.9794871795,
+    "retention_rate": 0.9625668449
+  },
+  "Campbell University": {
+    "school_name": "Campbell University",
+    "apr": 978,
+    "year": "2018-19",
+    "squad_size": 109,
+    "eligibility_rate": 0.9858490566,
+    "retention_rate": 0.9447236181
+  },
+  "Davidson College": {
+    "school_name": "Davidson College",
+    "apr": 996,
+    "year": "2018-19",
+    "squad_size": 68,
+    "eligibility_rate": 1,
+    "retention_rate": 0.9926470588
+  },
+  "Duke University": {
+    "school_name": "Duke University",
+    "apr": 994,
+    "year": "2018-19",
+    "squad_size": 86,
+    "eligibility_rate": 0.9941520468,
+    "retention_rate": 0.9879518072
+  },
+  "East Carolina University": {
+    "school_name": "East Carolina University",
+    "apr": 988,
+    "year": "2018-19",
+    "squad_size": 107,
+    "eligibility_rate": 1,
+    "retention_rate": 0.9744897959
+  },
+  "Elon University": {
+    "school_name": "Elon University",
+    "apr": 988,
+    "year": "2018-19",
+    "squad_size": 104,
+    "eligibility_rate": 0.9951219512,
+    "retention_rate": 0.9752475248
+  },
+  "Gardner-Webb University": {
+    "school_name": "Gardner-Webb University",
+    "apr": 982,
+    "year": "2018-19",
+    "squad_size": 101,
+    "eligibility_rate": 0.9900990099,
+    "retention_rate": 0.9743589744
+  },
+  "High Point University": {
+    "school_name": "High Point University",
+    "apr": 952,
+    "year": "2018-19",
+    "squad_size": 92,
+    "eligibility_rate": 0.9723756906,
+    "retention_rate": 0.9244186047
+  },
+  "North Carolina A&T State University": {
+    "school_name": "North Carolina A&T State University",
+    "apr": 973,
+    "year": "2018-19",
+    "squad_size": 96,
+    "eligibility_rate": 0.9841269841,
+    "retention_rate": 0.956043956
+  },
+  "University of North Carolina Asheville": {
+    "school_name": "University of North Carolina Asheville",
+    "apr": 974,
+    "year": "2018-19",
+    "squad_size": 80,
+    "eligibility_rate": 0.9873417722,
+    "retention_rate": 0.9605263158
+  },
+  "University of North Carolina, Chapel Hill": {
+    "school_name": "University of North Carolina, Chapel Hill",
+    "apr": 979,
+    "year": "2018-19",
+    "squad_size": 90,
+    "eligibility_rate": 1,
+    "retention_rate": 0.9487179487
+  },
+  "The University of North Carolina at Charlotte": {
+    "school_name": "The University of North Carolina at Charlotte",
+    "apr": 971,
+    "year": "2018-19",
+    "squad_size": 109,
+    "eligibility_rate": 0.9861111111,
+    "retention_rate": 0.956097561
+  },
+  "The University of North Carolina at Greensboro": {
+    "school_name": "The University of North Carolina at Greensboro",
+    "apr": 993,
+    "year": "2018-19",
+    "squad_size": 107,
+    "eligibility_rate": 0.995215311,
+    "retention_rate": 0.985
+  },
+  "North Carolina Central University": {
+    "school_name": "North Carolina Central University",
+    "apr": 946,
+    "year": "2018-19",
+    "squad_size": 93,
+    "eligibility_rate": 0.9431818182,
+    "retention_rate": 0.9306358382
+  },
+  "North Carolina State University": {
+    "school_name": "North Carolina State University",
+    "apr": 985,
+    "year": "2018-19",
+    "squad_size": 90,
+    "eligibility_rate": 1,
+    "retention_rate": 0.9559748428
+  },
+  "University of North Carolina Wilmington": {
+    "school_name": "University of North Carolina Wilmington",
+    "apr": 982,
+    "year": "2018-19",
+    "squad_size": 103,
+    "eligibility_rate": 0.9901477833,
+    "retention_rate": 0.9689119171
+  },
+  "Wake Forest University": {
+    "school_name": "Wake Forest University",
+    "apr": 978,
+    "year": "2018-19",
+    "squad_size": 85,
+    "eligibility_rate": 0.9939393939,
+    "retention_rate": 0.9545454545
+  },
+  "Western Carolina University": {
+    "school_name": "Western Carolina University",
+    "apr": 961,
+    "year": "2018-19",
+    "squad_size": 99,
+    "eligibility_rate": 0.9794871795,
+    "retention_rate": 0.9427083333
+  },
+  "North Dakota State University": {
+    "school_name": "North Dakota State University",
+    "apr": 995,
+    "year": "2018-19",
+    "squad_size": 108,
+    "eligibility_rate": 0.9953271028,
+    "retention_rate": 0.9811320755
+  },
+  "Bowling Green State University": {
+    "school_name": "Bowling Green State University",
+    "apr": 988,
+    "year": "2018-19",
+    "squad_size": 108,
+    "eligibility_rate": 0.9860465116,
+    "retention_rate": 0.976076555
+  },
+  "University of Cincinnati": {
+    "school_name": "University of Cincinnati",
+    "apr": 990,
+    "year": "2018-19",
+    "squad_size": 101,
+    "eligibility_rate": 1,
+    "retention_rate": 0.9743589744
+  },
+  "University of Dayton": {
+    "school_name": "University of Dayton",
+    "apr": 979,
+    "year": "2018-19",
+    "squad_size": 99,
+    "eligibility_rate": 0.9947643979,
+    "retention_rate": 0.956284153
+  },
+  "Kent State University": {
+    "school_name": "Kent State University",
+    "apr": 986,
+    "year": "2018-19",
+    "squad_size": 107,
+    "eligibility_rate": 0.9857819905,
+    "retention_rate": 0.9805825243
+  },
+  "Miami University (Ohio)": {
+    "school_name": "Miami University (Ohio)",
+    "apr": 977,
+    "year": "2018-19",
+    "squad_size": 105,
+    "eligibility_rate": 0.9848484848,
+    "retention_rate": 0.9685863874
+  },
+  "The Ohio State University": {
+    "school_name": "The Ohio State University",
+    "apr": 976,
+    "year": "2018-19",
+    "squad_size": 112,
+    "eligibility_rate": 0.990521327,
+    "retention_rate": 0.9502487562
+  },
+  "Ohio University": {
+    "school_name": "Ohio University",
+    "apr": 976,
+    "year": "2018-19",
+    "squad_size": 111,
+    "eligibility_rate": 0.9813084112,
+    "retention_rate": 0.9714285714
+  },
+  "University of Toledo": {
+    "school_name": "University of Toledo",
+    "apr": 983,
+    "year": "2018-19",
+    "squad_size": 105,
+    "eligibility_rate": 0.9805825243,
+    "retention_rate": 0.9852216749
+  },
+  "Wright State University": {
+    "school_name": "Wright State University",
+    "apr": 990,
+    "year": "2018-19",
+    "squad_size": 107,
+    "eligibility_rate": 0.9952830189,
+    "retention_rate": 0.9800995025
+  },
+  "Xavier University": {
+    "school_name": "Xavier University",
+    "apr": 995,
+    "year": "2018-19",
+    "squad_size": 103,
+    "eligibility_rate": 1,
+    "retention_rate": 0.9898477157
+  },
+  "Youngstown State University": {
+    "school_name": "Youngstown State University",
+    "apr": 977,
+    "year": "2018-19",
+    "squad_size": 107,
+    "eligibility_rate": 0.9753694581,
+    "retention_rate": 0.9739583333
+  },
+  "Oklahoma State University": {
+    "school_name": "Oklahoma State University",
+    "apr": 970,
+    "year": "2018-19",
+    "squad_size": 119,
+    "eligibility_rate": 0.9868421053,
+    "retention_rate": 0.9405940594
+  },
+  "University of Oklahoma": {
+    "school_name": "University of Oklahoma",
+    "apr": 964,
+    "year": "2018-19",
+    "squad_size": 113,
+    "eligibility_rate": 1,
+    "retention_rate": 0.9195979899
+  },
+  "Oral Roberts University": {
+    "school_name": "Oral Roberts University",
+    "apr": 989,
+    "year": "2018-19",
+    "squad_size": 98,
+    "eligibility_rate": 0.9946236559,
+    "retention_rate": 0.9662921348
+  },
+  "Oregon State University": {
+    "school_name": "Oregon State University",
+    "apr": 989,
+    "year": "2018-19",
+    "squad_size": 107,
+    "eligibility_rate": 0.9929742389,
+    "retention_rate": 0.9795396419
+  },
+  "University of Oregon": {
+    "school_name": "University of Oregon",
+    "apr": 959,
+    "year": "2018-19",
+    "squad_size": 99,
+    "eligibility_rate": 0.984375,
+    "retention_rate": 0.9325842697
+  },
+  "University of Portland": {
+    "school_name": "University of Portland",
+    "apr": 983,
+    "year": "2018-19",
+    "squad_size": 104,
+    "eligibility_rate": 0.9903381643,
+    "retention_rate": 0.9744897959
+  },
+  "Bucknell University": {
+    "school_name": "Bucknell University",
+    "apr": 997,
+    "year": "2018-19",
+    "squad_size": 15,
+    "eligibility_rate": 1,
+    "retention_rate": 0.9655172414
+  },
+  "La Salle University": {
+    "school_name": "La Salle University",
+    "apr": 984,
+    "year": "2018-19",
+    "squad_size": 100,
+    "eligibility_rate": 0.9897959184,
+    "retention_rate": 0.9790575916
+  },
+  "Lafayette College": {
+    "school_name": "Lafayette College",
+    "apr": 989,
+    "year": "2018-19",
+    "squad_size": 47,
+    "eligibility_rate": 1,
+    "retention_rate": 0.9784946237
+  },
+  "Lehigh University": {
+    "school_name": "Lehigh University",
+    "apr": 1000,
+    "year": "2018-19",
+    "squad_size": 38,
+    "eligibility_rate": 0.9736842105,
+    "retention_rate": 1
+  },
+  "Pennsylvania State University": {
+    "school_name": "Pennsylvania State University",
+    "apr": 990,
+    "year": "2018-19",
+    "squad_size": 109,
+    "eligibility_rate": 0.9953271028,
+    "retention_rate": 0.9801980198
+  },
+  "University of Pennsylvania": {
+    "school_name": "University of Pennsylvania",
+    "apr": 998,
+    "year": "2018-19",
+    "squad_size": 103,
+    "eligibility_rate": 1,
+    "retention_rate": 0.9950980392
+  },
+  "University of Pittsburgh": {
+    "school_name": "University of Pittsburgh",
+    "apr": 961,
+    "year": "2018-19",
+    "squad_size": 107,
+    "eligibility_rate": 0.9853658537,
+    "retention_rate": 0.9285714286
+  },
+  "Saint Joseph's University": {
+    "school_name": "Saint Joseph's University",
+    "apr": 997,
+    "year": "2018-19",
+    "squad_size": 90,
+    "eligibility_rate": 1,
+    "retention_rate": 0.9943181818
+  },
+  "Villanova University": {
+    "school_name": "Villanova University",
+    "apr": 997,
+    "year": "2018-19",
+    "squad_size": 84,
+    "eligibility_rate": 1,
+    "retention_rate": 0.994011976
+  },
+  "Brown University": {
+    "school_name": "Brown University",
+    "apr": 995,
+    "year": "2018-19",
+    "squad_size": 100,
+    "eligibility_rate": 0.9948979592,
+    "retention_rate": 0.9948979592
+  },
+  "Bryant University": {
+    "school_name": "Bryant University",
+    "apr": 997,
+    "year": "2018-19",
+    "squad_size": 99,
+    "eligibility_rate": 1,
+    "retention_rate": 0.9892473118
+  },
+  "University of Rhode Island": {
+    "school_name": "University of Rhode Island",
+    "apr": 966,
+    "year": "2018-19",
+    "squad_size": 106,
+    "eligibility_rate": 0.9663461538,
+    "retention_rate": 0.9656862745
+  },
+  "Charleston Southern University": {
+    "school_name": "Charleston Southern University",
+    "apr": 968,
+    "year": "2018-19",
+    "squad_size": 112,
+    "eligibility_rate": 0.9863636364,
+    "retention_rate": 0.9490740741
+  },
+  "College of Charleston (South Carolina)": {
+    "school_name": "College of Charleston (South Carolina)",
+    "apr": 951,
+    "year": "2018-19",
+    "squad_size": 108,
+    "eligibility_rate": 0.985645933,
+    "retention_rate": 0.9145728643
+  },
+  "The Citadel": {
+    "school_name": "The Citadel",
+    "apr": 964,
+    "year": "2018-19",
+    "squad_size": 96,
+    "eligibility_rate": 0.9726775956,
+    "retention_rate": 0.9505494505
+  },
+  "Clemson University": {
+    "school_name": "Clemson University",
+    "apr": 1000,
+    "year": "2018-19",
+    "squad_size": 109,
+    "eligibility_rate": 1,
+    "retention_rate": 0.9949748744
+  },
+  "Furman University": {
+    "school_name": "Furman University",
+    "apr": 980,
+    "year": "2018-19",
+    "squad_size": 101,
+    "eligibility_rate": 0.9900990099,
+    "retention_rate": 0.9701492537
+  },
+  "Presbyterian College": {
+    "school_name": "Presbyterian College",
+    "apr": 967,
+    "year": "2018-19",
+    "squad_size": 86,
+    "eligibility_rate": 0.9766081871,
+    "retention_rate": 0.9578313253
+  },
+  "University of South Carolina, Columbia": {
+    "school_name": "University of South Carolina, Columbia",
+    "apr": 961,
+    "year": "2018-19",
+    "squad_size": 113,
+    "eligibility_rate": 0.9815668203,
+    "retention_rate": 0.9365079365
+  },
+  "Coastal Carolina University": {
+    "school_name": "Coastal Carolina University",
+    "apr": 973,
+    "year": "2018-19",
+    "squad_size": 105,
+    "eligibility_rate": 0.9948453608,
+    "retention_rate": 0.9337016575
+  },
+  "University of South Carolina Upstate": {
+    "school_name": "University of South Carolina Upstate",
+    "apr": 955,
+    "year": "2018-19",
+    "squad_size": 99,
+    "eligibility_rate": 0.9791666667,
+    "retention_rate": 0.9239130435
+  },
+  "Winthrop University": {
+    "school_name": "Winthrop University",
+    "apr": 982,
+    "year": "2018-19",
+    "squad_size": 99,
+    "eligibility_rate": 0.9846153846,
+    "retention_rate": 0.9738219895
+  },
+  "Wofford College": {
+    "school_name": "Wofford College",
+    "apr": 971,
+    "year": "2018-19",
+    "squad_size": 87,
+    "eligibility_rate": 0.9826589595,
+    "retention_rate": 0.9593023256
+  },
+  "South Dakota State University": {
+    "school_name": "South Dakota State University",
+    "apr": 984,
+    "year": "2018-19",
+    "squad_size": 98,
+    "eligibility_rate": 0.9894736842,
+    "retention_rate": 0.9782608696
+  },
+  "Austin Peay State University": {
+    "school_name": "Austin Peay State University",
+    "apr": 980,
+    "year": "2018-19",
+    "squad_size": 106,
+    "eligibility_rate": 0.9805825243,
+    "retention_rate": 0.9744897959
+  },
+  "Belmont University": {
+    "school_name": "Belmont University",
+    "apr": 987,
+    "year": "2018-19",
+    "squad_size": 100,
+    "eligibility_rate": 0.9949748744,
+    "retention_rate": 0.9793814433
+  },
+  "Lipscomb University": {
+    "school_name": "Lipscomb University",
+    "apr": 978,
+    "year": "2018-19",
+    "squad_size": 109,
+    "eligibility_rate": 0.9906542056,
+    "retention_rate": 0.9554455446
+  },
+  "East Tennessee State University": {
+    "school_name": "East Tennessee State University",
+    "apr": 978,
+    "year": "2018-19",
+    "squad_size": 93,
+    "eligibility_rate": 0.9892473118,
+    "retention_rate": 0.9666666667
+  },
+  "University of Memphis": {
+    "school_name": "University of Memphis",
+    "apr": 989,
+    "year": "2018-19",
+    "squad_size": 115,
+    "eligibility_rate": 0.9955555556,
+    "retention_rate": 0.9765258216
+  },
+  "Middle Tennessee State University": {
+    "school_name": "Middle Tennessee State University",
+    "apr": 993,
+    "year": "2018-19",
+    "squad_size": 116,
+    "eligibility_rate": 0.9955357143,
+    "retention_rate": 0.9858490566
+  },
+  "University of Tennessee, Knoxville": {
+    "school_name": "University of Tennessee, Knoxville",
+    "apr": 975,
+    "year": "2018-19",
+    "squad_size": 98,
+    "eligibility_rate": 1,
+    "retention_rate": 0.9352941176
+  },
+  "University of Tennessee at Martin": {
+    "school_name": "University of Tennessee at Martin",
+    "apr": 969,
+    "year": "2018-19",
+    "squad_size": 94,
+    "eligibility_rate": 0.9725274725,
+    "retention_rate": 0.9438202247
+  },
+  "Tennessee Technological University": {
+    "school_name": "Tennessee Technological University",
+    "apr": 993,
+    "year": "2018-19",
+    "squad_size": 106,
+    "eligibility_rate": 0.9951923077,
+    "retention_rate": 0.9744897959
+  },
+  "Vanderbilt University": {
+    "school_name": "Vanderbilt University",
+    "apr": 988,
+    "year": "2018-19",
+    "squad_size": 70,
+    "eligibility_rate": 0.9928057554,
+    "retention_rate": 0.9752066116
+  },
+  "Abilene Christian University": {
+    "school_name": "Abilene Christian University",
+    "apr": 955,
+    "year": "2018-19",
+    "squad_size": 99,
+    "eligibility_rate": 0.9740932642,
+    "retention_rate": 0.9340659341
+  },
+  "Baylor University": {
+    "school_name": "Baylor University",
+    "apr": 985,
+    "year": "2018-19",
+    "squad_size": 108,
+    "eligibility_rate": 0.9950980392,
+    "retention_rate": 0.9742268041
+  },
+  "Texas A&M University-Corpus Christi": {
+    "school_name": "Texas A&M University-Corpus Christi",
+    "apr": 963,
+    "year": "2018-19",
+    "squad_size": 109,
+    "eligibility_rate": 0.976076555,
+    "retention_rate": 0.9444444444
+  },
+  "Dallas Baptist University": {
+    "school_name": "Dallas Baptist University",
+    "apr": 965,
+    "year": "2018-19",
+    "squad_size": 102,
+    "eligibility_rate": 0.9898477157,
+    "retention_rate": 0.936416185
+  },
+  "Houston Baptist University": {
+    "school_name": "Houston Baptist University",
+    "apr": 971,
+    "year": "2018-19",
+    "squad_size": 115,
+    "eligibility_rate": 0.9672897196,
+    "retention_rate": 0.9757281553
+  },
+  "University of Houston": {
+    "school_name": "University of Houston",
+    "apr": 970,
+    "year": "2018-19",
+    "squad_size": 107,
+    "eligibility_rate": 0.9952380952,
+    "retention_rate": 0.9322916667
+  },
+  "University of the Incarnate Word": {
+    "school_name": "University of the Incarnate Word",
+    "apr": 959,
+    "year": "2018-19",
+    "squad_size": 111,
+    "eligibility_rate": 0.9571428571,
+    "retention_rate": 0.921182266
+  },
+  "Lamar University": {
+    "school_name": "Lamar University",
+    "apr": 952,
+    "year": "2018-19",
+    "squad_size": 108,
+    "eligibility_rate": 0.9571428571,
+    "retention_rate": 0.9466019417
+  },
+  "The University of Texas Rio Grande Valley": {
+    "school_name": "The University of Texas Rio Grande Valley",
+    "apr": 961,
+    "year": "2018-19",
+    "squad_size": 104,
+    "eligibility_rate": 0.9648241206,
+    "retention_rate": 0.9565217391
+  },
+  "Prairie View A&M University": {
+    "school_name": "Prairie View A&M University",
+    "apr": 975,
+    "year": "2018-19",
+    "squad_size": 81,
+    "eligibility_rate": 0.9751552795,
+    "retention_rate": 0.9612903226
+  },
+  "Rice University": {
+    "school_name": "Rice University",
+    "apr": 988,
+    "year": "2018-19",
+    "squad_size": 93,
+    "eligibility_rate": 0.9942528736,
+    "retention_rate": 0.9754601227
+  },
+  "Sam Houston State University": {
+    "school_name": "Sam Houston State University",
+    "apr": 979,
+    "year": "2018-19",
+    "squad_size": 111,
+    "eligibility_rate": 0.9862385321,
+    "retention_rate": 0.9567307692
+  },
+  "Stephen F. Austin State University": {
+    "school_name": "Stephen F. Austin State University",
+    "apr": 918,
+    "year": "2018-19",
+    "squad_size": 108,
+    "eligibility_rate": 0.8904761905,
+    "retention_rate": 0.9362745098
+  },
+  "Texas State University": {
+    "school_name": "Texas State University",
+    "apr": 969,
+    "year": "2018-19",
+    "squad_size": 110,
+    "eligibility_rate": 0.9672897196,
+    "retention_rate": 0.9708737864
+  },
+  "Texas A&M University, College Station": {
+    "school_name": "Texas A&M University, College Station",
+    "apr": 961,
+    "year": "2018-19",
+    "squad_size": 113,
+    "eligibility_rate": 0.9863013699,
+    "retention_rate": 0.9312169312
+  },
+  "University of Texas at Arlington": {
+    "school_name": "University of Texas at Arlington",
+    "apr": 991,
+    "year": "2018-19",
+    "squad_size": 121,
+    "eligibility_rate": 1,
+    "retention_rate": 0.972972973
+  },
+  "University of Texas at Austin": {
+    "school_name": "University of Texas at Austin",
+    "apr": 973,
+    "year": "2018-19",
+    "squad_size": 108,
+    "eligibility_rate": 0.9906103286,
+    "retention_rate": 0.9543147208
+  },
+  "Texas Christian University": {
+    "school_name": "Texas Christian University",
+    "apr": 954,
+    "year": "2018-19",
+    "squad_size": 115,
+    "eligibility_rate": 0.9908675799,
+    "retention_rate": 0.9141414141
+  },
+  "University of Texas at San Antonio": {
+    "school_name": "University of Texas at San Antonio",
+    "apr": 979,
+    "year": "2018-19",
+    "squad_size": 114,
+    "eligibility_rate": 0.9817351598,
+    "retention_rate": 0.976635514
+  },
+  "Texas Southern University": {
+    "school_name": "Texas Southern University",
+    "apr": 957,
+    "year": "2018-19",
+    "squad_size": 92,
+    "eligibility_rate": 0.9431818182,
+    "retention_rate": 0.96
+  },
+  "Texas Tech University": {
+    "school_name": "Texas Tech University",
+    "apr": 985,
+    "year": "2018-19",
+    "squad_size": 111,
+    "eligibility_rate": 0.9860465116,
+    "retention_rate": 0.9783783784
+  },
+  "Brigham Young University": {
+    "school_name": "Brigham Young University",
+    "apr": 961,
+    "year": "2018-19",
+    "squad_size": 115,
+    "eligibility_rate": 0.9647577093,
+    "retention_rate": 0.9431279621
+  },
+  "Utah Valley University": {
+    "school_name": "Utah Valley University",
+    "apr": 981,
+    "year": "2018-19",
+    "squad_size": 109,
+    "eligibility_rate": 0.9953051643,
+    "retention_rate": 0.9512195122
+  },
+  "University of Utah": {
+    "school_name": "University of Utah",
+    "apr": 974,
+    "year": "2018-19",
+    "squad_size": 112,
+    "eligibility_rate": 0.9953703704,
+    "retention_rate": 0.95215311
+  },
+  "William & Mary": {
+    "school_name": "William & Mary",
+    "apr": 986,
+    "year": "2018-19",
+    "squad_size": 106,
+    "eligibility_rate": 0.995215311,
+    "retention_rate": 0.9759615385
+  },
+  "George Mason University": {
+    "school_name": "George Mason University",
+    "apr": 985,
+    "year": "2018-19",
+    "squad_size": 104,
+    "eligibility_rate": 0.9855769231,
+    "retention_rate": 0.9851485149
+  },
+  "James Madison University": {
+    "school_name": "James Madison University",
+    "apr": 972,
+    "year": "2018-19",
+    "squad_size": 111,
+    "eligibility_rate": 0.9677419355,
+    "retention_rate": 0.9720930233
+  },
+  "Liberty University": {
+    "school_name": "Liberty University",
+    "apr": 980,
+    "year": "2018-19",
+    "squad_size": 104,
+    "eligibility_rate": 0.9901477833,
+    "retention_rate": 0.9536082474
+  },
+  "Longwood University": {
+    "school_name": "Longwood University",
+    "apr": 950,
+    "year": "2018-19",
+    "squad_size": 104,
+    "eligibility_rate": 0.960591133,
+    "retention_rate": 0.9242424242
+  },
+  "Norfolk State University": {
+    "school_name": "Norfolk State University",
+    "apr": 976,
+    "year": "2018-19",
+    "squad_size": 89,
+    "eligibility_rate": 0.9763313609,
+    "retention_rate": 0.9451219512
+  },
+  "Old Dominion University": {
+    "school_name": "Old Dominion University",
+    "apr": 980,
+    "year": "2018-19",
+    "squad_size": 105,
+    "eligibility_rate": 0.9902439024,
+    "retention_rate": 0.9576719577
+  },
+  "Radford University": {
+    "school_name": "Radford University",
+    "apr": 988,
+    "year": "2018-19",
+    "squad_size": 107,
+    "eligibility_rate": 0.9906542056,
+    "retention_rate": 0.9850746269
+  },
+  "University of Richmond": {
+    "school_name": "University of Richmond",
+    "apr": 983,
+    "year": "2018-19",
+    "squad_size": 88,
+    "eligibility_rate": 0.9942857143,
+    "retention_rate": 0.9712643678
+  },
+  "Virginia Polytechnic Institute and State University": {
+    "school_name": "Virginia Polytechnic Institute and State University",
+    "apr": 975,
+    "year": "2018-19",
+    "squad_size": 108,
+    "eligibility_rate": 0.9812206573,
+    "retention_rate": 0.9690721649
+  },
+  "Virginia Commonwealth University": {
+    "school_name": "Virginia Commonwealth University",
+    "apr": 976,
+    "year": "2018-19",
+    "squad_size": 106,
+    "eligibility_rate": 0.9952606635,
+    "retention_rate": 0.9359605911
+  },
+  "University of Virginia": {
+    "school_name": "University of Virginia",
+    "apr": 982,
+    "year": "2018-19",
+    "squad_size": 89,
+    "eligibility_rate": 0.9943181818,
+    "retention_rate": 0.9565217391
+  },
+  "Virginia Military Institute": {
+    "school_name": "Virginia Military Institute",
+    "apr": 951,
+    "year": "2018-19",
+    "squad_size": 86,
+    "eligibility_rate": 0.9515151515,
+    "retention_rate": 0.9254658385
+  },
+  "Gonzaga University": {
+    "school_name": "Gonzaga University",
+    "apr": 987,
+    "year": "2018-19",
+    "squad_size": 83,
+    "eligibility_rate": 1,
+    "retention_rate": 0.974025974
+  },
+  "Seattle University": {
+    "school_name": "Seattle University",
+    "apr": 966,
+    "year": "2018-19",
+    "squad_size": 102,
+    "eligibility_rate": 0.9876847291,
+    "retention_rate": 0.9447236181
+  },
+  "Washington State University": {
+    "school_name": "Washington State University",
+    "apr": 956,
+    "year": "2018-19",
+    "squad_size": 111,
+    "eligibility_rate": 0.9764150943,
+    "retention_rate": 0.9285714286
+  },
+  "University of Washington": {
+    "school_name": "University of Washington",
+    "apr": 979,
+    "year": "2018-19",
+    "squad_size": 102,
+    "eligibility_rate": 1,
+    "retention_rate": 0.9414893617
+  },
+  "Marshall University": {
+    "school_name": "Marshall University",
+    "apr": 958,
+    "year": "2018-19",
+    "squad_size": 95,
+    "eligibility_rate": 0.9836065574,
+    "retention_rate": 0.9310344828
+  },
+  "West Virginia University": {
+    "school_name": "West Virginia University",
+    "apr": 971,
+    "year": "2018-19",
+    "squad_size": 112,
+    "eligibility_rate": 0.9862385321,
+    "retention_rate": 0.95
+  },
+  "University of Wisconsin-Milwaukee": {
+    "school_name": "University of Wisconsin-Milwaukee",
+    "apr": 989,
+    "year": "2018-19",
+    "squad_size": 120,
+    "eligibility_rate": 0.9703389831,
+    "retention_rate": 0.9913793103
+  },
+  "Stanford University": {
+    "school_name": "Stanford University",
+    "apr": 989,
+    "year": "2018-19",
+    "squad_size": 81,
+    "eligibility_rate": 0.9841269841,
+    "retention_rate": 0.9933554817
+  },
+  "Purdue University": {
+    "school_name": "Purdue University",
+    "apr": 977,
+    "year": "2018-19",
+    "squad_size": 108,
+    "eligibility_rate": 0.99,
+    "retention_rate": 0.9633507853
+  },
+  "Florida Gulf Coast University": {
+    "school_name": "Florida Gulf Coast University",
+    "apr": 967,
+    "year": "2018-19",
+    "squad_size": 106,
+    "eligibility_rate": 0.9950980392,
+    "retention_rate": 0.9375
+  },
+  "Kennesaw State University": {
+    "school_name": "Kennesaw State University",
+    "apr": 986,
+    "year": "2018-19",
+    "squad_size": 110,
+    "eligibility_rate": 0.9907834101,
+    "retention_rate": 0.956937799
+  }
+}

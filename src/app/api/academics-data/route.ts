@@ -196,7 +196,7 @@ function loadLocalAprData(): Map<string, AprEntry> | null {
         map.set(entry.school_name.toLowerCase(), {
           school_name: entry.school_name,
           apr: entry.apr,
-          year: entry.year || "2024",
+          year: entry.year || "2018-19",
         });
       }
     }

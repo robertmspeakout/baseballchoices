@@ -1,5 +1,7 @@
 #!/usr/bin/env node
-// Downloads NCAA APR public data and extracts baseball program APR scores
+// Downloads NCAA APR public data and extracts baseball program APR scores.
+// The NCAA stopped publishing bulk CSV data after the 2018-19 academic year.
+// This script downloads from their S3 bucket and generates a local JSON file.
 const https = require("https");
 const fs = require("fs");
 const path = require("path");
@@ -59,11 +61,10 @@ async function main() {
       const name = row.SCL_NAME;
       const apr = parseInt(row.MULTIYR_APR_RATE_1000_OFFICIAL);
       if (name && !isNaN(apr)) {
-        // Use lowercase name as key for easier matching
         baseball[name] = {
           school_name: name,
           apr: apr,
-          year: row.ACADEMIC_YEAR || "2019",
+          year: "2018-19",
           squad_size: parseInt(row.MULTIYR_SQUAD_SIZE) || null,
           eligibility_rate: parseFloat(row.MULTIYR_ELIG_RATE) || null,
           retention_rate: parseFloat(row.MULTIYR_RET_RATE) || null,
