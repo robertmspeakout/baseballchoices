@@ -230,9 +230,7 @@ async function fetchPrograms(scorecardId: number): Promise<{ title: string; code
     for (const prog of rawPrograms) {
       const title = prog?.title;
       const code = prog?.code;
-      const level = prog?.credential?.level;
-      // Level 3 = Bachelor's degree; include all if no level info
-      if (title && !seenTitles.has(title) && (level === 3 || level == null)) {
+      if (title && !seenTitles.has(title)) {
         seenTitles.add(title);
         programs.push({ title, code: code || "" });
       }
