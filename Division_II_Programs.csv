@@ -23,10 +23,9 @@ CCAA,San Francisco State,San Francisco,CA
 CCAA,Sonoma State,Rohnert Park,CA
 CCAA,Stanislaus State,Turlock,CA
 CIAA,Bluefield State,Bluefield,WV
-CIAA,Chowan,Murfreesboro,NC
 CIAA,Lincoln (PA),Lincoln University,PA
-CIAA,Virginia State,Petersburg,VA
 Conference Carolinas,Barton,Wilson,NC
+Conference Carolinas,Chowan,Murfreesboro,NC
 Conference Carolinas,Belmont Abbey,Belmont,NC
 Conference Carolinas,Emmanuel (GA),Franklin Springs,GA
 Conference Carolinas,Erskine,Due West,SC
@@ -106,6 +105,7 @@ Gulf South,Union (TN),Jackson,TN
 Gulf South,Valdosta State,Valdosta,GA
 Gulf South,West Alabama,Livingston,AL
 Gulf South,West Florida,Pensacola,FL
+Independent,Virginia State,Petersburg,VA
 Lone Star,Angelo State,San Angelo,TX
 Lone Star,Cameron,Lawton,OK
 Lone Star,Eastern New Mexico,Portales,NM
@@ -152,10 +152,10 @@ NE-10,Saint Anselm,Manchester,NH
 NE-10,Saint Michael's,Colchester,VT
 NE-10,SNHU,Manchester,NH
 NE-10,Southern Connecticut,New Haven,CT
-NSAA,Jamestown,Jamestown,ND
 NSIC,Augustana (SD),Sioux Falls,SD
 NSIC,Bemidji State,Bemidji,MN
 NSIC,Concordia St. Paul,Saint Paul,MN
+NSIC,Jamestown,Jamestown,ND
 NSIC,Mary,Bismarck,ND
 NSIC,Minnesota Crookston,Crookston,MN
 NSIC,Minnesota Duluth,Duluth,MN
@@ -179,6 +179,7 @@ PacWest,Point Loma,San Diego,CA
 PacWest,Westmont,Santa Barbara,CA
 PacWest,William Jessup,Rocklin,CA
 Peach Belt,Augusta,Augusta,GA
+Peach Belt,Claflin,Orangeburg,SC
 Peach Belt,Columbus State,Columbus,GA
 Peach Belt,Flagler,Saint Augustine,FL
 Peach Belt,Georgia College,Milledgeville,GA
@@ -218,7 +219,6 @@ SAC,Catawba,Salisbury,NC
 SAC,Coker,Hartsville,SC
 SAC,Emory & Henry,Emory,VA
 SAC,Lenoir-Rhyne,Hickory,NC
-SAC,Limestone,Gaffney,SC
 SAC,Lincoln Memorial,Harrogate,TN
 SAC,Mars Hill,Mars Hill,NC
 SAC,Newberry,Newberry,SC
@@ -227,7 +227,6 @@ SAC,UVA Wise,Wise,VA
 SAC,Wingate,Wingate,NC
 SIAC,Albany State,Albany,GA
 SIAC,Benedict,Columbia,SC
-SIAC,Claflin,Orangeburg,SC
 SIAC,Clark Atlanta,Atlanta,GA
 SIAC,Edward Waters,Jacksonville,FL
 SIAC,Kentucky State,Frankfort,KY
