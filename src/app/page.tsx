@@ -398,6 +398,7 @@ export default function Home() {
       switch (sortBy) {
         case "name": aVal = a.name; bVal = b.name; break;
         case "state": aVal = a.state; bVal = b.state; break;
+        case "division": aVal = a.division; bVal = b.division; break;
         case "conference": aVal = a.conference; bVal = b.conference; break;
         case "ranking": aVal = a.current_ranking; bVal = b.current_ranking; break;
         case "record": aVal = a.last_season_record; bVal = b.last_season_record; break;
@@ -705,6 +706,34 @@ export default function Home() {
           </>
         )}
 
+        {/* Search All Schools — mylist tab only */}
+        {activeTab === "mylist" && isLoggedIn && (
+          <div className="bg-white border border-gray-200 rounded-xl p-3 sm:p-6 shadow-sm">
+            <div className="relative">
+              <svg
+                className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-gray-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+              <input
+                type="text"
+                placeholder="Search All Schools"
+                value={filters.search}
+                onChange={(e) => setFilters((f) => ({ ...f, search: e.target.value }))}
+                className="w-full pl-9 sm:pl-10 pr-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base text-gray-900 placeholder-gray-400"
+              />
+            </div>
+          </div>
+        )}
+
         {showDivisionFilters && (
           <SearchFilters
             filters={filters}
@@ -715,19 +744,19 @@ export default function Home() {
           />
         )}
 
-        {/* VIP Cards Carousel — only on mylist tab */}
-        {activeTab === "mylist" && sorted.some((s) => s.priority >= 4) && (
+        {/* VIP Cards Carousel — only on mylist tab (hidden during search) */}
+        {activeTab === "mylist" && !filters.search && sorted.some((s) => s.priority >= 4) && (
           <h3 className="text-base font-bold text-gray-700 mt-2">Four & Five Star Programs</h3>
         )}
-        {activeTab === "mylist" && <VIPCarousel schools={sorted} />}
+        {activeTab === "mylist" && !filters.search && <VIPCarousel schools={sorted} />}
 
         {/* All Ranked Programs header — only on mylist when VIP exists */}
-        {activeTab === "mylist" && sorted.some((s) => s.priority === 5) && (
+        {activeTab === "mylist" && !filters.search && sorted.some((s) => s.priority === 5) && (
           <h3 className="text-base font-bold text-gray-700 mt-2">All My Ranked Programs</h3>
         )}
 
         {/* Empty state — logged-in user on mylist with no ranked programs */}
-        {activeTab === "mylist" && isLoggedIn && sorted.length === 0 && (
+        {activeTab === "mylist" && !filters.search && isLoggedIn && sorted.length === 0 && (
           <div className="flex justify-center py-10">
             <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 text-center max-w-md">
               <div className="w-14 h-14 rounded-full bg-yellow-50 flex items-center justify-center mx-auto mb-4">
@@ -744,6 +773,63 @@ export default function Home() {
               </p>
             </div>
           </div>
+        )}
+
+        {/* Search results table — mylist tab with active search */}
+        {activeTab === "mylist" && filters.search && isLoggedIn && (
+          <>
+            <p className="text-sm text-gray-500 font-medium">{sorted.length} result{sorted.length !== 1 ? "s" : ""} for &ldquo;{filters.search}&rdquo;</p>
+            {sorted.length > 0 ? (
+              <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead>
+                      <tr className="bg-gray-900 text-white">
+                        <th
+                          className="text-left px-4 py-3 text-xs font-bold cursor-pointer hover:bg-gray-800 select-none"
+                          onClick={() => handleSort("name")}
+                        >
+                          School {sortBy === "name" ? (sortDir === "asc" ? "▲" : "▼") : <span className="text-gray-500">&#8597;</span>}
+                        </th>
+                        <th
+                          className="text-left px-4 py-3 text-xs font-bold cursor-pointer hover:bg-gray-800 select-none w-24"
+                          onClick={() => handleSort("division")}
+                        >
+                          Division {sortBy === "division" ? (sortDir === "asc" ? "▲" : "▼") : <span className="text-gray-500">&#8597;</span>}
+                        </th>
+                        <th
+                          className="text-left px-4 py-3 text-xs font-bold cursor-pointer hover:bg-gray-800 select-none w-20"
+                          onClick={() => handleSort("state")}
+                        >
+                          State {sortBy === "state" ? (sortDir === "asc" ? "▲" : "▼") : <span className="text-gray-500">&#8597;</span>}
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {paginated.map((school) => (
+                        <tr key={school.id} className="border-b border-gray-100 last:border-0 hover:bg-blue-50 transition-colors">
+                          <td className="px-4 py-3">
+                            <Link
+                              href={`/school/${school.id}`}
+                              className="text-sm font-semibold text-gray-900 hover:text-[#CC0000] transition-colors"
+                            >
+                              {school.name}
+                            </Link>
+                          </td>
+                          <td className="px-4 py-3 text-sm text-gray-600">{school.division}</td>
+                          <td className="px-4 py-3 text-sm text-gray-600">{school.state}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            ) : (
+              <div className="bg-white border border-gray-200 rounded-xl p-8 text-center shadow-sm">
+                <p className="text-sm text-gray-500">No schools found matching &ldquo;{filters.search}&rdquo;</p>
+              </div>
+            )}
+          </>
         )}
 
         {status === "unauthenticated" && activeTab !== "home" ? (
@@ -771,7 +857,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-        ) : isLoggedIn ? (
+        ) : isLoggedIn && !(activeTab === "mylist" && filters.search) ? (
           <SchoolTable
             schools={paginated}
             distances={distances}
