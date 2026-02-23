@@ -156,8 +156,9 @@ export default function SchoolPage({
       act_25: number | null;
       act_75: number | null;
     } | null;
-    apr: { school_name: string; apr: number; year: string } | null;
+    programs: { title: string; code: string }[];
   } | null>(null);
+  const [majorsExpanded, setMajorsExpanded] = useState(false);
 
   // Track last-saved values so we can detect unsaved changes
   const savedSnapshot = useRef({
@@ -753,32 +754,60 @@ export default function SchoolPage({
                 </div>
               </div>
 
-              {/* NCAA Baseball APR */}
-              <div className="bg-gray-50 rounded-lg p-4">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">NCAA Baseball APR</p>
-                    <p className="text-[10px] sm:text-xs text-gray-400 mt-0.5">Score out of 1,000. Programs below 930 face NCAA penalties.</p>
-                  </div>
-                  <div className="text-right">
-                    <p className={`text-2xl sm:text-3xl font-black ${
-                      academicsData?.apr?.apr != null
-                        ? academicsData.apr.apr >= 930
-                          ? "text-gray-900"
-                          : "text-red-600"
-                        : "text-gray-400"
-                    }`}>
-                      {academicsData?.apr?.apr != null ? academicsData.apr.apr : "Not reported"}
-                    </p>
-                    {academicsData?.apr?.year && (
-                      <p className="text-[10px] text-gray-400">{academicsData.apr.year} data</p>
-                    )}
-                  </div>
-                </div>
-              </div>
             </div>
           )}
         </div>
+
+        {/* Majors & Programs — collapsible list */}
+        {academicsData && academicsData.programs.length > 0 && (
+          <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+            <div className="p-4 sm:p-6">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 shrink-0 rounded-full bg-blue-100 flex items-center justify-center">
+                  <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                  </svg>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h2 className="text-base sm:text-lg font-bold text-gray-900">
+                    {academicsData.programs.length} Major{academicsData.programs.length !== 1 ? "s" : ""} Offered
+                    <span className="text-sm font-normal text-gray-500 ml-1.5">Bachelor&apos;s Degree Programs</span>
+                  </h2>
+                </div>
+              </div>
+              <button
+                onClick={() => setMajorsExpanded(!majorsExpanded)}
+                className={`mt-4 w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold transition-all ${
+                  majorsExpanded
+                    ? "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                    : "bg-blue-600 text-white hover:bg-blue-700 shadow-sm"
+                }`}
+              >
+                {majorsExpanded ? "Hide Majors" : `View All ${academicsData.programs.length} Majors`}
+                <svg
+                  className={`w-4 h-4 transition-transform ${majorsExpanded ? "rotate-180" : ""}`}
+                  fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+            </div>
+            {majorsExpanded && (
+              <div className="border-t border-gray-100 p-4 sm:p-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1">
+                  {academicsData.programs.map((prog, i) => (
+                    <div key={i} className="flex items-center gap-2 py-1.5 border-b border-gray-50 last:border-0">
+                      <svg className="w-3.5 h-3.5 text-blue-400 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                      <span className="text-sm text-gray-700">{prog.title}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
 
         {/* Coaching Staff */}
         <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
