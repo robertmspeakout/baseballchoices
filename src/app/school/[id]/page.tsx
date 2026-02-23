@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, useState, use } from "react";
 import Link from "next/link";
-import BrandLogo from "@/components/BrandLogo";
-import SiteNav from "@/components/SiteNav";
+import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
 import AuthGate from "@/components/AuthGate";
 import StarRating from "@/components/StarRating";
 import schoolsData from "@/data/schools.json";
@@ -389,20 +389,7 @@ export default function SchoolPage({
   return (
     <AuthGate>
     <div className="min-h-screen bg-gray-50">
-      <header className="relative text-white overflow-x-clip overflow-y-visible z-30">
-        <div
-          className="absolute inset-0 bg-cover bg-center transition-opacity duration-700"
-          style={{ backgroundImage: `url('${facilityPhotos.length > 0 ? facilityPhotos[0].url : "https://images.unsplash.com/photo-1629219644109-b4df0ab25a7b?w=1920&q=80"}')` }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
-        <div className="relative max-w-[1400px] mx-auto px-4 sm:px-6 py-6 sm:py-10">
-          <div className="flex items-start justify-between">
-            <BrandLogo size="lg" showTagline={true} />
-            <SiteNav variant="dark" />
-          </div>
-        </div>
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-red-700 via-red-500 to-red-700" />
-      </header>
+      <SiteHeader backgroundImage={facilityPhotos.length > 0 ? facilityPhotos[0].url : undefined} />
 
       <main className="max-w-5xl mx-auto px-4 sm:px-6 py-4 sm:py-8 space-y-4 sm:space-y-6">
         {/* School identity card */}
@@ -817,6 +804,22 @@ export default function SchoolPage({
                     </a>
                   )}
                 </div>
+
+                {school.website && (
+                  <div className="border-t border-gray-100 pt-4">
+                    <a
+                      href={`${school.website}/coaches`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 px-4 py-3 bg-blue-50 hover:bg-blue-100 rounded-lg text-blue-700 font-medium transition-colors"
+                    >
+                      <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg>
+                      View Full Coaching Staff
+                    </a>
+                  </div>
+                )}
 
                 <div className="border-t border-gray-100 pt-4">
                   <h3 className="text-sm font-semibold text-gray-700 mb-2 flex items-center gap-1.5">
@@ -1260,13 +1263,7 @@ export default function SchoolPage({
         )}
       </main>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 mt-8">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <BrandLogo size="sm" showTagline={false} />
-          <p className="text-xs text-gray-500">ExtraBase is a product of JackJack Enterprises. Data is for informational purposes only. Go be great!</p>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
     </AuthGate>
   );
