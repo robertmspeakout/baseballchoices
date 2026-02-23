@@ -19,6 +19,7 @@ interface School {
   priority: number;
   last_contacted: string | null;
   head_coach_name: string | null;
+  high_academic?: boolean;
   logo_url?: string | null;
   website?: string | null;
   last_season_record: string | null;
@@ -308,7 +309,6 @@ export default function SchoolTable({
             className="text-xs border border-gray-300 rounded-lg px-2 py-1.5 text-gray-700 bg-white"
           >
             <option value="name">Name</option>
-            <option value="conference">Conference</option>
             <option value="state">State</option>
             <option value="ranking">National Ranking</option>
             <option value="priority">My Ranking</option>
@@ -340,15 +340,14 @@ export default function SchoolTable({
             <tr>
               <SortHeader label="School" column="name" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
               <SortHeader label="My Ranking" column="priority" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
-              <th className="px-3 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Div</th>
-              <SortHeader label="Conference" column="conference" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
+              <SortHeader label="Division" column="division" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
               <SortHeader label="State" column="state" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
               <SortHeader label="Record" column="record" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
               <SortHeader label="Natl Ranking" column="ranking" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
               {distances && (
                 <SortHeader label="From Home" column="distance" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
               )}
-              <th className="px-3 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Coach</th>
+              <SortHeader label="High Academic" column="high_academic" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-100">
@@ -380,7 +379,6 @@ export default function SchoolTable({
                     )}
                   </td>
                   <td className="px-3 py-3">{divisionBadge(school.division)}</td>
-                  <td className="px-3 py-3 text-sm text-gray-700">{school.conference}</td>
                   <td className="px-3 py-3 text-sm text-gray-700">{school.state}</td>
                   <td className="px-3 py-3 text-sm text-gray-700 text-center">
                     {isFetchable && recordsLoading ? (
@@ -409,8 +407,14 @@ export default function SchoolTable({
                         : "-"}
                     </td>
                   )}
-                  <td className="px-3 py-3 text-sm text-gray-700 max-w-[140px] truncate">
-                    {school.head_coach_name || "-"}
+                  <td className="px-3 py-3 text-sm text-center">
+                    {school.high_academic ? (
+                      <svg className="w-5 h-5 text-green-600 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    ) : (
+                      <span className="text-gray-300">-</span>
+                    )}
                   </td>
                 </tr>
               );

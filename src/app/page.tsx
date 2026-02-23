@@ -39,6 +39,7 @@ interface School {
   website: string | null;
   last_season_record: string | null;
   logo_url: string | null;
+  high_academic?: boolean;
 }
 
 interface Filters {
@@ -398,7 +399,7 @@ export default function Home() {
       }
       if (filters.state && school.state !== filters.state) return false;
       if (filters.conference && school.conference !== filters.conference) return false;
-      if (filters.publicPrivate === "highAcademic" && !(school as any).high_academic) return false;
+      if (filters.publicPrivate === "highAcademic" && !school.high_academic) return false;
       if (filters.region && REGIONS[filters.region] && !REGIONS[filters.region].includes(school.state)) return false;
       return true;
     });
@@ -413,8 +414,8 @@ export default function Home() {
         case "name": aVal = a.name; bVal = b.name; break;
         case "state": aVal = a.state; bVal = b.state; break;
         case "division": aVal = a.division; bVal = b.division; break;
-        case "conference": aVal = a.conference; bVal = b.conference; break;
         case "ranking": aVal = a.current_ranking; bVal = b.current_ranking; break;
+        case "high_academic": aVal = a.high_academic ? 1 : 0; bVal = b.high_academic ? 1 : 0; break;
         case "record": aVal = a.last_season_record; bVal = b.last_season_record; break;
         case "priority": aVal = a.priority; bVal = b.priority; break;
         case "last_contacted": aVal = a.last_contacted; bVal = b.last_contacted; break;
@@ -714,35 +715,7 @@ export default function Home() {
           </>
         )}
 
-        {/* Search All Schools — mylist tab only */}
-        {activeTab === "mylist" && isLoggedIn && (
-          <div className="bg-white border border-gray-200 rounded-xl p-3 sm:p-6 shadow-sm">
-            <div className="relative">
-              <svg
-                className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-gray-400"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                />
-              </svg>
-              <input
-                type="text"
-                placeholder="Search All Schools"
-                value={filters.search}
-                onChange={(e) => setFilters((f) => ({ ...f, search: e.target.value }))}
-                className="w-full pl-9 sm:pl-10 pr-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base text-gray-900 placeholder-gray-400"
-              />
-            </div>
-          </div>
-        )}
-
-        {showDivisionFilters && (
+        {(activeTab === "mylist" || showDivisionFilters) && isLoggedIn && (
           <SearchFilters
             filters={filters}
             filterOptions={filterOptions}
@@ -783,60 +756,6 @@ export default function Home() {
           </div>
         )}
 
-        {/* Search results table — mylist tab with active search */}
-        {activeTab === "mylist" && filters.search && isLoggedIn && (
-          <>
-            <p className="text-sm text-gray-500 font-medium">{sorted.length} result{sorted.length !== 1 ? "s" : ""} for &ldquo;{filters.search}&rdquo;</p>
-            {sorted.length > 0 ? (
-              <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
-                <div className="overflow-x-auto">
-                  <table className="w-full">
-                    <thead>
-                      <tr className="bg-gray-900 text-white">
-                        <th
-                          className="text-left px-4 py-3 text-xs font-bold cursor-pointer hover:bg-gray-800 select-none"
-                          onClick={() => handleSort("name")}
-                        >
-                          School {sortBy === "name" ? (sortDir === "asc" ? "▲" : "▼") : <span className="text-gray-500">&#8597;</span>}
-                        </th>
-                        <th
-                          className="text-left px-4 py-3 text-xs font-bold cursor-pointer hover:bg-gray-800 select-none w-24"
-                          onClick={() => handleSort("division")}
-                        >
-                          Division {sortBy === "division" ? (sortDir === "asc" ? "▲" : "▼") : <span className="text-gray-500">&#8597;</span>}
-                        </th>
-                        <th
-                          className="text-left px-4 py-3 text-xs font-bold cursor-pointer hover:bg-gray-800 select-none w-20"
-                          onClick={() => handleSort("state")}
-                        >
-                          State {sortBy === "state" ? (sortDir === "asc" ? "▲" : "▼") : <span className="text-gray-500">&#8597;</span>}
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {paginated.map((school) => (
-                        <tr
-                          key={school.id}
-                          className="border-b border-gray-100 last:border-0 hover:bg-blue-50 transition-colors cursor-pointer"
-                          onClick={() => router.push(`/school/${school.id}`)}
-                        >
-                          <td className="px-4 py-3 text-sm font-semibold text-gray-900">{school.name}</td>
-                          <td className="px-4 py-3 text-sm text-gray-600">{school.division}</td>
-                          <td className="px-4 py-3 text-sm text-gray-600">{school.state}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            ) : (
-              <div className="bg-white border border-gray-200 rounded-xl p-8 text-center shadow-sm">
-                <p className="text-sm text-gray-500">No schools found matching &ldquo;{filters.search}&rdquo;</p>
-              </div>
-            )}
-          </>
-        )}
-
         {status === "unauthenticated" && activeTab !== "home" ? (
           /* Auth gate when not logged in on non-home tabs */
           <div className="flex justify-center py-12">
@@ -862,7 +781,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-        ) : isLoggedIn && !(activeTab === "mylist" && filters.search) ? (
+        ) : isLoggedIn ? (
           <SchoolTable
             schools={paginated}
             distances={distances}
