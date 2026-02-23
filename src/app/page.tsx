@@ -13,7 +13,6 @@ import { getAllUserData, setUserData, fetchUserDataFromDB, saveUserDataToDB, bul
 import { haversineDistance, geocodeZip } from "@/lib/geo";
 import marketingContent from "@/data/marketing.json";
 import { loadProfile, REGIONS } from "@/lib/playerProfile";
-import { computeLevel } from "@/lib/levels";
 
 interface School {
   id: number;
@@ -249,7 +248,6 @@ export default function Home() {
   const [mounted, setMounted] = useState(false);
   const [playerFirstName, setPlayerFirstName] = useState("");
   const [userBgPic, setUserBgPic] = useState<string | null>(null);
-  const [userProfilePic, setUserProfilePic] = useState<string | null>(null);
   const [filters, setFilters] = useState<Filters>({
     search: "",
     division: "",
@@ -281,12 +279,6 @@ export default function Home() {
           bulkSyncToDB(localData).catch(() => {});
         }
       }).catch(() => {});
-
-      // Fetch profile pic from DB (more up-to-date than localStorage)
-      fetch("/api/user/profile").then((r) => r.json()).then((prof) => {
-        if (prof?.profilePic) setUserProfilePic(prof.profilePic);
-        if (prof?.backgroundPic) setUserBgPic(prof.backgroundPic);
-      }).catch(() => {});
     }
 
     const profile = loadProfile();
@@ -294,7 +286,6 @@ export default function Home() {
       setPlayerFirstName(profile.playerName.trim().split(/\s+/)[0]);
     }
     if (profile.backgroundPic) setUserBgPic(profile.backgroundPic);
-    if (profile.profilePic) setUserProfilePic(profile.profilePic);
     // Use session firstName if available
     if (isLoggedIn && session?.user) {
       const fn = (session.user as Record<string, unknown>).firstName as string;
@@ -323,12 +314,6 @@ export default function Home() {
   const ratedCount = useMemo(() => {
     return Object.values(userData).filter((ud) => ud.priority > 0).length;
   }, [userData]);
-
-  // Compute player level
-  const playerLevel = useMemo(() => {
-    if (!isLoggedIn) return null;
-    return computeLevel(userData);
-  }, [userData, isLoggedIn]);
 
   // If logged in and on home (no hash), auto-switch to mylist
   useEffect(() => {
@@ -544,9 +529,6 @@ export default function Home() {
             window.scrollTo({ top: 0, behavior: "smooth" });
           }
         }}
-        profilePic={isLoggedIn ? userProfilePic : null}
-        level={playerLevel}
-        playerFirstName={playerFirstName}
       />
 
       {/* ── Landing sections (home tab, non-logged-in only) ──────────────── */}
@@ -680,7 +662,7 @@ export default function Home() {
       )}
 
       {/* Main content */}
-      <main className={`max-w-[1400px] mx-auto px-3 sm:px-6 py-4 sm:py-6 space-y-4 sm:space-y-6 ${isLoggedIn ? "pt-20 sm:pt-24" : ""}`}>
+      <main className="max-w-[1400px] mx-auto px-3 sm:px-6 py-4 sm:py-6 space-y-4 sm:space-y-6">
         {/* Instructional box — logged-in users only */}
         {/* Section labels */}
         {activeTab === "home" && isLoggedIn && (

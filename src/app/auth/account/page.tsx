@@ -1,14 +1,12 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import AuthGate from "@/components/AuthGate";
 import { loadProfile } from "@/lib/playerProfile";
-import { getAllUserData, fetchUserDataFromDB, type UserData } from "@/lib/userData";
-import { computeLevel } from "@/lib/levels";
 
 interface AccountData {
   firstName: string;
@@ -23,36 +21,15 @@ interface AccountData {
 }
 
 export default function AccountPage() {
-  const { data: session, status } = useSession();
-  const isLoggedIn = status === "authenticated";
+  const { status } = useSession();
   const [account, setAccount] = useState<AccountData | null>(null);
   const [loading, setLoading] = useState(true);
   const [userBgPic, setUserBgPic] = useState<string | null>(null);
-  const [userProfilePic, setUserProfilePic] = useState<string | null>(null);
-  const [playerFirstName, setPlayerFirstName] = useState("");
-  const [userData, setUserData] = useState<Record<string, UserData>>({});
 
   useEffect(() => {
     const p = loadProfile();
     if (p.backgroundPic) setUserBgPic(p.backgroundPic);
-    if (p.profilePic) setUserProfilePic(p.profilePic);
-    if (p.playerName) setPlayerFirstName(p.playerName.trim().split(/\s+/)[0]);
-    setUserData(getAllUserData());
-
-    if (isLoggedIn) {
-      fetch("/api/user/profile").then((r) => r.json()).then((prof) => {
-        if (prof?.profilePic) setUserProfilePic(prof.profilePic);
-        if (prof?.backgroundPic) setUserBgPic(prof.backgroundPic);
-      }).catch(() => {});
-      fetchUserDataFromDB().then((dbData) => {
-        if (Object.keys(dbData).length > 0) setUserData(dbData);
-      }).catch(() => {});
-      if (session?.user) {
-        const fn = (session.user as Record<string, unknown>).firstName as string;
-        if (fn) setPlayerFirstName(fn);
-      }
-    }
-  }, [isLoggedIn, session]);
+  }, []);
 
   useEffect(() => {
     if (status !== "authenticated") return;
@@ -90,22 +67,12 @@ export default function AccountPage() {
 
   const membershipStatus = getMembershipStatus();
 
-  const playerLevel = useMemo(() => {
-    if (!isLoggedIn) return null;
-    return computeLevel(userData);
-  }, [userData, isLoggedIn]);
-
   return (
     <AuthGate>
       <div className="min-h-screen bg-gray-50">
-        <SiteHeader
-          backgroundImage={userBgPic || undefined}
-          profilePic={isLoggedIn ? userProfilePic : null}
-          level={playerLevel}
-          playerFirstName={playerFirstName}
-        />
+        <SiteHeader backgroundImage={userBgPic || undefined} />
 
-        <main className={`max-w-2xl mx-auto px-4 sm:px-6 py-6 sm:py-10 space-y-6 ${isLoggedIn ? "pt-20 sm:pt-24" : ""}`}>
+        <main className="max-w-2xl mx-auto px-4 sm:px-6 py-6 sm:py-10 space-y-6">
           <h1 className="text-2xl font-black text-gray-900">My Account</h1>
 
           {loading ? (
