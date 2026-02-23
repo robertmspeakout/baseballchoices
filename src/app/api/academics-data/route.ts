@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
+import { readFileSync, existsSync } from "fs";
+import { join } from "path";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -182,11 +184,42 @@ function parseCSVLine(line: string): string[] {
   return result;
 }
 
+function loadLocalAprData(): Map<string, AprEntry> | null {
+  try {
+    const localPath = join(process.cwd(), "src", "data", "baseball-apr.json");
+    if (!existsSync(localPath)) return null;
+    const raw = readFileSync(localPath, "utf-8");
+    const data = JSON.parse(raw) as Record<string, { school_name: string; apr: number; year: string }>;
+    const map = new Map<string, AprEntry>();
+    for (const entry of Object.values(data)) {
+      if (entry.school_name && entry.apr) {
+        map.set(entry.school_name.toLowerCase(), {
+          school_name: entry.school_name,
+          apr: entry.apr,
+          year: entry.year || "2024",
+        });
+      }
+    }
+    return map.size > 0 ? map : null;
+  } catch {
+    return null;
+  }
+}
+
 async function loadAprData(): Promise<Map<string, AprEntry>> {
   if (aprCache) return aprCache;
   if (aprLoadPromise) return aprLoadPromise;
 
   aprLoadPromise = (async () => {
+    // Try local JSON file first (updated APR data)
+    const localData = loadLocalAprData();
+    if (localData) {
+      aprCache = localData;
+      aprLoadPromise = null;
+      return localData;
+    }
+
+    // Fall back to NCAA S3 CSV (2019 data)
     const map = new Map<string, AprEntry>();
     try {
       const res = await fetch(NCAA_APR_CSV_URL, {
