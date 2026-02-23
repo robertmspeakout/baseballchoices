@@ -15,12 +15,13 @@ const CACHE_TTL = 24 * 60 * 60 * 1000;
 export async function GET(request: NextRequest) {
   const school = request.nextUrl.searchParams.get("school") || "";
   const state = request.nextUrl.searchParams.get("state") || "";
+  const city = request.nextUrl.searchParams.get("city") || "";
 
   if (!school) {
     return NextResponse.json({ scorecard: null, programs: [] });
   }
 
-  const scorecardResult = await fetchScorecard(school, state);
+  const scorecardResult = await fetchScorecard(school, state, city);
   const scorecard = scorecardResult?.scorecard ?? null;
   const scorecardId = scorecardResult?.id ?? null;
 
@@ -53,95 +54,149 @@ const SCORECARD_FIELDS = [
   "latest.admissions.act_scores.75th_percentile.cumulative",
 ].join(",");
 
-async function fetchScorecard(school: string, state: string) {
-  const cacheKey = `${school}|${state}`.toLowerCase();
+// Generate name variations for ambiguous short school names
+function getNameVariations(name: string): string[] {
+  const variations: string[] = [name];
+  // Only try variations if the name looks short/ambiguous (single word or two words)
+  const wordCount = name.trim().split(/\s+/).length;
+  if (wordCount <= 2) {
+    variations.push(`University of ${name}`);
+    variations.push(`${name} University`);
+    variations.push(`${name} State University`);
+    variations.push(`${name} College`);
+  }
+  return variations;
+}
+
+async function fetchScorecard(school: string, state: string, city: string) {
+  const cacheKey = `${school}|${state}|${city}`.toLowerCase();
   const cached = scorecardCache.get(cacheKey);
   if (cached && Date.now() - cached.ts < CACHE_TTL) {
     return cached.data;
   }
 
   try {
-    const params = new URLSearchParams({
-      "school.search": school,
-      _per_page: "5",
-      fields: SCORECARD_FIELDS,
-      api_key: SCORECARD_KEY,
-    });
-    if (state) {
-      params.set("school.state", state);
+    const variations = getNameVariations(school);
+
+    for (const searchName of variations) {
+      const result = await tryScorecardSearch(searchName, state, city, school);
+      if (result) {
+        scorecardCache.set(cacheKey, { data: result, ts: Date.now() });
+        return result;
+      }
     }
 
-    const url = `https://api.data.gov/ed/collegescorecard/v1/schools?${params}`;
-    const res = await fetch(url, { signal: AbortSignal.timeout(8000) });
-    if (!res.ok) return null;
-
-    const data = await res.json();
-    const results = data?.results || [];
-    if (results.length === 0) return null;
-
-    const normalizedSearch = school.toLowerCase();
-    const bestMatch =
-      results.find(
-        (r: any) =>
-          r["school.name"]?.toLowerCase().includes(normalizedSearch)
-      ) ||
-      results.sort(
-        (a: any, b: any) =>
-          (b["latest.student.size"] || 0) - (a["latest.student.size"] || 0)
-      )[0];
-
-    if (!bestMatch) return null;
-
-    const sat25Reading =
-      bestMatch["latest.admissions.sat_scores.25th_percentile.critical_reading"];
-    const sat75Reading =
-      bestMatch["latest.admissions.sat_scores.75th_percentile.critical_reading"];
-    const sat25Math =
-      bestMatch["latest.admissions.sat_scores.25th_percentile.math"];
-    const sat75Math =
-      bestMatch["latest.admissions.sat_scores.75th_percentile.math"];
-
-    const sat25 =
-      sat25Reading != null && sat25Math != null
-        ? sat25Reading + sat25Math
-        : null;
-    const sat75 =
-      sat75Reading != null && sat75Math != null
-        ? sat75Reading + sat75Math
-        : null;
-
-    const netPricePublic = bestMatch["latest.cost.avg_net_price.public"];
-    const netPricePrivate = bestMatch["latest.cost.avg_net_price.private"];
-    const netPriceOverall = bestMatch["latest.cost.avg_net_price.overall"];
-    const avgNetPrice = netPriceOverall ?? netPricePublic ?? netPricePrivate;
-
-    const pellRate = bestMatch["latest.aid.pell_grant_rate"];
-    const loanRate = bestMatch["latest.aid.federal_loan_rate"];
-    const aidPercentage =
-      pellRate != null || loanRate != null
-        ? Math.max(pellRate ?? 0, loanRate ?? 0)
-        : null;
-
-    const scorecard = {
-      matched_name: bestMatch["school.name"],
-      student_faculty_ratio:
-        bestMatch["latest.student.demographics.student_faculty_ratio"] ?? null,
-      in_state_tuition: bestMatch["latest.cost.tuition.in_state"] ?? null,
-      out_of_state_tuition: bestMatch["latest.cost.tuition.out_of_state"] ?? null,
-      avg_net_price: avgNetPrice ?? null,
-      aid_percentage: aidPercentage != null ? Math.round(aidPercentage * 100) : null,
-      sat_25: sat25,
-      sat_75: sat75,
-      act_25: bestMatch["latest.admissions.act_scores.25th_percentile.cumulative"] ?? null,
-      act_75: bestMatch["latest.admissions.act_scores.75th_percentile.cumulative"] ?? null,
-    };
-
-    const result = { scorecard, id: bestMatch["id"] };
-    scorecardCache.set(cacheKey, { data: result, ts: Date.now() });
-    return result;
+    return null;
   } catch {
     return null;
   }
+}
+
+async function tryScorecardSearch(
+  searchName: string,
+  state: string,
+  city: string,
+  originalName: string
+) {
+  const params = new URLSearchParams({
+    "school.search": searchName,
+    _per_page: "5",
+    fields: SCORECARD_FIELDS,
+    api_key: SCORECARD_KEY,
+  });
+  if (state) {
+    params.set("school.state", state);
+  }
+
+  const url = `https://api.data.gov/ed/collegescorecard/v1/schools?${params}`;
+  const res = await fetch(url, { signal: AbortSignal.timeout(8000) });
+  if (!res.ok) return null;
+
+  const data = await res.json();
+  const results = data?.results || [];
+  if (results.length === 0) return null;
+
+  // Score each result for best match
+  const normalizedSearch = originalName.toLowerCase();
+  const normalizedCity = city.toLowerCase();
+
+  const scored = results.map((r: any) => {
+    const rName = (r["school.name"] || "").toLowerCase();
+    const rCity = (r["school.city"] || "").toLowerCase();
+    let score = 0;
+
+    // Strong bonus: name contains the original search term
+    if (rName.includes(normalizedSearch)) score += 10;
+    // Bonus: city matches
+    if (normalizedCity && rCity === normalizedCity) score += 5;
+    // Smaller bonus: larger student body (more likely a university vs community college)
+    score += Math.min((r["latest.student.size"] || 0) / 10000, 3);
+    // Bonus: has tuition data (filters out non-degree-granting institutions)
+    if (r["latest.cost.tuition.in_state"] || r["latest.cost.tuition.out_of_state"]) score += 2;
+
+    return { result: r, score };
+  });
+
+  scored.sort((a: any, b: any) => b.score - a.score);
+  const bestMatch = scored[0]?.result;
+  if (!bestMatch) return null;
+
+  // Require at least a name or city match to avoid garbage results
+  const bestName = (bestMatch["school.name"] || "").toLowerCase();
+  const bestCity = (bestMatch["school.city"] || "").toLowerCase();
+  if (!bestName.includes(normalizedSearch) && !(normalizedCity && bestCity === normalizedCity)) {
+    return null;
+  }
+
+  return buildScorecardResult(bestMatch);
+}
+
+function buildScorecardResult(bestMatch: any) {
+  const sat25Reading =
+    bestMatch["latest.admissions.sat_scores.25th_percentile.critical_reading"];
+  const sat75Reading =
+    bestMatch["latest.admissions.sat_scores.75th_percentile.critical_reading"];
+  const sat25Math =
+    bestMatch["latest.admissions.sat_scores.25th_percentile.math"];
+  const sat75Math =
+    bestMatch["latest.admissions.sat_scores.75th_percentile.math"];
+
+  const sat25 =
+    sat25Reading != null && sat25Math != null
+      ? sat25Reading + sat25Math
+      : null;
+  const sat75 =
+    sat75Reading != null && sat75Math != null
+      ? sat75Reading + sat75Math
+      : null;
+
+  const netPricePublic = bestMatch["latest.cost.avg_net_price.public"];
+  const netPricePrivate = bestMatch["latest.cost.avg_net_price.private"];
+  const netPriceOverall = bestMatch["latest.cost.avg_net_price.overall"];
+  const avgNetPrice = netPriceOverall ?? netPricePublic ?? netPricePrivate;
+
+  const pellRate = bestMatch["latest.aid.pell_grant_rate"];
+  const loanRate = bestMatch["latest.aid.federal_loan_rate"];
+  const aidPercentage =
+    pellRate != null || loanRate != null
+      ? Math.max(pellRate ?? 0, loanRate ?? 0)
+      : null;
+
+  const scorecard = {
+    matched_name: bestMatch["school.name"],
+    student_faculty_ratio:
+      bestMatch["latest.student.demographics.student_faculty_ratio"] ?? null,
+    in_state_tuition: bestMatch["latest.cost.tuition.in_state"] ?? null,
+    out_of_state_tuition: bestMatch["latest.cost.tuition.out_of_state"] ?? null,
+    avg_net_price: avgNetPrice ?? null,
+    aid_percentage: aidPercentage != null ? Math.round(aidPercentage * 100) : null,
+    sat_25: sat25,
+    sat_75: sat75,
+    act_25: bestMatch["latest.admissions.act_scores.25th_percentile.cumulative"] ?? null,
+    act_75: bestMatch["latest.admissions.act_scores.75th_percentile.cumulative"] ?? null,
+  };
+
+  return { scorecard, id: bestMatch["id"] };
 }
 
 // ─── College Scorecard API — programs/majors ────────────────────

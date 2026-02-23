@@ -273,7 +273,7 @@ export default function SchoolPage({
 
   useEffect(() => {
     if (!schoolData) return;
-    fetch(`/api/academics-data?school=${encodeURIComponent(schoolData.name)}&state=${encodeURIComponent(schoolData.state || "")}`)
+    fetch(`/api/academics-data?school=${encodeURIComponent(schoolData.name)}&state=${encodeURIComponent(schoolData.state || "")}&city=${encodeURIComponent(schoolData.city || "")}`)
       .then((r) => r.json())
       .then((data) => setAcademicsData(data))
       .catch(() => setAcademicsData(null));
