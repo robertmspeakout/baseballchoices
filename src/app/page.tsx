@@ -61,6 +61,20 @@ type TabKey = "home" | "mylist" | "D1" | "D2" | "D3";
 const PAGE_SIZE = 50;
 const allSchools = schoolsData as School[];
 
+const STATE_NAMES: Record<string, string> = {
+  AL: "Alabama", AK: "Alaska", AZ: "Arizona", AR: "Arkansas", CA: "California",
+  CO: "Colorado", CT: "Connecticut", DE: "Delaware", FL: "Florida", GA: "Georgia",
+  HI: "Hawaii", ID: "Idaho", IL: "Illinois", IN: "Indiana", IA: "Iowa",
+  KS: "Kansas", KY: "Kentucky", LA: "Louisiana", ME: "Maine", MD: "Maryland",
+  MA: "Massachusetts", MI: "Michigan", MN: "Minnesota", MS: "Mississippi", MO: "Missouri",
+  MT: "Montana", NE: "Nebraska", NV: "Nevada", NH: "New Hampshire", NJ: "New Jersey",
+  NM: "New Mexico", NY: "New York", NC: "North Carolina", ND: "North Dakota", OH: "Ohio",
+  OK: "Oklahoma", OR: "Oregon", PA: "Pennsylvania", RI: "Rhode Island", SC: "South Carolina",
+  SD: "South Dakota", TN: "Tennessee", TX: "Texas", UT: "Utah", VT: "Vermont",
+  VA: "Virginia", WA: "Washington", WV: "West Virginia", WI: "Wisconsin", WY: "Wyoming",
+  DC: "District of Columbia",
+};
+
 /* ── VIP Card Component ─────────────────────────────────── */
 /* ── VIP Carousel with arrows + touch scroll ────────────── */
 function VIPCarousel({ schools }: { schools: (School & { priority: number })[] }) {
@@ -376,7 +390,7 @@ export default function Home() {
     return source.filter((school) => {
       if (filters.search) {
         const term = filters.search.toLowerCase();
-        const searchable = [school.name, school.city, school.state, school.conference, school.head_coach_name, school.mascot]
+        const searchable = [school.name, school.city, school.state, STATE_NAMES[school.state], school.conference, school.head_coach_name, school.mascot]
           .filter(Boolean)
           .join(" ")
           .toLowerCase();
@@ -807,15 +821,12 @@ export default function Home() {
                     </thead>
                     <tbody>
                       {paginated.map((school) => (
-                        <tr key={school.id} className="border-b border-gray-100 last:border-0 hover:bg-blue-50 transition-colors">
-                          <td className="px-4 py-3">
-                            <Link
-                              href={`/school/${school.id}`}
-                              className="text-sm font-semibold text-gray-900 hover:text-[#CC0000] transition-colors"
-                            >
-                              {school.name}
-                            </Link>
-                          </td>
+                        <tr
+                          key={school.id}
+                          className="border-b border-gray-100 last:border-0 hover:bg-blue-50 transition-colors cursor-pointer"
+                          onClick={() => router.push(`/school/${school.id}`)}
+                        >
+                          <td className="px-4 py-3 text-sm font-semibold text-gray-900">{school.name}</td>
                           <td className="px-4 py-3 text-sm text-gray-600">{school.division}</td>
                           <td className="px-4 py-3 text-sm text-gray-600">{school.state}</td>
                         </tr>
