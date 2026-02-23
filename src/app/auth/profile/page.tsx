@@ -506,7 +506,7 @@ function ProfileForm({ initialStep }: { initialStep: number }) {
 
             <div>
               <label className={labelClass}>GPA</label>
-              <div className="flex gap-3">
+              <div className="grid grid-cols-2 gap-3">
                 <input
                   type="text"
                   inputMode="decimal"
@@ -517,9 +517,9 @@ function ProfileForm({ initialStep }: { initialStep: number }) {
                     if (v === "" || /^\d*\.?\d{0,2}$/.test(v)) setGpa(v);
                   }}
                   placeholder="e.g. 3.50"
-                  className={`${inputClass} w-28 text-center text-lg font-bold tracking-wide`}
+                  className={`${inputClass} text-center text-lg font-bold tracking-wide`}
                 />
-                <select value={gpaType} onChange={(e) => setGpaType(e.target.value as typeof gpaType)} className={`${selectClass} flex-1`}>
+                <select value={gpaType} onChange={(e) => setGpaType(e.target.value as typeof gpaType)} className={selectClass}>
                   <option value="">Type</option>
                   <option value="unweighted">Unweighted</option>
                   <option value="weighted">Weighted</option>
