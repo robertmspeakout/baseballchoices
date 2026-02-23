@@ -33,7 +33,7 @@
     ]
   },
   "testimonial": {
-    "quote": "It was really hard to keep track of everything that was going on during my recruiting process. My parents and I couldn't keep up. I wanted one place where I could see and track everything. I wish my dad had made this for me before I committed!",
+    "quote": "It was really hard to keep track of everything that was going on during my recruiting process. My parents and I couldn't keep up. I wish my dad had made this for me before I committed!",
     "attribution": "Jack M., Class of 2027 D1 Commit"
   },
   "pricing": {
@@ -55,8 +55,8 @@
   "whyWeBuiltThis": {
     "title": "Why We Built ExtraBase",
     "paragraphs": [
-      "We were baseball parents sitting at our kitchen table in Utah with a talented and stressed out kid, recruiting services promising us the moon, a phone full of texts, an inbox full of invites, and absolutely no system to manage any of it. We tried building a really complicated and cumbersome spreadsheet, but it wasn't enough. We had a recruit who was overwhelmed and a process that felt like it was controlling us instead of the other way around.",
-      "We looked for a tool that could help us organize programs, track interest levels, compare options, and make sense of it all. We couldn't find one. So we built it...for all of our sanity."
+      "We were baseball parents sitting at our kitchen table in Utah with a talented and stressed out kid, recruiting services promising us the moon, a phone full of texts, an inbox full of invites, and absolutely no system to manage any of it. We tried building a spreadsheet, but it wasn't enough. We had a recruit who was overwhelmed and a process that felt like it was controlling us instead of the other way around.",
+      "We looked for a tool that could help us organize programs, track our son's favorite schools, and do it in a way that was simple and fun. We couldn't find one. So we built it...for all of our sanity."
     ]
   }
 }
