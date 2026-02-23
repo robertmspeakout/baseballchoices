@@ -1,7 +1,9 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import { loadProfile } from "@/lib/playerProfile";
 
 const sections = [
   {
@@ -42,9 +44,15 @@ const sections = [
 ];
 
 export default function PrivacyPage() {
+  const [userBgPic, setUserBgPic] = useState<string | null>(null);
+  useEffect(() => {
+    const p = loadProfile();
+    if (p.backgroundPic) setUserBgPic(p.backgroundPic);
+  }, []);
+
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-      <SiteHeader />
+      <SiteHeader backgroundImage={userBgPic || undefined} />
 
       {/* Content */}
       <main className="flex-1 max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12 w-full">

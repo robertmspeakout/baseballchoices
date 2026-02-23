@@ -95,6 +95,7 @@ export default function MatchPage() {
   const [userData, setUserDataState] = useState<Record<string, UserData>>({});
   const [showCount, setShowCount] = useState(20);
   const [showAll, setShowAll] = useState(false);
+  const [userBgPic, setUserBgPic] = useState<string | null>(null);
 
   // Load profile and preferences (from DB if logged in, localStorage otherwise)
   useEffect(() => {
@@ -156,6 +157,7 @@ export default function MatchPage() {
       setProfile(p);
       setPrefs(pr);
       setUserDataState(getAllUserData());
+      if (p.backgroundPic) setUserBgPic(p.backgroundPic);
 
       // Geocode zip
       if (p.zipCode) {
@@ -266,7 +268,7 @@ export default function MatchPage() {
   return (
     <AuthGate>
     <div className="min-h-screen bg-gray-50">
-      <SiteHeader activeNav="My AI Matches" />
+      <SiteHeader backgroundImage={userBgPic || undefined} activeNav="My AI Matches" />
 
       {/* Results */}
       <main className="max-w-[1400px] mx-auto px-3 sm:px-6 py-4 sm:py-6 space-y-4">

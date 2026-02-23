@@ -11,6 +11,7 @@ import draftPicksData from "@/data/draft-picks.json";
 import { useSession } from "next-auth/react";
 import { getUserData, setUserData, fetchUserDataFromDB, saveUserDataToDB } from "@/lib/userData";
 import { haversineDistance } from "@/lib/geo";
+import { loadProfile } from "@/lib/playerProfile";
 
 interface DraftPick {
   name: string;
@@ -139,6 +140,7 @@ export default function SchoolPage({
   const [upcomingGames, setUpcomingGames] = useState<ScheduleGame[]>([]);
   const [scheduleLoading, setScheduleLoading] = useState(true);
   const [facilityPhotos, setFacilityPhotos] = useState<{ url: string; caption: string }[]>([]);
+  const [userBgPic, setUserBgPic] = useState<string | null>(null);
   const [photosLoading, setPhotosLoading] = useState(true);
   const [lightboxIdx, setLightboxIdx] = useState<number | null>(null);
   const [academicsData, setAcademicsData] = useState<{
@@ -162,6 +164,11 @@ export default function SchoolPage({
     notes: "", lastContacted: "", recruitingStatus: "",
     theyvSeenMe: [] as string[], detail: "", myContactName: "", myContactEmail: "",
   });
+
+  useEffect(() => {
+    const p = loadProfile();
+    if (p.backgroundPic) setUserBgPic(p.backgroundPic);
+  }, []);
 
   useEffect(() => {
     const schoolId = parseInt(id);
@@ -389,7 +396,7 @@ export default function SchoolPage({
   return (
     <AuthGate>
     <div className="min-h-screen bg-gray-50">
-      <SiteHeader backgroundImage={facilityPhotos.length > 0 ? facilityPhotos[0].url : undefined} />
+      <SiteHeader backgroundImage={facilityPhotos.length > 0 ? facilityPhotos[0].url : userBgPic || undefined} />
 
       <main className="max-w-5xl mx-auto px-4 sm:px-6 py-4 sm:py-8 space-y-4 sm:space-y-6">
         {/* School identity card */}

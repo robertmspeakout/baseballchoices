@@ -6,6 +6,7 @@ import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import AuthGate from "@/components/AuthGate";
+import { loadProfile } from "@/lib/playerProfile";
 
 interface AccountData {
   firstName: string;
@@ -23,6 +24,12 @@ export default function AccountPage() {
   const { status } = useSession();
   const [account, setAccount] = useState<AccountData | null>(null);
   const [loading, setLoading] = useState(true);
+  const [userBgPic, setUserBgPic] = useState<string | null>(null);
+
+  useEffect(() => {
+    const p = loadProfile();
+    if (p.backgroundPic) setUserBgPic(p.backgroundPic);
+  }, []);
 
   useEffect(() => {
     if (status !== "authenticated") return;
@@ -63,7 +70,7 @@ export default function AccountPage() {
   return (
     <AuthGate>
       <div className="min-h-screen bg-gray-50">
-        <SiteHeader />
+        <SiteHeader backgroundImage={userBgPic || undefined} />
 
         <main className="max-w-2xl mx-auto px-4 sm:px-6 py-6 sm:py-10 space-y-6">
           <h1 className="text-2xl font-black text-gray-900">My Account</h1>
