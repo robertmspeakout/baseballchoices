@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, use } from "react";
+import { useEffect, useMemo, useRef, useState, use } from "react";
 import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
@@ -9,9 +9,10 @@ import StarRating from "@/components/StarRating";
 import schoolsData from "@/data/schools.json";
 import draftPicksData from "@/data/draft-picks.json";
 import { useSession } from "next-auth/react";
-import { getUserData, setUserData, fetchUserDataFromDB, saveUserDataToDB } from "@/lib/userData";
+import { getUserData, setUserData, getAllUserData, fetchUserDataFromDB, saveUserDataToDB, type UserData } from "@/lib/userData";
 import { haversineDistance } from "@/lib/geo";
 import { loadProfile } from "@/lib/playerProfile";
+import { computeLevel } from "@/lib/levels";
 
 interface DraftPick {
   name: string;
@@ -141,6 +142,9 @@ export default function SchoolPage({
   const [scheduleLoading, setScheduleLoading] = useState(true);
   const [facilityPhotos, setFacilityPhotos] = useState<{ url: string; caption: string }[]>([]);
   const [userBgPic, setUserBgPic] = useState<string | null>(null);
+  const [userProfilePic, setUserProfilePic] = useState<string | null>(null);
+  const [playerFirstName, setPlayerFirstName] = useState("");
+  const [allUserData, setAllUserData] = useState<Record<string, UserData>>({});
   const [photosLoading, setPhotosLoading] = useState(true);
   const [lightboxIdx, setLightboxIdx] = useState<number | null>(null);
   const [academicsData, setAcademicsData] = useState<{
@@ -168,7 +172,24 @@ export default function SchoolPage({
   useEffect(() => {
     const p = loadProfile();
     if (p.backgroundPic) setUserBgPic(p.backgroundPic);
-  }, []);
+    if (p.profilePic) setUserProfilePic(p.profilePic);
+    if (p.playerName) setPlayerFirstName(p.playerName.trim().split(/\s+/)[0]);
+    setAllUserData(getAllUserData());
+
+    if (isLoggedIn) {
+      fetch("/api/user/profile").then((r) => r.json()).then((prof) => {
+        if (prof?.profilePic) setUserProfilePic(prof.profilePic);
+        if (prof?.backgroundPic) setUserBgPic(prof.backgroundPic);
+      }).catch(() => {});
+      fetchUserDataFromDB().then((dbData) => {
+        if (Object.keys(dbData).length > 0) setAllUserData(dbData);
+      }).catch(() => {});
+      if (session?.user) {
+        const fn = (session.user as Record<string, unknown>).firstName as string;
+        if (fn) setPlayerFirstName(fn);
+      }
+    }
+  }, [isLoggedIn, session]);
 
   useEffect(() => {
     const schoolId = parseInt(id);
@@ -393,12 +414,22 @@ export default function SchoolPage({
     } catch { return "TBD"; }
   }
 
+  const playerLevel = useMemo(() => {
+    if (!isLoggedIn) return null;
+    return computeLevel(allUserData);
+  }, [allUserData, isLoggedIn]);
+
   return (
     <AuthGate>
     <div className="min-h-screen bg-gray-50">
-      <SiteHeader backgroundImage={facilityPhotos.length > 0 ? facilityPhotos[0].url : userBgPic || undefined} />
+      <SiteHeader
+        backgroundImage={facilityPhotos.length > 0 ? facilityPhotos[0].url : userBgPic || undefined}
+        profilePic={isLoggedIn ? userProfilePic : null}
+        level={playerLevel}
+        playerFirstName={playerFirstName}
+      />
 
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 py-4 sm:py-8 space-y-4 sm:space-y-6">
+      <main className={`max-w-5xl mx-auto px-4 sm:px-6 py-4 sm:py-8 space-y-4 sm:space-y-6 ${isLoggedIn ? "pt-20 sm:pt-24" : ""}`}>
         {/* School identity card */}
         <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
           <div className="p-4 sm:p-6 flex items-center gap-4 sm:gap-5 border-b border-gray-100">

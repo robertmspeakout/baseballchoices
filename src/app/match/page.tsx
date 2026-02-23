@@ -10,7 +10,8 @@ import AuthGate from "@/components/AuthGate";
 import { loadProfile, loadPreferences, isProfileComplete, type PlayerProfile, type PlayerPreferences } from "@/lib/playerProfile";
 import { getMatchResults, type MatchResult } from "@/lib/matchingEngine";
 import { geocodeZip } from "@/lib/geo";
-import { getAllUserData, setUserData, type UserData } from "@/lib/userData";
+import { getAllUserData, setUserData, fetchUserDataFromDB, type UserData } from "@/lib/userData";
+import { computeLevel } from "@/lib/levels";
 import schoolsData from "@/data/schools.json";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -96,6 +97,7 @@ export default function MatchPage() {
   const [showCount, setShowCount] = useState(20);
   const [showAll, setShowAll] = useState(false);
   const [userBgPic, setUserBgPic] = useState<string | null>(null);
+  const [userProfilePic, setUserProfilePic] = useState<string | null>(null);
 
   // Load profile and preferences (from DB if logged in, localStorage otherwise)
   useEffect(() => {
@@ -158,6 +160,18 @@ export default function MatchPage() {
       setPrefs(pr);
       setUserDataState(getAllUserData());
       if (p.backgroundPic) setUserBgPic(p.backgroundPic);
+      if (p.profilePic) setUserProfilePic(p.profilePic);
+
+      // Fetch profile pic and fresh user data from DB for logged-in users
+      if (status === "authenticated") {
+        fetch("/api/user/profile").then((r) => r.json()).then((prof) => {
+          if (prof?.profilePic) setUserProfilePic(prof.profilePic);
+          if (prof?.backgroundPic) setUserBgPic(prof.backgroundPic);
+        }).catch(() => {});
+        fetchUserDataFromDB().then((dbData) => {
+          if (Object.keys(dbData).length > 0) setUserDataState((prev) => ({ ...prev, ...dbData }));
+        }).catch(() => {});
+      }
 
       // Geocode zip
       if (p.zipCode) {
@@ -197,6 +211,12 @@ export default function MatchPage() {
   }, [profile, prefs, homeCoords]);
 
   const results = useMemo(() => allResults.filter((r) => r.score >= 90), [allResults]);
+
+  const isLoggedIn = status === "authenticated";
+  const playerLevel = useMemo(() => {
+    if (!isLoggedIn) return null;
+    return computeLevel(userData);
+  }, [userData, isLoggedIn]);
 
   const visibleResults = results.slice(0, showCount);
 
@@ -268,10 +288,16 @@ export default function MatchPage() {
   return (
     <AuthGate>
     <div className="min-h-screen bg-gray-50">
-      <SiteHeader backgroundImage={userBgPic || undefined} activeNav="My AI Matches" />
+      <SiteHeader
+        backgroundImage={userBgPic || undefined}
+        activeNav="My AI Matches"
+        profilePic={isLoggedIn ? userProfilePic : null}
+        level={playerLevel}
+        playerFirstName={profile?.playerName?.split(" ")[0] || ""}
+      />
 
       {/* Results */}
-      <main className="max-w-[1400px] mx-auto px-3 sm:px-6 py-4 sm:py-6 space-y-4">
+      <main className={`max-w-[1400px] mx-auto px-3 sm:px-6 py-4 sm:py-6 space-y-4 ${isLoggedIn ? "pt-20 sm:pt-24" : ""}`}>
         {/* Page title + Section dropdown */}
         <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm space-y-3">
           <h2 className="text-xl sm:text-2xl font-black text-gray-900">
