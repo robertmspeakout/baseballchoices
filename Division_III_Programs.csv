@@ -15,13 +15,9 @@ AMCC,Penn State Erie,Erie,PA
 ASC,East Texas Baptist,Marshall,TX
 ASC,Hardin-Simmons,Abilene,TX
 ASC,Howard Payne,Brownwood,TX
-ASC,LeTourneau,Longview,TX
 ASC,Mary Hardin-Baylor,Belton,TX
 ASC,McMurry,Abilene,TX
-ASC,Sul Ross State,Alpine,TX
-ASC,Texas-Dallas,Richardson,TX
 ASC,Texas-Tyler,Tyler,TX
-Atlantic East,Cabrini,Radnor,PA
 Atlantic East,Gwynedd Mercy,Gwynedd Valley,PA
 Atlantic East,Immaculata,Immaculata,PA
 Atlantic East,Marymount (VA),Arlington,VA
@@ -77,7 +73,6 @@ Empire 8,Alfred,Alfred,NY
 Empire 8,Elmira,Elmira,NY
 Empire 8,Hartwick,Oneonta,NY
 Empire 8,Hilbert,Hamburg,NY
-Empire 8,Medaille,Buffalo,NY
 Empire 8,Nazareth (NY),Rochester,NY
 Empire 8,Sage,Albany,NY
 Empire 8,St. John Fisher,Rochester,NY
@@ -88,6 +83,8 @@ GNAC,Colby-Sawyer,New London,NH
 GNAC,Elms,Chicopee,MA
 GNAC,Johnson & Wales,Providence,RI
 GNAC,Lasell,Newton,MA
+GNAC,Mitchell,New London,CT
+GNAC,New England College,Henniker,NH
 GNAC,Norwich,Northfield,VT
 GNAC,Regis (MA),Weston,MA
 GNAC,Rivier,Nashua,NH
@@ -182,6 +179,7 @@ MWC,Ripon,Ripon,WI
 MWC,St. Norbert,De Pere,WI
 NAC,Castleton,Castleton,VT
 NAC,Husson,Bangor,ME
+NAC,Lesley,Cambridge,MA
 NAC,Maine Maritime,Castine,ME
 NAC,SUNY Canton,Canton,NY
 NAC,SUNY Cobleskill,Cobleskill,NY
@@ -205,14 +203,9 @@ NCAC,Oberlin,Oberlin,OH
 NCAC,Ohio Wesleyan,Delaware,OH
 NCAC,Wabash,Crawfordsville,IN
 NCAC,Wittenberg,Springfield,OH
-NCAC,Wooster,Wooster,OH
 NEAC,Gallaudet,Washington,DC
 NEAC,Penn State Abington,Abington,PA
 NEAC,Penn State Berks,Reading,PA
-NECC,Becker,Worcester,MA
-NECC,Lesley,Cambridge,MA
-NECC,Mitchell,New London,CT
-NECC,New England College,Henniker,NH
 NESCAC,Amherst,Amherst,MA
 NESCAC,Bates,Lewiston,ME
 NESCAC,Bowdoin,Brunswick,ME
@@ -242,7 +235,6 @@ NJAC,Rutgers-Camden,Camden,NJ
 NJAC,Rutgers-Newark,Newark,NJ
 NJAC,Stockton,Galloway,NJ
 NJAC,William Paterson,Wayne,NJ
-NSAA,Presentation,Aberdeen,SD
 NWC,George Fox,Newberg,OR
 NWC,Lewis & Clark,Portland,OR
 NWC,Linfield,McMinnville,OR
@@ -282,21 +274,23 @@ PAC,Thiel,Greenville,PA
 PAC,Washington & Jefferson,Washington,PA
 PAC,Waynesburg,Waynesburg,PA
 PAC,Westminster (PA),New Wilmington,PA
-PAC,Wheeling Jesuit,Wheeling,WV
 SAA,Berry,Mount Berry,GA
 SAA,Centre,Danville,KY
-SAA,Hendrix,Conway,AR
 SAA,Millsaps,Jackson,MS
 SAA,Oglethorpe,Atlanta,GA
 SAA,Rhodes,Memphis,TN
 SAA,Sewanee,Sewanee,TN
+SAA,Southwestern (TX),Georgetown,TX
+SAA,Trinity (TX),San Antonio,TX
 SCAC,Centenary (LA),Shreveport,LA
 SCAC,Colorado College,Colorado Springs,CO
 SCAC,Concordia (TX),Austin,TX
+SCAC,Dallas,Irving,TX
+SCAC,Hendrix,Conway,AR
+SCAC,LeTourneau,Longview,TX
+SCAC,Ozarks,Clarksville,AR
 SCAC,Schreiner,Kerrville,TX
-SCAC,Southwestern (TX),Georgetown,TX
 SCAC,Texas Lutheran,Seguin,TX
-SCAC,Trinity (TX),San Antonio,TX
 SCIAC,Cal Lutheran,Thousand Oaks,CA
 SCIAC,Chapman,Orange,CA
 SCIAC,Claremont-Mudd-Scripps,Claremont,CA
@@ -316,14 +310,12 @@ Skyline,St. Joseph's (LI),Patchogue,NY
 Skyline,SUNY Maritime,Throggs Neck,NY
 Skyline,Yeshiva,New York,NY
 SLIAC,Eureka,Eureka,IL
-SLIAC,Fontbonne,St. Louis,MO
 SLIAC,Greenville,Greenville,IL
 SLIAC,Spalding,Louisville,KY
 SLIAC,Webster,Webster Groves,MO
 SLIAC,Westminster (MO),Fulton,MO
 SUNYAC,Brockport,Brockport,NY
 SUNYAC,Buffalo State,Buffalo,NY
-SUNYAC,Cortland,Cortland,NY
 SUNYAC,Fredonia,Fredonia,NY
 SUNYAC,Oneonta,Oneonta,NY
 SUNYAC,Oswego,Oswego,NY
