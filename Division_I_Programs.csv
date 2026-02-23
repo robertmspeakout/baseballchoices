@@ -30,9 +30,7 @@ American Athletic,Navy,Annapolis,MD
 American Athletic,North Texas,Denton,TX
 American Athletic,Rice,Houston,TX
 American Athletic,South Florida,Tampa,FL
-American Athletic,Temple,Philadelphia,PA
 American Athletic,Tulane,New Orleans,LA
-American Athletic,Tulsa,Tulsa,OK
 American Athletic,UAB,Birmingham,AL
 American Athletic,UTSA,San Antonio,TX
 American Athletic,Wichita State,Wichita,KS
@@ -53,8 +51,6 @@ Atlantic 10,Dayton,Dayton,OH
 Atlantic 10,Fordham,Bronx,NY
 Atlantic 10,George Mason,Fairfax,VA
 Atlantic 10,George Washington,Washington,DC
-Atlantic 10,La Salle,Philadelphia,PA
-Atlantic 10,Massachusetts,Amherst,MA
 Atlantic 10,Rhode Island,Kingston,RI
 Atlantic 10,Richmond,Richmond,VA
 Atlantic 10,Saint Joseph's,Philadelphia,PA
@@ -122,9 +118,7 @@ Big West,UC San Diego,La Jolla,CA
 Big West,UC Santa Barbara,Santa Barbara,CA
 CAA,Campbell,Buies Creek,NC
 CAA,Charleston,Charleston,SC
-CAA,Delaware,Newark,DE
 CAA,Elon,Elon,NC
-CAA,Hampton,Hampton,VA
 CAA,Hofstra,Hempstead,NY
 CAA,Monmouth,West Long Branch,NJ
 CAA,NC A&T,Greensboro,NC
@@ -133,12 +127,14 @@ CAA,Stony Brook,Stony Brook,NY
 CAA,Towson,Towson,MD
 CAA,UNC Wilmington,Wilmington,NC
 CAA,William & Mary,Williamsburg,VA
+Conference USA,Delaware,Newark,DE
 Conference USA,FIU,Miami,FL
 Conference USA,Jacksonville State,Jacksonville,AL
 Conference USA,Kennesaw State,Kennesaw,GA
 Conference USA,Liberty,Lynchburg,VA
 Conference USA,Louisiana Tech,Ruston,LA
 Conference USA,Middle Tennessee,Murfreesboro,TN
+Conference USA,Missouri State,Springfield,MO
 Conference USA,New Mexico State,Las Cruces,NM
 Conference USA,Sam Houston,Huntsville,TX
 Conference USA,Western Kentucky,Bowling Green,KY
@@ -172,6 +168,7 @@ MAC,Bowling Green,Bowling Green,OH
 MAC,Central Michigan,Mt. Pleasant,MI
 MAC,Eastern Michigan,Ypsilanti,MI
 MAC,Kent State,Kent,OH
+MAC,Massachusetts,Amherst,MA
 MAC,Miami (OH),Oxford,OH
 MAC,Northern Illinois,DeKalb,IL
 MAC,Ohio,Athens,OH
@@ -187,12 +184,12 @@ Missouri Valley,Dallas Baptist,Dallas,TX
 Missouri Valley,Evansville,Evansville,IN
 Missouri Valley,Illinois State,Normal,IL
 Missouri Valley,Indiana State,Terre Haute,IN
-Missouri Valley,Missouri State,Springfield,MO
 Missouri Valley,Southern Illinois,Carbondale,IL
 Missouri Valley,UIC,Chicago,IL
 Missouri Valley,Valparaiso,Valparaiso,IN
 Mountain West,Air Force,USAF Academy,CO
 Mountain West,Fresno State,Fresno,CA
+Mountain West,Grand Canyon,Phoenix,AZ
 Mountain West,Nevada,Reno,NV
 Mountain West,New Mexico,Albuquerque,NM
 Mountain West,San Diego State,San Diego,CA
@@ -210,6 +207,7 @@ NEC,Stonehill,Easton,MA
 NEC,Wagner,Staten Island,NY
 Northeast,Mercyhurst,Erie,PA
 Northeast,New Haven,West Haven,CT
+Ohio Valley,Eastern Illinois,Charleston,IL
 Ohio Valley,Lindenwood,St. Charles,MO
 Ohio Valley,Little Rock,Little Rock,AR
 Ohio Valley,Morehead State,Morehead,KY
@@ -220,7 +218,6 @@ Ohio Valley,Southern Indiana,Evansville,IN
 Ohio Valley,Tennessee State,Nashville,TN
 Ohio Valley,Tennessee Tech,Cookeville,TN
 Ohio Valley,UT Martin,Martin,TN
-OVC,Eastern Illinois,Charleston,IL
 Patriot,Army,West Point,NY
 Patriot,Bucknell,Lewisburg,PA
 Patriot,Holy Cross,Worcester,MA
@@ -294,7 +291,6 @@ SWAC,Southern,Baton Rouge,LA
 SWAC,Texas Southern,Houston,TX
 WAC,Abilene Christian,Abilene,TX
 WAC,California Baptist,Riverside,CA
-WAC,Grand Canyon,Phoenix,AZ
 WAC,Sacramento State,Sacramento,CA
 WAC,Stephen F. Austin,Nacogdoches,TX
 WAC,Tarleton State,Stephenville,TX
