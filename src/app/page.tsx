@@ -685,13 +685,7 @@ export default function Home() {
         )}
         {(activeTab === "mylist" || activeTab === "D1" || activeTab === "D2" || activeTab === "D3") && (
           <>
-            <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm space-y-3">
-              <h2 className="text-lg sm:text-xl font-bold text-gray-900">
-                {activeTab === "mylist" ? (playerFirstName ? `${playerFirstName}'s Top Programs` : "My Top Programs") :
-                 activeTab === "D1" ? "All Division I Baseball Programs" :
-                 activeTab === "D2" ? "All Division II Baseball Programs" :
-                 "All Division III Baseball Programs"}
-              </h2>
+            <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
               <div className="relative block sm:inline-block">
               <select
                 value={activeTab === "mylist" ? "mylist" : activeTab}
@@ -707,9 +701,9 @@ export default function Home() {
               >
                 <option value="mylist">My Top Programs</option>
                 <option value="match">My AI Matches</option>
-                <option value="D1">DI Programs</option>
-                <option value="D2">DII Programs</option>
-                <option value="D3">DIII Programs</option>
+                <option value="D1">Division I Programs</option>
+                <option value="D2">Division II Programs</option>
+                <option value="D3">Division III Programs</option>
                 <option value="JUCO" disabled>JUCO Programs</option>
               </select>
               <svg className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#CC0000]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
