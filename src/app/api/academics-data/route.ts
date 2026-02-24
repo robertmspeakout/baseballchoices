@@ -28,7 +28,9 @@ export async function GET(request: NextRequest) {
   // Fetch programs using the school's Scorecard ID (separate call)
   const programs = scorecardId ? await fetchPrograms(scorecardId) : [];
 
-  return NextResponse.json({ scorecard, programs });
+  return NextResponse.json({ scorecard, programs }, {
+    headers: { "Cache-Control": "public, s-maxage=86400" },
+  });
 }
 
 // ─── College Scorecard API — school data ────────────────────────

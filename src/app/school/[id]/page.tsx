@@ -6,8 +6,6 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import AuthGate from "@/components/AuthGate";
 import StarRating from "@/components/StarRating";
-import schoolsData from "@/data/schools.json";
-import draftPicksData from "@/data/draft-picks.json";
 import { useSession } from "next-auth/react";
 import { getUserData, setUserData, fetchUserDataFromDB, saveUserDataToDB } from "@/lib/userData";
 import { haversineDistance } from "@/lib/geo";
@@ -109,7 +107,30 @@ export default function SchoolPage({
   const { id } = use(params);
   const { data: session, status: authStatus } = useSession();
   const isLoggedIn = authStatus === "authenticated" && !!session?.user;
-  const schoolData = (schoolsData as SchoolDetail[]).find((s) => s.id === parseInt(id));
+
+  const [schoolData, setSchoolData] = useState<SchoolDetail | null>(null);
+  const [schoolLoading, setSchoolLoading] = useState(true);
+  const [draftPicks, setDraftPicks] = useState<DraftPick[]>([]);
+
+  // Fetch school data from API
+  useEffect(() => {
+    fetch(`/api/schools?id=${id}`)
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.school) setSchoolData(data.school as SchoolDetail);
+      })
+      .catch(() => {})
+      .finally(() => setSchoolLoading(false));
+  }, [id]);
+
+  // Fetch draft picks from API once we have school data
+  useEffect(() => {
+    if (!schoolData) return;
+    fetch(`/api/draft-picks?school=${encodeURIComponent(schoolData.name)}`)
+      .then((r) => r.json())
+      .then((data) => setDraftPicks(data.picks || []))
+      .catch(() => setDraftPicks([]));
+  }, [schoolData]);
 
   const [priority, setPriority] = useState(0);
   const [notes, setNotes] = useState("");
@@ -331,6 +352,14 @@ export default function SchoolPage({
     );
   };
 
+  if (schoolLoading || !mounted) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-10 w-10 border-4 border-blue-200 border-t-blue-600" />
+      </div>
+    );
+  }
+
   if (!schoolData) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -339,17 +368,10 @@ export default function SchoolPage({
     );
   }
 
-  if (!mounted) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-10 w-10 border-4 border-blue-200 border-t-blue-600" />
-      </div>
-    );
-  }
-
   const school = schoolData;
   const draftCutoffYear = new Date().getFullYear() - 5;
-  const draftPicksCount = ((draftPicksData as Record<string, DraftPick[]>)[school.name] || []).filter(p => p.year >= draftCutoffYear).length;
+  const filteredDraftPicks = draftPicks.filter(p => p.year >= draftCutoffYear);
+  const draftPicksCount = filteredDraftPicks.length;
   const mapLat = school.stadium_latitude || school.latitude;
   const mapLng = school.stadium_longitude || school.longitude;
 
@@ -1065,7 +1087,7 @@ export default function SchoolPage({
 
         {/* MLB Draft Picks — collapsible table */}
         {draftPicksCount > 0 && (() => {
-          const picks = ((draftPicksData as Record<string, DraftPick[]>)[school.name] || []).filter(p => p.year >= draftCutoffYear);
+          const picks = filteredDraftPicks;
           return (
             <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
               <div className="p-4 sm:p-6">

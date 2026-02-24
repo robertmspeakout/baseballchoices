@@ -208,6 +208,8 @@ export async function GET(request: NextRequest) {
       record: espnRecord,
       recentGames,
       upcoming: next5,
+    }, {
+      headers: { "Cache-Control": "public, s-maxage=300" },
     });
   } catch (err) {
     console.error(`[schedule] Error fetching schedule for "${school}":`, err);

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -8,7 +8,6 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import SearchFilters from "@/components/SearchFilters";
 import SchoolTable from "@/components/SchoolTable";
-import schoolsData from "@/data/schools.json";
 import { getAllUserData, setUserData, fetchUserDataFromDB, saveUserDataToDB, bulkSyncToDB, type UserData } from "@/lib/userData";
 import { haversineDistance, geocodeZip } from "@/lib/geo";
 import marketingContent from "@/data/marketing.json";
@@ -61,7 +60,6 @@ const TABS_BASE = [
 type TabKey = "home" | "mylist" | "D1" | "D2" | "D3" | "JUCO";
 
 const PAGE_SIZE = 50;
-const allSchools = schoolsData as School[];
 
 const STATE_NAMES: Record<string, string> = {
   AL: "Alabama", AK: "Alaska", AZ: "Arizona", AR: "Arkansas", CA: "California",
@@ -79,7 +77,7 @@ const STATE_NAMES: Record<string, string> = {
 
 /* ── VIP Card Component ─────────────────────────────────── */
 /* ── VIP Carousel with arrows + touch scroll ────────────── */
-function VIPCarousel({ schools }: { schools: (School & { priority: number })[] }) {
+function VIPCarousel({ schools, batchRecords }: { schools: (School & { priority: number })[]; batchRecords: Record<string, string | null> }) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
@@ -137,7 +135,7 @@ function VIPCarousel({ schools }: { schools: (School & { priority: number })[] }
           <style>{`[data-vip-scroll]::-webkit-scrollbar { display: none; }`}</style>
           {vipSchools.map((school) => (
             <div key={school.id} className="snap-start shrink-0 w-72 sm:w-80">
-              <VIPCard school={school} />
+              <VIPCard school={school} record={batchRecords[school.name] || null} />
             </div>
           ))}
         </div>
@@ -156,22 +154,9 @@ function VIPCarousel({ schools }: { schools: (School & { priority: number })[] }
   );
 }
 
-function VIPCard({ school }: { school: School & { priority: number; high_academic?: boolean; recruiting_status?: string } }) {
+function VIPCard({ school, record }: { school: School & { priority: number; high_academic?: boolean; recruiting_status?: string }; record: string | null }) {
   const [logoError, setLogoError] = useState(false);
-  const [record, setRecord] = useState<string | null>(null);
-  const fetched = useRef(false);
   const hasOffer = school.recruiting_status === "Offer";
-
-  useEffect(() => {
-    if (fetched.current || !school.name) return;
-    fetched.current = true;
-    fetch(`/api/records?schools=${encodeURIComponent(school.name)}`)
-      .then((r) => r.json())
-      .then((data) => {
-        if (data.records?.[school.name]) setRecord(data.records[school.name]);
-      })
-      .catch(() => {});
-  }, [school.name]);
 
   const displayRecord = record || school.last_season_record;
 
@@ -274,6 +259,45 @@ export default function Home() {
     region: "",
   });
 
+  // Server-loaded school data
+  const [allSchools, setAllSchools] = useState<School[]>([]);
+  const [schoolsLoaded, setSchoolsLoaded] = useState(false);
+  const [schoolCount, setSchoolCount] = useState(0);
+
+  // Batch VIP records
+  const [vipRecords, setVipRecords] = useState<Record<string, string | null>>({});
+
+  // Load all schools from API on mount
+  useEffect(() => {
+    async function loadSchools() {
+      try {
+        // Fetch all schools (paginate through all pages)
+        const firstRes = await fetch("/api/schools?pageSize=200&page=1");
+        const firstData = await firstRes.json();
+        let all = firstData.schools || [];
+        const totalPages = firstData.pagination?.totalPages || 1;
+        setSchoolCount(firstData.pagination?.total || all.length);
+
+        if (totalPages > 1) {
+          const promises = [];
+          for (let p = 2; p <= totalPages; p++) {
+            promises.push(fetch(`/api/schools?pageSize=200&page=${p}`).then(r => r.json()));
+          }
+          const results = await Promise.all(promises);
+          for (const r of results) {
+            all = all.concat(r.schools || []);
+          }
+        }
+
+        setAllSchools(all);
+        setSchoolsLoaded(true);
+      } catch {
+        setSchoolsLoaded(true);
+      }
+    }
+    loadSchools();
+  }, []);
+
   // Load user data on mount — from DB for logged-in users, localStorage for guests
   useEffect(() => {
     // Start with localStorage data (instant, avoids blank flash)
@@ -349,7 +373,7 @@ export default function Home() {
       divisionConferences[div] = [...new Set(allSchools.filter((s) => s.division === div).map((s) => s.conference).filter(Boolean))].sort();
     }
     return { states, conferences, divisions, divisionConferences };
-  }, []);
+  }, [allSchools]);
 
   // Merge schools with user data
   const schoolsWithUserData = useMemo(() => {
@@ -357,7 +381,7 @@ export default function Home() {
       const ud = userData[school.id] || { priority: 0, notes: "", last_contacted: null, recruiting_status: "" };
       return { ...school, priority: ud.priority, notes: ud.notes, last_contacted: ud.last_contacted, recruiting_status: ud.recruiting_status || "", last_season_record: school.last_season_record, logo_url: school.logo_url };
     });
-  }, [userData]);
+  }, [allSchools, userData]);
 
   // Build the tabs list — "My Top Programs" only shows when user has rated programs
   const tabs = useMemo(() => {
@@ -444,6 +468,29 @@ export default function Home() {
     setPage(1);
   }, [filters, sortBy, sortDir, activeTab]);
 
+  // Batch fetch VIP records when VIP schools change
+  const vipSchoolNames = useMemo(() => {
+    return sorted
+      .filter((s) => s.priority >= 4 && (s.division === "D1" || s.division === "D2"))
+      .map((s) => s.name);
+  }, [sorted]);
+
+  const vipFetchedRef = useRef<string>("");
+  useEffect(() => {
+    const key = vipSchoolNames.join(",");
+    if (!key || key === vipFetchedRef.current) return;
+    vipFetchedRef.current = key;
+
+    fetch(`/api/records?schools=${encodeURIComponent(key)}`)
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.records) {
+          setVipRecords((prev) => ({ ...prev, ...data.records }));
+        }
+      })
+      .catch(() => {});
+  }, [vipSchoolNames]);
+
   // Persist sort state in sessionStorage so back-navigation preserves it
   const saveSortState = (tab: string, sort: string, dir: string) => {
     try { sessionStorage.setItem(`eb_sort_${tab}`, JSON.stringify({ sort, dir })); } catch {}
@@ -456,7 +503,7 @@ export default function Home() {
   };
 
   // Set default sort when switching tabs
-  const handleTabChange = (tab: TabKey) => {
+  const handleTabChange = useCallback((tab: TabKey) => {
     setActiveTab(tab);
     window.history.replaceState(null, "", tab === "home" ? "/" : `#${tab}`);
     // Restore saved sort or use defaults
@@ -475,7 +522,7 @@ export default function Home() {
       setSortDir("asc");
     }
     setFilters((f) => ({ ...f, search: "", state: "", conference: "", publicPrivate: "", region: "" }));
-  };
+  }, []);
 
   const handleSort = (column: string) => {
     let newDir = "asc";
@@ -523,7 +570,7 @@ export default function Home() {
     setDistances(dists);
   };
 
-  if (!mounted || status === "loading") {
+  if (!mounted || status === "loading" || !schoolsLoaded) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="animate-spin rounded-full h-10 w-10 border-4 border-blue-200 border-t-blue-600" />
@@ -593,7 +640,7 @@ export default function Home() {
             <div className="max-w-[1400px] mx-auto px-4 sm:px-6 flex flex-row items-center justify-center divide-x divide-white/20 text-center">
               {marketingContent.statsBar.items.map((item, i) => (
                 <div key={i} className="px-3 sm:px-8">
-                  <span className="text-white font-bold text-xs sm:text-lg">{item.label === "Programs" ? `${allSchools.length}+` : item.value}</span>
+                  <span className="text-white font-bold text-xs sm:text-lg">{item.label === "Programs" ? `${schoolCount || allSchools.length}+` : item.value}</span>
                   <span className="text-gray-400 text-[10px] sm:text-sm ml-1">{item.label}</span>
                 </div>
               ))}
@@ -645,7 +692,7 @@ export default function Home() {
                       <svg className="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
-                      <span className="text-sm text-gray-700">{feature.replace("{{PROGRAM_COUNT}}", String(allSchools.length))}</span>
+                      <span className="text-sm text-gray-700">{feature.replace("{{PROGRAM_COUNT}}", String(schoolCount || allSchools.length))}</span>
                     </li>
                   ))}
                 </ul>
@@ -685,7 +732,7 @@ export default function Home() {
         {activeTab === "home" && isLoggedIn && (
           <h2 className="text-lg sm:text-xl font-bold text-gray-900">Top 25 D1 Programs</h2>
         )}
-        {(activeTab === "mylist" || activeTab === "D1" || activeTab === "D2" || activeTab === "D3") && (
+        {(activeTab === "mylist" || activeTab === "D1" || activeTab === "D2" || activeTab === "D3" || activeTab === "JUCO") && (
           <>
             <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
               <div className="relative block sm:inline-block">
@@ -730,7 +777,7 @@ export default function Home() {
         {activeTab === "mylist" && !filters.search && sorted.some((s) => s.priority >= 4) && (
           <h3 className="text-base font-bold text-gray-700 mt-2">My Four & Five Star Programs</h3>
         )}
-        {activeTab === "mylist" && !filters.search && <VIPCarousel schools={sorted} />}
+        {activeTab === "mylist" && !filters.search && <VIPCarousel schools={sorted} batchRecords={vipRecords} />}
 
         {/* All Ranked Programs header — only on mylist when VIP exists */}
         {activeTab === "mylist" && !filters.search && sorted.some((s) => s.priority === 5) && (
@@ -767,7 +814,7 @@ export default function Home() {
                 </svg>
               </div>
               <p className="text-sm text-gray-700 font-medium mb-4">
-                Create a free account to access all {allSchools.length} programs and unlock AI matching.
+                Create a free account to access all {schoolCount || allSchools.length} programs and unlock AI matching.
               </p>
               <Link
                 href="/auth/register"

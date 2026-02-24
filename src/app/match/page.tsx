@@ -11,10 +11,8 @@ import { loadProfile, loadPreferences, isProfileComplete, type PlayerProfile, ty
 import { getMatchResults, type MatchResult } from "@/lib/matchingEngine";
 import { geocodeZip } from "@/lib/geo";
 import { getAllUserData, setUserData, type UserData } from "@/lib/userData";
-import schoolsData from "@/data/schools.json";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-const allSchools = schoolsData as any[];
 
 function SchoolLogo({ school }: { school: any }) {
   const [error, setError] = useState(false);
@@ -96,6 +94,31 @@ export default function MatchPage() {
   const [showCount, setShowCount] = useState(20);
   const [showAll, setShowAll] = useState(false);
   const [userBgPic, setUserBgPic] = useState<string | null>(null);
+  const [allSchools, setAllSchools] = useState<any[]>([]);
+
+  // Load all schools from API
+  useEffect(() => {
+    async function loadSchools() {
+      try {
+        const firstRes = await fetch("/api/schools?pageSize=200&page=1");
+        const firstData = await firstRes.json();
+        let all = firstData.schools || [];
+        const totalPages = firstData.pagination?.totalPages || 1;
+        if (totalPages > 1) {
+          const promises = [];
+          for (let p = 2; p <= totalPages; p++) {
+            promises.push(fetch(`/api/schools?pageSize=200&page=${p}`).then(r => r.json()));
+          }
+          const results = await Promise.all(promises);
+          for (const r of results) {
+            all = all.concat(r.schools || []);
+          }
+        }
+        setAllSchools(all);
+      } catch { /* ignore */ }
+    }
+    loadSchools();
+  }, []);
 
   // Load profile and preferences (from DB if logged in, localStorage otherwise)
   useEffect(() => {
@@ -283,11 +306,11 @@ export default function MatchPage() {
               onChange={(e) => {
                 const val = e.target.value;
                 if (val === "match") return;
-                if (val === "mylist") {
-                  router.push("/#mylist");
-                } else {
-                  router.push(`/#${val}`);
-                }
+                if (val === "mylist") router.push("/my-list");
+                else if (val === "D1") router.push("/programs/d1");
+                else if (val === "D2") router.push("/programs/d2");
+                else if (val === "D3") router.push("/programs/d3");
+                else if (val === "JUCO") router.push("/programs/juco");
               }}
               className="w-full sm:w-auto appearance-none bg-gray-50 border border-gray-400 rounded-lg px-4 py-3 pr-10 text-sm font-semibold text-gray-900 focus:outline-none focus:border-[#CC0000] focus:ring-1 focus:ring-[#CC0000] cursor-pointer"
             >
@@ -296,7 +319,7 @@ export default function MatchPage() {
               <option value="D1">DI Programs</option>
               <option value="D2">DII Programs</option>
               <option value="D3">DIII Programs</option>
-              <option value="JUCO" disabled>JUCO Programs</option>
+              <option value="JUCO">JUCO Programs</option>
             </select>
             <svg className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#CC0000]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />

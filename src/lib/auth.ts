@@ -2,6 +2,13 @@ import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { verifyPassword } from "@/lib/password";
 import { prisma } from "@/lib/prisma";
+import { rateLimit } from "@/lib/rate-limit";
+
+const loginLimiter = rateLimit({
+  name: "login",
+  max: 10,
+  windowMs: 15 * 60 * 1000, // 15 minutes
+});
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   trustHost: true,
@@ -14,6 +21,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       },
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) return null;
+
+        // Rate limit by email: max 10 login attempts per email per 15 minutes
+        const email = (credentials.email as string).toLowerCase();
+        const { allowed } = loginLimiter.check(email);
+        if (!allowed) return null;
 
         const user = await prisma.user.findUnique({
           where: { email: (credentials.email as string).toLowerCase() },
