@@ -11,6 +11,7 @@
     "seed": "npx tsx scripts/seed.ts && npx tsx scripts/seed-d1-part2.ts"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.78.0",
     "@auth/prisma-adapter": "^2.11.1",
     "@prisma/client": "^6.19.2",
     "next": "16.1.6",

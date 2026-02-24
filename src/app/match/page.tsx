@@ -308,6 +308,7 @@ export default function MatchPage() {
                   const val = e.target.value;
                   if (val === "match") return;
                   if (val === "mylist") router.push("/my-list");
+                  else if (val === "aiscout") router.push("/ai-match");
                   else if (val === "D1") router.push("/programs/d1");
                   else if (val === "D2") router.push("/programs/d2");
                   else if (val === "D3") router.push("/programs/d3");
@@ -316,6 +317,7 @@ export default function MatchPage() {
                 className="w-full appearance-none bg-gray-50 border border-gray-400 rounded-lg px-4 py-3 pr-10 text-sm font-semibold text-gray-900 focus:outline-none focus:border-[#CC0000] focus:ring-1 focus:ring-[#CC0000] cursor-pointer"
               >
                 <option value="mylist">My Top Programs</option>
+                <option value="aiscout">AI Scout (Chat)</option>
                 <option value="D1">Division I Programs</option>
                 <option value="D2">Division II Programs</option>
                 <option value="D3">Division III Programs</option>
