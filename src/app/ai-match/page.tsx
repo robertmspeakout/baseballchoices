@@ -162,14 +162,14 @@ function MicButton({ onTranscript }: { onTranscript: (text: string) => void }) {
     <button
       type="button"
       onClick={toggle}
-      className={`shrink-0 w-10 h-10 flex items-center justify-center rounded-xl transition-colors ${
+      className={`shrink-0 w-9 h-9 flex items-center justify-center rounded-xl transition-colors ${
         listening
           ? "bg-red-600 text-white animate-pulse"
           : "bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700"
       }`}
       title={listening ? "Stop listening" : "Voice input"}
     >
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
       </svg>
     </button>
@@ -442,12 +442,12 @@ export default function AIMatchPage() {
           <div className="flex-1 bg-white border border-gray-200 rounded-xl shadow-sm flex flex-col overflow-hidden">
             <div className="flex-1 overflow-y-auto p-4 space-y-4" style={{ minHeight: 300, maxHeight: "60vh" }}>
               {messages.length === 0 && !loading && (
-                <div className="flex flex-col items-center justify-center h-full py-8">
+                <div className="flex flex-col items-center py-4">
                   <h2 className="text-base font-bold text-gray-900 mb-1">What kind of program are you looking for?</h2>
-                  <p className="text-sm text-gray-500 mb-4 text-center max-w-sm">
+                  <p className="text-sm text-gray-500 mb-3 text-center max-w-sm">
                     Just tell me in your own words and I&apos;ll find programs that fit.
                   </p>
-                  <p className="text-xs text-gray-400 mb-3 text-center">Try one of these to get started:</p>
+                  <p className="text-xs text-gray-400 mb-2 text-center">Try one of these to get started:</p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 w-full max-w-lg">
                     {STARTER_PROMPTS.map((prompt, i) => (
                       <button
@@ -515,32 +515,32 @@ export default function AIMatchPage() {
                 </div>
               ) : (
                 <>
-                  <div className="flex items-end gap-2">
+                  <textarea
+                    ref={inputRef}
+                    value={input}
+                    onChange={handleInputChange}
+                    onKeyDown={handleKeyDown}
+                    placeholder="Tell me what you're looking for..."
+                    rows={3}
+                    className="w-full resize-none rounded-xl border border-gray-300 px-4 py-3 text-base focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 bg-white"
+                    style={{ minHeight: "80px" }}
+                    disabled={loading}
+                  />
+                  <div className="flex items-center justify-between mt-2">
                     <MicButton onTranscript={handleVoiceTranscript} />
-                    <textarea
-                      ref={inputRef}
-                      value={input}
-                      onChange={handleInputChange}
-                      onKeyDown={handleKeyDown}
-                      placeholder="Tell me what you're looking for..."
-                      rows={4}
-                      className="flex-1 resize-none rounded-xl border border-gray-300 px-4 py-3 text-base focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 bg-white"
-                      style={{ minHeight: "100px" }}
-                      disabled={loading}
-                    />
+                    <p className="text-[10px] text-gray-400 text-center px-2">
+                      AI Scout is for recruiting only. Results are suggestions.
+                    </p>
                     <button
                       onClick={() => sendMessage()}
                       disabled={!input.trim() || loading}
-                      className="shrink-0 w-10 h-10 flex items-center justify-center rounded-xl bg-red-600 text-white hover:bg-red-700 disabled:bg-gray-200 disabled:text-gray-400 transition-colors"
+                      className="shrink-0 w-9 h-9 flex items-center justify-center rounded-xl bg-red-600 text-white hover:bg-red-700 disabled:bg-gray-200 disabled:text-gray-400 transition-colors"
                     >
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19V5m0 0l-7 7m7-7l7 7" />
                       </svg>
                     </button>
                   </div>
-                  <p className="text-[10px] text-gray-400 mt-2 text-center">
-                    AI Scout is for college baseball recruiting only. Results are suggestions — always do your own research.
-                  </p>
                 </>
               )}
             </div>
