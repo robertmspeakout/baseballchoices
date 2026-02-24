@@ -11,7 +11,7 @@ import { loadProfile, type PlayerProfile } from "@/lib/playerProfile";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-const AI_SCOUT_VERSION = "v1.8";
+const AI_SCOUT_VERSION = "v1.9";
 
 interface SchoolCard {
   id: number;
@@ -440,9 +440,9 @@ export default function AIMatchPage() {
 
           {/* Chat area */}
           <div className="flex-1 bg-white border border-gray-200 rounded-xl shadow-sm flex flex-col overflow-hidden">
-            <div className="flex-1 overflow-y-auto p-4 space-y-4" style={{ minHeight: 300, maxHeight: "60vh" }}>
+            <div className="flex-1 overflow-y-auto p-4 space-y-4" style={{ maxHeight: "60vh" }}>
               {messages.length === 0 && !loading && (
-                <div className="flex flex-col items-center py-4">
+                <div className="flex flex-col items-center py-2">
                   <h2 className="text-base font-bold text-gray-900 mb-1">What kind of program are you looking for?</h2>
                   <p className="text-sm text-gray-500 mb-3 text-center max-w-sm">
                     Just tell me in your own words and I&apos;ll find programs that fit.
