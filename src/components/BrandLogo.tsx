@@ -32,7 +32,7 @@ export default function BrandLogo({ size = "lg", showTagline = true, linkHome = 
 
   const content = (
     <div className="relative inline-block select-none">
-      <div className={`${cfg.text} font-bold leading-none whitespace-nowrap`} style={{ fontFamily: "'Permanent Marker', cursive" }}>
+      <div className={`${cfg.text} font-bold leading-none whitespace-nowrap`} style={{ fontFamily: "var(--font-marker)" }}>
         <span className="text-red-500">EXTRA</span>
         <span className="text-white">BASE</span>
       </div>

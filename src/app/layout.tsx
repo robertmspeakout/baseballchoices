@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
+import { Permanent_Marker } from "next/font/google";
 import Providers from "@/components/Providers";
 import "./globals.css";
+
+const permanentMarker = Permanent_Marker({
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "ExtraBase - College Baseball Recruiting Directory",
@@ -14,12 +21,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" style={{ "--font-marker": permanentMarker.style.fontFamily } as React.CSSProperties}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet" />
       </head>
       <body className="antialiased bg-gray-50">
         <Providers>{children}</Providers>
