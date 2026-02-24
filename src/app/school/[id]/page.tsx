@@ -2,8 +2,10 @@
 
 import { useEffect, useRef, useState, use } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import SearchOverlay from "@/components/SearchOverlay";
 import AuthGate from "@/components/AuthGate";
 import StarRating from "@/components/StarRating";
 import { useSession } from "next-auth/react";
@@ -108,12 +110,15 @@ export default function SchoolPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = use(params);
+  const router = useRouter();
   const { data: session, status: authStatus } = useSession();
   const isLoggedIn = authStatus === "authenticated" && !!session?.user;
 
   const [schoolData, setSchoolData] = useState<SchoolDetail | null>(null);
   const [schoolLoading, setSchoolLoading] = useState(true);
   const [draftPicks, setDraftPicks] = useState<DraftPick[]>([]);
+  const [allSchools, setAllSchools] = useState<any[]>([]);
+  const [searchOverlayOpen, setSearchOverlayOpen] = useState(false);
 
   // Fetch school data from API
   useEffect(() => {
@@ -125,6 +130,30 @@ export default function SchoolPage({
       .catch(() => {})
       .finally(() => setSchoolLoading(false));
   }, [id]);
+
+  // Load all schools for search overlay
+  useEffect(() => {
+    async function loadSchools() {
+      try {
+        const firstRes = await fetch("/api/schools?pageSize=200&page=1");
+        const firstData = await firstRes.json();
+        let all = firstData.schools || [];
+        const totalPages = firstData.pagination?.totalPages || 1;
+        if (totalPages > 1) {
+          const promises = [];
+          for (let p = 2; p <= totalPages; p++) {
+            promises.push(fetch(`/api/schools?pageSize=200&page=${p}`).then(r => r.json()));
+          }
+          const results = await Promise.all(promises);
+          for (const r of results) {
+            all = all.concat(r.schools || []);
+          }
+        }
+        setAllSchools(all);
+      } catch { /* ignore */ }
+    }
+    loadSchools();
+  }, []);
 
   // Fetch draft picks from API once we have school data
   useEffect(() => {
@@ -427,6 +456,46 @@ export default function SchoolPage({
       <SiteHeader backgroundImage={facilityPhotos.length > 0 ? facilityPhotos[0].url : userBgPic || undefined} profilePic={userProfilePic} />
 
       <main className="max-w-5xl mx-auto px-4 sm:px-6 py-4 sm:py-8 space-y-4 sm:space-y-6">
+        {/* Section dropdown + search */}
+        <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
+          <div className="flex items-center gap-3">
+            <div className="relative flex-1">
+              <select
+                value={school.division || "D1"}
+                onChange={(e) => {
+                  const val = e.target.value;
+                  if (val === "mylist") router.push("/my-list");
+                  else if (val === "match") router.push("/match");
+                  else if (val === "D1") router.push("/programs/d1");
+                  else if (val === "D2") router.push("/programs/d2");
+                  else if (val === "D3") router.push("/programs/d3");
+                  else if (val === "JUCO") router.push("/programs/juco");
+                }}
+                className="w-full appearance-none bg-gray-50 border border-gray-400 rounded-lg px-4 py-3 pr-10 text-sm font-semibold text-gray-900 focus:outline-none focus:border-[#CC0000] focus:ring-1 focus:ring-[#CC0000] cursor-pointer"
+              >
+                <option value="mylist">My Top Programs</option>
+                <option value="match">My AI Matches</option>
+                <option value="D1">Division I Programs</option>
+                <option value="D2">Division II Programs</option>
+                <option value="D3">Division III Programs</option>
+                <option value="JUCO">JUCO Programs</option>
+              </select>
+              <svg className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#CC0000]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+            <button
+              onClick={() => setSearchOverlayOpen(true)}
+              className="shrink-0 w-[42px] h-[42px] flex items-center justify-center bg-gray-50 border border-gray-400 rounded-lg hover:bg-gray-100 active:bg-gray-200 transition-colors"
+              aria-label="Search"
+            >
+              <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
         {/* School identity card */}
         <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
           <div className="p-4 sm:p-6 flex items-center gap-4 sm:gap-5 border-b border-gray-100">
@@ -1328,6 +1397,14 @@ export default function SchoolPage({
           </div>
         )}
       </main>
+
+      <SearchOverlay
+        open={searchOverlayOpen}
+        onClose={() => setSearchOverlayOpen(false)}
+        schools={allSchools}
+        conferences={[...new Set(allSchools.map((s: any) => s.conference).filter(Boolean))].sort() as string[]}
+        activeTab={school.division || "D1"}
+      />
 
       <SiteFooter />
     </div>

@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import SearchOverlay from "@/components/SearchOverlay";
 import AuthGate from "@/components/AuthGate";
 import { loadProfile, loadPreferences, isProfileComplete, type PlayerProfile, type PlayerPreferences } from "@/lib/playerProfile";
 import { getMatchResults, type MatchResult } from "@/lib/matchingEngine";
@@ -96,6 +97,7 @@ export default function MatchPage() {
   const [userBgPic, setUserBgPic] = useState<string | null>(null);
   const [userProfilePic, setUserProfilePic] = useState<string | null>(null);
   const [allSchools, setAllSchools] = useState<any[]>([]);
+  const [searchOverlayOpen, setSearchOverlayOpen] = useState(false);
 
   // Load all schools from API
   useEffect(() => {
@@ -297,35 +299,43 @@ export default function MatchPage() {
 
       {/* Results */}
       <main className="max-w-[1400px] mx-auto px-3 sm:px-6 py-4 sm:py-6 space-y-4">
-        {/* Page title + Section dropdown */}
-        <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm space-y-3">
-          <h2 className="text-xl sm:text-2xl font-black text-gray-900">
-            {profile?.playerName ? `${profile.playerName.split(" ")[0]}'s AI Matches` : "Your AI Matches"}
-          </h2>
-          <div className="relative block sm:inline-block">
-            <select
-              value="match"
-              onChange={(e) => {
-                const val = e.target.value;
-                if (val === "match") return;
-                if (val === "mylist") router.push("/my-list");
-                else if (val === "D1") router.push("/programs/d1");
-                else if (val === "D2") router.push("/programs/d2");
-                else if (val === "D3") router.push("/programs/d3");
-                else if (val === "JUCO") router.push("/programs/juco");
-              }}
-              className="w-full sm:w-auto appearance-none bg-gray-50 border border-gray-400 rounded-lg px-4 py-3 pr-10 text-sm font-semibold text-gray-900 focus:outline-none focus:border-[#CC0000] focus:ring-1 focus:ring-[#CC0000] cursor-pointer"
+        {/* Section dropdown + search */}
+        <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
+          <div className="flex items-center gap-3">
+            <div className="relative flex-1">
+              <select
+                value="match"
+                onChange={(e) => {
+                  const val = e.target.value;
+                  if (val === "match") return;
+                  if (val === "mylist") router.push("/my-list");
+                  else if (val === "D1") router.push("/programs/d1");
+                  else if (val === "D2") router.push("/programs/d2");
+                  else if (val === "D3") router.push("/programs/d3");
+                  else if (val === "JUCO") router.push("/programs/juco");
+                }}
+                className="w-full appearance-none bg-gray-50 border border-gray-400 rounded-lg px-4 py-3 pr-10 text-sm font-semibold text-gray-900 focus:outline-none focus:border-[#CC0000] focus:ring-1 focus:ring-[#CC0000] cursor-pointer"
+              >
+                <option value="mylist">My Top Programs</option>
+                <option value="match">My AI Matches</option>
+                <option value="D1">Division I Programs</option>
+                <option value="D2">Division II Programs</option>
+                <option value="D3">Division III Programs</option>
+                <option value="JUCO">JUCO Programs</option>
+              </select>
+              <svg className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#CC0000]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+            <button
+              onClick={() => setSearchOverlayOpen(true)}
+              className="shrink-0 w-[42px] h-[42px] flex items-center justify-center bg-gray-50 border border-gray-400 rounded-lg hover:bg-gray-100 active:bg-gray-200 transition-colors"
+              aria-label="Search"
             >
-              <option value="mylist">My Top Programs</option>
-              <option value="match">My AI Matches</option>
-              <option value="D1">DI Programs</option>
-              <option value="D2">DII Programs</option>
-              <option value="D3">DIII Programs</option>
-              <option value="JUCO">JUCO Programs</option>
-            </select>
-            <svg className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#CC0000]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-            </svg>
+              <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </button>
           </div>
         </div>
 
@@ -504,6 +514,14 @@ export default function MatchPage() {
           </>
         )}
       </main>
+
+      <SearchOverlay
+        open={searchOverlayOpen}
+        onClose={() => setSearchOverlayOpen(false)}
+        schools={allSchools}
+        conferences={[...new Set(allSchools.map((s: any) => s.conference).filter(Boolean))].sort() as string[]}
+        activeTab="match"
+      />
 
       <SiteFooter />
     </div>
