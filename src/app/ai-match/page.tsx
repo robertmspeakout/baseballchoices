@@ -193,11 +193,27 @@ function loadSavedChat(): ChatMessage[] {
   } catch { return []; }
 }
 
+function getSavedChatSnippet(): { userMsg: string; assistantMsg: string } | null {
+  try {
+    const raw = sessionStorage.getItem(CHAT_STORAGE_KEY);
+    if (!raw) return null;
+    const msgs: ChatMessage[] = JSON.parse(raw);
+    if (msgs.length < 2) return null;
+    const lastUser = [...msgs].reverse().find(m => m.role === "user");
+    const lastAssistant = [...msgs].reverse().find(m => m.role === "assistant");
+    if (!lastUser || !lastAssistant) return null;
+    return {
+      userMsg: lastUser.content.length > 80 ? lastUser.content.slice(0, 80) + "..." : lastUser.content,
+      assistantMsg: stripMarkers(lastAssistant.content).length > 100 ? stripMarkers(lastAssistant.content).slice(0, 100) + "..." : stripMarkers(lastAssistant.content),
+    };
+  } catch { return null; }
+}
+
 export default function AIMatchPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
   const { schools: allSchools, conferences } = useSchools();
-  const [messages, setMessages] = useState<ChatMessage[]>(loadSavedChat);
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [profile, setProfile] = useState<PlayerProfile | null>(null);
@@ -424,26 +440,56 @@ export default function AIMatchPage() {
           {/* Chat area */}
           <div className="flex-1 bg-white border border-gray-200 rounded-xl shadow-sm flex flex-col overflow-hidden">
             <div className="flex-1 overflow-y-auto p-4 space-y-4" style={{ maxHeight: "60vh" }}>
-              {messages.length === 0 && !loading && (
-                <div className="flex flex-col items-center py-2">
-                  <h2 className="text-base font-bold text-gray-900 mb-1">What kind of program are you looking for?</h2>
-                  <p className="text-sm text-gray-500 mb-3 text-center max-w-sm">
-                    Just tell me in your own words and I&apos;ll find programs that fit.
-                  </p>
-                  <p className="text-xs text-gray-400 mb-2 text-center">Try one of these to get started:</p>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 w-full max-w-lg">
-                    {STARTER_PROMPTS.map((prompt, i) => (
+              {messages.length === 0 && !loading && (() => {
+                const savedSnippet = getSavedChatSnippet();
+                const prompts = savedSnippet ? STARTER_PROMPTS.slice(0, 3) : STARTER_PROMPTS;
+                return (
+                  <div className="flex flex-col items-center py-2">
+                    <h2 className="text-base font-bold text-gray-900 mb-1">What kind of program are you looking for?</h2>
+                    <p className="text-sm text-gray-500 mb-3 text-center max-w-sm">
+                      Just tell me in your own words and I&apos;ll find programs that fit.
+                    </p>
+
+                    {savedSnippet && (
                       <button
-                        key={i}
-                        onClick={() => sendMessage(prompt)}
-                        className="text-left px-3 py-2.5 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-lg text-xs text-gray-700 font-medium transition-colors"
+                        onClick={() => {
+                          const saved = loadSavedChat();
+                          if (saved.length > 0) {
+                            hasInteracted.current = true;
+                            setMessages(saved);
+                          }
+                        }}
+                        className="w-full max-w-lg mb-3 text-left px-4 py-3 bg-gradient-to-r from-red-50 to-orange-50 hover:from-red-100 hover:to-orange-100 border border-red-200 rounded-xl transition-colors"
                       >
-                        &quot;{prompt}&quot;
+                        <div className="flex items-center gap-2 mb-1.5">
+                          <svg className="w-4 h-4 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          <span className="text-xs font-bold text-red-700">Continue your conversation</span>
+                        </div>
+                        <p className="text-xs text-gray-600 truncate">You: {savedSnippet.userMsg}</p>
+                        <p className="text-xs text-gray-500 truncate mt-0.5">Scout: {savedSnippet.assistantMsg}</p>
                       </button>
-                    ))}
+                    )}
+
+                    <p className="text-xs text-gray-400 mb-2 text-center">{savedSnippet ? "Or start a new search:" : "Try one of these to get started:"}</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 w-full max-w-lg">
+                      {prompts.map((prompt, i) => (
+                        <button
+                          key={i}
+                          onClick={() => {
+                            sessionStorage.removeItem(CHAT_STORAGE_KEY);
+                            sendMessage(prompt);
+                          }}
+                          className="text-left px-3 py-2.5 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-lg text-xs text-gray-700 font-medium transition-colors"
+                        >
+                          &quot;{prompt}&quot;
+                        </button>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              )}
+                );
+              })()}
 
               {messages.map((msg, i) => (
                 <div
