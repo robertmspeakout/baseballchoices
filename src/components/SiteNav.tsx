@@ -7,7 +7,6 @@ import Link from "next/link";
 const NAV_ITEMS = [
   { label: "Home", href: "/", icon: null },
   { label: "My Top Programs", href: "/my-list", icon: "star" },
-  { label: "My AI Matches", href: "/match", icon: "sparkle" },
   { label: "AI Scout", href: "/ai-match", icon: "sparkle" },
   { label: "DI Programs", href: "/programs/d1", icon: null },
   { label: "DII Programs", href: "/programs/d2", icon: null },

@@ -260,7 +260,8 @@ export default function ProgramsView({ mode, pageTitle, activeNavLabel }: Progra
                 value={mode === "mylist" ? "mylist" : mode}
                 onChange={(e) => {
                   const val = e.target.value;
-                  if (val === "match") router.push("/match");
+                  if (val === "ai-scout") router.push("/ai-match");
+                  else if (val === "match") router.push("/match");
                   else if (val === "mylist") router.push("/my-list");
                   else if (val === "D1") router.push("/programs/d1");
                   else if (val === "D2") router.push("/programs/d2");
@@ -274,6 +275,7 @@ export default function ProgramsView({ mode, pageTitle, activeNavLabel }: Progra
                 <option value="D2">Division II Programs</option>
                 <option value="D3">Division III Programs</option>
                 <option value="JUCO">JUCO Programs</option>
+                <option value="ai-scout">AI Scout</option>
                 <option value="match">My AI Matches</option>
               </select>
               <svg className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#CC0000]" fill="none" stroke="currentColor" viewBox="0 0 24 24">

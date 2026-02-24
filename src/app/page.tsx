@@ -750,7 +750,9 @@ export default function Home() {
                   value={activeTab === "mylist" ? "mylist" : activeTab}
                   onChange={(e) => {
                     const val = e.target.value;
-                    if (val === "match") {
+                    if (val === "ai-scout") {
+                      router.push("/ai-match");
+                    } else if (val === "match") {
                       router.push("/match");
                     } else {
                       handleTabChange(val as TabKey);
@@ -763,6 +765,7 @@ export default function Home() {
                   <option value="D2">Division II Programs</option>
                   <option value="D3">Division III Programs</option>
                   <option value="JUCO">JUCO Programs</option>
+                  <option value="ai-scout">AI Scout</option>
                   <option value="match">My AI Matches</option>
                 </select>
                 <svg className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#CC0000]" fill="none" stroke="currentColor" viewBox="0 0 24 24">

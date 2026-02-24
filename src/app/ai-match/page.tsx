@@ -1,15 +1,17 @@
 "use client";
 
-import { useEffect, useState, useRef, useCallback } from "react";
+import { useEffect, useState, useRef, useCallback, useMemo } from "react";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import SearchOverlay from "@/components/SearchOverlay";
 import AuthGate from "@/components/AuthGate";
 import { loadProfile, type PlayerProfile } from "@/lib/playerProfile";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-const AI_SCOUT_VERSION = "v1.7";
+const AI_SCOUT_VERSION = "v1.8";
 
 interface SchoolCard {
   id: number;
@@ -181,16 +183,57 @@ const STARTER_PROMPTS = [
   "I want to stay close to home and keep costs low",
 ];
 
+interface SchoolForSearch {
+  id: number;
+  name: string;
+  mascot: string;
+  city: string;
+  state: string;
+  division: string;
+  conference: string;
+  head_coach_name: string | null;
+  logo_url: string | null;
+}
+
 export default function AIMatchPage() {
   const { data: session, status } = useSession();
+  const router = useRouter();
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [profile, setProfile] = useState<PlayerProfile | null>(null);
   const [userBgPic, setUserBgPic] = useState<string | null>(null);
   const [remaining, setRemaining] = useState<number | null>(null);
+  const [searchOverlayOpen, setSearchOverlayOpen] = useState(false);
+  const [allSchools, setAllSchools] = useState<SchoolForSearch[]>([]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
+
+  // Load schools for search overlay
+  useEffect(() => {
+    async function loadSchools() {
+      try {
+        const firstRes = await fetch("/api/schools?pageSize=200&page=1");
+        const firstData = await firstRes.json();
+        let all = firstData.schools || [];
+        const totalPages = firstData.pagination?.totalPages || 1;
+        if (totalPages > 1) {
+          const promises = [];
+          for (let p = 2; p <= totalPages; p++) {
+            promises.push(fetch(`/api/schools?pageSize=200&page=${p}`).then(r => r.json()));
+          }
+          const results = await Promise.all(promises);
+          for (const r of results) all = all.concat(r.schools || []);
+        }
+        setAllSchools(all);
+      } catch { /* search overlay just won't have data */ }
+    }
+    loadSchools();
+  }, []);
+
+  const conferences = useMemo(() => {
+    return [...new Set(allSchools.map(s => s.conference).filter(Boolean))].sort();
+  }, [allSchools]);
 
   // Load player profile
   useEffect(() => {
@@ -322,7 +365,56 @@ export default function AIMatchPage() {
         <SiteHeader backgroundImage={userBgPic || undefined} activeNav="AI Scout" />
 
         <main className="flex-1 max-w-3xl mx-auto w-full px-3 sm:px-6 py-4 sm:py-6 flex flex-col">
-          {/* Header */}
+          {/* Division dropdown + search */}
+          <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm mb-4">
+            <div className="flex items-center gap-3">
+              <div className="relative flex-1">
+                <select
+                  value="ai-scout"
+                  onChange={(e) => {
+                    const val = e.target.value;
+                    if (val === "match") router.push("/match");
+                    else if (val === "mylist") router.push("/my-list");
+                    else if (val === "D1") router.push("/programs/d1");
+                    else if (val === "D2") router.push("/programs/d2");
+                    else if (val === "D3") router.push("/programs/d3");
+                    else if (val === "JUCO") router.push("/programs/juco");
+                  }}
+                  className="w-full appearance-none bg-gray-50 border border-gray-400 rounded-lg px-4 py-3 pr-10 text-sm font-semibold text-gray-900 focus:outline-none focus:border-[#CC0000] focus:ring-1 focus:ring-[#CC0000] cursor-pointer"
+                >
+                  <option value="ai-scout">AI Scout</option>
+                  <option value="mylist">My Top Programs</option>
+                  <option value="D1">Division I Programs</option>
+                  <option value="D2">Division II Programs</option>
+                  <option value="D3">Division III Programs</option>
+                  <option value="JUCO">JUCO Programs</option>
+                  <option value="match">My AI Matches</option>
+                </select>
+                <svg className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#CC0000]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+              <button
+                onClick={() => setSearchOverlayOpen(true)}
+                className="shrink-0 w-[42px] h-[42px] flex items-center justify-center bg-gray-50 border border-gray-400 rounded-lg hover:bg-gray-100 active:bg-gray-200 transition-colors"
+                aria-label="Search"
+              >
+                <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <SearchOverlay
+            open={searchOverlayOpen}
+            onClose={() => setSearchOverlayOpen(false)}
+            schools={allSchools}
+            conferences={conferences}
+            activeTab="ai-scout"
+          />
+
+          {/* AI Scout Header */}
           <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm mb-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center shrink-0">
@@ -340,9 +432,9 @@ export default function AIMatchPage() {
                 </p>
               </div>
               {remaining !== null && (
-                <div className="text-right shrink-0">
-                  <p className="text-xs font-semibold text-gray-500">{remaining} left</p>
-                  <p className="text-[10px] text-gray-400">today</p>
+                <div className={`text-right shrink-0 px-2.5 py-1.5 rounded-lg ${remaining <= 1 ? "bg-red-50 border border-red-200" : "bg-blue-50 border border-blue-200"}`}>
+                  <p className={`text-sm font-bold ${remaining <= 1 ? "text-red-600" : "text-blue-700"}`}>{remaining}</p>
+                  <p className={`text-[10px] ${remaining <= 1 ? "text-red-500" : "text-blue-500"}`}>left today</p>
                 </div>
               )}
             </div>
@@ -366,9 +458,15 @@ export default function AIMatchPage() {
                     </svg>
                   </div>
                   <h2 className="text-base font-bold text-gray-900 mb-1">What kind of program are you looking for?</h2>
-                  <p className="text-sm text-gray-500 mb-6 text-center max-w-sm">
-                    Just tell me in your own words and I&apos;ll find programs that fit. Try one of these to get started:
+                  <p className="text-sm text-gray-500 mb-4 text-center max-w-sm">
+                    Just tell me in your own words and I&apos;ll find programs that fit.
                   </p>
+                  <div className="bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-5 max-w-md w-full">
+                    <p className="text-xs text-blue-800 text-center font-medium">
+                      You get <strong>5 messages per day</strong> with AI Scout. Each message you send uses one. Be specific to get the best results!
+                    </p>
+                  </div>
+                  <p className="text-xs text-gray-400 mb-3 text-center">Try one of these to get started:</p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 w-full max-w-lg">
                     {STARTER_PROMPTS.map((prompt, i) => (
                       <button
