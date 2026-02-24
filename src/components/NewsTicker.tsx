@@ -13,7 +13,7 @@ export default function NewsTicker({ schools }: NewsTickerProps) {
   const [paused, setPaused] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const animRef = useRef<number | null>(null);
-  const speedRef = useRef(1.5); // px per frame
+  const speedRef = useRef(1); // px per frame
 
   // Fetch ticker data
   useEffect(() => {
