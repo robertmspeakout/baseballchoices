@@ -9,7 +9,7 @@ import { loadProfile, type PlayerProfile } from "@/lib/playerProfile";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-const AI_SCOUT_VERSION = "v1.2";
+const AI_SCOUT_VERSION = "v1.3";
 
 interface SchoolCard {
   id: number;
@@ -22,15 +22,19 @@ interface ChatMessage {
   schools?: SchoolCard[];
 }
 
-// Strip [SCHOOL_ID:123] markers from display text
+// Strip all [SCHOOL_ID:...] markers from display text (multiple patterns for safety)
 function stripMarkers(text: string): string {
-  return text.replace(/\s*\[SCHOOL_ID:\d+\]/g, "");
+  return text
+    .replace(/\s*\[SCHOOL_ID:\s*\d+\s*\]/gi, "")
+    .replace(/\s*\[SCHOOL[-_\s]*ID\s*:\s*\d+\s*\]/gi, "")
+    .replace(/\[SCHOOL[^\]]*\]/gi, "");
 }
 
 // Convert **bold** to <strong> tags (HTML-safe)
 function renderInlineFormatting(text: string): string {
-  // Escape HTML first, then apply formatting
-  const escaped = text
+  // Strip any markers that slipped through, then escape HTML, then apply bold
+  const clean = stripMarkers(text);
+  const escaped = clean
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;");
