@@ -12,6 +12,7 @@ import { useSession } from "next-auth/react";
 import { getUserData, setUserData, fetchUserDataFromDB, saveUserDataToDB } from "@/lib/userData";
 import { haversineDistance } from "@/lib/geo";
 import { loadProfile } from "@/lib/playerProfile";
+import { useSchools } from "@/lib/SchoolsContext";
 
 interface DraftPick {
   name: string;
@@ -114,10 +115,10 @@ export default function SchoolPage({
   const { data: session, status: authStatus } = useSession();
   const isLoggedIn = authStatus === "authenticated" && !!session?.user;
 
+  const { schools: allSchools, conferences: allConferences } = useSchools();
   const [schoolData, setSchoolData] = useState<SchoolDetail | null>(null);
   const [schoolLoading, setSchoolLoading] = useState(true);
   const [draftPicks, setDraftPicks] = useState<DraftPick[]>([]);
-  const [allSchools, setAllSchools] = useState<any[]>([]);
   const [searchOverlayOpen, setSearchOverlayOpen] = useState(false);
 
   // Fetch school data from API
@@ -130,30 +131,6 @@ export default function SchoolPage({
       .catch(() => {})
       .finally(() => setSchoolLoading(false));
   }, [id]);
-
-  // Load all schools for search overlay
-  useEffect(() => {
-    async function loadSchools() {
-      try {
-        const firstRes = await fetch("/api/schools?pageSize=200&page=1");
-        const firstData = await firstRes.json();
-        let all = firstData.schools || [];
-        const totalPages = firstData.pagination?.totalPages || 1;
-        if (totalPages > 1) {
-          const promises = [];
-          for (let p = 2; p <= totalPages; p++) {
-            promises.push(fetch(`/api/schools?pageSize=200&page=${p}`).then(r => r.json()));
-          }
-          const results = await Promise.all(promises);
-          for (const r of results) {
-            all = all.concat(r.schools || []);
-          }
-        }
-        setAllSchools(all);
-      } catch { /* ignore */ }
-    }
-    loadSchools();
-  }, []);
 
   // Fetch draft picks from API once we have school data
   useEffect(() => {
@@ -280,18 +257,39 @@ export default function SchoolPage({
     setMounted(true);
   }, [id, schoolData, isLoggedIn]);
 
+  // Stadium photos load eagerly (used for header background)
   useEffect(() => {
     if (!schoolData) return;
+    if (!schoolData.stadium_name) {
+      setFacilityPhotos([]);
+      setPhotosLoading(false);
+      return;
+    }
+    setPhotosLoading(true);
+    fetch(`/api/stadium-photos?school=${encodeURIComponent(schoolData.name)}&stadium=${encodeURIComponent(schoolData.stadium_name)}&mascot=${encodeURIComponent(schoolData.mascot || "")}`)
+      .then((r) => r.json())
+      .then((data) => setFacilityPhotos(data.photos || []))
+      .catch(() => setFacilityPhotos([]))
+      .finally(() => setPhotosLoading(false));
+  }, [schoolData]);
+
+  // Lazy-load: only fetch when section is first opened
+  const newsFetched = useRef(false);
+  useEffect(() => {
+    if (!newsOpen || !schoolData || newsFetched.current) return;
+    newsFetched.current = true;
     setNewsLoading(true);
     fetch(`/api/news?school=${encodeURIComponent(schoolData.name)}`)
       .then((r) => r.json())
       .then((data) => setNews(data.articles || []))
       .catch(() => setNews([]))
       .finally(() => setNewsLoading(false));
-  }, [schoolData]);
+  }, [newsOpen, schoolData]);
 
+  const scheduleFetched = useRef(false);
   useEffect(() => {
-    if (!schoolData) return;
+    if (!scheduleOpen || !schoolData || scheduleFetched.current) return;
+    scheduleFetched.current = true;
     setScheduleLoading(true);
     fetch(`/api/schedule?school=${encodeURIComponent(schoolData.name)}`)
       .then((r) => r.json())
@@ -306,31 +304,17 @@ export default function SchoolPage({
         setUpcomingGames([]);
       })
       .finally(() => setScheduleLoading(false));
-  }, [schoolData]);
+  }, [scheduleOpen, schoolData]);
 
+  const academicsFetched = useRef(false);
   useEffect(() => {
-    if (!schoolData) return;
-    // Only fetch stadium photos when we have a stadium name for accurate results
-    if (!schoolData.stadium_name) {
-      setFacilityPhotos([]);
-      setPhotosLoading(false);
-      return;
-    }
-    setPhotosLoading(true);
-    fetch(`/api/stadium-photos?school=${encodeURIComponent(schoolData.name)}&stadium=${encodeURIComponent(schoolData.stadium_name)}&mascot=${encodeURIComponent(schoolData.mascot || "")}`)
-      .then((r) => r.json())
-      .then((data) => setFacilityPhotos(data.photos || []))
-      .catch(() => setFacilityPhotos([]))
-      .finally(() => setPhotosLoading(false));
-  }, [schoolData]);
-
-  useEffect(() => {
-    if (!schoolData) return;
+    if (!academicsOpen || !schoolData || academicsFetched.current) return;
+    academicsFetched.current = true;
     fetch(`/api/academics-data?school=${encodeURIComponent(schoolData.name)}&state=${encodeURIComponent(schoolData.state || "")}&city=${encodeURIComponent(schoolData.city || "")}`)
       .then((r) => r.json())
       .then((data) => setAcademicsData(data))
       .catch(() => setAcademicsData(null));
-  }, [schoolData]);
+  }, [academicsOpen, schoolData]);
 
   const savePriority = (newPriority: number) => {
     setPriority(newPriority);
@@ -1400,7 +1384,7 @@ export default function SchoolPage({
         open={searchOverlayOpen}
         onClose={() => setSearchOverlayOpen(false)}
         schools={allSchools}
-        conferences={[...new Set(allSchools.map((s: any) => s.conference).filter(Boolean))].sort() as string[]}
+        conferences={allConferences}
         activeTab={school.division || "D1"}
       />
 

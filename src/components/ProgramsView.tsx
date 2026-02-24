@@ -12,6 +12,7 @@ import SchoolTable from "@/components/SchoolTable";
 import { getAllUserData, setUserData, fetchUserDataFromDB, saveUserDataToDB, bulkSyncToDB, type UserData } from "@/lib/userData";
 import { haversineDistance, geocodeZip } from "@/lib/geo";
 import { loadProfile, REGIONS } from "@/lib/playerProfile";
+import { useSchools } from "@/lib/SchoolsContext";
 
 interface School {
   id: number;
@@ -73,6 +74,8 @@ export default function ProgramsView({ mode, pageTitle, activeNavLabel }: Progra
   const searchParams = useSearchParams();
   const { data: session, status } = useSession();
   const isLoggedIn = status === "authenticated" && !!session?.user;
+  const { schools: sharedSchools, loaded: schoolsLoaded } = useSchools();
+  const allSchools = sharedSchools as School[];
 
   // Parse ids from URL for AI results mode
   const aiIds = useMemo(() => {
@@ -82,8 +85,6 @@ export default function ProgramsView({ mode, pageTitle, activeNavLabel }: Progra
     return idsParam.split(",").map((id) => parseInt(id, 10)).filter((id) => !isNaN(id));
   }, [mode, searchParams]);
 
-  const [allSchools, setAllSchools] = useState<School[]>([]);
-  const [schoolsLoaded, setSchoolsLoaded] = useState(false);
   const [userData, setUserDataState] = useState<Record<string, UserData>>({});
   const [mounted, setMounted] = useState(false);
   const [userBgPic, setUserBgPic] = useState<string | null>(null);
@@ -95,31 +96,6 @@ export default function ProgramsView({ mode, pageTitle, activeNavLabel }: Progra
     search: "", division: "", state: "", conference: "", publicPrivate: "", zip: "", region: "",
   });
   const [searchOverlayOpen, setSearchOverlayOpen] = useState(false);
-
-  // Load schools
-  useEffect(() => {
-    async function loadSchools() {
-      try {
-        const firstRes = await fetch("/api/schools?pageSize=200&page=1");
-        const firstData = await firstRes.json();
-        let all = firstData.schools || [];
-        const totalPages = firstData.pagination?.totalPages || 1;
-        if (totalPages > 1) {
-          const promises = [];
-          for (let p = 2; p <= totalPages; p++) {
-            promises.push(fetch(`/api/schools?pageSize=200&page=${p}`).then(r => r.json()));
-          }
-          const results = await Promise.all(promises);
-          for (const r of results) all = all.concat(r.schools || []);
-        }
-        setAllSchools(all);
-        setSchoolsLoaded(true);
-      } catch {
-        setSchoolsLoaded(true);
-      }
-    }
-    loadSchools();
-  }, []);
 
   // Load user data
   useEffect(() => {

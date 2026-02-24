@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef, useCallback, useMemo } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import SiteHeader from "@/components/SiteHeader";
@@ -8,6 +8,7 @@ import SiteFooter from "@/components/SiteFooter";
 import SearchOverlay from "@/components/SearchOverlay";
 import AuthGate from "@/components/AuthGate";
 import { loadProfile, type PlayerProfile } from "@/lib/playerProfile";
+import { useSchools } from "@/lib/SchoolsContext";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -183,21 +184,10 @@ const STARTER_PROMPTS = [
   "I want to stay close to home and keep costs low",
 ];
 
-interface SchoolForSearch {
-  id: number;
-  name: string;
-  mascot: string;
-  city: string;
-  state: string;
-  division: string;
-  conference: string;
-  head_coach_name: string | null;
-  logo_url: string | null;
-}
-
 export default function AIMatchPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
+  const { schools: allSchools, conferences } = useSchools();
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -205,35 +195,8 @@ export default function AIMatchPage() {
   const [userBgPic, setUserBgPic] = useState<string | null>(null);
   const [remaining, setRemaining] = useState<number | null>(null);
   const [searchOverlayOpen, setSearchOverlayOpen] = useState(false);
-  const [allSchools, setAllSchools] = useState<SchoolForSearch[]>([]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
-
-  // Load schools for search overlay
-  useEffect(() => {
-    async function loadSchools() {
-      try {
-        const firstRes = await fetch("/api/schools?pageSize=200&page=1");
-        const firstData = await firstRes.json();
-        let all = firstData.schools || [];
-        const totalPages = firstData.pagination?.totalPages || 1;
-        if (totalPages > 1) {
-          const promises = [];
-          for (let p = 2; p <= totalPages; p++) {
-            promises.push(fetch(`/api/schools?pageSize=200&page=${p}`).then(r => r.json()));
-          }
-          const results = await Promise.all(promises);
-          for (const r of results) all = all.concat(r.schools || []);
-        }
-        setAllSchools(all);
-      } catch { /* search overlay just won't have data */ }
-    }
-    loadSchools();
-  }, []);
-
-  const conferences = useMemo(() => {
-    return [...new Set(allSchools.map(s => s.conference).filter(Boolean))].sort();
-  }, [allSchools]);
 
   // Load player profile
   useEffect(() => {

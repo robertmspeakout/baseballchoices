@@ -1,7 +1,12 @@
 "use client";
 
 import { SessionProvider } from "next-auth/react";
+import { SchoolsProvider } from "@/lib/SchoolsContext";
 
 export default function Providers({ children }: { children: React.ReactNode }) {
-  return <SessionProvider>{children}</SessionProvider>;
+  return (
+    <SessionProvider>
+      <SchoolsProvider>{children}</SchoolsProvider>
+    </SessionProvider>
+  );
 }
