@@ -159,7 +159,8 @@ export default function SearchOverlay({ open, onClose, schools, conferences, act
 
   const handleSelect = (school: School) => {
     addRecent(school.name);
-    close();
+    // Close overlay without history.back — router.push handles navigation
+    onClose();
     router.push(`/school/${school.id}`);
   };
 
