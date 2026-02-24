@@ -7,10 +7,11 @@ import { rateLimit } from "@/lib/rate-limit";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-// Rate limiter: 25 messages per 24 hours per user
+// Rate limiter: 5 messages per 24 hours per user
+// At ~$0.04/query, 5/day = max ~$6/month/user, keeping it sustainable on a $20 sub
 const aiLimiter = rateLimit({
   name: "ai-match",
-  max: 25,
+  max: 5,
   windowMs: 24 * 60 * 60 * 1000,
 });
 
