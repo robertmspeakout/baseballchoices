@@ -7,12 +7,11 @@ import { rateLimit } from "@/lib/rate-limit";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-// Rate limiter: 5 messages per 24 hours per user
-// At ~$0.04/query, 5/day = max ~$6/month/user, keeping it sustainable on a $20 sub
+// Rate limiter: 20 messages per 30 days per user
 const aiLimiter = rateLimit({
   name: "ai-match",
-  max: 5,
-  windowMs: 24 * 60 * 60 * 1000,
+  max: 20,
+  windowMs: 30 * 24 * 60 * 60 * 1000,
 });
 
 // Load schools data once
@@ -195,7 +194,7 @@ You have access to a database of college baseball programs:
 
 YOUR JOB
 
-IMPORTANT: Users have a LIMITED number of messages per day. Every message they send counts. So:
+IMPORTANT: Users have a LIMITED number of messages per month (20/month). Every message they send counts. So:
 - If you need more info, ask ALL your questions in ONE message — never spread questions across multiple messages.
 - Try to give useful recommendations as fast as possible, even if the info is incomplete. You can always refine later.
 - If the player gives you enough to work with, skip questions and go straight to recommendations.
@@ -260,7 +259,7 @@ export async function POST(request: NextRequest) {
     if (!result.allowed) {
       return NextResponse.json(
         {
-          error: "You've used all your AI Scout searches for today. Your limit resets tomorrow — in the meantime, browse programs directly!",
+          error: "You've used all 20 AI Scout messages for this month. Your limit resets in 30 days — in the meantime, browse programs directly!",
           remaining: 0,
         },
         { status: 429 }

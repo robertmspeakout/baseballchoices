@@ -11,7 +11,7 @@ import { loadProfile, type PlayerProfile } from "@/lib/playerProfile";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-const AI_SCOUT_VERSION = "v1.9";
+const AI_SCOUT_VERSION = "v2.0";
 
 interface SchoolCard {
   id: number;
@@ -320,7 +320,7 @@ export default function AIMatchPage() {
       if (res.status === 429) {
         setMessages([...newMessages, {
           role: "assistant",
-          content: data.error || "You've used all your AI Scout searches for today. Check back tomorrow!",
+          content: data.error || "You've used all 20 AI Scout messages for this month. Check back when your limit resets!",
         }]);
       } else if (!res.ok) {
         setMessages([...newMessages, {
@@ -426,13 +426,13 @@ export default function AIMatchPage() {
                   <span className="text-[10px] font-medium text-gray-400 bg-gray-100 px-1.5 py-0.5 rounded">{AI_SCOUT_VERSION}</span>
                 </div>
                 <p className="text-xs text-gray-500">
-                  Limit of 5 messages per day.
+                  20 messages per month.
                 </p>
               </div>
               {remaining !== null && (
                 <div className={`text-right shrink-0 px-2.5 py-1.5 rounded-lg ${remaining <= 1 ? "bg-red-50 border border-red-200" : "bg-blue-50 border border-blue-200"}`}>
                   <p className={`text-sm font-bold ${remaining <= 1 ? "text-red-600" : "text-blue-700"}`}>{remaining}</p>
-                  <p className={`text-[10px] ${remaining <= 1 ? "text-red-500" : "text-blue-500"}`}>left today</p>
+                  <p className={`text-[10px] ${remaining <= 1 ? "text-red-500" : "text-blue-500"}`}>left this month</p>
                 </div>
               )}
             </div>
@@ -507,8 +507,8 @@ export default function AIMatchPage() {
             <div className="border-t border-gray-200 p-3 bg-gray-50/50">
               {atLimit ? (
                 <div className="text-center py-3">
-                  <p className="text-sm font-semibold text-gray-700">You&apos;ve used all your searches for today</p>
-                  <p className="text-xs text-gray-500 mt-1">Your limit resets tomorrow. In the meantime, explore programs directly!</p>
+                  <p className="text-sm font-semibold text-gray-700">You&apos;ve used all 20 messages this month</p>
+                  <p className="text-xs text-gray-500 mt-1">Your limit resets in 30 days. In the meantime, explore programs directly!</p>
                   <a href="/programs/d1" className="inline-block mt-2 px-4 py-2 bg-red-600 text-white text-sm font-semibold rounded-lg hover:bg-red-700 transition-colors">
                     Browse Programs
                   </a>
