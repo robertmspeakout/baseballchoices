@@ -791,8 +791,8 @@ export default function Home() {
           conferences={filterOptions.conferences}
         />
 
-        {/* Live Ticker — scores, next games, records for top-rated schools */}
-        {isLoggedIn && tickerSchools.length > 0 && !filters.search && (
+        {/* Live Ticker — only on My Top Programs tab */}
+        {activeTab === "mylist" && isLoggedIn && tickerSchools.length > 0 && !filters.search && (
           <NewsTicker schools={tickerSchools} />
         )}
 
