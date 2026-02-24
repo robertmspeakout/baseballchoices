@@ -25,10 +25,12 @@ export default function AccountPage() {
   const [account, setAccount] = useState<AccountData | null>(null);
   const [loading, setLoading] = useState(true);
   const [userBgPic, setUserBgPic] = useState<string | null>(null);
+  const [userProfilePic, setUserProfilePic] = useState<string | null>(null);
 
   useEffect(() => {
     const p = loadProfile();
     if (p.backgroundPic) setUserBgPic(p.backgroundPic);
+    if (p.profilePic) setUserProfilePic(p.profilePic);
   }, []);
 
   useEffect(() => {
@@ -70,7 +72,7 @@ export default function AccountPage() {
   return (
     <AuthGate>
       <div className="min-h-screen bg-gray-50">
-        <SiteHeader backgroundImage={userBgPic || undefined} />
+        <SiteHeader backgroundImage={userBgPic || undefined} profilePic={userProfilePic} />
 
         <main className="max-w-2xl mx-auto px-4 sm:px-6 py-6 sm:py-10 space-y-6">
           <h1 className="text-2xl font-black text-gray-900">My Account</h1>

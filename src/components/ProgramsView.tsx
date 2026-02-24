@@ -78,6 +78,7 @@ export default function ProgramsView({ mode, pageTitle, activeNavLabel }: Progra
   const [userData, setUserDataState] = useState<Record<string, UserData>>({});
   const [mounted, setMounted] = useState(false);
   const [userBgPic, setUserBgPic] = useState<string | null>(null);
+  const [userProfilePic, setUserProfilePic] = useState<string | null>(null);
   const [page, setPage] = useState(1);
   const [sortBy, setSortBy] = useState(mode === "mylist" ? "priority" : "name");
   const [sortDir, setSortDir] = useState(mode === "mylist" ? "desc" : "asc");
@@ -129,6 +130,7 @@ export default function ProgramsView({ mode, pageTitle, activeNavLabel }: Progra
     }
     const profile = loadProfile();
     if (profile.backgroundPic) setUserBgPic(profile.backgroundPic);
+    if (profile.profilePic) setUserProfilePic(profile.profilePic);
     setMounted(true);
   }, [isLoggedIn]);
 
@@ -236,7 +238,7 @@ export default function ProgramsView({ mode, pageTitle, activeNavLabel }: Progra
 
   return (
     <div className="min-h-screen bg-gray-50 overflow-x-hidden">
-      <SiteHeader backgroundImage={userBgPic || undefined} activeNav={activeNavLabel} />
+      <SiteHeader backgroundImage={userBgPic || undefined} profilePic={userProfilePic} activeNav={activeNavLabel} />
 
       <main className="max-w-[1400px] mx-auto px-3 sm:px-6 py-4 sm:py-6 space-y-4 sm:space-y-6">
         <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">

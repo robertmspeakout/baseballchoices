@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
 
@@ -39,15 +39,29 @@ interface SiteNavProps {
   active?: string;
   variant?: "light" | "dark";
   onNavigate?: (href: string) => void;
+  profilePic?: string | null;
 }
 
-export default function SiteNav({ active, variant = "light", onNavigate }: SiteNavProps) {
+export default function SiteNav({ active, variant = "light", onNavigate, profilePic }: SiteNavProps) {
   const { data: session } = useSession();
   const [open, setOpen] = useState(false);
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
   const isLight = variant === "light";
   const isLoggedIn = !!session?.user;
   const firstName = (session?.user as Record<string, unknown>)?.firstName as string | undefined;
+
+  // Close on click outside
+  useEffect(() => {
+    if (!open) return;
+    const onClickOutside = (e: MouseEvent) => {
+      if (wrapperRef.current && !wrapperRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", onClickOutside);
+    return () => document.removeEventListener("mousedown", onClickOutside);
+  }, [open]);
 
   const isLocalNav = (href: string) => href === "/";
 
@@ -64,7 +78,7 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
   };
 
   return (
-    <div className="relative flex items-center gap-2">
+    <div ref={wrapperRef} className="relative flex items-center gap-2">
       {/* Desktop auth buttons — only for logged-out users */}
       {!isLoggedIn && (
         <div className="hidden sm:flex items-center gap-2">
@@ -86,14 +100,32 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
       )}
       <button
         onClick={() => setOpen((o) => !o)}
-        className={`p-2 rounded-lg transition-colors ${
-          isLight
-            ? "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
-            : "text-white/80 hover:bg-white/15 hover:text-white"
+        className={`rounded-lg transition-colors ${
+          isLoggedIn
+            ? "p-0.5"
+            : `p-2 ${
+                isLight
+                  ? "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
+                  : "text-white/80 hover:bg-white/15 hover:text-white"
+              }`
         }`}
-        aria-label="Navigation menu"
+        aria-label={isLoggedIn ? "Account menu" : "Navigation menu"}
       >
-        {open ? (
+        {isLoggedIn ? (
+          <span className={`block w-9 h-9 rounded-full overflow-hidden ring-2 transition-all ${open ? "ring-yellow-400" : isLight ? "ring-gray-300 hover:ring-gray-400" : "ring-white/40 hover:ring-white/70"}`}>
+            {profilePic ? (
+              <img src={profilePic} alt="" className="w-full h-full object-cover" />
+            ) : (
+              <span className={`flex items-center justify-center w-full h-full text-sm font-bold ${isLight ? "bg-gray-200 text-gray-600" : "bg-white/20 text-white"}`}>
+                {firstName ? firstName.charAt(0).toUpperCase() : (
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                )}
+              </span>
+            )}
+          </span>
+        ) : open ? (
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
           </svg>
@@ -112,65 +144,15 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
               : "bg-gray-900/95 backdrop-blur-md border-white/10"
           }`}
         >
-          {NAV_ITEMS.filter((item) => !(isLoggedIn && item.label === "Home")).map((item) => {
-            const isActive = active === item.label;
-            const Icon = item.icon ? iconMap[item.icon] : null;
-            const cls = `w-full flex items-center gap-2 px-4 py-3 text-sm font-bold transition-colors border-b last:border-0 ${
-              isLight
-                ? isActive
-                  ? "bg-gray-900 text-white border-gray-200"
-                  : "text-gray-700 hover:bg-gray-50 border-gray-100"
-                : isActive
-                  ? "bg-white/15 text-white border-white/5"
-                  : "text-white/80 hover:text-white hover:bg-white/10 border-white/5"
-            }`;
-
-            if (onNavigate && isLocalNav(item.href)) {
-              return (
-                <button
-                  key={item.label}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    handleClick(item);
-                  }}
-                  className={cls}
-                >
-                  {Icon && <Icon className="w-4 h-4" />}
-                  {item.label}
-                </button>
-              );
-            }
-
-            if (isLocalNav(item.href)) {
-              return (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  onClick={() => setOpen(false)}
-                  className={cls}
-                >
-                  {Icon && <Icon className="w-4 h-4" />}
-                  {item.label}
-                </a>
-              );
-            }
-
-            return (
-              <Link
-                key={item.label}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className={cls}
-              >
-                {Icon && <Icon className="w-4 h-4" />}
-                {item.label}
-              </Link>
-            );
-          })}
-
-          {/* Auth section */}
+          {/* Logged-in: account-only menu. Logged-out: full nav + auth */}
           {isLoggedIn ? (
             <>
+              {/* Greeting */}
+              {firstName && (
+                <div className={`px-4 py-3 text-xs font-medium border-b ${isLight ? "text-gray-400 border-gray-100" : "text-white/40 border-white/5"}`}>
+                  Hi, {firstName}
+                </div>
+              )}
               <Link
                 href="/auth/profile"
                 onClick={() => setOpen(false)}
@@ -216,6 +198,61 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
             </>
           ) : (
             <>
+              {NAV_ITEMS.map((item) => {
+                const isActive = active === item.label;
+                const Icon = item.icon ? iconMap[item.icon] : null;
+                const cls = `w-full flex items-center gap-2 px-4 py-3 text-sm font-bold transition-colors border-b last:border-0 ${
+                  isLight
+                    ? isActive
+                      ? "bg-gray-900 text-white border-gray-200"
+                      : "text-gray-700 hover:bg-gray-50 border-gray-100"
+                    : isActive
+                      ? "bg-white/15 text-white border-white/5"
+                      : "text-white/80 hover:text-white hover:bg-white/10 border-white/5"
+                }`;
+
+                if (onNavigate && isLocalNav(item.href)) {
+                  return (
+                    <button
+                      key={item.label}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleClick(item);
+                      }}
+                      className={cls}
+                    >
+                      {Icon && <Icon className="w-4 h-4" />}
+                      {item.label}
+                    </button>
+                  );
+                }
+
+                if (isLocalNav(item.href)) {
+                  return (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      onClick={() => setOpen(false)}
+                      className={cls}
+                    >
+                      {Icon && <Icon className="w-4 h-4" />}
+                      {item.label}
+                    </a>
+                  );
+                }
+
+                return (
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    onClick={() => setOpen(false)}
+                    className={cls}
+                  >
+                    {Icon && <Icon className="w-4 h-4" />}
+                    {item.label}
+                  </Link>
+                );
+              })}
               <Link
                 href="/auth/login"
                 onClick={() => setOpen(false)}
