@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
@@ -60,7 +60,7 @@ const STATE_NAMES: Record<string, string> = {
 
 const PAGE_SIZE = 50;
 
-type ViewMode = "mylist" | "D1" | "D2" | "D3" | "JUCO";
+type ViewMode = "mylist" | "D1" | "D2" | "D3" | "JUCO" | "ai";
 
 interface ProgramsViewProps {
   mode: ViewMode;
@@ -70,8 +70,17 @@ interface ProgramsViewProps {
 
 export default function ProgramsView({ mode, pageTitle, activeNavLabel }: ProgramsViewProps) {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const { data: session, status } = useSession();
   const isLoggedIn = status === "authenticated" && !!session?.user;
+
+  // Parse ids from URL for AI results mode
+  const aiIds = useMemo(() => {
+    if (mode !== "ai") return null;
+    const idsParam = searchParams.get("ids");
+    if (!idsParam) return null;
+    return idsParam.split(",").map((id) => parseInt(id, 10)).filter((id) => !isNaN(id));
+  }, [mode, searchParams]);
 
   const [allSchools, setAllSchools] = useState<School[]>([]);
   const [schoolsLoaded, setSchoolsLoaded] = useState(false);
@@ -152,8 +161,13 @@ export default function ProgramsView({ mode, pageTitle, activeNavLabel }: Progra
 
   const baseList = useMemo(() => {
     if (mode === "mylist") return schoolsWithUserData.filter(s => s.priority > 0);
+    if (mode === "ai" && aiIds) {
+      // Preserve the order from AI recommendations
+      const byId = new Map(schoolsWithUserData.map(s => [s.id, s]));
+      return aiIds.map(id => byId.get(id)).filter(Boolean) as typeof schoolsWithUserData;
+    }
     return schoolsWithUserData.filter(s => s.division === mode);
-  }, [mode, schoolsWithUserData]);
+  }, [mode, schoolsWithUserData, aiIds]);
 
   const filtered = useMemo(() => {
     const source = filters.search ? schoolsWithUserData : baseList;
@@ -239,7 +253,7 @@ export default function ProgramsView({ mode, pageTitle, activeNavLabel }: Progra
       <SiteHeader backgroundImage={userBgPic || undefined} activeNav={activeNavLabel} />
 
       <main className="max-w-[1400px] mx-auto px-3 sm:px-6 py-4 sm:py-6 space-y-4 sm:space-y-6">
-        <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
+        {mode !== "ai" && <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
           <div className="flex items-center gap-3">
             <div className="relative flex-1">
               <select
@@ -277,7 +291,7 @@ export default function ProgramsView({ mode, pageTitle, activeNavLabel }: Progra
               </svg>
             </button>
           </div>
-        </div>
+        </div>}
 
         {/* Full-screen search overlay */}
         <SearchOverlay
@@ -287,6 +301,30 @@ export default function ProgramsView({ mode, pageTitle, activeNavLabel }: Progra
           conferences={filterOptions.conferences}
           activeTab={mode}
         />
+
+        {mode === "ai" && (
+          <div className="bg-gradient-to-r from-red-50 to-orange-50 border border-red-200 rounded-xl p-4 shadow-sm">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center shrink-0">
+                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
+                  </svg>
+                </div>
+                <div>
+                  <h2 className="text-sm font-bold text-gray-900">AI Scout Recommendations</h2>
+                  <p className="text-xs text-gray-500">{sorted.length} programs matched your search</p>
+                </div>
+              </div>
+              <Link href="/ai-match" className="text-xs font-semibold text-red-600 hover:text-red-700 flex items-center gap-1">
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Back to AI Scout
+              </Link>
+            </div>
+          </div>
+        )}
 
         {mode === "mylist" && !filters.search && sorted.length === 0 && (
           <div className="flex justify-center py-10">
