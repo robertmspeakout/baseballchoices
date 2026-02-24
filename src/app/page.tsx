@@ -8,6 +8,7 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import SearchFilters from "@/components/SearchFilters";
 import SchoolTable from "@/components/SchoolTable";
+import NewsTicker from "@/components/NewsTicker";
 import { getAllUserData, setUserData, fetchUserDataFromDB, saveUserDataToDB, bulkSyncToDB, type UserData } from "@/lib/userData";
 import { haversineDistance, geocodeZip } from "@/lib/geo";
 import marketingContent from "@/data/marketing.json";
@@ -491,6 +492,13 @@ export default function Home() {
       .catch(() => {});
   }, [vipSchoolNames]);
 
+  // Schools for the live ticker (4-5 star, D1/D2 only — ESPN has schedule data for these)
+  const tickerSchools = useMemo(() => {
+    return schoolsWithUserData
+      .filter((s) => s.priority >= 4 && (s.division === "D1" || s.division === "D2"))
+      .map((s) => ({ name: s.name, logo_url: s.logo_url }));
+  }, [schoolsWithUserData]);
+
   // Persist sort state in sessionStorage so back-navigation preserves it
   const saveSortState = (tab: string, sort: string, dir: string) => {
     try { sessionStorage.setItem(`eb_sort_${tab}`, JSON.stringify({ sort, dir })); } catch {}
@@ -771,6 +779,11 @@ export default function Home() {
             onZipSearch={handleZipSearch}
             activeTab={activeTab}
           />
+        )}
+
+        {/* Live Ticker — scores, next games, records for top-rated schools */}
+        {isLoggedIn && tickerSchools.length > 0 && !filters.search && (
+          <NewsTicker schools={tickerSchools} />
         )}
 
         {/* VIP Cards Carousel — only on mylist tab (hidden during search) */}
