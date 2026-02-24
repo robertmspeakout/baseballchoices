@@ -39,10 +39,9 @@ interface SiteNavProps {
   active?: string;
   variant?: "light" | "dark";
   onNavigate?: (href: string) => void;
-  profilePic?: string | null;
 }
 
-export default function SiteNav({ active, variant = "light", onNavigate, profilePic }: SiteNavProps) {
+export default function SiteNav({ active, variant = "light", onNavigate }: SiteNavProps) {
   const { data: session } = useSession();
   const [open, setOpen] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -100,31 +99,21 @@ export default function SiteNav({ active, variant = "light", onNavigate, profile
       )}
       <button
         onClick={() => setOpen((o) => !o)}
-        className={`rounded-lg transition-colors ${
+        className={`p-2 rounded-lg transition-colors ${
           isLoggedIn
-            ? "p-0.5"
-            : `p-2 ${
-                isLight
-                  ? "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
-                  : "text-white/80 hover:bg-white/15 hover:text-white"
-              }`
+            ? isLight
+              ? "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
+              : "text-white/80 hover:bg-white/15 hover:text-white"
+            : isLight
+              ? "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
+              : "text-white/80 hover:bg-white/15 hover:text-white"
         }`}
         aria-label={isLoggedIn ? "Account menu" : "Navigation menu"}
       >
         {isLoggedIn ? (
-          <span className={`block w-9 h-9 rounded-full overflow-hidden ring-2 transition-all ${open ? "ring-yellow-400" : isLight ? "ring-gray-300 hover:ring-gray-400" : "ring-white/40 hover:ring-white/70"}`}>
-            {profilePic ? (
-              <img src={profilePic} alt="" className="w-full h-full object-cover" />
-            ) : (
-              <span className={`flex items-center justify-center w-full h-full text-sm font-bold ${isLight ? "bg-gray-200 text-gray-600" : "bg-white/20 text-white"}`}>
-                {firstName ? firstName.charAt(0).toUpperCase() : (
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                  </svg>
-                )}
-              </span>
-            )}
-          </span>
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
         ) : open ? (
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />

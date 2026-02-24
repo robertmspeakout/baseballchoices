@@ -95,7 +95,6 @@ export default function MatchPage() {
   const [showCount, setShowCount] = useState(20);
   const [showAll, setShowAll] = useState(false);
   const [userBgPic, setUserBgPic] = useState<string | null>(null);
-  const [userProfilePic, setUserProfilePic] = useState<string | null>(null);
   const [allSchools, setAllSchools] = useState<any[]>([]);
   const [searchOverlayOpen, setSearchOverlayOpen] = useState(false);
 
@@ -128,7 +127,8 @@ export default function MatchPage() {
     if (status === "loading") return;
 
     async function loadData() {
-      let p: PlayerProfile = loadProfile();
+      const localProfile = loadProfile();
+      let p: PlayerProfile = localProfile;
       let pr: PlayerPreferences = loadPreferences();
 
       if (status === "authenticated" && session?.user) {
@@ -152,8 +152,8 @@ export default function MatchPage() {
               zipCode: dbProfile.zipCode || "",
               highSchool: dbProfile.highSchool || "",
               travelBall: dbProfile.travelBall || "",
-              profilePic: null,
-              backgroundPic: null,
+              profilePic: localProfile.profilePic,
+              backgroundPic: localProfile.backgroundPic,
               gpa: dbProfile.gpa ? parseFloat(dbProfile.gpa) : null,
               gpaType: dbProfile.gpaType || "",
               satScore: dbProfile.satScore ? parseInt(dbProfile.satScore) : null,
@@ -184,7 +184,6 @@ export default function MatchPage() {
       setPrefs(pr);
       setUserDataState(getAllUserData());
       if (p.backgroundPic) setUserBgPic(p.backgroundPic);
-      if (p.profilePic) setUserProfilePic(p.profilePic);
 
       // Geocode zip
       if (p.zipCode) {
@@ -295,7 +294,7 @@ export default function MatchPage() {
   return (
     <AuthGate>
     <div className="min-h-screen bg-gray-50">
-      <SiteHeader backgroundImage={userBgPic || undefined} profilePic={userProfilePic} activeNav="My AI Matches" />
+      <SiteHeader backgroundImage={userBgPic || undefined} activeNav="My AI Matches" />
 
       {/* Results */}
       <main className="max-w-[1400px] mx-auto px-3 sm:px-6 py-4 sm:py-6 space-y-4">

@@ -251,7 +251,6 @@ export default function Home() {
   const [mounted, setMounted] = useState(false);
   const [playerFirstName, setPlayerFirstName] = useState("");
   const [userBgPic, setUserBgPic] = useState<string | null>(null);
-  const [userProfilePic, setUserProfilePic] = useState<string | null>(null);
   const [filters, setFilters] = useState<Filters>({
     search: "",
     division: "",
@@ -330,7 +329,6 @@ export default function Home() {
       setPlayerFirstName(profile.playerName.trim().split(/\s+/)[0]);
     }
     if (profile.backgroundPic) setUserBgPic(profile.backgroundPic);
-    if (profile.profilePic) setUserProfilePic(profile.profilePic);
     // Use session firstName if available
     if (isLoggedIn && session?.user) {
       const fn = (session.user as Record<string, unknown>).firstName as string;
@@ -596,7 +594,6 @@ export default function Home() {
     <div className="min-h-screen bg-gray-50 overflow-x-hidden">
       <SiteHeader
         backgroundImage={userBgPic || undefined}
-        profilePic={userProfilePic}
         activeNav={activeTab === "home" ? "Home" : activeTab === "mylist" ? "My Top Programs" : activeTab === "D1" ? "All Division I" : activeTab === "D2" ? "All Division 2" : activeTab === "D3" ? "All Division 3" : activeTab === "JUCO" ? "All JUCO" : undefined}
         onLogoClick={() => { handleTabChange(isLoggedIn ? "mylist" : "home"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
         onNavigate={(href) => {

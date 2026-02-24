@@ -45,16 +45,14 @@ const sections = [
 
 export default function PrivacyPage() {
   const [userBgPic, setUserBgPic] = useState<string | null>(null);
-  const [userProfilePic, setUserProfilePic] = useState<string | null>(null);
   useEffect(() => {
     const p = loadProfile();
     if (p.backgroundPic) setUserBgPic(p.backgroundPic);
-    if (p.profilePic) setUserProfilePic(p.profilePic);
   }, []);
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-      <SiteHeader backgroundImage={userBgPic || undefined} profilePic={userProfilePic} />
+      <SiteHeader backgroundImage={userBgPic || undefined} />
 
       {/* Content */}
       <main className="flex-1 max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12 w-full">
