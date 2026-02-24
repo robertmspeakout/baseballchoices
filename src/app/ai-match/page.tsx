@@ -447,11 +447,6 @@ export default function AIMatchPage() {
                   <p className="text-sm text-gray-500 mb-4 text-center max-w-sm">
                     Just tell me in your own words and I&apos;ll find programs that fit.
                   </p>
-                  <div className="bg-blue-50 border border-blue-200 rounded-lg px-4 py-2.5 mb-5 max-w-md w-full">
-                    <p className="text-xs text-blue-800 text-center font-medium">
-                      You get <strong>5 messages per day</strong> with AI Scout. Each message you send uses one. Be specific to get the best results!
-                    </p>
-                  </div>
                   <p className="text-xs text-gray-400 mb-3 text-center">Try one of these to get started:</p>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 w-full max-w-lg">
                     {STARTER_PROMPTS.map((prompt, i) => (
