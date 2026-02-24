@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const NAV_ITEMS = [
   { label: "Home", href: "/", icon: null },
-  { label: "My Top Programs", href: "/my-list", icon: "star" },
+  { label: "My Top Programs", href: "/#mylist", icon: "star" },
   { label: "AI Scout", href: "/ai-match", icon: "sparkle" },
   { label: "DI Programs", href: "/programs/d1", icon: null },
   { label: "DII Programs", href: "/programs/d2", icon: null },
@@ -63,7 +63,7 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
     return () => document.removeEventListener("mousedown", onClickOutside);
   }, [open]);
 
-  const isLocalNav = (href: string) => href === "/";
+  const isLocalNav = (href: string) => href === "/" || href.startsWith("/#");
 
   const handleClick = (item: typeof NAV_ITEMS[0]) => {
     setOpen(false);

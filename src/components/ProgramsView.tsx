@@ -237,7 +237,7 @@ export default function ProgramsView({ mode, pageTitle, activeNavLabel }: Progra
                 onChange={(e) => {
                   const val = e.target.value;
                   if (val === "ai-scout") router.push("/ai-match");
-                  else if (val === "mylist") router.push("/my-list");
+                  else if (val === "mylist") router.push("/#mylist");
                   else if (val === "D1") router.push("/programs/d1");
                   else if (val === "D2") router.push("/programs/d2");
                   else if (val === "D3") router.push("/programs/d3");
