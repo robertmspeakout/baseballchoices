@@ -74,5 +74,7 @@ export async function GET(request: NextRequest) {
     await Promise.all(chunk.map(fetchRecord));
   }
 
-  return NextResponse.json({ records });
+  return NextResponse.json({ records }, {
+    headers: { "Cache-Control": "public, s-maxage=3600" },
+  });
 }

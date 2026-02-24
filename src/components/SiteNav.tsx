@@ -6,12 +6,12 @@ import Link from "next/link";
 
 const NAV_ITEMS = [
   { label: "Home", href: "/", icon: null },
-  { label: "My Top Programs", href: "/#mylist", icon: "star" },
+  { label: "My Top Programs", href: "/my-list", icon: "star" },
   { label: "My AI Matches", href: "/match", icon: "sparkle" },
-  { label: "DI Programs", href: "/#D1", icon: null },
-  { label: "DII Programs", href: "/#D2", icon: null },
-  { label: "DIII Programs", href: "/#D3", icon: null },
-  { label: "JUCO Programs", href: "/#JUCO", icon: null },
+  { label: "DI Programs", href: "/programs/d1", icon: null },
+  { label: "DII Programs", href: "/programs/d2", icon: null },
+  { label: "DIII Programs", href: "/programs/d3", icon: null },
+  { label: "JUCO Programs", href: "/programs/juco", icon: null },
 ];
 
 function StarIcon({ className }: { className?: string }) {
@@ -49,7 +49,7 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
   const isLoggedIn = !!session?.user;
   const firstName = (session?.user as Record<string, unknown>)?.firstName as string | undefined;
 
-  const isLocalNav = (href: string) => href === "/" || href.startsWith("/#");
+  const isLocalNav = (href: string) => href === "/";
 
   const handleClick = (item: typeof NAV_ITEMS[0]) => {
     setOpen(false);

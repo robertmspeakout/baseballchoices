@@ -36,7 +36,9 @@ export async function GET(request: NextRequest) {
       photos.push(...fallback);
     }
 
-    return NextResponse.json({ photos: photos.slice(0, 4) });
+    return NextResponse.json({ photos: photos.slice(0, 4) }, {
+      headers: { "Cache-Control": "public, s-maxage=86400" },
+    });
   } catch {
     return NextResponse.json({ photos: [] });
   }

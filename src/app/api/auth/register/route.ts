@@ -1,11 +1,26 @@
 import { NextRequest, NextResponse } from "next/server";
 import { hashPassword } from "@/lib/password";
 import { prisma } from "@/lib/prisma";
+import { rateLimit } from "@/lib/rate-limit";
 
-const OWNER_EMAIL = "robertjmunsoniii@gmail.com";
+const registerLimiter = rateLimit({
+  name: "register",
+  max: 5,
+  windowMs: 60 * 60 * 1000, // 1 hour
+});
 
 export async function POST(request: NextRequest) {
   try {
+    // Rate limit by IP: max 5 registrations per IP per hour
+    const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+    const { allowed } = registerLimiter.check(ip);
+    if (!allowed) {
+      return NextResponse.json(
+        { error: "Too many registration attempts. Please try again later." },
+        { status: 429 }
+      );
+    }
+
     const body = await request.json();
     const { firstName, lastName, email, password, gradYear, position, state } = body;
 
@@ -29,7 +44,8 @@ export async function POST(request: NextRequest) {
     const trialExpiresAt = new Date(Date.now() + 100 * 365 * 24 * 60 * 60 * 1000); // effectively indefinite
 
     // Check if this is the owner email
-    const role = email.toLowerCase() === OWNER_EMAIL.toLowerCase() ? "OWNER" : "USER";
+    const ownerEmail = process.env.OWNER_EMAIL || "";
+    const role = ownerEmail && email.toLowerCase() === ownerEmail.toLowerCase() ? "OWNER" : "USER";
 
     const user = await prisma.user.create({
       data: {

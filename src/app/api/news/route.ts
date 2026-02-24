@@ -37,7 +37,9 @@ export async function GET(request: NextRequest) {
       }
     }
 
-    return NextResponse.json({ articles: items });
+    return NextResponse.json({ articles: items }, {
+      headers: { "Cache-Control": "public, s-maxage=300" },
+    });
   } catch {
     return NextResponse.json({ articles: [] });
   }
