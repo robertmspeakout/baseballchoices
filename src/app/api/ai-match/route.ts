@@ -24,9 +24,8 @@ function getSchools(): any[] {
   return schoolsData!;
 }
 
-// Build a compact summary of all schools for Claude's context
-function buildSchoolsSummary(): string {
-  const schools = getSchools();
+// Build a SLIM summary — only the fields the AI needs to make recommendations
+function buildSchoolsSummary(schools: any[]): string {
   const rows = schools.map((s) => {
     const parts = [
       `ID:${s.id}`,
@@ -35,32 +34,124 @@ function buildSchoolsSummary(): string {
       s.division,
       s.conference,
       s.public_private,
-      s.tuition ? `$${s.tuition}` : "tuition:N/A",
-      s.enrollment ? `${s.enrollment} students` : "",
-      s.acceptance_rate ? `${s.acceptance_rate}% accept` : "",
-      s.graduation_rate ? `${s.graduation_rate}% grad` : "",
-      s.current_ranking ? `Ranked #${s.current_ranking}` : "",
-      s.cws_appearances ? `${s.cws_appearances} CWS` : "",
-      s.ncaa_regionals ? `${s.ncaa_regionals} regionals` : "",
-      s.mlb_draft_picks ? `${s.mlb_draft_picks} draft picks` : "",
-      s.high_academic ? "High-Academic" : "",
-      s.head_coach_name ? `Coach: ${s.head_coach_name}` : "",
-      s.last_season_record ? `Record: ${s.last_season_record}` : "",
-      s.scholarship_limit ? `${s.scholarship_limit} scholarships` : "",
-      s.roster_size ? `Roster: ${s.roster_size}` : "",
+      s.tuition ? `$${s.tuition}` : "",
+      s.current_ranking ? `#${s.current_ranking}` : "",
+      s.mlb_draft_picks ? `${s.mlb_draft_picks}drafted` : "",
+      s.last_season_record || "",
+      s.high_academic ? "HighAcad" : "",
+      s.head_coach_name ? `Coach:${s.head_coach_name}` : "",
     ].filter(Boolean);
-    return parts.join(" | ");
+    return parts.join("|");
   });
   return rows.join("\n");
 }
 
-// Cache the summary so we only build it once
-let cachedSummary: string | null = null;
-function getSchoolsSummary(): string {
-  if (!cachedSummary) {
-    cachedSummary = buildSchoolsSummary();
+// Pre-filter schools based on keywords in the conversation
+function preFilterSchools(messages: any[]): any[] {
+  const allSchools = getSchools();
+  const allText = messages.map((m: any) => m.content).join(" ").toLowerCase();
+
+  // Extract division mentions
+  const divisions: string[] = [];
+  if (/\bd1\b|division\s*i\b|division\s*1\b|d-?1\b/i.test(allText)) divisions.push("D1");
+  if (/\bd2\b|division\s*ii\b|division\s*2\b|d-?2\b/i.test(allText)) divisions.push("D2");
+  if (/\bd3\b|division\s*iii\b|division\s*3\b|d-?3\b/i.test(allText)) divisions.push("D3");
+  if (/\bjuco\b|junior\s*college\b|community\s*college\b/i.test(allText)) divisions.push("JUCO");
+
+  // Extract region/state mentions
+  const stateAbbrevs = allSchools.map(s => s.state).filter((v: string, i: number, a: string[]) => a.indexOf(v) === i);
+  const mentionedStates: string[] = [];
+  const stateNames: Record<string, string> = {
+    AL: "alabama", AK: "alaska", AZ: "arizona", AR: "arkansas", CA: "california",
+    CO: "colorado", CT: "connecticut", FL: "florida", GA: "georgia", IL: "illinois",
+    IN: "indiana", IA: "iowa", KS: "kansas", KY: "kentucky", LA: "louisiana",
+    MD: "maryland", MA: "massachusetts", MI: "michigan", MN: "minnesota", MS: "mississippi",
+    MO: "missouri", NC: "north carolina", NJ: "new jersey", NY: "new york", OH: "ohio",
+    OK: "oklahoma", OR: "oregon", PA: "pennsylvania", SC: "south carolina", TN: "tennessee",
+    TX: "texas", VA: "virginia", WA: "washington", WI: "wisconsin",
+  };
+  for (const abbr of stateAbbrevs) {
+    const fullName = stateNames[abbr];
+    if (fullName && allText.includes(fullName)) mentionedStates.push(abbr);
   }
-  return cachedSummary;
+
+  // Region keywords
+  const regionStates: Record<string, string[]> = {
+    south: ["AL", "AR", "FL", "GA", "KY", "LA", "MS", "NC", "SC", "TN", "TX", "VA", "WV"],
+    southeast: ["AL", "FL", "GA", "MS", "NC", "SC", "TN", "VA"],
+    southwest: ["AZ", "NM", "OK", "TX"],
+    northeast: ["CT", "DE", "MA", "MD", "ME", "NH", "NJ", "NY", "PA", "RI", "VT"],
+    midwest: ["IA", "IL", "IN", "KS", "MI", "MN", "MO", "NE", "ND", "OH", "SD", "WI"],
+    west: ["AZ", "CA", "CO", "ID", "MT", "NM", "NV", "OR", "UT", "WA", "WY"],
+    "west coast": ["CA", "OR", "WA"],
+    "east coast": ["CT", "DE", "FL", "GA", "MA", "MD", "ME", "NC", "NH", "NJ", "NY", "PA", "RI", "SC", "VA", "VT"],
+  };
+  const regionMatches: string[] = [];
+  for (const [region, states] of Object.entries(regionStates)) {
+    if (allText.includes(region)) regionMatches.push(...states);
+  }
+
+  // If no filters detected, return all schools (first message is usually vague)
+  if (divisions.length === 0 && mentionedStates.length === 0 && regionMatches.length === 0) {
+    return allSchools;
+  }
+
+  // Filter schools
+  let filtered = allSchools;
+  if (divisions.length > 0) {
+    filtered = filtered.filter((s: any) => divisions.includes(s.division));
+  }
+  const stateFilter = [...new Set([...mentionedStates, ...regionMatches])];
+  if (stateFilter.length > 0) {
+    filtered = filtered.filter((s: any) => stateFilter.includes(s.state));
+  }
+
+  // If filter is too aggressive (< 10 results), fall back to broader set
+  if (filtered.length < 10) {
+    if (divisions.length > 0) {
+      filtered = allSchools.filter((s: any) => divisions.includes(s.division));
+    }
+    if (filtered.length < 10) return allSchools;
+  }
+
+  return filtered;
+}
+
+// Match school names mentioned in AI response text against the database
+function matchSchoolsByName(text: string, allSchools: any[]): { id: number; name: string }[] {
+  const matched: { id: number; name: string }[] = [];
+  const seenIds = new Set<number>();
+
+  // First: try [SCHOOL_ID:xxx] tags
+  const tagMatches = [...text.matchAll(/\[SCHOOL_ID:\s*(\d+)\s*\]/gi)];
+  for (const m of tagMatches) {
+    const id = parseInt(m[1], 10);
+    if (seenIds.has(id)) continue;
+    const school = allSchools.find((s: any) => s.id === id);
+    if (school) {
+      seenIds.add(id);
+      matched.push({ id: school.id, name: school.name });
+    }
+  }
+
+  // Second: fuzzy match school names in the text (fallback when tags are missing)
+  // Sort by name length descending so longer names match first (e.g. "Texas A&M" before "Texas")
+  const sortedSchools = [...allSchools].sort((a, b) => b.name.length - a.name.length);
+  const textLower = text.toLowerCase();
+  for (const school of sortedSchools) {
+    if (seenIds.has(school.id)) continue;
+    const nameLower = school.name.toLowerCase();
+    // Only match if it appears as a distinct mention (not substring of another word)
+    // Check for the school name preceded/followed by non-alpha characters or start/end
+    const escaped = nameLower.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const regex = new RegExp(`(?:^|[^a-z])${escaped}(?:[^a-z]|$)`);
+    if (regex.test(textLower)) {
+      seenIds.add(school.id);
+      matched.push({ id: school.id, name: school.name });
+    }
+  }
+
+  return matched;
 }
 
 const SYSTEM_PROMPT = `You are the ExtraBase AI Scout — a friendly college baseball recruiting helper built for high school players. You talk to teenagers, so keep your language casual, supportive, and easy to understand. Think of yourself as an older teammate who knows a lot about college baseball programs.
@@ -97,7 +188,7 @@ FORMATTING RULES (IMPORTANT)
 - Use **bold** for school names and key stats you want to stand out. The app renders this as real bold text.
 - Use dashes (-) for bullet points and numbered lists to organize your recommendations.
 - Keep paragraphs short — 2-3 sentences max.
-- When you reference a school, include its database ID in this exact format: [SCHOOL_ID:123] — put this right after the school name. The app will use these to build a results page. The user will not see these tags, so do not draw attention to them.
+- CRITICAL: Every time you mention a school by name, you MUST include its database ID tag immediately after like this: **School Name** [SCHOOL_ID:123]. The app uses these tags to build a clickable results page. The user never sees the tags. If you skip them, the user won't be able to explore the schools you recommend. ALWAYS include them.
 
 SAFETY AND CONTENT RULES (MANDATORY — NEVER BREAK THESE)
 - You ONLY talk about college baseball programs, recruiting, and closely related topics (academics as they relate to college admissions, campus life as it relates to choosing a school, etc.).
@@ -158,8 +249,12 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Messages are required" }, { status: 400 });
     }
 
-    // Build system prompt with school data injected
-    const systemPrompt = SYSTEM_PROMPT.replace("{SCHOOLS_DATA}", getSchoolsSummary());
+    // Pre-filter schools based on conversation keywords for faster responses
+    const relevantSchools = preFilterSchools(messages);
+
+    // Build system prompt with filtered school data
+    const schoolsSummary = buildSchoolsSummary(relevantSchools);
+    const systemPrompt = SYSTEM_PROMPT.replace("{SCHOOLS_DATA}", schoolsSummary);
 
     // Add player context if available
     let playerContext = "";
@@ -199,21 +294,9 @@ export async function POST(request: NextRequest) {
       .map((block: any) => block.text)
       .join("");
 
-    // Parse [SCHOOL_ID:xxx] markers and look up school card data
-    const schoolIdMatches = [...text.matchAll(/\[SCHOOL_ID:(\d+)\]/g)];
-    const seenIds = new Set<number>();
-    const schoolCards: { id: number; name: string }[] = [];
+    // Match schools: first by [SCHOOL_ID:xxx] tags, then by name matching as fallback
     const allSchools = getSchools();
-
-    for (const match of schoolIdMatches) {
-      const id = parseInt(match[1], 10);
-      if (seenIds.has(id)) continue;
-      seenIds.add(id);
-      const school = allSchools.find((s) => s.id === id);
-      if (school) {
-        schoolCards.push({ id: school.id, name: school.name });
-      }
-    }
+    const schoolCards = matchSchoolsByName(text, allSchools);
 
     return NextResponse.json({
       reply: text,

@@ -9,7 +9,7 @@ import { loadProfile, type PlayerProfile } from "@/lib/playerProfile";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-const AI_SCOUT_VERSION = "v1.3";
+const AI_SCOUT_VERSION = "v1.4";
 
 interface SchoolCard {
   id: number;
@@ -87,7 +87,7 @@ function FormattedMessage({ content }: { content: string }) {
   );
 }
 
-// "View Programs in ExtraBase" button shown after AI recommendations
+// Prominent "View Programs in ExtraBase" CTA shown after AI recommendations
 function ViewResultsButton({ schools }: { schools: SchoolCard[] }) {
   if (!schools || schools.length === 0) return null;
   return (
@@ -96,12 +96,20 @@ function ViewResultsButton({ schools }: { schools: SchoolCard[] }) {
         href={buildResultsUrl(schools)}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 px-4 py-2.5 bg-red-600 text-white text-sm font-semibold rounded-xl hover:bg-red-700 active:bg-red-800 transition-colors shadow-sm"
+        className="flex items-center gap-3 w-full p-3 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-xl hover:from-red-700 hover:to-red-800 active:from-red-800 active:to-red-900 transition-all shadow-md"
       >
-        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+        <div className="w-9 h-9 rounded-lg bg-white/20 flex items-center justify-center shrink-0">
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+        </div>
+        <div className="flex-1">
+          <p className="text-sm font-bold">View {schools.length} program{schools.length === 1 ? "" : "s"} in ExtraBase</p>
+          <p className="text-xs text-red-100">Rank, compare, and research these programs</p>
+        </div>
+        <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
         </svg>
-        View {schools.length} program{schools.length === 1 ? "" : "s"} in ExtraBase
       </a>
     </div>
   );
