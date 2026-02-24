@@ -15,6 +15,11 @@ export default function NewsTicker({ schools }: NewsTickerProps) {
   const animRef = useRef<number | null>(null);
   const speedRef = useRef(1); // px per frame
 
+  // Drag / swipe state
+  const dragging = useRef(false);
+  const dragStartX = useRef(0);
+  const dragScrollLeft = useRef(0);
+
   // Fetch ticker data
   useEffect(() => {
     if (schools.length === 0) {
@@ -106,14 +111,60 @@ export default function NewsTicker({ schools }: NewsTickerProps) {
   // Duplicate items for seamless infinite scroll
   const tickerItems = [...items, ...items];
 
+  /* ---- Mouse drag handlers ---- */
+  const onMouseDown = (e: React.MouseEvent) => {
+    const el = scrollRef.current;
+    if (!el) return;
+    dragging.current = true;
+    dragStartX.current = e.clientX;
+    dragScrollLeft.current = el.scrollLeft;
+    setPaused(true);
+    el.style.cursor = "grabbing";
+  };
+
+  const onMouseMove = (e: React.MouseEvent) => {
+    if (!dragging.current) return;
+    const el = scrollRef.current;
+    if (!el) return;
+    const dx = e.clientX - dragStartX.current;
+    el.scrollLeft = dragScrollLeft.current - dx;
+  };
+
+  const onMouseUp = () => {
+    if (!dragging.current) return;
+    dragging.current = false;
+    const el = scrollRef.current;
+    if (el) el.style.cursor = "grab";
+    // Resume auto-scroll after a short delay
+    setTimeout(() => setPaused(false), 1500);
+  };
+
+  /* ---- Touch drag handlers ---- */
+  const onTouchStart = (e: React.TouchEvent) => {
+    const el = scrollRef.current;
+    if (!el) return;
+    dragging.current = true;
+    dragStartX.current = e.touches[0].clientX;
+    dragScrollLeft.current = el.scrollLeft;
+    setPaused(true);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    if (!dragging.current) return;
+    const el = scrollRef.current;
+    if (!el) return;
+    const dx = e.touches[0].clientX - dragStartX.current;
+    el.scrollLeft = dragScrollLeft.current - dx;
+  };
+
+  const onTouchEnd = () => {
+    dragging.current = false;
+    // Resume auto-scroll after a short delay
+    setTimeout(() => setPaused(false), 2000);
+  };
+
   return (
-    <div
-      className="bg-[#1a1a2e] border-l-4 border-yellow-500 rounded-lg overflow-hidden"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-      onTouchStart={() => setPaused(true)}
-      onTouchEnd={() => setPaused(false)}
-    >
+    <div className="bg-[#1a1a2e] border-l-4 border-yellow-500 rounded-lg overflow-hidden">
       <div className="flex items-center">
         {/* LIVE label */}
         <div className="shrink-0 px-3 sm:px-4 py-2.5 flex items-center gap-1.5 border-r border-white/10">
@@ -124,11 +175,19 @@ export default function NewsTicker({ schools }: NewsTickerProps) {
           <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-yellow-500">LIVE</span>
         </div>
 
-        {/* Scrolling ticker */}
+        {/* Scrolling ticker — draggable */}
         <div
           ref={scrollRef}
-          className="flex-1 overflow-hidden"
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          className="flex-1 overflow-hidden select-none"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none", cursor: "grab" }}
+          onMouseDown={onMouseDown}
+          onMouseMove={onMouseMove}
+          onMouseUp={onMouseUp}
+          onMouseLeave={() => { if (dragging.current) onMouseUp(); else setPaused(false); }}
+          onMouseEnter={() => { if (!dragging.current) setPaused(true); }}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
         >
           <style>{`.ticker-scroll::-webkit-scrollbar { display: none; }`}</style>
           <div className="ticker-scroll flex items-center whitespace-nowrap py-2.5">
@@ -157,7 +216,8 @@ export default function NewsTicker({ schools }: NewsTickerProps) {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center hover:bg-white/5 rounded px-2 py-0.5 transition-colors"
-                      onClick={(e) => e.stopPropagation()}
+                      onClick={(e) => { e.stopPropagation(); if (dragging.current) e.preventDefault(); }}
+                      onDragStart={(e) => e.preventDefault()}
                     >
                       {inner}
                       <svg className="w-3 h-3 text-gray-500 ml-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
