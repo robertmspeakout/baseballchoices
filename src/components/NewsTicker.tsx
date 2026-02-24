@@ -62,14 +62,14 @@ export default function NewsTicker({ schools }: NewsTickerProps) {
   // Loading skeleton
   if (loading) {
     return (
-      <div className="bg-[#1a1a2e] border-l-4 border-yellow-500 rounded-lg overflow-hidden">
+      <div className="bg-gray-50 border border-gray-300 rounded-lg overflow-hidden">
         <div className="flex items-center gap-6 px-4 py-2.5">
-          <span className="shrink-0 text-[10px] font-bold uppercase tracking-widest text-yellow-500/80">LIVE</span>
+          <span className="shrink-0 text-[10px] font-bold uppercase tracking-widest text-gray-500">LIVE</span>
           <div className="flex gap-8">
             {[1, 2, 3].map((i) => (
               <div key={i} className="flex items-center gap-2">
-                <div className="w-5 h-5 rounded-full bg-white/10 animate-pulse" />
-                <div className="w-32 h-3 rounded bg-white/10 animate-pulse" />
+                <div className="w-5 h-5 rounded-full bg-gray-200 animate-pulse" />
+                <div className="w-32 h-3 rounded bg-gray-200 animate-pulse" />
               </div>
             ))}
           </div>
@@ -84,19 +84,19 @@ export default function NewsTicker({ schools }: NewsTickerProps) {
     switch (type) {
       case "score":
         return (
-          <svg className="w-3 h-3 text-yellow-400 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+          <svg className="w-3 h-3 text-yellow-600 shrink-0" fill="currentColor" viewBox="0 0 20 20">
             <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3.586L7.707 11.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l2-2a1 1 0 00-1.414-1.414L11 10.586V7z" />
           </svg>
         );
       case "next_game":
         return (
-          <svg className="w-3 h-3 text-green-400 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+          <svg className="w-3 h-3 text-green-600 shrink-0" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
           </svg>
         );
       case "record":
         return (
-          <svg className="w-3 h-3 text-blue-400 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+          <svg className="w-3 h-3 text-blue-600 shrink-0" fill="currentColor" viewBox="0 0 20 20">
             <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zm6-4a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zm6-3a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
           </svg>
         );
@@ -108,7 +108,7 @@ export default function NewsTicker({ schools }: NewsTickerProps) {
 
   return (
     <div
-      className="bg-[#1a1a2e] border-l-4 border-yellow-500 rounded-lg overflow-hidden"
+      className="bg-gray-50 border border-gray-300 rounded-lg overflow-hidden"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onTouchStart={() => setPaused(true)}
@@ -116,12 +116,12 @@ export default function NewsTicker({ schools }: NewsTickerProps) {
     >
       <div className="flex items-center">
         {/* LIVE label */}
-        <div className="shrink-0 px-3 sm:px-4 py-2.5 flex items-center gap-1.5 border-r border-white/10">
+        <div className="shrink-0 px-3 sm:px-4 py-2.5 flex items-center gap-1.5 border-r border-gray-300">
           <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-yellow-500" />
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-red-600" />
           </span>
-          <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-yellow-500">LIVE</span>
+          <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-gray-700">LIVE</span>
         </div>
 
         {/* Scrolling ticker */}
@@ -144,8 +144,8 @@ export default function NewsTicker({ schools }: NewsTickerProps) {
                     />
                   )}
                   {typeIcon(item.type)}
-                  <span className="text-xs sm:text-sm font-semibold text-white">{item.text}</span>
-                  <span className="text-[10px] sm:text-xs text-gray-400 ml-0.5">{item.subtext}</span>
+                  <span className="text-xs sm:text-sm font-semibold text-gray-900">{item.text}</span>
+                  <span className="text-[10px] sm:text-xs text-gray-500 ml-0.5">{item.subtext}</span>
                 </span>
               );
 
@@ -156,7 +156,7 @@ export default function NewsTicker({ schools }: NewsTickerProps) {
                       href={item.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center hover:bg-white/5 rounded px-2 py-0.5 transition-colors"
+                      className="inline-flex items-center hover:bg-gray-200/60 rounded px-2 py-0.5 transition-colors"
                       onClick={(e) => e.stopPropagation()}
                     >
                       {inner}
@@ -168,7 +168,7 @@ export default function NewsTicker({ schools }: NewsTickerProps) {
                     <span className="px-2 py-0.5">{inner}</span>
                   )}
                   {/* Separator diamond */}
-                  <span className="text-yellow-600/50 mx-3 text-xs select-none">&#9670;</span>
+                  <span className="text-gray-400 mx-3 text-xs select-none">&#9670;</span>
                 </span>
               );
             })}
