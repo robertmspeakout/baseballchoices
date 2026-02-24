@@ -494,10 +494,10 @@ export default function Home() {
       .catch(() => {});
   }, [vipSchoolNames]);
 
-  // Schools for the live ticker (4-5 star, D1/D2 only — ESPN has schedule data for these)
+  // Schools for the live ticker — user's 4 and 5 star rated schools only
   const tickerSchools = useMemo(() => {
     return schoolsWithUserData
-      .filter((s) => s.priority >= 4 && (s.division === "D1" || s.division === "D2"))
+      .filter((s) => s.priority >= 4)
       .map((s) => ({ name: s.name, logo_url: s.logo_url }));
   }, [schoolsWithUserData]);
 
