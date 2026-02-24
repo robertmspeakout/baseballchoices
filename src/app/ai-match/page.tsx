@@ -9,7 +9,7 @@ import { loadProfile, type PlayerProfile } from "@/lib/playerProfile";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-const AI_SCOUT_VERSION = "v1.6";
+const AI_SCOUT_VERSION = "v1.7";
 
 interface SchoolCard {
   id: number;

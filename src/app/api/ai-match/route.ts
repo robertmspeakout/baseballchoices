@@ -245,16 +245,25 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  // Rate limit check
-  const { allowed, remaining } = aiLimiter.check(session.user.id);
-  if (!allowed) {
-    return NextResponse.json(
-      {
-        error: "You've used all your AI Scout searches for today. Your limit resets tomorrow — in the meantime, browse programs directly!",
-        remaining: 0,
-      },
-      { status: 429 }
-    );
+  // Unlimited accounts bypass rate limiting
+  const UNLIMITED_EMAILS = ["testing@extrabase.com"];
+  const userEmail = session.user.email?.toLowerCase() || "";
+  const isUnlimited = UNLIMITED_EMAILS.includes(userEmail);
+
+  // Rate limit check (skip for unlimited accounts)
+  let remaining: number | undefined;
+  if (!isUnlimited) {
+    const result = aiLimiter.check(session.user.id);
+    remaining = result.remaining;
+    if (!result.allowed) {
+      return NextResponse.json(
+        {
+          error: "You've used all your AI Scout searches for today. Your limit resets tomorrow — in the meantime, browse programs directly!",
+          remaining: 0,
+        },
+        { status: 429 }
+      );
+    }
   }
 
   const apiKey = process.env.ANTHROPIC_API_KEY;
