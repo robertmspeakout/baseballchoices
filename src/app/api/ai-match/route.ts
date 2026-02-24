@@ -151,8 +151,35 @@ export async function POST(request: NextRequest) {
       .map((block: any) => block.text)
       .join("");
 
+    // Parse [SCHOOL_ID:xxx] markers and look up school card data
+    const schoolIdMatches = [...text.matchAll(/\[SCHOOL_ID:(\d+)\]/g)];
+    const seenIds = new Set<number>();
+    const schoolCards: any[] = [];
+    const allSchools = getSchools();
+
+    for (const match of schoolIdMatches) {
+      const id = parseInt(match[1], 10);
+      if (seenIds.has(id)) continue;
+      seenIds.add(id);
+      const school = allSchools.find((s) => s.id === id);
+      if (school) {
+        schoolCards.push({
+          id: school.id,
+          name: school.name,
+          mascot: school.mascot || "",
+          city: school.city,
+          state: school.state,
+          division: school.division,
+          conference: school.conference,
+          logo_url: school.logo_url || null,
+          primary_color: school.primary_color || null,
+        });
+      }
+    }
+
     return NextResponse.json({
       reply: text,
+      schools: schoolCards,
       usage: {
         input_tokens: response.usage.input_tokens,
         output_tokens: response.usage.output_tokens,

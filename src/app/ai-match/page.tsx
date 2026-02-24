@@ -2,7 +2,6 @@
 
 import { useEffect, useState, useRef, useCallback } from "react";
 import { useSession } from "next-auth/react";
-import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import AuthGate from "@/components/AuthGate";
@@ -10,32 +9,92 @@ import { loadProfile, type PlayerProfile } from "@/lib/playerProfile";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+interface SchoolCard {
+  id: number;
+  name: string;
+  mascot: string;
+  city: string;
+  state: string;
+  division: string;
+  conference: string;
+  logo_url: string | null;
+  primary_color: string | null;
+}
+
 interface ChatMessage {
   role: "user" | "assistant";
   content: string;
+  schools?: SchoolCard[];
 }
 
-// Parse [SCHOOL_ID:123] markers into clickable links
-function parseSchoolLinks(text: string): React.ReactNode[] {
-  const parts = text.split(/(\[SCHOOL_ID:\d+\])/g);
-  return parts.map((part, i) => {
-    const match = part.match(/\[SCHOOL_ID:(\d+)\]/);
-    if (match) {
-      const id = match[1];
-      return (
-        <Link key={i} href={`/school/${id}`} className="inline-flex items-center gap-0.5 text-red-600 hover:text-red-700 font-semibold" onClick={(e) => e.stopPropagation()}>
-          <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
-          View
-        </Link>
-      );
-    }
-    return <span key={i}>{part}</span>;
-  });
+// Strip [SCHOOL_ID:123] markers from display text
+function stripSchoolMarkers(text: string): string {
+  return text.replace(/\s*\[SCHOOL_ID:\d+\]/g, "");
+}
+
+// Division badge color mapping
+function divisionColor(div: string) {
+  switch (div) {
+    case "D1": return "bg-blue-100 text-blue-800";
+    case "D2": return "bg-green-100 text-green-800";
+    case "D3": return "bg-purple-100 text-purple-800";
+    default: return "bg-orange-100 text-orange-800";
+  }
+}
+
+// School result cards rendered below AI messages
+function SchoolCards({ schools }: { schools: SchoolCard[] }) {
+  if (!schools || schools.length === 0) return null;
+  return (
+    <div className="mt-3 space-y-2">
+      {schools.map((school) => (
+        <a
+          key={school.id}
+          href={`/school/${school.id}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-3 w-full p-3 bg-white border border-gray-200 rounded-xl shadow-sm hover:border-blue-300 hover:shadow-md active:bg-gray-50 transition-all text-left"
+        >
+          {school.logo_url ? (
+            <img
+              src={school.logo_url}
+              alt=""
+              className="w-10 h-10 rounded-full object-contain bg-gray-50 border border-gray-200 shrink-0"
+            />
+          ) : (
+            <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center shrink-0">
+              <span className="text-sm font-bold text-gray-400">
+                {school.name.charAt(0)}
+              </span>
+            </div>
+          )}
+          <div className="min-w-0 flex-1">
+            <p className="text-sm font-semibold text-gray-900 truncate">{school.name}</p>
+            <div className="flex flex-wrap items-center gap-1.5 mt-1">
+              <span className={`px-2 py-0.5 rounded-full text-xs font-semibold ${divisionColor(school.division)}`}>
+                {school.division}
+              </span>
+              <span className="bg-gray-100 px-2 py-0.5 rounded-full text-xs text-gray-600">
+                {school.conference}
+              </span>
+              <span className="text-xs text-gray-500">
+                {school.city}, {school.state}
+              </span>
+            </div>
+          </div>
+          <svg className="w-4 h-4 text-gray-300 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+        </a>
+      ))}
+    </div>
+  );
 }
 
 // Format assistant messages with basic markdown-like formatting
 function FormattedMessage({ content }: { content: string }) {
-  const lines = content.split("\n");
+  const cleaned = stripSchoolMarkers(content);
+  const lines = cleaned.split("\n");
 
   return (
     <div className="space-y-2">
@@ -48,7 +107,7 @@ function FormattedMessage({ content }: { content: string }) {
           const bulletContent = line.replace(/^[\-\*•]\s/, "");
           return (
             <div key={i} className="flex gap-2 pl-2">
-              <span className="text-red-500 shrink-0 mt-0.5">•</span>
+              <span className="text-red-500 shrink-0 mt-0.5">&bull;</span>
               <span dangerouslySetInnerHTML={{ __html: bulletContent.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') }} />
             </div>
           );
@@ -69,12 +128,7 @@ function FormattedMessage({ content }: { content: string }) {
         }
 
         // Regular text
-        return <p key={i}>{parseSchoolLinks(line).map((node, j) => {
-          if (typeof node === "string") {
-            return <span key={j} dangerouslySetInnerHTML={{ __html: node.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') }} />;
-          }
-          return node;
-        })}</p>;
+        return <p key={i} dangerouslySetInnerHTML={{ __html: formatted }} />;
       })}
     </div>
   );
@@ -243,6 +297,7 @@ export default function AIMatchPage() {
         setMessages([...newMessages, {
           role: "assistant",
           content: data.reply,
+          schools: data.schools || [],
         }]);
       }
     } catch {
@@ -325,17 +380,22 @@ export default function AIMatchPage() {
                   key={i}
                   className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
                 >
-                  <div
-                    className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${
-                      msg.role === "user"
-                        ? "bg-red-600 text-white rounded-br-md"
-                        : "bg-gray-100 text-gray-800 rounded-bl-md"
-                    }`}
-                  >
-                    {msg.role === "assistant" ? (
-                      <FormattedMessage content={msg.content} />
-                    ) : (
-                      msg.content
+                  <div className={`max-w-[85%] ${msg.role === "user" ? "" : ""}`}>
+                    <div
+                      className={`rounded-2xl px-4 py-3 text-sm leading-relaxed ${
+                        msg.role === "user"
+                          ? "bg-red-600 text-white rounded-br-md"
+                          : "bg-gray-100 text-gray-800 rounded-bl-md"
+                      }`}
+                    >
+                      {msg.role === "assistant" ? (
+                        <FormattedMessage content={msg.content} />
+                      ) : (
+                        msg.content
+                      )}
+                    </div>
+                    {msg.role === "assistant" && msg.schools && msg.schools.length > 0 && (
+                      <SchoolCards schools={msg.schools} />
                     )}
                   </div>
                 </div>
