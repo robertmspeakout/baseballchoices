@@ -184,11 +184,20 @@ const STARTER_PROMPTS = [
   "I want to stay close to home and keep costs low",
 ];
 
+const CHAT_STORAGE_KEY = "ai_scout_chat";
+
+function loadSavedChat(): ChatMessage[] {
+  try {
+    const raw = sessionStorage.getItem(CHAT_STORAGE_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch { return []; }
+}
+
 export default function AIMatchPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
   const { schools: allSchools, conferences } = useSchools();
-  const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [messages, setMessages] = useState<ChatMessage[]>(loadSavedChat);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [profile, setProfile] = useState<PlayerProfile | null>(null);
@@ -197,6 +206,13 @@ export default function AIMatchPage() {
   const [searchOverlayOpen, setSearchOverlayOpen] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
+
+  // Persist conversation to sessionStorage
+  useEffect(() => {
+    if (messages.length > 0) {
+      sessionStorage.setItem(CHAT_STORAGE_KEY, JSON.stringify(messages));
+    }
+  }, [messages]);
 
   // Load player profile
   useEffect(() => {
