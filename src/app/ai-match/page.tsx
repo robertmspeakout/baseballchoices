@@ -343,7 +343,7 @@ export default function AIMatchPage() {
       <div className="min-h-screen bg-gray-50 flex flex-col">
         <SiteHeader backgroundImage={userBgPic || undefined} activeNav="AI Scout" />
 
-        <main className="flex-1 max-w-3xl mx-auto w-full px-3 sm:px-6 py-4 sm:py-6 flex flex-col">
+        <main className="flex-1 max-w-[1400px] mx-auto w-full px-3 sm:px-6 py-4 sm:py-6 flex flex-col">
           {/* Division dropdown + search */}
           <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm mb-4">
             <div className="flex items-center gap-3">
@@ -352,7 +352,7 @@ export default function AIMatchPage() {
                   value="ai-scout"
                   onChange={(e) => {
                     const val = e.target.value;
-                    if (val === "mylist") router.push("/my-list");
+                    if (val === "mylist") router.push("/#mylist");
                     else if (val === "D1") router.push("/programs/d1");
                     else if (val === "D2") router.push("/programs/d2");
                     else if (val === "D3") router.push("/programs/d3");
