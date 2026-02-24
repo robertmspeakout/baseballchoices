@@ -14,6 +14,7 @@ const NAV_ITEMS = [
   { label: "JUCO Programs", href: "/programs/juco", icon: null },
 ];
 
+
 function StarIcon({ className }: { className?: string }) {
   return (
     <svg className={className} fill="currentColor" viewBox="0 0 20 20">

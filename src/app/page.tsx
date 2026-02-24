@@ -752,8 +752,6 @@ export default function Home() {
                     const val = e.target.value;
                     if (val === "ai-scout") {
                       router.push("/ai-match");
-                    } else if (val === "match") {
-                      router.push("/match");
                     } else {
                       handleTabChange(val as TabKey);
                     }
@@ -761,12 +759,11 @@ export default function Home() {
                   className="w-full appearance-none bg-gray-50 border border-gray-400 rounded-lg px-4 py-3 pr-10 text-sm font-semibold text-gray-900 focus:outline-none focus:border-[#CC0000] focus:ring-1 focus:ring-[#CC0000] cursor-pointer"
                 >
                   <option value="mylist">My Top Programs</option>
+                  <option value="ai-scout">AI Scout</option>
                   <option value="D1">Division I Programs</option>
                   <option value="D2">Division II Programs</option>
                   <option value="D3">Division III Programs</option>
                   <option value="JUCO">JUCO Programs</option>
-                  <option value="ai-scout">AI Scout</option>
-                  <option value="match">My AI Matches</option>
                 </select>
                 <svg className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#CC0000]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
