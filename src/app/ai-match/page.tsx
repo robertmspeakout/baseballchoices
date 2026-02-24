@@ -22,11 +22,19 @@ interface ChatMessage {
   schools?: SchoolCard[];
 }
 
-// Strip [SCHOOL_ID:123] markers and **bold** markdown from display text
-function cleanDisplayText(text: string): string {
-  return text
-    .replace(/\s*\[SCHOOL_ID:\d+\]/g, "")
-    .replace(/\*\*(.*?)\*\*/g, "$1");
+// Strip [SCHOOL_ID:123] markers from display text
+function stripMarkers(text: string): string {
+  return text.replace(/\s*\[SCHOOL_ID:\d+\]/g, "");
+}
+
+// Convert **bold** to <strong> tags (HTML-safe)
+function renderInlineFormatting(text: string): string {
+  // Escape HTML first, then apply formatting
+  const escaped = text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+  return escaped.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
 }
 
 // Build the "View in ExtraBase" URL with school IDs
@@ -35,21 +43,21 @@ function buildResultsUrl(schools: SchoolCard[]): string {
   return `/ai-results?ids=${ids}`;
 }
 
-// Format assistant messages — plain text with bullet/numbered list support
+// Format assistant messages with bold, bullets, numbered lists, and headers
 function FormattedMessage({ content }: { content: string }) {
-  const cleaned = cleanDisplayText(content);
+  const cleaned = stripMarkers(content);
   const lines = cleaned.split("\n");
 
   return (
     <div className="space-y-2">
       {lines.map((line, i) => {
         // Bullet points
-        if (line.match(/^[\-\*•]\s/)) {
-          const bulletContent = line.replace(/^[\-\*•]\s/, "");
+        if (line.match(/^[\-•]\s/)) {
+          const bulletContent = line.replace(/^[\-•]\s/, "");
           return (
             <div key={i} className="flex gap-2 pl-2">
               <span className="text-red-500 shrink-0 mt-0.5">&bull;</span>
-              <span>{bulletContent}</span>
+              <span dangerouslySetInnerHTML={{ __html: renderInlineFormatting(bulletContent) }} />
             </div>
           );
         }
@@ -58,7 +66,7 @@ function FormattedMessage({ content }: { content: string }) {
         if (line.match(/^\d+[\.\)]\s/)) {
           return (
             <div key={i} className="flex gap-2 pl-2">
-              <span>{line}</span>
+              <span dangerouslySetInnerHTML={{ __html: renderInlineFormatting(line) }} />
             </div>
           );
         }
@@ -68,8 +76,8 @@ function FormattedMessage({ content }: { content: string }) {
           return <div key={i} className="h-1" />;
         }
 
-        // Regular text
-        return <p key={i}>{line}</p>;
+        // Regular text (bold renders as <strong>)
+        return <p key={i} dangerouslySetInnerHTML={{ __html: renderInlineFormatting(line) }} />;
       })}
     </div>
   );
