@@ -292,7 +292,7 @@ export default function ProgramsView({ mode, pageTitle, activeNavLabel }: Progra
                   <p className="text-xs text-gray-500">{sorted.length} programs matched your search</p>
                 </div>
               </div>
-              <Link href="/ai-match" className="text-xs font-semibold text-red-600 hover:text-red-700 flex items-center gap-1">
+              <Link href="/ai-match?resume=true" className="text-xs font-semibold text-red-600 hover:text-red-700 flex items-center gap-1">
                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                 </svg>

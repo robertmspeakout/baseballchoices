@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState, useRef, useCallback } from "react";
+import { Suspense, useEffect, useState, useRef, useCallback } from "react";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import SearchOverlay from "@/components/SearchOverlay";
@@ -97,13 +97,11 @@ function ViewResultsButton({ schools }: { schools: SchoolCard[] }) {
     <div className="mt-3">
       <a
         href={buildResultsUrl(schools)}
-        target="_blank"
-        rel="noopener noreferrer"
         className="flex items-center gap-3 w-full p-3 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-xl hover:from-red-700 hover:to-red-800 active:from-red-800 active:to-red-900 transition-all shadow-md"
       >
         <div className="w-9 h-9 rounded-lg bg-white/20 flex items-center justify-center shrink-0">
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
         </div>
         <div className="flex-1">
@@ -210,8 +208,21 @@ function getSavedChatSnippet(): { userMsg: string; assistantMsg: string } | null
 }
 
 export default function AIMatchPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-10 w-10 border-4 border-blue-200 border-t-blue-600" />
+      </div>
+    }>
+      <AIMatchContent />
+    </Suspense>
+  );
+}
+
+function AIMatchContent() {
   const { data: session, status } = useSession();
   const router = useRouter();
+  const searchParams = useSearchParams();
   const { schools: allSchools, conferences } = useSchools();
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState("");
@@ -223,6 +234,19 @@ export default function AIMatchPage() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const hasInteracted = useRef(false);
+
+  // Auto-resume conversation when navigating back from results page
+  useEffect(() => {
+    if (searchParams.get("resume") === "true") {
+      const saved = loadSavedChat();
+      if (saved.length > 0) {
+        hasInteracted.current = true;
+        setMessages(saved);
+      }
+      // Clean up the URL without triggering a navigation
+      router.replace("/ai-match", { scroll: false });
+    }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Persist conversation to sessionStorage
   useEffect(() => {
