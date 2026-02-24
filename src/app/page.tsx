@@ -732,7 +732,7 @@ export default function Home() {
         {activeTab === "home" && isLoggedIn && (
           <h2 className="text-lg sm:text-xl font-bold text-gray-900">Top 25 D1 Programs</h2>
         )}
-        {(activeTab === "mylist" || activeTab === "D1" || activeTab === "D2" || activeTab === "D3") && (
+        {(activeTab === "mylist" || activeTab === "D1" || activeTab === "D2" || activeTab === "D3" || activeTab === "JUCO") && (
           <>
             <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
               <div className="relative block sm:inline-block">
