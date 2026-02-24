@@ -206,6 +206,7 @@ export default function AIMatchPage() {
   const [searchOverlayOpen, setSearchOverlayOpen] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
+  const hasInteracted = useRef(false);
 
   // Persist conversation to sessionStorage
   useEffect(() => {
@@ -255,9 +256,11 @@ export default function AIMatchPage() {
     loadData();
   }, [status, session]);
 
-  // Auto-scroll to bottom
+  // Auto-scroll to bottom — only after user sends a message, not on initial load
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (hasInteracted.current) {
+      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
   }, [messages, loading]);
 
   // Auto-resize textarea
@@ -271,6 +274,7 @@ export default function AIMatchPage() {
     const messageText = text || input.trim();
     if (!messageText || loading) return;
 
+    hasInteracted.current = true;
     const userMessage: ChatMessage = { role: "user", content: messageText };
     const newMessages = [...messages, userMessage];
     setMessages(newMessages);
