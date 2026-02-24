@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import SearchFilters from "@/components/SearchFilters";
+import SearchOverlay from "@/components/SearchOverlay";
 import SchoolTable from "@/components/SchoolTable";
 import NewsTicker from "@/components/NewsTicker";
 import { getAllUserData, setUserData, fetchUserDataFromDB, saveUserDataToDB, bulkSyncToDB, type UserData } from "@/lib/userData";
@@ -259,6 +260,7 @@ export default function Home() {
     zip: "",
     region: "",
   });
+  const [searchOverlayOpen, setSearchOverlayOpen] = useState(false);
 
   // Server-loaded school data
   const [allSchools, setAllSchools] = useState<School[]>([]);
@@ -741,45 +743,53 @@ export default function Home() {
           <h2 className="text-lg sm:text-xl font-bold text-gray-900">Top 25 D1 Programs</h2>
         )}
         {(activeTab === "mylist" || activeTab === "D1" || activeTab === "D2" || activeTab === "D3" || activeTab === "JUCO") && (
-          <>
-            <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
-              <div className="relative block sm:inline-block">
-              <select
-                value={activeTab === "mylist" ? "mylist" : activeTab}
-                onChange={(e) => {
-                  const val = e.target.value;
-                  if (val === "match") {
-                    router.push("/match");
-                  } else {
-                    handleTabChange(val as TabKey);
-                  }
-                }}
-                className="w-full sm:w-auto appearance-none bg-gray-50 border border-gray-400 rounded-lg px-4 py-3 pr-10 text-sm font-semibold text-gray-900 focus:outline-none focus:border-[#CC0000] focus:ring-1 focus:ring-[#CC0000] cursor-pointer"
-              >
-                <option value="mylist">My Top Programs</option>
-                <option value="match">My AI Matches</option>
-                <option value="D1">Division I Programs</option>
-                <option value="D2">Division II Programs</option>
-                <option value="D3">Division III Programs</option>
-                <option value="JUCO">JUCO Programs</option>
-              </select>
-              <svg className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#CC0000]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
+          <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
+            <div className="flex items-center gap-3">
+              <div className="relative flex-1">
+                <select
+                  value={activeTab === "mylist" ? "mylist" : activeTab}
+                  onChange={(e) => {
+                    const val = e.target.value;
+                    if (val === "match") {
+                      router.push("/match");
+                    } else {
+                      handleTabChange(val as TabKey);
+                    }
+                  }}
+                  className="w-full appearance-none bg-gray-50 border border-gray-400 rounded-lg px-4 py-3 pr-10 text-sm font-semibold text-gray-900 focus:outline-none focus:border-[#CC0000] focus:ring-1 focus:ring-[#CC0000] cursor-pointer"
+                >
+                  <option value="mylist">My Top Programs</option>
+                  <option value="match">My AI Matches</option>
+                  <option value="D1">Division I Programs</option>
+                  <option value="D2">Division II Programs</option>
+                  <option value="D3">Division III Programs</option>
+                  <option value="JUCO">JUCO Programs</option>
+                </select>
+                <svg className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#CC0000]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
               </div>
+              {/* Search icon button */}
+              <button
+                onClick={() => setSearchOverlayOpen(true)}
+                className="shrink-0 w-[42px] h-[42px] flex items-center justify-center bg-gray-50 border border-gray-400 rounded-lg hover:bg-gray-100 active:bg-gray-200 transition-colors"
+                aria-label="Search"
+              >
+                <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </button>
             </div>
-          </>
+          </div>
         )}
 
-        {(activeTab === "mylist" || showDivisionFilters) && isLoggedIn && (
-          <SearchFilters
-            filters={filters}
-            filterOptions={filterOptions}
-            onChange={setFilters}
-            onZipSearch={handleZipSearch}
-            activeTab={activeTab}
-          />
-        )}
+        {/* Full-screen search overlay */}
+        <SearchOverlay
+          open={searchOverlayOpen}
+          onClose={() => setSearchOverlayOpen(false)}
+          schools={allSchools}
+          conferences={filterOptions.conferences}
+        />
 
         {/* Live Ticker — scores, next games, records for top-rated schools */}
         {isLoggedIn && tickerSchools.length > 0 && !filters.search && (
