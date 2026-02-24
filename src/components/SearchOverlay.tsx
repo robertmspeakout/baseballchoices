@@ -25,6 +25,8 @@ interface SearchOverlayProps {
   schools: School[];
   /** Unique conference names for quick-filter chips */
   conferences: string[];
+  /** Current active tab — quick filters only shown for D1/mylist */
+  activeTab?: string;
 }
 
 /* ------------------------------------------------------------------ */
@@ -76,7 +78,7 @@ function clearRecents() {
 /* ------------------------------------------------------------------ */
 /*  Component                                                          */
 /* ------------------------------------------------------------------ */
-export default function SearchOverlay({ open, onClose, schools, conferences }: SearchOverlayProps) {
+export default function SearchOverlay({ open, onClose, schools, conferences, activeTab }: SearchOverlayProps) {
   const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
   const [query, setQuery] = useState("");
@@ -181,8 +183,9 @@ export default function SearchOverlay({ open, onClose, schools, conferences }: S
     inputRef.current?.focus();
   };
 
-  /* ---- Quick-filter chips: only conferences that exist in the data ---- */
-  const availableChips = QUICK_CONFERENCES.filter((c) => conferences.includes(c));
+  /* ---- Quick-filter chips: only for D1/mylist tabs, only conferences that exist ---- */
+  const showChips = !activeTab || activeTab === "mylist" || activeTab === "D1";
+  const availableChips = showChips ? QUICK_CONFERENCES.filter((c) => conferences.includes(c)) : [];
 
   const hasQuery = query.trim().length > 0;
 
@@ -210,7 +213,7 @@ export default function SearchOverlay({ open, onClose, schools, conferences }: S
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search schools, coaches, cities..."
+            placeholder="Search all programs"
             className="w-full pl-10 pr-10 py-3 bg-gray-100 border border-gray-300 rounded-xl text-base text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           />
           {/* Clear (X) button — only when there's text */}
@@ -282,12 +285,12 @@ export default function SearchOverlay({ open, onClose, schools, conferences }: S
 
         {/* ===== RESULTS STATE ===== */}
         {hasQuery && results.length > 0 && (
-          <div className="divide-y divide-gray-100">
+          <div className="px-4 py-3 space-y-2">
             {results.map((school, idx) => (
               <button
                 key={school.id}
                 onClick={() => handleSelect(school)}
-                className="flex items-center gap-3 w-full px-4 py-3 hover:bg-gray-50 active:bg-gray-100 transition-colors text-left"
+                className="flex items-center gap-3 w-full p-3 bg-white border border-gray-200 rounded-xl shadow-sm hover:border-blue-300 hover:shadow-md active:bg-gray-50 transition-all text-left"
                 style={{
                   opacity: idx < visibleCount ? 1 : 0,
                   transform: idx < visibleCount ? "translateY(0)" : "translateY(8px)",
@@ -299,11 +302,11 @@ export default function SearchOverlay({ open, onClose, schools, conferences }: S
                   <img
                     src={school.logo_url}
                     alt=""
-                    className="w-10 h-10 rounded-full object-contain bg-gray-100 border border-gray-200 shrink-0"
+                    className="w-10 h-10 rounded-full object-contain bg-gray-50 border border-gray-200 shrink-0"
                   />
                 ) : (
-                  <div className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center shrink-0">
-                    <span className="text-xs font-bold text-gray-500">
+                  <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center shrink-0">
+                    <span className="text-sm font-bold text-gray-400">
                       {school.name.charAt(0)}
                     </span>
                   </div>
@@ -314,6 +317,9 @@ export default function SearchOverlay({ open, onClose, schools, conferences }: S
                     {school.division} &middot; {school.conference} &middot; {school.city}, {school.state}
                   </p>
                 </div>
+                <svg className="w-4 h-4 text-gray-300 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
               </button>
             ))}
           </div>

@@ -285,6 +285,7 @@ export default function ProgramsView({ mode, pageTitle, activeNavLabel }: Progra
           onClose={() => setSearchOverlayOpen(false)}
           schools={allSchools}
           conferences={filterOptions.conferences}
+          activeTab={mode}
         />
 
         {mode === "mylist" && !filters.search && sorted.length === 0 && (

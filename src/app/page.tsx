@@ -789,6 +789,7 @@ export default function Home() {
           onClose={() => setSearchOverlayOpen(false)}
           schools={allSchools}
           conferences={filterOptions.conferences}
+          activeTab={activeTab}
         />
 
         {/* Live Ticker — only on My Top Programs tab */}
