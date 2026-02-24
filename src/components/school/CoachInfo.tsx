@@ -39,6 +39,9 @@ interface SchoolDetail {
   ncaa_regionals: number;
   recruiting_questionnaire_url: string | null;
   nil_url: string | null;
+  recruiting_coordinator_name: string | null;
+  recruiting_coordinator_email: string | null;
+  mailing_address: string | null;
   high_academic: boolean;
   primary_color?: string | null;
 }
@@ -82,6 +85,25 @@ export default function CoachInfo({ school }: CoachInfoProps) {
               )}
             </div>
 
+            {school.recruiting_coordinator_name && (
+              <div className="mt-3">
+                <p className="text-sm sm:text-base text-gray-900 font-bold">{school.recruiting_coordinator_name}</p>
+                <p className="text-xs text-gray-500">Recruiting Coordinator</p>
+                {school.recruiting_coordinator_email && (
+                  <a href={`mailto:${school.recruiting_coordinator_email}`} className="text-xs sm:text-sm text-blue-600 hover:underline break-all mt-1 block">
+                    {school.recruiting_coordinator_email}
+                  </a>
+                )}
+              </div>
+            )}
+
+            {school.mailing_address && (
+              <div className="mt-3">
+                <p className="text-xs text-gray-500 font-semibold">Mailing Address</p>
+                <p className="text-xs sm:text-sm text-gray-700">{school.mailing_address}</p>
+              </div>
+            )}
+
             {school.website && (
               <div className="mt-2">
                 <a
@@ -95,6 +117,7 @@ export default function CoachInfo({ school }: CoachInfoProps) {
                   </svg>
                   View Full Coaching Staff
                 </a>
+                <p className="text-xs text-gray-500 italic mt-2">Please note: Many programs do not publish their coach&apos;s real email addresses. We suggest visiting the Coaching Staff link above to find out more and/or writing a real physical note to the address listed below. A handwritten note really stands out!</p>
               </div>
             )}
 
