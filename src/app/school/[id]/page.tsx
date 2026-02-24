@@ -861,14 +861,7 @@ export default function SchoolPage({
                   </div>
                 )}
 
-                {school.mailing_address && (
-                  <div className="mt-3">
-                    <p className="text-xs text-gray-500 font-semibold">Mailing Address</p>
-                    <p className="text-xs sm:text-sm text-gray-700">{school.mailing_address}</p>
-                  </div>
-                )}
-
-                {school.website && (
+                 {school.website && (
                   <div className="mt-2">
                     <a
                       href={`${school.website}/coaches`}
@@ -882,6 +875,13 @@ export default function SchoolPage({
                       View Full Coaching Staff
                     </a>
                     <p className="text-xs text-gray-500 italic mt-2">Please note: Many programs do not publish their coach&apos;s real email addresses. We suggest visiting the Coaching Staff link above to find out more and/or writing a real physical note to the address listed below. A handwritten note really stands out!</p>
+                  </div>
+                )}
+
+                 {school.mailing_address && (
+                  <div className="mt-3">
+                    <p className="text-xs text-gray-500 font-semibold">Mailing Address</p>
+                    <p className="text-xs sm:text-sm text-gray-700">{school.mailing_address}</p>
                   </div>
                 )}
 
