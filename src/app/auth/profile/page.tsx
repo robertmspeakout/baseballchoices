@@ -54,17 +54,40 @@ function ProfileForm({ initialStep }: { initialStep: number }) {
   const [cropImage, setCropImage] = useState<string | null>(null);
   const [cropTarget, setCropTarget] = useState<"profile" | "background">("profile");
 
-  // Load saved data on mount - from DB if authenticated, else localStorage
+  // Load saved data: localStorage immediately, then DB when session resolves
+  const dbLoaded = useRef(false);
+
+  // Instant load from localStorage on mount (no waiting for session)
   useEffect(() => {
-    const loadFromDB = async () => {
+    const p = loadProfile();
+    setPlayerName(p.playerName);
+    setGradYear(p.gradYear);
+    setPrimaryPosition(p.primaryPosition);
+    setSecondaryPosition(p.secondaryPosition);
+    setCity(p.city);
+    setState(p.state);
+    setZipCode(p.zipCode);
+    setHighSchool(p.highSchool);
+    setTravelBall(p.travelBall);
+    setProfilePic(p.profilePic);
+    setBackgroundPic(p.backgroundPic);
+    setGpa(p.gpa != null ? String(p.gpa) : "");
+    setGpaType(p.gpaType);
+    setSatScore(p.satScore != null ? String(p.satScore) : "");
+    setActScore(p.actScore != null ? String(p.actScore) : "");
+  }, []);
+
+  // Then update from DB once session is available
+  useEffect(() => {
+    if (!session?.user || dbLoaded.current) return;
+    dbLoaded.current = true;
+
+    (async () => {
       try {
         const profRes = await fetch("/api/user/profile");
         const prof = await profRes.json();
-
         if (prof) {
-          if (session?.user?.firstName) {
-            setPlayerName(session.user.name || "");
-          }
+          if (session?.user?.name) setPlayerName(session.user.name || "");
           setGradYear(prof.gradYear ? String(prof.gradYear) : "");
           setPrimaryPosition(prof.primaryPosition || "");
           setSecondaryPosition(prof.secondaryPosition || "");
@@ -77,41 +100,13 @@ function ProfileForm({ initialStep }: { initialStep: number }) {
           setGpaType(prof.gpaType || "");
           setSatScore(prof.satScore || "");
           setActScore(prof.actScore || "");
-          if (prof.profilePic) setProfilePic(prof.profilePic);
-          if (prof.backgroundPic) setBackgroundPic(prof.backgroundPic);
+          setProfilePic(prof.profilePic || null);
+          setBackgroundPic(prof.backgroundPic || null);
         }
-
       } catch {
-        // Fall back to localStorage
-        loadFromLocalStorage();
+        // localStorage already loaded — no action needed
       }
-    };
-
-    const loadFromLocalStorage = () => {
-      const p = loadProfile();
-      setPlayerName(p.playerName);
-      setGradYear(p.gradYear);
-      setPrimaryPosition(p.primaryPosition);
-      setSecondaryPosition(p.secondaryPosition);
-      setCity(p.city);
-      setState(p.state);
-      setZipCode(p.zipCode);
-      setHighSchool(p.highSchool);
-      setTravelBall(p.travelBall);
-      setProfilePic(p.profilePic);
-      setBackgroundPic(p.backgroundPic);
-      setGpa(p.gpa != null ? String(p.gpa) : "");
-      setGpaType(p.gpaType);
-      setSatScore(p.satScore != null ? String(p.satScore) : "");
-      setActScore(p.actScore != null ? String(p.actScore) : "");
-
-    };
-
-    if (session?.user) {
-      loadFromDB();
-    } else {
-      loadFromLocalStorage();
-    }
+    })();
   }, [session]);
 
   const handleFileUpload = (
@@ -280,7 +275,7 @@ function ProfileForm({ initialStep }: { initialStep: number }) {
                   setBackgroundPic(null);
                   saveProfile({ backgroundPic: null });
                   fetch("/api/user/profile", {
-                    method: "PATCH",
+                    method: "PUT",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ backgroundPic: null }),
                   }).catch(() => {});
