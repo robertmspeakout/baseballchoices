@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
@@ -25,6 +25,9 @@ export default function AccountPage() {
   const [account, setAccount] = useState<AccountData | null>(null);
   const [loading, setLoading] = useState(true);
   const [userBgPic, setUserBgPic] = useState<string | null>(null);
+  const [showCancelConfirm, setShowCancelConfirm] = useState(false);
+  const [cancelling, setCancelling] = useState(false);
+  const [cancelError, setCancelError] = useState("");
 
   useEffect(() => {
     const p = loadProfile();
@@ -232,15 +235,16 @@ export default function AccountPage() {
                   </svg>
                   Edit Profile
                 </Link>
-                <Link
-                  href="/#mylist"
-                  className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#CC0000] text-white rounded-lg text-sm font-bold hover:bg-red-700 transition-colors"
+              </div>
+
+              {/* Cancel account */}
+              <div className="text-center pt-4">
+                <button
+                  onClick={() => setShowCancelConfirm(true)}
+                  className="text-xs text-gray-400 hover:text-red-500 transition-colors underline underline-offset-2"
                 >
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                  My Top Programs
-                </Link>
+                  Cancel my account
+                </button>
               </div>
             </>
           ) : (
@@ -249,6 +253,104 @@ export default function AccountPage() {
             </div>
           )}
         </main>
+
+        {/* Cancel account confirmation modal */}
+        {showCancelConfirm && account && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm px-4">
+            <div className="bg-white rounded-2xl shadow-xl max-w-sm w-full p-6">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center shrink-0">
+                  <svg className="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold text-gray-900">Cancel Your Account?</h3>
+              </div>
+
+              <div className="space-y-3 mb-5">
+                {account.trialActive && !account.membershipActive && (
+                  <p className="text-sm text-gray-600">
+                    You have <span className="font-bold text-gray-900">{account.daysRemaining} day{account.daysRemaining !== 1 ? "s" : ""}</span> remaining on your free trial.
+                  </p>
+                )}
+                <p className="text-sm text-gray-600">
+                  If you cancel, your account and all associated data will be permanently deleted, including:
+                </p>
+                <ul className="text-sm text-gray-600 space-y-1 pl-4">
+                  <li className="flex items-start gap-2">
+                    <span className="text-red-500 mt-0.5 shrink-0">&bull;</span>
+                    Your player profile and preferences
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-red-500 mt-0.5 shrink-0">&bull;</span>
+                    Your saved programs and recruiting notes
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-red-500 mt-0.5 shrink-0">&bull;</span>
+                    All AI Scout conversations and results
+                  </li>
+                </ul>
+                <p className="text-sm text-gray-600">
+                  You will lose access to ExtraBase immediately. You can always sign up again with a new account.
+                </p>
+              </div>
+
+              {cancelError && (
+                <div className="flex items-center gap-2 px-3 py-2 bg-red-50 border border-red-200 rounded-lg mb-4">
+                  <svg className="w-4 h-4 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <p className="text-xs text-red-700">{cancelError}</p>
+                </div>
+              )}
+
+              <div className="flex gap-3">
+                <button
+                  onClick={() => { setShowCancelConfirm(false); setCancelError(""); }}
+                  disabled={cancelling}
+                  className="flex-1 px-4 py-2.5 text-sm font-semibold text-gray-700 bg-gray-100 rounded-xl hover:bg-gray-200 transition-colors disabled:opacity-50"
+                >
+                  Keep my account
+                </button>
+                <button
+                  onClick={async () => {
+                    setCancelling(true);
+                    setCancelError("");
+                    try {
+                      const res = await fetch("/api/user/account", { method: "DELETE" });
+                      if (!res.ok) {
+                        const data = await res.json().catch(() => ({}));
+                        setCancelError(data.error || "Something went wrong. Please try again.");
+                        setCancelling(false);
+                        return;
+                      }
+                      // Clear local data
+                      localStorage.clear();
+                      sessionStorage.clear();
+                      // Sign out and redirect to home
+                      await signOut({ callbackUrl: "/" });
+                    } catch {
+                      setCancelError("Network error. Please check your connection and try again.");
+                      setCancelling(false);
+                    }
+                  }}
+                  disabled={cancelling}
+                  className="flex-1 px-4 py-2.5 text-sm font-semibold text-white bg-red-600 rounded-xl hover:bg-red-700 transition-colors disabled:opacity-50"
+                >
+                  {cancelling ? (
+                    <span className="flex items-center justify-center gap-2">
+                      <div className="animate-spin rounded-full h-4 w-4 border-2 border-white/30 border-t-white" />
+                      Cancelling...
+                    </span>
+                  ) : (
+                    "Yes, cancel my account"
+                  )}
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
         <SiteFooter />
       </div>
     </AuthGate>

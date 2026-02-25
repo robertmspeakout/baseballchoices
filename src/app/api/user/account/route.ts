@@ -40,3 +40,31 @@ export async function GET() {
     daysRemaining,
   });
 }
+
+export async function DELETE() {
+  const session = await auth();
+  if (!session?.user?.id) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  const user = await prisma.user.findUnique({
+    where: { id: session.user.id },
+  });
+
+  if (!user) {
+    return NextResponse.json({ error: "User not found" }, { status: 404 });
+  }
+
+  // Prevent OWNER from accidentally deleting their own account
+  if (user.role === "OWNER") {
+    return NextResponse.json(
+      { error: "Owner accounts cannot be self-cancelled. Please contact support." },
+      { status: 403 }
+    );
+  }
+
+  // Cascade delete removes Profile, Preferences, and UserSchoolData
+  await prisma.user.delete({ where: { id: session.user.id } });
+
+  return NextResponse.json({ success: true });
+}
