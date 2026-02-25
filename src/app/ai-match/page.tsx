@@ -10,7 +10,7 @@ import PillNav from "@/components/PillNav";
 import AuthGate from "@/components/AuthGate";
 import { loadProfile, savePreferences, type PlayerProfile } from "@/lib/playerProfile";
 import { useSchools } from "@/lib/SchoolsContext";
-import AIScoutIntake, { type IntakeAnswers } from "@/components/AIScoutIntake";
+import AIScoutIntake, { composeIntakeMessage, type IntakeAnswers } from "@/components/AIScoutIntake";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -686,10 +686,9 @@ function AIMatchContent() {
                       </div>
                       <h2 className="text-lg font-black text-gray-900 mb-4">AI Scout</h2>
 
-                      {savedSnippet ? (
-                        <div className="w-full space-y-2.5">
-                          {/* 1. View current results */}
-                          {savedSchools.length > 0 && (
+                      <div className="w-full space-y-2.5">
+                          {/* View current results — only when saved results exist */}
+                          {savedSnippet && savedSchools.length > 0 && (
                             <a
                               href={buildResultsUrl(savedSchools)}
                               className="flex items-center gap-3 w-full px-4 py-3 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-xl hover:from-red-700 hover:to-red-800 transition-all shadow-md"
@@ -709,7 +708,47 @@ function AIMatchContent() {
                             </a>
                           )}
 
-                          {/* 2. Edit answers */}
+                          {/* Start new search — re-sends saved intake answers */}
+                          {intakeValues && (
+                            <button
+                              onClick={() => {
+                                const answers: IntakeAnswers = {
+                                  divisions: intakeValues.divisions || [],
+                                  conferenceTiers: intakeValues.conferenceTiers || [],
+                                  competitiveness: intakeValues.competitiveness || "",
+                                  regions: intakeValues.regions || [],
+                                  maxDistance: null,
+                                  maxTuition: intakeValues.maxTuition ?? null,
+                                  tuitionChoice: intakeValues.tuitionChoice || "",
+                                  schoolSize: intakeValues.schoolSize || "",
+                                  highAcademic: intakeValues.highAcademic ?? false,
+                                  draftImportance: intakeValues.draftImportance || "",
+                                  gpa: intakeValues.gpa || "",
+                                  satScore: intakeValues.satScore || "",
+                                  actScore: intakeValues.actScore || "",
+                                  intendedMajor: intakeValues.intendedMajor || "",
+                                };
+                                const message = composeIntakeMessage(answers);
+                                handleIntakeComplete(message, answers);
+                              }}
+                              className="flex items-center gap-3 w-full px-4 py-3 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-xl hover:from-red-700 hover:to-red-800 transition-all shadow-md"
+                            >
+                              <div className="w-8 h-8 rounded-lg bg-white/20 flex items-center justify-center shrink-0">
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
+                                </svg>
+                              </div>
+                              <div className="flex-1">
+                                <p className="text-sm font-bold">Find my programs</p>
+                                <p className="text-xs text-red-100">Get new recommendations based on your profile</p>
+                              </div>
+                              <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                              </svg>
+                            </button>
+                          )}
+
+                          {/* Edit answers */}
                           <button
                             onClick={() => setShowIntake(true)}
                             className="flex items-center gap-3 w-full px-4 py-3 bg-white border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors"
@@ -722,7 +761,8 @@ function AIMatchContent() {
                             <p className="text-sm font-semibold text-gray-700">Edit your AI Scout Profile</p>
                           </button>
 
-                          {/* 3. Continue conversation with snippet */}
+                          {/* Continue conversation — only when saved chat exists */}
+                          {savedSnippet && (
                           <button
                             onClick={() => {
                               const saved = loadSavedChat();
@@ -744,12 +784,8 @@ function AIMatchContent() {
                               <p className="text-xs text-gray-400 truncate">Scout: {savedSnippet.assistantMsg}</p>
                             </div>
                           </button>
+                          )}
                         </div>
-                      ) : (
-                        <p className="text-sm text-gray-500 text-center">
-                          Tell me what you&apos;re looking for and I&apos;ll find programs that fit.
-                        </p>
-                      )}
                     </div>
                   );
                 })()}
