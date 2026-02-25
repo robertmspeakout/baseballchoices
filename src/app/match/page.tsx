@@ -299,44 +299,43 @@ export default function MatchPage() {
       {/* Results */}
       <main className="max-w-[1400px] mx-auto px-3 sm:px-6 py-4 sm:py-6 space-y-4">
         {/* Section dropdown + search */}
-        <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm">
-          <div className="flex items-center gap-3">
-            <div className="relative flex-1">
-              <select
-                value="match"
-                onChange={(e) => {
-                  const val = e.target.value;
-                  if (val === "match") return;
-                  if (val === "mylist") router.push("/my-list");
-                  else if (val === "aiscout") router.push("/ai-match");
-                  else if (val === "D1") router.push("/programs/d1");
-                  else if (val === "D2") router.push("/programs/d2");
-                  else if (val === "D3") router.push("/programs/d3");
-                  else if (val === "JUCO") router.push("/programs/juco");
-                }}
-                className="w-full appearance-none bg-gray-50 border border-gray-400 rounded-lg px-4 py-3 pr-10 text-sm font-semibold text-gray-900 focus:outline-none focus:border-[#CC0000] focus:ring-1 focus:ring-[#CC0000] cursor-pointer"
-              >
-                <option value="mylist">My Top Programs</option>
-                <option value="aiscout">AI Scout</option>
-                <option value="D1">Division I Programs</option>
-                <option value="D2">Division II Programs</option>
-                <option value="D3">Division III Programs</option>
-                <option value="JUCO">JUCO Programs</option>
-              </select>
-              <svg className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#CC0000]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
-            </div>
-            <button
-              onClick={() => setSearchOverlayOpen(true)}
-              className="shrink-0 w-[42px] h-[42px] flex items-center justify-center bg-gray-50 border border-gray-400 rounded-lg hover:bg-gray-100 active:bg-gray-200 transition-colors"
-              aria-label="Search"
+        <div className="flex items-center border border-[#e0e0e5] bg-[#e8e8ed] rounded-[100px] hover:border-[#c0c0c5] hover:shadow-[0_1px_4px_rgba(0,0,0,0.08)] transition-all">
+          <div className="relative flex-1 min-w-0">
+            <select
+              value="match"
+              onChange={(e) => {
+                const val = e.target.value;
+                if (val === "match") return;
+                if (val === "mylist") router.push("/my-list");
+                else if (val === "aiscout") router.push("/ai-match");
+                else if (val === "D1") router.push("/programs/d1");
+                else if (val === "D2") router.push("/programs/d2");
+                else if (val === "D3") router.push("/programs/d3");
+                else if (val === "JUCO") router.push("/programs/juco");
+              }}
+              className="w-full appearance-none bg-transparent px-[18px] py-[13px] pr-10 text-[14px] font-semibold text-gray-900 focus:outline-none cursor-pointer rounded-l-[100px] hover:bg-[rgba(0,0,0,0.03)] transition-colors"
             >
-              <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-            </button>
+              <option value="mylist">My Top Programs</option>
+              <option value="aiscout">AI Scout</option>
+              <option value="D1">Division I Programs</option>
+              <option value="D2">Division II Programs</option>
+              <option value="D3">Division III Programs</option>
+              <option value="JUCO">JUCO Programs</option>
+            </select>
+            <svg className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#c1272d]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+            </svg>
           </div>
+          <div className="w-px self-stretch my-[10px] bg-[#c8c8cd]" />
+          <button
+            onClick={() => setSearchOverlayOpen(true)}
+            className="shrink-0 w-[54px] flex items-center justify-center rounded-r-[100px] hover:bg-[rgba(0,0,0,0.03)] transition-colors self-stretch group"
+            aria-label="Search"
+          >
+            <svg className="w-[17px] h-[17px] text-[#888] group-hover:text-[#555] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </button>
         </div>
 
         {/* Active preference filters */}
