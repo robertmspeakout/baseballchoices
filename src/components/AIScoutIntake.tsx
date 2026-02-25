@@ -4,7 +4,7 @@ import { useState } from "react";
 import { REGIONS } from "@/lib/playerProfile";
 
 export interface IntakeAnswers {
-  division: string;
+  divisions: string[];
   competitiveness: string;
   regions: string[];
   maxDistance: number | null;
@@ -113,8 +113,8 @@ function QuestionCard({
 export function composeIntakeMessage(a: IntakeAnswers): string {
   const parts: string[] = [];
 
-  if (a.division && a.division !== "all") {
-    parts.push(`I'm looking for ${a.division} programs`);
+  if (a.divisions.length > 0) {
+    parts.push(`I'm looking for ${a.divisions.join(" and ")} programs`);
   } else {
     parts.push("I'm open to any division");
   }
@@ -151,7 +151,7 @@ export default function AIScoutIntake({
   isEditing,
   onCancel,
 }: AIScoutIntakeProps) {
-  const [division, setDivision] = useState(initialValues?.division || "");
+  const [divisions, setDivisions] = useState<string[]>(initialValues?.divisions || []);
   const [competitiveness, setCompetitiveness] = useState(initialValues?.competitiveness || "");
   const [regions, setRegions] = useState<string[]>(initialValues?.regions || []);
   const [maxDistance, setMaxDistance] = useState<number | null>(initialValues?.maxDistance ?? null);
@@ -160,11 +160,11 @@ export default function AIScoutIntake({
   const [highAcademic, setHighAcademic] = useState(initialValues?.highAcademic ?? false);
   const [draftImportance, setDraftImportance] = useState(initialValues?.draftImportance || "");
 
-  const canSubmit = division !== "";
+  const canSubmit = divisions.length > 0;
 
   const handleSubmit = () => {
     const answers: IntakeAnswers = {
-      division,
+      divisions,
       competitiveness,
       regions,
       maxDistance,
@@ -188,7 +188,7 @@ export default function AIScoutIntake({
           </svg>
         </div>
         <h2 className="text-lg font-black text-gray-900">
-          {isEditing ? "Update Your Preferences" : "Let's find your fit"}
+          {isEditing ? "Update Your Preferences" : "AI Scout: Find Your Fit"}
         </h2>
         <p className="text-sm text-gray-500 mt-1">
           {isEditing
@@ -198,18 +198,17 @@ export default function AIScoutIntake({
       </div>
 
       <div className="space-y-6">
-        {/* 1. Division */}
-        <QuestionCard label="What division are you looking at?">
-          <ChipGroup
+        {/* 1. Division (multi-select) */}
+        <QuestionCard label="What division are you looking at?" hint="Select all that apply">
+          <MultiChipGroup
             options={[
               { value: "D1", label: "D1" },
               { value: "D2", label: "D2" },
               { value: "D3", label: "D3" },
               { value: "JUCO", label: "JUCO" },
-              { value: "all", label: "Open to all" },
             ]}
-            value={division}
-            onChange={setDivision}
+            values={divisions}
+            onChange={setDivisions}
           />
         </QuestionCard>
 
@@ -257,7 +256,7 @@ export default function AIScoutIntake({
               { value: "1000", label: "Under 1,000 mi" },
               { value: "any", label: "Anywhere" },
             ]}
-            value={maxDistance ? String(maxDistance) : (maxDistance === null && division ? "" : "")}
+            value={maxDistance ? String(maxDistance) : ""}
             onChange={(v) => setMaxDistance(v === "any" ? null : parseInt(v))}
           />
         </QuestionCard>
@@ -297,7 +296,7 @@ export default function AIScoutIntake({
               { value: "yes", label: "Yes — high academic schools" },
               { value: "no", label: "Not a dealbreaker" },
             ]}
-            value={highAcademic ? "yes" : (highAcademic === false && division ? "no" : "")}
+            value={highAcademic ? "yes" : (highAcademic === false && divisions.length > 0 ? "no" : "")}
             onChange={(v) => setHighAcademic(v === "yes")}
           />
         </QuestionCard>

@@ -14,8 +14,6 @@ import AIScoutIntake, { type IntakeAnswers } from "@/components/AIScoutIntake";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-const AI_SCOUT_VERSION = "v2.0";
-
 interface SchoolCard {
   id: number;
   name: string;
@@ -329,9 +327,12 @@ function AIMatchContent() {
 
   // Handle intake form completion — save preferences and auto-send to AI
   const handleIntakeComplete = async (message: string, answers: IntakeAnswers) => {
+    // Map divisions array to divisionPreference value
+    const divPref = answers.divisions.length === 1 ? answers.divisions[0] : "all";
+
     // Save preferences to localStorage
     savePreferences({
-      divisionPreference: (answers.division === "all" ? "both" : answers.division) as "D1" | "D2" | "both",
+      divisionPreference: divPref as "D1" | "D2" | "both",
       maxDistanceFromHome: answers.maxDistance,
       preferredRegions: answers.regions,
       maxTuition: answers.maxTuition,
@@ -348,7 +349,7 @@ function AIMatchContent() {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        divisionPreference: answers.division === "all" ? "both" : answers.division,
+        divisionPreference: divPref,
         maxDistanceFromHome: answers.maxDistance,
         preferredRegions: answers.regions,
         maxTuition: answers.maxTuition,
@@ -527,45 +528,6 @@ function AIMatchContent() {
             conferences={conferences}
             activeTab="ai-scout"
           />
-
-          {/* AI Scout Header */}
-          <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm mb-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center shrink-0">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
-                </svg>
-              </div>
-              <div className="flex-1">
-                <div className="flex items-center gap-2">
-                  <h1 className="text-lg font-bold text-gray-900">AI Scout</h1>
-                  <span className="text-[10px] font-medium text-gray-400 bg-gray-100 px-1.5 py-0.5 rounded">{AI_SCOUT_VERSION}</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <p className="text-xs text-gray-500">
-                    20 messages per month.
-                  </p>
-                  {!showIntake && localStorage.getItem(INTAKE_DONE_KEY) === "true" && (
-                    <button
-                      onClick={() => setShowIntake(true)}
-                      className="text-[11px] text-red-600 hover:text-red-700 font-semibold transition-colors flex items-center gap-1"
-                    >
-                      <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                      </svg>
-                      Edit Preferences
-                    </button>
-                  )}
-                </div>
-              </div>
-              {remaining !== null && (
-                <div className={`text-right shrink-0 px-2.5 py-1.5 rounded-lg ${remaining <= 1 ? "bg-red-50 border border-red-200" : "bg-blue-50 border border-blue-200"}`}>
-                  <p className={`text-sm font-bold ${remaining <= 1 ? "text-red-600" : "text-blue-700"}`}>{remaining}</p>
-                  <p className={`text-[10px] ${remaining <= 1 ? "text-red-500" : "text-blue-500"}`}>left this month</p>
-                </div>
-              )}
-            </div>
-          </div>
 
           {/* Intake form or Chat area */}
           {showIntake ? (
