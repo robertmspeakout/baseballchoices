@@ -191,6 +191,14 @@ function MicButton({ onTranscript }: { onTranscript: (text: string) => void }) {
 
 const CHAT_STORAGE_KEY = "ai_scout_chat";
 const INTAKE_DONE_KEY = "ai_scout_intake_done";
+const INTAKE_ANSWERS_KEY = "ai_scout_intake_answers";
+
+function loadSavedIntakeAnswers(): Partial<IntakeAnswers> | undefined {
+  try {
+    const raw = localStorage.getItem(INTAKE_ANSWERS_KEY);
+    return raw ? JSON.parse(raw) : undefined;
+  } catch { return undefined; }
+}
 
 function loadSavedChat(): ChatMessage[] {
   try {
@@ -271,6 +279,7 @@ function AIMatchContent() {
   useEffect(() => {
     if (searchParams.get("reset") === "true") {
       localStorage.removeItem(INTAKE_DONE_KEY);
+      localStorage.removeItem(INTAKE_ANSWERS_KEY);
       sessionStorage.removeItem(CHAT_STORAGE_KEY);
       setMessages([]);
       setIntakeValues(undefined);
@@ -343,13 +352,18 @@ function AIMatchContent() {
     }
   }, [messages]);
 
-  // Check if intake questionnaire has been completed
+  // Check if intake questionnaire has been completed, and load saved answers
   useEffect(() => {
     const done = localStorage.getItem(INTAKE_DONE_KEY) === "true";
     const hasSavedChat = !!sessionStorage.getItem(CHAT_STORAGE_KEY);
     // Show intake form if never completed and no existing conversation
     if (!done && !hasSavedChat) {
       setShowIntake(true);
+    }
+    // Load saved intake answers for pre-filling the edit form
+    if (done) {
+      const saved = loadSavedIntakeAnswers();
+      if (saved) setIntakeValues(saved);
     }
   }, []);
 
@@ -404,6 +418,7 @@ function AIMatchContent() {
 
     // Mark intake as done and save values for editing
     localStorage.setItem(INTAKE_DONE_KEY, "true");
+    localStorage.setItem(INTAKE_ANSWERS_KEY, JSON.stringify(answers));
     setIntakeValues(answers);
 
     // Hide form, clear any old conversation
@@ -577,6 +592,14 @@ function AIMatchContent() {
               initialValues={intakeValues}
               isEditing={!!intakeValues}
               onCancel={intakeValues ? () => setShowIntake(false) : undefined}
+              onReset={intakeValues ? () => {
+                localStorage.removeItem(INTAKE_DONE_KEY);
+                localStorage.removeItem(INTAKE_ANSWERS_KEY);
+                sessionStorage.removeItem(CHAT_STORAGE_KEY);
+                setMessages([]);
+                setIntakeValues(undefined);
+                setShowIntake(true);
+              } : undefined}
             />
           ) : (
             <div className="flex-1">
@@ -590,7 +613,7 @@ function AIMatchContent() {
                     <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                     </svg>
-                    Edit your answers
+                    Edit your AI Scout Profile
                   </button>
                 </div>
               )}
@@ -642,7 +665,7 @@ function AIMatchContent() {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                               </svg>
                             </div>
-                            <p className="text-sm font-semibold text-gray-700">Edit your answers</p>
+                            <p className="text-sm font-semibold text-gray-700">Edit your AI Scout Profile</p>
                           </button>
 
                           {/* 3. Continue conversation with snippet */}

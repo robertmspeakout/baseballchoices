@@ -495,15 +495,15 @@ function SchoolPageContent({ id }: { id: string }) {
               <p className="text-xs font-bold text-gray-900">AI Scout Recommendation</p>
               <p className="text-[11px] text-gray-500">You came here from your AI Scout results</p>
             </div>
-            <Link
-              href="/ai-match?resume=true"
+            <button
+              onClick={() => router.back()}
               className="text-xs font-bold text-red-600 hover:text-red-700 flex items-center gap-1 shrink-0"
             >
               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
               </svg>
               Back to AI Scout
-            </Link>
+            </button>
           </div>
         )}
 

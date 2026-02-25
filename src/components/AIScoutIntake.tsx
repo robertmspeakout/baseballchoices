@@ -24,6 +24,7 @@ interface AIScoutIntakeProps {
   initialValues?: Partial<IntakeAnswers>;
   isEditing?: boolean;
   onCancel?: () => void;
+  onReset?: () => void;
 }
 
 // Single-select chip group
@@ -165,6 +166,7 @@ export default function AIScoutIntake({
   initialValues,
   isEditing,
   onCancel,
+  onReset,
 }: AIScoutIntakeProps) {
   const [divisions, setDivisions] = useState<string[]>(initialValues?.divisions || []);
   const [conferenceTiers, setConferenceTiers] = useState<string[]>(initialValues?.conferenceTiers || []);
@@ -425,6 +427,19 @@ export default function AIScoutIntake({
             className="w-full py-3 text-sm text-gray-500 hover:text-gray-700 font-medium transition-colors"
           >
             Cancel
+          </button>
+        )}
+        {isEditing && onReset && (
+          <button
+            type="button"
+            onClick={() => {
+              if (window.confirm("This will clear all your answers and start over. Are you sure?")) {
+                onReset();
+              }
+            }}
+            className="w-full py-2 text-xs text-gray-400 hover:text-red-600 font-medium transition-colors"
+          >
+            Reset all answers
           </button>
         )}
         {!isEditing && (
