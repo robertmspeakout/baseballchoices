@@ -16,6 +16,7 @@ export interface IntakeAnswers {
   gpa: string;
   satScore: string;
   actScore: string;
+  intendedMajor: string;
 }
 
 interface AIScoutIntakeProps {
@@ -154,6 +155,8 @@ export function composeIntakeMessage(a: IntakeAnswers): string {
   else academics.push("I haven't taken the ACT yet");
   parts.push(academics.join(", "));
 
+  if (a.intendedMajor) parts.push(`I'm interested in studying ${a.intendedMajor}`);
+
   return parts.join(". ") + ". Find me the best programs that fit!";
 }
 
@@ -176,6 +179,7 @@ export default function AIScoutIntake({
   const [gpa, setGpa] = useState(initialValues?.gpa || "");
   const [satScore, setSatScore] = useState(initialValues?.satScore || "");
   const [actScore, setActScore] = useState(initialValues?.actScore || "");
+  const [intendedMajor, setIntendedMajor] = useState(initialValues?.intendedMajor || "");
 
   const handleDivisionsChange = (newDivisions: string[]) => {
     setDivisions(newDivisions);
@@ -200,6 +204,7 @@ export default function AIScoutIntake({
       gpa,
       satScore,
       actScore,
+      intendedMajor,
     };
     const message = composeIntakeMessage(answers);
     onComplete(message, answers);
@@ -297,7 +302,7 @@ export default function AIScoutIntake({
               { value: "15000", label: "Under $15K" },
               { value: "30000", label: "Under $30K" },
               { value: "50000", label: "Under $50K" },
-              { value: "any", label: "No limit" },
+              { value: "any", label: "Any" },
             ]}
             value={tuitionChoice}
             onChange={setTuitionChoice}
@@ -368,6 +373,26 @@ export default function AIScoutIntake({
             </div>
           </div>
         </QuestionCard>
+
+        {/* 6c. Intended major — shown when GPA is high and test scores are decent or not entered */}
+        {(() => {
+          const gpaNum = parseFloat(gpa);
+          const satNum = parseInt(satScore);
+          const actNum = parseInt(actScore);
+          const hasHighGpa = !isNaN(gpaNum) && gpaNum >= 3.5;
+          const hasDecentScores = (!satScore && !actScore) || (satNum >= 1100 || actNum >= 24);
+          return hasHighGpa && hasDecentScores;
+        })() && (
+          <QuestionCard label="Do you have an intended major?" hint="Helps us match you with strong programs in your field">
+            <input
+              type="text"
+              placeholder="e.g. Business, Engineering, Biology"
+              value={intendedMajor}
+              onChange={(e) => setIntendedMajor(e.target.value)}
+              className="w-full px-3 py-2 rounded-lg border border-gray-300 bg-white text-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
+            />
+          </QuestionCard>
+        )}
 
         {/* 7. Draft */}
         <QuestionCard label="Is getting drafted a goal for you?">
