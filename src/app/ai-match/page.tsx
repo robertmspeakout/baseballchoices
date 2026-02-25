@@ -240,15 +240,24 @@ function AIMatchContent() {
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const hasInteracted = useRef(false);
 
-  // Auto-resume conversation when navigating back from results page
+  // Reset AI Scout state when ?reset=true is in the URL (for testing first-time experience)
   useEffect(() => {
+    if (searchParams.get("reset") === "true") {
+      localStorage.removeItem(INTAKE_DONE_KEY);
+      sessionStorage.removeItem(CHAT_STORAGE_KEY);
+      setMessages([]);
+      setIntakeValues(undefined);
+      setShowIntake(true);
+      router.replace("/ai-match", { scroll: false });
+      return;
+    }
+    // Auto-resume conversation when navigating back from results page
     if (searchParams.get("resume") === "true") {
       const saved = loadSavedChat();
       if (saved.length > 0) {
         hasInteracted.current = true;
         setMessages(saved);
       }
-      // Clean up the URL without triggering a navigation
       router.replace("/ai-match", { scroll: false });
     }
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
