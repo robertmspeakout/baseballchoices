@@ -248,7 +248,7 @@ function AIMatchContent() {
   const [searchOverlayOpen, setSearchOverlayOpen] = useState(false);
   const [showIntake, setShowIntake] = useState(false);
   const [intakeValues, setIntakeValues] = useState<Partial<IntakeAnswers> | undefined>(undefined);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const lastAssistantMsgRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const hasInteracted = useRef(false);
 
@@ -321,12 +321,12 @@ function AIMatchContent() {
     loadData();
   }, [status, session]);
 
-  // Auto-scroll to bottom — only after user sends a message, not on initial load
+  // Auto-scroll to the top of the latest AI reply
   useEffect(() => {
-    if (hasInteracted.current) {
-      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (hasInteracted.current && lastAssistantMsgRef.current) {
+      lastAssistantMsgRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
     }
-  }, [messages, loading]);
+  }, [messages]);
 
   // Check if intake questionnaire has been completed
   useEffect(() => {
@@ -632,9 +632,13 @@ function AIMatchContent() {
                   );
                 })()}
 
-                {messages.map((msg, i) => (
+                {messages.map((msg, i) => {
+                  // Find the index of the last assistant message to attach the scroll ref
+                  const lastAssistantIdx = messages.reduce((acc, m, idx) => m.role === "assistant" ? idx : acc, -1);
+                  return (
                   <div
                     key={i}
+                    ref={msg.role === "assistant" && i === lastAssistantIdx ? lastAssistantMsgRef : undefined}
                     className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
                   >
                     <div className="max-w-[85%]">
@@ -656,7 +660,8 @@ function AIMatchContent() {
                       )}
                     </div>
                   </div>
-                ))}
+                  );
+                })}
 
                 {loading && (
                   <div className="flex justify-start">
@@ -670,7 +675,6 @@ function AIMatchContent() {
                   </div>
                 )}
 
-                <div ref={messagesEndRef} />
               </div>
 
               {/* Input area */}
