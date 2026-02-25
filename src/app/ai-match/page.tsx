@@ -783,7 +783,7 @@ function AIMatchContent() {
               <div className="sticky bottom-0 border-t border-gray-200 p-3 bg-white/95 backdrop-blur-sm">
                 {atLimit ? (
                   <div className="text-center py-3">
-                    <p className="text-sm font-semibold text-gray-700">You&apos;ve used all 20 messages this month</p>
+                    <p className="text-sm font-semibold text-gray-700">You&apos;ve used all 20 AI Scout messages this month</p>
                     <p className="text-xs text-gray-500 mt-1">Your limit resets in 30 days. In the meantime, explore programs directly!</p>
                     <a href="/programs/d1" className="inline-block mt-2 px-4 py-2 bg-red-600 text-white text-sm font-semibold rounded-lg hover:bg-red-700 transition-colors">
                       Browse Programs
@@ -804,9 +804,16 @@ function AIMatchContent() {
                     />
                     <div className="flex items-center justify-between mt-2">
                       <MicButton onTranscript={handleVoiceTranscript} />
-                      <p className="text-[10px] text-gray-400 text-center px-2">
-                        AI Scout is for recruiting only. Results are suggestions.
-                      </p>
+                      <div className="text-center px-2">
+                        <p className="text-[10px] text-gray-400">
+                          This AI will only talk baseball with you. Results are suggestions.
+                        </p>
+                        {remaining !== null && (
+                          <p className="text-[10px] text-gray-400 mt-0.5">
+                            {remaining} of 20 messages remaining this month
+                          </p>
+                        )}
+                      </div>
                       <button
                         onClick={() => sendMessage()}
                         disabled={!input.trim() || loading}
