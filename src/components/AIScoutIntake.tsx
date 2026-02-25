@@ -168,8 +168,12 @@ export default function AIScoutIntake({
   const [conferenceTiers, setConferenceTiers] = useState<string[]>(initialValues?.conferenceTiers || []);
   const [competitiveness, setCompetitiveness] = useState(initialValues?.competitiveness || "");
   const [regions, setRegions] = useState<string[]>(initialValues?.regions || []);
-  const [maxDistance, setMaxDistance] = useState<number | null>(initialValues?.maxDistance ?? null);
-  const [maxTuition, setMaxTuition] = useState<number | null>(initialValues?.maxTuition ?? null);
+  const [distanceChoice, setDistanceChoice] = useState(
+    initialValues?.maxDistance ? String(initialValues.maxDistance) : (initialValues?.maxDistance === null ? "" : "")
+  );
+  const [tuitionChoice, setTuitionChoice] = useState(
+    initialValues?.maxTuition ? String(initialValues.maxTuition) : (initialValues?.maxTuition === null ? "" : "")
+  );
   const [schoolSize, setSchoolSize] = useState(initialValues?.schoolSize || "");
   const [highAcademic, setHighAcademic] = useState(initialValues?.highAcademic ?? false);
   const [draftImportance, setDraftImportance] = useState(initialValues?.draftImportance || "");
@@ -192,8 +196,8 @@ export default function AIScoutIntake({
       conferenceTiers: divisions.includes("D1") ? conferenceTiers : [],
       competitiveness,
       regions,
-      maxDistance,
-      maxTuition,
+      maxDistance: distanceChoice && distanceChoice !== "any" ? parseInt(distanceChoice) : null,
+      maxTuition: tuitionChoice && tuitionChoice !== "any" ? parseInt(tuitionChoice) : null,
       schoolSize,
       highAcademic,
       draftImportance,
@@ -300,8 +304,8 @@ export default function AIScoutIntake({
               { value: "1000", label: "Under 1,000 mi" },
               { value: "any", label: "Anywhere" },
             ]}
-            value={maxDistance ? String(maxDistance) : ""}
-            onChange={(v) => setMaxDistance(v === "any" ? null : parseInt(v))}
+            value={distanceChoice}
+            onChange={setDistanceChoice}
           />
         </QuestionCard>
 
@@ -314,8 +318,8 @@ export default function AIScoutIntake({
               { value: "50000", label: "Under $50K" },
               { value: "any", label: "No limit" },
             ]}
-            value={maxTuition ? String(maxTuition) : ""}
-            onChange={(v) => setMaxTuition(v === "any" ? null : parseInt(v))}
+            value={tuitionChoice}
+            onChange={setTuitionChoice}
           />
         </QuestionCard>
 
