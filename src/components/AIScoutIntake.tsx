@@ -227,7 +227,7 @@ export default function AIScoutIntake({
         <p className="text-sm text-gray-500 mt-1">
           {isEditing
             ? "Adjust your answers and we'll find updated matches"
-            : "Quick questions so I can find the right programs for you"}
+            : "Tell me what you're looking for and I'll find the best fit"}
         </p>
       </div>
 
