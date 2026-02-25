@@ -8,6 +8,7 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import SearchOverlay from "@/components/SearchOverlay";
 import PillNav from "@/components/PillNav";
+import ProgramRow from "@/components/ProgramRow";
 import AuthGate from "@/components/AuthGate";
 import { loadProfile, loadPreferences, isProfileComplete, type PlayerProfile, type PlayerPreferences } from "@/lib/playerProfile";
 import { getMatchResults, type MatchResult } from "@/lib/matchingEngine";
@@ -15,74 +16,6 @@ import { geocodeZip } from "@/lib/geo";
 import { getAllUserData, setUserData, type UserData } from "@/lib/userData";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
-function SchoolLogo({ school }: { school: any }) {
-  const [error, setError] = useState(false);
-  if (school.logo_url && !error) {
-    return (
-      <img
-        src={school.logo_url}
-        alt=""
-        className="w-10 h-10 object-contain"
-        onError={() => setError(true)}
-      />
-    );
-  }
-  return (
-    <svg className="w-8 h-8 text-gray-300" viewBox="0 0 24 24" fill="currentColor">
-      <circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" strokeWidth="1.5" />
-      <path d="M6.5 3.5C8.5 6 9 9.5 8 13s-3.5 6-5.5 7.5" fill="none" stroke="currentColor" strokeWidth="1.2" />
-      <path d="M17.5 3.5C15.5 6 15 9.5 16 13s3.5 6 5.5 7.5" fill="none" stroke="currentColor" strokeWidth="1.2" />
-    </svg>
-  );
-}
-
-function ScoreRing({ score }: { score: number }) {
-  const radius = 20;
-  const circumference = 2 * Math.PI * radius;
-  const offset = circumference - (score / 100) * circumference;
-  const color = score >= 80 ? "text-emerald-500" : score >= 60 ? "text-yellow-500" : score >= 40 ? "text-orange-500" : "text-red-400";
-  const bgColor = score >= 80 ? "text-emerald-100" : score >= 60 ? "text-yellow-100" : score >= 40 ? "text-orange-100" : "text-red-100";
-
-  return (
-    <div className="relative w-14 h-14 shrink-0">
-      <svg className="w-14 h-14 -rotate-90" viewBox="0 0 48 48">
-        <circle cx="24" cy="24" r={radius} fill="none" strokeWidth="4" className={`stroke-current ${bgColor}`} />
-        <circle
-          cx="24" cy="24" r={radius} fill="none" strokeWidth="4"
-          className={`stroke-current ${color}`}
-          strokeDasharray={circumference}
-          strokeDashoffset={offset}
-          strokeLinecap="round"
-        />
-      </svg>
-      <div className="absolute inset-0 flex items-center justify-center">
-        <span className={`text-sm font-black ${color}`}>{score}</span>
-      </div>
-    </div>
-  );
-}
-
-function StarRatingInline({ value, onChange }: { value: number; onChange: (v: number) => void }) {
-  return (
-    <div className="flex gap-0.5">
-      {[1, 2, 3, 4, 5].map((star) => (
-        <button
-          key={star}
-          onClick={(e) => { e.preventDefault(); e.stopPropagation(); onChange(value === star ? 0 : star); }}
-          className="focus:outline-none"
-        >
-          <svg
-            className={`w-5 h-5 ${star <= value ? "text-yellow-400" : "text-gray-200"} hover:text-yellow-300 transition-colors`}
-            fill="currentColor" viewBox="0 0 20 20"
-          >
-            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-          </svg>
-        </button>
-      ))}
-    </div>
-  );
-}
 
 export default function MatchPage() {
   const router = useRouter();
@@ -367,107 +300,27 @@ export default function MatchPage() {
               90% or above matches
             </p>
 
-            {/* Match cards */}
-            <div className="grid gap-3">
+            {/* Match rows */}
+            <div className="flex flex-col" style={{ gap: 5 }}>
               {visibleResults.map((match, idx) => {
                 const s = match.school;
                 const ud = userData[s.id];
                 const priority = ud?.priority || 0;
 
                 return (
-                  <div
+                  <ProgramRow
                     key={s.id}
-                    className="bg-white rounded-xl border border-gray-200 shadow-sm hover:border-red-200 hover:shadow-md transition-all"
-                  >
-                    <Link href={`/school/${s.id}`} className="block p-4">
-                      <div className="flex items-start gap-3">
-                        {/* Rank + Score */}
-                        <div className="flex flex-col items-center gap-1 shrink-0">
-                          <span className="text-[10px] font-bold text-gray-400 uppercase">#{idx + 1}</span>
-                          <ScoreRing score={match.score} />
-                        </div>
-
-                        {/* Logo */}
-                        <div className="shrink-0 w-12 h-12 rounded-lg bg-gray-50 border border-gray-100 flex items-center justify-center overflow-hidden">
-                          <SchoolLogo school={s} />
-                        </div>
-
-                        {/* Info */}
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-start justify-between gap-2">
-                            <div className="min-w-0">
-                              <h3 className="text-base font-bold text-gray-900 truncate">
-                                {s.name}
-                              </h3>
-                              <p className="text-xs text-gray-500">
-                                {s.mascot ? `${s.mascot} · ` : ""}{s.city}, {s.state}
-                              </p>
-                            </div>
-                            {s.current_ranking && (
-                              <span className="shrink-0 bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded-full text-xs font-bold">
-                                #{s.current_ranking}
-                              </span>
-                            )}
-                          </div>
-
-                          {/* Tags */}
-                          <div className="flex flex-wrap items-center gap-1.5 mt-2">
-                            <span className={`inline-block px-2 py-0.5 rounded-full text-xs font-semibold ${
-                              s.division === "D1" ? "bg-blue-100 text-blue-800" : "bg-green-100 text-green-800"
-                            }`}>
-                              {s.division === "D1" ? "D-I" : "D-II"}
-                            </span>
-                            <span className="text-xs text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full">{s.conference}</span>
-                            {match.distance != null && (
-                              <span className="text-xs text-green-700 bg-green-50 px-2 py-0.5 rounded-full font-medium">
-                                {match.distance.toLocaleString()} mi
-                              </span>
-                            )}
-                            {s.tuition && (
-                              <span className="text-xs text-violet-700 bg-violet-50 px-2 py-0.5 rounded-full font-medium">
-                                ${(s.tuition / 1000).toFixed(0)}K/yr
-                              </span>
-                            )}
-                            <span className="text-xs text-gray-500 bg-gray-50 px-2 py-0.5 rounded-full">
-                              {s.public_private}
-                            </span>
-                          </div>
-
-                          {/* Match reasons */}
-                          {match.reasons.length > 0 && (
-                            <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1">
-                              {match.reasons.map((r, i) => (
-                                <span key={i} className="text-xs text-gray-600 flex items-center gap-1">
-                                  <svg className="w-3 h-3 text-emerald-500 shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                                  </svg>
-                                  {r}
-                                </span>
-                              ))}
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    </Link>
-
-                    {/* Rating strip */}
-                    <div className="border-t border-gray-100 px-4 py-2 flex items-center justify-between">
-                      <div className="flex items-center gap-2" onClick={(e) => e.stopPropagation()}>
-                        <StarRatingInline value={priority} onChange={(v) => handlePriorityChange(s.id, v)} />
-                        {priority > 0 && (
-                          <span className="text-xs text-gray-500 font-medium">
-                            {["", "Mildly Interested", "Interested", "Very Interested", "Top Choice", "VIP"][priority]}
-                          </span>
+                    school={{ ...s, priority }}
+                    onPriorityChange={handlePriorityChange}
+                    extra={
+                      <div className="flex items-center gap-2 mt-[2px]">
+                        <span className="text-[11px] font-bold text-emerald-600">#{idx + 1} · {match.score}% match</span>
+                        {match.distance != null && (
+                          <span className="text-[11px] text-[#888]">{match.distance.toLocaleString()} mi</span>
                         )}
                       </div>
-                      <Link
-                        href={`/school/${s.id}`}
-                        className="text-xs font-semibold text-red-600 hover:text-red-700"
-                      >
-                        View & Edit →
-                      </Link>
-                    </div>
-                  </div>
+                    }
+                  />
                 );
               })}
             </div>

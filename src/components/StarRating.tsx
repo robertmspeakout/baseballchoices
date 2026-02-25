@@ -5,7 +5,7 @@ import { useState } from "react";
 interface StarRatingProps {
   value: number;
   onChange?: (value: number) => void;
-  size?: "sm" | "md" | "lg";
+  size?: "xs" | "sm" | "md" | "lg";
   readonly?: boolean;
 }
 
@@ -17,9 +17,9 @@ export default function StarRating({
 }: StarRatingProps) {
   const [animating, setAnimating] = useState<number | null>(null);
 
-  const starSize = size === "sm" ? "text-xl" : size === "lg" ? "text-3xl" : "text-2xl";
-  // Generous tap targets for mobile
-  const tapTarget = size === "sm" ? "p-1.5 -m-1" : size === "lg" ? "p-3 -m-2" : "p-2 -m-1.5";
+  const starSize = size === "xs" ? "text-[17px]" : size === "sm" ? "text-xl" : size === "lg" ? "text-3xl" : "text-2xl";
+  // Generous tap targets for mobile (xs uses tighter spacing for compact rows)
+  const tapTarget = size === "xs" ? "p-[3px] -m-[1px]" : size === "sm" ? "p-1.5 -m-1" : size === "lg" ? "p-3 -m-2" : "p-2 -m-1.5";
 
   const handleClick = (star: number) => {
     if (readonly || !onChange) return;

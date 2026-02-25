@@ -286,43 +286,44 @@ export default function SearchOverlay({ open, onClose, schools, conferences, act
 
         {/* ===== RESULTS STATE ===== */}
         {hasQuery && results.length > 0 && (
-          <div className="px-4 py-3 space-y-2">
-            {results.map((school, idx) => (
-              <button
-                key={school.id}
-                onClick={() => handleSelect(school)}
-                className="flex items-center gap-3 w-full p-3 bg-white border border-gray-200 rounded-xl shadow-sm hover:border-blue-300 hover:shadow-md active:bg-gray-50 transition-all text-left"
-                style={{
-                  opacity: idx < visibleCount ? 1 : 0,
-                  transform: idx < visibleCount ? "translateY(0)" : "translateY(8px)",
-                  transition: "opacity 0.2s ease, transform 0.2s ease",
-                }}
-              >
-                {/* School logo */}
-                {school.logo_url ? (
-                  <img
-                    src={school.logo_url}
-                    alt=""
-                    className="w-10 h-10 rounded-full object-contain bg-gray-50 border border-gray-200 shrink-0"
-                  />
-                ) : (
-                  <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center shrink-0">
-                    <span className="text-sm font-bold text-gray-400">
-                      {school.name.charAt(0)}
-                    </span>
+          <div className="px-3 py-3 flex flex-col" style={{ gap: 5 }}>
+            {results.map((school, idx) => {
+              const divLabel = ({ D1: "D-I", D2: "D-II", D3: "D-III", JUCO: "JUCO" } as Record<string, string>)[school.division] || school.division;
+              return (
+                <button
+                  key={school.id}
+                  onClick={() => handleSelect(school)}
+                  className="flex items-center bg-white rounded-xl border border-[rgba(0,0,0,0.05)] hover:border-[rgba(0,0,0,0.12)] hover:shadow-sm active:bg-gray-50 transition-all text-left"
+                  style={{
+                    padding: "10px 10px 10px 12px",
+                    opacity: idx < visibleCount ? 1 : 0,
+                    transform: idx < visibleCount ? "translateY(0)" : "translateY(8px)",
+                    transition: "opacity 0.2s ease, transform 0.2s ease",
+                  }}
+                >
+                  {/* Logo */}
+                  <div className="shrink-0 rounded-full bg-[#f5f5f7] border border-[rgba(0,0,0,0.06)] flex items-center justify-center overflow-hidden" style={{ width: 42, height: 42 }}>
+                    {school.logo_url ? (
+                      <img src={school.logo_url} alt="" className="w-[42px] h-[42px] object-contain" />
+                    ) : (
+                      <span className="text-[13px] font-bold text-gray-400">{school.name.charAt(0)}</span>
+                    )}
                   </div>
-                )}
-                <div className="min-w-0 flex-1">
-                  <p className="text-sm font-semibold text-gray-900 truncate">{school.name}</p>
-                  <p className="text-xs text-gray-500 truncate">
-                    {school.division} &middot; {school.conference} &middot; {school.city}, {school.state}
-                  </p>
-                </div>
-                <svg className="w-4 h-4 text-gray-300 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
-            ))}
+                  {/* Info */}
+                  <div className="flex-1 min-w-0 ml-3">
+                    <p className="text-[14px] font-bold text-gray-900 truncate leading-tight">{school.name}</p>
+                    <p className="text-[11px] text-[#888] truncate leading-tight mt-[2px]">
+                      {divLabel}
+                      {school.mascot ? ` · ${school.mascot}` : ""}
+                      {school.conference ? <> · <span className="font-semibold text-[#666]">{school.conference}</span></> : ""}
+                      {school.city ? ` · ${school.city}, ${school.state}` : ""}
+                    </p>
+                  </div>
+                  {/* Chevron */}
+                  <span className="shrink-0 text-[18px] text-[#ccc] ml-1 leading-none">&rsaquo;</span>
+                </button>
+              );
+            })}
           </div>
         )}
 

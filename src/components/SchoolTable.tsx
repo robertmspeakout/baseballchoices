@@ -1,9 +1,7 @@
 "use client";
 
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import StarRating from "./StarRating";
 import { useState, useEffect, useRef } from "react";
+import ProgramRow from "./ProgramRow";
 
 interface School {
   id: number;
@@ -32,6 +30,8 @@ interface SchoolTableProps {
   sortDir: string;
   onSort: (column: string) => void;
   onPriorityChange: (schoolId: number, priority: number) => void;
+  /** When true and sorted alphabetically, show letter dividers between groups */
+  alphabetical?: boolean;
 }
 
 // Hook to fetch current-season records for visible schools
@@ -79,198 +79,6 @@ function useCurrentRecords(schools: School[]) {
   return records;
 }
 
-function SortHeader({
-  label,
-  column,
-  sortBy,
-  sortDir,
-  onSort,
-}: {
-  label: string;
-  column: string;
-  sortBy: string;
-  sortDir: string;
-  onSort: (col: string) => void;
-}) {
-  const active = sortBy === column;
-  return (
-    <th
-      className="px-3 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider cursor-pointer hover:text-gray-900 select-none whitespace-nowrap"
-      onClick={() => onSort(column)}
-    >
-      <span className="inline-flex items-center gap-1">
-        {label}
-        {active && (
-          <span className="text-blue-600">
-            {sortDir === "asc" ? "\u25B2" : "\u25BC"}
-          </span>
-        )}
-      </span>
-    </th>
-  );
-}
-
-const priorityLabels: Record<number, string> = {
-  0: "",
-  1: "Mildly Interested",
-  2: "Interested",
-  3: "Very Interested",
-  4: "Top Choice",
-  5: "VIP",
-};
-
-function divisionBadge(division: string) {
-  const colors: Record<string, string> = {
-    D1: "bg-blue-100 text-blue-800",
-    D2: "bg-green-100 text-green-800",
-    D3: "bg-purple-100 text-purple-800",
-    JUCO: "bg-orange-100 text-orange-800",
-  };
-  const labels: Record<string, string> = {
-    D1: "D-I",
-    D2: "D-II",
-    D3: "D-III",
-    JUCO: "JUCO",
-  };
-  return (
-    <span
-      className={`inline-block px-2 py-0.5 rounded-full text-xs font-semibold ${
-        colors[division] || "bg-gray-100 text-gray-800"
-      }`}
-    >
-      {labels[division] || division}
-    </span>
-  );
-}
-
-function SchoolLogo({ school }: { school: School }) {
-  const [src, setSrc] = useState(school.logo_url || null);
-  const triedFallback = useRef(false);
-
-  function handleError() {
-    if (!triedFallback.current && school.website) {
-      triedFallback.current = true;
-      try {
-        const domain = new URL(school.website).hostname;
-        setSrc(`https://www.google.com/s2/favicons?domain=${domain}&sz=128`);
-      } catch {
-        setSrc(null);
-      }
-    } else {
-      setSrc(null);
-    }
-  }
-
-  if (src) {
-    return (
-      <img
-        src={src}
-        alt=""
-        className="w-10 h-10 object-contain"
-        onError={handleError}
-      />
-    );
-  }
-  return (
-    <svg className="w-8 h-8 text-gray-300" viewBox="0 0 24 24" fill="currentColor">
-      <circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" strokeWidth="1.5" />
-      <path d="M6.5 3.5C8.5 6 9 9.5 8 13s-3.5 6-5.5 7.5" fill="none" stroke="currentColor" strokeWidth="1.2" />
-      <path d="M17.5 3.5C15.5 6 15 9.5 16 13s3.5 6 5.5 7.5" fill="none" stroke="currentColor" strokeWidth="1.2" />
-    </svg>
-  );
-}
-
-function RecordBadge({ record, fallbackRecord, loading }: { record: string | null | undefined; fallbackRecord: string | null; loading: boolean }) {
-  if (loading) {
-    return (
-      <span className="text-xs text-gray-300 bg-gray-50 px-2 py-0.5 rounded-full animate-pulse">
-        --
-      </span>
-    );
-  }
-  if (record) {
-    return (
-      <span className="text-xs text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full font-semibold">
-        {record}
-      </span>
-    );
-  }
-  if (fallbackRecord) {
-    return (
-      <span className="text-xs text-gray-600 bg-gray-100 px-2 py-0.5 rounded-full font-medium">
-        {fallbackRecord}
-      </span>
-    );
-  }
-  return null;
-}
-
-// Mobile card layout
-function MobileCard({
-  school,
-  distances,
-  onPriorityChange,
-  currentRecord,
-  recordLoading,
-}: {
-  school: School;
-  distances: Record<number, number> | null;
-  onPriorityChange: (schoolId: number, priority: number) => void;
-  currentRecord: string | null | undefined;
-  recordLoading: boolean;
-}) {
-  return (
-    <Link href={`/school/${school.id}`} className="block bg-white rounded-xl border border-gray-200 shadow-sm p-4 hover:border-blue-300 hover:shadow-md transition-all">
-      <div className="flex items-start gap-3">
-        {/* Logo */}
-        <div className="shrink-0 w-12 h-12 rounded-lg bg-gray-50 border border-gray-100 flex items-center justify-center overflow-hidden">
-          <SchoolLogo school={school} />
-        </div>
-        {/* Info */}
-        <div className="flex-1 min-w-0">
-          <div className="flex items-start justify-between gap-2">
-            <div className="min-w-0">
-              <span className="text-blue-700 font-bold text-base block truncate">
-                {school.name}
-              </span>
-              <p className="text-xs text-gray-500 truncate">
-                {school.mascot ? `${school.mascot} · ` : ""}{school.city}, {school.state}
-              </p>
-            </div>
-            {school.current_ranking && (
-              <span className="shrink-0 bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded-full text-xs font-bold">
-                #{school.current_ranking}
-              </span>
-            )}
-          </div>
-          {/* Tags row */}
-          <div className="flex flex-wrap items-center gap-1.5 mt-2">
-            {divisionBadge(school.division)}
-            <span className="text-xs text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full">{school.conference}</span>
-            <RecordBadge record={currentRecord} fallbackRecord={school.last_season_record} loading={recordLoading} />
-            {distances && distances[school.id] != null && (
-              <span className="text-xs text-green-700 bg-green-50 px-2 py-0.5 rounded-full font-medium">
-                {distances[school.id].toLocaleString()} mi
-              </span>
-            )}
-          </div>
-          {/* My Ranking */}
-          <div className="mt-2 flex items-center gap-2" onClick={(e) => e.preventDefault()}>
-            <StarRating
-              value={school.priority}
-              onChange={(v) => onPriorityChange(school.id, v)}
-              size="sm"
-            />
-            {school.priority > 0 && (
-              <span className="text-xs text-gray-500 font-medium">{priorityLabels[school.priority]}</span>
-            )}
-          </div>
-        </div>
-      </div>
-    </Link>
-  );
-}
-
 export default function SchoolTable({
   schools,
   distances,
@@ -278,8 +86,8 @@ export default function SchoolTable({
   sortDir,
   onSort,
   onPriorityChange,
+  alphabetical,
 }: SchoolTableProps) {
-  const router = useRouter();
   const currentRecords = useCurrentRecords(schools);
   const hasAnyFetchable = schools.some((s) => s.division === "D1" || s.division === "D2");
   const recordsLoading = hasAnyFetchable && Object.keys(currentRecords).length === 0;
@@ -296,132 +104,70 @@ export default function SchoolTable({
     );
   }
 
+  // Should we show letter dividers?
+  const showDividers = alphabetical || (sortBy === "name" && sortDir === "asc");
+
+  // Build list with optional letter dividers
+  let lastLetter = "";
+  const items: { type: "divider"; letter: string }[] | { type: "school"; school: School }[] = [];
+  for (const school of schools) {
+    if (showDividers) {
+      const letter = school.name.charAt(0).toUpperCase();
+      if (letter !== lastLetter) {
+        (items as { type: string; letter?: string; school?: School }[]).push({ type: "divider", letter });
+        lastLetter = letter;
+      }
+    }
+    (items as { type: string; letter?: string; school?: School }[]).push({ type: "school", school });
+  }
+
   return (
-    <>
-      {/* Mobile: Card layout */}
-      <div className="lg:hidden space-y-3">
-        {/* Sort controls for mobile */}
-        <div className="flex items-center gap-2 px-1">
-          <span className="text-xs text-gray-500 font-medium">Sort:</span>
-          <select
-            value={sortBy}
-            onChange={(e) => onSort(e.target.value)}
-            className="text-xs border border-gray-300 rounded-lg px-2 py-1.5 text-gray-700 bg-white"
-          >
-            <option value="name">Name</option>
-            <option value="state">State</option>
-            <option value="ranking">National Ranking</option>
-            <option value="priority">My Ranking</option>
-            {distances && <option value="distance">Distance from Home</option>}
-          </select>
-          <button
-            onClick={() => onSort(sortBy)}
-            className="text-xs border border-gray-300 rounded-lg px-2 py-1.5 text-gray-700 bg-white"
-          >
-            {sortDir === "asc" ? "\u25B2 Asc" : "\u25BC Desc"}
-          </button>
-        </div>
-        {schools.map((school) => (
-          <MobileCard
-            key={school.id}
-            school={school}
-            distances={distances}
-            onPriorityChange={onPriorityChange}
-            currentRecord={currentRecords[school.name]}
-            recordLoading={(school.division === "D1" || school.division === "D2") && recordsLoading}
-          />
-        ))}
+    <div>
+      {/* Sort controls */}
+      <div className="flex items-center gap-2 px-1 mb-2">
+        <span className="text-xs text-gray-500 font-medium">Sort:</span>
+        <select
+          value={sortBy}
+          onChange={(e) => onSort(e.target.value)}
+          className="text-xs border border-gray-300 rounded-lg px-2 py-1.5 text-gray-700 bg-white"
+        >
+          <option value="name">Name</option>
+          <option value="state">State</option>
+          <option value="ranking">National Ranking</option>
+          <option value="priority">My Ranking</option>
+          {distances && <option value="distance">Distance from Home</option>}
+        </select>
+        <button
+          onClick={() => onSort(sortBy)}
+          className="text-xs border border-gray-300 rounded-lg px-2 py-1.5 text-gray-700 bg-white"
+        >
+          {sortDir === "asc" ? "\u25B2 Asc" : "\u25BC Desc"}
+        </button>
       </div>
 
-      {/* Desktop: Table layout */}
-      <div className="hidden lg:block overflow-x-auto border border-gray-200 rounded-xl shadow-sm">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
-            <tr>
-              <SortHeader label="School" column="name" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
-              <SortHeader label="My Ranking" column="priority" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
-              <SortHeader label="Division" column="division" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
-              <SortHeader label="State" column="state" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
-              <SortHeader label="Record" column="record" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
-              <SortHeader label="Natl Ranking" column="ranking" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
-              {distances && (
-                <SortHeader label="From Home" column="distance" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
-              )}
-              <SortHeader label="High Academic" column="high_academic" sortBy={sortBy} sortDir={sortDir} onSort={onSort} />
-            </tr>
-          </thead>
-          <tbody className="bg-white divide-y divide-gray-100">
-            {schools.map((school) => {
-              const rec = currentRecords[school.name];
-              const isFetchable = school.division === "D1" || school.division === "D2";
-              return (
-                <tr
-                  key={school.id}
-                  className="hover:bg-blue-50/50 transition-colors cursor-pointer"
-                  onClick={() => router.push(`/school/${school.id}`)}
-                >
-                  <td className="px-3 py-3">
-                    <span className="text-blue-700 font-semibold">
-                      {school.name}
-                    </span>
-                    <div className="text-xs text-gray-500">
-                      {school.mascot ? `${school.mascot} · ` : ""}{school.city}, {school.state}
-                    </div>
-                  </td>
-                  <td className="px-3 py-3" onClick={(e) => e.stopPropagation()}>
-                    <StarRating
-                      value={school.priority}
-                      onChange={(v) => onPriorityChange(school.id, v)}
-                      size="sm"
-                    />
-                    {school.priority > 0 && (
-                      <div className="text-[10px] text-gray-500 font-medium mt-0.5 whitespace-nowrap">{priorityLabels[school.priority]}</div>
-                    )}
-                  </td>
-                  <td className="px-3 py-3">{divisionBadge(school.division)}</td>
-                  <td className="px-3 py-3 text-sm text-gray-700">{school.state}</td>
-                  <td className="px-3 py-3 text-sm text-gray-700 text-center">
-                    {isFetchable && recordsLoading ? (
-                      <span className="text-gray-300 animate-pulse">--</span>
-                    ) : rec ? (
-                      <span className="font-semibold text-emerald-700">{rec}</span>
-                    ) : school.last_season_record ? (
-                      <span className="font-medium text-gray-600">{school.last_season_record}</span>
-                    ) : (
-                      <span className="text-gray-300">-</span>
-                    )}
-                  </td>
-                  <td className="px-3 py-3 text-sm text-gray-700 text-center">
-                    {school.current_ranking ? (
-                      <span className="inline-block bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded-full text-xs font-bold">
-                        #{school.current_ranking}
-                      </span>
-                    ) : (
-                      <span className="text-gray-300">-</span>
-                    )}
-                  </td>
-                  {distances && (
-                    <td className="px-3 py-3 text-sm text-gray-700 text-right">
-                      {distances[school.id] != null
-                        ? `${distances[school.id].toLocaleString()} mi`
-                        : "-"}
-                    </td>
-                  )}
-                  <td className="px-3 py-3 text-sm text-center">
-                    {school.high_academic ? (
-                      <svg className="w-5 h-5 text-green-600 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                    ) : (
-                      <span className="text-gray-300">-</span>
-                    )}
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+      {/* Compact rows */}
+      <div className="flex flex-col" style={{ gap: 5 }}>
+        {(items as { type: string; letter?: string; school?: School }[]).map((item, i) => {
+          if (item.type === "divider") {
+            return (
+              <div key={`div-${item.letter}`} style={{ padding: "8px 4px 4px" }}>
+                <span className="text-[12px] font-bold text-[#aaa]">{item.letter}</span>
+              </div>
+            );
+          }
+          const school = item.school!;
+          const isFetchable = school.division === "D1" || school.division === "D2";
+          return (
+            <ProgramRow
+              key={school.id}
+              school={school}
+              currentRecord={currentRecords[school.name]}
+              recordLoading={isFetchable && recordsLoading}
+              onPriorityChange={onPriorityChange}
+            />
+          );
+        })}
       </div>
-    </>
+    </div>
   );
 }
