@@ -72,6 +72,18 @@ function FormattedMessage({ content }: { content: string }) {
   return (
     <div className="space-y-2">
       {lines.map((line, i) => {
+        // Markdown headers (## Header or # Header) — render as bold text, not literal hashtags
+        const headerMatch = line.match(/^(#{1,3})\s+(.+)/);
+        if (headerMatch) {
+          const level = headerMatch[1].length;
+          const text = headerMatch[2];
+          const sizeClass = level === 1 ? "text-base font-black" : level === 2 ? "text-sm font-bold" : "text-sm font-semibold";
+          return (
+            <p key={i} className={`${sizeClass} text-gray-900 mt-1`}
+               dangerouslySetInnerHTML={{ __html: renderInlineFormatting(text) }} />
+          );
+        }
+
         // Bullet points
         if (line.match(/^[\-•]\s/)) {
           const bulletContent = line.replace(/^[\-•]\s/, "");
