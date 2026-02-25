@@ -284,6 +284,12 @@ function AIMatchContent() {
       setMessages([]);
       setIntakeValues(undefined);
       setShowIntake(true);
+      // Clear GPA/SAT/ACT from DB profile so stale scores don't get sent to AI
+      fetch("/api/user/profile", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ gpa: null, satScore: null, actScore: null }),
+      }).catch(() => {});
       router.replace("/ai-match", { scroll: false });
       return;
     }

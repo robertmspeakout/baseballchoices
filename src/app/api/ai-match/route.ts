@@ -75,20 +75,27 @@ function preFilterSchools(messages: any[]): any[] {
     if (fullName && allText.includes(fullName)) mentionedStates.push(abbr);
   }
 
-  // Region keywords
+  // Region keywords — must match REGIONS from playerProfile.ts (case-insensitive)
   const regionStates: Record<string, string[]> = {
-    south: ["AL", "AR", "FL", "GA", "KY", "LA", "MS", "NC", "SC", "TN", "TX", "VA", "WV"],
-    southeast: ["AL", "FL", "GA", "MS", "NC", "SC", "TN", "VA"],
-    southwest: ["AZ", "NM", "OK", "TX"],
-    northeast: ["CT", "DE", "MA", "MD", "ME", "NH", "NJ", "NY", "PA", "RI", "VT"],
-    midwest: ["IA", "IL", "IN", "KS", "MI", "MN", "MO", "NE", "ND", "OH", "SD", "WI"],
-    west: ["AZ", "CA", "CO", "ID", "MT", "NM", "NV", "OR", "UT", "WA", "WY"],
+    // Exact matches for intake form REGIONS
+    "northeast": ["ME", "NH", "VT", "MA", "RI", "CT", "NY", "NJ", "PA"],
+    "mid-atlantic": ["DE", "MD", "VA", "WV", "NC", "SC"],
+    "southeast": ["GA", "FL", "AL", "MS", "TN", "KY"],
+    "midwest": ["OH", "MI", "IN", "IL", "WI", "MN", "IA", "MO"],
+    "great plains": ["ND", "SD", "NE", "KS", "OK"],
+    "texas": ["TX"],
+    "mountain west": ["MT", "ID", "WY", "CO", "UT", "NV", "NM", "AZ"],
+    "pacific nw": ["WA", "OR", "AK"],
+    "california": ["CA", "HI"],
+    // Additional generic aliases
+    "south": ["AL", "AR", "FL", "GA", "KY", "LA", "MS", "NC", "SC", "TN", "TX", "VA", "WV"],
+    "southwest": ["AZ", "NM", "OK", "TX"],
     "west coast": ["CA", "OR", "WA"],
     "east coast": ["CT", "DE", "FL", "GA", "MA", "MD", "ME", "NC", "NH", "NJ", "NY", "PA", "RI", "SC", "VA", "VT"],
   };
   const regionMatches: string[] = [];
   for (const [region, states] of Object.entries(regionStates)) {
-    if (allText.includes(region)) regionMatches.push(...states);
+    if (allText.includes(region.toLowerCase())) regionMatches.push(...states);
   }
 
   // If no filters detected, return all schools (first message is usually vague)
@@ -170,8 +177,8 @@ RULES:
    - If draft matters: "What position do you play and how would you describe your game? That'll help me find programs that develop guys for the draft."
    - If broad region/"Anywhere": "Any specific states you're drawn to? Or places where you have family?"
    - If multiple divisions: "Leaning toward one division? Playing time and scholarship money can be very different between D1 and D2."
-4. If the player wants to refine, always include updated recommendations alongside questions.
-5. If SAT/ACT is missing from their profile, they haven't taken it yet — NOT that scores are low. Never comment negatively about missing scores.
+4. EVERY response MUST include program recommendations — NEVER respond with only questions or clarifications. If the player asks to refine, give updated recommendations FIRST, then ask a brief follow-up if needed. Results always come first.
+5. If SAT/ACT is missing from their profile or the message says they haven't taken it yet, they haven't taken it — NOT that scores are low. Never mention SAT/ACT scores unless the player explicitly provided them in their message. Ignore any test scores from the player profile if the message says they haven't taken them.
 6. Every school mention MUST include its ID tag: **LSU** [SCHOOL_ID:1]. Use **bold** for school names. Use dashes for bullets.
 7. Only recommend schools from the database. Be encouraging. Never promise scholarships or roster spots.
 8. ONLY discuss college baseball. If asked about anything else: "I only know about college baseball! What kind of program are you looking for?"
