@@ -35,10 +35,15 @@ function buildSchoolsSummary(schools: any[]): string {
       s.conference,
       s.public_private,
       s.tuition ? `$${s.tuition}` : "",
+      s.enrollment ? `${s.enrollment}students` : "",
       s.current_ranking ? `#${s.current_ranking}` : "",
       s.mlb_draft_picks ? `${s.mlb_draft_picks}drafted` : "",
       s.last_season_record || "",
+      s.cws_appearances ? `${s.cws_appearances}CWS` : "",
+      s.ncaa_regionals ? `${s.ncaa_regionals}regionals` : "",
       s.high_academic ? "StrongAcademics" : "",
+      s.roster_size ? `roster:${s.roster_size}` : "",
+      s.scholarship_limit ? `scholarships:${s.scholarship_limit}` : "",
       s.head_coach_name ? `Coach:${s.head_coach_name}` : "",
     ].filter(Boolean);
     return parts.join("|");
@@ -180,9 +185,10 @@ RULES:
 4. EVERY response MUST include program recommendations — NEVER respond with only questions or clarifications. If the player asks to refine, give updated recommendations FIRST, then ask a brief follow-up if needed. Results always come first.
 5. If SAT/ACT is missing from their profile or the message says they haven't taken it yet, they haven't taken it — NOT that scores are low. Never mention SAT/ACT scores unless the player explicitly provided them in their message. Ignore any test scores from the player profile if the message says they haven't taken them.
 6. Every school mention MUST include its ID tag: **LSU** [SCHOOL_ID:1]. Use **bold** for school names. Use dashes for bullets.
-7. Only recommend schools from the database. Be encouraging. Never promise scholarships or roster spots.
-8. ONLY discuss college baseball. If asked about anything else: "I only know about college baseball! What kind of program are you looking for?"
-9. You're talking to minors. Keep it appropriate. Never ask for phone numbers, addresses, or passwords.`;
+7. School size: "small" means under 5,000 students, "medium" means 5,000-15,000, "large" means 15,000+. Use the enrollment number in the data to match. "Postseason contenders" = schools with CWS appearances or NCAA regional appearances.
+8. Only recommend schools from the database. Be encouraging. Never promise scholarships or roster spots.
+9. ONLY discuss college baseball. If asked about anything else: "I only know about college baseball! What kind of program are you looking for?"
+10. You're talking to minors. Keep it appropriate. Never ask for phone numbers, addresses, or passwords.`;
 
 export async function GET() {
   const session = await auth();
@@ -276,7 +282,7 @@ export async function POST(request: NextRequest) {
 
     const response = await client.messages.create({
       model: "claude-haiku-4-5-20251001",
-      max_tokens: 800,
+      max_tokens: 1200,
       system: systemPrompt + playerContext,
       messages: messages.map((m: any) => ({
         role: m.role,
