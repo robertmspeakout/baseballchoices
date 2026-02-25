@@ -267,7 +267,7 @@ function AIMatchContent() {
   const [loading, setLoading] = useState(false);
   const [profile, setProfile] = useState<PlayerProfile | null>(null);
   const [userBgPic, setUserBgPic] = useState<string | null>(null);
-  const [remaining, setRemaining] = useState<number | null>(null);
+  const [remaining, setRemaining] = useState<number>(20);
   const [searchOverlayOpen, setSearchOverlayOpen] = useState(false);
   const [showIntake, setShowIntake] = useState(false);
   const [intakeValues, setIntakeValues] = useState<Partial<IntakeAnswers> | undefined>(undefined);
@@ -344,6 +344,14 @@ function AIMatchContent() {
 
     loadData();
   }, [status, session]);
+
+  // Fetch remaining message count on mount
+  useEffect(() => {
+    fetch("/api/ai-match")
+      .then(res => res.json())
+      .then(data => { if (data.remaining !== undefined) setRemaining(data.remaining); })
+      .catch(() => {});
+  }, []);
 
   // Auto-scroll to the top of the latest AI reply
   useEffect(() => {
@@ -581,7 +589,7 @@ function AIMatchContent() {
     sendMessage(text);
   };
 
-  const atLimit = remaining !== null && remaining <= 0;
+  const atLimit = remaining <= 0;
 
   return (
     <AuthGate>
@@ -806,13 +814,11 @@ function AIMatchContent() {
                       <MicButton onTranscript={handleVoiceTranscript} />
                       <div className="text-center px-2">
                         <p className="text-[10px] text-gray-400">
+                          {remaining} of 20 messages remaining this month
+                        </p>
+                        <p className="text-[10px] text-gray-400 mt-0.5">
                           This AI will only talk baseball with you. Results are suggestions.
                         </p>
-                        {remaining !== null && (
-                          <p className="text-[10px] text-gray-400 mt-0.5">
-                            {remaining} of 20 messages remaining this month
-                          </p>
-                        )}
                       </div>
                       <button
                         onClick={() => sendMessage()}

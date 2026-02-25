@@ -35,7 +35,10 @@ export function rateLimit(opts: {
   max: number;
   /** Window duration in milliseconds */
   windowMs: number;
-}): { check: (key: string) => { allowed: boolean; remaining: number } } {
+}): {
+  check: (key: string) => { allowed: boolean; remaining: number };
+  peek: (key: string) => { remaining: number };
+} {
   if (!stores.has(opts.name)) {
     stores.set(opts.name, new Map());
   }
@@ -58,6 +61,14 @@ export function rateLimit(opts: {
       }
 
       return { allowed: true, remaining: opts.max - entry.count };
+    },
+    peek(key: string) {
+      const now = Date.now();
+      const entry = store.get(key);
+      if (!entry || now >= entry.resetAt) {
+        return { remaining: opts.max };
+      }
+      return { remaining: Math.max(0, opts.max - entry.count) };
     },
   };
 }

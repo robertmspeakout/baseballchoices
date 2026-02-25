@@ -177,6 +177,20 @@ RULES:
 8. ONLY discuss college baseball. If asked about anything else: "I only know about college baseball! What kind of program are you looking for?"
 9. You're talking to minors. Keep it appropriate. Never ask for phone numbers, addresses, or passwords.`;
 
+export async function GET() {
+  const session = await auth();
+  if (!session?.user?.id) {
+    return NextResponse.json({ remaining: 20 });
+  }
+  const UNLIMITED_EMAILS = ["testing@extrabase.com"];
+  const userEmail = session.user.email?.toLowerCase() || "";
+  if (UNLIMITED_EMAILS.includes(userEmail)) {
+    return NextResponse.json({ remaining: 20 });
+  }
+  const { remaining } = aiLimiter.peek(session.user.id);
+  return NextResponse.json({ remaining });
+}
+
 export async function POST(request: NextRequest) {
   // Auth check
   const session = await auth();
