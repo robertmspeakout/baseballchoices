@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState, use } from "react";
+import { Suspense, useEffect, useRef, useState, use } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import SearchOverlay from "@/components/SearchOverlay";
@@ -112,7 +112,21 @@ export default function SchoolPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = use(params);
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-10 w-10 border-4 border-blue-200 border-t-blue-600" />
+      </div>
+    }>
+      <SchoolPageContent id={id} />
+    </Suspense>
+  );
+}
+
+function SchoolPageContent({ id }: { id: string }) {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const fromAI = searchParams.get("from") === "ai";
   const { data: session, status: authStatus } = useSession();
   const isLoggedIn = authStatus === "authenticated" && !!session?.user;
 
@@ -468,6 +482,30 @@ export default function SchoolPage({
           }}
           onSearchClick={() => setSearchOverlayOpen(true)}
         />
+
+        {/* Back to AI Scout banner */}
+        {fromAI && (
+          <div className="flex items-center gap-3 bg-gradient-to-r from-red-50 to-orange-50 border border-red-200 rounded-xl px-4 py-3">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center shrink-0">
+              <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
+              </svg>
+            </div>
+            <div className="flex-1">
+              <p className="text-xs font-bold text-gray-900">AI Scout Recommendation</p>
+              <p className="text-[11px] text-gray-500">You came here from your AI Scout results</p>
+            </div>
+            <Link
+              href="/ai-match?resume=true"
+              className="text-xs font-bold text-red-600 hover:text-red-700 flex items-center gap-1 shrink-0"
+            >
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+              </svg>
+              Back to AI Scout
+            </Link>
+          </div>
+        )}
 
         {/* School identity card */}
         <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">

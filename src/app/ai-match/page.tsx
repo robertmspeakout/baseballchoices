@@ -33,15 +33,29 @@ function stripMarkers(text: string): string {
     .replace(/\[SCHOOL[^\]]*\]/gi, "");
 }
 
-// Convert **bold** to <strong> tags (HTML-safe)
+// Convert **bold** to <strong> tags, and **School** [SCHOOL_ID:xx] to clickable links
 function renderInlineFormatting(text: string): string {
-  // Strip any markers that slipped through, then escape HTML, then apply bold
-  const clean = stripMarkers(text);
-  const escaped = clean
+  // Step 1: Convert **Name** [SCHOOL_ID:xxx] into linked school names (before stripping markers)
+  let html = text.replace(
+    /\*\*(.*?)\*\*\s*\[SCHOOL_ID:\s*(\d+)\s*\]/gi,
+    (_match, name, id) => `__LINK_START_${id}__${name}__LINK_END__`
+  );
+  // Step 2: Strip any remaining markers
+  html = stripMarkers(html);
+  // Step 3: Escape HTML
+  html = html
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;");
-  return escaped.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+  // Step 4: Restore school links as <a> tags
+  html = html.replace(
+    /__LINK_START_(\d+)__(.*?)__LINK_END__/g,
+    (_match, id, name) =>
+      `<a href="/school/${id}?from=ai" class="font-bold text-red-700 underline underline-offset-2 decoration-red-300 hover:text-red-900 hover:decoration-red-500">${name}</a>`
+  );
+  // Step 5: Handle remaining **bold** text (non-school bold)
+  html = html.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+  return html;
 }
 
 // Build the "View in ExtraBase" URL with school IDs
@@ -52,8 +66,8 @@ function buildResultsUrl(schools: SchoolCard[]): string {
 
 // Format assistant messages with bold, bullets, numbered lists, and headers
 function FormattedMessage({ content }: { content: string }) {
-  const cleaned = stripMarkers(content);
-  const lines = cleaned.split("\n");
+  // Keep markers intact — renderInlineFormatting converts them to clickable links
+  const lines = content.split("\n");
 
   return (
     <div className="space-y-2">
@@ -90,7 +104,7 @@ function FormattedMessage({ content }: { content: string }) {
   );
 }
 
-// Prominent "View Programs in ExtraBase" CTA shown after AI recommendations
+// Prominent CTA to view ALL matched programs on the full results page
 function ViewResultsButton({ schools }: { schools: SchoolCard[] }) {
   if (!schools || schools.length === 0) return null;
   return (
@@ -101,12 +115,12 @@ function ViewResultsButton({ schools }: { schools: SchoolCard[] }) {
       >
         <div className="w-9 h-9 rounded-lg bg-white/20 flex items-center justify-center shrink-0">
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" />
           </svg>
         </div>
         <div className="flex-1">
-          <p className="text-sm font-bold">View {schools.length} program{schools.length === 1 ? "" : "s"} in ExtraBase</p>
-          <p className="text-xs text-red-100">Rank, compare, and research these programs</p>
+          <p className="text-sm font-bold">View all {schools.length} matches</p>
+          <p className="text-xs text-red-100">Compare, rank, and research every program side by side</p>
         </div>
         <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -362,18 +376,17 @@ function AIMatchContent() {
       }),
     }).catch(() => {});
 
-    // Save GPA/SAT/ACT to user profile if provided (fire and forget)
-    if (answers.gpa || answers.satScore || answers.actScore) {
-      const profileUpdate: Record<string, string> = {};
-      if (answers.gpa) profileUpdate.gpa = answers.gpa;
-      if (answers.satScore) profileUpdate.satScore = answers.satScore;
-      if (answers.actScore) profileUpdate.actScore = answers.actScore;
-      fetch("/api/user/profile", {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(profileUpdate),
-      }).catch(() => {});
-    }
+    // Save GPA/SAT/ACT to user profile (fire and forget)
+    // Always send all three so blank values clear old data
+    fetch("/api/user/profile", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        gpa: answers.gpa || null,
+        satScore: answers.satScore || null,
+        actScore: answers.actScore || null,
+      }),
+    }).catch(() => {});
 
     // Mark intake as done and save values for editing
     localStorage.setItem(INTAKE_DONE_KEY, "true");
