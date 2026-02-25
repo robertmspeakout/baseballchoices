@@ -793,7 +793,8 @@ function AIMatchContent() {
 
               </div>
 
-              {/* Input area */}
+              {/* Input area — hidden on landing page (3 buttons) */}
+              {(messages.length > 0 || loading) && (
               <div className="sticky bottom-0 border-t border-gray-200 p-3 bg-white/95 backdrop-blur-sm">
                 {atLimit ? (
                   <div className="text-center py-3">
@@ -839,6 +840,7 @@ function AIMatchContent() {
                   </>
                 )}
               </div>
+              )}
             </div>
           )}
         </main>
