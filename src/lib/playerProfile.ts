@@ -50,7 +50,7 @@ export interface PlayerPreferences {
   maxDistanceFromHome: number | null; // miles, null = any
   preferredRegions: string[]; // Region names like "Pacific NW", "Southeast"
   maxTuition: number | null; // dollars, null = any
-  schoolSize: "small" | "medium" | "large" | "any"; // small <5K, med 5-15K, large 15K+
+  schoolSize: ("small" | "medium" | "large" | "any")[]; // e.g. ["small","medium"] or ["any"]
   highAcademic: boolean;
   competitiveness: "top25" | "postseason" | "any";
   // top25 = currently ranked or frequently ranked
@@ -86,7 +86,7 @@ const DEFAULT_PREFERENCES: PlayerPreferences = {
   maxDistanceFromHome: null,
   preferredRegions: [],
   maxTuition: null,
-  schoolSize: "any",
+  schoolSize: ["any"],
   highAcademic: false,
   competitiveness: "any",
   draftImportance: "no",

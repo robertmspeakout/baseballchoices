@@ -9,7 +9,10 @@ const preferencesSchema = z.object({
   maxDistanceFromHome: z.union([z.string(), z.number(), z.null()]).optional(),
   preferredRegions: z.array(z.string()).nullable().optional(),
   maxTuition: z.union([z.string(), z.number(), z.null()]).optional(),
-  schoolSize: z.enum(["any", "small", "medium", "large"]).optional(),
+  schoolSize: z.union([
+    z.array(z.enum(["any", "small", "medium", "large"])),
+    z.enum(["any", "small", "medium", "large"]),
+  ]).optional(),
   highAcademic: z.boolean().optional(),
   competitiveness: z.enum(["any", "top25", "postseason"]).optional(),
   draftImportance: z.enum(["no", "some", "high", "yes"]).optional(),
@@ -28,8 +31,20 @@ export async function GET() {
   });
 
   if (prefs) {
+    // Normalize schoolSize: stored as JSON array, legacy as bare string
+    let schoolSize: string[] = ["any"];
+    if (prefs.schoolSize) {
+      try {
+        const parsed = JSON.parse(prefs.schoolSize);
+        schoolSize = Array.isArray(parsed) ? parsed : [parsed];
+      } catch {
+        schoolSize = [prefs.schoolSize]; // legacy bare string like "small"
+      }
+    }
+
     return NextResponse.json({
       ...prefs,
+      schoolSize,
       preferredDivisions: prefs.preferredDivisions ? JSON.parse(prefs.preferredDivisions) : [],
       preferredRegions: prefs.preferredRegions ? JSON.parse(prefs.preferredRegions) : [],
       preferredConferences: prefs.preferredConferences ? JSON.parse(prefs.preferredConferences) : [],
@@ -70,7 +85,7 @@ export async function PUT(request: NextRequest) {
     maxDistanceFromHome: maxDistanceFromHome ? parseInt(String(maxDistanceFromHome)) : null,
     preferredRegions: preferredRegions ? JSON.stringify(preferredRegions) : null,
     maxTuition: maxTuition ? parseInt(String(maxTuition)) : null,
-    schoolSize,
+    schoolSize: schoolSize ? JSON.stringify(Array.isArray(schoolSize) ? schoolSize : [schoolSize]) : null,
     highAcademic: highAcademic ?? false,
     competitiveness,
     draftImportance: normalizedDraft,

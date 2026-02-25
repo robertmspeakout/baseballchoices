@@ -11,7 +11,7 @@ export interface IntakeAnswers {
   maxDistance: number | null;
   maxTuition: number | null;
   tuitionChoice: string;
-  schoolSize: string;
+  schoolSize: string[]; // e.g. ["small","medium"] or ["any"]
   highAcademic: boolean;
   draftImportance: string;
   gpa: string;
@@ -97,6 +97,55 @@ function MultiChipGroup({
   );
 }
 
+// Multi-select chip group with a special "any" option that clears the others
+function MultiChipGroupWithAny({
+  options,
+  anyValue,
+  values,
+  onChange,
+}: {
+  options: { value: string; label: string; sub?: string }[];
+  anyValue: string; // the value that acts as "select all / deselect others"
+  values: string[];
+  onChange: (v: string[]) => void;
+}) {
+  const toggle = (val: string) => {
+    if (val === anyValue) {
+      // Clicking "any" clears everything else
+      onChange([anyValue]);
+    } else {
+      // Remove "any" if present, then toggle this value
+      const without = values.filter((v) => v !== anyValue);
+      if (without.includes(val)) {
+        const next = without.filter((v) => v !== val);
+        onChange(next.length === 0 ? [anyValue] : next);
+      } else {
+        onChange([...without, val]);
+      }
+    }
+  };
+
+  return (
+    <div className="flex flex-wrap gap-2">
+      {options.map((opt) => (
+        <button
+          key={opt.value}
+          type="button"
+          onClick={() => toggle(opt.value)}
+          className={`px-4 py-2 rounded-full text-sm font-medium border transition-all ${
+            values.includes(opt.value)
+              ? "bg-red-600 text-white border-red-600 shadow-sm"
+              : "bg-white text-gray-700 border-gray-300 hover:border-gray-400 hover:bg-gray-50"
+          }`}
+        >
+          {opt.label}
+          {opt.sub && <span className="text-[10px] opacity-70 ml-1">{opt.sub}</span>}
+        </button>
+      ))}
+    </div>
+  );
+}
+
 function QuestionCard({
   label,
   hint,
@@ -137,9 +186,13 @@ export function composeIntakeMessage(a: IntakeAnswers): string {
     parts.push(`with tuition under $${a.maxTuition.toLocaleString()}/year`);
   }
 
-  if (a.schoolSize === "small") parts.push("at a small school");
-  else if (a.schoolSize === "medium") parts.push("at a mid-size school");
-  else if (a.schoolSize === "large") parts.push("at a large school");
+  const sizeLabels: Record<string, string> = { small: "small", medium: "mid-size", large: "large" };
+  const selectedSizes = (a.schoolSize || []).filter((s) => s !== "any");
+  if (selectedSizes.length === 1) {
+    parts.push(`at a ${sizeLabels[selectedSizes[0]]} school`);
+  } else if (selectedSizes.length === 2) {
+    parts.push(`at a ${sizeLabels[selectedSizes[0]]} or ${sizeLabels[selectedSizes[1]]} school`);
+  }
 
   if (a.highAcademic) parts.push("with strong academics");
 
@@ -176,7 +229,11 @@ export default function AIScoutIntake({
   const [tuitionChoice, setTuitionChoice] = useState(
     initialValues?.tuitionChoice || (initialValues?.maxTuition ? String(initialValues.maxTuition) : "")
   );
-  const [schoolSize, setSchoolSize] = useState(initialValues?.schoolSize || "");
+  const [schoolSize, setSchoolSize] = useState<string[]>(
+    initialValues?.schoolSize && initialValues.schoolSize.length > 0
+      ? initialValues.schoolSize
+      : ["any"]
+  );
   const [highAcademic, setHighAcademic] = useState(initialValues?.highAcademic ?? false);
   const [draftImportance, setDraftImportance] = useState(initialValues?.draftImportance || "");
   const [gpa, setGpa] = useState(initialValues?.gpa || "");
@@ -320,16 +377,17 @@ export default function AIScoutIntake({
           />
         </QuestionCard>
 
-        {/* 5. School size */}
-        <QuestionCard label="What size school do you want?">
-          <ChipGroup
+        {/* 5. School size (multi-select, "any" clears others) */}
+        <QuestionCard label="What size school do you want?" hint="Select all that apply">
+          <MultiChipGroupWithAny
             options={[
               { value: "small", label: "Small", sub: "(<5K)" },
               { value: "medium", label: "Medium", sub: "(5-15K)" },
               { value: "large", label: "Large", sub: "(15K+)" },
               { value: "any", label: "Any size" },
             ]}
-            value={schoolSize}
+            anyValue="any"
+            values={schoolSize}
             onChange={setSchoolSize}
           />
         </QuestionCard>

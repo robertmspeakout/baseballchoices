@@ -140,22 +140,28 @@ export function scoreSchool(
   }
 
   // --- School Size (7 pts) ---
-  if (prefs.schoolSize === "any") {
+  // Normalize: support both old single-string and new array format
+  const prefSizes: string[] = Array.isArray(prefs.schoolSize)
+    ? prefs.schoolSize
+    : [prefs.schoolSize];
+
+  if (prefSizes.includes("any") || prefSizes.length === 0) {
     score += WEIGHTS.schoolSize;
   } else {
     const size = categorizeSize(school.enrollment);
-    if (size === prefs.schoolSize) {
+    if (size && prefSizes.includes(size)) {
       score += WEIGHTS.schoolSize;
-      const sizeLabel = prefs.schoolSize === "small" ? "Small campus" :
-        prefs.schoolSize === "medium" ? "Mid-size campus" : "Large campus";
+      const sizeLabel = size === "small" ? "Small campus" :
+        size === "medium" ? "Mid-size campus" : "Large campus";
       reasons.push(`${sizeLabel} (${school.enrollment?.toLocaleString()} students)`);
     } else if (size == null) {
       score += WEIGHTS.schoolSize * 0.5;
     } else {
       // Adjacent size gets partial credit
       const sizes = ["small", "medium", "large"];
-      const diff = Math.abs(sizes.indexOf(size) - sizes.indexOf(prefs.schoolSize));
-      score += diff === 1 ? WEIGHTS.schoolSize * 0.4 : 0;
+      const sizeIdx = sizes.indexOf(size);
+      const minDiff = Math.min(...prefSizes.map((p) => Math.abs(sizeIdx - sizes.indexOf(p))));
+      score += minDiff === 1 ? WEIGHTS.schoolSize * 0.4 : 0;
     }
   }
 
