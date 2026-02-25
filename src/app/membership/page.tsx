@@ -169,8 +169,8 @@ export default function MembershipPage() {
                 <Link href="/" className="block px-4 py-3 bg-[#CC0000] text-white rounded-xl text-sm font-bold hover:bg-red-700 transition-colors">
                   Explore Programs
                 </Link>
-                <Link href="/match" className="block px-4 py-3 border-2 border-gray-300 text-gray-700 rounded-xl text-sm font-bold hover:bg-gray-50 transition-colors">
-                  Find My Matches
+                <Link href="/ai-match" className="block px-4 py-3 border-2 border-gray-300 text-gray-700 rounded-xl text-sm font-bold hover:bg-gray-50 transition-colors">
+                  Try AI Scout
                 </Link>
               </div>
             </div>

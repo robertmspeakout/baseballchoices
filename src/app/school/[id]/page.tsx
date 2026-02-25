@@ -153,8 +153,16 @@ export default function SchoolPage({
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [logoSrc, setLogoSrc] = useState<string | null>(schoolData?.logo_url || null);
+  const [logoSrc, setLogoSrc] = useState<string | null>(null);
   const triedLogoFallback = useRef(false);
+
+  // Update logoSrc when school data loads
+  useEffect(() => {
+    if (schoolData?.logo_url) {
+      setLogoSrc(schoolData.logo_url);
+      triedLogoFallback.current = false;
+    }
+  }, [schoolData]);
   const [distanceFromHome, setDistanceFromHome] = useState<number | null>(null);
   const [userZip, setUserZip] = useState<string | null>(null);
   const [news, setNews] = useState<NewsArticle[]>([]);
@@ -444,15 +452,15 @@ export default function SchoolPage({
           value={school.division || "D1"}
           options={[
             { value: "mylist", label: "My Top Programs" },
+            { value: "ai-scout", label: "AI Scout" },
             { value: "D1", label: "Division I Programs" },
             { value: "D2", label: "Division II Programs" },
             { value: "D3", label: "Division III Programs" },
             { value: "JUCO", label: "JUCO Programs" },
-            { value: "match", label: "My AI Matches" },
           ]}
           onSelect={(val) => {
             if (val === "mylist") router.push("/my-list");
-            else if (val === "match") router.push("/match");
+            else if (val === "ai-scout") router.push("/ai-match");
             else if (val === "D1") router.push("/programs/d1");
             else if (val === "D2") router.push("/programs/d2");
             else if (val === "D3") router.push("/programs/d3");

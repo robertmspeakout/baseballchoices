@@ -40,7 +40,7 @@ export default function AuthGate({ children }: AuthGateProps) {
             </svg>
           </div>
           <p className="text-sm text-gray-700 font-medium mb-4">
-            Create a free account to access all programs, AI matching, and more.
+            Create a free account to access all programs, AI Scout, and more.
           </p>
           <Link
             href="/auth/register"

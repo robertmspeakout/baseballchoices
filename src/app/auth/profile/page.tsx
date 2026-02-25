@@ -5,7 +5,7 @@ import { useSession } from "next-auth/react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Suspense } from "react";
-import { loadProfile, saveProfile, loadPreferences, savePreferences, REGIONS } from "@/lib/playerProfile";
+import { loadProfile, saveProfile } from "@/lib/playerProfile";
 import ImageCropModal from "@/components/ImageCropModal";
 
 const POSITIONS = [
@@ -20,30 +20,7 @@ const US_STATES = [
   "NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY",
 ];
 
-const CONFERENCE_TIERS: Record<string, string[]> = {
-  "Power": ["SEC", "ACC", "Big 12", "Big Ten"],
-  "High-Major": ["Sun Belt", "Big West", "American Athletic", "Pac-12", "Mountain West", "Big East", "WAC", "Conference USA"],
-  "Mid-Major": ["West Coast", "Missouri Valley", "Atlantic 10", "CAA", "Southern", "MAC", "Ohio Valley", "OVC", "Horizon", "MAAC", "Summit", "Big Sky", "Southland"],
-  "Low-Major": ["SWAC", "MEAC", "Patriot", "NEC", "Ivy League", "America East", "Big South", "Northeast", "ASUN"],
-};
-
-const DISTANCE_OPTIONS = [
-  { value: null, label: "Anywhere" },
-  { value: 100, label: "100 mi" },
-  { value: 250, label: "250 mi" },
-  { value: 500, label: "500 mi" },
-  { value: 1000, label: "1,000 mi" },
-];
-
-const TUITION_OPTIONS = [
-  { value: null, label: "No limit" },
-  { value: 10000, label: "Under $10K" },
-  { value: 20000, label: "Under $20K" },
-  { value: 30000, label: "Under $30K" },
-  { value: 50000, label: "Under $50K" },
-];
-
-const TOTAL_STEPS = 3;
+const TOTAL_STEPS = 2;
 
 function ProfileForm({ initialStep }: { initialStep: number }) {
   const { data: session, update: updateSession } = useSession();
@@ -70,17 +47,6 @@ function ProfileForm({ initialStep }: { initialStep: number }) {
   const [satScore, setSatScore] = useState("");
   const [actScore, setActScore] = useState("");
 
-  // Step 3: Preferences
-  const [divisionPref, setDivisionPref] = useState<"D1" | "D2" | "both">("both");
-  const [maxDistance, setMaxDistance] = useState<number | null>(null);
-  const [preferredRegions, setPreferredRegions] = useState<string[]>([]);
-  const [maxTuition, setMaxTuition] = useState<number | null>(null);
-  const [schoolSize, setSchoolSize] = useState<"small" | "medium" | "large" | "any">("any");
-  const [highAcademic, setHighAcademic] = useState(false);
-  const [competitiveness, setCompetitiveness] = useState<"top25" | "postseason" | "any">("any");
-  const [draftImportance, setDraftImportance] = useState<"yes" | "no">("no");
-  const [preferredTiers, setPreferredTiers] = useState<string[]>([]);
-
   const profilePicRef = useRef<HTMLInputElement>(null);
   const backgroundPicRef = useRef<HTMLInputElement>(null);
 
@@ -92,12 +58,8 @@ function ProfileForm({ initialStep }: { initialStep: number }) {
   useEffect(() => {
     const loadFromDB = async () => {
       try {
-        const [profRes, prefsRes] = await Promise.all([
-          fetch("/api/user/profile"),
-          fetch("/api/user/preferences"),
-        ]);
+        const profRes = await fetch("/api/user/profile");
         const prof = await profRes.json();
-        const prefs = await prefsRes.json();
 
         if (prof) {
           if (session?.user?.firstName) {
@@ -119,17 +81,6 @@ function ProfileForm({ initialStep }: { initialStep: number }) {
           if (prof.backgroundPic) setBackgroundPic(prof.backgroundPic);
         }
 
-        if (prefs) {
-          setDivisionPref(prefs.divisionPreference || "both");
-          setMaxDistance(prefs.maxDistanceFromHome);
-          setPreferredRegions(prefs.preferredRegions || []);
-          setMaxTuition(prefs.maxTuition);
-          setSchoolSize(prefs.schoolSize || "any");
-          setHighAcademic(prefs.highAcademic || false);
-          setCompetitiveness(prefs.competitiveness || "any");
-          setDraftImportance(prefs.draftImportance || "no");
-          setPreferredTiers(prefs.preferredTiers || []);
-        }
       } catch {
         // Fall back to localStorage
         loadFromLocalStorage();
@@ -154,16 +105,6 @@ function ProfileForm({ initialStep }: { initialStep: number }) {
       setSatScore(p.satScore != null ? String(p.satScore) : "");
       setActScore(p.actScore != null ? String(p.actScore) : "");
 
-      const prefs = loadPreferences();
-      setDivisionPref(prefs.divisionPreference);
-      setMaxDistance(prefs.maxDistanceFromHome);
-      setPreferredRegions(prefs.preferredRegions || []);
-      setMaxTuition(prefs.maxTuition);
-      setSchoolSize(prefs.schoolSize);
-      setHighAcademic(prefs.highAcademic || false);
-      setCompetitiveness(prefs.competitiveness);
-      setDraftImportance(prefs.draftImportance);
-      setPreferredTiers(((prefs as unknown) as Record<string, unknown>).preferredTiers as string[] || []);
     };
 
     if (session?.user) {
@@ -207,18 +148,6 @@ function ProfileForm({ initialStep }: { initialStep: number }) {
     setError("");
     // Reset the input so re-selecting the same file triggers onChange
     e.target.value = "";
-  };
-
-  const toggleRegion = (region: string) => {
-    setPreferredRegions((prev) =>
-      prev.includes(region) ? prev.filter((r) => r !== region) : [...prev, region]
-    );
-  };
-
-  const toggleTier = (tier: string) => {
-    setPreferredTiers((prev) =>
-      prev.includes(tier) ? prev.filter((t) => t !== tier) : [...prev, tier]
-    );
   };
 
   const validateStep = () => {
@@ -269,21 +198,6 @@ function ProfileForm({ initialStep }: { initialStep: number }) {
         actScore: actScore ? parseInt(actScore) : null,
       });
     }
-    if (step === 3) {
-      savePreferences({
-        divisionPreference: divisionPref,
-        maxDistanceFromHome: maxDistance,
-        preferredRegions,
-        maxTuition,
-        schoolSize,
-        highAcademic,
-        competitiveness,
-        draftImportance,
-        preferredConferences: [],
-        preferredTiers,
-      });
-    }
-
     // Also save to DB if authenticated
     if (session?.user) {
       if (step === 1 || step === 2) {
@@ -296,24 +210,6 @@ function ProfileForm({ initialStep }: { initialStep: number }) {
             highSchool: highSchool.trim(), travelBall: travelBall.trim(),
             gpa, gpaType, satScore, actScore,
             profilePic, backgroundPic,
-          }),
-        }).catch(() => {});
-      }
-      if (step === 3) {
-        fetch("/api/user/preferences", {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            divisionPreference: divisionPref,
-            maxDistanceFromHome: maxDistance,
-            preferredRegions,
-            maxTuition,
-            schoolSize,
-            highAcademic,
-            competitiveness,
-            draftImportance,
-            preferredConferences: [],
-            preferredTiers,
           }),
         }).catch(() => {});
       }
@@ -345,7 +241,7 @@ function ProfileForm({ initialStep }: { initialStep: number }) {
 
     setTimeout(() => {
       setSaving(false);
-      window.location.href = "/match";
+      window.location.href = "/";
     }, 800);
   };
 
@@ -566,128 +462,6 @@ function ProfileForm({ initialStep }: { initialStep: number }) {
           </div>
         )}
 
-        {/* Step 3: What Are You Looking For? */}
-        {step === 3 && (
-          <div className="space-y-6">
-            <div className="text-center mb-2">
-              <h2 className="text-xl font-black text-gray-900">What Are You Looking For?</h2>
-              <p className="text-sm text-gray-500 mt-1">Tell us your ideal school and we&apos;ll find matches</p>
-            </div>
-
-            <div>
-              <label className={labelClass}>Division Preference</label>
-              <div className="flex gap-2">
-                {(["D1", "D2", "both"] as const).map((d) => (
-                  <button key={d} type="button" onClick={() => setDivisionPref(d)}
-                    className={`flex-1 py-2.5 rounded-xl text-sm font-bold transition-all ${divisionPref === d ? "bg-gray-900 text-white shadow-md" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}>
-                    {d === "both" ? "Both" : d === "D1" ? "Division I" : "Division II"}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <label className={labelClass}>Max Distance from Home</label>
-              <div className="flex flex-wrap gap-2">
-                {DISTANCE_OPTIONS.map((opt) => (
-                  <button key={String(opt.value)} type="button" onClick={() => setMaxDistance(opt.value)}
-                    className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all ${maxDistance === opt.value ? "bg-gray-900 text-white shadow-md" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}>
-                    {opt.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <label className={labelClass}>Tuition Budget (per year)</label>
-              <div className="flex flex-wrap gap-2">
-                {TUITION_OPTIONS.map((opt) => (
-                  <button key={String(opt.value)} type="button" onClick={() => setMaxTuition(opt.value)}
-                    className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all ${maxTuition === opt.value ? "bg-gray-900 text-white shadow-md" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}>
-                    {opt.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <label className={labelClass}>School Size</label>
-              <div className="flex gap-2">
-                {([{ v: "any", l: "Any" }, { v: "small", l: "Small (<5K)" }, { v: "medium", l: "Mid (5-15K)" }, { v: "large", l: "Large (15K+)" }] as const).map(({ v, l }) => (
-                  <button key={v} type="button" onClick={() => setSchoolSize(v)}
-                    className={`flex-1 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all ${schoolSize === v ? "bg-gray-900 text-white shadow-md" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}>
-                    {l}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <label className={labelClass}>High Academic Institution</label>
-              <button type="button" onClick={() => setHighAcademic(!highAcademic)}
-                className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${highAcademic ? "bg-yellow-50 text-yellow-900 border-2 border-yellow-400 shadow-sm" : "bg-gray-100 text-gray-600 hover:bg-gray-200 border-2 border-transparent"}`}>
-                <span className={`w-5 h-5 rounded flex items-center justify-center ${highAcademic ? "bg-yellow-400 text-white" : "bg-gray-300 text-transparent"}`}>
-                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
-                </span>
-                Only show high-academic institutions
-              </button>
-            </div>
-
-            <div>
-              <label className={labelClass}>Program Competitiveness</label>
-              <div className="flex gap-2">
-                {([{ v: "any", l: "Any Level" }, { v: "postseason", l: "Postseason Contender" }, { v: "top25", l: "Top 25" }] as const).map(({ v, l }) => (
-                  <button key={v} type="button" onClick={() => setCompetitiveness(v)}
-                    className={`flex-1 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all ${competitiveness === v ? "bg-gray-900 text-white shadow-md" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}>
-                    {l}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <label className={labelClass}>Is playing pro ball a goal?</label>
-              <div className="flex gap-2">
-                {([{ v: "no", l: "Not a priority" }, { v: "yes", l: "I want to go pro!" }] as const).map(({ v, l }) => (
-                  <button key={v} type="button" onClick={() => setDraftImportance(v)}
-                    className={`flex-1 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all ${draftImportance === v ? "bg-gray-900 text-white shadow-md" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}>
-                    {l}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <label className={labelClass}>Preferred Regions <span className="text-gray-400 font-normal">(optional)</span></label>
-              <div className="flex flex-wrap gap-2">
-                {Object.keys(REGIONS).map((region) => (
-                  <button key={region} type="button" onClick={() => toggleRegion(region)}
-                    className={`px-3 py-2 rounded-xl text-xs font-bold transition-all ${preferredRegions.includes(region) ? "bg-gray-900 text-white shadow-md" : "bg-gray-100 text-gray-600 hover:bg-gray-200"}`}>
-                    {region}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {divisionPref !== "D2" && (
-              <div>
-                <label className={labelClass}>Level</label>
-                <div className="space-y-2">
-                  {Object.entries(CONFERENCE_TIERS).map(([tier, confs]) => (
-                    <button key={tier} type="button" onClick={() => toggleTier(tier)}
-                      className={`w-full text-left px-4 py-3 rounded-xl transition-all border ${preferredTiers.includes(tier) ? "bg-gray-900 text-white border-gray-900 shadow-md" : "bg-white text-gray-700 border-gray-200 hover:border-gray-300 hover:bg-gray-50"}`}>
-                      <span className="text-sm font-bold">{tier}</span>
-                      <span className={`block text-xs mt-0.5 ${preferredTiers.includes(tier) ? "text-white/60" : "text-gray-400"}`}>
-                        {confs.slice(0, 5).join(", ")}{confs.length > 5 ? ` +${confs.length - 5} more` : ""}
-                      </span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-        )}
-
         {error && (
           <div className="flex items-center gap-2 px-4 py-3 bg-red-50 border border-red-200 rounded-xl mt-4">
             <svg className="w-4 h-4 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -708,9 +482,9 @@ function ProfileForm({ initialStep }: { initialStep: number }) {
             {saving ? (
               <span className="flex items-center justify-center gap-2">
                 <div className="animate-spin rounded-full h-4 w-4 border-2 border-white/30 border-t-white" />
-                Finding matches...
+                Saving...
               </span>
-            ) : step === TOTAL_STEPS ? "Find My Matches" : "Continue"}
+            ) : step === TOTAL_STEPS ? "Save Profile" : "Continue"}
           </button>
         </div>
 
@@ -760,7 +534,7 @@ function ProfileForm({ initialStep }: { initialStep: number }) {
 function ProfilePageInner() {
   const searchParams = useSearchParams();
   const startStep = parseInt(searchParams.get("step") || "1", 10);
-  const initialStep = [1, 2, 3].includes(startStep) ? startStep : 1;
+  const initialStep = [1, 2].includes(startStep) ? startStep : 1;
   return <ProfileForm initialStep={initialStep} />;
 }
 
