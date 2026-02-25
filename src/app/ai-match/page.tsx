@@ -283,6 +283,7 @@ function AIMatchContent() {
   const [searchOverlayOpen, setSearchOverlayOpen] = useState(false);
   const [showIntake, setShowIntake] = useState(false);
   const [intakeValues, setIntakeValues] = useState<Partial<IntakeAnswers> | undefined>(undefined);
+  const [showResetConfirm, setShowResetConfirm] = useState(false);
   const lastAssistantMsgRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const hasInteracted = useRef(false);
@@ -607,7 +608,25 @@ function AIMatchContent() {
     sendMessage(text);
   };
 
+  const handleResetAI = () => {
+    localStorage.removeItem(INTAKE_DONE_KEY);
+    localStorage.removeItem(INTAKE_ANSWERS_KEY);
+    sessionStorage.removeItem(CHAT_STORAGE_KEY);
+    setMessages([]);
+    setIntakeValues(undefined);
+    setShowIntake(true);
+    setShowResetConfirm(false);
+    // Clear GPA/SAT/ACT from DB profile so stale scores don't get sent to AI
+    fetch("/api/user/profile", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ gpa: null, satScore: null, actScore: null }),
+    }).catch(() => {});
+  };
+
   const atLimit = remaining <= 0;
+  // Show reset link when there's been any interaction (intake done or messages exist)
+  const hasAnyData = localStorage.getItem(INTAKE_DONE_KEY) === "true" || messages.length > 0;
 
   return (
     <AuthGate>
@@ -897,7 +916,51 @@ function AIMatchContent() {
               )}
             </div>
           )}
+          {/* Reset my AI link — only shown when user has interacted */}
+          {hasAnyData && (
+            <div className="text-center py-4 mt-2">
+              <button
+                onClick={() => setShowResetConfirm(true)}
+                className="text-xs text-gray-400 hover:text-red-500 transition-colors underline underline-offset-2"
+              >
+                Reset my AI Scout
+              </button>
+            </div>
+          )}
         </main>
+
+        {/* Reset confirmation modal */}
+        {showResetConfirm && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm px-4">
+            <div className="bg-white rounded-2xl shadow-xl max-w-sm w-full p-6">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center shrink-0">
+                  <svg className="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold text-gray-900">Reset AI Scout?</h3>
+              </div>
+              <p className="text-sm text-gray-600 mb-5">
+                This will erase your AI Scout profile, all conversations, and matched results. You&apos;ll start over from scratch as if you&apos;re using AI Scout for the first time.
+              </p>
+              <div className="flex gap-3">
+                <button
+                  onClick={() => setShowResetConfirm(false)}
+                  className="flex-1 px-4 py-2.5 text-sm font-semibold text-gray-700 bg-gray-100 rounded-xl hover:bg-gray-200 transition-colors"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={handleResetAI}
+                  className="flex-1 px-4 py-2.5 text-sm font-semibold text-white bg-red-600 rounded-xl hover:bg-red-700 transition-colors"
+                >
+                  Yes, reset everything
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
         <SiteFooter />
       </div>
