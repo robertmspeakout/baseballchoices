@@ -8,8 +8,9 @@ import SiteFooter from "@/components/SiteFooter";
 import SearchOverlay from "@/components/SearchOverlay";
 import PillNav from "@/components/PillNav";
 import AuthGate from "@/components/AuthGate";
-import { loadProfile, type PlayerProfile } from "@/lib/playerProfile";
+import { loadProfile, savePreferences, type PlayerProfile } from "@/lib/playerProfile";
 import { useSchools } from "@/lib/SchoolsContext";
+import AIScoutIntake, { type IntakeAnswers } from "@/components/AIScoutIntake";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -184,6 +185,7 @@ const STARTER_PROMPTS = [
 ];
 
 const CHAT_STORAGE_KEY = "ai_scout_chat";
+const INTAKE_DONE_KEY = "ai_scout_intake_done";
 
 function loadSavedChat(): ChatMessage[] {
   try {
@@ -232,6 +234,8 @@ function AIMatchContent() {
   const [userBgPic, setUserBgPic] = useState<string | null>(null);
   const [remaining, setRemaining] = useState<number | null>(null);
   const [searchOverlayOpen, setSearchOverlayOpen] = useState(false);
+  const [showIntake, setShowIntake] = useState(false);
+  const [intakeValues, setIntakeValues] = useState<Partial<IntakeAnswers> | undefined>(undefined);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const hasInteracted = useRef(false);
@@ -303,6 +307,102 @@ function AIMatchContent() {
       messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
     }
   }, [messages, loading]);
+
+  // Check if intake questionnaire has been completed
+  useEffect(() => {
+    const done = localStorage.getItem(INTAKE_DONE_KEY) === "true";
+    const hasSavedChat = !!sessionStorage.getItem(CHAT_STORAGE_KEY);
+    // Show intake form if never completed and no existing conversation
+    if (!done && !hasSavedChat) {
+      setShowIntake(true);
+    }
+  }, []);
+
+  // Handle intake form completion — save preferences and auto-send to AI
+  const handleIntakeComplete = async (message: string, answers: IntakeAnswers) => {
+    // Save preferences to localStorage
+    savePreferences({
+      divisionPreference: (answers.division === "all" ? "both" : answers.division) as "D1" | "D2" | "both",
+      maxDistanceFromHome: answers.maxDistance,
+      preferredRegions: answers.regions,
+      maxTuition: answers.maxTuition,
+      schoolSize: (answers.schoolSize || "any") as "small" | "medium" | "large" | "any",
+      highAcademic: answers.highAcademic,
+      competitiveness: (answers.competitiveness || "any") as "top25" | "postseason" | "any",
+      draftImportance: (answers.draftImportance || "no") as "yes" | "no",
+      preferredConferences: [],
+      preferredTiers: [],
+    });
+
+    // Save to DB (fire and forget)
+    fetch("/api/user/preferences", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        divisionPreference: answers.division === "all" ? "both" : answers.division,
+        maxDistanceFromHome: answers.maxDistance,
+        preferredRegions: answers.regions,
+        maxTuition: answers.maxTuition,
+        schoolSize: answers.schoolSize || "any",
+        highAcademic: answers.highAcademic,
+        competitiveness: answers.competitiveness || "any",
+        draftImportance: answers.draftImportance || "no",
+      }),
+    }).catch(() => {});
+
+    // Mark intake as done and save values for editing
+    localStorage.setItem(INTAKE_DONE_KEY, "true");
+    setIntakeValues(answers);
+
+    // Hide form, clear any old conversation
+    setShowIntake(false);
+    sessionStorage.removeItem(CHAT_STORAGE_KEY);
+
+    // Auto-send the composed message to the AI
+    hasInteracted.current = true;
+    const userMessage: ChatMessage = { role: "user", content: message };
+    setMessages([userMessage]);
+    setLoading(true);
+
+    try {
+      const res = await fetch("/api/ai-match", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          messages: [userMessage],
+          playerProfile: profile,
+        }),
+      });
+
+      const data = await res.json();
+      if (data.remaining !== undefined) setRemaining(data.remaining);
+
+      if (res.status === 429) {
+        setMessages([userMessage, {
+          role: "assistant",
+          content: data.error || "You've used all 20 AI Scout messages for this month.",
+        }]);
+      } else if (!res.ok) {
+        setMessages([userMessage, {
+          role: "assistant",
+          content: data.error || "Something went wrong. Please try again.",
+        }]);
+      } else {
+        setMessages([userMessage, {
+          role: "assistant",
+          content: data.reply,
+          schools: data.schools || [],
+        }]);
+      }
+    } catch {
+      setMessages([userMessage, {
+        role: "assistant",
+        content: "Network error — please check your connection and try again.",
+      }]);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   // Auto-resize textarea
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -432,9 +532,22 @@ function AIMatchContent() {
                   <h1 className="text-lg font-bold text-gray-900">AI Scout</h1>
                   <span className="text-[10px] font-medium text-gray-400 bg-gray-100 px-1.5 py-0.5 rounded">{AI_SCOUT_VERSION}</span>
                 </div>
-                <p className="text-xs text-gray-500">
-                  20 messages per month.
-                </p>
+                <div className="flex items-center gap-3">
+                  <p className="text-xs text-gray-500">
+                    20 messages per month.
+                  </p>
+                  {!showIntake && localStorage.getItem(INTAKE_DONE_KEY) === "true" && (
+                    <button
+                      onClick={() => setShowIntake(true)}
+                      className="text-[11px] text-red-600 hover:text-red-700 font-semibold transition-colors flex items-center gap-1"
+                    >
+                      <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                      </svg>
+                      Edit Preferences
+                    </button>
+                  )}
+                </div>
               </div>
               {remaining !== null && (
                 <div className={`text-right shrink-0 px-2.5 py-1.5 rounded-lg ${remaining <= 1 ? "bg-red-50 border border-red-200" : "bg-blue-50 border border-blue-200"}`}>
@@ -445,143 +558,156 @@ function AIMatchContent() {
             </div>
           </div>
 
-          {/* Chat area */}
-          <div className="flex-1 bg-white border border-gray-200 rounded-xl shadow-sm flex flex-col overflow-hidden">
-            <div className="flex-1 overflow-y-auto p-4 space-y-4" style={{ maxHeight: "60vh" }}>
-              {messages.length === 0 && !loading && (() => {
-                const savedSnippet = getSavedChatSnippet();
-                const prompts = savedSnippet ? STARTER_PROMPTS.slice(0, 3) : STARTER_PROMPTS;
-                return (
-                  <div className="flex flex-col items-center py-2">
-                    <h2 className="text-base font-bold text-gray-900 mb-1">What kind of program are you looking for?</h2>
-                    <p className="text-sm text-gray-500 mb-3 text-center max-w-sm">
-                      Just tell me in your own words and I&apos;ll find programs that fit.
-                    </p>
+          {/* Intake form or Chat area */}
+          {showIntake ? (
+            <div className="flex-1 bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
+              <div className="overflow-y-auto p-4" style={{ maxHeight: "70vh" }}>
+                <AIScoutIntake
+                  onComplete={handleIntakeComplete}
+                  initialValues={intakeValues}
+                  isEditing={!!intakeValues}
+                  onCancel={intakeValues ? () => setShowIntake(false) : undefined}
+                />
+              </div>
+            </div>
+          ) : (
+            <div className="flex-1 bg-white border border-gray-200 rounded-xl shadow-sm flex flex-col overflow-hidden">
+              <div className="flex-1 overflow-y-auto p-4 space-y-4" style={{ maxHeight: "60vh" }}>
+                {messages.length === 0 && !loading && (() => {
+                  const savedSnippet = getSavedChatSnippet();
+                  const prompts = savedSnippet ? STARTER_PROMPTS.slice(0, 3) : STARTER_PROMPTS;
+                  return (
+                    <div className="flex flex-col items-center py-2">
+                      <h2 className="text-base font-bold text-gray-900 mb-1">What kind of program are you looking for?</h2>
+                      <p className="text-sm text-gray-500 mb-3 text-center max-w-sm">
+                        Just tell me in your own words and I&apos;ll find programs that fit.
+                      </p>
 
-                    {savedSnippet && (
-                      <button
-                        onClick={() => {
-                          const saved = loadSavedChat();
-                          if (saved.length > 0) {
-                            hasInteracted.current = true;
-                            setMessages(saved);
-                          }
-                        }}
-                        className="w-full max-w-lg mb-3 text-left px-4 py-3 bg-gradient-to-r from-red-50 to-orange-50 hover:from-red-100 hover:to-orange-100 border border-red-200 rounded-xl transition-colors"
-                      >
-                        <div className="flex items-center gap-2 mb-1.5">
-                          <svg className="w-4 h-4 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
-                          <span className="text-xs font-bold text-red-700">Continue your conversation</span>
-                        </div>
-                        <p className="text-xs text-gray-600 truncate">You: {savedSnippet.userMsg}</p>
-                        <p className="text-xs text-gray-500 truncate mt-0.5">Scout: {savedSnippet.assistantMsg}</p>
-                      </button>
-                    )}
-
-                    <p className="text-xs text-gray-400 mb-2 text-center">{savedSnippet ? "Or start a new search:" : "Try one of these to get started:"}</p>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 w-full max-w-lg">
-                      {prompts.map((prompt, i) => (
+                      {savedSnippet && (
                         <button
-                          key={i}
                           onClick={() => {
-                            sessionStorage.removeItem(CHAT_STORAGE_KEY);
-                            sendMessage(prompt);
+                            const saved = loadSavedChat();
+                            if (saved.length > 0) {
+                              hasInteracted.current = true;
+                              setMessages(saved);
+                            }
                           }}
-                          className="text-left px-3 py-2.5 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-lg text-xs text-gray-700 font-medium transition-colors"
+                          className="w-full max-w-lg mb-3 text-left px-4 py-3 bg-gradient-to-r from-red-50 to-orange-50 hover:from-red-100 hover:to-orange-100 border border-red-200 rounded-xl transition-colors"
                         >
-                          &quot;{prompt}&quot;
+                          <div className="flex items-center gap-2 mb-1.5">
+                            <svg className="w-4 h-4 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span className="text-xs font-bold text-red-700">Continue your conversation</span>
+                          </div>
+                          <p className="text-xs text-gray-600 truncate">You: {savedSnippet.userMsg}</p>
+                          <p className="text-xs text-gray-500 truncate mt-0.5">Scout: {savedSnippet.assistantMsg}</p>
                         </button>
-                      ))}
-                    </div>
-                  </div>
-                );
-              })()}
+                      )}
 
-              {messages.map((msg, i) => (
-                <div
-                  key={i}
-                  className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
-                >
-                  <div className="max-w-[85%]">
-                    <div
-                      className={`rounded-2xl px-4 py-3 text-sm leading-relaxed ${
-                        msg.role === "user"
-                          ? "bg-red-600 text-white rounded-br-md"
-                          : "bg-gray-100 text-gray-800 rounded-bl-md"
-                      }`}
-                    >
-                      {msg.role === "assistant" ? (
-                        <FormattedMessage content={msg.content} />
-                      ) : (
-                        msg.content
+                      <p className="text-xs text-gray-400 mb-2 text-center">{savedSnippet ? "Or start a new search:" : "Try one of these to get started:"}</p>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 w-full max-w-lg">
+                        {prompts.map((prompt, i) => (
+                          <button
+                            key={i}
+                            onClick={() => {
+                              sessionStorage.removeItem(CHAT_STORAGE_KEY);
+                              sendMessage(prompt);
+                            }}
+                            className="text-left px-3 py-2.5 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-lg text-xs text-gray-700 font-medium transition-colors"
+                          >
+                            &quot;{prompt}&quot;
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })()}
+
+                {messages.map((msg, i) => (
+                  <div
+                    key={i}
+                    className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
+                  >
+                    <div className="max-w-[85%]">
+                      <div
+                        className={`rounded-2xl px-4 py-3 text-sm leading-relaxed ${
+                          msg.role === "user"
+                            ? "bg-red-600 text-white rounded-br-md"
+                            : "bg-gray-100 text-gray-800 rounded-bl-md"
+                        }`}
+                      >
+                        {msg.role === "assistant" ? (
+                          <FormattedMessage content={msg.content} />
+                        ) : (
+                          msg.content
+                        )}
+                      </div>
+                      {msg.role === "assistant" && msg.schools && msg.schools.length > 0 && (
+                        <ViewResultsButton schools={msg.schools} />
                       )}
                     </div>
-                    {msg.role === "assistant" && msg.schools && msg.schools.length > 0 && (
-                      <ViewResultsButton schools={msg.schools} />
-                    )}
                   </div>
-                </div>
-              ))}
+                ))}
 
-              {loading && (
-                <div className="flex justify-start">
-                  <div className="bg-gray-100 rounded-2xl rounded-bl-md px-4 py-3">
-                    <div className="flex gap-1.5">
-                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
-                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
-                      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
+                {loading && (
+                  <div className="flex justify-start">
+                    <div className="bg-gray-100 rounded-2xl rounded-bl-md px-4 py-3">
+                      <div className="flex gap-1.5">
+                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
+                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
+                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
+                      </div>
                     </div>
                   </div>
-                </div>
-              )}
+                )}
 
-              <div ref={messagesEndRef} />
-            </div>
+                <div ref={messagesEndRef} />
+              </div>
 
-            {/* Input area */}
-            <div className="border-t border-gray-200 p-3 bg-gray-50/50">
-              {atLimit ? (
-                <div className="text-center py-3">
-                  <p className="text-sm font-semibold text-gray-700">You&apos;ve used all 20 messages this month</p>
-                  <p className="text-xs text-gray-500 mt-1">Your limit resets in 30 days. In the meantime, explore programs directly!</p>
-                  <a href="/programs/d1" className="inline-block mt-2 px-4 py-2 bg-red-600 text-white text-sm font-semibold rounded-lg hover:bg-red-700 transition-colors">
-                    Browse Programs
-                  </a>
-                </div>
-              ) : (
-                <>
-                  <textarea
-                    ref={inputRef}
-                    value={input}
-                    onChange={handleInputChange}
-                    onKeyDown={handleKeyDown}
-                    placeholder="Tell me what you're looking for..."
-                    rows={3}
-                    className="w-full resize-none rounded-xl border border-gray-300 px-4 py-3 text-base focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 bg-white"
-                    style={{ minHeight: "80px" }}
-                    disabled={loading}
-                  />
-                  <div className="flex items-center justify-between mt-2">
-                    <MicButton onTranscript={handleVoiceTranscript} />
-                    <p className="text-[10px] text-gray-400 text-center px-2">
-                      AI Scout is for recruiting only. Results are suggestions.
-                    </p>
-                    <button
-                      onClick={() => sendMessage()}
-                      disabled={!input.trim() || loading}
-                      className="shrink-0 w-9 h-9 flex items-center justify-center rounded-xl bg-red-600 text-white hover:bg-red-700 disabled:bg-gray-200 disabled:text-gray-400 transition-colors"
-                    >
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19V5m0 0l-7 7m7-7l7 7" />
-                      </svg>
-                    </button>
+              {/* Input area */}
+              <div className="border-t border-gray-200 p-3 bg-gray-50/50">
+                {atLimit ? (
+                  <div className="text-center py-3">
+                    <p className="text-sm font-semibold text-gray-700">You&apos;ve used all 20 messages this month</p>
+                    <p className="text-xs text-gray-500 mt-1">Your limit resets in 30 days. In the meantime, explore programs directly!</p>
+                    <a href="/programs/d1" className="inline-block mt-2 px-4 py-2 bg-red-600 text-white text-sm font-semibold rounded-lg hover:bg-red-700 transition-colors">
+                      Browse Programs
+                    </a>
                   </div>
-                </>
-              )}
+                ) : (
+                  <>
+                    <textarea
+                      ref={inputRef}
+                      value={input}
+                      onChange={handleInputChange}
+                      onKeyDown={handleKeyDown}
+                      placeholder="Tell me what you're looking for..."
+                      rows={3}
+                      className="w-full resize-none rounded-xl border border-gray-300 px-4 py-3 text-base focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 bg-white"
+                      style={{ minHeight: "80px" }}
+                      disabled={loading}
+                    />
+                    <div className="flex items-center justify-between mt-2">
+                      <MicButton onTranscript={handleVoiceTranscript} />
+                      <p className="text-[10px] text-gray-400 text-center px-2">
+                        AI Scout is for recruiting only. Results are suggestions.
+                      </p>
+                      <button
+                        onClick={() => sendMessage()}
+                        disabled={!input.trim() || loading}
+                        className="shrink-0 w-9 h-9 flex items-center justify-center rounded-xl bg-red-600 text-white hover:bg-red-700 disabled:bg-gray-200 disabled:text-gray-400 transition-colors"
+                      >
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19V5m0 0l-7 7m7-7l7 7" />
+                        </svg>
+                      </button>
+                    </div>
+                  </>
+                )}
+              </div>
             </div>
-          </div>
+          )}
         </main>
 
         <SiteFooter />
