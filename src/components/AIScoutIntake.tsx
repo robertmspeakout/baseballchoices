@@ -188,6 +188,10 @@ export default function AIScoutIntake({
     setDivisions(newDivisions);
     if (!newDivisions.includes("D1")) {
       setConferenceTiers([]);
+      // "Top 25 ranked" only applies to D1 — clear if it was selected
+      if (competitiveness === "top25") {
+        setCompetitiveness("");
+      }
     }
   };
 
@@ -269,7 +273,7 @@ export default function AIScoutIntake({
         <QuestionCard label="How competitive do you want the program?">
           <ChipGroup
             options={[
-              { value: "top25", label: "Top 25 ranked" },
+              ...(divisions.includes("D1") ? [{ value: "top25", label: "Top 25 ranked" }] : []),
               { value: "postseason", label: "Postseason contenders" },
               { value: "any", label: "Any level" },
             ]}
