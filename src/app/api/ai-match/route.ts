@@ -38,7 +38,7 @@ function buildSchoolsSummary(schools: any[]): string {
       s.current_ranking ? `#${s.current_ranking}` : "",
       s.mlb_draft_picks ? `${s.mlb_draft_picks}drafted` : "",
       s.last_season_record || "",
-      s.high_academic ? "HighAcad" : "",
+      s.high_academic ? "StrongAcademics" : "",
       s.head_coach_name ? `Coach:${s.head_coach_name}` : "",
     ].filter(Boolean);
     return parts.join("|");
