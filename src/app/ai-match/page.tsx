@@ -350,6 +350,7 @@ function AIMatchContent() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         divisionPreference: divPref,
+        preferredDivisions: answers.divisions,
         maxDistanceFromHome: answers.maxDistance,
         preferredRegions: answers.regions,
         maxTuition: answers.maxTuition,
