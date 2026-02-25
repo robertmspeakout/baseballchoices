@@ -610,7 +610,13 @@ function AIMatchContent() {
               { value: "JUCO", label: "JUCO Programs" },
             ]}
             onSelect={(val) => {
-              if (val === "mylist") router.push("/#mylist");
+              if (val === "ai-scout") {
+                // Always reset to landing page (3 buttons) or intake form
+                setMessages([]);
+                const done = localStorage.getItem(INTAKE_DONE_KEY) === "true";
+                setShowIntake(!done);
+              }
+              else if (val === "mylist") router.push("/#mylist");
               else if (val === "D1") router.push("/programs/d1");
               else if (val === "D2") router.push("/programs/d2");
               else if (val === "D3") router.push("/programs/d3");
@@ -633,7 +639,7 @@ function AIMatchContent() {
               onComplete={handleIntakeComplete}
               initialValues={intakeValues}
               isEditing={!!intakeValues}
-              onCancel={intakeValues ? () => setShowIntake(false) : undefined}
+              onCancel={intakeValues ? () => { setShowIntake(false); setMessages([]); } : undefined}
               onReset={intakeValues ? () => {
                 localStorage.removeItem(INTAKE_DONE_KEY);
                 localStorage.removeItem(INTAKE_ANSWERS_KEY);
