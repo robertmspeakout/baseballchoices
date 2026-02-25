@@ -344,7 +344,7 @@ function AIMatchContent() {
       preferredTiers: answers.conferenceTiers || [],
     });
 
-    // Save to DB (fire and forget)
+    // Save preferences to DB (fire and forget)
     fetch("/api/user/preferences", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -361,6 +361,19 @@ function AIMatchContent() {
         preferredTiers: answers.conferenceTiers || [],
       }),
     }).catch(() => {});
+
+    // Save GPA/SAT/ACT to user profile if provided (fire and forget)
+    if (answers.gpa || answers.satScore || answers.actScore) {
+      const profileUpdate: Record<string, string> = {};
+      if (answers.gpa) profileUpdate.gpa = answers.gpa;
+      if (answers.satScore) profileUpdate.satScore = answers.satScore;
+      if (answers.actScore) profileUpdate.actScore = answers.actScore;
+      fetch("/api/user/profile", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(profileUpdate),
+      }).catch(() => {});
+    }
 
     // Mark intake as done and save values for editing
     localStorage.setItem(INTAKE_DONE_KEY, "true");

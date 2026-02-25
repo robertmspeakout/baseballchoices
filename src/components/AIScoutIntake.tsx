@@ -13,6 +13,9 @@ export interface IntakeAnswers {
   schoolSize: string;
   highAcademic: boolean;
   draftImportance: string;
+  gpa: string;
+  satScore: string;
+  actScore: string;
 }
 
 interface AIScoutIntakeProps {
@@ -146,6 +149,12 @@ export function composeIntakeMessage(a: IntakeAnswers): string {
 
   if (a.draftImportance === "yes") parts.push("and getting drafted is important to me");
 
+  const academics: string[] = [];
+  if (a.gpa) academics.push(`my GPA is ${a.gpa}`);
+  if (a.satScore) academics.push(`SAT is ${a.satScore}`);
+  if (a.actScore) academics.push(`ACT is ${a.actScore}`);
+  if (academics.length > 0) parts.push(academics.join(", "));
+
   return parts.join(". ") + ". Find me the best programs that fit!";
 }
 
@@ -164,6 +173,9 @@ export default function AIScoutIntake({
   const [schoolSize, setSchoolSize] = useState(initialValues?.schoolSize || "");
   const [highAcademic, setHighAcademic] = useState(initialValues?.highAcademic ?? false);
   const [draftImportance, setDraftImportance] = useState(initialValues?.draftImportance || "");
+  const [gpa, setGpa] = useState(initialValues?.gpa || "");
+  const [satScore, setSatScore] = useState(initialValues?.satScore || "");
+  const [actScore, setActScore] = useState(initialValues?.actScore || "");
 
   const handleDivisionsChange = (newDivisions: string[]) => {
     setDivisions(newDivisions);
@@ -185,6 +197,9 @@ export default function AIScoutIntake({
       schoolSize,
       highAcademic,
       draftImportance,
+      gpa,
+      satScore,
+      actScore,
     };
     const message = composeIntakeMessage(answers);
     onComplete(message, answers);
@@ -328,6 +343,45 @@ export default function AIScoutIntake({
             value={highAcademic ? "yes" : (highAcademic === false && divisions.length > 0 ? "no" : "")}
             onChange={(v) => setHighAcademic(v === "yes")}
           />
+        </QuestionCard>
+
+        {/* 7b. GPA, SAT, ACT */}
+        <QuestionCard label="What are your grades and test scores?" hint="Optional — helps us find the right academic fit">
+          <div className="grid grid-cols-3 gap-3">
+            <div>
+              <label className="block text-xs text-gray-500 mb-1">GPA</label>
+              <input
+                type="text"
+                inputMode="decimal"
+                placeholder="e.g. 3.5"
+                value={gpa}
+                onChange={(e) => setGpa(e.target.value)}
+                className="w-full px-3 py-2 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
+              />
+            </div>
+            <div>
+              <label className="block text-xs text-gray-500 mb-1">SAT</label>
+              <input
+                type="text"
+                inputMode="numeric"
+                placeholder="e.g. 1200"
+                value={satScore}
+                onChange={(e) => setSatScore(e.target.value)}
+                className="w-full px-3 py-2 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
+              />
+            </div>
+            <div>
+              <label className="block text-xs text-gray-500 mb-1">ACT</label>
+              <input
+                type="text"
+                inputMode="numeric"
+                placeholder="e.g. 25"
+                value={actScore}
+                onChange={(e) => setActScore(e.target.value)}
+                className="w-full px-3 py-2 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
+              />
+            </div>
+          </div>
         </QuestionCard>
 
         {/* 8. Draft */}

@@ -49,25 +49,26 @@ export async function PUT(request: NextRequest) {
     );
   }
 
-  const {
-    gradYear, primaryPosition, secondaryPosition,
-    city, state, zipCode, highSchool, travelBall,
-    gpa, gpaType, satScore, actScore, profileComplete,
-    profilePic, backgroundPic,
-  } = parsed.data;
+  const d = parsed.data;
 
-  const data = {
-    gradYear: gradYear ? parseInt(String(gradYear)) : null,
-    primaryPosition, secondaryPosition,
-    city, state, zipCode, highSchool, travelBall,
-    gpa: gpa != null ? String(gpa) : null,
-    gpaType,
-    satScore: satScore != null ? String(satScore) : null,
-    actScore: actScore != null ? String(actScore) : null,
-    profileComplete: profileComplete ?? false,
-    ...(profilePic !== undefined ? { profilePic } : {}),
-    ...(backgroundPic !== undefined ? { backgroundPic } : {}),
-  };
+  // Only include fields that were actually sent, so partial updates
+  // don't overwrite existing data with null
+  const data: Record<string, unknown> = {};
+  if (d.gradYear !== undefined) data.gradYear = d.gradYear ? parseInt(String(d.gradYear)) : null;
+  if (d.primaryPosition !== undefined) data.primaryPosition = d.primaryPosition;
+  if (d.secondaryPosition !== undefined) data.secondaryPosition = d.secondaryPosition;
+  if (d.city !== undefined) data.city = d.city;
+  if (d.state !== undefined) data.state = d.state;
+  if (d.zipCode !== undefined) data.zipCode = d.zipCode;
+  if (d.highSchool !== undefined) data.highSchool = d.highSchool;
+  if (d.travelBall !== undefined) data.travelBall = d.travelBall;
+  if (d.gpa !== undefined) data.gpa = d.gpa != null ? String(d.gpa) : null;
+  if (d.gpaType !== undefined) data.gpaType = d.gpaType;
+  if (d.satScore !== undefined) data.satScore = d.satScore != null ? String(d.satScore) : null;
+  if (d.actScore !== undefined) data.actScore = d.actScore != null ? String(d.actScore) : null;
+  if (d.profileComplete !== undefined) data.profileComplete = d.profileComplete;
+  if (d.profilePic !== undefined) data.profilePic = d.profilePic;
+  if (d.backgroundPic !== undefined) data.backgroundPic = d.backgroundPic;
 
   const profile = await prisma.profile.upsert({
     where: { userId: session.user.id },
