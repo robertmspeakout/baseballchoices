@@ -8,6 +8,7 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import SearchFilters from "@/components/SearchFilters";
 import SearchOverlay from "@/components/SearchOverlay";
+import PillNav from "@/components/PillNav";
 import SchoolTable from "@/components/SchoolTable";
 import NewsTicker from "@/components/NewsTicker";
 import { getAllUserData, setUserData, fetchUserDataFromDB, saveUserDataToDB, bulkSyncToDB, type UserData } from "@/lib/userData";
@@ -743,42 +744,22 @@ export default function Home() {
           <h2 className="text-lg sm:text-xl font-bold text-gray-900">Top 25 D1 Programs</h2>
         )}
         {(activeTab === "mylist" || activeTab === "D1" || activeTab === "D2" || activeTab === "D3" || activeTab === "JUCO") && (
-          <div className="flex items-center border border-[#e0e0e5] bg-[#e8e8ed] rounded-[100px] hover:border-[#c0c0c5] hover:shadow-[0_1px_4px_rgba(0,0,0,0.08)] transition-all">
-            <div className="relative flex-1 min-w-0">
-              <select
-                value={activeTab === "mylist" ? "mylist" : activeTab}
-                onChange={(e) => {
-                  const val = e.target.value;
-                  if (val === "ai-scout") {
-                    router.push("/ai-match");
-                  } else {
-                    handleTabChange(val as TabKey);
-                  }
-                }}
-                className="w-full appearance-none bg-transparent px-[18px] py-[13px] pr-10 text-[14px] font-semibold text-gray-900 focus:outline-none cursor-pointer rounded-l-[100px] hover:bg-[rgba(0,0,0,0.03)] transition-colors"
-              >
-                <option value="mylist">My Top Programs</option>
-                <option value="ai-scout">AI Scout</option>
-                <option value="D1">Division I Programs</option>
-                <option value="D2">Division II Programs</option>
-                <option value="D3">Division III Programs</option>
-                <option value="JUCO">JUCO Programs</option>
-              </select>
-              <svg className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#c1272d]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
-              </svg>
-            </div>
-            <div className="w-px self-stretch my-[10px] bg-[#c8c8cd]" />
-            <button
-              onClick={() => setSearchOverlayOpen(true)}
-              className="shrink-0 w-[54px] flex items-center justify-center rounded-r-[100px] hover:bg-[rgba(0,0,0,0.03)] transition-colors self-stretch group"
-              aria-label="Search"
-            >
-              <svg className="w-[17px] h-[17px] text-[#888] group-hover:text-[#555] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-            </button>
-          </div>
+          <PillNav
+            value={activeTab === "mylist" ? "mylist" : activeTab}
+            options={[
+              { value: "mylist", label: "My Top Programs" },
+              { value: "ai-scout", label: "AI Scout" },
+              { value: "D1", label: "Division I Programs" },
+              { value: "D2", label: "Division II Programs" },
+              { value: "D3", label: "Division III Programs" },
+              { value: "JUCO", label: "JUCO Programs" },
+            ]}
+            onSelect={(val) => {
+              if (val === "ai-scout") router.push("/ai-match");
+              else handleTabChange(val as TabKey);
+            }}
+            onSearchClick={() => setSearchOverlayOpen(true)}
+          />
         )}
 
         {/* Full-screen search overlay */}
