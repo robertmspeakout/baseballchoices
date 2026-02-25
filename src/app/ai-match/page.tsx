@@ -662,7 +662,7 @@ function AIMatchContent() {
                               </svg>
                             </div>
                             <div className="flex-1 min-w-0">
-                              <p className="text-sm font-semibold text-gray-700">Continue your conversation</p>
+                              <p className="text-sm font-semibold text-gray-700">Continue your last conversation</p>
                               <p className="text-xs text-gray-500 truncate mt-0.5">You: {savedSnippet.userMsg}</p>
                               <p className="text-xs text-gray-400 truncate">Scout: {savedSnippet.assistantMsg}</p>
                             </div>
