@@ -267,7 +267,6 @@ function AIMatchContent() {
     if (searchParams.get("resume") === "true") {
       const saved = loadSavedChat();
       if (saved.length > 0) {
-        hasInteracted.current = true;
         setMessages(saved);
       }
       router.replace("/ai-match", { scroll: false });
@@ -396,8 +395,7 @@ function AIMatchContent() {
     setShowIntake(false);
     sessionStorage.removeItem(CHAT_STORAGE_KEY);
 
-    // Auto-send the composed message to the AI
-    hasInteracted.current = true;
+    // Auto-send the composed message to the AI (don't auto-scroll — let user read from top)
     const userMessage: ChatMessage = { role: "user", content: message };
     setMessages([userMessage]);
     setLoading(true);
