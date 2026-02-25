@@ -152,8 +152,10 @@ export function composeIntakeMessage(a: IntakeAnswers): string {
   const academics: string[] = [];
   if (a.gpa) academics.push(`my GPA is ${a.gpa}`);
   if (a.satScore) academics.push(`SAT is ${a.satScore}`);
+  else academics.push("I haven't taken the SAT yet");
   if (a.actScore) academics.push(`ACT is ${a.actScore}`);
-  if (academics.length > 0) parts.push(academics.join(", "));
+  else academics.push("I haven't taken the ACT yet");
+  parts.push(academics.join(", "));
 
   return parts.join(". ") + ". Find me the best programs that fit!";
 }
