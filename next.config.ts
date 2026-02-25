@@ -1,15 +1,14 @@
 import type { NextConfig } from "next";
-import { execSync } from "child_process";
+import { readFileSync } from "fs";
+import { join } from "path";
 
-// Auto-increment build version from git commit count.
-// Offset so that commit 89 = v8.8, commit 90 = v8.9, etc.
-const BUILD_OFFSET = 81;
+// Read build version from package.json (works on all deployment platforms)
 let buildVersion = "v8.8";
 try {
-  const count = parseInt(execSync("git rev-list --count HEAD").toString().trim(), 10);
-  buildVersion = `v8.${count - BUILD_OFFSET}`;
+  const pkg = JSON.parse(readFileSync(join(process.cwd(), "package.json"), "utf-8"));
+  buildVersion = `v${pkg.version}`;
 } catch {
-  // Outside git or git unavailable — use default
+  // Fallback to default
 }
 
 const nextConfig: NextConfig = {
