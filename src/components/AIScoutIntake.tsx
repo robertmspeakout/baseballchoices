@@ -10,6 +10,7 @@ export interface IntakeAnswers {
   regions: string[];
   maxDistance: number | null;
   maxTuition: number | null;
+  tuitionChoice: string;
   schoolSize: string;
   highAcademic: boolean;
   draftImportance: string;
@@ -173,7 +174,7 @@ export default function AIScoutIntake({
   const [competitiveness, setCompetitiveness] = useState(initialValues?.competitiveness || "");
   const [regions, setRegions] = useState<string[]>(initialValues?.regions || []);
   const [tuitionChoice, setTuitionChoice] = useState(
-    initialValues?.maxTuition ? String(initialValues.maxTuition) : (initialValues?.maxTuition === null ? "" : "")
+    initialValues?.tuitionChoice || (initialValues?.maxTuition ? String(initialValues.maxTuition) : "")
   );
   const [schoolSize, setSchoolSize] = useState(initialValues?.schoolSize || "");
   const [highAcademic, setHighAcademic] = useState(initialValues?.highAcademic ?? false);
@@ -200,6 +201,7 @@ export default function AIScoutIntake({
       regions,
       maxDistance: null,
       maxTuition: tuitionChoice && tuitionChoice !== "any" ? parseInt(tuitionChoice) : null,
+      tuitionChoice,
       schoolSize,
       highAcademic,
       draftImportance,

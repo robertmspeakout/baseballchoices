@@ -363,7 +363,41 @@ function AIMatchContent() {
     // Load saved intake answers for pre-filling the edit form
     if (done) {
       const saved = loadSavedIntakeAnswers();
-      if (saved) setIntakeValues(saved);
+      if (saved) {
+        setIntakeValues(saved);
+      } else {
+        // Fallback: rebuild intake values from preferences API + profile
+        (async () => {
+          try {
+            const [prefsRes, profileRes] = await Promise.all([
+              fetch("/api/user/preferences"),
+              fetch("/api/user/profile"),
+            ]);
+            const prefs = prefsRes.ok ? await prefsRes.json() : null;
+            const prof = profileRes.ok ? await profileRes.json() : null;
+            if (prefs) {
+              const rebuilt: Partial<IntakeAnswers> = {
+                divisions: prefs.preferredDivisions || [],
+                conferenceTiers: prefs.preferredTiers || [],
+                competitiveness: prefs.competitiveness || "",
+                regions: prefs.preferredRegions || [],
+                maxTuition: prefs.maxTuition || null,
+                tuitionChoice: prefs.maxTuition ? String(prefs.maxTuition) : (prefs.maxTuition === null ? "any" : ""),
+                schoolSize: prefs.schoolSize || "",
+                highAcademic: prefs.highAcademic ?? false,
+                draftImportance: prefs.draftImportance === "high" ? "yes" : (prefs.draftImportance || ""),
+                gpa: prof?.gpa || "",
+                satScore: prof?.satScore ? String(prof.satScore) : "",
+                actScore: prof?.actScore ? String(prof.actScore) : "",
+                intendedMajor: "",
+              };
+              setIntakeValues(rebuilt);
+              // Persist so we don't need to fetch again
+              localStorage.setItem(INTAKE_ANSWERS_KEY, JSON.stringify(rebuilt));
+            }
+          } catch { /* ignore — form will just be empty */ }
+        })();
+      }
     }
   }, []);
 
