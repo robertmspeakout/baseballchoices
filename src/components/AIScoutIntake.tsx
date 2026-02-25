@@ -130,10 +130,6 @@ export function composeIntakeMessage(a: IntakeAnswers): string {
     parts.push(`in the ${a.regions.join(", ")}`);
   }
 
-  if (a.maxDistance) {
-    parts.push(`within ${a.maxDistance.toLocaleString()} miles of home`);
-  }
-
   if (a.maxTuition) {
     parts.push(`with tuition under $${a.maxTuition.toLocaleString()}/year`);
   }
@@ -148,6 +144,7 @@ export function composeIntakeMessage(a: IntakeAnswers): string {
   else if (a.competitiveness === "postseason") parts.push("that competes for the postseason");
 
   if (a.draftImportance === "yes") parts.push("and getting drafted is important to me");
+  else if (a.draftImportance === "some") parts.push("and I'd like a program with some MLB draft history, but it's not everything");
 
   const academics: string[] = [];
   if (a.gpa) academics.push(`my GPA is ${a.gpa}`);
@@ -170,9 +167,6 @@ export default function AIScoutIntake({
   const [conferenceTiers, setConferenceTiers] = useState<string[]>(initialValues?.conferenceTiers || []);
   const [competitiveness, setCompetitiveness] = useState(initialValues?.competitiveness || "");
   const [regions, setRegions] = useState<string[]>(initialValues?.regions || []);
-  const [distanceChoice, setDistanceChoice] = useState(
-    initialValues?.maxDistance ? String(initialValues.maxDistance) : (initialValues?.maxDistance === null ? "" : "")
-  );
   const [tuitionChoice, setTuitionChoice] = useState(
     initialValues?.maxTuition ? String(initialValues.maxTuition) : (initialValues?.maxTuition === null ? "" : "")
   );
@@ -198,7 +192,7 @@ export default function AIScoutIntake({
       conferenceTiers: divisions.includes("D1") ? conferenceTiers : [],
       competitiveness,
       regions,
-      maxDistance: distanceChoice && distanceChoice !== "any" ? parseInt(distanceChoice) : null,
+      maxDistance: null,
       maxTuition: tuitionChoice && tuitionChoice !== "any" ? parseInt(tuitionChoice) : null,
       schoolSize,
       highAcademic,
@@ -224,11 +218,11 @@ export default function AIScoutIntake({
         <h2 className="text-lg font-black text-gray-900">
           {isEditing ? "Update Your Preferences" : "AI Scout: Find Your Fit"}
         </h2>
-        <p className="text-sm text-gray-500 mt-1">
-          {isEditing
-            ? "Adjust your answers and we'll find updated matches"
-            : "Tell me what you're looking for and I'll find the best fit"}
-        </p>
+        {isEditing && (
+          <p className="text-sm text-gray-500 mt-1">
+            Adjust your answers and we&apos;ll find updated matches
+          </p>
+        )}
       </div>
 
       <div className="space-y-6">
@@ -296,22 +290,7 @@ export default function AIScoutIntake({
           )}
         </QuestionCard>
 
-        {/* 4. Distance */}
-        <QuestionCard label="How far from home are you willing to go?">
-          <ChipGroup
-            options={[
-              { value: "100", label: "Under 100 mi" },
-              { value: "250", label: "Under 250 mi" },
-              { value: "500", label: "Under 500 mi" },
-              { value: "1000", label: "Under 1,000 mi" },
-              { value: "any", label: "Anywhere" },
-            ]}
-            value={distanceChoice}
-            onChange={setDistanceChoice}
-          />
-        </QuestionCard>
-
-        {/* 5. Tuition */}
+        {/* 4. Tuition */}
         <QuestionCard label="What can your family spend on tuition per year?">
           <ChipGroup
             options={[
@@ -325,7 +304,7 @@ export default function AIScoutIntake({
           />
         </QuestionCard>
 
-        {/* 6. School size */}
+        {/* 5. School size */}
         <QuestionCard label="What size school do you want?">
           <ChipGroup
             options={[
@@ -339,7 +318,7 @@ export default function AIScoutIntake({
           />
         </QuestionCard>
 
-        {/* 7. Academics */}
+        {/* 6. Academics */}
         <QuestionCard label="Are strong academics important to you?">
           <ChipGroup
             options={[
@@ -351,7 +330,7 @@ export default function AIScoutIntake({
           />
         </QuestionCard>
 
-        {/* 7b. GPA, SAT, ACT */}
+        {/* 6b. GPA, SAT, ACT */}
         <QuestionCard label="What are your grades and test scores?" hint="Optional — helps us find the right academic fit">
           <div className="grid grid-cols-3 gap-3">
             <div>
@@ -362,7 +341,7 @@ export default function AIScoutIntake({
                 placeholder="e.g. 3.5"
                 value={gpa}
                 onChange={(e) => setGpa(e.target.value)}
-                className="w-full px-3 py-2 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
+                className="w-full px-3 py-2 rounded-lg border border-gray-300 bg-white text-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
               />
             </div>
             <div>
@@ -373,7 +352,7 @@ export default function AIScoutIntake({
                 placeholder="e.g. 1200"
                 value={satScore}
                 onChange={(e) => setSatScore(e.target.value)}
-                className="w-full px-3 py-2 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
+                className="w-full px-3 py-2 rounded-lg border border-gray-300 bg-white text-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
               />
             </div>
             <div>
@@ -384,17 +363,18 @@ export default function AIScoutIntake({
                 placeholder="e.g. 25"
                 value={actScore}
                 onChange={(e) => setActScore(e.target.value)}
-                className="w-full px-3 py-2 rounded-lg border border-gray-300 text-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
+                className="w-full px-3 py-2 rounded-lg border border-gray-300 bg-white text-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
               />
             </div>
           </div>
         </QuestionCard>
 
-        {/* 8. Draft */}
+        {/* 7. Draft */}
         <QuestionCard label="Is getting drafted a goal for you?">
           <ChipGroup
             options={[
               { value: "yes", label: "Yes — show me draft factories" },
+              { value: "some", label: "Somewhat important" },
               { value: "no", label: "Not a priority" },
             ]}
             value={draftImportance}
