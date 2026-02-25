@@ -739,59 +739,6 @@ function AIMatchContent() {
                             </a>
                           )}
 
-                          {/* Start new search — re-sends saved intake answers */}
-                          {intakeValues && (
-                            <button
-                              onClick={() => {
-                                const answers: IntakeAnswers = {
-                                  divisions: intakeValues.divisions || [],
-                                  conferenceTiers: intakeValues.conferenceTiers || [],
-                                  competitiveness: intakeValues.competitiveness || "",
-                                  regions: intakeValues.regions || [],
-                                  maxDistance: null,
-                                  maxTuition: intakeValues.maxTuition ?? null,
-                                  tuitionChoice: intakeValues.tuitionChoice || "",
-                                  schoolSize: intakeValues.schoolSize || "",
-                                  highAcademic: intakeValues.highAcademic ?? false,
-                                  draftImportance: intakeValues.draftImportance || "",
-                                  gpa: intakeValues.gpa || "",
-                                  satScore: intakeValues.satScore || "",
-                                  actScore: intakeValues.actScore || "",
-                                  intendedMajor: intakeValues.intendedMajor || "",
-                                };
-                                const message = composeIntakeMessage(answers);
-                                handleIntakeComplete(message, answers);
-                              }}
-                              className="flex items-center gap-3 w-full px-4 py-3 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-xl hover:from-red-700 hover:to-red-800 transition-all shadow-md"
-                            >
-                              <div className="w-8 h-8 rounded-lg bg-white/20 flex items-center justify-center shrink-0">
-                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
-                                </svg>
-                              </div>
-                              <div className="flex-1">
-                                <p className="text-sm font-bold">Find my programs</p>
-                                <p className="text-xs text-red-100">Get new recommendations based on your profile</p>
-                              </div>
-                              <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                              </svg>
-                            </button>
-                          )}
-
-                          {/* Edit answers */}
-                          <button
-                            onClick={() => setShowIntake(true)}
-                            className="flex items-center gap-3 w-full px-4 py-3 bg-white border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors"
-                          >
-                            <div className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center shrink-0">
-                              <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                              </svg>
-                            </div>
-                            <p className="text-sm font-semibold text-gray-700">Edit your AI Scout Profile</p>
-                          </button>
-
                           {/* Continue conversation — only when saved chat exists */}
                           {savedSnippet && (
                           <button
@@ -816,6 +763,19 @@ function AIMatchContent() {
                             </div>
                           </button>
                           )}
+
+                          {/* Edit answers */}
+                          <button
+                            onClick={() => setShowIntake(true)}
+                            className="flex items-center gap-3 w-full px-4 py-3 bg-white border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors"
+                          >
+                            <div className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center shrink-0">
+                              <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                              </svg>
+                            </div>
+                            <p className="text-sm font-semibold text-gray-700">Edit your AI Scout Profile</p>
+                          </button>
                         </div>
                     </div>
                   );
