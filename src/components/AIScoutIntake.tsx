@@ -5,6 +5,7 @@ import { REGIONS } from "@/lib/playerProfile";
 
 export interface IntakeAnswers {
   divisions: string[];
+  conferenceTiers: string[];
   competitiveness: string;
   regions: string[];
   maxDistance: number | null;
@@ -115,6 +116,9 @@ export function composeIntakeMessage(a: IntakeAnswers): string {
 
   if (a.divisions.length > 0) {
     parts.push(`I'm looking for ${a.divisions.join(" and ")} programs`);
+    if (a.conferenceTiers.length > 0 && a.divisions.includes("D1")) {
+      parts.push(`specifically ${a.conferenceTiers.join(", ")} level`);
+    }
   } else {
     parts.push("I'm open to any division");
   }
@@ -152,6 +156,7 @@ export default function AIScoutIntake({
   onCancel,
 }: AIScoutIntakeProps) {
   const [divisions, setDivisions] = useState<string[]>(initialValues?.divisions || []);
+  const [conferenceTiers, setConferenceTiers] = useState<string[]>(initialValues?.conferenceTiers || []);
   const [competitiveness, setCompetitiveness] = useState(initialValues?.competitiveness || "");
   const [regions, setRegions] = useState<string[]>(initialValues?.regions || []);
   const [maxDistance, setMaxDistance] = useState<number | null>(initialValues?.maxDistance ?? null);
@@ -160,11 +165,19 @@ export default function AIScoutIntake({
   const [highAcademic, setHighAcademic] = useState(initialValues?.highAcademic ?? false);
   const [draftImportance, setDraftImportance] = useState(initialValues?.draftImportance || "");
 
+  const handleDivisionsChange = (newDivisions: string[]) => {
+    setDivisions(newDivisions);
+    if (!newDivisions.includes("D1")) {
+      setConferenceTiers([]);
+    }
+  };
+
   const canSubmit = divisions.length > 0;
 
   const handleSubmit = () => {
     const answers: IntakeAnswers = {
       divisions,
+      conferenceTiers: divisions.includes("D1") ? conferenceTiers : [],
       competitiveness,
       regions,
       maxDistance,
@@ -208,9 +221,25 @@ export default function AIScoutIntake({
               { value: "JUCO", label: "JUCO" },
             ]}
             values={divisions}
-            onChange={setDivisions}
+            onChange={handleDivisionsChange}
           />
         </QuestionCard>
+
+        {/* 1b. Conference tier — only when D1 is selected */}
+        {divisions.includes("D1") && (
+          <QuestionCard label="What level of D1 program?" hint="Select all that apply">
+            <MultiChipGroup
+              options={[
+                { value: "Power", label: "Power Conference" },
+                { value: "High-Major", label: "High Major" },
+                { value: "Mid-Major", label: "Mid Major" },
+                { value: "Low-Major", label: "Low Major" },
+              ]}
+              values={conferenceTiers}
+              onChange={setConferenceTiers}
+            />
+          </QuestionCard>
+        )}
 
         {/* 2. Competition level */}
         <QuestionCard label="How competitive do you want the program?">

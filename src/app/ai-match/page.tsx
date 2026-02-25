@@ -341,7 +341,7 @@ function AIMatchContent() {
       competitiveness: (answers.competitiveness || "any") as "top25" | "postseason" | "any",
       draftImportance: (answers.draftImportance || "no") as "yes" | "no",
       preferredConferences: [],
-      preferredTiers: [],
+      preferredTiers: answers.conferenceTiers || [],
     });
 
     // Save to DB (fire and forget)
@@ -357,6 +357,7 @@ function AIMatchContent() {
         highAcademic: answers.highAcademic,
         competitiveness: answers.competitiveness || "any",
         draftImportance: answers.draftImportance || "no",
+        preferredTiers: answers.conferenceTiers || [],
       }),
     }).catch(() => {});
 
@@ -531,19 +532,15 @@ function AIMatchContent() {
 
           {/* Intake form or Chat area */}
           {showIntake ? (
-            <div className="flex-1 bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
-              <div className="overflow-y-auto p-4" style={{ maxHeight: "70vh" }}>
-                <AIScoutIntake
-                  onComplete={handleIntakeComplete}
-                  initialValues={intakeValues}
-                  isEditing={!!intakeValues}
-                  onCancel={intakeValues ? () => setShowIntake(false) : undefined}
-                />
-              </div>
-            </div>
+            <AIScoutIntake
+              onComplete={handleIntakeComplete}
+              initialValues={intakeValues}
+              isEditing={!!intakeValues}
+              onCancel={intakeValues ? () => setShowIntake(false) : undefined}
+            />
           ) : (
-            <div className="flex-1 bg-white border border-gray-200 rounded-xl shadow-sm flex flex-col overflow-hidden">
-              <div className="flex-1 overflow-y-auto p-4 space-y-4" style={{ maxHeight: "60vh" }}>
+            <div className="flex-1">
+              <div className="p-4 space-y-4">
                 {messages.length === 0 && !loading && (() => {
                   const savedSnippet = getSavedChatSnippet();
                   const prompts = savedSnippet ? STARTER_PROMPTS.slice(0, 3) : STARTER_PROMPTS;
@@ -637,7 +634,7 @@ function AIMatchContent() {
               </div>
 
               {/* Input area */}
-              <div className="border-t border-gray-200 p-3 bg-gray-50/50">
+              <div className="sticky bottom-0 border-t border-gray-200 p-3 bg-white/95 backdrop-blur-sm">
                 {atLimit ? (
                   <div className="text-center py-3">
                     <p className="text-sm font-semibold text-gray-700">You&apos;ve used all 20 messages this month</p>
