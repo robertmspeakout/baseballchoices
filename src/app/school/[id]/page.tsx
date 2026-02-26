@@ -393,96 +393,150 @@ export default function SchoolPage({
 
       <main className="max-w-5xl mx-auto px-4 sm:px-6 py-4 sm:py-8 space-y-4 sm:space-y-6">
         {/* School identity card */}
-        <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
-          <div className="p-4 sm:p-6 flex items-center gap-4 sm:gap-5 border-b border-gray-100">
-            <div className="shrink-0 w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-gray-50 flex items-center justify-center overflow-hidden border border-gray-200">
-              {logoSrc ? (
-                <img src={logoSrc} alt={`${school.name} logo`} className="w-16 h-16 sm:w-20 sm:h-20 object-contain" onError={() => {
-                  if (!triedLogoFallback.current && school.website) {
-                    triedLogoFallback.current = true;
-                    try {
-                      const domain = new URL(school.website).hostname;
-                      setLogoSrc(`https://www.google.com/s2/favicons?domain=${domain}&sz=128`);
-                    } catch { setLogoSrc(null); }
-                  } else {
-                    setLogoSrc(null);
-                  }
-                }} />
-              ) : (
-                <svg className="w-12 h-12 sm:w-16 sm:h-16 text-gray-300" viewBox="0 0 24 24" fill="currentColor">
-                  <circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" strokeWidth="1.5" />
-                  <path d="M6.5 3.5C8.5 6 9 9.5 8 13s-3.5 6-5.5 7.5" fill="none" stroke="currentColor" strokeWidth="1.2" />
-                  <path d="M17.5 3.5C15.5 6 15 9.5 16 13s3.5 6 5.5 7.5" fill="none" stroke="currentColor" strokeWidth="1.2" />
-                </svg>
-              )}
+        {(() => {
+          const brandColor = school.primary_color || "#1e3a5f";
+          return (
+        <div className="bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden">
+          {/* Hero header with team branding */}
+          <div className="relative overflow-hidden" style={{ background: `linear-gradient(135deg, ${brandColor}, ${brandColor}dd, ${brandColor}aa)` }}>
+            {/* Decorative background pattern */}
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute -right-8 -top-8 w-48 h-48 rounded-full" style={{ background: 'rgba(255,255,255,0.15)' }} />
+              <div className="absolute -left-4 -bottom-4 w-32 h-32 rounded-full" style={{ background: 'rgba(255,255,255,0.1)' }} />
             </div>
-            <div className="min-w-0 flex-1">
-              <h1 className="text-xl sm:text-3xl font-black text-gray-900 tracking-tight truncate uppercase">{school.name}</h1>
-              <div className="flex items-center gap-2 mt-0.5 flex-wrap">
-                {school.mascot && <span className="text-sm font-semibold text-gray-500">{school.mascot}</span>}
-                {school.mascot && <span className="text-gray-500">|</span>}
-                <span className="text-sm font-semibold text-gray-500">{school.conference}</span>
-                <span className="text-gray-500">|</span>
-                <span className="text-sm font-semibold text-gray-500">{divLabel[school.division] || school.division}</span>
+            <div className="relative p-5 sm:p-8 flex items-center gap-5 sm:gap-6">
+              {/* Logo in a circular badge */}
+              <div className="shrink-0 w-22 h-22 sm:w-28 sm:h-28 rounded-full bg-white/95 flex items-center justify-center overflow-hidden shadow-lg ring-4 ring-white/30">
+                {logoSrc ? (
+                  <img src={logoSrc} alt={`${school.name} logo`} className="w-16 h-16 sm:w-22 sm:h-22 object-contain" onError={() => {
+                    if (!triedLogoFallback.current && school.website) {
+                      triedLogoFallback.current = true;
+                      try {
+                        const domain = new URL(school.website).hostname;
+                        setLogoSrc(`https://www.google.com/s2/favicons?domain=${domain}&sz=128`);
+                      } catch { setLogoSrc(null); }
+                    } else {
+                      setLogoSrc(null);
+                    }
+                  }} />
+                ) : (
+                  <svg className="w-14 h-14 sm:w-18 sm:h-18 text-gray-300" viewBox="0 0 24 24" fill="currentColor">
+                    <circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                    <path d="M6.5 3.5C8.5 6 9 9.5 8 13s-3.5 6-5.5 7.5" fill="none" stroke="currentColor" strokeWidth="1.2" />
+                    <path d="M17.5 3.5C15.5 6 15 9.5 16 13s3.5 6 5.5 7.5" fill="none" stroke="currentColor" strokeWidth="1.2" />
+                  </svg>
+                )}
               </div>
-              {(school.city || school.state) && (
-                   <p className="text-sm font-semibold text-gray-500"><a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${school.name} ${school.city || ""} ${school.state || ""}`)}`} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{school.city}{school.city && school.state ? ", " : ""}{school.state}</a></p>
-              )}
-            </div>
-          </div>
-          <div className="p-4 sm:p-6 border-b border-gray-100">
-            <div>
-              <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Rate This Program!</p>
-              <div className="flex items-center gap-2">
-                <StarRating value={priority} onChange={savePriority} size="md" />
-                <span className="text-xs text-gray-500 font-medium">
-                  {priority === 0 && <em className="text-gray-400">Tap stars to rate your interest.</em>}
-                  {priority === 1 && "Mildly Interested"}
-                  {priority === 2 && "Interested"}
-                  {priority === 3 && "Very Interested"}
-                  {priority === 4 && "Top Choice"}
-                  {priority === 5 && "VIP"}
-                </span>
+              <div className="min-w-0 flex-1">
+                <h1 className="text-2xl sm:text-4xl font-black text-white tracking-tight truncate uppercase drop-shadow-sm">{school.name}</h1>
+                <div className="flex items-center gap-2 mt-1 flex-wrap">
+                  {school.mascot && <span className="text-sm sm:text-base font-semibold text-white/80">{school.mascot}</span>}
+                  {school.mascot && <span className="text-white/40">|</span>}
+                  <span className="text-sm sm:text-base font-semibold text-white/80">{school.conference}</span>
+                </div>
+                <div className="flex items-center gap-2 mt-2 flex-wrap">
+                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-white/20 text-white backdrop-blur-sm border border-white/20">
+                    {divLabel[school.division] || school.division}
+                  </span>
+                  {(school.city || school.state) && (
+                    <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${school.name} ${school.city || ""} ${school.state || ""}`)}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-white/20 text-white backdrop-blur-sm border border-white/20 hover:bg-white/30 transition-colors">
+                      <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                      {school.city}{school.city && school.state ? ", " : ""}{school.state}
+                    </a>
+                  )}
+                </div>
+                {/* Social links inline */}
+                <div className="flex items-center gap-2 mt-3">
+                  {school.instagram && (
+                    <a href={`https://instagram.com/${school.instagram.replace("@", "")}`} target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-white/20 hover:bg-white/35 flex items-center justify-center transition-colors" title={`Instagram: ${school.instagram}`}>
+                      <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                      </svg>
+                    </a>
+                  )}
+                  {school.x_account && (
+                    <a href={`https://x.com/${school.x_account.replace("@", "")}`} target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-white/20 hover:bg-white/35 flex items-center justify-center transition-colors" title={`X: ${school.x_account}`}>
+                      <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                      </svg>
+                    </a>
+                  )}
+                  {school.website && (
+                    <a href={school.website} target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-white/20 hover:bg-white/35 flex items-center justify-center transition-colors" title="Program Website">
+                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Quick stats */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 divide-x divide-y sm:divide-y-0 divide-gray-100">
-            <div className="p-3 sm:p-4 text-center">
-              <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">{currentRecord ? "Current Record" : "Record"}</p>
-              <p className="text-base sm:text-xl font-bold text-gray-900 mt-0.5 sm:mt-1">
+          {/* Rate this program - elevated section */}
+          <div className="px-5 sm:px-8 py-4 sm:py-5 border-b border-gray-100 bg-gradient-to-r from-yellow-50/60 to-amber-50/40">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-[11px] sm:text-xs text-gray-500 uppercase font-bold tracking-wider mb-1">Your Rating</p>
+                <div className="flex items-center gap-3">
+                  <StarRating value={priority} onChange={savePriority} size="lg" />
+                  <span className="text-sm font-semibold" style={{ color: priority > 0 ? brandColor : '#9ca3af' }}>
+                    {priority === 0 && <em className="text-gray-400 font-normal">Tap to rate</em>}
+                    {priority === 1 && "Mildly Interested"}
+                    {priority === 2 && "Interested"}
+                    {priority === 3 && "Very Interested"}
+                    {priority === 4 && "Top Choice"}
+                    {priority === 5 && "VIP"}
+                  </span>
+                </div>
+              </div>
+              {saved && (
+                <span className="text-xs font-medium text-green-600 bg-green-50 px-2.5 py-1 rounded-full">Saved</span>
+              )}
+            </div>
+          </div>
+
+          {/* Quick stats - redesigned as distinct cards */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-gray-100">
+            <div className="bg-white p-4 sm:p-5 text-center group hover:bg-gray-50/50 transition-colors">
+              <p className="text-[10px] sm:text-xs text-gray-400 uppercase font-bold tracking-wider">{currentRecord ? "Current Record" : "Record"}</p>
+              <p className="text-xl sm:text-2xl font-black text-gray-900 mt-1.5 tracking-tight">
                 {currentRecord || school.last_season_record || (scheduleLoading ? "..." : "-")}
               </p>
               {currentRecord && school.last_season_record && (
-                <p className="text-[10px] sm:text-xs text-gray-400 mt-0.5">Last Season: {school.last_season_record}</p>
+                <p className="text-[10px] sm:text-xs text-gray-400 mt-1 font-medium">Last: {school.last_season_record}</p>
               )}
               {!currentRecord && school.last_season_record && !scheduleLoading && (
-                <p className="text-[10px] sm:text-xs text-gray-400 mt-0.5">Last Season</p>
+                <p className="text-[10px] sm:text-xs text-gray-400 mt-1 font-medium">Last Season</p>
               )}
             </div>
-            <div className="p-3 sm:p-4 text-center">
-              <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Current Ranking</p>
-              <p className="text-base sm:text-xl font-bold text-gray-900 mt-0.5 sm:mt-1">{school.current_ranking ? `#${school.current_ranking}` : "NR"}</p>
+            <div className="bg-white p-4 sm:p-5 text-center group hover:bg-gray-50/50 transition-colors">
+              <p className="text-[10px] sm:text-xs text-gray-400 uppercase font-bold tracking-wider">Ranking</p>
+              <p className={`text-xl sm:text-2xl font-black mt-1.5 tracking-tight ${school.current_ranking ? "text-gray-900" : "text-gray-300"}`}>
+                {school.current_ranking ? `#${school.current_ranking}` : "NR"}
+              </p>
+              {school.current_ranking && school.current_ranking <= 25 && (
+                <p className="text-[10px] sm:text-xs mt-1 font-bold" style={{ color: brandColor }}>Top 25</p>
+              )}
             </div>
-            <div className="p-3 sm:p-4 text-center">
-              <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Postseason</p>
-              <p className="text-base sm:text-xl font-bold text-gray-900 mt-0.5 sm:mt-1">
-                {school.cws_appearances > 0 ? `${school.cws_appearances} CWS` : school.ncaa_regionals > 0 ? `${school.ncaa_regionals} Regional${school.ncaa_regionals !== 1 ? "s" : ""}` : "None"}
+            <div className="bg-white p-4 sm:p-5 text-center group hover:bg-gray-50/50 transition-colors">
+              <p className="text-[10px] sm:text-xs text-gray-400 uppercase font-bold tracking-wider">Postseason</p>
+              <p className="text-xl sm:text-2xl font-black text-gray-900 mt-1.5 tracking-tight">
+                {school.cws_appearances > 0 ? `${school.cws_appearances} CWS` : school.ncaa_regionals > 0 ? `${school.ncaa_regionals} Reg.` : "None"}
               </p>
               {school.cws_appearances > 0 && school.ncaa_regionals > 0 && (
-                <p className="text-[10px] sm:text-xs text-gray-400 mt-0.5">{school.ncaa_regionals} Regionals</p>
+                <p className="text-[10px] sm:text-xs text-gray-400 mt-1 font-medium">{school.ncaa_regionals} Regionals</p>
               )}
             </div>
-            <div className="p-3 sm:p-4 text-center">
-              <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Draft Picks</p>
-              <p className="text-base sm:text-xl font-bold text-gray-900 mt-0.5 sm:mt-1">
+            <div className="bg-white p-4 sm:p-5 text-center group hover:bg-gray-50/50 transition-colors">
+              <p className="text-[10px] sm:text-xs text-gray-400 uppercase font-bold tracking-wider">Draft Picks</p>
+              <p className="text-xl sm:text-2xl font-black text-gray-900 mt-1.5 tracking-tight">
                 {draftPicksCount}
               </p>
-              <p className="text-[10px] sm:text-xs text-gray-400 mt-0.5">since {draftCutoffYear}</p>
+              <p className="text-[10px] sm:text-xs text-gray-400 mt-1 font-medium">since {draftCutoffYear}</p>
             </div>
           </div>
         </div>
+          );
+        })()}
 
         {/* ===== RECRUITING TRACKER — Collapsible Banner ===== */}
         {(() => {
