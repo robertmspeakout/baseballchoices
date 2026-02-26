@@ -140,6 +140,16 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
     } catch { /* ignore */ }
   };
 
+  // Clear all notifications
+  const handleClearAll = async () => {
+    try {
+      await fetch("/api/notifications", { method: "DELETE" });
+      setNotifications([]);
+      setUnreadCount(0);
+      setNotifOpen(false);
+    } catch { /* ignore */ }
+  };
+
   const isLocalNav = (href: string) => href === "/" || href.startsWith("/#");
 
   const handleClick = (item: typeof NAV_ITEMS[0]) => {
@@ -276,13 +286,27 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
                 <h3 className={`text-sm font-bold ${isLight ? "text-gray-900" : "text-white"}`}>
                   Notifications
                 </h3>
-                {unreadCount > 0 && (
-                  <button
-                    onClick={handleMarkAllRead}
-                    className="text-xs font-semibold text-red-600 hover:text-red-700 transition-colors"
-                  >
-                    Mark all read
-                  </button>
+                {notifications.length > 0 && (
+                  <div className="flex items-center gap-3">
+                    {unreadCount > 0 && (
+                      <button
+                        onClick={handleMarkAllRead}
+                        className="text-xs font-semibold text-red-600 hover:text-red-700 transition-colors"
+                      >
+                        Mark all read
+                      </button>
+                    )}
+                    <button
+                      onClick={handleClearAll}
+                      className={`text-xs font-semibold transition-colors ${
+                        isLight
+                          ? "text-gray-400 hover:text-gray-600"
+                          : "text-white/40 hover:text-white/70"
+                      }`}
+                    >
+                      Clear all
+                    </button>
+                  </div>
                 )}
               </div>
 

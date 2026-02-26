@@ -49,21 +49,15 @@ export async function POST(request: NextRequest) {
   return NextResponse.json({ success: true });
 }
 
-// DELETE — clear old notifications (older than 30 days)
+// DELETE — clear all notifications for the user
 export async function DELETE() {
   const session = await auth();
   if (!session?.user?.id) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const thirtyDaysAgo = new Date();
-  thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
-
   const result = await prisma.notification.deleteMany({
-    where: {
-      userId: session.user.id,
-      createdAt: { lt: thirtyDaysAgo },
-    },
+    where: { userId: session.user.id },
   });
 
   return NextResponse.json({ success: true, deleted: result.count });
