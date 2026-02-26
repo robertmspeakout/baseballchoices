@@ -193,9 +193,10 @@ export default function SearchOverlay({ open, onClose, schools, conferences, act
   return (
     <div
       className={`fixed inset-0 z-[9999] bg-white transition-transform duration-[350ms] ease-out ${
-        open ? "translate-y-0" : "translate-y-full"
+        open ? "translate-y-0" : "translate-y-full pointer-events-none invisible"
       }`}
       style={{ willChange: "transform" }}
+      aria-hidden={!open}
     >
       {/* ---- Top bar: input + cancel ---- */}
       <div className="flex items-center gap-3 px-4 pt-[max(env(safe-area-inset-top),12px)] pb-3 border-b border-gray-200 bg-white">
