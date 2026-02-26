@@ -271,6 +271,12 @@ export async function GET() {
                   const title = `${resultTag}: ${school.name} ${ourScore}, ${oppName} ${oppScore}`;
                   const key = `game_result:${schoolId}:${title}`;
 
+                  // Build ESPN game recap link from the event ID
+                  const gameId = event.id || event.uid?.split(":").pop();
+                  const recapLink = gameId
+                    ? `https://www.espn.com/college-baseball/game/_/gameId/${gameId}`
+                    : event.links?.[0]?.href || null;
+
                   if (!recentKeys.has(key)) {
                     newNotifications.push({
                       userId: session.user.id,
@@ -278,7 +284,7 @@ export async function GET() {
                       type: "game_result",
                       title,
                       body: `${school.name} ${homeAway} ${oppName} — Final score ${ourScore}-${oppScore} on ${dateStr}.`,
-                      link: event.links?.[0]?.href || null,
+                      link: recapLink,
                       schoolLogo: espn.teamLogo || school.logo_url,
                     });
                   }

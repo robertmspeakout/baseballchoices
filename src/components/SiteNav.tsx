@@ -248,66 +248,33 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
         </div>
       )}
 
-      {/* Profile / hamburger button — with notification badge for logged-in users */}
-      <div ref={wrapperRef} className="relative">
-        <div ref={notifRef}>
-        <button
-          onClick={() => {
-            if (isLoggedIn) {
-              // For logged-in users: tap toggles notifications, long-press or second tap opens menu
-              if (notifOpen) {
-                setNotifOpen(false);
-                setOpen((o) => !o);
-              } else if (open) {
-                setOpen(false);
-              } else {
-                setNotifOpen(true);
-              }
-            } else {
-              setOpen((o) => !o);
-            }
-          }}
-          onDoubleClick={() => {
-            if (isLoggedIn) {
-              setNotifOpen(false);
-              setOpen((o) => !o);
-            }
-          }}
-          className={`relative p-2 rounded-lg transition-colors ${
-            isLoggedIn
-              ? isLight
+      {/* Bell icon for notifications — logged-in users only */}
+      {isLoggedIn && (
+        <div ref={notifRef} className="relative">
+          <button
+            onClick={() => {
+              setOpen(false);
+              setNotifOpen((o) => !o);
+            }}
+            className={`relative p-2 rounded-lg transition-colors ${
+              isLight
                 ? "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
                 : "text-white/80 hover:bg-white/15 hover:text-white"
-              : isLight
-                ? "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
-                : "text-white/80 hover:bg-white/15 hover:text-white"
-          }`}
-          aria-label={isLoggedIn ? "Account menu" : "Navigation menu"}
-        >
-          {isLoggedIn ? (
-            <>
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              {unreadCount > 0 && (
-                <span className="absolute -top-0.5 -right-0.5 flex items-center justify-center min-w-[18px] h-[18px] px-1 bg-red-600 text-white text-[10px] font-bold rounded-full leading-none ring-2 ring-white">
-                  {unreadCount > 99 ? "99+" : unreadCount}
-                </span>
-              )}
-            </>
-          ) : open ? (
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            }`}
+            aria-label="Notifications"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
             </svg>
-          ) : (
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          )}
-        </button>
+            {unreadCount > 0 && (
+              <span className="absolute top-1 right-1 flex items-center justify-center min-w-[16px] h-[16px] px-0.5 bg-red-600 text-white text-[9px] font-bold rounded-full leading-none">
+                {unreadCount > 99 ? "99+" : unreadCount}
+              </span>
+            )}
+          </button>
 
-        {/* Notification dropdown — anchored to profile icon */}
-        {notifOpen && isLoggedIn && (
+          {/* Notification dropdown */}
+          {notifOpen && (
           <div
             className={`absolute right-0 top-full mt-1 w-[calc(100vw-2rem)] sm:w-96 max-w-96 max-h-[70vh] rounded-xl shadow-2xl overflow-hidden z-50 border flex flex-col ${
               isLight
@@ -433,18 +400,49 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
             <div className={`px-4 py-2.5 border-t text-center ${
               isLight ? "border-gray-100" : "border-white/5"
             }`}>
-              <button
-                onClick={() => { setNotifOpen(false); setOpen(true); }}
+              <Link
+                href="/auth/account"
+                onClick={() => setNotifOpen(false)}
                 className={`text-xs font-semibold transition-colors ${
                   isLight ? "text-gray-500 hover:text-gray-700" : "text-white/50 hover:text-white/80"
                 }`}
               >
-                Account settings
-              </button>
+                Notification settings
+              </Link>
             </div>
           </div>
         )}
         </div>
+      )}
+
+      {/* Profile / hamburger button */}
+      <div ref={wrapperRef} className="relative">
+        <button
+          onClick={() => {
+            setNotifOpen(false);
+            setOpen((o) => !o);
+          }}
+          className={`relative p-2 rounded-lg transition-colors ${
+            isLight
+              ? "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
+              : "text-white/80 hover:bg-white/15 hover:text-white"
+          }`}
+          aria-label={isLoggedIn ? "Account menu" : "Navigation menu"}
+        >
+          {isLoggedIn ? (
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          ) : open ? (
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          ) : (
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          )}
+        </button>
 
         {open && (
           <div
