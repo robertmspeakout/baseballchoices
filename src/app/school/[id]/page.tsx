@@ -185,7 +185,6 @@ function SchoolPageContent({ id }: { id: string }) {
   const [trackerOpen, setTrackerOpen] = useState(false);
   const [academicsOpen, setAcademicsOpen] = useState(false);
   const [coachOpen, setCoachOpen] = useState(false);
-  const [linksOpen, setLinksOpen] = useState(false);
   const [scheduleOpen, setScheduleOpen] = useState(false);
   const [newsOpen, setNewsOpen] = useState(false);
   const [currentRecord, setCurrentRecord] = useState<string | null>(null);
@@ -509,10 +508,10 @@ function SchoolPageContent({ id }: { id: string }) {
 
         {/* School identity card */}
         <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
-          <div className="p-4 sm:p-6 flex items-center gap-4 sm:gap-5 border-b border-gray-100">
-            <div className="shrink-0 w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-gray-50 flex items-center justify-center overflow-hidden border border-gray-200">
+          <div className="px-3 py-2.5 sm:px-4 sm:py-3 flex items-center gap-3 border-b border-gray-100">
+            <div className="shrink-0 w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-gray-50 flex items-center justify-center overflow-hidden border border-gray-200">
               {logoSrc ? (
-                <img src={logoSrc} alt={`${school.name} logo`} className="w-16 h-16 sm:w-20 sm:h-20 object-contain" onError={() => {
+                <img src={logoSrc} alt={`${school.name} logo`} className="w-11 h-11 sm:w-13 sm:h-13 object-contain" onError={() => {
                   if (!triedLogoFallback.current && school.website) {
                     triedLogoFallback.current = true;
                     try {
@@ -524,7 +523,7 @@ function SchoolPageContent({ id }: { id: string }) {
                   }
                 }} />
               ) : (
-                <svg className="w-12 h-12 sm:w-16 sm:h-16 text-gray-300" viewBox="0 0 24 24" fill="currentColor">
+                <svg className="w-9 h-9 sm:w-11 sm:h-11 text-gray-300" viewBox="0 0 24 24" fill="currentColor">
                   <circle cx="12" cy="12" r="11" fill="none" stroke="currentColor" strokeWidth="1.5" />
                   <path d="M6.5 3.5C8.5 6 9 9.5 8 13s-3.5 6-5.5 7.5" fill="none" stroke="currentColor" strokeWidth="1.2" />
                   <path d="M17.5 3.5C15.5 6 15 9.5 16 13s3.5 6 5.5 7.5" fill="none" stroke="currentColor" strokeWidth="1.2" />
@@ -532,69 +531,100 @@ function SchoolPageContent({ id }: { id: string }) {
               )}
             </div>
             <div className="min-w-0 flex-1">
-              <h1 className="text-xl sm:text-3xl font-black text-gray-900 tracking-tight truncate uppercase">{school.name}</h1>
-              <div className="flex items-center gap-2 mt-0.5 flex-wrap">
-                {school.mascot && <span className="text-sm font-semibold text-gray-500">{school.mascot}</span>}
-                {school.mascot && <span className="text-gray-500">|</span>}
-                <span className="text-sm font-semibold text-gray-500">{school.conference}</span>
-                <span className="text-gray-500">|</span>
-                <span className="text-sm font-semibold text-gray-500">{divLabel[school.division] || school.division}</span>
+              <h1 className="text-lg sm:text-2xl font-black text-gray-900 tracking-tight truncate uppercase">{school.name}</h1>
+              <div className="flex items-center gap-1.5 flex-wrap text-xs sm:text-sm">
+                {school.mascot && <span className="font-semibold text-gray-500">{school.mascot}</span>}
+                {school.mascot && <span className="text-gray-300">|</span>}
+                <span className="font-semibold text-gray-500">{school.conference}</span>
+                <span className="text-gray-300">|</span>
+                <span className="font-semibold text-gray-500">{divLabel[school.division] || school.division}</span>
               </div>
               {(school.city || school.state) && (
-                   <p className="text-sm font-semibold text-gray-500"><a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${school.name} ${school.city || ""} ${school.state || ""}`)}`} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{school.city}{school.city && school.state ? ", " : ""}{school.state}</a></p>
+                <p className="text-xs font-semibold text-gray-500"><a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${school.name} ${school.city || ""} ${school.state || ""}`)}`} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{school.city}{school.city && school.state ? ", " : ""}{school.state}</a></p>
+              )}
+            </div>
+            {/* Social / link icons */}
+            <div className="flex items-center gap-1.5 shrink-0">
+              {school.instagram && (
+                <a href={`https://instagram.com/${school.instagram.replace("@", "")}`} target="_blank" rel="noopener noreferrer" title={`Instagram: ${school.instagram}`} className="w-7 h-7 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white hover:opacity-80 transition-opacity">
+                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                  </svg>
+                </a>
+              )}
+              {school.x_account && (
+                <a href={`https://x.com/${school.x_account.replace("@", "")}`} target="_blank" rel="noopener noreferrer" title={`X: ${school.x_account}`} className="w-7 h-7 rounded-lg bg-gray-900 flex items-center justify-center text-white hover:opacity-80 transition-opacity">
+                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                  </svg>
+                </a>
+              )}
+              {school.website && (
+                <a href={school.website} target="_blank" rel="noopener noreferrer" title="Program website" className="w-7 h-7 rounded-lg bg-blue-600 flex items-center justify-center text-white hover:opacity-80 transition-opacity">
+                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M12 2c-2 3-3 6-3 10s1 7 3 10m0-20c2 3 3 6 3 10s-1 7-3 10" />
+                    <path d="M2 12h20" />
+                  </svg>
+                </a>
+              )}
+              {school.division === "D1" && school.nil_url && (
+                <a href={school.nil_url} target="_blank" rel="noopener noreferrer" title="NIL information" className="w-7 h-7 rounded-lg bg-emerald-600 flex items-center justify-center text-white hover:opacity-80 transition-opacity">
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8V7m0 10v1m9-9a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </a>
               )}
             </div>
           </div>
-          <div className="p-4 sm:p-6 border-b border-gray-100">
-            <div>
-              <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Rate This Program!</p>
-              <div className="flex items-center gap-2">
-                <StarRating value={priority} onChange={savePriority} size="md" />
-                <span className="text-xs text-gray-500 font-medium">
-                  {priority === 0 && <em className="text-gray-400">Tap stars to rate your interest.</em>}
-                  {priority === 1 && "Mildly Interested"}
-                  {priority === 2 && "Interested"}
-                  {priority === 3 && "Very Interested"}
-                  {priority === 4 && "Top Choice"}
-                  {priority === 5 && "VIP"}
-                </span>
-              </div>
+          <div className="px-3 py-2 sm:px-4 sm:py-2.5 border-b border-gray-100">
+            <p className="text-[10px] text-gray-500 uppercase font-medium">Rate This Program!</p>
+            <div className="flex items-center gap-2">
+              <StarRating value={priority} onChange={savePriority} size="md" />
+              <span className="text-xs text-gray-500 font-medium">
+                {priority === 0 && <em className="text-gray-400">Tap stars to rate your interest.</em>}
+                {priority === 1 && "Mildly Interested"}
+                {priority === 2 && "Interested"}
+                {priority === 3 && "Very Interested"}
+                {priority === 4 && "Top Choice"}
+                {priority === 5 && "VIP"}
+              </span>
             </div>
           </div>
 
           {/* Quick stats */}
           <div className="grid grid-cols-2 sm:grid-cols-4 divide-x divide-y sm:divide-y-0 divide-gray-100">
-            <div className="p-3 sm:p-4 text-center">
-              <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">{currentRecord ? "Current Record" : "Record"}</p>
-              <p className="text-base sm:text-xl font-bold text-gray-900 mt-0.5 sm:mt-1">
+            <div className="px-2 py-2 sm:px-3 sm:py-2.5 text-center">
+              <p className="text-[10px] text-gray-500 uppercase font-medium">{currentRecord ? "Current Record" : "Record"}</p>
+              <p className="text-sm sm:text-lg font-bold text-gray-900 mt-0.5">
                 {currentRecord || school.last_season_record || (scheduleLoading ? "..." : "-")}
               </p>
               {currentRecord && school.last_season_record && (
-                <p className="text-[10px] sm:text-xs text-gray-400 mt-0.5">Last Season: {school.last_season_record}</p>
+                <p className="text-[10px] text-gray-400">Last Season: {school.last_season_record}</p>
               )}
               {!currentRecord && school.last_season_record && !scheduleLoading && (
-                <p className="text-[10px] sm:text-xs text-gray-400 mt-0.5">Last Season</p>
+                <p className="text-[10px] text-gray-400">Last Season</p>
               )}
             </div>
-            <div className="p-3 sm:p-4 text-center">
-              <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Current Ranking</p>
-              <p className="text-base sm:text-xl font-bold text-gray-900 mt-0.5 sm:mt-1">{school.current_ranking ? `#${school.current_ranking}` : "NR"}</p>
+            <div className="px-2 py-2 sm:px-3 sm:py-2.5 text-center">
+              <p className="text-[10px] text-gray-500 uppercase font-medium">Current Ranking</p>
+              <p className="text-sm sm:text-lg font-bold text-gray-900 mt-0.5">{school.current_ranking ? `#${school.current_ranking}` : "NR"}</p>
             </div>
-            <div className="p-3 sm:p-4 text-center">
-              <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Postseason</p>
-              <p className="text-base sm:text-xl font-bold text-gray-900 mt-0.5 sm:mt-1">
+            <div className="px-2 py-2 sm:px-3 sm:py-2.5 text-center">
+              <p className="text-[10px] text-gray-500 uppercase font-medium">Postseason</p>
+              <p className="text-sm sm:text-lg font-bold text-gray-900 mt-0.5">
                 {school.cws_appearances > 0 ? `${school.cws_appearances} CWS` : school.ncaa_regionals > 0 ? `${school.ncaa_regionals} Regional${school.ncaa_regionals !== 1 ? "s" : ""}` : "None"}
               </p>
               {school.cws_appearances > 0 && school.ncaa_regionals > 0 && (
-                <p className="text-[10px] sm:text-xs text-gray-400 mt-0.5">{school.ncaa_regionals} Regionals</p>
+                <p className="text-[10px] text-gray-400">{school.ncaa_regionals} Regionals</p>
               )}
             </div>
-            <div className="p-3 sm:p-4 text-center">
-              <p className="text-[10px] sm:text-xs text-gray-500 uppercase font-medium">Draft Picks</p>
-              <p className="text-base sm:text-xl font-bold text-gray-900 mt-0.5 sm:mt-1">
+            <div className="px-2 py-2 sm:px-3 sm:py-2.5 text-center">
+              <p className="text-[10px] text-gray-500 uppercase font-medium">Draft Picks</p>
+              <p className="text-sm sm:text-lg font-bold text-gray-900 mt-0.5">
                 {draftPicksCount}
               </p>
-              <p className="text-[10px] sm:text-xs text-gray-400 mt-0.5">since {draftCutoffYear}</p>
+              <p className="text-[10px] text-gray-400">since {draftCutoffYear}</p>
             </div>
           </div>
         </div>
@@ -991,70 +1021,6 @@ function SchoolPageContent({ id }: { id: string }) {
                     />
                   </div>
                 </div>
-              </div>
-            </div>
-          )}
-        </div>
-
-        {/* Links & Social */}
-        <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
-          <button onClick={() => setLinksOpen(!linksOpen)} className="w-full flex items-center gap-2 p-4 sm:p-6 text-left hover:bg-gray-50 transition-colors">
-            <svg className="w-5 h-5 text-gray-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-            </svg>
-            <span className="flex-1 text-base sm:text-lg font-bold text-gray-900">Links & Social</span>
-            <svg className={`w-5 h-5 text-gray-400 shrink-0 transition-transform ${linksOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
-          {linksOpen && (
-            <div className="border-t border-gray-100 p-4 sm:p-6">
-              <div className="space-y-3">
-                {school.website && (
-                  <a href={school.website} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 px-4 py-3 bg-blue-50 hover:bg-blue-100 rounded-lg text-blue-700 font-medium transition-colors">
-                    <svg className="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none">
-                      <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5" />
-                      <path d="M12 2c-2 3-3 6-3 10s1 7 3 10m0-20c2 3 3 6 3 10s-1 7-3 10" stroke="currentColor" strokeWidth="1.5" />
-                      <path d="M4 9c2.5 1 5 1.5 8 1.5s5.5-.5 8-1.5M4 15c2.5-1 5-1.5 8-1.5s5.5.5 8 1.5" stroke="currentColor" strokeWidth="1" />
-                      <path d="M5 10.5c2 .8 4.5 1.2 7 1.2s5-.4 7-1.2" stroke="red" strokeWidth="1" strokeDasharray="1.5 1.5" />
-                      <path d="M5 13.5c2-.8 4.5-1.2 7-1.2s5 .4 7 1.2" stroke="red" strokeWidth="1" strokeDasharray="1.5 1.5" />
-                    </svg>
-                    Program Website
-                  </a>
-                )}
-                {school.division === "D1" && school.nil_url && (
-                  <a href={school.nil_url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 px-4 py-3 bg-emerald-50 hover:bg-emerald-100 rounded-lg text-emerald-700 font-medium transition-colors">
-                    <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <div>
-                      <span>NIL Information</span>
-                      <span className="block text-xs text-emerald-500 font-normal">Name, Image & Likeness</span>
-                    </div>
-                  </a>
-                )}
-                {school.instagram && (
-                  <a href={`https://instagram.com/${school.instagram.replace("@", "")}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 px-4 py-3 bg-gradient-to-r from-purple-50 to-pink-50 hover:from-purple-100 hover:to-pink-100 rounded-lg text-purple-700 font-medium transition-colors">
-                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
-                    </svg>
-                    <div>
-                      <span>Follow on Instagram</span>
-                      <span className="block text-xs text-purple-500 font-normal">{school.instagram}</span>
-                    </div>
-                  </a>
-                )}
-                {school.x_account && (
-                  <a href={`https://x.com/${school.x_account.replace("@", "")}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 px-4 py-3 bg-gray-50 hover:bg-gray-100 rounded-lg text-gray-800 font-medium transition-colors">
-                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                    </svg>
-                    <div>
-                      <span>Follow on X</span>
-                      <span className="block text-xs text-gray-500 font-normal">{school.x_account}</span>
-                    </div>
-                  </a>
-                )}
               </div>
             </div>
           )}
