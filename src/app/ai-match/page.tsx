@@ -769,25 +769,18 @@ function AIMatchContent() {
             <div className="flex-1">
               {/* Navigation bar — shown when there are messages and intake was completed */}
               {messages.length > 0 && intakeValues && (
-                <div className="px-4 pt-3 pb-1 flex items-center gap-4">
+                <div className="px-4 pt-3 pb-1 flex items-center justify-between">
                   <button
                     onClick={() => setMessages([])}
-                    className="flex items-center gap-2 text-xs font-semibold text-red-600 hover:text-red-700 transition-colors"
+                    className="text-xs font-semibold text-red-600 hover:text-red-700 transition-colors whitespace-nowrap"
                   >
-                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                    </svg>
-                    Back to my results
+                    &larr; My Results
                   </button>
-                  <span className="text-gray-300">|</span>
                   <button
                     onClick={() => setShowIntake(true)}
-                    className="flex items-center gap-2 text-xs font-semibold text-red-600 hover:text-red-700 transition-colors"
+                    className="text-xs font-semibold text-gray-500 hover:text-gray-700 transition-colors whitespace-nowrap"
                   >
-                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                    </svg>
-                    Edit your AI Scout Profile
+                    Edit Profile &rarr;
                   </button>
                 </div>
               )}
