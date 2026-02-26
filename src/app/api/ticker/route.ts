@@ -169,8 +169,18 @@ export async function GET(request: NextRequest) {
             ? `${entry.name} ${ourScore}, ${oppName} ${oppScore}`
             : `${entry.name} ${homeAway} ${oppName}`;
 
-          // Try to get ESPN link
-          const espnLink = event.links?.[0]?.href || null;
+          // Prefer recap or summary link over generic boxscore
+          const eventLinks: any[] = event.links || [];
+          const findTickerLink = (...rels: string[]) =>
+            eventLinks.find((l: any) =>
+              rels.some((r) => l.rel?.includes(r) || l.text?.toLowerCase().includes(r))
+            )?.href;
+          const gameId = event.id || event.uid?.split(":").pop();
+          const scoreLink =
+            findTickerLink("recap") ||
+            findTickerLink("summary") ||
+            (gameId ? `https://www.espn.com/college-baseball/game/_/gameId/${gameId}` : null) ||
+            `https://www.google.com/search?q=${encodeURIComponent(`${entry.name} baseball vs ${oppName} recap ${dateStr}`)}&tbm=nws`;
 
           allItems.push({
             schoolName: entry.name,
@@ -178,7 +188,7 @@ export async function GET(request: NextRequest) {
             type: "score",
             text: scoreText,
             subtext: `${resultTag ? resultTag + " · " : ""}Final · ${dateStr}`,
-            link: espnLink,
+            link: scoreLink,
           });
         }
       }

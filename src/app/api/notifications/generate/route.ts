@@ -184,7 +184,7 @@ export async function GET() {
                   const title = `${resultTag}: ${school.name} ${ourScore}, ${oppName} ${oppScore}`;
                   const key = `game_result:${schoolId}:${title}`;
 
-                  // Prefer recap link, then boxscore, then generic game page
+                  // Prefer recap article, then game summary, then Google News search
                   const gameId = event.id || event.uid?.split(":").pop();
                   const eventLinks: any[] = event.links || [];
                   const findLink = (...rels: string[]) =>
@@ -193,10 +193,11 @@ export async function GET() {
                     )?.href;
                   const recapLink =
                     findLink("recap") ||
-                    findLink("boxscore") ||
+                    findLink("summary") ||
                     (gameId
-                      ? `https://www.espn.com/college-baseball/boxscore/_/gameId/${gameId}`
-                      : eventLinks[0]?.href || null);
+                      ? `https://www.espn.com/college-baseball/game/_/gameId/${gameId}`
+                      : null) ||
+                    `https://www.google.com/search?q=${encodeURIComponent(`${school.name} baseball vs ${oppName} recap ${dateStr}`)}&tbm=nws`;
 
                   if (!recentKeys.has(key)) {
                     newNotifications.push({
