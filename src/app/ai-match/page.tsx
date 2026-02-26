@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useEffect, useState, useRef, useCallback } from "react";
+import { Suspense, useEffect, useMemo, useState, useRef, useCallback } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import SiteHeader from "@/components/SiteHeader";
@@ -8,8 +8,10 @@ import SiteFooter from "@/components/SiteFooter";
 import SearchOverlay from "@/components/SearchOverlay";
 import PillNav from "@/components/PillNav";
 import AuthGate from "@/components/AuthGate";
+import SchoolTable from "@/components/SchoolTable";
 import { loadProfile, savePreferences, type PlayerProfile } from "@/lib/playerProfile";
 import { useSchools } from "@/lib/SchoolsContext";
+import { getAllUserData, setUserData, fetchUserDataFromDB, saveUserDataToDB, bulkSyncToDB, type UserData } from "@/lib/userData";
 import AIScoutIntake, { composeIntakeMessage, type IntakeAnswers } from "@/components/AIScoutIntake";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -56,12 +58,6 @@ function renderInlineFormatting(text: string): string {
   // Step 5: Handle remaining **bold** text (non-school bold)
   html = html.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
   return html;
-}
-
-// Build the "View in ExtraBase" URL with school IDs
-function buildResultsUrl(schools: SchoolCard[]): string {
-  const ids = schools.map((s) => s.id).join(",");
-  return `/ai-results?ids=${ids}`;
 }
 
 // Format assistant messages with bold, bullets, numbered lists, and headers
@@ -117,13 +113,13 @@ function FormattedMessage({ content }: { content: string }) {
 }
 
 // Prominent CTA to view ALL matched programs on the full results page
-function ViewResultsButton({ schools }: { schools: SchoolCard[] }) {
+function ViewResultsButton({ schools, onViewResults }: { schools: SchoolCard[]; onViewResults?: () => void }) {
   if (!schools || schools.length === 0) return null;
   return (
     <div className="mt-3">
-      <a
-        href={buildResultsUrl(schools)}
-        className="flex items-center gap-3 w-full p-3 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-xl hover:from-red-700 hover:to-red-800 active:from-red-800 active:to-red-900 transition-all shadow-md"
+      <button
+        onClick={onViewResults}
+        className="flex items-center gap-3 w-full p-3 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-xl hover:from-red-700 hover:to-red-800 active:from-red-800 active:to-red-900 transition-all shadow-md text-left"
       >
         <div className="w-9 h-9 rounded-lg bg-white/20 flex items-center justify-center shrink-0">
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -137,7 +133,7 @@ function ViewResultsButton({ schools }: { schools: SchoolCard[] }) {
         <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
         </svg>
-      </a>
+      </button>
     </div>
   );
 }
@@ -284,6 +280,9 @@ function AIMatchContent() {
   const [showIntake, setShowIntake] = useState(false);
   const [intakeValues, setIntakeValues] = useState<Partial<IntakeAnswers> | undefined>(undefined);
   const [showResetConfirm, setShowResetConfirm] = useState(false);
+  const [userDataState, setUserDataState] = useState<Record<string, UserData>>({});
+  const [sortBy, setSortBy] = useState("name");
+  const [sortDir, setSortDir] = useState("asc");
   const lastAssistantMsgRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const hasInteracted = useRef(false);
@@ -363,6 +362,24 @@ function AIMatchContent() {
 
     loadData();
   }, [status, session]);
+
+  // Load user data for SchoolTable star ratings
+  const isLoggedIn = status === "authenticated" && !!session?.user;
+  useEffect(() => {
+    setUserDataState(getAllUserData());
+    if (isLoggedIn) {
+      const localData = getAllUserData();
+      const localHasData = Object.values(localData).some((ud) => ud.priority > 0);
+      fetchUserDataFromDB().then((dbData) => {
+        const dbHasData = Object.keys(dbData).length > 0;
+        if (dbHasData) {
+          setUserDataState((prev) => ({ ...prev, ...dbData }));
+        } else if (localHasData) {
+          bulkSyncToDB(localData).catch(() => {});
+        }
+      }).catch(() => {});
+    }
+  }, [isLoggedIn]);
 
   // Fetch remaining message count on mount
   useEffect(() => {
@@ -624,6 +641,64 @@ function AIMatchContent() {
     }).catch(() => {});
   };
 
+  // Build school list for embedded results table
+  const savedSchoolsForTable = useMemo(() => getSavedSchools(), [messages.length]); // eslint-disable-line react-hooks/exhaustive-deps
+  const resultsSchools = useMemo(() => {
+    if (savedSchoolsForTable.length === 0) return [];
+    const idSet = new Set(savedSchoolsForTable.map((s) => s.id));
+    const idOrder = new Map(savedSchoolsForTable.map((s, i) => [s.id, i]));
+    const matched = allSchools
+      .filter((s) => idSet.has(s.id))
+      .map((school) => {
+        const ud = userDataState[school.id] || { priority: 0, notes: "", last_contacted: null, recruiting_status: "" };
+        return { ...school, priority: ud.priority, notes: ud.notes, last_contacted: ud.last_contacted, recruiting_status: ud.recruiting_status || "" };
+      });
+    // Default: preserve AI-recommended order
+    matched.sort((a, b) => (idOrder.get(a.id) ?? 0) - (idOrder.get(b.id) ?? 0));
+    return matched;
+  }, [savedSchoolsForTable, allSchools, userDataState]);
+
+  const sortedResults = useMemo(() => {
+    const arr = [...resultsSchools];
+    arr.sort((a, b) => {
+      let aVal: string | number | null, bVal: string | number | null;
+      switch (sortBy) {
+        case "name": aVal = a.name; bVal = b.name; break;
+        case "state": aVal = a.state; bVal = b.state; break;
+        case "ranking": aVal = a.current_ranking; bVal = b.current_ranking; break;
+        case "priority": aVal = a.priority; bVal = b.priority; break;
+        default: aVal = a.name; bVal = b.name;
+      }
+      if (aVal == null && bVal == null) return 0;
+      if (aVal == null) return 1;
+      if (bVal == null) return -1;
+      const cmp = typeof aVal === "string" ? aVal.localeCompare(bVal as string) : (aVal as number) - (bVal as number);
+      return sortDir === "desc" ? -cmp : cmp;
+    });
+    return arr;
+  }, [resultsSchools, sortBy, sortDir]);
+
+  const handleResultsSort = (column: string) => {
+    let newDir = "asc";
+    if (sortBy === column) newDir = sortDir === "asc" ? "desc" : "asc";
+    setSortBy(column);
+    setSortDir(newDir);
+  };
+
+  const handlePriorityChange = (schoolId: number, priority: number) => {
+    setUserData(schoolId, { priority });
+    setUserDataState((prev) => ({
+      ...prev,
+      [schoolId]: { ...(prev[schoolId] || { priority: 0, notes: "", last_contacted: null }), priority },
+    }));
+    if (isLoggedIn) saveUserDataToDB(schoolId, { priority }).catch(() => {});
+  };
+
+  // Navigate from conversation to landing page (shows embedded results)
+  const handleViewResults = () => {
+    setMessages([]);
+  };
+
   const atLimit = remaining <= 0;
   // Show reset link when there's been any interaction (intake done or messages exist)
   const hasAnyData = localStorage.getItem(INTAKE_DONE_KEY) === "true" || messages.length > 0;
@@ -704,35 +779,15 @@ function AIMatchContent() {
               )}
 
               <div className="p-4 space-y-4">
+                {/* Landing page — shown when no active conversation */}
                 {messages.length === 0 && !loading && (() => {
                   const savedSnippet = getSavedChatSnippet();
-                  const savedSchools = getSavedSchools();
                   return (
-                    <div className="flex flex-col items-center py-2 w-full max-w-lg mx-auto">
-                      <div className="w-full space-y-2.5">
-                          {/* View current results — only when saved results exist */}
-                          {savedSnippet && savedSchools.length > 0 && (
-                            <a
-                              href={buildResultsUrl(savedSchools)}
-                              className="flex items-center gap-3 w-full px-4 py-3 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-xl hover:from-red-700 hover:to-red-800 transition-all shadow-md"
-                            >
-                              <div className="w-8 h-8 rounded-lg bg-white/20 flex items-center justify-center shrink-0">
-                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" />
-                                </svg>
-                              </div>
-                              <div className="flex-1">
-                                <p className="text-sm font-bold">View current results</p>
-                                <p className="text-xs text-red-100">{savedSchools.length} programs matched</p>
-                              </div>
-                              <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                              </svg>
-                            </a>
-                          )}
-
-                          {/* Continue conversation — only when saved chat exists */}
-                          {savedSnippet && (
+                    <div className="w-full">
+                      {/* Action buttons */}
+                      {savedSnippet && (
+                        <div className="max-w-lg mx-auto w-full space-y-2.5 mb-6">
+                          {/* Continue conversation */}
                           <button
                             onClick={() => {
                               const saved = loadSavedChat();
@@ -754,7 +809,6 @@ function AIMatchContent() {
                               <p className="text-xs text-gray-400 truncate">Scout: {savedSnippet.assistantMsg}</p>
                             </div>
                           </button>
-                          )}
 
                           {/* Edit AI Scout Profile */}
                           <button
@@ -769,6 +823,39 @@ function AIMatchContent() {
                             <p className="text-sm font-semibold text-gray-700">Edit your AI Scout Profile</p>
                           </button>
                         </div>
+                      )}
+
+                      {/* Embedded results — shown when AI has matched schools */}
+                      {sortedResults.length > 0 && (
+                        <div>
+                          <h2 className="text-lg font-bold text-gray-900 mb-3">Your AI Scout Results</h2>
+                          <SchoolTable
+                            schools={sortedResults}
+                            distances={null}
+                            sortBy={sortBy}
+                            sortDir={sortDir}
+                            onSort={handleResultsSort}
+                            onPriorityChange={handlePriorityChange}
+                          />
+                        </div>
+                      )}
+
+                      {/* Edit profile button when there are no saved results yet (but intake was done) */}
+                      {!savedSnippet && (
+                        <div className="max-w-lg mx-auto w-full">
+                          <button
+                            onClick={() => setShowIntake(true)}
+                            className="flex items-center gap-3 w-full px-4 py-3 bg-white border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors"
+                          >
+                            <div className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center shrink-0">
+                              <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                              </svg>
+                            </div>
+                            <p className="text-sm font-semibold text-gray-700">Edit your AI Scout Profile</p>
+                          </button>
+                        </div>
+                      )}
                     </div>
                   );
                 })()}
@@ -797,7 +884,7 @@ function AIMatchContent() {
                         )}
                       </div>
                       {msg.role === "assistant" && msg.schools && msg.schools.length > 0 && (
-                        <ViewResultsButton schools={msg.schools} />
+                        <ViewResultsButton schools={msg.schools} onViewResults={handleViewResults} />
                       )}
                     </div>
                   </div>

@@ -30,8 +30,6 @@ interface SchoolTableProps {
   sortDir: string;
   onSort: (column: string) => void;
   onPriorityChange: (schoolId: number, priority: number) => void;
-  /** When true and sorted alphabetically, show letter dividers between groups */
-  alphabetical?: boolean;
 }
 
 // Hook to fetch current-season records for visible schools
@@ -86,7 +84,6 @@ export default function SchoolTable({
   sortDir,
   onSort,
   onPriorityChange,
-  alphabetical,
 }: SchoolTableProps) {
   const currentRecords = useCurrentRecords(schools);
   const hasAnyFetchable = schools.some((s) => s.division === "D1" || s.division === "D2");
@@ -102,23 +99,6 @@ export default function SchoolTable({
         <p className="text-sm">Try adjusting your filters</p>
       </div>
     );
-  }
-
-  // Should we show letter dividers?
-  const showDividers = alphabetical || (sortBy === "name" && sortDir === "asc");
-
-  // Build list with optional letter dividers
-  let lastLetter = "";
-  const items: { type: "divider"; letter: string }[] | { type: "school"; school: School }[] = [];
-  for (const school of schools) {
-    if (showDividers) {
-      const letter = school.name.charAt(0).toUpperCase();
-      if (letter !== lastLetter) {
-        (items as { type: string; letter?: string; school?: School }[]).push({ type: "divider", letter });
-        lastLetter = letter;
-      }
-    }
-    (items as { type: string; letter?: string; school?: School }[]).push({ type: "school", school });
   }
 
   return (
@@ -147,15 +127,7 @@ export default function SchoolTable({
 
       {/* Compact rows */}
       <div className="flex flex-col" style={{ gap: 5 }}>
-        {(items as { type: string; letter?: string; school?: School }[]).map((item, i) => {
-          if (item.type === "divider") {
-            return (
-              <div key={`div-${item.letter}`} style={{ padding: "8px 4px 4px" }}>
-                <span className="text-[12px] font-bold text-[#aaa]">{item.letter}</span>
-              </div>
-            );
-          }
-          const school = item.school!;
+        {schools.map((school) => {
           const isFetchable = school.division === "D1" || school.division === "D2";
           return (
             <ProgramRow
