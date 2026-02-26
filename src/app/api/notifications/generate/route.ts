@@ -184,11 +184,19 @@ export async function GET() {
                   const title = `${resultTag}: ${school.name} ${ourScore}, ${oppName} ${oppScore}`;
                   const key = `game_result:${schoolId}:${title}`;
 
-                  // Build ESPN game recap link from the event ID
+                  // Prefer recap link, then boxscore, then generic game page
                   const gameId = event.id || event.uid?.split(":").pop();
-                  const recapLink = gameId
-                    ? `https://www.espn.com/college-baseball/game/_/gameId/${gameId}`
-                    : event.links?.[0]?.href || null;
+                  const eventLinks: any[] = event.links || [];
+                  const findLink = (...rels: string[]) =>
+                    eventLinks.find((l: any) =>
+                      rels.some((r) => l.rel?.includes(r) || l.text?.toLowerCase().includes(r))
+                    )?.href;
+                  const recapLink =
+                    findLink("recap") ||
+                    findLink("boxscore") ||
+                    (gameId
+                      ? `https://www.espn.com/college-baseball/boxscore/_/gameId/${gameId}`
+                      : eventLinks[0]?.href || null);
 
                   if (!recentKeys.has(key)) {
                     newNotifications.push({
