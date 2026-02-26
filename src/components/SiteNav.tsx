@@ -54,7 +54,6 @@ const NOTIFICATION_TYPE_ICONS: Record<string, string> = {
   coach_change: "person",
   championship: "star",
   conference_change: "swap",
-  ranking_change: "chart",
 };
 
 interface SiteNavProps {
@@ -193,12 +192,6 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
         );
-      case "chart":
-        return (
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-          </svg>
-        );
       case "star":
         return (
           <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -218,7 +211,6 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
     switch (type) {
       case "game_result": return "bg-green-100 text-green-600";
       case "game_today": return "bg-blue-100 text-blue-600";
-      case "ranking_change": return "bg-purple-100 text-purple-600";
       case "championship": return "bg-yellow-100 text-yellow-600";
       case "coach_change": return "bg-orange-100 text-orange-600";
       case "conference_change": return "bg-indigo-100 text-indigo-600";
@@ -276,7 +268,7 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
           {/* Notification dropdown */}
           {notifOpen && (
           <div
-            className={`absolute right-0 top-full mt-1 w-[calc(100vw-2rem)] sm:w-96 max-w-96 max-h-[70vh] rounded-xl shadow-2xl overflow-hidden z-50 border flex flex-col ${
+            className={`fixed inset-x-3 top-16 sm:absolute sm:inset-x-auto sm:top-full sm:mt-1 sm:right-0 sm:w-96 max-h-[70vh] rounded-xl shadow-2xl overflow-hidden z-50 border flex flex-col ${
               isLight
                 ? "bg-white border-gray-200"
                 : "bg-gray-900/95 backdrop-blur-md border-white/10"
