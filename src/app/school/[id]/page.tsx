@@ -187,6 +187,9 @@ function SchoolPageContent({ id }: { id: string }) {
   const [coachOpen, setCoachOpen] = useState(false);
   const [scheduleOpen, setScheduleOpen] = useState(false);
   const [newsOpen, setNewsOpen] = useState(false);
+  const [rosterOpen, setRosterOpen] = useState(false);
+  const [rosterData, setRosterData] = useState<{ jersey: string; name: string; position: string; classYear: string; height: string; weight: string; hometown: string }[]>([]);
+  const [rosterLoading, setRosterLoading] = useState(true);
   const [currentRecord, setCurrentRecord] = useState<string | null>(null);
   const [recentGames, setRecentGames] = useState<ScheduleGame[]>([]);
   const [upcomingGames, setUpcomingGames] = useState<ScheduleGame[]>([]);
@@ -338,6 +341,21 @@ function SchoolPageContent({ id }: { id: string }) {
       .then((data) => setAcademicsData(data))
       .catch(() => setAcademicsData(null));
   }, [academicsOpen, schoolData]);
+
+  const rosterFetched = useRef(false);
+  useEffect(() => {
+    if (!rosterOpen || !schoolData || rosterFetched.current) return;
+    if (schoolData.division !== "D1") return;
+    rosterFetched.current = true;
+    setRosterLoading(true);
+    const espnId = schoolData.logo_url?.match(/espncdn\.com\/.*\/(\d+)\.\w+$/)?.[1] || "";
+    if (!espnId) { setRosterLoading(false); return; }
+    fetch(`/api/roster?espn_id=${espnId}`)
+      .then((r) => r.json())
+      .then((data) => setRosterData(data.roster || []))
+      .catch(() => setRosterData([]))
+      .finally(() => setRosterLoading(false));
+  }, [rosterOpen, schoolData]);
 
   const savePriority = (newPriority: number) => {
     setPriority(newPriority);
@@ -1027,6 +1045,85 @@ function SchoolPageContent({ id }: { id: string }) {
             </div>
           )}
         </div>
+
+        {/* Current Roster — D1 only */}
+        {school.division === "D1" && (
+          <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+            <button onClick={() => setRosterOpen(!rosterOpen)} className="w-full flex items-center gap-2 p-4 sm:p-6 text-left hover:bg-gray-50 transition-colors">
+              <svg className="w-5 h-5 text-gray-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+              <span className="flex-1 text-base sm:text-lg font-bold text-gray-900">Current Roster</span>
+              <svg className={`w-5 h-5 text-gray-400 shrink-0 transition-transform ${rosterOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            {rosterOpen && (
+              <div className="border-t border-gray-100">
+                {rosterLoading ? (
+                  <div className="flex items-center gap-2 text-sm text-gray-400 py-6 px-4">
+                    <div className="animate-spin rounded-full h-4 w-4 border-2 border-gray-200 border-t-blue-600" />
+                    Loading roster...
+                  </div>
+                ) : rosterData.length > 0 ? (
+                  <>
+                    {/* Mobile: card layout */}
+                    <div className="sm:hidden divide-y divide-gray-50">
+                      {rosterData.map((player, i) => (
+                        <div key={i} className="flex items-start gap-3 px-4 py-3">
+                          <span className="shrink-0 w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-xs font-bold text-gray-600">
+                            {player.jersey || "-"}
+                          </span>
+                          <div className="flex-1 min-w-0">
+                            <p className="text-sm font-bold text-gray-900">{player.name}</p>
+                            <p className="text-xs text-gray-500">
+                              {[player.position, player.classYear].filter(Boolean).join(" \u00B7 ")}
+                            </p>
+                            <p className="text-xs text-gray-400">
+                              {[player.height, player.weight].filter(Boolean).join(" / ")}
+                              {player.hometown && <> &middot; {player.hometown}</>}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    {/* Desktop: table layout */}
+                    <div className="hidden sm:block overflow-x-auto">
+                      <table className="min-w-full divide-y divide-gray-100">
+                        <thead className="bg-gray-50">
+                          <tr>
+                            <th className="px-3 py-2.5 text-left text-xs font-semibold text-gray-600 uppercase w-12">#</th>
+                            <th className="px-3 py-2.5 text-left text-xs font-semibold text-gray-600 uppercase">Name</th>
+                            <th className="px-3 py-2.5 text-left text-xs font-semibold text-gray-600 uppercase">Pos</th>
+                            <th className="px-3 py-2.5 text-left text-xs font-semibold text-gray-600 uppercase">Class</th>
+                            <th className="px-3 py-2.5 text-left text-xs font-semibold text-gray-600 uppercase">Ht</th>
+                            <th className="px-3 py-2.5 text-left text-xs font-semibold text-gray-600 uppercase">Wt</th>
+                            <th className="px-3 py-2.5 text-left text-xs font-semibold text-gray-600 uppercase">Hometown</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-gray-50">
+                          {rosterData.map((player, i) => (
+                            <tr key={i} className="hover:bg-blue-50/30">
+                              <td className="px-3 py-2.5 text-sm font-bold text-gray-600">{player.jersey || "-"}</td>
+                              <td className="px-3 py-2.5 text-sm font-medium text-gray-900 whitespace-nowrap">{player.name}</td>
+                              <td className="px-3 py-2.5 text-sm text-gray-700">{player.position}</td>
+                              <td className="px-3 py-2.5 text-sm text-gray-700">{player.classYear}</td>
+                              <td className="px-3 py-2.5 text-sm text-gray-700 whitespace-nowrap">{player.height}</td>
+                              <td className="px-3 py-2.5 text-sm text-gray-700 whitespace-nowrap">{player.weight}</td>
+                              <td className="px-3 py-2.5 text-sm text-gray-500">{player.hometown}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </>
+                ) : (
+                  <p className="text-sm text-gray-400 py-4 px-4">No roster data available</p>
+                )}
+              </div>
+            )}
+          </div>
+        )}
 
         {/* Schedule */}
         <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
