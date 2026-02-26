@@ -16,7 +16,7 @@ export default function SiteFooter({ onLogoClick }: SiteFooterProps) {
           <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-gray-400">
             <a href="#" className="hover:text-white transition-colors">Contact</a>
             <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
-            <span className="text-gray-600">Build {process.env.NEXT_PUBLIC_BUILD_VERSION || "v8.8"}</span>
+            <span className="text-gray-600">Build {process.env.NEXT_PUBLIC_BUILD_VERSION || "v8.21"}</span>
           </div>
         </div>
         <p className="text-xs text-gray-500 text-center sm:text-left">
