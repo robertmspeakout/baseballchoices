@@ -767,9 +767,19 @@ function AIMatchContent() {
             />
           ) : (
             <div className="flex-1">
-              {/* Edit Answers bar — shown when there are messages and intake was completed */}
+              {/* Navigation bar — shown when there are messages and intake was completed */}
               {messages.length > 0 && intakeValues && (
-                <div className="px-4 pt-3 pb-1">
+                <div className="px-4 pt-3 pb-1 flex items-center gap-4">
+                  <button
+                    onClick={() => setMessages([])}
+                    className="flex items-center gap-2 text-xs font-semibold text-red-600 hover:text-red-700 transition-colors"
+                  >
+                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                    Back to my results
+                  </button>
+                  <span className="text-gray-300">|</span>
                   <button
                     onClick={() => setShowIntake(true)}
                     className="flex items-center gap-2 text-xs font-semibold text-red-600 hover:text-red-700 transition-colors"

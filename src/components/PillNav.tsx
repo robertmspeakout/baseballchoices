@@ -87,7 +87,7 @@ export default function PillNav({ options, value, onSelect, onSearchClick, class
               type="button"
               onClick={() => {
                 setOpen(false);
-                if (opt.value !== value) onSelect(opt.value);
+                onSelect(opt.value);
               }}
               className={`w-full text-left px-[18px] py-[12px] text-[14px] font-semibold transition-colors cursor-pointer ${
                 opt.value === value
