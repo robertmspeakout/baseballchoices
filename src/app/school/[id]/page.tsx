@@ -543,8 +543,10 @@ function SchoolPageContent({ id }: { id: string }) {
                 <p className="text-xs font-semibold text-gray-500"><a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${school.name} ${school.city || ""} ${school.state || ""}`)}`} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{school.city}{school.city && school.state ? ", " : ""}{school.state}</a></p>
               )}
             </div>
-            {/* Social / link icons */}
-            <div className="flex items-center gap-1.5 shrink-0">
+          </div>
+          {/* Social / link icons strip */}
+          {(school.instagram || school.x_account || school.website || (school.division === "D1" && school.nil_url)) && (
+            <div className="flex items-center gap-2 px-3 py-1.5 sm:px-4 border-b border-gray-100 bg-gray-50/50">
               {school.instagram && (
                 <a href={`https://instagram.com/${school.instagram.replace("@", "")}`} target="_blank" rel="noopener noreferrer" title={`Instagram: ${school.instagram}`} className="w-7 h-7 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white hover:opacity-80 transition-opacity">
                   <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
@@ -570,13 +572,11 @@ function SchoolPageContent({ id }: { id: string }) {
               )}
               {school.division === "D1" && school.nil_url && (
                 <a href={school.nil_url} target="_blank" rel="noopener noreferrer" title="NIL information" className="w-7 h-7 rounded-lg bg-emerald-600 flex items-center justify-center text-white hover:opacity-80 transition-opacity">
-                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8V7m0 10v1m9-9a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
+                  <span className="text-sm font-black leading-none">$</span>
                 </a>
               )}
             </div>
-          </div>
+          )}
           <div className="px-3 py-2 sm:px-4 sm:py-2.5 border-b border-gray-100">
             <p className="text-[10px] text-gray-500 uppercase font-medium">Rate This Program!</p>
             <div className="flex items-center gap-2">
