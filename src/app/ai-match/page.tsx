@@ -723,10 +723,14 @@ function AIMatchContent() {
             ]}
             onSelect={(val) => {
               if (val === "ai-scout") {
-                // Always reset to landing page (3 buttons) or intake form
+                // Go to landing page (results + buttons) if profile is done, otherwise show intake form
                 setMessages([]);
                 const done = localStorage.getItem(INTAKE_DONE_KEY) === "true";
-                setShowIntake(!done);
+                if (!done) {
+                  setShowIntake(true);
+                } else {
+                  setShowIntake(false);
+                }
               }
               else if (val === "mylist") router.push("/#mylist");
               else if (val === "D1") router.push("/programs/d1");
