@@ -597,6 +597,7 @@ function SchoolPageContent({ id }: { id: string }) {
           {/* Social / link icons strip */}
           {(school.instagram || school.x_account || school.website || (school.division === "D1" && school.nil_url)) && (
             <div className="flex items-center gap-2 px-3 py-1.5 sm:px-4 border-t border-gray-100 bg-gray-50/50">
+              <span className="text-[10px] text-gray-500 uppercase font-medium">Follow:</span>
               {school.instagram && (
                 <a href={`https://instagram.com/${school.instagram.replace("@", "")}`} target="_blank" rel="noopener noreferrer" title={`Instagram: ${school.instagram}`} className="w-7 h-7 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white hover:opacity-80 transition-opacity">
                   <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
