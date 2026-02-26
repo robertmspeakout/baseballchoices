@@ -15,6 +15,7 @@ interface AccountData {
   role: string;
   trialExpiresAt: string;
   membershipActive: boolean;
+  notificationsEnabled: boolean;
   createdAt: string;
   trialActive: boolean;
   daysRemaining: number;
@@ -211,6 +212,66 @@ export default function AccountPage() {
                   <p className="text-xs text-gray-400 mt-1">
                     Payment options will be available when you upgrade your membership.
                   </p>
+                </div>
+              </div>
+
+              {/* Notifications */}
+              <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+                <div className="px-5 py-4 border-b border-gray-100">
+                  <h2 className="text-base font-bold text-gray-900 flex items-center gap-2">
+                    <svg
+                      className="w-5 h-5 text-gray-400"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+                      />
+                    </svg>
+                    Notifications
+                  </h2>
+                </div>
+                <div className="divide-y divide-gray-100">
+                  <div className="px-5 py-3 flex justify-between items-center">
+                    <div>
+                      <span className="text-sm text-gray-700 font-medium">Program alerts</span>
+                      <p className="text-xs text-gray-400 mt-0.5">
+                        Get notified about scores, games, and news for your top-rated programs
+                      </p>
+                    </div>
+                    <button
+                      onClick={async () => {
+                        if (!account) return;
+                        const newVal = !account.notificationsEnabled;
+                        setAccount({ ...account, notificationsEnabled: newVal });
+                        try {
+                          await fetch("/api/user/account", {
+                            method: "PUT",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({ notificationsEnabled: newVal }),
+                          });
+                        } catch {
+                          // Revert on error
+                          setAccount({ ...account, notificationsEnabled: !newVal });
+                        }
+                      }}
+                      className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
+                        account?.notificationsEnabled ? "bg-red-600" : "bg-gray-200"
+                      }`}
+                      role="switch"
+                      aria-checked={account?.notificationsEnabled}
+                    >
+                      <span
+                        className={`pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition duration-200 ease-in-out ${
+                          account?.notificationsEnabled ? "translate-x-5" : "translate-x-0"
+                        }`}
+                      />
+                    </button>
+                  </div>
                 </div>
               </div>
 

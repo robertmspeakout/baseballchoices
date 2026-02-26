@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 
@@ -18,6 +18,7 @@ export async function GET() {
       role: true,
       trialExpiresAt: true,
       membershipActive: true,
+      notificationsEnabled: true,
       createdAt: true,
     },
   });
@@ -39,6 +40,32 @@ export async function GET() {
     trialActive,
     daysRemaining,
   });
+}
+
+// PUT — update account settings (e.g. notifications toggle)
+export async function PUT(request: NextRequest) {
+  const session = await auth();
+  if (!session?.user?.id) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  const body = await request.json();
+  const updates: Record<string, unknown> = {};
+
+  if (typeof body.notificationsEnabled === "boolean") {
+    updates.notificationsEnabled = body.notificationsEnabled;
+  }
+
+  if (Object.keys(updates).length === 0) {
+    return NextResponse.json({ error: "No valid fields to update" }, { status: 400 });
+  }
+
+  await prisma.user.update({
+    where: { id: session.user.id },
+    data: updates,
+  });
+
+  return NextResponse.json({ success: true });
 }
 
 export async function DELETE() {
