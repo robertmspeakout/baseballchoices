@@ -344,18 +344,17 @@ function SchoolPageContent({ id }: { id: string }) {
 
   const rosterFetched = useRef(false);
   useEffect(() => {
-    if (!rosterOpen || !schoolData || rosterFetched.current) return;
-    if (schoolData.division !== "D1") return;
-    rosterFetched.current = true;
-    setRosterLoading(true);
+    if (!schoolData || rosterFetched.current) return;
+    if (schoolData.division !== "D1") { setRosterLoading(false); return; }
     const espnId = schoolData.logo_url?.match(/espncdn\.com\/.*\/(\d+)\.\w+$/)?.[1] || "";
     if (!espnId) { setRosterLoading(false); return; }
+    rosterFetched.current = true;
     fetch(`/api/roster?espn_id=${espnId}`)
       .then((r) => r.json())
       .then((data) => setRosterData(data.roster || []))
       .catch(() => setRosterData([]))
       .finally(() => setRosterLoading(false));
-  }, [rosterOpen, schoolData]);
+  }, [schoolData]);
 
   const savePriority = (newPriority: number) => {
     setPriority(newPriority);
@@ -1046,8 +1045,8 @@ function SchoolPageContent({ id }: { id: string }) {
           )}
         </div>
 
-        {/* Current Roster — D1 only */}
-        {school.division === "D1" && (
+        {/* Current Roster — only shown when ESPN roster data exists */}
+        {rosterData.length > 0 && (
           <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
             <button onClick={() => setRosterOpen(!rosterOpen)} className="w-full flex items-center gap-2 p-4 sm:p-6 text-left hover:bg-gray-50 transition-colors">
               <svg className="w-5 h-5 text-gray-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1060,12 +1059,7 @@ function SchoolPageContent({ id }: { id: string }) {
             </button>
             {rosterOpen && (
               <div className="border-t border-gray-100">
-                {rosterLoading ? (
-                  <div className="flex items-center gap-2 text-sm text-gray-400 py-6 px-4">
-                    <div className="animate-spin rounded-full h-4 w-4 border-2 border-gray-200 border-t-blue-600" />
-                    Loading roster...
-                  </div>
-                ) : rosterData.length > 0 ? (
+                {rosterData.length > 0 ? (
                   <>
                     {/* Mobile: card layout */}
                     <div className="sm:hidden divide-y divide-gray-50">
@@ -1117,9 +1111,7 @@ function SchoolPageContent({ id }: { id: string }) {
                       </table>
                     </div>
                   </>
-                ) : (
-                  <p className="text-sm text-gray-400 py-4 px-4">No roster data available</p>
-                )}
+                ) : null}
               </div>
             )}
           </div>
