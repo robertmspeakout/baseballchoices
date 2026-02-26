@@ -248,160 +248,32 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
         </div>
       )}
 
-      {/* Notification bell — logged-in users only */}
-      {isLoggedIn && (
-        <div ref={notifRef} className="relative">
-          <button
-            onClick={() => { setNotifOpen((o) => !o); setOpen(false); }}
-            className={`relative p-2 rounded-lg transition-colors ${
-              isLight
-                ? "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
-                : "text-white/80 hover:bg-white/15 hover:text-white"
-            }`}
-            aria-label="Notifications"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-            </svg>
-            {unreadCount > 0 && (
-              <span className="absolute -top-0.5 -right-0.5 flex items-center justify-center min-w-[18px] h-[18px] px-1 bg-red-600 text-white text-[10px] font-bold rounded-full leading-none">
-                {unreadCount > 99 ? "99+" : unreadCount}
-              </span>
-            )}
-          </button>
-
-          {/* Notification dropdown */}
-          {notifOpen && (
-            <div
-              className={`absolute right-0 top-full mt-1 w-80 sm:w-96 max-h-[70vh] rounded-xl shadow-2xl overflow-hidden z-50 border flex flex-col ${
-                isLight
-                  ? "bg-white border-gray-200"
-                  : "bg-gray-900/95 backdrop-blur-md border-white/10"
-              }`}
-            >
-              {/* Header */}
-              <div className={`px-4 py-3 flex items-center justify-between border-b ${
-                isLight ? "border-gray-100" : "border-white/5"
-              }`}>
-                <h3 className={`text-sm font-bold ${isLight ? "text-gray-900" : "text-white"}`}>
-                  Notifications
-                </h3>
-                {notifications.length > 0 && (
-                  <div className="flex items-center gap-3">
-                    {unreadCount > 0 && (
-                      <button
-                        onClick={handleMarkAllRead}
-                        className="text-xs font-semibold text-red-600 hover:text-red-700 transition-colors"
-                      >
-                        Mark all read
-                      </button>
-                    )}
-                    <button
-                      onClick={handleClearAll}
-                      className={`text-xs font-semibold transition-colors ${
-                        isLight
-                          ? "text-gray-400 hover:text-gray-600"
-                          : "text-white/40 hover:text-white/70"
-                      }`}
-                    >
-                      Clear all
-                    </button>
-                  </div>
-                )}
-              </div>
-
-              {/* Notification list */}
-              <div className="overflow-y-auto flex-1">
-                {notifications.length === 0 ? (
-                  <div className="px-4 py-8 text-center">
-                    <svg className={`w-8 h-8 mx-auto mb-2 ${isLight ? "text-gray-300" : "text-white/20"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-                    </svg>
-                    <p className={`text-sm ${isLight ? "text-gray-400" : "text-white/40"}`}>
-                      No notifications yet
-                    </p>
-                    <p className={`text-xs mt-1 ${isLight ? "text-gray-300" : "text-white/20"}`}>
-                      Rate programs 4 or 5 stars to get alerts
-                    </p>
-                  </div>
-                ) : (
-                  notifications.map((notif) => {
-                    const content = (
-                      <div
-                        key={notif.id}
-                        className={`px-4 py-3 flex items-start gap-3 border-b transition-colors ${
-                          isLight
-                            ? `${notif.read ? "bg-white" : "bg-red-50/50"} border-gray-50 hover:bg-gray-50`
-                            : `${notif.read ? "bg-transparent" : "bg-white/5"} border-white/5 hover:bg-white/10`
-                        }`}
-                      >
-                        {/* School logo or type icon */}
-                        <div className="shrink-0 mt-0.5">
-                          {notif.schoolLogo ? (
-                            <img
-                              src={notif.schoolLogo}
-                              alt=""
-                              className="w-8 h-8 rounded-lg object-contain bg-white border border-gray-100"
-                            />
-                          ) : (
-                            <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${getTypeBgColor(notif.type)}`}>
-                              {getTypeIcon(notif.type)}
-                            </div>
-                          )}
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-start justify-between gap-2">
-                            <p className={`text-xs font-bold leading-tight ${isLight ? "text-gray-900" : "text-white"}`}>
-                              {notif.title}
-                            </p>
-                            {!notif.read && (
-                              <span className="shrink-0 w-2 h-2 mt-1 rounded-full bg-red-500" />
-                            )}
-                          </div>
-                          <p className={`text-[11px] mt-0.5 leading-snug ${isLight ? "text-gray-500" : "text-white/50"}`}>
-                            {notif.body}
-                          </p>
-                          <div className="flex items-center gap-2 mt-1">
-                            <span className={`inline-flex items-center gap-1 text-[10px] font-semibold px-1.5 py-0.5 rounded ${getTypeBgColor(notif.type)}`}>
-                              {getTypeIcon(notif.type)}
-                              {notif.type.replace(/_/g, " ")}
-                            </span>
-                            <span className={`text-[10px] ${isLight ? "text-gray-400" : "text-white/30"}`}>
-                              {formatTimeAgo(notif.createdAt)}
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    );
-
-                    if (notif.link) {
-                      return (
-                        <a
-                          key={notif.id}
-                          href={notif.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="block"
-                          onClick={() => setNotifOpen(false)}
-                        >
-                          {content}
-                        </a>
-                      );
-                    }
-                    return content;
-                  })
-                )}
-              </div>
-            </div>
-          )}
-        </div>
-      )}
-
-      {/* Profile / hamburger button */}
+      {/* Profile / hamburger button — with notification badge for logged-in users */}
       <div ref={wrapperRef} className="relative">
+        <div ref={notifRef}>
         <button
-          onClick={() => { setOpen((o) => !o); setNotifOpen(false); }}
-          className={`p-2 rounded-lg transition-colors ${
+          onClick={() => {
+            if (isLoggedIn) {
+              // For logged-in users: tap toggles notifications, long-press or second tap opens menu
+              if (notifOpen) {
+                setNotifOpen(false);
+                setOpen((o) => !o);
+              } else if (open) {
+                setOpen(false);
+              } else {
+                setNotifOpen(true);
+              }
+            } else {
+              setOpen((o) => !o);
+            }
+          }}
+          onDoubleClick={() => {
+            if (isLoggedIn) {
+              setNotifOpen(false);
+              setOpen((o) => !o);
+            }
+          }}
+          className={`relative p-2 rounded-lg transition-colors ${
             isLoggedIn
               ? isLight
                 ? "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
@@ -413,9 +285,16 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
           aria-label={isLoggedIn ? "Account menu" : "Navigation menu"}
         >
           {isLoggedIn ? (
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
+            <>
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              {unreadCount > 0 && (
+                <span className="absolute -top-0.5 -right-0.5 flex items-center justify-center min-w-[18px] h-[18px] px-1 bg-red-600 text-white text-[10px] font-bold rounded-full leading-none ring-2 ring-white">
+                  {unreadCount > 99 ? "99+" : unreadCount}
+                </span>
+              )}
+            </>
           ) : open ? (
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -426,6 +305,146 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
             </svg>
           )}
         </button>
+
+        {/* Notification dropdown — anchored to profile icon */}
+        {notifOpen && isLoggedIn && (
+          <div
+            className={`absolute right-0 top-full mt-1 w-[calc(100vw-2rem)] sm:w-96 max-w-96 max-h-[70vh] rounded-xl shadow-2xl overflow-hidden z-50 border flex flex-col ${
+              isLight
+                ? "bg-white border-gray-200"
+                : "bg-gray-900/95 backdrop-blur-md border-white/10"
+            }`}
+          >
+            {/* Header */}
+            <div className={`px-4 py-3 flex items-center justify-between border-b ${
+              isLight ? "border-gray-100" : "border-white/5"
+            }`}>
+              <h3 className={`text-sm font-bold ${isLight ? "text-gray-900" : "text-white"}`}>
+                Notifications
+              </h3>
+              {notifications.length > 0 && (
+                <div className="flex items-center gap-3">
+                  {unreadCount > 0 && (
+                    <button
+                      onClick={handleMarkAllRead}
+                      className="text-xs font-semibold text-red-600 hover:text-red-700 transition-colors"
+                    >
+                      Mark all read
+                    </button>
+                  )}
+                  <button
+                    onClick={handleClearAll}
+                    className={`text-xs font-semibold transition-colors ${
+                      isLight
+                        ? "text-gray-400 hover:text-gray-600"
+                        : "text-white/40 hover:text-white/70"
+                    }`}
+                  >
+                    Clear all
+                  </button>
+                </div>
+              )}
+            </div>
+
+            {/* Notification list */}
+            <div className="overflow-y-auto flex-1">
+              {notifications.length === 0 ? (
+                <div className="px-4 py-8 text-center">
+                  <svg className={`w-8 h-8 mx-auto mb-2 ${isLight ? "text-gray-300" : "text-white/20"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                  </svg>
+                  <p className={`text-sm ${isLight ? "text-gray-400" : "text-white/40"}`}>
+                    No notifications yet
+                  </p>
+                  <p className={`text-xs mt-1 ${isLight ? "text-gray-300" : "text-white/20"}`}>
+                    Rate programs 4 or 5 stars to get alerts
+                  </p>
+                </div>
+              ) : (
+                notifications.map((notif) => {
+                  const content = (
+                    <div
+                      key={notif.id}
+                      className={`px-4 py-3 flex items-start gap-3 border-b transition-colors ${
+                        isLight
+                          ? `${notif.read ? "bg-white" : "bg-red-50/50"} border-gray-50 hover:bg-gray-50`
+                          : `${notif.read ? "bg-transparent" : "bg-white/5"} border-white/5 hover:bg-white/10`
+                      }`}
+                    >
+                      {/* School logo or type icon */}
+                      <div className="shrink-0 mt-0.5">
+                        {notif.schoolLogo ? (
+                          <img
+                            src={notif.schoolLogo}
+                            alt=""
+                            className="w-8 h-8 rounded-lg object-contain bg-white border border-gray-100"
+                          />
+                        ) : (
+                          <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${getTypeBgColor(notif.type)}`}>
+                            {getTypeIcon(notif.type)}
+                          </div>
+                        )}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-start justify-between gap-2">
+                          <p className={`text-xs font-bold leading-tight ${isLight ? "text-gray-900" : "text-white"}`}>
+                            {notif.title}
+                          </p>
+                          {!notif.read && (
+                            <span className="shrink-0 w-2 h-2 mt-1 rounded-full bg-red-500" />
+                          )}
+                        </div>
+                        <p className={`text-[11px] mt-0.5 leading-snug ${isLight ? "text-gray-500" : "text-white/50"}`}>
+                          {notif.body}
+                        </p>
+                        <div className="flex items-center gap-2 mt-1">
+                          <span className={`inline-flex items-center gap-1 text-[10px] font-semibold px-1.5 py-0.5 rounded ${getTypeBgColor(notif.type)}`}>
+                            {getTypeIcon(notif.type)}
+                            {notif.type.replace(/_/g, " ")}
+                          </span>
+                          <span className={`text-[10px] ${isLight ? "text-gray-400" : "text-white/30"}`}>
+                            {formatTimeAgo(notif.createdAt)}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  );
+
+                  if (notif.link) {
+                    return (
+                      <a
+                        key={notif.id}
+                        href={notif.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block"
+                        onClick={() => setNotifOpen(false)}
+                      >
+                        {content}
+                      </a>
+                    );
+                  }
+                  return content;
+                })
+              )}
+            </div>
+
+            {/* Footer with link to account menu */}
+            <div className={`px-4 py-2.5 border-t text-center ${
+              isLight ? "border-gray-100" : "border-white/5"
+            }`}>
+              <button
+                onClick={() => { setNotifOpen(false); setOpen(true); }}
+                className={`text-xs font-semibold transition-colors ${
+                  isLight ? "text-gray-500 hover:text-gray-700" : "text-white/50 hover:text-white/80"
+                }`}
+              >
+                Account settings
+              </button>
+            </div>
+          </div>
+        )}
+        </div>
 
         {open && (
           <div

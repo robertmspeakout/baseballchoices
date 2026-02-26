@@ -134,28 +134,79 @@ export async function GET() {
             ),
           ]);
 
-          // --- Check ranking changes (D1 only) ---
+          // --- Check ranking (D1 only) ---
+          // We compare against the last ranking notification we sent for this school
+          // to detect changes, rather than using static JSON data which may be stale.
           if (school.division === "D1" && teamRes.ok) {
             try {
               const teamData = await teamRes.json();
               const t = teamData?.team || teamData;
               const currentRank = t?.rank;
-              const storedRank = school.current_ranking;
 
-              if (currentRank && currentRank <= 25 && !storedRank) {
-                const key = `ranking_change:${schoolId}:${school.name} enters Top 25 at #${currentRank}`;
-                if (!recentKeys.has(key)) {
-                  newNotifications.push({
-                    userId: session.user.id,
-                    schoolId,
-                    type: "ranking_change",
-                    title: `${school.name} enters Top 25 at #${currentRank}`,
-                    body: `${school.name} has entered the D1 Top 25 rankings at #${currentRank}.`,
-                    link: null,
-                    schoolLogo: espn.teamLogo || school.logo_url,
-                  });
+              // Find the most recent ranking notification for this school
+              const lastRankNotif = await prisma.notification.findFirst({
+                where: {
+                  userId: session.user.id,
+                  schoolId,
+                  type: "ranking_change",
+                },
+                orderBy: { createdAt: "desc" },
+                select: { title: true },
+              });
+
+              // Extract the last rank from the previous notification title (e.g. "#12" or "out of Top 25")
+              const wasRanked = lastRankNotif ? !lastRankNotif.title.includes("drops out") : null;
+              const prevRankMatch = lastRankNotif?.title.match(/#(\d+)/);
+              const prevRank = prevRankMatch ? parseInt(prevRankMatch[1]) : null;
+
+              if (currentRank && currentRank <= 25) {
+                // Team is currently ranked — notify if newly ranked or rank changed
+                if (wasRanked === false) {
+                  // Was previously unranked, now ranked
+                  const key = `ranking_change:${schoolId}:${school.name} enters Top 25 at #${currentRank}`;
+                  if (!recentKeys.has(key)) {
+                    newNotifications.push({
+                      userId: session.user.id,
+                      schoolId,
+                      type: "ranking_change",
+                      title: `${school.name} enters Top 25 at #${currentRank}`,
+                      body: `${school.name} has entered the D1 Top 25 rankings at #${currentRank}.`,
+                      link: null,
+                      schoolLogo: espn.teamLogo || school.logo_url,
+                    });
+                  }
+                } else if (prevRank && prevRank !== currentRank) {
+                  // Rank changed
+                  const direction = currentRank < prevRank ? "up" : "down";
+                  const key = `ranking_change:${schoolId}:${school.name} moves to #${currentRank}`;
+                  if (!recentKeys.has(key)) {
+                    newNotifications.push({
+                      userId: session.user.id,
+                      schoolId,
+                      type: "ranking_change",
+                      title: `${school.name} moves ${direction} to #${currentRank}`,
+                      body: `${school.name} moved from #${prevRank} to #${currentRank} in the D1 Top 25.`,
+                      link: null,
+                      schoolLogo: espn.teamLogo || school.logo_url,
+                    });
+                  }
+                } else if (wasRanked === null) {
+                  // First time we're tracking this school — just record current rank
+                  const key = `ranking_change:${schoolId}:${school.name} ranked #${currentRank}`;
+                  if (!recentKeys.has(key)) {
+                    newNotifications.push({
+                      userId: session.user.id,
+                      schoolId,
+                      type: "ranking_change",
+                      title: `${school.name} is ranked #${currentRank}`,
+                      body: `${school.name} is currently #${currentRank} in the D1 Top 25 rankings.`,
+                      link: null,
+                      schoolLogo: espn.teamLogo || school.logo_url,
+                    });
+                  }
                 }
-              } else if ((!currentRank || currentRank > 25) && storedRank && storedRank <= 25) {
+              } else if (wasRanked === true && prevRank) {
+                // Team was ranked before but isn't anymore
                 const key = `ranking_change:${schoolId}:${school.name} drops out of Top 25`;
                 if (!recentKeys.has(key)) {
                   newNotifications.push({
@@ -163,7 +214,7 @@ export async function GET() {
                     schoolId,
                     type: "ranking_change",
                     title: `${school.name} drops out of Top 25`,
-                    body: `${school.name} (previously #${storedRank}) has dropped out of the D1 Top 25 rankings.`,
+                    body: `${school.name} (previously #${prevRank}) has dropped out of the D1 Top 25 rankings.`,
                     link: null,
                     schoolLogo: espn.teamLogo || school.logo_url,
                   });
