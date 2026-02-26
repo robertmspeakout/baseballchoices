@@ -118,7 +118,7 @@ function MultiChipGroupWithAny({
       const without = values.filter((v) => v !== anyValue);
       if (without.includes(val)) {
         const next = without.filter((v) => v !== val);
-        onChange(next.length === 0 ? [anyValue] : next);
+        onChange(next);
       } else {
         onChange([...without, val]);
       }
@@ -232,7 +232,7 @@ export default function AIScoutIntake({
   const [schoolSize, setSchoolSize] = useState<string[]>(
     initialValues?.schoolSize && initialValues.schoolSize.length > 0
       ? initialValues.schoolSize
-      : ["any"]
+      : []
   );
   const [highAcademic, setHighAcademic] = useState(initialValues?.highAcademic ?? false);
   const [draftImportance, setDraftImportance] = useState(initialValues?.draftImportance || "");
