@@ -505,7 +505,14 @@ function AIMatchContent() {
 
     // Auto-send the composed message to the AI (don't auto-scroll — let user read from top)
     const userMessage: ChatMessage = { role: "user", content: message };
-    setMessages([userMessage]);
+    const firstName = profile?.playerName || "";
+    const loadingMsg: ChatMessage = {
+      role: "assistant",
+      content: firstName
+        ? `Hey ${firstName}, thanks for that information. I'm loading up your results now!`
+        : "Thanks for that information. I'm loading up your results now!",
+    };
+    setMessages([userMessage, loadingMsg]);
     setLoading(true);
 
     try {
@@ -522,24 +529,24 @@ function AIMatchContent() {
       if (data.remaining !== undefined) setRemaining(data.remaining);
 
       if (res.status === 429) {
-        setMessages([userMessage, {
+        setMessages([userMessage, loadingMsg, {
           role: "assistant",
           content: data.error || "You've used all 20 AI Scout messages for this month.",
         }]);
       } else if (!res.ok) {
-        setMessages([userMessage, {
+        setMessages([userMessage, loadingMsg, {
           role: "assistant",
           content: data.error || "Something went wrong. Please try again.",
         }]);
       } else {
-        setMessages([userMessage, {
+        setMessages([userMessage, loadingMsg, {
           role: "assistant",
           content: data.reply,
           schools: data.schools || [],
         }]);
       }
     } catch {
-      setMessages([userMessage, {
+      setMessages([userMessage, loadingMsg, {
         role: "assistant",
         content: "Network error — please check your connection and try again.",
       }]);

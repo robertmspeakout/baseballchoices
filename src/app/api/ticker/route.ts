@@ -21,14 +21,16 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ items: [] });
   }
 
-  const schoolEntries: { name: string; logo: string | null }[] = [];
+  const schoolEntries: { name: string; logo: string | null; espnId: string | null }[] = [];
   try {
     // Accept JSON array of {name, logo} objects
     const parsed = JSON.parse(schoolsParam);
     if (Array.isArray(parsed)) {
       for (const entry of parsed) {
         if (typeof entry === "object" && entry.name) {
-          schoolEntries.push({ name: entry.name, logo: entry.logo || null });
+          // Extract ESPN team ID from logo URL if available
+          const espnId = entry.logo?.match(/espncdn\.com\/.*\/(\d+)\.\w+$/)?.[1] || null;
+          schoolEntries.push({ name: entry.name, logo: entry.logo || null, espnId });
         }
       }
     }
@@ -36,7 +38,7 @@ export async function GET(request: NextRequest) {
     // Fall back to comma-separated names
     const names = schoolsParam.split(",").map((s) => s.trim()).filter(Boolean);
     for (const name of names) {
-      schoolEntries.push({ name, logo: null });
+      schoolEntries.push({ name, logo: null, espnId: null });
     }
   }
 
@@ -48,29 +50,37 @@ export async function GET(request: NextRequest) {
   const batch = schoolEntries.slice(0, 15);
   const allItems: TickerItem[] = [];
 
-  const fetchTickerForSchool = async (entry: { name: string; logo: string | null }) => {
+  const fetchTickerForSchool = async (entry: { name: string; logo: string | null; espnId: string | null }) => {
     try {
-      // Step 1: Find ESPN team ID
-      const searchUrl = `https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/teams?limit=3&search=${encodeURIComponent(entry.name)}`;
-      const searchRes = await fetch(searchUrl, { cache: "no-store", signal: AbortSignal.timeout(8000) });
-      if (!searchRes.ok) return;
+      let teamId: string;
+      let teamLogo: string | null = entry.logo;
 
-      const searchData = await searchRes.json();
-      const teams: any[] =
-        searchData?.sports?.[0]?.leagues?.[0]?.teams ||
-        searchData?.teams || [];
-      if (teams.length === 0) return;
+      if (entry.espnId) {
+        // Use the known ESPN ID — skip the ambiguous name search
+        teamId = entry.espnId;
+      } else {
+        // Fallback: search by name
+        const searchUrl = `https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/teams?limit=3&search=${encodeURIComponent(entry.name)}`;
+        const searchRes = await fetch(searchUrl, { cache: "no-store", signal: AbortSignal.timeout(8000) });
+        if (!searchRes.ok) return;
 
-      const normalize = (e: any) => e.team || e;
-      const schoolLower = entry.name.toLowerCase();
-      const teamEntry = normalize(
-        teams.find((e: any) => normalize(e).displayName?.toLowerCase() === schoolLower) ||
-        teams.find((e: any) => normalize(e).displayName?.toLowerCase().includes(schoolLower)) ||
-        teams[0]
-      );
+        const searchData = await searchRes.json();
+        const teams: any[] =
+          searchData?.sports?.[0]?.leagues?.[0]?.teams ||
+          searchData?.teams || [];
+        if (teams.length === 0) return;
 
-      const teamId = String(teamEntry.id);
-      const teamLogo = teamEntry.logos?.[0]?.href || entry.logo;
+        const normalize = (e: any) => e.team || e;
+        const schoolLower = entry.name.toLowerCase();
+        const teamEntry = normalize(
+          teams.find((e: any) => normalize(e).displayName?.toLowerCase() === schoolLower) ||
+          teams.find((e: any) => normalize(e).displayName?.toLowerCase().includes(schoolLower)) ||
+          teams[0]
+        );
+
+        teamId = String(teamEntry.id);
+        teamLogo = teamEntry.logos?.[0]?.href || entry.logo;
+      }
 
       // Step 2: Fetch team info + schedule in parallel
       const year = new Date().getFullYear();

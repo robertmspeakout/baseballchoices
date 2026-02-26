@@ -126,7 +126,11 @@ export async function GET() {
         const school = allSchools.find((s: any) => s.id === schoolId);
         if (!school) return;
 
-        const espn = await findEspnTeamId(school.name);
+        // Prefer ESPN ID from logo URL (avoids ambiguous name searches like "Portland")
+        const logoEspnId = school.logo_url?.match(/espncdn\.com\/.*\/(\d+)\.\w+$/)?.[1] || null;
+        const espn = logoEspnId
+          ? { teamId: logoEspnId, teamLogo: school.logo_url }
+          : await findEspnTeamId(school.name);
         if (!espn) return;
 
         try {

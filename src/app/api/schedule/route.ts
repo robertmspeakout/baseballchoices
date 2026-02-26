@@ -4,55 +4,68 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic"; // Never cache this route handler
 
+// Extract ESPN team ID from an ESPN logo URL like https://a.espncdn.com/i/teamlogos/ncaa/500/2501.png
+function extractEspnIdFromLogo(logoUrl: string | null | undefined): string | null {
+  if (!logoUrl) return null;
+  const m = logoUrl.match(/espncdn\.com\/.*\/(\d+)\.\w+$/);
+  return m ? m[1] : null;
+}
+
 export async function GET(request: NextRequest) {
   const school = request.nextUrl.searchParams.get("school");
   if (!school) {
     return NextResponse.json({ record: null, recentGames: [], upcoming: [] });
   }
 
+  // If caller passed an ESPN team ID (from logo_url), use it directly — no search needed
+  const espnIdParam = request.nextUrl.searchParams.get("espn_id");
+
   try {
-    // Step 1: Search for the ESPN team ID
-    const searchUrl = `https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/teams?limit=5&search=${encodeURIComponent(school)}`;
-    const searchRes = await fetch(searchUrl, { cache: "no-store", signal: AbortSignal.timeout(8000) });
+    let teamId: string;
 
-    if (!searchRes.ok) {
-      console.error(`[schedule] ESPN search failed: ${searchRes.status} for "${school}"`);
-      return NextResponse.json({ record: null, recentGames: [], upcoming: [] });
+    if (espnIdParam) {
+      // Trust the caller's ESPN ID — skip the ambiguous name search entirely
+      teamId = espnIdParam;
+    } else {
+      // Fallback: search by name (can be ambiguous for schools like "Portland")
+      const searchUrl = `https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/teams?limit=5&search=${encodeURIComponent(school)}`;
+      const searchRes = await fetch(searchUrl, { cache: "no-store", signal: AbortSignal.timeout(8000) });
+
+      if (!searchRes.ok) {
+        console.error(`[schedule] ESPN search failed: ${searchRes.status} for "${school}"`);
+        return NextResponse.json({ record: null, recentGames: [], upcoming: [] });
+      }
+
+      const searchData = await searchRes.json();
+
+      let teams: any[] | null =
+        searchData?.sports?.[0]?.leagues?.[0]?.teams ||
+        searchData?.teams ||
+        null;
+
+      if (!teams || teams.length === 0) {
+        console.error(`[schedule] No ESPN teams found for "${school}"`);
+        return NextResponse.json({ record: null, recentGames: [], upcoming: [] });
+      }
+
+      const normalize = (entry: any) => entry.team || entry;
+      const schoolLower = school.toLowerCase();
+      const match = (fn: (t: any) => boolean) => teams!.find((e) => fn(normalize(e)));
+
+      const teamEntry = normalize(
+        match((t) => t.displayName?.toLowerCase() === schoolLower) ||
+        match((t) => t.displayName?.toLowerCase().startsWith(schoolLower)) ||
+        match((t) => t.displayName?.toLowerCase().includes(schoolLower)) ||
+        match((t) =>
+          schoolLower.includes(t.displayName?.toLowerCase() || "") ||
+          t.shortDisplayName?.toLowerCase() === schoolLower ||
+          t.abbreviation?.toLowerCase() === schoolLower
+        ) ||
+        { team: normalize(teams[0]) }
+      );
+
+      teamId = String(teamEntry.id);
     }
-
-    const searchData = await searchRes.json();
-
-    // ESPN returns teams at different paths depending on endpoint version
-    let teams: any[] | null =
-      searchData?.sports?.[0]?.leagues?.[0]?.teams ||
-      searchData?.teams ||
-      null;
-
-    if (!teams || teams.length === 0) {
-      console.error(`[schedule] No ESPN teams found for "${school}"`);
-      return NextResponse.json({ record: null, recentGames: [], upcoming: [] });
-    }
-
-    // Each entry may be { team: {...} } or directly { id, displayName, ... }
-    const normalize = (entry: any) => entry.team || entry;
-
-    // Find best match
-    const schoolLower = school.toLowerCase();
-    const match = (fn: (t: any) => boolean) => teams!.find((e) => fn(normalize(e)));
-
-    const teamEntry = normalize(
-      match((t) => t.displayName?.toLowerCase() === schoolLower) ||
-      match((t) => t.displayName?.toLowerCase().startsWith(schoolLower)) ||
-      match((t) => t.displayName?.toLowerCase().includes(schoolLower)) ||
-      match((t) =>
-        schoolLower.includes(t.displayName?.toLowerCase() || "") ||
-        t.shortDisplayName?.toLowerCase() === schoolLower ||
-        t.abbreviation?.toLowerCase() === schoolLower
-      ) ||
-      { team: normalize(teams[0]) }
-    );
-
-    const teamId = String(teamEntry.id);
 
     // Step 2: Fetch team info (for record) and schedule in parallel
     const year = new Date().getFullYear();

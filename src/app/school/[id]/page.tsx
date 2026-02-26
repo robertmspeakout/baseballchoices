@@ -313,7 +313,8 @@ function SchoolPageContent({ id }: { id: string }) {
     if (!scheduleOpen || !schoolData || scheduleFetched.current) return;
     scheduleFetched.current = true;
     setScheduleLoading(true);
-    fetch(`/api/schedule?school=${encodeURIComponent(schoolData.name)}`)
+    const espnId = schoolData.logo_url?.match(/espncdn\.com\/.*\/(\d+)\.\w+$/)?.[1] || "";
+    fetch(`/api/schedule?school=${encodeURIComponent(schoolData.name)}${espnId ? `&espn_id=${espnId}` : ""}`)
       .then((r) => r.json())
       .then((data) => {
         setCurrentRecord(data.record || null);
