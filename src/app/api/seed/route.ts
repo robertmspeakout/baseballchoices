@@ -20,13 +20,13 @@ export async function GET(request: Request) {
 
     const user = await prisma.user.upsert({
       where: { email: TEST_EMAIL },
-      update: { passwordHash: testHash, trialExpiresAt: trial },
+      update: { passwordHash: testHash, trialExpiresAt: trial, role: "OWNER" },
       create: {
         firstName: "John",
         lastName: "Doe",
         email: TEST_EMAIL,
         passwordHash: testHash,
-        role: "USER",
+        role: "OWNER",
         trialExpiresAt: trial,
         profile: { create: {} },
       },

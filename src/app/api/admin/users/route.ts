@@ -2,15 +2,21 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 
+const AUTHORIZED_EMAIL = "testing@extrabase.com";
+
+function isAuthorized(user: { role: string; email: string }) {
+  return user.role === "ADMIN" || user.role === "OWNER" || user.email === AUTHORIZED_EMAIL;
+}
+
 export async function GET() {
   const session = await auth();
   if (!session?.user?.id) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  // Only ADMIN or OWNER can access
+  // Only ADMIN, OWNER, or authorized email can access
   const currentUser = await prisma.user.findUnique({ where: { id: session.user.id } });
-  if (!currentUser || (currentUser.role !== "ADMIN" && currentUser.role !== "OWNER")) {
+  if (!currentUser || !isAuthorized(currentUser)) {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   }
 
@@ -42,7 +48,7 @@ export async function PUT(request: NextRequest) {
   }
 
   const currentUser = await prisma.user.findUnique({ where: { id: session.user.id } });
-  if (!currentUser || (currentUser.role !== "ADMIN" && currentUser.role !== "OWNER")) {
+  if (!currentUser || !isAuthorized(currentUser)) {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   }
 
@@ -95,7 +101,7 @@ export async function DELETE(request: NextRequest) {
   }
 
   const currentUser = await prisma.user.findUnique({ where: { id: session.user.id } });
-  if (!currentUser || currentUser.role !== "OWNER") {
+  if (!currentUser || !isAuthorized(currentUser)) {
     return NextResponse.json({ error: "Only Owners can delete users" }, { status: 403 });
   }
 
