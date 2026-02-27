@@ -24,8 +24,7 @@ interface AIScoutIntakeProps {
   onComplete: (message: string, answers: IntakeAnswers) => void;
   initialValues?: Partial<IntakeAnswers>;
   isEditing?: boolean;
-  onCancel?: () => void;
-  onReset?: () => void;
+  onClearAnswers?: () => void;
 }
 
 // Single-select chip group
@@ -219,8 +218,7 @@ export default function AIScoutIntake({
   onComplete,
   initialValues,
   isEditing,
-  onCancel,
-  onReset,
+  onClearAnswers,
 }: AIScoutIntakeProps) {
   const [divisions, setDivisions] = useState<string[]>(initialValues?.divisions || []);
   const [conferenceTiers, setConferenceTiers] = useState<string[]>(initialValues?.conferenceTiers || []);
@@ -487,28 +485,15 @@ export default function AIScoutIntake({
           disabled={!canSubmit}
           className="w-full py-3.5 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-xl text-sm font-bold hover:from-red-700 hover:to-red-800 disabled:from-gray-200 disabled:to-gray-200 disabled:text-gray-400 transition-all shadow-md disabled:shadow-none"
         >
-          {isEditing ? "Update & Find Programs" : "Find My Programs"}
+          {isEditing ? "Update My Profile" : "Find My Programs"}
         </button>
-        {isEditing && onCancel && (
+        {onClearAnswers && (
           <button
             type="button"
-            onClick={onCancel}
-            className="w-full py-3 text-sm text-gray-500 hover:text-gray-700 font-medium transition-colors"
+            onClick={onClearAnswers}
+            className="w-full py-3 bg-white border border-gray-300 text-gray-700 rounded-xl text-sm font-semibold hover:bg-gray-50 transition-colors"
           >
-            Cancel
-          </button>
-        )}
-        {isEditing && onReset && (
-          <button
-            type="button"
-            onClick={() => {
-              if (window.confirm("This will clear all your answers and start over. Are you sure?")) {
-                onReset();
-              }
-            }}
-            className="w-full py-2 text-xs text-gray-400 hover:text-red-600 font-medium transition-colors"
-          >
-            Reset all answers
+            Clear Answers
           </button>
         )}
         {!isEditing && (

@@ -714,7 +714,7 @@ function AIMatchContent() {
 
   const atLimit = remaining <= 0;
   // Show reset link when there's been any interaction (intake done or messages exist)
-  const hasAnyData = localStorage.getItem(INTAKE_DONE_KEY) === "true" || messages.length > 0;
+
 
   return (
     <AuthGate>
@@ -768,32 +768,25 @@ function AIMatchContent() {
               onComplete={handleIntakeComplete}
               initialValues={intakeValues}
               isEditing={!!intakeValues}
-              onCancel={intakeValues ? () => { setShowIntake(false); setMessages([]); } : undefined}
-              onReset={intakeValues ? () => {
+              onClearAnswers={() => {
                 localStorage.removeItem(INTAKE_DONE_KEY);
                 localStorage.removeItem(INTAKE_ANSWERS_KEY);
                 sessionStorage.removeItem(CHAT_STORAGE_KEY);
                 setMessages([]);
                 setIntakeValues(undefined);
                 setShowIntake(true);
-              } : undefined}
+              }}
             />
           ) : (
             <div className="flex-1">
               {/* Navigation bar — shown when there are messages and intake was completed */}
               {messages.length > 0 && intakeValues && (
-                <div className="px-4 pt-3 pb-1 flex items-center justify-between">
-                  <button
-                    onClick={() => setMessages([])}
-                    className="text-xs font-semibold text-red-600 hover:text-red-700 transition-colors whitespace-nowrap"
-                  >
-                    &larr; My Results
-                  </button>
+                <div className="px-4 pt-3 pb-1">
                   <button
                     onClick={() => setShowIntake(true)}
-                    className="text-xs font-semibold text-gray-500 hover:text-gray-700 transition-colors whitespace-nowrap"
+                    className="text-xs font-semibold text-red-600 hover:text-red-700 transition-colors whitespace-nowrap"
                   >
-                    Edit Profile &rarr;
+                    &larr; Edit my Profile
                   </button>
                 </div>
               )}
@@ -807,7 +800,7 @@ function AIMatchContent() {
                       {/* Action buttons */}
                       {savedSnippet && (
                         <div className="max-w-lg mx-auto w-full space-y-2.5 mb-6">
-                          {/* Continue conversation */}
+                          {/* Continue conversation — red */}
                           <button
                             onClick={() => {
                               const saved = loadSavedChat();
@@ -816,17 +809,17 @@ function AIMatchContent() {
                                 setMessages(saved);
                               }
                             }}
-                            className="flex items-center gap-3 w-full text-left px-4 py-3 bg-white border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors"
+                            className="flex items-center gap-3 w-full text-left px-4 py-3 bg-gradient-to-r from-red-600 to-red-700 rounded-xl hover:from-red-700 hover:to-red-800 transition-colors shadow-md"
                           >
-                            <div className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center shrink-0">
-                              <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div className="w-8 h-8 rounded-lg bg-white/20 flex items-center justify-center shrink-0">
+                              <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                               </svg>
                             </div>
                             <div className="flex-1 min-w-0">
-                              <p className="text-sm font-semibold text-gray-700">Continue your last conversation</p>
-                              <p className="text-xs text-gray-500 truncate mt-0.5">You: {savedSnippet.userMsg}</p>
-                              <p className="text-xs text-gray-400 truncate">Scout: {savedSnippet.assistantMsg}</p>
+                              <p className="text-sm font-semibold text-white">Continue your conversation</p>
+                              <p className="text-xs text-white/70 truncate mt-0.5">You: {savedSnippet.userMsg}</p>
+                              <p className="text-xs text-white/50 truncate">Scout: {savedSnippet.assistantMsg}</p>
                             </div>
                           </button>
 
@@ -840,7 +833,20 @@ function AIMatchContent() {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                               </svg>
                             </div>
-                            <p className="text-sm font-semibold text-gray-700">Edit your AI Scout Profile</p>
+                            <p className="text-sm font-semibold text-gray-700">Edit my Profile</p>
+                          </button>
+
+                          {/* Reset AI Profile */}
+                          <button
+                            onClick={() => setShowResetConfirm(true)}
+                            className="flex items-center gap-3 w-full px-4 py-3 bg-white border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors"
+                          >
+                            <div className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center shrink-0">
+                              <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                              </svg>
+                            </div>
+                            <p className="text-sm font-semibold text-gray-700">Reset my AI Profile</p>
                           </button>
                         </div>
                       )}
@@ -862,7 +868,7 @@ function AIMatchContent() {
 
                       {/* Edit profile button when there are results but no active conversation */}
                       {!savedSnippet && sortedResults.length > 0 && (
-                        <div className="max-w-lg mx-auto w-full">
+                        <div className="max-w-lg mx-auto w-full space-y-2.5">
                           <button
                             onClick={() => setShowIntake(true)}
                             className="flex items-center gap-3 w-full px-4 py-3 bg-white border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors"
@@ -872,7 +878,18 @@ function AIMatchContent() {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                               </svg>
                             </div>
-                            <p className="text-sm font-semibold text-gray-700">Edit your AI Scout Profile</p>
+                            <p className="text-sm font-semibold text-gray-700">Edit my Profile</p>
+                          </button>
+                          <button
+                            onClick={() => setShowResetConfirm(true)}
+                            className="flex items-center gap-3 w-full px-4 py-3 bg-white border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors"
+                          >
+                            <div className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center shrink-0">
+                              <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                              </svg>
+                            </div>
+                            <p className="text-sm font-semibold text-gray-700">Reset my AI Profile</p>
                           </button>
                         </div>
                       )}
@@ -973,17 +990,6 @@ function AIMatchContent() {
                 )}
               </div>
               )}
-            </div>
-          )}
-          {/* Reset my AI link — only shown when user has interacted */}
-          {hasAnyData && (
-            <div className="text-center py-4 mt-2">
-              <button
-                onClick={() => setShowResetConfirm(true)}
-                className="text-xs text-gray-400 hover:text-red-500 transition-colors underline underline-offset-2"
-              >
-                Reset my AI Scout
-              </button>
             </div>
           )}
         </main>
