@@ -35,14 +35,6 @@ const priorityLabels: Record<number, string> = {
   5: "VIP",
 };
 
-function isWinningRecord(record: string): boolean | null {
-  const m = record.match(/^(\d+)-(\d+)/);
-  if (!m) return null;
-  const w = parseInt(m[1], 10);
-  const l = parseInt(m[2], 10);
-  return w > l;
-}
-
 function RowLogo({ school }: { school: ProgramRowSchool }) {
   const [src, setSrc] = useState(school.logo_url || null);
   const triedFallback = useRef(false);
@@ -80,9 +72,6 @@ function RowLogo({ school }: { school: ProgramRowSchool }) {
 
 interface ProgramRowProps {
   school: ProgramRowSchool;
-  /** Current-season record (fetched live for D1/D2). Falls back to last_season_record. */
-  currentRecord?: string | null;
-  recordLoading?: boolean;
   onPriorityChange: (schoolId: number, priority: number) => void;
   /** Optional extra content rendered below line 2 (e.g. match score, reasons) */
   extra?: React.ReactNode;
@@ -90,20 +79,10 @@ interface ProgramRowProps {
 
 export default function ProgramRow({
   school,
-  currentRecord,
-  recordLoading,
   onPriorityChange,
   extra,
 }: ProgramRowProps) {
-  const record = currentRecord || school.last_season_record;
   const divLabel = divisionLabels[school.division] || school.division;
-
-  // Record color: green if winning, gray if losing or .500
-  let recordColor = "#999";
-  if (record) {
-    const winning = isWinningRecord(record);
-    if (winning === true) recordColor = "#16a34a";
-  }
 
   return (
     <Link
@@ -152,21 +131,14 @@ export default function ProgramRow({
         </div>
       </div>
 
-      {/* Right: Record & Rank */}
-      <div className="shrink-0 flex flex-col items-end ml-2 mr-1">
-        {school.current_ranking && (
+      {/* Right: Rank */}
+      {school.current_ranking && (
+        <div className="shrink-0 flex flex-col items-end ml-2 mr-1">
           <span className="text-[13px] font-extrabold text-[#c1272d] leading-tight">
             #{school.current_ranking}
           </span>
-        )}
-        {recordLoading ? (
-          <span className="text-[12px] text-gray-300 animate-pulse">--</span>
-        ) : record ? (
-          <span className="text-[12px] font-semibold leading-tight" style={{ color: recordColor }}>
-            {record}
-          </span>
-        ) : null}
-      </div>
+        </div>
+      )}
 
       {/* Far right: Chevron */}
       <span className="shrink-0 text-[18px] text-[#ccc] ml-1 leading-none">&rsaquo;</span>
