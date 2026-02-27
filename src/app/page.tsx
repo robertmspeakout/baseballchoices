@@ -771,17 +771,15 @@ export default function Home() {
           activeTab={activeTab}
         />
 
-        {/* Live Ticker — only on My Top Programs tab */}
-        {activeTab === "mylist" && isLoggedIn && tickerSchools.length > 0 && !filters.search && (
-          <NewsTicker schools={tickerSchools} />
-        )}
-
         {/* VIP Cards Carousel — only on mylist tab (hidden during search) */}
         {activeTab === "mylist" && !filters.search && sorted.some((s) => s.priority >= 4) && (
           <h3 className="text-base font-bold text-gray-700 mt-2">My Four & Five Star Programs</h3>
         )}
         {activeTab === "mylist" && !filters.search && <VIPCarousel schools={sorted} batchRecords={vipRecords} />}
-
+  {/* Live Ticker — only on My Top Programs tab */}
+        {activeTab === "mylist" && isLoggedIn && tickerSchools.length > 0 && !filters.search && (
+          <NewsTicker schools={tickerSchools} />
+        )}
         {/* All Ranked Programs header — only on mylist when VIP exists */}
         {activeTab === "mylist" && !filters.search && sorted.some((s) => s.priority === 5) && (
           <h3 className="text-base font-bold text-gray-700 mt-2">All My Ranked Programs</h3>
