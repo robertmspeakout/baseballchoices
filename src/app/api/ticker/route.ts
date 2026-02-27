@@ -72,9 +72,15 @@ export async function GET(request: NextRequest) {
 
         const normalize = (e: any) => e.team || e;
         const schoolLower = entry.name.toLowerCase();
+        const match = (fn: (t: any) => boolean) => teams.find((e: any) => fn(normalize(e)));
+        // ESPN's search API may return ALL teams ignoring the search param.
+        // Use location field to avoid "Texas" → "North Texas"/"Texas A&M" confusion.
         const teamEntry = normalize(
-          teams.find((e: any) => normalize(e).displayName?.toLowerCase() === schoolLower) ||
-          teams.find((e: any) => normalize(e).displayName?.toLowerCase().includes(schoolLower)) ||
+          match((t) => t.displayName?.toLowerCase() === schoolLower) ||
+          match((t) => t.location?.toLowerCase() === schoolLower) ||
+          match((t) => t.shortDisplayName?.toLowerCase() === schoolLower) ||
+          match((t) => t.displayName?.toLowerCase().startsWith(schoolLower + " ")) ||
+          match((t) => t.displayName?.toLowerCase().includes(schoolLower)) ||
           teams[0]
         );
 

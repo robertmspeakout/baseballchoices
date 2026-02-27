@@ -46,18 +46,22 @@ export async function GET(request: NextRequest) {
 
       const normalize = (entry: any) => entry.team || entry;
       const schoolLower = school.toLowerCase();
+      const match = (fn: (t: any) => boolean) => teams.find((e: any) => fn(normalize(e)));
 
-      // Log all team names returned
-      teams.forEach((e: any, i: number) => {
-        const t = normalize(e);
-        log.push(`  team[${i}]: id=${t.id} name="${t.displayName}"`);
-      });
-
+      // ESPN's search API may return ALL teams ignoring the search param.
+      // Use precise matching to pick the right team:
+      // 1. Exact displayName  2. Exact location  3. Exact shortDisplayName
+      // 4. displayName starts with school name  5. includes  6. first result
       const teamEntry = normalize(
-        teams.find((e: any) => normalize(e).displayName?.toLowerCase() === schoolLower) ||
-        teams.find((e: any) => normalize(e).displayName?.toLowerCase().includes(schoolLower)) ||
+        match((t) => t.displayName?.toLowerCase() === schoolLower) ||
+        match((t) => t.location?.toLowerCase() === schoolLower) ||
+        match((t) => t.shortDisplayName?.toLowerCase() === schoolLower) ||
+        match((t) => t.displayName?.toLowerCase().startsWith(schoolLower + " ")) ||
+        match((t) => t.displayName?.toLowerCase().includes(schoolLower)) ||
         teams[0]
       );
+
+      log.push(`Matched: ${teamEntry.displayName} (id=${teamEntry.id}, location=${teamEntry.location})`);
 
       const teamId = String(teamEntry.id);
       log.push(`Selected: ${teamEntry.displayName} (id=${teamId})`);

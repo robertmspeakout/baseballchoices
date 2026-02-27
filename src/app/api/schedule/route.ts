@@ -115,14 +115,17 @@ export async function GET(request: NextRequest) {
     }
 
     // Otherwise fall back to name matching
+    // ESPN's search API may return ALL teams ignoring the search param.
+    // Use precise matching: location field avoids "Texas" → "Texas A&M" confusion.
     if (!teamEntry) {
       teamEntry = normalize(
         match((t) => t.displayName?.toLowerCase() === schoolLower) ||
-        match((t) => t.displayName?.toLowerCase().startsWith(schoolLower)) ||
+        match((t) => t.location?.toLowerCase() === schoolLower) ||
+        match((t) => t.shortDisplayName?.toLowerCase() === schoolLower) ||
+        match((t) => t.displayName?.toLowerCase().startsWith(schoolLower + " ")) ||
         match((t) => t.displayName?.toLowerCase().includes(schoolLower)) ||
         match((t) =>
           schoolLower.includes(t.displayName?.toLowerCase() || "") ||
-          t.shortDisplayName?.toLowerCase() === schoolLower ||
           t.abbreviation?.toLowerCase() === schoolLower
         ) ||
         { team: normalize(teams[0]) }
