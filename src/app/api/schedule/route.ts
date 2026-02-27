@@ -2,19 +2,35 @@ import { NextRequest, NextResponse } from "next/server";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-export const dynamic = "force-dynamic"; // Never cache this route handler
+export const dynamic = "force-dynamic";
+
+const ROUTE_VERSION = 3;
 
 export async function GET(request: NextRequest) {
   const school = request.nextUrl.searchParams.get("school");
   const debug = request.nextUrl.searchParams.get("debug") === "1";
-  if (!school) {
-    return NextResponse.json({ record: null, recentGames: [], upcoming: [] });
+  const espnIdParam = request.nextUrl.searchParams.get("espn_id");
+
+  // If debug mode with no school, return immediately to prove route is alive
+  if (debug && !school) {
+    return NextResponse.json({
+      _v: ROUTE_VERSION,
+      _debug: true,
+      alive: true,
+      message: "Schedule route is responding. Provide ?school=NAME&debug=1 for full debug.",
+      timestamp: new Date().toISOString(),
+    });
   }
 
-  const espnIdParam = request.nextUrl.searchParams.get("espn_id");
+  if (!school) {
+    return NextResponse.json({ _v: ROUTE_VERSION, record: null, recentGames: [], upcoming: [] });
+  }
+
   const debugLog: string[] = [];
+  debugLog.push(`Route v${ROUTE_VERSION} | school=${school} | espn_id=${espnIdParam || "none"} | ts=${new Date().toISOString()}`);
 
   try {
+    // --- Step 1: Resolve team ID ---
     let teamId: string;
 
     if (espnIdParam) {
@@ -23,12 +39,13 @@ export async function GET(request: NextRequest) {
     } else {
       const searchUrl = `https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/teams?limit=5&search=${encodeURIComponent(school)}`;
       debugLog.push(`Searching: ${searchUrl}`);
-      const searchRes = await fetch(searchUrl, { cache: "no-store", signal: AbortSignal.timeout(10000) });
+
+      const searchRes = await fetch(searchUrl);
 
       if (!searchRes.ok) {
         debugLog.push(`Search failed: ${searchRes.status}`);
-        if (debug) return NextResponse.json({ _debug: true, error: "search_failed", status: searchRes.status, log: debugLog });
-        return NextResponse.json({ record: null, recentGames: [], upcoming: [] });
+        if (debug) return NextResponse.json({ _v: ROUTE_VERSION, _debug: true, error: "search_failed", status: searchRes.status, log: debugLog });
+        return NextResponse.json({ _v: ROUTE_VERSION, record: null, recentGames: [], upcoming: [] });
       }
 
       const searchData = await searchRes.json();
@@ -38,9 +55,9 @@ export async function GET(request: NextRequest) {
         null;
 
       if (!teams || teams.length === 0) {
-        debugLog.push(`No teams found in search response. Keys: ${Object.keys(searchData).join(",")}`);
-        if (debug) return NextResponse.json({ _debug: true, error: "no_teams", log: debugLog, rawKeys: Object.keys(searchData) });
-        return NextResponse.json({ record: null, recentGames: [], upcoming: [] });
+        debugLog.push(`No teams found. Keys: ${Object.keys(searchData).join(",")}`);
+        if (debug) return NextResponse.json({ _v: ROUTE_VERSION, _debug: true, error: "no_teams", log: debugLog, rawKeys: Object.keys(searchData) });
+        return NextResponse.json({ _v: ROUTE_VERSION, record: null, recentGames: [], upcoming: [] });
       }
 
       const normalize = (entry: any) => entry.team || entry;
@@ -63,7 +80,7 @@ export async function GET(request: NextRequest) {
       debugLog.push(`Found team: ${teamEntry.displayName} (id=${teamId})`);
     }
 
-    // Fetch schedule — try current year, fall back to current year - 1
+    // --- Step 2: Fetch team info + schedule ---
     const year = new Date().getFullYear();
     const scheduleUrl = `https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/teams/${teamId}/schedule?season=${year}`;
     const teamUrl = `https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/teams/${teamId}`;
@@ -71,17 +88,16 @@ export async function GET(request: NextRequest) {
     debugLog.push(`Fetching: scheduleUrl=${scheduleUrl}`);
 
     const [teamRes, scheduleRes] = await Promise.all([
-      fetch(teamUrl, { cache: "no-store", signal: AbortSignal.timeout(10000) }),
-      fetch(scheduleUrl, { cache: "no-store", signal: AbortSignal.timeout(10000) }),
+      fetch(teamUrl),
+      fetch(scheduleUrl),
     ]);
     debugLog.push(`teamRes: ${teamRes.status}, scheduleRes: ${scheduleRes.status}`);
 
-    // Extract record from team endpoint
+    // --- Step 3: Extract record from team endpoint ---
     let espnRecord: string | null = null;
-    let teamData: any = null;
     if (teamRes.ok) {
       try {
-        teamData = await teamRes.json();
+        const teamData = await teamRes.json();
         const t = teamData?.team || teamData;
         if (t?.record?.items?.[0]?.summary) {
           espnRecord = t.record.items[0].summary;
@@ -94,30 +110,31 @@ export async function GET(request: NextRequest) {
       }
     }
 
+    // --- Step 4: Handle schedule response ---
     if (!scheduleRes.ok) {
       debugLog.push(`Schedule fetch failed: ${scheduleRes.status}`);
       // Try previous year as fallback
       const fallbackUrl = `https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/teams/${teamId}/schedule?season=${year - 1}`;
       debugLog.push(`Trying fallback year ${year - 1}: ${fallbackUrl}`);
-      const fallbackRes = await fetch(fallbackUrl, { cache: "no-store", signal: AbortSignal.timeout(10000) });
+      const fallbackRes = await fetch(fallbackUrl);
       debugLog.push(`Fallback result: ${fallbackRes.status}`);
       if (!fallbackRes.ok) {
-        if (debug) return NextResponse.json({ _debug: true, error: "schedule_fetch_failed", log: debugLog });
-        return NextResponse.json({ record: espnRecord, recentGames: [], upcoming: [] });
+        if (debug) return NextResponse.json({ _v: ROUTE_VERSION, _debug: true, error: "schedule_fetch_failed", log: debugLog });
+        return NextResponse.json({ _v: ROUTE_VERSION, record: espnRecord, recentGames: [], upcoming: [] });
       }
-      // Use fallback response
       const fallbackData = await fallbackRes.json();
-      if (debug) return NextResponse.json({ _debug: true, error: "primary_failed_fallback_ok", log: debugLog, fallbackKeys: Object.keys(fallbackData), fallbackEventsCount: (fallbackData?.events || []).length });
-      return NextResponse.json({ record: espnRecord, recentGames: [], upcoming: [] });
+      if (debug) return NextResponse.json({ _v: ROUTE_VERSION, _debug: true, error: "primary_failed_fallback_ok", log: debugLog, fallbackKeys: Object.keys(fallbackData), fallbackEventsCount: (fallbackData?.events || []).length });
+      return NextResponse.json({ _v: ROUTE_VERSION, record: espnRecord, recentGames: [], upcoming: [] });
     }
 
     const scheduleData = await scheduleRes.json();
     const events: any[] = scheduleData?.events || [];
-    debugLog.push(`Schedule parsed: ${Object.keys(scheduleData).join(",")} | events: ${events.length}`);
+    debugLog.push(`Schedule parsed: keys=${Object.keys(scheduleData).join(",")} | events=${events.length}`);
 
     // Debug mode: return raw ESPN response structure
     if (debug) {
       return NextResponse.json({
+        _v: ROUTE_VERSION,
         _debug: true,
         teamId,
         year,
@@ -145,7 +162,7 @@ export async function GET(request: NextRequest) {
       }
     }
 
-    // Parse games
+    // --- Step 5: Parse games ---
     type ParsedGame = {
       date: string;
       opponent: string;
@@ -246,6 +263,7 @@ export async function GET(request: NextRequest) {
     const next5 = upcoming.slice(0, 5);
 
     return NextResponse.json({
+      _v: ROUTE_VERSION,
       record: espnRecord,
       recentGames,
       upcoming: next5,
@@ -253,17 +271,18 @@ export async function GET(request: NextRequest) {
       headers: { "Cache-Control": "public, s-maxage=300" },
     });
   } catch (err: any) {
-    console.error(`[schedule] Error fetching schedule for "${school}":`, err);
-    // In debug mode, return the error details so we can see what went wrong
+    console.error(`[schedule] Error for "${school}":`, err);
     if (debug) {
       return NextResponse.json({
+        _v: ROUTE_VERSION,
         _debug: true,
         error: "caught_exception",
         message: err?.message || String(err),
         name: err?.name || "unknown",
+        stack: err?.stack?.split("\n").slice(0, 5) || [],
         log: debugLog,
       });
     }
-    return NextResponse.json({ record: null, recentGames: [], upcoming: [] });
+    return NextResponse.json({ _v: ROUTE_VERSION, record: null, recentGames: [], upcoming: [] });
   }
 }
