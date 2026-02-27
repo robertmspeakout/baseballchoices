@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { ESPN_TEAM_IDS, resolveEspnTeam } from "@/lib/espn";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -55,11 +56,15 @@ export async function GET(request: NextRequest) {
       let teamId: string;
       let teamLogo: string | null = entry.logo;
 
-      if (entry.espnId) {
-        // Use the known ESPN ID — skip the ambiguous name search
+      // 1. Check curated ESPN ID map
+      const knownId = ESPN_TEAM_IDS[entry.name];
+      if (knownId) {
+        teamId = String(knownId);
+      } else if (entry.espnId) {
+        // 2. Use the ESPN ID from logo URL hint
         teamId = entry.espnId;
       } else {
-        // Fallback: search by name
+        // 3. Fallback: search by name with improved matching
         const searchUrl = `https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/teams?limit=3&search=${encodeURIComponent(entry.name)}`;
         const searchRes = await fetch(searchUrl, { cache: "no-store" });
         if (!searchRes.ok) return;
@@ -70,20 +75,7 @@ export async function GET(request: NextRequest) {
           searchData?.teams || [];
         if (teams.length === 0) return;
 
-        const normalize = (e: any) => e.team || e;
-        const schoolLower = entry.name.toLowerCase();
-        const match = (fn: (t: any) => boolean) => teams.find((e: any) => fn(normalize(e)));
-        // ESPN's search API may return ALL teams ignoring the search param.
-        // Use location field to avoid "Texas" → "North Texas"/"Texas A&M" confusion.
-        const teamEntry = normalize(
-          match((t) => t.displayName?.toLowerCase() === schoolLower) ||
-          match((t) => t.location?.toLowerCase() === schoolLower) ||
-          match((t) => t.shortDisplayName?.toLowerCase() === schoolLower) ||
-          match((t) => t.displayName?.toLowerCase().startsWith(schoolLower + " ")) ||
-          match((t) => t.displayName?.toLowerCase().includes(schoolLower)) ||
-          teams[0]
-        );
-
+        const teamEntry = resolveEspnTeam(entry.name, teams);
         teamId = String(teamEntry.id);
         teamLogo = teamEntry.logos?.[0]?.href || entry.logo;
       }
@@ -101,9 +93,22 @@ export async function GET(request: NextRequest) {
         ),
       ]);
 
-      // Extract record
+      // Parse schedule (prefer schedule's current-season record over team endpoint)
+      if (!scheduleRes.ok) return;
+      const scheduleData = await scheduleRes.json();
+      const events: any[] = scheduleData?.events || [];
+
+      // Prefer schedule's recordSummary (always current season)
       let record: string | null = null;
-      if (teamRes.ok) {
+      const st = scheduleData?.team;
+      if (st?.recordSummary) {
+        record = st.recordSummary;
+      } else if (st?.record?.items?.[0]?.summary) {
+        record = st.record.items[0].summary;
+      }
+
+      // Fallback to team endpoint (may be stale early in season)
+      if (!record && teamRes.ok) {
         try {
           const teamData = await teamRes.json();
           const t = teamData?.team || teamData;
@@ -113,20 +118,6 @@ export async function GET(request: NextRequest) {
             record = t.record;
           }
         } catch { /* ignore */ }
-      }
-
-      // Parse schedule
-      if (!scheduleRes.ok) return;
-      const scheduleData = await scheduleRes.json();
-      const events: any[] = scheduleData?.events || [];
-
-      if (!record) {
-        const st = scheduleData?.team;
-        if (st?.record?.items?.[0]?.summary) {
-          record = st.record.items[0].summary;
-        } else if (st?.recordSummary) {
-          record = st.recordSummary;
-        }
       }
 
       const extractScore = (c: any): string | null => {

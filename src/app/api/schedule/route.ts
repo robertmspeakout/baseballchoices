@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { ESPN_TEAM_IDS, resolveEspnTeam, normalize as espnNormalize } from "@/lib/espn";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -57,83 +58,72 @@ export async function GET(request: NextRequest) {
   debugLog.push(`v${ROUTE_VERSION} | school=${school} | espn_id=${espnIdParam || "none"} | ts=${new Date().toISOString()}`);
 
   try {
-    // --- Step 1: Always search ESPN by name to get the correct API team ID ---
-    // The espn_id from logo URLs (e.g. 2501) does NOT match ESPN's API IDs,
-    // so we must always search. espn_id is only used as a tiebreaker hint.
-    const searchUrl = `https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/teams?limit=5&search=${encodeURIComponent(school)}`;
-    debugLog.push(`Searching: ${searchUrl}`);
-
+    // --- Step 1: Resolve the ESPN team ID ---
+    // First check the curated map, then fall back to ESPN search.
     let teamId: string;
 
-    let searchRes: Response;
-    try {
-      searchRes = await fetch(searchUrl);
-    } catch (fetchErr: any) {
-      debugLog.push(`Search fetch threw: ${fetchErr?.message || String(fetchErr)}`);
-      if (debug) return NextResponse.json({ _v: ROUTE_VERSION, _debug: true, error: "search_fetch_exception", log: debugLog });
-      return emptyResponse();
-    }
+    const knownId = ESPN_TEAM_IDS[school];
+    if (knownId) {
+      teamId = String(knownId);
+      debugLog.push(`Known ESPN ID: ${teamId} (from map for "${school}")`);
+    } else {
+      // Fall back to ESPN search
+      const searchUrl = `https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/teams?limit=5&search=${encodeURIComponent(school)}`;
+      debugLog.push(`Searching: ${searchUrl}`);
 
-    if (!searchRes.ok) {
-      debugLog.push(`Search failed: ${searchRes.status}`);
-      if (debug) return NextResponse.json({ _v: ROUTE_VERSION, _debug: true, error: "search_failed", status: searchRes.status, log: debugLog });
-      return emptyResponse();
-    }
-
-    let searchData: any;
-    try {
-      searchData = await searchRes.json();
-    } catch (jsonErr: any) {
-      debugLog.push(`Search JSON parse failed: ${jsonErr?.message || String(jsonErr)}`);
-      if (debug) return NextResponse.json({ _v: ROUTE_VERSION, _debug: true, error: "search_json_parse_failed", log: debugLog });
-      return emptyResponse();
-    }
-
-    const teams: any[] | null =
-      searchData?.sports?.[0]?.leagues?.[0]?.teams ||
-      searchData?.teams ||
-      null;
-
-    if (!teams || teams.length === 0) {
-      debugLog.push(`No teams found. Keys: ${Object.keys(searchData || {}).join(",")}`);
-      if (debug) return NextResponse.json({ _v: ROUTE_VERSION, _debug: true, error: "no_teams", log: debugLog, rawKeys: Object.keys(searchData || {}) });
-      return emptyResponse();
-    }
-
-    const normalize = (entry: any) => entry.team || entry;
-    const schoolLower = school.toLowerCase();
-    const match = (fn: (t: any) => boolean) => teams!.find((e) => fn(normalize(e)));
-
-    // If espn_id hint is provided, try to match it first (handles Portland-type disambiguation)
-    let teamEntry: any = null;
-    if (espnIdParam) {
-      const hintMatch = teams.find((e) => String(normalize(e).id) === espnIdParam);
-      if (hintMatch) {
-        teamEntry = normalize(hintMatch);
-        debugLog.push(`Matched by espn_id hint: ${teamEntry.displayName} (id=${teamEntry.id})`);
+      let searchRes: Response;
+      try {
+        searchRes = await fetch(searchUrl);
+      } catch (fetchErr: any) {
+        debugLog.push(`Search fetch threw: ${fetchErr?.message || String(fetchErr)}`);
+        if (debug) return NextResponse.json({ _v: ROUTE_VERSION, _debug: true, error: "search_fetch_exception", log: debugLog });
+        return emptyResponse();
       }
-    }
 
-    // Otherwise fall back to name matching
-    // ESPN's search API may return ALL teams ignoring the search param.
-    // Use precise matching: location field avoids "Texas" → "Texas A&M" confusion.
-    if (!teamEntry) {
-      teamEntry = normalize(
-        match((t) => t.displayName?.toLowerCase() === schoolLower) ||
-        match((t) => t.location?.toLowerCase() === schoolLower) ||
-        match((t) => t.shortDisplayName?.toLowerCase() === schoolLower) ||
-        match((t) => t.displayName?.toLowerCase().startsWith(schoolLower + " ")) ||
-        match((t) => t.displayName?.toLowerCase().includes(schoolLower)) ||
-        match((t) =>
-          schoolLower.includes(t.displayName?.toLowerCase() || "") ||
-          t.abbreviation?.toLowerCase() === schoolLower
-        ) ||
-        { team: normalize(teams[0]) }
-      );
-    }
+      if (!searchRes.ok) {
+        debugLog.push(`Search failed: ${searchRes.status}`);
+        if (debug) return NextResponse.json({ _v: ROUTE_VERSION, _debug: true, error: "search_failed", status: searchRes.status, log: debugLog });
+        return emptyResponse();
+      }
 
-    teamId = String(teamEntry.id);
-    debugLog.push(`Using team: ${teamEntry.displayName} (id=${teamId})`);
+      let searchData: any;
+      try {
+        searchData = await searchRes.json();
+      } catch (jsonErr: any) {
+        debugLog.push(`Search JSON parse failed: ${jsonErr?.message || String(jsonErr)}`);
+        if (debug) return NextResponse.json({ _v: ROUTE_VERSION, _debug: true, error: "search_json_parse_failed", log: debugLog });
+        return emptyResponse();
+      }
+
+      const teams: any[] | null =
+        searchData?.sports?.[0]?.leagues?.[0]?.teams ||
+        searchData?.teams ||
+        null;
+
+      if (!teams || teams.length === 0) {
+        debugLog.push(`No teams found. Keys: ${Object.keys(searchData || {}).join(",")}`);
+        if (debug) return NextResponse.json({ _v: ROUTE_VERSION, _debug: true, error: "no_teams", log: debugLog, rawKeys: Object.keys(searchData || {}) });
+        return emptyResponse();
+      }
+
+      // If espn_id hint is provided, try to match it first
+      let teamEntry: any = null;
+      if (espnIdParam) {
+        const hintMatch = teams.find((e) => String(espnNormalize(e).id) === espnIdParam);
+        if (hintMatch) {
+          teamEntry = espnNormalize(hintMatch);
+          debugLog.push(`Matched by espn_id hint: ${teamEntry.displayName} (id=${teamEntry.id})`);
+        }
+      }
+
+      // Otherwise use the shared resolver (map + progressive name matching)
+      if (!teamEntry) {
+        teamEntry = resolveEspnTeam(school, teams);
+      }
+
+      teamId = String(teamEntry.id);
+      debugLog.push(`Using team: ${teamEntry.displayName} (id=${teamId})`);
+    }
 
     // --- Step 2: Fetch team info + schedule ---
     const year = new Date().getFullYear();
@@ -242,14 +232,13 @@ export async function GET(request: NextRequest) {
       });
     }
 
-    // Also try to get record from schedule response
-    if (!espnRecord) {
-      const st = scheduleData?.team;
-      if (st?.record?.items?.[0]?.summary) {
-        espnRecord = st.record.items[0].summary;
-      } else if (st?.recordSummary) {
-        espnRecord = st.recordSummary;
-      }
+    // Prefer the schedule endpoint's record (current season) over the team
+    // endpoint which can return last season's record early in the year.
+    const st = scheduleData?.team;
+    if (st?.recordSummary) {
+      espnRecord = st.recordSummary;
+    } else if (st?.record?.items?.[0]?.summary) {
+      espnRecord = st.record.items[0].summary;
     }
 
     // --- Step 5: Parse games ---

@@ -1,8 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
+import { ESPN_TEAM_IDS, resolveEspnTeam, normalize, currentSeason } from "@/lib/espn";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 export const dynamic = "force-dynamic";
+
+const BASE = "https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball";
 
 // Batch endpoint: fetches current-season records for multiple schools at once
 // Usage: GET /api/records?schools=Vanderbilt,Texas,Florida State
@@ -19,77 +22,88 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ records: {} });
   }
 
+  const season = currentSeason();
+
   // Limit to 25 schools per request to avoid overloading ESPN
   const batch = schoolNames.slice(0, 25);
   const records: Record<string, string | null> = {};
   const debugLog: Record<string, string[]> = {};
 
-  // Fetch records in parallel with a concurrency of 5
   const fetchRecord = async (school: string): Promise<void> => {
     const log: string[] = [];
     debugLog[school] = log;
     try {
-      const searchUrl = `https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/teams?limit=3&search=${encodeURIComponent(school)}`;
-      log.push(`Searching: ${searchUrl}`);
+      // ── Step 1: resolve the ESPN team ID ──────────────────────────
+      let teamId: string | null = null;
 
-      const searchRes = await fetch(searchUrl);
-      log.push(`Search status: ${searchRes.status}`);
-      if (!searchRes.ok) { records[school] = null; return; }
+      const knownId = ESPN_TEAM_IDS[school];
+      if (knownId) {
+        teamId = String(knownId);
+        log.push(`Known ESPN ID: ${teamId} (from map)`);
+      } else {
+        // Fall back to ESPN search
+        const searchUrl = `${BASE}/teams?limit=3&search=${encodeURIComponent(school)}`;
+        log.push(`Searching: ${searchUrl}`);
 
-      const searchData = await searchRes.json();
-      const teams: any[] =
-        searchData?.sports?.[0]?.leagues?.[0]?.teams ||
-        searchData?.teams || [];
+        const searchRes = await fetch(searchUrl);
+        log.push(`Search status: ${searchRes.status}`);
+        if (!searchRes.ok) { records[school] = null; return; }
 
-      log.push(`Teams found: ${teams.length}`);
-      if (teams.length === 0) { records[school] = null; return; }
+        const searchData = await searchRes.json();
+        const teams: any[] =
+          searchData?.sports?.[0]?.leagues?.[0]?.teams ||
+          searchData?.teams || [];
 
-      const normalize = (entry: any) => entry.team || entry;
-      const schoolLower = school.toLowerCase();
-      const match = (fn: (t: any) => boolean) => teams.find((e: any) => fn(normalize(e)));
+        log.push(`Teams found: ${teams.length}`);
+        if (teams.length === 0) { records[school] = null; return; }
 
-      // ESPN's search API may return ALL teams ignoring the search param.
-      // Use precise matching to pick the right team:
-      // 1. Exact displayName  2. Exact location  3. Exact shortDisplayName
-      // 4. displayName starts with school name  5. includes  6. first result
-      const teamEntry = normalize(
-        match((t) => t.displayName?.toLowerCase() === schoolLower) ||
-        match((t) => t.location?.toLowerCase() === schoolLower) ||
-        match((t) => t.shortDisplayName?.toLowerCase() === schoolLower) ||
-        match((t) => t.displayName?.toLowerCase().startsWith(schoolLower + " ")) ||
-        match((t) => t.displayName?.toLowerCase().includes(schoolLower)) ||
-        teams[0]
-      );
+        const teamEntry = resolveEspnTeam(school, teams);
+        teamId = String(teamEntry.id);
+        log.push(`Matched: ${teamEntry.displayName} (id=${teamId}, location=${teamEntry.location})`);
+      }
 
-      log.push(`Matched: ${teamEntry.displayName} (id=${teamEntry.id}, location=${teamEntry.location})`);
+      // ── Step 2: fetch current-season record ───────────────────────
+      // The /schedule endpoint reliably returns recordSummary for the
+      // current season.  The /teams endpoint often returns last season's
+      // record when the new season has just started.
+      const schedUrl = `${BASE}/teams/${teamId}/schedule?season=${season}`;
+      log.push(`Fetching schedule: ${schedUrl}`);
 
-      const teamId = String(teamEntry.id);
-      log.push(`Selected: ${teamEntry.displayName} (id=${teamId})`);
+      const schedRes = await fetch(schedUrl);
+      log.push(`Schedule status: ${schedRes.status}`);
 
-      const teamRes = await fetch(
-        `https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/teams/${teamId}`
-      );
+      if (schedRes.ok) {
+        const schedData = await schedRes.json();
+        const teamInfo = schedData?.team || {};
+        const recordSummary = teamInfo.recordSummary;
+        if (recordSummary) {
+          records[school] = recordSummary;
+          log.push(`Result (schedule): ${recordSummary}`);
+          return;
+        }
+        log.push(`Schedule had no recordSummary`);
+      }
 
-      log.push(`Team fetch status: ${teamRes.status}`);
+      // Fallback: try the /teams endpoint directly
+      const teamUrl = `${BASE}/teams/${teamId}`;
+      log.push(`Fallback fetching team: ${teamUrl}`);
+
+      const teamRes = await fetch(teamUrl);
+      log.push(`Team status: ${teamRes.status}`);
       if (!teamRes.ok) { records[school] = null; return; }
 
       const teamData = await teamRes.json();
       const t = teamData?.team || teamData;
 
-      // Log raw record fields
-      log.push(`record.items[0].summary: ${t?.record?.items?.[0]?.summary ?? "undefined"}`);
-      log.push(`record (string?): ${typeof t?.record === "string" ? t.record : "not a string"}`);
-      log.push(`recordSummary: ${t?.recordSummary ?? "undefined"}`);
-
       if (t?.record?.items?.[0]?.summary) {
         records[school] = t.record.items[0].summary;
-        log.push(`Result: ${records[school]}`);
+        log.push(`Result (team record): ${records[school]}`);
       } else if (typeof t?.record === "string") {
         records[school] = t.record;
-        log.push(`Result (string): ${records[school]}`);
+        log.push(`Result (team string): ${records[school]}`);
       } else if (t?.recordSummary) {
         records[school] = t.recordSummary;
-        log.push(`Result (summary): ${records[school]}`);
+        log.push(`Result (team summary): ${records[school]}`);
       } else {
         records[school] = null;
         log.push("Result: null (no record fields found)");
