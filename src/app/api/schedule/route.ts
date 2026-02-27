@@ -13,6 +13,7 @@ function extractEspnIdFromLogo(logoUrl: string | null | undefined): string | nul
 
 export async function GET(request: NextRequest) {
   const school = request.nextUrl.searchParams.get("school");
+  const debug = request.nextUrl.searchParams.get("debug") === "1";
   if (!school) {
     return NextResponse.json({ record: null, recentGames: [], upcoming: [] });
   }
@@ -105,6 +106,20 @@ export async function GET(request: NextRequest) {
     const scheduleData = await scheduleRes.json();
     const events: any[] = scheduleData?.events || [];
     console.log(`[schedule] "${school}": espnRecord=${espnRecord}, events=${events.length}`);
+
+    // Debug mode: return raw ESPN response structure
+    if (debug) {
+      return NextResponse.json({
+        _debug: true,
+        teamId,
+        year,
+        scheduleTopKeys: Object.keys(scheduleData),
+        eventsCount: events.length,
+        firstEvent: events[0] ? JSON.stringify(events[0]).slice(0, 500) : null,
+        scheduleTeam: scheduleData?.team ? { id: scheduleData.team.id, displayName: scheduleData.team.displayName, record: scheduleData.team.record, recordSummary: scheduleData.team.recordSummary } : null,
+        espnRecord,
+      });
+    }
 
     // Also try to get record from schedule response
     if (!espnRecord) {
