@@ -61,13 +61,8 @@ export async function GET(request: NextRequest) {
       return numA - numB;
     });
 
-    // D1 baseball has a 34-man active roster limit; ESPN often returns
-    // 50-100+ players (walk-ons, practice squad, etc.). Cap at 34.
-    const D1_ROSTER_LIMIT = 34;
-    const trimmedRoster = roster.slice(0, D1_ROSTER_LIMIT);
-
     return NextResponse.json(
-      { roster: trimmedRoster },
+      { roster },
       { headers: { "Cache-Control": "public, s-maxage=3600" } }
     );
   } catch (err) {
