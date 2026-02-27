@@ -61,7 +61,7 @@ export async function GET(request: NextRequest) {
       } else {
         // Fallback: search by name
         const searchUrl = `https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/teams?limit=3&search=${encodeURIComponent(entry.name)}`;
-        const searchRes = await fetch(searchUrl, { cache: "no-store", signal: AbortSignal.timeout(8000) });
+        const searchRes = await fetch(searchUrl, { cache: "no-store" });
         if (!searchRes.ok) return;
 
         const searchData = await searchRes.json();
@@ -87,11 +87,11 @@ export async function GET(request: NextRequest) {
       const [teamRes, scheduleRes] = await Promise.all([
         fetch(
           `https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/teams/${teamId}`,
-          { cache: "no-store", signal: AbortSignal.timeout(8000) }
+          { cache: "no-store" }
         ),
         fetch(
           `https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/teams/${teamId}/schedule?season=${year}`,
-          { cache: "no-store", signal: AbortSignal.timeout(8000) }
+          { cache: "no-store" }
         ),
       ]);
 

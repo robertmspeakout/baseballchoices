@@ -30,7 +30,7 @@ function getSchools(): any[] {
 async function findEspnTeamId(schoolName: string): Promise<{ teamId: string; teamLogo: string } | null> {
   try {
     const searchUrl = `https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/teams?limit=3&search=${encodeURIComponent(schoolName)}`;
-    const res = await fetch(searchUrl, { cache: "no-store", signal: AbortSignal.timeout(8000) });
+    const res = await fetch(searchUrl, { cache: "no-store" });
     if (!res.ok) return null;
 
     const data = await res.json();
@@ -137,7 +137,7 @@ export async function GET() {
           const year = new Date().getFullYear();
           const scheduleRes = await fetch(
             `https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/teams/${espn.teamId}/schedule?season=${year}`,
-            { cache: "no-store", signal: AbortSignal.timeout(8000) }
+            { cache: "no-store" }
           );
 
           // --- Check schedule for game results and today's games ---
