@@ -65,13 +65,14 @@ export async function PUT(request: NextRequest) {
   }
 
   // Role change permissions
+  const hasOwnerPrivileges = currentUser.role === "OWNER" || currentUser.email === AUTHORIZED_EMAIL;
   if (role !== undefined && role !== targetUser.role) {
-    // Only OWNER can set OWNER role
-    if (role === "OWNER" && currentUser.role !== "OWNER") {
+    // Only OWNER (or authorized email) can set OWNER role
+    if (role === "OWNER" && !hasOwnerPrivileges) {
       return NextResponse.json({ error: "Only an Owner can grant Owner status" }, { status: 403 });
     }
-    // ADMIN can only set USER or ADMIN
-    if (currentUser.role === "ADMIN" && (role === "OWNER" || targetUser.role === "OWNER")) {
+    // ADMIN can only set USER or ADMIN (but authorized email has full access)
+    if (!hasOwnerPrivileges && currentUser.role === "ADMIN" && (role === "OWNER" || targetUser.role === "OWNER")) {
       return NextResponse.json({ error: "Admins cannot modify Owner accounts" }, { status: 403 });
     }
   }
