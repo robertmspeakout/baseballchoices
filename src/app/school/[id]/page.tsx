@@ -312,14 +312,18 @@ function SchoolPageContent({ id }: { id: string }) {
     if (!schoolData) return;
     setScheduleLoading(true);
     const espnId = schoolData.logo_url?.match(/espncdn\.com\/.*\/(\d+)\.\w+$/)?.[1] || "";
-    fetch(`/api/schedule?school=${encodeURIComponent(schoolData.name)}${espnId ? `&espn_id=${espnId}` : ""}`)
+    const scheduleUrl = `/api/schedule?school=${encodeURIComponent(schoolData.name)}${espnId ? `&espn_id=${espnId}` : ""}`;
+    console.log("[schedule-client] fetching:", scheduleUrl);
+    fetch(scheduleUrl)
       .then((r) => r.json())
       .then((data) => {
+        console.log("[schedule-client] response:", JSON.stringify(data).slice(0, 200));
         setCurrentRecord(data.record || null);
         setRecentGames(data.recentGames || []);
         setUpcomingGames(data.upcoming || []);
       })
-      .catch(() => {
+      .catch((err) => {
+        console.error("[schedule-client] fetch error:", err);
         setCurrentRecord(null);
         setRecentGames([]);
         setUpcomingGames([]);

@@ -69,6 +69,7 @@ export async function GET(request: NextRequest) {
 
     // Step 2: Fetch team info (for record) and schedule in parallel
     const year = new Date().getFullYear();
+    console.log(`[schedule] Fetching for "${school}" teamId=${teamId} year=${year}`);
     const [teamRes, scheduleRes] = await Promise.all([
       fetch(
         `https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/teams/${teamId}`,
@@ -79,6 +80,7 @@ export async function GET(request: NextRequest) {
         { cache: "no-store", signal: AbortSignal.timeout(8000) }
       ),
     ]);
+    console.log(`[schedule] teamRes.ok=${teamRes.ok} (${teamRes.status}), scheduleRes.ok=${scheduleRes.ok} (${scheduleRes.status})`);
 
     // Extract record from team endpoint
     let espnRecord: string | null = null;
@@ -102,6 +104,7 @@ export async function GET(request: NextRequest) {
 
     const scheduleData = await scheduleRes.json();
     const events: any[] = scheduleData?.events || [];
+    console.log(`[schedule] "${school}": espnRecord=${espnRecord}, events=${events.length}`);
 
     // Also try to get record from schedule response
     if (!espnRecord) {
@@ -217,6 +220,7 @@ export async function GET(request: NextRequest) {
     const recentGames = completed.slice(-5).reverse();
     const next5 = upcoming.slice(0, 5);
 
+    console.log(`[schedule] "${school}": returning record=${espnRecord}, recentGames=${recentGames.length}, upcoming=${next5.length}`);
     return NextResponse.json({
       record: espnRecord,
       recentGames,
