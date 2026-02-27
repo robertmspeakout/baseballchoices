@@ -118,7 +118,7 @@ export default function SchoolPage({
         <div className="animate-spin rounded-full h-10 w-10 border-4 border-blue-200 border-t-blue-600" />
       </div>
     }>
-      <SchoolPageContent id={id} />
+      <SchoolPageContent key={id} id={id} />
     </Suspense>
   );
 }
@@ -308,10 +308,8 @@ function SchoolPageContent({ id }: { id: string }) {
       .finally(() => setNewsLoading(false));
   }, [newsOpen, schoolData]);
 
-  const scheduleFetched = useRef(false);
   useEffect(() => {
-    if (!scheduleOpen || !schoolData || scheduleFetched.current) return;
-    scheduleFetched.current = true;
+    if (!schoolData) return;
     setScheduleLoading(true);
     const espnId = schoolData.logo_url?.match(/espncdn\.com\/.*\/(\d+)\.\w+$/)?.[1] || "";
     fetch(`/api/schedule?school=${encodeURIComponent(schoolData.name)}${espnId ? `&espn_id=${espnId}` : ""}`)
@@ -327,7 +325,7 @@ function SchoolPageContent({ id }: { id: string }) {
         setUpcomingGames([]);
       })
       .finally(() => setScheduleLoading(false));
-  }, [scheduleOpen, schoolData]);
+  }, [schoolData]);
 
   const academicsFetched = useRef(false);
   useEffect(() => {
