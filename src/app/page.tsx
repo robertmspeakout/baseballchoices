@@ -116,7 +116,7 @@ function VIPCarousel({ schools, batchRecords }: { schools: (School & { priority:
   if (vipSchools.length === 0) return null;
 
   return (
-    <div className="mb-8">
+    <div className="mb-2">
       <div className="relative">
         {/* Left arrow */}
         {canScrollLeft && (

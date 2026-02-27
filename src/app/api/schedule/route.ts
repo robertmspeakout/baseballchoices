@@ -100,8 +100,26 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ record: espnRecord, recentGames: [], upcoming: [] });
     }
 
-    const scheduleData = await scheduleRes.json();
-    const events: any[] = scheduleData?.events || [];
+    let scheduleData = await scheduleRes.json();
+    let events: any[] = scheduleData?.events || [];
+
+    // Fallback: if current year has no events, try previous year
+    if (events.length === 0) {
+      try {
+        const fallbackRes = await fetch(
+          `https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/teams/${teamId}/schedule?season=${year - 1}`,
+          { cache: "no-store", signal: AbortSignal.timeout(8000) }
+        );
+        if (fallbackRes.ok) {
+          const fallbackData = await fallbackRes.json();
+          const fallbackEvents = fallbackData?.events || [];
+          if (fallbackEvents.length > 0) {
+            scheduleData = fallbackData;
+            events = fallbackEvents;
+          }
+        }
+      } catch { /* ignore fallback failure */ }
+    }
 
     // Also try to get record from schedule response
     if (!espnRecord) {
