@@ -279,8 +279,8 @@ export default function AIScoutIntake({
 
   return (
     <div className="max-w-lg mx-auto w-full py-2 px-1">
-      <div className="text-center mb-6">
-        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center mx-auto mb-3">
+      <div className="flex items-center gap-3 mb-6">
+        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center shrink-0">
           <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <circle cx="12" cy="12" r="10" strokeWidth={2} />
             <circle cx="12" cy="12" r="6" strokeWidth={2} />
@@ -288,14 +288,16 @@ export default function AIScoutIntake({
             <path strokeLinecap="round" strokeWidth={2} d="M12 2v4M12 18v4M2 12h4M18 12h4" />
           </svg>
         </div>
-        <h2 className="text-lg font-black text-gray-900">
-          {isEditing ? "Update Your Preferences" : "AI Scout: Find Your Fit"}
-        </h2>
-        {isEditing && (
-          <p className="text-sm text-gray-500 mt-1">
-            Adjust your answers and we&apos;ll find updated matches
-          </p>
-        )}
+        <div>
+          <h2 className="text-lg font-black text-gray-900">
+            {isEditing ? "Update Your Preferences" : "AI Scout: Find Your Fit"}
+          </h2>
+          {isEditing && (
+            <p className="text-sm text-gray-500">
+              Adjust your answers and we&apos;ll find updated matches
+            </p>
+          )}
+        </div>
       </div>
 
       <div className="space-y-6">
