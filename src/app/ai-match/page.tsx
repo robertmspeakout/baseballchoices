@@ -404,6 +404,12 @@ function AIMatchContent() {
     if (!done && !hasSavedChat) {
       setShowIntake(true);
     }
+    // Also show intake form when intake was done but session chat is gone
+    // (e.g. new tab, browser restart) — so the user can re-run the AI
+    // instead of seeing an empty page with just an "Edit" button
+    if (done && !hasSavedChat) {
+      setShowIntake(true);
+    }
     // Load saved intake answers for pre-filling the edit form
     if (done) {
       const saved = loadSavedIntakeAnswers();
@@ -854,8 +860,8 @@ function AIMatchContent() {
                         </div>
                       )}
 
-                      {/* Edit profile button when there are no saved results yet (but intake was done) */}
-                      {!savedSnippet && (
+                      {/* Edit profile button when there are results but no active conversation */}
+                      {!savedSnippet && sortedResults.length > 0 && (
                         <div className="max-w-lg mx-auto w-full">
                           <button
                             onClick={() => setShowIntake(true)}
