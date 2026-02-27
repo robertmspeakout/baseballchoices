@@ -66,7 +66,7 @@ const EDITABLE_FIELDS: { key: string; label: string; type: "text" | "number" | "
   { key: "head_coach_record", label: "Coach Career Record", type: "text" },
   { key: "assistant_coach_name", label: "Assistant Coach", type: "text" },
   { key: "assistant_coach_email", label: "Asst. Coach Email", type: "text" },
-  { key: "last_season_record", label: "Last Season Record", type: "text" },
+  { key: "last_season_record", label: "2025 Record", type: "text" },
   { key: "mlb_draft_picks", label: "MLB Draft Picks", type: "number" },
   { key: "cws_appearances", label: "CWS Appearances", type: "number" },
   { key: "ncaa_regionals", label: "NCAA Regionals", type: "number" },
@@ -226,7 +226,7 @@ export default function AdminPage() {
                   <th className="px-3 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Natl Ranking</th>
                   <th className="px-3 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Head Coach</th>
                   <th className="px-3 py-3 text-left text-xs font-semibold text-gray-600 uppercase">State</th>
-                  <th className="px-3 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Record</th>
+                  <th className="px-3 py-3 text-left text-xs font-semibold text-gray-600 uppercase">2025 Record</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
