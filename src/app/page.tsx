@@ -773,7 +773,7 @@ export default function Home() {
 
         {/* VIP Cards Carousel — only on mylist tab (hidden during search) */}
         {activeTab === "mylist" && !filters.search && sorted.some((s) => s.priority >= 4) && (
-          <h3 className="text-base font-bold text-gray-700 mt-2">My Four & Five Star Programs</h3>
+          <h3 className="text-base font-bold text-gray-700 -mt-2">My Four & Five Star Programs</h3>
         )}
         {activeTab === "mylist" && !filters.search && <VIPCarousel schools={sorted} batchRecords={vipRecords} />}
   {/* Live Ticker — only on My Top Programs tab */}

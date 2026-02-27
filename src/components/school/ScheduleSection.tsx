@@ -15,6 +15,7 @@ interface ScheduleGame {
 
 interface ScheduleSectionProps {
   schoolName: string;
+  logoUrl?: string;
 }
 
 function formatGameDate(dateStr: string): string {
@@ -31,7 +32,7 @@ function formatGameTime(dateStr: string): string {
   } catch { return "TBD"; }
 }
 
-export default function ScheduleSection({ schoolName }: ScheduleSectionProps) {
+export default function ScheduleSection({ schoolName, logoUrl }: ScheduleSectionProps) {
   const [scheduleOpen, setScheduleOpen] = useState(false);
   const [currentRecord, setCurrentRecord] = useState<string | null>(null);
   const [recentGames, setRecentGames] = useState<ScheduleGame[]>([]);
@@ -40,7 +41,8 @@ export default function ScheduleSection({ schoolName }: ScheduleSectionProps) {
 
   useEffect(() => {
     setScheduleLoading(true);
-    fetch(`/api/schedule?school=${encodeURIComponent(schoolName)}`)
+    const espnId = logoUrl?.match(/espncdn\.com\/.*\/(\d+)\.\w+$/)?.[1] || "";
+    fetch(`/api/schedule?school=${encodeURIComponent(schoolName)}${espnId ? `&espn_id=${espnId}` : ""}`)
       .then((r) => r.json())
       .then((data) => {
         setCurrentRecord(data.record || null);
@@ -53,7 +55,7 @@ export default function ScheduleSection({ schoolName }: ScheduleSectionProps) {
         setUpcomingGames([]);
       })
       .finally(() => setScheduleLoading(false));
-  }, [schoolName]);
+  }, [schoolName, logoUrl]);
 
   return (
     <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
