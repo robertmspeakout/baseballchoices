@@ -56,7 +56,11 @@
     "title": "Why We Built ExtraBase",
     "paragraphs": [
       "We are Robert, Sarah and Jack (the ball player). As parents, we found oursleves sitting at our kitchen table in Utah with a talented and stressed out kid, recruiting services promising us the moon, a phone full of texts, an inbox full of invites, and absolutely no system to manage any of it. We tried building a spreadsheet, but it wasn't enough. We had a recruit who was overwhelmed and a process that felt like it was controlling us instead of the other way around.",
-      "We looked for a tool that could help us organize programs, track our son's favorite schools, and do it in a way that was simple and fun. We couldn't find one. So we built it...for all of our sanity."
-    ]
+      "We looked for a tool that could help us and honestly they were all more complicated than the recruiting process itself. So we built our own."
+    ],
+    "whatWeDontDo": {
+      "title": "What We Don't Do",
+      "text": "The recruiting journey should be fun and exciting for kids and their families, but all too often it is also full of people who make promises they can't keep, so-called recruiting consultants who offer shortcuts to nowhere for a price, and apps that buy and sell your information as currency. We don't and won't do any of that. We make no promises that you or your kid will play college ball, we don't believe in shortcuts, and we'll NEVER sell your information to anyone."
+    }
   }
 }
