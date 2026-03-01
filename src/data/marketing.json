@@ -7,9 +7,9 @@
   },
   "statsBar": {
     "items": [
-      { "value": "900+", "label": "Programs" },
+      { "value": "1000+", "label": "Programs" },
       { "value": "D1, D2, D3 & JUCO" },
-      { "value": "AI-Powered", "label": "Matching" }
+      { "value": "AI-Matching" }
     ]
   },
   "howItWorks": {
