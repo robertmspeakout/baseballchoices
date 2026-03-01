@@ -49,11 +49,7 @@ interface Notification {
 }
 
 const NOTIFICATION_TYPE_ICONS: Record<string, string> = {
-  game_result: "trophy",
-  game_today: "play",
   coach_change: "person",
-  championship: "star",
-  conference_change: "swap",
   ai_messages_low: "chat",
   trial_expiring: "clock",
 };
@@ -181,25 +177,6 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
   const getTypeIcon = (type: string) => {
     const iconType = NOTIFICATION_TYPE_ICONS[type] || "bell";
     switch (iconType) {
-      case "trophy":
-        return (
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-        );
-      case "play":
-        return (
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-        );
-      case "star":
-        return (
-          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-          </svg>
-        );
       case "chat":
         return (
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -223,11 +200,7 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
 
   const getTypeBgColor = (type: string) => {
     switch (type) {
-      case "game_result": return "bg-green-100 text-green-600";
-      case "game_today": return "bg-blue-100 text-blue-600";
-      case "championship": return "bg-yellow-100 text-yellow-600";
       case "coach_change": return "bg-orange-100 text-orange-600";
-      case "conference_change": return "bg-indigo-100 text-indigo-600";
       case "ai_messages_low": return "bg-amber-100 text-amber-600";
       case "trial_expiring": return "bg-red-100 text-red-600";
       default: return "bg-gray-100 text-gray-600";
