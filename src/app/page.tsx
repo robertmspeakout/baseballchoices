@@ -733,6 +733,16 @@ export default function Home() {
               ))}
             </div>
           </section>
+
+          {/* What We Don't Do */}
+          <section className="bg-gray-100 py-12 sm:py-16">
+            <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+              <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mb-4">What We Don&apos;t Do</h2>
+              <p className="text-base text-gray-600 leading-relaxed">
+                The recruiting journey should be fun and exciting for kids and their families, but all too often it is also full of people who make promises they can&apos;t keep, so-called recruiting consultants who offer shortcuts to nowhere for a price, and apps that buy and sell your information as currency. We don&apos;t and won&apos;t do any of that. We make no promises that you or your kid will play college ball, we don&apos;t believe in shortcuts, and we&apos;ll NEVER sell your information to anyone.
+              </p>
+            </div>
+          </section>
         </>
       )}
 
