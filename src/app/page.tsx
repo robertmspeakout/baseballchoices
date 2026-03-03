@@ -793,11 +793,10 @@ export default function Home() {
         {activeTab === "mylist" && !filters.search && isLoggedIn && sorted.length === 0 && (
           <div className="py-4 sm:py-8">
             {/* Stadium hero with background image */}
-            {/* To use a real photo: save an image of Charles Schwab Field (Omaha) to /public/images/omaha-stadium.jpg */}
             <div
               className="relative rounded-2xl overflow-hidden"
               style={{
-                backgroundImage: "url('/images/omaha-stadium.jpg')",
+                backgroundImage: "url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Inside_TD_Ameritrade_Park_Omaha.jpg/1280px-Inside_TD_Ameritrade_Park_Omaha.jpg')",
                 backgroundSize: "cover",
                 backgroundPosition: "center 30%",
               }}
