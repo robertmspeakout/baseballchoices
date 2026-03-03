@@ -18,7 +18,7 @@
       {
         "emoji": "⚾",
         "title": "Build Your Profile",
-        "description": "Enter your stats, academics, position, and preferred regions. Takes less than 5 minutes."
+        "description": "Tell us a little bit about yourself. Takes less than two minutes."
       },
       {
        "emoji": "⭐⭐⭐",
@@ -28,12 +28,12 @@
       {
          "emoji": "🤖",
         "title": "Get AI Matches",
-        "description": "Our AI matches you with baseball programs that fit your preferences."
+        "description": "Need help finding your dream school? Our AI matches you with baseball programs that fit you and your goals."
       }
     ]
   },
   "testimonial": {
-    "quote": "It was really hard to keep track of everything that was going on during my recruiting process. My parents and I couldn't keep up. I wish my dad had made this for me before I committed!",
+    "quote": "It was really hard to keep track of everything and there are so many schools out there - it's hard to know where to start. I wish my dad had made this for me before I committed!",
     "attribution": "Jack, Class of 2027"
   },
   "pricing": {
@@ -55,8 +55,8 @@
   "whyWeBuiltThis": {
     "title": "Why We Built ExtraBase",
     "paragraphs": [
-      "We are Robert, Sarah and Jack (the ball player). As parents, we found oursleves sitting at our kitchen table in Utah with a talented and stressed out kid, recruiting services promising us the moon, a phone full of texts, an inbox full of invites, and absolutely no system to manage any of it. We tried building a spreadsheet, but it wasn't enough. The process felt like it was controlling us instead of the other way around.",
-      "We looked for a tool that could help us and honestly they were all more complicated than the recruiting process itself. So we built our own."
+      "We are Robert, Sarah and Jack (the ball player). As parents, we found ourselves sitting at our kitchen table in Utah with a talented but stressed out kid, recruiting services promising us the moon, an inbox full of invites, and absolutely no clue how to manage any of it. We tried building a spreadsheet, but it wasn't enough. The process felt like it was controlling us instead of the other way around.",
+      "We looked for a tool that could help us, but they were all more complicated than the recruiting process itself. So we built our own."
     ],
     "whatWeDontDo": {
       "title": "What We Won't Do",
