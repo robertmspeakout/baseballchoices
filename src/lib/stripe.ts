@@ -22,6 +22,6 @@ export function getStripe(): Stripe {
  * Stripe Price IDs — set these in your .env.local (and Vercel) after
  * creating products in the Stripe Dashboard.
  *
- * STRIPE_PRICE_ANNUAL  = the $19.99/year recurring price
+ * STRIPE_PRICE_ANNUAL  = the $24.99/year recurring price
  */
 export const STRIPE_PRICE_ANNUAL = process.env.STRIPE_PRICE_ANNUAL || "";

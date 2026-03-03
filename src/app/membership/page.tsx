@@ -134,7 +134,7 @@ function MembershipContent() {
 
               <div className="bg-white rounded-2xl border-2 border-[#CC0000] p-6 shadow-lg">
                 <div className="flex items-baseline gap-2 mb-2">
-                  <span className="text-3xl font-black text-gray-900">$19.99</span>
+                  <span className="text-3xl font-black text-gray-900">$24.99</span>
                   <span className="text-sm text-gray-500">/year</span>
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 mb-4">ExtraBase Full Access</h3>
