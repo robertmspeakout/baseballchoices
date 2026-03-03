@@ -927,13 +927,13 @@ export default function Home() {
                 <div className="bg-white rounded-2xl shadow-xl border border-gray-200 p-6 sm:p-8 text-center max-w-md w-full">
                   <div className="inline-flex items-center gap-1.5 bg-yellow-50 rounded-full px-3 py-1 mb-3">
                     <svg className="w-4 h-4 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                    <span className="text-xs font-semibold text-yellow-700 uppercase tracking-wide">Your Top Programs</span>
+                    <span className="text-xs font-semibold text-yellow-700 uppercase tracking-wide">You're Up To Bat!</span>
                   </div>
                   <h3 className="text-lg sm:text-xl font-black text-gray-900 mb-2">
-                    {playerFirstName ? `${playerFirstName}, your favorites will live here` : "Your favorites will live here"}
+                    {playerFirstName ? `${playerFirstName}, your favorites will live here!` : "Your favorites will live here!"}
                   </h3>
                   <p className="text-sm text-gray-500 mb-5">
-                    Browse {schoolCount || allSchools.length}+ programs, tap the stars to rate them, and your personalized list builds itself right here.
+                    When you're ready, browse {schoolCount || allSchools.length}+ programs, tap the stars to rate them, and your list builds itself right here.
                   </p>
                   <div className="flex flex-col sm:flex-row items-center justify-center gap-2">
                     <button onClick={() => handleTabChange("D1")} className="w-full sm:w-auto px-5 py-2.5 bg-[#CC0000] text-white rounded-xl text-sm font-bold hover:bg-red-700 transition-colors">
