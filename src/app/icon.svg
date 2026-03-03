@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Home plate shape: pentagon -->
+  <polygon points="128,64 384,64 448,256 256,448 64,256" fill="#CC0000" stroke="#8B0000" stroke-width="16" stroke-linejoin="round"/>
+  <!-- Inner plate outline -->
+  <polygon points="160,104 352,104 404,256 256,400 108,256" fill="#FFFFFF" stroke="#E5E5E5" stroke-width="6" stroke-linejoin="round"/>
+  <!-- EB text -->
+  <text x="256" y="272" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="160" fill="#CC0000" letter-spacing="-4">EB</text>
+</svg>
