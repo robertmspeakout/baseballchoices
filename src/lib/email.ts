@@ -1,6 +1,6 @@
 import { Resend } from "resend";
 
-const FROM_EMAIL = process.env.EMAIL_FROM || "ExtraBase <noreply@extrabase.com>";
+const FROM_EMAIL = process.env.EMAIL_FROM || "ExtraBase <noreply@extrabase.app>";
 
 function getResend() {
   const key = process.env.RESEND_API_KEY;
