@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
-import { stripe } from "@/lib/stripe";
+import { getStripe } from "@/lib/stripe";
 
 export async function POST() {
   const session = await auth();
@@ -23,7 +23,7 @@ export async function POST() {
 
   const baseUrl = process.env.NEXTAUTH_URL || "https://extrabase.app";
 
-  const portalSession = await stripe.billingPortal.sessions.create({
+  const portalSession = await getStripe().billingPortal.sessions.create({
     customer: user.stripeCustomerId,
     return_url: `${baseUrl}/auth/account`,
   });

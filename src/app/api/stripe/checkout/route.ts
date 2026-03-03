@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
-import { stripe, STRIPE_PRICE_ANNUAL } from "@/lib/stripe";
+import { getStripe, STRIPE_PRICE_ANNUAL } from "@/lib/stripe";
 
 export async function POST() {
   const session = await auth();
@@ -28,7 +28,7 @@ export async function POST() {
   let stripeCustomerId = user.stripeCustomerId;
 
   if (!stripeCustomerId) {
-    const customer = await stripe.customers.create({
+    const customer = await getStripe().customers.create({
       email: user.email,
       name: `${user.firstName} ${user.lastName}`,
       metadata: { userId: user.id },
@@ -43,7 +43,7 @@ export async function POST() {
 
   const baseUrl = process.env.NEXTAUTH_URL || "https://extrabase.app";
 
-  const checkoutSession = await stripe.checkout.sessions.create({
+  const checkoutSession = await getStripe().checkout.sessions.create({
     customer: stripeCustomerId,
     mode: "subscription",
     line_items: [{ price: STRIPE_PRICE_ANNUAL, quantity: 1 }],
