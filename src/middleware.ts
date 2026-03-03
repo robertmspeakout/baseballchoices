@@ -1,24 +1,37 @@
+import NextAuth from "next-auth";
+import { authConfig } from "@/lib/auth.config";
 import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
 
-export function middleware(request: NextRequest) {
-  // Check for session token cookie (set by NextAuth)
-  const token = request.cookies.get("authjs.session-token") || request.cookies.get("__Secure-authjs.session-token");
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
-  const { pathname } = request.nextUrl;
+const { auth } = NextAuth(authConfig);
 
-  // Admin routes require auth (role check happens in the page/API)
-  if (pathname.startsWith("/admin/users")) {
-    if (!token) {
-      const loginUrl = new URL("/auth/login", request.url);
+export default auth((req) => {
+  const { pathname } = req.nextUrl;
+
+  // All /admin routes require an authenticated OWNER
+  if (pathname.startsWith("/admin") || pathname.startsWith("/api/admin")) {
+    if (!req.auth) {
+      if (pathname.startsWith("/api/")) {
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+      }
+      const loginUrl = new URL("/auth/login", req.url);
       loginUrl.searchParams.set("callbackUrl", pathname);
       return NextResponse.redirect(loginUrl);
+    }
+
+    const role = (req.auth.user as any)?.role;
+    if (role !== "OWNER") {
+      if (pathname.startsWith("/api/")) {
+        return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+      }
+      return NextResponse.redirect(new URL("/", req.url));
     }
   }
 
   return NextResponse.next();
-}
+});
 
 export const config = {
-  matcher: ["/admin/users/:path*"],
+  matcher: ["/admin/:path*", "/api/admin/:path*"],
 };
