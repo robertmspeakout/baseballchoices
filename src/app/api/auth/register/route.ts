@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { hashPassword } from "@/lib/password";
 import { prisma } from "@/lib/prisma";
 import { rateLimit } from "@/lib/rate-limit";
+import { sendVerificationEmail } from "@/lib/email";
 
 const registerLimiter = rateLimit({
   name: "register",
@@ -66,15 +67,23 @@ export async function POST(request: NextRequest) {
       include: { profile: true },
     });
 
-    // TODO: Enable email verification once domain is verified with Resend
-    // Generate verification code, store token, and send email
-    // See: src/lib/email.ts, src/app/api/auth/verify/route.ts, src/app/api/auth/resend-code/route.ts
+    // Send email verification code
+    const code = Math.floor(100000 + Math.random() * 900000).toString();
+    await prisma.verificationToken.create({
+      data: {
+        email: user.email,
+        code,
+        expiresAt: new Date(Date.now() + 15 * 60 * 1000), // 15 minutes
+      },
+    });
+    await sendVerificationEmail(user.email, code, user.firstName);
 
     return NextResponse.json({
       id: user.id,
       email: user.email,
       firstName: user.firstName,
       role: user.role,
+      requiresVerification: true,
     });
   } catch (error) {
     console.error("Registration error:", error);
