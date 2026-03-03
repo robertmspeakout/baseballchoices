@@ -185,7 +185,7 @@ export default function AccountPage() {
                 </div>
               </div>
 
-              {/* Payment (placeholder) */}
+              {/* Payment & Billing */}
               <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
                 <div className="px-5 py-4 border-b border-gray-100">
                   <h2 className="text-base font-bold text-gray-900 flex items-center gap-2">
@@ -202,17 +202,51 @@ export default function AccountPage() {
                         d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
                       />
                     </svg>
-                    Payment Information
+                    Payment & Billing
                   </h2>
                 </div>
-                <div className="px-5 py-6 text-center">
-                  <p className="text-sm text-gray-400">
-                    No payment method on file.
-                  </p>
-                  <p className="text-xs text-gray-400 mt-1">
-                    Payment options will be available when you upgrade your membership.
-                  </p>
-                </div>
+                {account.membershipActive ? (
+                  <div className="px-5 py-4 space-y-3">
+                    <div className="flex items-center gap-2">
+                      <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-green-50 border border-green-200 rounded-full text-xs font-bold text-green-700">
+                        <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
+                        Subscription Active
+                      </span>
+                      <span className="text-xs text-gray-400">$19.99/year</span>
+                    </div>
+                    <button
+                      onClick={async () => {
+                        try {
+                          const res = await fetch("/api/stripe/portal", { method: "POST" });
+                          const data = await res.json();
+                          if (data.url) window.location.href = data.url;
+                        } catch {
+                          // Portal not available — may not have stripeCustomerId yet
+                        }
+                      }}
+                      className="w-full px-4 py-2.5 text-sm font-semibold text-gray-700 bg-gray-100 rounded-xl hover:bg-gray-200 transition-colors flex items-center justify-center gap-2"
+                    >
+                      <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.573-1.066z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg>
+                      Manage Billing
+                    </button>
+                    <p className="text-[11px] text-gray-400 text-center">Update payment method, view invoices, or cancel via Stripe</p>
+                  </div>
+                ) : (
+                  <div className="px-5 py-6 text-center">
+                    <p className="text-sm text-gray-500 mb-3">
+                      No active subscription.
+                    </p>
+                    <Link
+                      href="/membership"
+                      className="inline-block px-5 py-2.5 bg-[#CC0000] text-white rounded-xl text-sm font-bold hover:bg-red-700 transition-colors"
+                    >
+                      Subscribe Now
+                    </Link>
+                  </div>
+                )}
               </div>
 
               {/* Preferences */}

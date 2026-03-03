@@ -1,34 +1,47 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 
 export default function MembershipPage() {
   const { data: session, update: updateSession } = useSession();
-  const [step, setStep] = useState<"plan" | "payment" | "confirmation">("plan");
-  const [processing, setProcessing] = useState(false);
+  const searchParams = useSearchParams();
+  const [redirecting, setRedirecting] = useState(false);
+  const [error, setError] = useState("");
 
-  const handlePurchase = async () => {
-    setProcessing(true);
-    // Simulate payment processing
-    await new Promise(r => setTimeout(r, 2000));
+  // Check for return from Stripe
+  const success = searchParams.get("success") === "true";
+  const canceled = searchParams.get("canceled") === "true";
+
+  // If returned from successful checkout, refresh session to pick up membershipActive
+  useEffect(() => {
+    if (success) {
+      updateSession({ membershipActive: true });
+    }
+  }, [success, updateSession]);
+
+  const handleCheckout = async () => {
+    setRedirecting(true);
+    setError("");
 
     try {
-      const res = await fetch("/api/user/membership", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ action: "activate" }),
-      });
+      const res = await fetch("/api/stripe/checkout", { method: "POST" });
+      const data = await res.json();
 
-      if (res.ok) {
-        await updateSession({ membershipActive: true });
-        setStep("confirmation");
+      if (!res.ok) {
+        setError(data.error || "Something went wrong. Please try again.");
+        setRedirecting(false);
+        return;
       }
+
+      // Redirect to Stripe-hosted Checkout
+      window.location.href = data.url;
     } catch {
-      // Handle error
+      setError("Network error. Please check your connection.");
+      setRedirecting(false);
     }
-    setProcessing(false);
   };
 
   if (!session?.user) {
@@ -61,12 +74,51 @@ export default function MembershipPage() {
 
       <main className="flex-1 flex items-start justify-center px-4 py-8 sm:py-12">
         <div className="w-full max-w-md">
-          {step === "plan" && (
-            <>
-              <div className="text-center mb-8">
-                <h2 className="text-2xl font-black text-gray-900">Unlock Full Access</h2>
-                <p className="text-sm text-gray-500 mt-1">One plan. Everything included.</p>
+
+          {/* Success — returned from Stripe after payment */}
+          {success && (
+            <div className="text-center">
+              <div className="mx-auto w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-6">
+                <svg className="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
               </div>
+              <h2 className="text-2xl font-black text-gray-900 mb-2">Welcome to ExtraBase!</h2>
+              <p className="text-sm text-gray-500 mb-8">Your membership is now active. You have unlimited access to all features.</p>
+
+              <div className="space-y-3">
+                <Link href="/" className="block px-4 py-3 bg-[#CC0000] text-white rounded-xl text-sm font-bold hover:bg-red-700 transition-colors">
+                  Explore Programs
+                </Link>
+                <Link href="/ai-match" className="block px-4 py-3 border-2 border-gray-300 text-gray-700 rounded-xl text-sm font-bold hover:bg-gray-50 transition-colors">
+                  Try AI Scout
+                </Link>
+              </div>
+            </div>
+          )}
+
+          {/* Canceled — user backed out of Stripe */}
+          {canceled && (
+            <div className="text-center mb-8">
+              <div className="mx-auto w-14 h-14 bg-yellow-100 rounded-full flex items-center justify-center mb-4">
+                <svg className="w-7 h-7 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h2 className="text-xl font-black text-gray-900 mb-1">No worries!</h2>
+              <p className="text-sm text-gray-500 mb-6">Your checkout was canceled. You can try again whenever you&apos;re ready.</p>
+            </div>
+          )}
+
+          {/* Plan selection (default view, or shown again after cancel) */}
+          {!success && (
+            <>
+              {!canceled && (
+                <div className="text-center mb-8">
+                  <h2 className="text-2xl font-black text-gray-900">Unlock Full Access</h2>
+                  <p className="text-sm text-gray-500 mt-1">One plan. Everything included.</p>
+                </div>
+              )}
 
               <div className="bg-white rounded-2xl border-2 border-[#CC0000] p-6 shadow-lg">
                 <div className="flex items-baseline gap-2 mb-2">
@@ -98,82 +150,45 @@ export default function MembershipPage() {
                   ))}
                 </ul>
 
-                <button onClick={() => setStep("payment")} className="w-full px-4 py-3.5 bg-[#CC0000] text-white rounded-xl text-sm font-bold hover:bg-red-700 transition-colors shadow-sm">
-                  Start Free Trial & Subscribe
+                {error && (
+                  <div className="flex items-center gap-2 px-3 py-2 bg-red-50 border border-red-200 rounded-lg mb-4">
+                    <svg className="w-4 h-4 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <p className="text-xs text-red-700">{error}</p>
+                  </div>
+                )}
+
+                <button
+                  onClick={handleCheckout}
+                  disabled={redirecting}
+                  className="w-full px-4 py-3.5 bg-[#CC0000] text-white rounded-xl text-sm font-bold hover:bg-red-700 transition-colors shadow-sm disabled:opacity-50"
+                >
+                  {redirecting ? (
+                    <span className="flex items-center justify-center gap-2">
+                      <div className="animate-spin rounded-full h-4 w-4 border-2 border-white/30 border-t-white" />
+                      Redirecting to checkout...
+                    </span>
+                  ) : "Start Free Trial & Subscribe"}
                 </button>
+
+                <div className="flex items-center justify-center gap-2 mt-4">
+                  <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                  </svg>
+                  <p className="text-xs text-gray-400">Secure checkout powered by Stripe</p>
+                </div>
               </div>
+
+              {session.user.membershipActive && (
+                <div className="mt-6 bg-blue-50 border border-blue-200 rounded-xl px-4 py-3 text-center">
+                  <p className="text-sm text-blue-800 font-semibold">You already have an active membership!</p>
+                  <Link href="/auth/account" className="text-sm text-blue-600 underline mt-1 inline-block">
+                    Manage your account
+                  </Link>
+                </div>
+              )}
             </>
-          )}
-
-          {step === "payment" && (
-            <>
-              <div className="text-center mb-8">
-                <h2 className="text-2xl font-black text-gray-900">Payment Details</h2>
-                <p className="text-sm text-gray-500 mt-1">You won&apos;t be charged for 5 days</p>
-              </div>
-
-              <div className="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm">
-                <div className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Card Number</label>
-                    <input type="text" defaultValue="4242 4242 4242 4242" className="w-full px-4 py-3 border border-gray-300 rounded-xl text-sm text-gray-900 focus:ring-2 focus:ring-blue-500" />
-                  </div>
-                  <div className="grid grid-cols-2 gap-3">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">Expiry</label>
-                      <input type="text" defaultValue="12/28" className="w-full px-4 py-3 border border-gray-300 rounded-xl text-sm text-gray-900 focus:ring-2 focus:ring-blue-500" />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">CVC</label>
-                      <input type="text" defaultValue="123" className="w-full px-4 py-3 border border-gray-300 rounded-xl text-sm text-gray-900 focus:ring-2 focus:ring-blue-500" />
-                    </div>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Name on Card</label>
-                    <input type="text" defaultValue="Test User" className="w-full px-4 py-3 border border-gray-300 rounded-xl text-sm text-gray-900 focus:ring-2 focus:ring-blue-500" />
-                  </div>
-                </div>
-
-                <div className="bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 mt-4 mb-6">
-                  <p className="text-xs text-amber-700 font-medium">This is a demo payment form. No real transaction will be processed.</p>
-                </div>
-
-                <div className="flex gap-3">
-                  <button onClick={() => setStep("plan")} className="flex-1 px-4 py-3 border border-gray-300 text-gray-700 rounded-xl text-sm font-semibold hover:bg-gray-50">
-                    Back
-                  </button>
-                  <button onClick={handlePurchase} disabled={processing} className="flex-1 px-4 py-3 bg-[#CC0000] text-white rounded-xl text-sm font-bold hover:bg-red-700 transition-colors disabled:opacity-50">
-                    {processing ? (
-                      <span className="flex items-center justify-center gap-2">
-                        <div className="animate-spin rounded-full h-4 w-4 border-2 border-white/30 border-t-white" />
-                        Processing...
-                      </span>
-                    ) : "Pay $19.99/year"}
-                  </button>
-                </div>
-              </div>
-            </>
-          )}
-
-          {step === "confirmation" && (
-            <div className="text-center">
-              <div className="mx-auto w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-6">
-                <svg className="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <h2 className="text-2xl font-black text-gray-900 mb-2">Welcome to ExtraBase!</h2>
-              <p className="text-sm text-gray-500 mb-8">Your full membership is now active. You have unlimited access to all features.</p>
-
-              <div className="space-y-3">
-                <Link href="/" className="block px-4 py-3 bg-[#CC0000] text-white rounded-xl text-sm font-bold hover:bg-red-700 transition-colors">
-                  Explore Programs
-                </Link>
-                <Link href="/ai-match" className="block px-4 py-3 border-2 border-gray-300 text-gray-700 rounded-xl text-sm font-bold hover:bg-gray-50 transition-colors">
-                  Try AI Scout
-                </Link>
-              </div>
-            </div>
           )}
         </div>
       </main>
