@@ -1,11 +1,23 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { Suspense, useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 
 export default function MembershipPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-2 border-gray-300 border-t-gray-600" />
+      </div>
+    }>
+      <MembershipContent />
+    </Suspense>
+  );
+}
+
+function MembershipContent() {
   const { data: session, update: updateSession } = useSession();
   const searchParams = useSearchParams();
   const [redirecting, setRedirecting] = useState(false);

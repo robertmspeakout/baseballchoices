@@ -1,11 +1,21 @@
 import type { Metadata } from "next";
-import { Permanent_Marker } from "next/font/google";
+import localFont from "next/font/local";
 import Providers from "@/components/Providers";
 import "./globals.css";
 
-const permanentMarker = Permanent_Marker({
-  weight: "400",
-  subsets: ["latin"],
+const permanentMarker = localFont({
+  src: [
+    {
+      path: "../../public/fonts/PermanentMarker-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/PermanentMarker-Regular.woff",
+      weight: "400",
+      style: "normal",
+    },
+  ],
   display: "swap",
 });
 

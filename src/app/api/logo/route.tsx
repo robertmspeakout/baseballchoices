@@ -8,9 +8,9 @@ export async function GET(request: Request) {
   const size = parseInt(searchParams.get("size") || "200", 10);
   const tagline = searchParams.get("tagline") !== "false";
 
-  // Fetch Permanent Marker font from Google Fonts
+  // Load Permanent Marker font from local file
   const fontData = await fetch(
-    "https://fonts.gstatic.com/s/permanentmarker/v16/Fh4uPib9Iyv2ucM6pGQMWimMp004HaqIfrT5nlk.ttf"
+    new URL("../../../../public/fonts/PermanentMarker-Regular.woff", import.meta.url)
   ).then((res) => res.arrayBuffer());
 
   // Scale everything relative to the base size

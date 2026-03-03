@@ -7,7 +7,7 @@ export const contentType = "image/png";
 
 export default async function OGImage() {
   const fontData = await fetch(
-    "https://fonts.gstatic.com/s/permanentmarker/v16/Fh4uPib9Iyv2ucM6pGQMWimMp004HaqIfrT5nlk.ttf"
+    new URL("../../public/fonts/PermanentMarker-Regular.woff", import.meta.url)
   ).then((res) => res.arrayBuffer());
 
   return new ImageResponse(
