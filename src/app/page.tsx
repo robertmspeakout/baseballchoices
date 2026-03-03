@@ -625,7 +625,7 @@ export default function Home() {
               <p className="text-base sm:text-lg text-gray-400 mb-6 max-w-xl mx-auto">
                 {marketingContent.hero.subtext}
               </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-3">
                 <Link
                   href="/auth/register"
                   className="px-6 py-3 bg-[#CC0000] text-white rounded-xl text-sm font-bold hover:bg-red-700 transition-colors"
