@@ -38,11 +38,11 @@ export async function POST(request: NextRequest) {
     });
 
     if (existingUser) {
-      return NextResponse.json({ error: "An account with this email already exists" }, { status: 409 });
+      return NextResponse.json({ error: "An account with this email already exists. Please sign in or reset your password.", code: "EMAIL_EXISTS" }, { status: 409 });
     }
 
     const passwordHash = await hashPassword(password);
-    const trialExpiresAt = new Date(Date.now() + 100 * 365 * 24 * 60 * 60 * 1000); // effectively indefinite
+    const trialExpiresAt = new Date(Date.now() + 60 * 24 * 60 * 60 * 1000); // 60 days
 
     // Check if this is the owner email
     const ownerEmail = process.env.OWNER_EMAIL || "";

@@ -35,6 +35,21 @@ function LoginForm() {
       });
 
       if (!result || result.error || !result.ok) {
+        // Check if the email is unverified
+        try {
+          const checkRes = await fetch("/api/auth/check-verification", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email }),
+          });
+          const checkData = await checkRes.json();
+          if (!checkData.verified) {
+            window.location.href = `/auth/verify?email=${encodeURIComponent(email)}`;
+            return;
+          }
+        } catch {
+          // Fall through to generic error
+        }
         setError("Invalid email or password.");
         setLoading(false);
         return;
@@ -80,6 +95,9 @@ function LoginForm() {
         <div>
           <div className="flex items-center justify-between mb-1">
             <label className="block text-sm font-medium text-gray-700">Password</label>
+            <Link href="/auth/forgot-password" className="text-xs text-blue-600 hover:text-blue-800 font-medium">
+              Forgot password?
+            </Link>
           </div>
           <div className="relative">
             <input

@@ -790,24 +790,165 @@ export default function Home() {
         )}
 
         {/* Empty state — logged-in user on mylist with no ranked programs */}
-        {activeTab === "mylist" && !filters.search && isLoggedIn && sorted.length === 0 && (
-          <div className="flex justify-center py-10">
-            <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-8 text-center max-w-md">
-              <div className="w-14 h-14 rounded-full bg-yellow-50 flex items-center justify-center mx-auto mb-4">
-                <svg className="w-7 h-7 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                </svg>
+        {/* Shows a full preview (VIP cards, ticker, rows) overlaid with white gradient + CTA */}
+        {activeTab === "mylist" && !filters.search && isLoggedIn && sorted.length === 0 && (() => {
+          const fakePriorities = [5, 5, 4, 4, 3, 3, 2];
+          const previewSchools = allSchools
+            .filter(s => s.current_ranking != null && s.division === "D1")
+            .sort((a, b) => (a.current_ranking || 999) - (b.current_ranking || 999))
+            .slice(0, 7);
+          const vipPreview = previewSchools.slice(0, 4);
+          return (
+            <div className="relative -mt-2">
+              {/* Faded preview behind the overlay */}
+              <div className="pointer-events-none select-none" aria-hidden="true">
+
+                {/* Fake "My Four & Five Star Programs" header */}
+                <h3 className="text-base font-bold text-gray-700 mb-2">My Four & Five Star Programs</h3>
+
+                {/* Fake VIP Cards Carousel */}
+                <div className="flex gap-4 overflow-hidden pb-2 mb-3">
+                  {vipPreview.map((school, i) => {
+                    const stars = fakePriorities[i] || 4;
+                    return (
+                      <div key={school.id} className="shrink-0 w-72 sm:w-80">
+                        <div className="relative rounded-2xl overflow-hidden bg-gray-900 border border-gray-700">
+                          <div className="h-1 bg-gradient-to-r from-red-700 via-red-500 to-red-700" />
+                          <div className="p-5 flex flex-col items-center text-center">
+                            <div className="flex items-center gap-0.5 mb-3">
+                              {Array.from({ length: stars }, (_, si) => (
+                                <svg key={si} className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                </svg>
+                              ))}
+                              <span className="ml-1.5 text-xs font-semibold text-yellow-400/80 uppercase tracking-wide">{stars === 5 ? "VIP" : "Top Choice"}</span>
+                            </div>
+                            <div className="w-24 h-24 rounded-full bg-white flex items-center justify-center mb-4 shadow-lg">
+                              {school.logo_url ? (
+                                <img src={school.logo_url} alt="" className="w-20 h-20 object-contain" />
+                              ) : (
+                                <span className="text-2xl font-black text-gray-400">{school.name.split(" ").map(w => w[0]).join("").slice(0, 3)}</span>
+                              )}
+                            </div>
+                            <h4 className="text-lg font-black text-white mb-0.5">{school.name.toUpperCase()}</h4>
+                            <p className="text-sm text-gray-400 mb-3">{school.mascot}</p>
+                            <div className="flex flex-wrap items-center justify-center gap-1.5 mb-3 text-xs">
+                              <span className="px-2 py-0.5 rounded-full bg-gray-800 text-gray-300 font-medium">{school.division}</span>
+                              <span className="text-gray-600">·</span>
+                              <span className="px-2 py-0.5 rounded-full bg-gray-800 text-gray-300 font-medium">{school.conference}</span>
+                              <span className="text-gray-600">·</span>
+                              <span className="px-2 py-0.5 rounded-full bg-gray-800 text-gray-300 font-medium">{school.city}, {school.state}</span>
+                            </div>
+                            {school.current_ranking && (
+                              <div className="text-sm text-gray-300">Rank: <span className="font-semibold text-red-400">#{school.current_ranking}</span></div>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Fake LIVE ticker */}
+                <div className="bg-[#1a1a2e] border-l-4 border-yellow-500 rounded-lg overflow-hidden mb-3">
+                  <div className="flex items-center">
+                    <div className="shrink-0 px-3 sm:px-4 py-2.5 flex items-center gap-1.5 border-r border-white/10">
+                      <span className="relative flex h-2 w-2">
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-yellow-500" />
+                      </span>
+                      <span className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-yellow-500">LIVE</span>
+                    </div>
+                    <div className="flex-1 overflow-hidden">
+                      <div className="flex items-center whitespace-nowrap py-2.5">
+                        {vipPreview.map((school, idx) => (
+                          <span key={idx} className="inline-flex items-center">
+                            <span className="inline-flex items-center gap-1.5 px-2 py-0.5">
+                              {school.logo_url && <img src={school.logo_url} alt="" className="w-5 h-5 rounded-full object-contain bg-white shrink-0" />}
+                              <span className="text-xs sm:text-sm font-semibold text-white">{school.name}</span>
+                              <span className="text-[10px] sm:text-xs text-gray-400 ml-0.5">{school.last_season_record || ""}</span>
+                            </span>
+                            <span className="text-yellow-600/50 mx-3 text-xs">&#9670;</span>
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Fake "All My Ranked Programs" header */}
+                <h3 className="text-base font-bold text-gray-700 mb-2">All My Ranked Programs</h3>
+
+                {/* Fake program rows */}
+                <div className="flex flex-col" style={{ gap: 5 }}>
+                  {previewSchools.map((school, i) => {
+                    const divLabel = school.division === "D1" ? "D-I" : school.division === "D2" ? "D-II" : school.division === "D3" ? "D-III" : "JUCO";
+                    const stars = fakePriorities[i] || 3;
+                    const tierLabel = stars === 5 ? "VIP" : stars === 4 ? "Top Choice" : stars === 3 ? "Very Interested" : "Interested";
+                    return (
+                      <div key={school.id} className="flex items-center bg-white rounded-xl border border-[rgba(0,0,0,0.05)]" style={{ padding: "10px 10px 10px 12px" }}>
+                        <div className="shrink-0 rounded-full bg-[#f5f5f7] border border-[rgba(0,0,0,0.06)] flex items-center justify-center overflow-hidden" style={{ width: 42, height: 42 }}>
+                          {school.logo_url ? (
+                            <img src={school.logo_url} alt="" className="w-[42px] h-[42px] object-contain" />
+                          ) : (
+                            <span className="text-[13px] font-bold text-gray-400">{school.name.split(" ").map(w => w[0]).join("").slice(0, 3)}</span>
+                          )}
+                        </div>
+                        <div className="flex-1 min-w-0 ml-3">
+                          <p className="text-[14px] font-bold text-gray-900 truncate leading-tight">{school.name}</p>
+                          <p className="text-[11px] text-[#888] truncate leading-tight mt-[2px]">
+                            {divLabel} · {school.mascot} · <span className="font-semibold text-[#666]">{school.conference}</span> · {school.city}, {school.state}
+                          </p>
+                          <div className="flex items-center mt-[3px]">
+                            {Array.from({ length: 5 }, (_, si) => (
+                              <svg key={si} className={`w-3.5 h-3.5 ${si < stars ? "text-yellow-400" : "text-gray-200"}`} fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                              </svg>
+                            ))}
+                            <span className="ml-1.5 font-bold text-[#aaa]" style={{ fontSize: "9.5px" }}>{tierLabel}</span>
+                          </div>
+                        </div>
+                        {school.current_ranking && (
+                          <div className="shrink-0 flex flex-col items-end ml-2 mr-1">
+                            <span className="text-[13px] font-extrabold text-[#c1272d] leading-tight">#{school.current_ranking}</span>
+                          </div>
+                        )}
+                        <span className="shrink-0 text-[18px] text-[#ccc] ml-1 leading-none">&rsaquo;</span>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">No programs ranked yet</h3>
-              <p className="text-sm text-gray-600 mb-6">
-                Start building your list! Browse programs by division and use the star ratings to rank your favorites.
-              </p>
-              <p className="text-sm text-gray-600">
-                Browse: <button onClick={() => handleTabChange("D1")} className="text-blue-600 font-semibold hover:underline">Division I</button>{" | "}<button onClick={() => handleTabChange("D2")} className="text-blue-600 font-semibold hover:underline">Division II</button>{" | "}<button onClick={() => handleTabChange("D3")} className="text-blue-600 font-semibold hover:underline">Division III</button>{" | "}<button onClick={() => handleTabChange("JUCO")} className="text-blue-600 font-semibold hover:underline">JUCO</button>
-              </p>
+
+              {/* White gradient overlay */}
+              <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(249,250,251,0.15) 0%, rgba(249,250,251,0.55) 20%, rgba(249,250,251,0.85) 40%, rgba(249,250,251,0.97) 55%, rgba(249,250,251,1) 70%)" }} />
+
+              {/* CTA card floating near the top */}
+              <div className="absolute inset-x-0 top-0 flex justify-center px-4" style={{ paddingTop: "18%" }}>
+                <div className="bg-white rounded-2xl shadow-xl border border-gray-200 p-6 sm:p-8 text-center max-w-md w-full">
+                  <div className="inline-flex items-center gap-1.5 bg-yellow-50 rounded-full px-3 py-1 mb-3">
+                    <svg className="w-4 h-4 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                    <span className="text-xs font-semibold text-yellow-700 uppercase tracking-wide">Your Top Programs</span>
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-black text-gray-900 mb-2">
+                    {playerFirstName ? `${playerFirstName}, your favorites will live here` : "Your favorites will live here"}
+                  </h3>
+                  <p className="text-sm text-gray-500 mb-5">
+                    Browse {schoolCount || allSchools.length}+ programs, tap the stars to rate them, and your personalized list builds itself right here.
+                  </p>
+                  <div className="flex flex-col sm:flex-row items-center justify-center gap-2">
+                    <button onClick={() => handleTabChange("D1")} className="w-full sm:w-auto px-5 py-2.5 bg-[#CC0000] text-white rounded-xl text-sm font-bold hover:bg-red-700 transition-colors">
+                      Browse Programs
+                    </button>
+                    <button onClick={() => router.push("/ai-match")} className="w-full sm:w-auto px-5 py-2.5 border-2 border-gray-200 text-gray-700 rounded-xl text-sm font-bold hover:border-gray-300 hover:bg-gray-50 transition-colors flex items-center justify-center gap-1.5">
+                      <svg className="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                      AI Scout
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-        )}
+          );
+        })()}
 
         {status === "unauthenticated" && activeTab !== "home" ? (
           /* Auth gate when not logged in on non-home tabs */
