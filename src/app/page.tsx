@@ -792,79 +792,69 @@ export default function Home() {
         {/* Empty state — logged-in user on mylist with no ranked programs */}
         {activeTab === "mylist" && !filters.search && isLoggedIn && sorted.length === 0 && (
           <div className="py-4 sm:py-8">
-            {/* Welcome hero */}
-            <div className="relative rounded-2xl overflow-hidden mb-6" style={{ background: "linear-gradient(135deg, #1a1a2e 0%, #0d0d0d 100%)" }}>
-              <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 60% 30%, rgba(245,197,24,0.10) 0%, transparent 60%)" }} />
-              <div className="relative px-6 py-8 sm:px-10 sm:py-12 text-center">
-                <h2 className="text-2xl sm:text-4xl font-black text-white leading-tight mb-2">
-                  {playerFirstName ? `Let\u2019s go, ${playerFirstName}!` : "Let\u2019s build your list!"}
-                </h2>
-                <p className="text-base sm:text-lg text-gray-300 max-w-lg mx-auto mb-6">
-                  Browse {schoolCount || allSchools.length}+ college baseball programs, tap the stars to rate them, and build your personal recruiting list.
-                </p>
+            {/* Stadium hero with background image */}
+            {/* To use a real photo: save an image of Charles Schwab Field (Omaha) to /public/images/omaha-stadium.jpg */}
+            <div
+              className="relative rounded-2xl overflow-hidden"
+              style={{
+                backgroundImage: "url('/images/omaha-stadium.jpg')",
+                backgroundSize: "cover",
+                backgroundPosition: "center 30%",
+              }}
+            >
+              {/* Gradient overlay for text readability, doubles as fallback when image is missing */}
+              <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(0,40,20,0.85) 0%, rgba(10,30,60,0.90) 50%, rgba(0,20,50,0.85) 100%)" }} />
+              <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.08) 0%, transparent 60%)" }} />
 
-                {/* 3-step visual */}
-                <div className="grid grid-cols-3 gap-3 sm:gap-6 max-w-lg mx-auto mb-6">
-                  <div className="flex flex-col items-center">
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-blue-600/20 flex items-center justify-center mb-2">
-                      <svg className="w-6 h-6 sm:w-7 sm:h-7 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-                    </div>
-                    <span className="text-xs sm:text-sm font-bold text-white">Browse</span>
-                    <span className="text-[10px] sm:text-xs text-gray-400">Pick a division</span>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-yellow-500/20 flex items-center justify-center mb-2">
-                      <svg className="w-6 h-6 sm:w-7 sm:h-7 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                    </div>
-                    <span className="text-xs sm:text-sm font-bold text-white">Rate</span>
-                    <span className="text-[10px] sm:text-xs text-gray-400">Tap the stars</span>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-red-500/20 flex items-center justify-center mb-2">
-                      <svg className="w-6 h-6 sm:w-7 sm:h-7 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                    </div>
-                    <span className="text-xs sm:text-sm font-bold text-white">Track</span>
-                    <span className="text-[10px] sm:text-xs text-gray-400">Your top list</span>
-                  </div>
+              <div className="relative px-6 py-8 sm:px-10 sm:py-12 text-center">
+                {/* Top rated programs messaging */}
+                <div className="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur-sm rounded-full px-3 py-1 mb-4">
+                  <svg className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                  <span className="text-xs font-semibold text-white/90 tracking-wide uppercase">Your Top Programs</span>
                 </div>
 
-                <p className="text-xs text-gray-500">Your ratings are saved automatically</p>
+                <h2 className="text-2xl sm:text-4xl font-black text-white leading-tight mb-2">
+                  {playerFirstName ? `${playerFirstName}, this is your home base` : "This is your home base"}
+                </h2>
+                <p className="text-base sm:text-lg text-gray-200 max-w-xl mx-auto mb-2">
+                  Your highest-rated programs will appear right here. Start by picking a division or let AI Scout find the best fits for you.
+                </p>
+                <p className="text-sm text-gray-300/80 max-w-md mx-auto mb-8">
+                  Browse {schoolCount || allSchools.length}+ programs, tap the stars to rate them, and watch your personalized list build itself.
+                </p>
+
+                {/* Division buttons + AI Scout inside the hero */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-xl mx-auto mb-4">
+                  <button onClick={() => handleTabChange("D1")} className="group rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 p-3 sm:p-4 text-center hover:bg-blue-600/30 hover:border-blue-400/50 transition-all">
+                    <span className="block text-xl sm:text-2xl font-black text-blue-300 group-hover:text-white group-hover:scale-110 transition-all">D1</span>
+                    <span className="block text-xs font-semibold text-white/80 mt-0.5">Division I</span>
+                    <span className="block text-[10px] text-white/50 mt-0.5">{allSchools.filter(s => s.division === "D1").length} programs</span>
+                  </button>
+                  <button onClick={() => handleTabChange("D2")} className="group rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 p-3 sm:p-4 text-center hover:bg-green-600/30 hover:border-green-400/50 transition-all">
+                    <span className="block text-xl sm:text-2xl font-black text-green-300 group-hover:text-white group-hover:scale-110 transition-all">D2</span>
+                    <span className="block text-xs font-semibold text-white/80 mt-0.5">Division II</span>
+                    <span className="block text-[10px] text-white/50 mt-0.5">{allSchools.filter(s => s.division === "D2").length} programs</span>
+                  </button>
+                  <button onClick={() => handleTabChange("D3")} className="group rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 p-3 sm:p-4 text-center hover:bg-purple-600/30 hover:border-purple-400/50 transition-all">
+                    <span className="block text-xl sm:text-2xl font-black text-purple-300 group-hover:text-white group-hover:scale-110 transition-all">D3</span>
+                    <span className="block text-xs font-semibold text-white/80 mt-0.5">Division III</span>
+                    <span className="block text-[10px] text-white/50 mt-0.5">{allSchools.filter(s => s.division === "D3").length} programs</span>
+                  </button>
+                  <button onClick={() => handleTabChange("JUCO")} className="group rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 p-3 sm:p-4 text-center hover:bg-orange-600/30 hover:border-orange-400/50 transition-all">
+                    <span className="block text-xl sm:text-2xl font-black text-orange-300 group-hover:text-white group-hover:scale-110 transition-all">JC</span>
+                    <span className="block text-xs font-semibold text-white/80 mt-0.5">JUCO</span>
+                    <span className="block text-[10px] text-white/50 mt-0.5">{allSchools.filter(s => s.division === "JUCO").length} programs</span>
+                  </button>
+                </div>
+
+                {/* AI Scout button */}
+                <button onClick={() => router.push("/ai-match")} className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/25 rounded-xl px-5 py-3 hover:bg-white/25 hover:border-white/40 transition-all group">
+                  <svg className="w-5 h-5 text-yellow-300 group-hover:text-yellow-200 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                  <span className="text-sm font-bold text-white">Try AI Scout</span>
+                  <span className="text-xs text-white/60">— find your best fits</span>
+                </button>
               </div>
             </div>
-
-            {/* Division buttons */}
-            <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-3">Choose a division to start exploring</h3>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-              <button onClick={() => handleTabChange("D1")} className="group relative rounded-xl border-2 border-gray-200 bg-white p-4 sm:p-5 text-center hover:border-blue-500 hover:shadow-md transition-all">
-                <span className="block text-2xl sm:text-3xl font-black text-blue-600 group-hover:scale-110 transition-transform">D1</span>
-                <span className="block text-xs sm:text-sm font-semibold text-gray-700 mt-1">Division I</span>
-                <span className="block text-[10px] sm:text-xs text-gray-400 mt-0.5">{allSchools.filter(s => s.division === "D1").length} programs</span>
-              </button>
-              <button onClick={() => handleTabChange("D2")} className="group relative rounded-xl border-2 border-gray-200 bg-white p-4 sm:p-5 text-center hover:border-green-500 hover:shadow-md transition-all">
-                <span className="block text-2xl sm:text-3xl font-black text-green-600 group-hover:scale-110 transition-transform">D2</span>
-                <span className="block text-xs sm:text-sm font-semibold text-gray-700 mt-1">Division II</span>
-                <span className="block text-[10px] sm:text-xs text-gray-400 mt-0.5">{allSchools.filter(s => s.division === "D2").length} programs</span>
-              </button>
-              <button onClick={() => handleTabChange("D3")} className="group relative rounded-xl border-2 border-gray-200 bg-white p-4 sm:p-5 text-center hover:border-purple-500 hover:shadow-md transition-all">
-                <span className="block text-2xl sm:text-3xl font-black text-purple-600 group-hover:scale-110 transition-transform">D3</span>
-                <span className="block text-xs sm:text-sm font-semibold text-gray-700 mt-1">Division III</span>
-                <span className="block text-[10px] sm:text-xs text-gray-400 mt-0.5">{allSchools.filter(s => s.division === "D3").length} programs</span>
-              </button>
-              <button onClick={() => handleTabChange("JUCO")} className="group relative rounded-xl border-2 border-gray-200 bg-white p-4 sm:p-5 text-center hover:border-orange-500 hover:shadow-md transition-all">
-                <span className="block text-2xl sm:text-3xl font-black text-orange-600 group-hover:scale-110 transition-transform">JC</span>
-                <span className="block text-xs sm:text-sm font-semibold text-gray-700 mt-1">JUCO</span>
-                <span className="block text-[10px] sm:text-xs text-gray-400 mt-0.5">{allSchools.filter(s => s.division === "JUCO").length} programs</span>
-              </button>
-            </div>
-
-            {/* AI Scout callout */}
-            <button onClick={() => router.push("/ai-match")} className="mt-4 w-full rounded-xl border-2 border-dashed border-gray-300 bg-gray-50 p-4 sm:p-5 text-center hover:border-blue-400 hover:bg-blue-50/50 transition-all group">
-              <div className="flex items-center justify-center gap-2 mb-1">
-                <svg className="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-                <span className="text-sm sm:text-base font-bold text-gray-900">Or try AI Scout</span>
-              </div>
-              <span className="text-xs sm:text-sm text-gray-500">Tell us what you&apos;re looking for and we&apos;ll find programs that match</span>
-            </button>
           </div>
         )}
 
