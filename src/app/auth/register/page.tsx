@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { signIn } from "next-auth/react";
 
 const POSITIONS = [
   "RHP", "LHP", "C", "1B", "2B", "3B", "SS", "OF", "DH", "Utility",
@@ -28,11 +27,13 @@ export default function RegisterPage() {
   const [state, setState] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
+  const [errorCode, setErrorCode] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
+    setErrorCode("");
 
     if (!firstName || !lastName || !email || !password) {
       setError("Please fill in all required fields.");
@@ -60,24 +61,13 @@ export default function RegisterPage() {
 
       if (!res.ok) {
         setError(data.error || "Something went wrong.");
+        setErrorCode(data.code || "");
         setLoading(false);
         return;
       }
 
-      // Auto sign-in after registration
-      const result = await signIn("credentials", {
-        email,
-        password,
-        redirect: false,
-      });
-
-      if (result?.error) {
-        setError("Account created but sign-in failed. Please log in.");
-        setLoading(false);
-        return;
-      }
-
-      window.location.href = "/";
+      // Redirect to verify page to enter email code
+      window.location.href = `/auth/verify?email=${encodeURIComponent(email)}`;
     } catch {
       setError("Something went wrong. Please try again.");
       setLoading(false);
@@ -192,11 +182,18 @@ export default function RegisterPage() {
             </div>
 
             {error && (
-              <div className="flex items-center gap-2 px-4 py-3 bg-red-50 border border-red-200 rounded-xl">
-                <svg className="w-4 h-4 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <p className="text-sm text-red-700">{error}</p>
+              <div className="px-4 py-3 bg-red-50 border border-red-200 rounded-xl">
+                <div className="flex items-center gap-2">
+                  <svg className="w-4 h-4 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <p className="text-sm text-red-700">{error}</p>
+                </div>
+                {errorCode === "EMAIL_EXISTS" && (
+                  <div className="flex gap-3 mt-2 ml-6">
+                    <Link href="/auth/login" className="text-sm font-medium text-blue-600 hover:text-blue-800">Sign in</Link>
+                  </div>
+                )}
               </div>
             )}
 

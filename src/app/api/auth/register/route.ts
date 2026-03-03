@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
     });
 
     if (existingUser) {
-      return NextResponse.json({ error: "An account with this email already exists" }, { status: 409 });
+      return NextResponse.json({ error: "An account with this email already exists. Please sign in or reset your password.", code: "EMAIL_EXISTS" }, { status: 409 });
     }
 
     const passwordHash = await hashPassword(password);
