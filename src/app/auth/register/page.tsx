@@ -69,6 +69,9 @@ function RegisterForm() {
         return;
       }
 
+      // Store credentials for auto-login after verification
+      try { sessionStorage.setItem("_eb_pending", JSON.stringify({ email, password })); } catch {}
+
       // Redirect to verify page to enter email code
       const verifyUrl = `/auth/verify?email=${encodeURIComponent(email)}${redirect ? `&redirect=${encodeURIComponent(redirect)}` : ""}`;
       window.location.href = verifyUrl;

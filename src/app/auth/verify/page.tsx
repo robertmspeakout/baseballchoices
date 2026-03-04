@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
+import { signIn } from "next-auth/react";
 import Link from "next/link";
 
 function VerifyForm() {
@@ -79,9 +80,30 @@ function VerifyForm() {
         return;
       }
 
-      // Success — redirect to login (with callbackUrl if user came from subscribe flow)
-      const loginUrl = `/auth/login?verified=1${redirect ? `&callbackUrl=${encodeURIComponent(redirect)}` : ""}`;
-      window.location.href = loginUrl;
+      // Try auto-login using stored credentials from registration
+      let autoLoginDone = false;
+      try {
+        const pending = sessionStorage.getItem("_eb_pending");
+        if (pending) {
+          const { email: storedEmail, password } = JSON.parse(pending);
+          sessionStorage.removeItem("_eb_pending");
+          const result = await signIn("credentials", {
+            email: storedEmail,
+            password,
+            redirect: false,
+          });
+          if (result?.ok) {
+            autoLoginDone = true;
+            window.location.replace(redirect || "/");
+          }
+        }
+      } catch {}
+
+      // Fallback: redirect to login page
+      if (!autoLoginDone) {
+        const loginUrl = `/auth/login?verified=1${redirect ? `&callbackUrl=${encodeURIComponent(redirect)}` : ""}`;
+        window.location.href = loginUrl;
+      }
     } catch {
       setError("Something went wrong. Please try again.");
       setLoading(false);
