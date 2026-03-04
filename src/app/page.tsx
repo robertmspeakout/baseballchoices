@@ -616,6 +616,16 @@ export default function Home() {
             className="relative py-12 sm:py-19 text-center overflow-hidden"
             style={{ background: "linear-gradient(135deg, #1a1a2e 0%, #0d0d0d 100%)" }}
           >
+            {/* Background video */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+              <iframe
+                src="https://www.youtube.com/embed/8cjo6f-EDj4?autoplay=1&mute=1&loop=1&playlist=8cjo6f-EDj4&controls=0&showinfo=0&modestbranding=1&playsinline=1&disablekb=1&rel=0"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-auto h-[200%] min-w-full aspect-video"
+                allow="autoplay; encrypted-media"
+                tabIndex={-1}
+              />
+            </div>
+            <div className="absolute inset-0 bg-black/75 pointer-events-none" />
             <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 50% 40%, rgba(245,197,24,0.08) 0%, transparent 70%)" }} />
             <div className="relative max-w-3xl mx-auto px-4 sm:px-6">
               <h2 className="text-3xl sm:text-5xl font-black text-white leading-tight mb-4">
