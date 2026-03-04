@@ -641,15 +641,6 @@ export default function Home() {
                   {marketingContent.hero.secondaryButton}
                 </a>
               </div>
-              <button
-                onClick={() => setShowDemoVideo(true)}
-                className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors mb-3"
-              >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
-                </svg>
-                Watch Demo
-              </button>
               <p className="text-sm text-gray-400">
                 Already subscribed?{" "}
                 <Link href="/auth/login" className="text-white underline hover:text-gray-200 transition-colors">
@@ -677,7 +668,18 @@ export default function Home() {
           {/* How It Works */}
           <section id="how-it-works" className="bg-gray-100 py-12 sm:py-16">
             <div className="max-w-[1400px] mx-auto px-4 sm:px-6">
-              <h2 className="text-2xl sm:text-3xl font-black text-gray-900 text-center mb-10">{marketingContent.howItWorks.title}</h2>
+              <h2 className="text-2xl sm:text-3xl font-black text-gray-900 text-center mb-4">{marketingContent.howItWorks.title}</h2>
+              <div className="text-center mb-8">
+                <button
+                  onClick={() => setShowDemoVideo(true)}
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-red-700 hover:text-red-900 transition-colors"
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                  </svg>
+                  Watch Demo
+                </button>
+              </div>
               <div className="grid sm:grid-cols-3 gap-6 sm:gap-8">
                 {marketingContent.howItWorks.steps.map((step, i) => (
                   <div key={i} className="bg-white rounded-2xl p-6 text-center shadow-sm border border-gray-200">
