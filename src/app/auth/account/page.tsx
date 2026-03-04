@@ -193,7 +193,7 @@ export default function AccountPage() {
                   <div className="px-5 py-3 flex justify-between items-center">
                     <span className="text-sm text-gray-500">Plan</span>
                     <span className="text-sm font-semibold text-gray-900">
-                      {account.membershipActive ? "Premium" : "Free Trial"}
+                      {account.membershipActive ? "Active Member" : "Free Trial"}
                     </span>
                   </div>
                   {account.trialActive && !account.membershipActive && (

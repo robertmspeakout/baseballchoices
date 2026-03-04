@@ -89,7 +89,7 @@ function MembershipContent() {
         <main className="flex-1 flex items-start justify-center px-4 py-8 sm:py-12">
           <div className="w-full max-w-md">
             <div className="text-center mb-8">
-              <h2 className="text-2xl font-black text-gray-900">ExtraBase Premium</h2>
+              <h2 className="text-2xl font-black text-gray-900">ExtraBase Membership</h2>
               <p className="text-sm text-gray-500 mt-1">The complete college baseball recruiting toolkit.</p>
             </div>
 
@@ -139,13 +139,15 @@ function MembershipContent() {
                 >
                   Subscribe Today — $24.99/year
                 </Link>
-                <p className="text-xs text-gray-400 text-center">
-                  <Link href="/auth/login?callbackUrl=/membership" className="underline hover:text-gray-600">
-                    Already have an account? Sign in
-                  </Link>
-                </p>
               </div>
             </div>
+
+            <p className="text-sm text-gray-500 text-center mt-4">
+              Already Registered?{" "}
+              <Link href="/auth/login?callbackUrl=/membership" className="text-blue-600 hover:text-blue-800 font-medium underline">
+                Log in Here
+              </Link>
+            </p>
           </div>
         </main>
       </div>
