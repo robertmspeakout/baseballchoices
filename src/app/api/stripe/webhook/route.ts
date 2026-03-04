@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { randomUUID } from "crypto";
 import { getStripe } from "@/lib/stripe";
 import { prisma } from "@/lib/prisma";
 import { sendVerificationEmail, sendProfileReminderEmail } from "@/lib/email";
@@ -51,16 +52,16 @@ export async function POST(request: NextRequest) {
         if (user) {
           try {
             if (!user.emailVerified) {
-              // Send verification email (includes profile prompt)
-              const code = Math.floor(100000 + Math.random() * 900000).toString();
+              // Send verification email with link
+              const token = randomUUID();
               await prisma.verificationToken.create({
                 data: {
                   email: user.email,
-                  code,
-                  expiresAt: new Date(Date.now() + 15 * 60 * 1000),
+                  code: token,
+                  expiresAt: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
                 },
               });
-              await sendVerificationEmail(user.email, code, user.firstName);
+              await sendVerificationEmail(user.email, token, user.firstName);
             } else if (!user.profile?.profileComplete) {
               // Already verified but profile incomplete — send profile reminder
               await sendProfileReminderEmail(user.email, user.firstName);

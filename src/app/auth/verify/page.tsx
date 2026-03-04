@@ -1,119 +1,52 @@
 "use client";
 
-import { useState, useRef, useEffect, Suspense } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
-import { signIn } from "next-auth/react";
 import Link from "next/link";
 
-function VerifyForm() {
+function VerifyContent() {
   const searchParams = useSearchParams();
+  const token = searchParams.get("token") || "";
   const email = searchParams.get("email") || "";
-  const redirect = searchParams.get("redirect") || "";
-  const [code, setCode] = useState(["", "", "", "", "", ""]);
+  const [status, setStatus] = useState<"verifying" | "success" | "error" | "no-token">(
+    token ? "verifying" : "no-token"
+  );
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
   const [resending, setResending] = useState(false);
   const [resent, setResent] = useState(false);
-  const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
   useEffect(() => {
-    inputRefs.current[0]?.focus();
-  }, []);
+    if (!token) return;
 
-  const handleChange = (index: number, value: string) => {
-    if (value.length > 1) value = value.slice(-1);
-    if (!/^\d*$/.test(value)) return;
-
-    const newCode = [...code];
-    newCode[index] = value;
-    setCode(newCode);
-    setError("");
-
-    if (value && index < 5) {
-      inputRefs.current[index + 1]?.focus();
-    }
-  };
-
-  const handleKeyDown = (index: number, e: React.KeyboardEvent) => {
-    if (e.key === "Backspace" && !code[index] && index > 0) {
-      inputRefs.current[index - 1]?.focus();
-    }
-  };
-
-  const handlePaste = (e: React.ClipboardEvent) => {
-    e.preventDefault();
-    const pasted = e.clipboardData.getData("text").replace(/\D/g, "").slice(0, 6);
-    if (pasted.length > 0) {
-      const newCode = [...code];
-      for (let i = 0; i < pasted.length && i < 6; i++) {
-        newCode[i] = pasted[i];
-      }
-      setCode(newCode);
-      const nextEmpty = Math.min(pasted.length, 5);
-      inputRefs.current[nextEmpty]?.focus();
-    }
-  };
-
-  const handleVerify = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const fullCode = code.join("");
-    if (fullCode.length < 6) {
-      setError("Please enter the full 6-digit code.");
-      return;
-    }
-
-    setLoading(true);
-    setError("");
-
-    try {
-      const res = await fetch("/api/auth/verify", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, code: fullCode }),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        setError(data.error || "Verification failed. Please try again.");
-        setLoading(false);
-        return;
-      }
-
-      // Try auto-login using stored credentials from registration
-      let autoLoginDone = false;
+    const verify = async () => {
       try {
-        const pending = sessionStorage.getItem("_eb_pending");
-        if (pending) {
-          const { email: storedEmail, password } = JSON.parse(pending);
-          sessionStorage.removeItem("_eb_pending");
-          const result = await signIn("credentials", {
-            email: storedEmail,
-            password,
-            redirect: false,
-          });
-          if (result?.ok) {
-            autoLoginDone = true;
-            window.location.replace(redirect || "/");
-          }
-        }
-      } catch {}
+        const res = await fetch("/api/auth/verify", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ token }),
+        });
 
-      // Fallback: redirect to login page
-      if (!autoLoginDone) {
-        const loginUrl = `/auth/login?verified=1${redirect ? `&callbackUrl=${encodeURIComponent(redirect)}` : ""}`;
-        window.location.href = loginUrl;
+        const data = await res.json();
+
+        if (!res.ok) {
+          setError(data.error || "Verification failed.");
+          setStatus("error");
+          return;
+        }
+
+        setStatus("success");
+      } catch {
+        setError("Something went wrong. Please try again.");
+        setStatus("error");
       }
-    } catch {
-      setError("Something went wrong. Please try again.");
-      setLoading(false);
-    }
-  };
+    };
+
+    verify();
+  }, [token]);
 
   const handleResend = async () => {
     if (resending || !email) return;
     setResending(true);
-    setError("");
 
     try {
       const res = await fetch("/api/auth/resend-code", {
@@ -125,104 +58,119 @@ function VerifyForm() {
       const data = await res.json();
 
       if (!res.ok) {
-        setError(data.error || "Failed to resend code.");
+        setError(data.error || "Failed to resend verification email.");
         setResending(false);
         return;
       }
 
       setResent(true);
       setResending(false);
-      setTimeout(() => setResent(false), 3000);
+      setTimeout(() => setResent(false), 5000);
     } catch {
-      setError("Failed to resend code. Please try again.");
+      setError("Failed to resend. Please try again.");
       setResending(false);
     }
   };
 
   return (
     <div className="w-full max-w-md">
-      <div className="text-center mb-8">
-        <div className="mx-auto w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mb-4">
-          <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-          </svg>
-        </div>
-        <h2 className="text-2xl font-bold text-gray-900">Check Your Email</h2>
-        <p className="text-sm text-gray-500 mt-2">
-          We sent a 6-digit code to<br />
-          <span className="font-semibold text-gray-700">{email || "your email"}</span>
-        </p>
-      </div>
-
-      <form onSubmit={handleVerify} className="space-y-6">
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-3 text-center">
-            Enter verification code
-          </label>
-          <div className="flex justify-center gap-2 sm:gap-3" onPaste={handlePaste}>
-            {code.map((digit, i) => (
-              <input
-                key={i}
-                ref={(el) => { inputRefs.current[i] = el; }}
-                type="text"
-                inputMode="numeric"
-                maxLength={1}
-                value={digit}
-                onChange={(e) => handleChange(i, e.target.value)}
-                onKeyDown={(e) => handleKeyDown(i, e)}
-                className="w-11 h-14 sm:w-12 sm:h-16 text-center text-xl font-bold border border-gray-300 rounded-xl text-gray-900 focus:ring-2 focus:ring-red-500 focus:border-red-500"
-              />
-            ))}
+      {status === "verifying" && (
+        <div className="text-center">
+          <div className="mx-auto w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-4">
+            <div className="animate-spin rounded-full h-8 w-8 border-2 border-blue-300 border-t-blue-600" />
           </div>
+          <h2 className="text-2xl font-bold text-gray-900">Verifying your email...</h2>
+          <p className="text-sm text-gray-500 mt-2">Please wait a moment.</p>
         </div>
+      )}
 
-        {error && (
-          <div className="flex items-center justify-center gap-2 px-4 py-3 bg-red-50 border border-red-200 rounded-xl">
-            <svg className="w-4 h-4 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      {status === "success" && (
+        <div className="text-center">
+          <div className="mx-auto w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mb-4">
+            <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <h2 className="text-2xl font-bold text-gray-900">Email Verified!</h2>
+          <p className="text-sm text-gray-500 mt-2 mb-8">
+            Your email has been confirmed. You&apos;re all set.
+          </p>
+          <Link
+            href="/"
+            className="inline-block px-6 py-3 bg-[#CC0000] text-white rounded-xl text-sm font-bold hover:bg-red-700 transition-colors"
+          >
+            Go to ExtraBase
+          </Link>
+        </div>
+      )}
+
+      {status === "error" && (
+        <div className="text-center">
+          <div className="mx-auto w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center mb-4">
+            <svg className="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            <p className="text-sm text-red-700">{error}</p>
           </div>
-        )}
-
-        <button
-          type="submit"
-          disabled={loading}
-          className="w-full px-4 py-3 bg-red-600 text-white rounded-xl text-sm font-semibold hover:bg-red-700 transition-colors disabled:opacity-50 shadow-sm"
-        >
-          {loading ? (
-            <span className="flex items-center justify-center gap-2">
-              <div className="animate-spin rounded-full h-4 w-4 border-2 border-white/30 border-t-white" />
-              Verifying...
-            </span>
-          ) : (
-            "Verify Email"
+          <h2 className="text-2xl font-bold text-gray-900">Verification Failed</h2>
+          <p className="text-sm text-gray-500 mt-2 mb-6">{error}</p>
+          {email && (
+            <div>
+              {resent ? (
+                <p className="text-sm text-green-600 font-medium">New verification email sent! Check your inbox.</p>
+              ) : (
+                <button
+                  onClick={handleResend}
+                  disabled={resending}
+                  className="inline-block px-6 py-3 bg-[#CC0000] text-white rounded-xl text-sm font-bold hover:bg-red-700 transition-colors disabled:opacity-50"
+                >
+                  {resending ? "Sending..." : "Send New Verification Email"}
+                </button>
+              )}
+            </div>
           )}
-        </button>
-      </form>
+          <div className="mt-4">
+            <Link href="/" className="text-sm text-gray-400 hover:text-gray-600">
+              Go to ExtraBase
+            </Link>
+          </div>
+        </div>
+      )}
 
-      <div className="text-center mt-6">
-        <p className="text-sm text-gray-500">
-          Didn&apos;t receive the code?{" "}
-          {resent ? (
-            <span className="text-green-600 font-medium">Code resent!</span>
-          ) : (
-            <button
-              onClick={handleResend}
-              disabled={resending}
-              className="text-red-600 hover:text-red-800 font-medium disabled:opacity-50"
-            >
-              {resending ? "Sending..." : "Resend code"}
-            </button>
+      {status === "no-token" && (
+        <div className="text-center">
+          <div className="mx-auto w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-4">
+            <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <h2 className="text-2xl font-bold text-gray-900">Check Your Email</h2>
+          <p className="text-sm text-gray-500 mt-2 mb-6">
+            We sent a verification link to<br />
+            <span className="font-semibold text-gray-700">{email || "your email"}</span>
+          </p>
+          <p className="text-sm text-gray-500 mb-6">
+            Click the link in the email to verify your address.
+          </p>
+          {email && (
+            <div className="mb-4">
+              {resent ? (
+                <p className="text-sm text-green-600 font-medium">New email sent! Check your inbox.</p>
+              ) : (
+                <button
+                  onClick={handleResend}
+                  disabled={resending}
+                  className="text-sm text-red-600 hover:text-red-800 font-medium disabled:opacity-50"
+                >
+                  {resending ? "Sending..." : "Didn\u2019t receive it? Resend verification email"}
+                </button>
+              )}
+            </div>
           )}
-        </p>
-      </div>
-
-      <div className="text-center mt-4">
-        <Link href="/auth/register" className="text-sm text-gray-400 hover:text-gray-600">
-          Use a different email
-        </Link>
-      </div>
+          <Link href="/" className="text-sm text-gray-400 hover:text-gray-600">
+            Go to ExtraBase
+          </Link>
+        </div>
+      )}
     </div>
   );
 }
@@ -230,9 +178,9 @@ function VerifyForm() {
 export default function VerifyPage() {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-      <header className="bg-gray-900 text-white">
+      <header className="bg-blue-950 text-white">
         <div className="max-w-md mx-auto px-4 py-4 flex items-center gap-3">
-          <Link href="/auth/register" className="text-white/70 hover:text-white transition-colors">
+          <Link href="/" className="text-white/70 hover:text-white transition-colors">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
@@ -243,7 +191,7 @@ export default function VerifyPage() {
 
       <main className="flex-1 flex items-start justify-center px-4 py-8 sm:py-12">
         <Suspense fallback={<div className="animate-spin rounded-full h-8 w-8 border-4 border-gray-200 border-t-red-600" />}>
-          <VerifyForm />
+          <VerifyContent />
         </Suspense>
       </main>
     </div>

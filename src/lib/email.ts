@@ -40,8 +40,9 @@ export async function sendPasswordResetEmail(email: string, code: string, firstN
   });
 }
 
-export async function sendWelcomeEmail(email: string, verificationCode: string, firstName: string) {
+export async function sendWelcomeEmail(email: string, verificationToken: string, firstName: string) {
   const baseUrl = process.env.NEXTAUTH_URL || "https://extrabase.app";
+  const verifyUrl = `${baseUrl}/auth/verify?token=${verificationToken}`;
   const resend = getResend();
   await resend.emails.send({
     from: FROM_EMAIL,
@@ -78,19 +79,11 @@ export async function sendWelcomeEmail(email: string, verificationCode: string, 
             Verify your email
           </p>
           <p style="font-size: 13px; color: #555; margin: 0 0 12px 0;">
-            Use this code to confirm your email address:
+            Click the button below to confirm your email address:
           </p>
-          <div style="background: #fff; border: 2px solid #e5e5e5; border-radius: 12px; padding: 16px; margin-bottom: 12px;">
-            <span style="font-size: 32px; font-weight: 900; letter-spacing: 8px; color: #111;">
-              ${verificationCode}
-            </span>
-          </div>
-          <a href="${baseUrl}/auth/verify?email=${encodeURIComponent(email)}" style="display: inline-block; background: #1a56db; color: #fff; font-size: 13px; font-weight: 700; padding: 10px 24px; border-radius: 10px; text-decoration: none;">
+          <a href="${verifyUrl}" style="display: inline-block; background: #1a56db; color: #fff; font-size: 14px; font-weight: 700; padding: 12px 32px; border-radius: 10px; text-decoration: none;">
             Verify Email
           </a>
-          <p style="font-size: 12px; color: #999; margin: 8px 0 0 0;">
-            This code expires in 15 minutes.
-          </p>
         </div>
 
         <p style="font-size: 13px; color: #999; text-align: center;">
@@ -101,13 +94,14 @@ export async function sendWelcomeEmail(email: string, verificationCode: string, 
   });
 }
 
-/** @deprecated Use sendWelcomeEmail instead — kept for backward compatibility with resend-code flow */
-export async function sendVerificationEmail(email: string, code: string, firstName: string) {
+export async function sendVerificationEmail(email: string, token: string, firstName: string) {
+  const baseUrl = process.env.NEXTAUTH_URL || "https://extrabase.app";
+  const verifyUrl = `${baseUrl}/auth/verify?token=${token}`;
   const resend = getResend();
   await resend.emails.send({
     from: FROM_EMAIL,
     to: email,
-    subject: "Your ExtraBase verification code",
+    subject: "Verify your ExtraBase email",
     html: `
       <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 480px; margin: 0 auto; padding: 40px 20px;">
         <div style="text-align: center; margin-bottom: 32px;">
@@ -119,15 +113,15 @@ export async function sendVerificationEmail(email: string, code: string, firstNa
           Verify Your Email
         </h1>
         <p style="font-size: 15px; color: #555; text-align: center; margin-bottom: 32px;">
-          Hi ${firstName}, enter this code to verify your email address.
+          Hi ${firstName}, click the button below to verify your email address.
         </p>
-        <div style="background: #f8f8f8; border: 2px solid #e5e5e5; border-radius: 16px; padding: 24px; text-align: center; margin-bottom: 32px;">
-          <span style="font-size: 36px; font-weight: 900; letter-spacing: 8px; color: #111;">
-            ${code}
-          </span>
+        <div style="text-align: center; margin-bottom: 32px;">
+          <a href="${verifyUrl}" style="display: inline-block; background: #1a56db; color: #fff; font-size: 14px; font-weight: 700; padding: 14px 32px; border-radius: 12px; text-decoration: none;">
+            Verify Email
+          </a>
         </div>
         <p style="font-size: 13px; color: #999; text-align: center;">
-          This code expires in 15 minutes.
+          If you didn't create an ExtraBase account, you can ignore this email.
         </p>
       </div>
     `,

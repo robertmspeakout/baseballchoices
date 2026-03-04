@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { randomUUID } from "crypto";
 import { hashPassword } from "@/lib/password";
 import { prisma } from "@/lib/prisma";
 import { rateLimit } from "@/lib/rate-limit";
@@ -67,16 +68,16 @@ export async function POST(request: NextRequest) {
       include: { profile: true },
     });
 
-    // Generate verification code and send welcome email (non-blocking to the user)
-    const code = Math.floor(100000 + Math.random() * 900000).toString();
+    // Generate verification token and send welcome email
+    const token = randomUUID();
     await prisma.verificationToken.create({
       data: {
         email: user.email,
-        code,
-        expiresAt: new Date(Date.now() + 15 * 60 * 1000), // 15 minutes
+        code: token,
+        expiresAt: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), // 30 days
       },
     });
-    await sendWelcomeEmail(user.email, code, user.firstName);
+    await sendWelcomeEmail(user.email, token, user.firstName);
 
     // Create notifications for the user
     await prisma.notification.createMany({
@@ -86,7 +87,7 @@ export async function POST(request: NextRequest) {
           schoolId: 0,
           type: "email_verify",
           title: "Verify your email address",
-          body: "Check your email for a verification code to confirm your account.",
+          body: "Check your email for a verification link to confirm your account.",
           link: `/auth/verify?email=${encodeURIComponent(user.email)}`,
           schoolLogo: null,
         },

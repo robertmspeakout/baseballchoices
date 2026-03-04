@@ -13,6 +13,7 @@ interface AccountData {
   lastName: string;
   email: string;
   role: string;
+  emailVerified: boolean;
   trialExpiresAt: string;
   membershipActive: boolean;
   notificationsEnabled: boolean;
@@ -29,6 +30,8 @@ export default function AccountPage() {
   const [showCancelConfirm, setShowCancelConfirm] = useState(false);
   const [cancelling, setCancelling] = useState(false);
   const [cancelError, setCancelError] = useState("");
+  const [resendingVerify, setResendingVerify] = useState(false);
+  const [verifySent, setVerifySent] = useState(false);
 
   useEffect(() => {
     const p = loadProfile();
@@ -109,6 +112,51 @@ export default function AccountPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
                 </Link>
+              </div>
+            </div>
+          )}
+
+          {/* Email verification warning */}
+          {!loading && account && !account.emailVerified && (
+            <div className="bg-amber-50 border border-amber-200 rounded-xl shadow-sm overflow-hidden">
+              <div className="px-5 py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                <div className="flex items-start gap-3">
+                  <div className="w-9 h-9 rounded-lg bg-amber-100 flex items-center justify-center shrink-0">
+                    <svg className="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h2 className="text-sm font-bold text-amber-900">Email not verified</h2>
+                    <p className="text-xs text-amber-700 mt-0.5">
+                      Check your inbox for a verification link, or request a new one.
+                    </p>
+                  </div>
+                </div>
+                {verifySent ? (
+                  <span className="text-xs font-medium text-green-700 whitespace-nowrap">Verification email sent!</span>
+                ) : (
+                  <button
+                    onClick={async () => {
+                      if (resendingVerify || !account) return;
+                      setResendingVerify(true);
+                      try {
+                        await fetch("/api/auth/resend-code", {
+                          method: "POST",
+                          headers: { "Content-Type": "application/json" },
+                          body: JSON.stringify({ email: account.email }),
+                        });
+                        setVerifySent(true);
+                        setTimeout(() => setVerifySent(false), 5000);
+                      } catch {}
+                      setResendingVerify(false);
+                    }}
+                    disabled={resendingVerify}
+                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-600 text-white rounded-lg text-xs font-bold hover:bg-amber-700 transition-colors whitespace-nowrap shrink-0 disabled:opacity-50"
+                  >
+                    {resendingVerify ? "Sending..." : "Resend Verification Email"}
+                  </button>
+                )}
               </div>
             </div>
           )}

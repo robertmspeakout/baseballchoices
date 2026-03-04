@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useState, useEffect } from "react";
+import { Suspense, useState, useEffect, useRef } from "react";
 import { useSession } from "next-auth/react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
@@ -23,7 +23,7 @@ function MembershipContent() {
   const [redirecting, setRedirecting] = useState(false);
   const [error, setError] = useState("");
   const [trialDaysLeft, setTrialDaysLeft] = useState<number | null>(null);
-  const [autoCheckoutTriggered, setAutoCheckoutTriggered] = useState(false);
+  const autoCheckoutTriggeredRef = useRef(false);
 
   // Check for return from Stripe
   const success = searchParams.get("success") === "true";
@@ -48,16 +48,12 @@ function MembershipContent() {
 
   // Auto-trigger Stripe checkout when arriving from registration with intent=purchase
   useEffect(() => {
-    if (autoCheckout && status === "authenticated" && session?.user && !autoCheckoutTriggered) {
-      setAutoCheckoutTriggered(true);
-      // Small delay to ensure session is fully loaded
-      const timer = setTimeout(() => {
-        triggerCheckout();
-      }, 500);
-      return () => clearTimeout(timer);
+    if (autoCheckout && status === "authenticated" && session?.user && !autoCheckoutTriggeredRef.current) {
+      autoCheckoutTriggeredRef.current = true;
+      triggerCheckout();
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [autoCheckout, status, session, autoCheckoutTriggered]);
+  }, [autoCheckout, status, session]);
 
   const triggerCheckout = async () => {
     setRedirecting(true);
