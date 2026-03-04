@@ -401,7 +401,7 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
       {isLoggedIn && !isMember && (
         <Link
           href="/membership"
-          className={`hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors ${
+          className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors ${
             isLight
               ? "bg-[#CC0000] text-white hover:bg-red-700"
               : "bg-[#CC0000] text-white hover:bg-red-700"
