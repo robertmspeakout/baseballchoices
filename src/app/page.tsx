@@ -632,6 +632,12 @@ export default function Home() {
                 >
                   {marketingContent.hero.ctaButton}
                 </Link>
+                <Link
+                  href="/auth/login"
+                  className="px-6 py-3 bg-white/10 backdrop-blur-sm text-white rounded-xl text-sm font-bold hover:bg-white/20 transition-colors"
+                >
+                  Log In
+                </Link>
                 <a
                   href="#how-it-works"
                   className="px-6 py-3 border-2 border-white/30 text-white rounded-xl text-sm font-bold hover:border-white/60 transition-colors"
