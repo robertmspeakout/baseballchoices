@@ -89,8 +89,8 @@ function MembershipContent() {
         <main className="flex-1 flex items-start justify-center px-4 py-8 sm:py-12">
           <div className="w-full max-w-md">
             <div className="text-center mb-8">
-              <h2 className="text-2xl font-black text-gray-900">ExtraBase Membership</h2>
-              <p className="text-sm text-gray-500 mt-1">The complete college baseball recruiting toolkit.</p>
+              <h2 className="text-2xl font-black text-gray-900">ExtraBase Subscription</h2>
+              <p className="text-sm text-gray-500 mt-1">Get full access to every ExtraBase feature.</p>
             </div>
 
             <div className="bg-white rounded-2xl border-2 border-[#CC0000] p-6 shadow-lg">
