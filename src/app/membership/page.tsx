@@ -134,12 +134,16 @@ function MembershipContent() {
                 </div>
 
                 <Link
-                  href="/auth/login?callbackUrl=/membership"
+                  href="/auth/register"
                   className="block w-full px-4 py-3 border-2 border-gray-900 text-gray-900 rounded-xl text-sm font-bold hover:bg-gray-50 transition-colors text-center"
                 >
                   Subscribe Today — $24.99/year
                 </Link>
-                <p className="text-xs text-gray-400 text-center">Already have an account? Sign in to subscribe.</p>
+                <p className="text-xs text-gray-400 text-center">
+                  <Link href="/auth/login?callbackUrl=/membership" className="underline hover:text-gray-600">
+                    Already have an account? Sign in
+                  </Link>
+                </p>
               </div>
             </div>
           </div>
