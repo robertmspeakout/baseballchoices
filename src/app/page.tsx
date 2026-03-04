@@ -632,12 +632,6 @@ export default function Home() {
                 >
                   {marketingContent.hero.ctaButton}
                 </Link>
-                <Link
-                  href="/auth/login"
-                  className="px-6 py-3 bg-white/10 backdrop-blur-sm text-white rounded-xl text-sm font-bold hover:bg-white/20 transition-colors"
-                >
-                  Log In
-                </Link>
                 <a
                   href="#how-it-works"
                   className="px-6 py-3 border-2 border-white/30 text-white rounded-xl text-sm font-bold hover:border-white/60 transition-colors"
@@ -646,8 +640,14 @@ export default function Home() {
                   {marketingContent.hero.secondaryButton}
                 </a>
               </div>
+              <p className="text-sm text-gray-400">
+                Already subscribed?{" "}
+                <Link href="/auth/login" className="text-white underline hover:text-gray-200 transition-colors">
+                  Login
+                </Link>
+              </p>
               {"footerNote" in marketingContent.hero && (
-                <p className="text-xs text-gray-500">{(marketingContent.hero as Record<string, string>).footerNote}</p>
+                <p className="text-xs text-gray-500 mt-2">{(marketingContent.hero as Record<string, string>).footerNote}</p>
               )}
             </div>
           </section>
