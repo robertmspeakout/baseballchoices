@@ -18,15 +18,17 @@ export default function MembershipPage() {
 }
 
 function MembershipContent() {
-  const { data: session, update: updateSession } = useSession();
+  const { data: session, status, update: updateSession } = useSession();
   const searchParams = useSearchParams();
   const [redirecting, setRedirecting] = useState(false);
   const [error, setError] = useState("");
   const [trialDaysLeft, setTrialDaysLeft] = useState<number | null>(null);
+  const [autoCheckoutTriggered, setAutoCheckoutTriggered] = useState(false);
 
   // Check for return from Stripe
   const success = searchParams.get("success") === "true";
   const canceled = searchParams.get("canceled") === "true";
+  const autoCheckout = searchParams.get("auto_checkout") === "true";
 
   // If returned from successful checkout, refresh session to pick up membershipActive
   useEffect(() => {
@@ -44,7 +46,20 @@ function MembershipContent() {
     }
   }, [session]);
 
-  const handleCheckout = async () => {
+  // Auto-trigger Stripe checkout when arriving from registration with intent=purchase
+  useEffect(() => {
+    if (autoCheckout && status === "authenticated" && session?.user && !autoCheckoutTriggered) {
+      setAutoCheckoutTriggered(true);
+      // Small delay to ensure session is fully loaded
+      const timer = setTimeout(() => {
+        triggerCheckout();
+      }, 500);
+      return () => clearTimeout(timer);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [autoCheckout, status, session, autoCheckoutTriggered]);
+
+  const triggerCheckout = async () => {
     setRedirecting(true);
     setError("");
 
@@ -58,13 +73,14 @@ function MembershipContent() {
         return;
       }
 
-      // Redirect to Stripe-hosted Checkout
       window.location.href = data.url;
     } catch {
       setError("Network error. Please check your connection.");
       setRedirecting(false);
     }
   };
+
+  const handleCheckout = () => triggerCheckout();
 
   const isLoggedIn = !!session?.user;
   const isMember = !!(session?.user as Record<string, unknown>)?.membershipActive;
@@ -123,9 +139,9 @@ function MembershipContent() {
                   href="/auth/register"
                   className="block w-full px-4 py-3.5 bg-[#CC0000] text-white rounded-xl text-sm font-bold hover:bg-red-700 transition-colors shadow-sm text-center"
                 >
-                  Start Your Free Trial
+                  Try Free for 60 Days
                 </Link>
-                <p className="text-xs text-gray-400 text-center">No credit card required. Try free for 60 days.</p>
+                <p className="text-xs text-gray-400 text-center">No credit card required.</p>
 
                 <div className="relative flex items-center my-1">
                   <div className="flex-1 border-t border-gray-200" />
@@ -134,10 +150,10 @@ function MembershipContent() {
                 </div>
 
                 <Link
-                  href="/auth/register?redirect=/membership"
+                  href="/auth/register?intent=purchase"
                   className="block w-full px-4 py-3 border-2 border-gray-900 text-gray-900 rounded-xl text-sm font-bold hover:bg-gray-50 transition-colors text-center"
                 >
-                  Subscribe Today — $24.99/year
+                  Subscribe Now — $24.99/year
                 </Link>
               </div>
             </div>

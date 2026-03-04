@@ -2,32 +2,17 @@
 
 import { useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
+import { signIn } from "next-auth/react";
 import Link from "next/link";
-
-const POSITIONS = [
-  "RHP", "LHP", "C", "1B", "2B", "3B", "SS", "OF", "DH", "Utility",
-];
-
-const STATES = [
-  "AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA",
-  "KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ",
-  "NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT",
-  "VA","WA","WV","WI","WY",
-];
-
-const GRAD_YEARS = ["2025", "2026", "2027", "2028", "2029", "2030"];
 
 function RegisterForm() {
   const searchParams = useSearchParams();
-  const redirect = searchParams.get("redirect") || "";
+  const intent = searchParams.get("intent") || "";
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [gradYear, setGradYear] = useState("");
-  const [position, setPosition] = useState("");
-  const [state, setState] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [errorCode, setErrorCode] = useState("");
@@ -57,7 +42,7 @@ function RegisterForm() {
       const res = await fetch("/api/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ firstName, lastName, email, password, gradYear, position, state }),
+        body: JSON.stringify({ firstName, lastName, email, password }),
       });
 
       const data = await res.json();
@@ -69,12 +54,26 @@ function RegisterForm() {
         return;
       }
 
-      // Store credentials for auto-login after verification
-      try { sessionStorage.setItem("_eb_pending", JSON.stringify({ email, password })); } catch {}
+      // Auto-login immediately after registration
+      const result = await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
+      });
 
-      // Redirect to verify page to enter email code
-      const verifyUrl = `/auth/verify?email=${encodeURIComponent(email)}${redirect ? `&redirect=${encodeURIComponent(redirect)}` : ""}`;
-      window.location.href = verifyUrl;
+      if (!result?.ok) {
+        setError("Account created but auto-login failed. Please sign in manually.");
+        setLoading(false);
+        return;
+      }
+
+      // Redirect based on intent
+      if (intent === "purchase") {
+        // Go straight to membership page which will auto-trigger Stripe checkout
+        window.location.replace("/membership?auto_checkout=true");
+      } else {
+        window.location.replace("/");
+      }
     } catch {
       setError("Something went wrong. Please try again.");
       setLoading(false);
@@ -107,7 +106,9 @@ function RegisterForm() {
               </svg>
             </div>
             <h2 className="text-2xl font-bold text-gray-900">Create Your Account</h2>
-            <p className="text-sm text-gray-500 mt-1">Get started with ExtraBase</p>
+            <p className="text-sm text-gray-500 mt-1">
+              {intent === "purchase" ? "Create your account to subscribe" : "Get started with ExtraBase"}
+            </p>
           </div>
 
           <form onSubmit={handleRegister} className="space-y-4">
@@ -158,36 +159,6 @@ function RegisterForm() {
               <input type={showPassword ? "text" : "password"} value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} placeholder="Re-enter your password" className={inputClass} autoComplete="new-password" />
             </div>
 
-            <div className="flex items-center gap-3 my-2">
-              <div className="flex-1 h-px bg-gray-200" />
-              <span className="text-xs text-gray-400 font-medium">Player Info (optional)</span>
-              <div className="flex-1 h-px bg-gray-200" />
-            </div>
-
-            <div className="grid grid-cols-3 gap-3">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Grad Year</label>
-                <select value={gradYear} onChange={(e) => setGradYear(e.target.value)} className={inputClass}>
-                  <option value="">—</option>
-                  {GRAD_YEARS.map(y => <option key={y} value={y}>{y}</option>)}
-                </select>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Position</label>
-                <select value={position} onChange={(e) => setPosition(e.target.value)} className={inputClass}>
-                  <option value="">—</option>
-                  {POSITIONS.map(p => <option key={p} value={p}>{p}</option>)}
-                </select>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">State</label>
-                <select value={state} onChange={(e) => setState(e.target.value)} className={inputClass}>
-                  <option value="">—</option>
-                  {STATES.map(s => <option key={s} value={s}>{s}</option>)}
-                </select>
-              </div>
-            </div>
-
             {error && (
               <div className="px-4 py-3 bg-red-50 border border-red-200 rounded-xl">
                 <div className="flex items-center gap-2">
@@ -210,6 +181,8 @@ function RegisterForm() {
                   <div className="animate-spin rounded-full h-4 w-4 border-2 border-white/30 border-t-white" />
                   Creating account...
                 </span>
+              ) : intent === "purchase" ? (
+                "Create Account & Subscribe"
               ) : (
                 "Create Account"
               )}
