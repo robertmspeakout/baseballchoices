@@ -82,6 +82,47 @@ function MembershipContent() {
   const isMember = !!(session?.user as Record<string, unknown>)?.membershipActive;
   const hasActiveTrial = trialDaysLeft !== null && trialDaysLeft > 0;
 
+  // When auto_checkout is active, show a minimal loading/error screen instead of the full membership page
+  if (autoCheckout) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex flex-col">
+        <header className="bg-blue-950 text-white">
+          <div className="max-w-lg mx-auto px-4 py-4 flex items-center gap-3">
+            <span className="text-lg font-bold leading-none" style={{ fontFamily: "var(--font-marker)" }}>
+              <span className="text-red-500">EXTRA</span><span className="text-white">BASE</span>
+            </span>
+          </div>
+        </header>
+        <main className="flex-1 flex items-center justify-center px-4">
+          {error ? (
+            <div className="text-center max-w-sm">
+              <div className="mx-auto w-14 h-14 bg-red-100 rounded-full flex items-center justify-center mb-4">
+                <svg className="w-7 h-7 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <p className="text-sm font-semibold text-gray-900 mb-1">Something went wrong</p>
+              <p className="text-xs text-gray-500 mb-6">{error}</p>
+              <button
+                onClick={handleCheckout}
+                disabled={redirecting}
+                className="w-full px-4 py-3 bg-[#CC0000] text-white rounded-xl text-sm font-bold hover:bg-red-700 transition-colors disabled:opacity-50"
+              >
+                Try Again
+              </button>
+            </div>
+          ) : (
+            <div className="text-center">
+              <div className="animate-spin rounded-full h-10 w-10 border-3 border-gray-300 border-t-[#CC0000] mx-auto mb-4" />
+              <p className="text-sm font-semibold text-gray-700">Setting up your checkout...</p>
+              <p className="text-xs text-gray-400 mt-1">You&apos;ll be redirected to our secure payment page.</p>
+            </div>
+          )}
+        </main>
+      </div>
+    );
+  }
+
   if (!isLoggedIn) {
     return (
       <div className="min-h-screen bg-gray-50 flex flex-col">
