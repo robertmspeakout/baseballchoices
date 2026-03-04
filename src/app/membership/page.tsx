@@ -208,30 +208,49 @@ function MembershipContent() {
 
           {/* Canceled — user backed out of Stripe */}
           {canceled && (
-            <div className="text-center mb-8">
-              <div className="mx-auto w-14 h-14 bg-yellow-100 rounded-full flex items-center justify-center mb-4">
-                <svg className="w-7 h-7 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="text-center">
+              <div className="mx-auto w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mb-6">
+                <svg className="w-10 h-10 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h2 className="text-xl font-black text-gray-900 mb-1">No worries!</h2>
-              <p className="text-sm text-gray-500 mb-6">Your checkout was canceled. You can subscribe whenever you&apos;re ready.</p>
+              <h2 className="text-2xl font-black text-gray-900 mb-2">Oops, did you mean to go backward?</h2>
+              <p className="text-sm text-gray-500 mb-8">No worries — you can pick up right where you left off, or start exploring with your free trial.</p>
+
+              <div className="space-y-3">
+                <button
+                  onClick={handleCheckout}
+                  disabled={redirecting}
+                  className="block w-full px-4 py-3.5 bg-[#CC0000] text-white rounded-xl text-sm font-bold hover:bg-red-700 transition-colors shadow-sm disabled:opacity-50"
+                >
+                  {redirecting ? (
+                    <span className="flex items-center justify-center gap-2">
+                      <div className="animate-spin rounded-full h-4 w-4 border-2 border-white/30 border-t-white" />
+                      Redirecting to checkout...
+                    </span>
+                  ) : "Return to Purchase"}
+                </button>
+                <Link
+                  href="/"
+                  className="block w-full px-4 py-3 border-2 border-gray-300 text-gray-700 rounded-xl text-sm font-bold hover:bg-gray-50 transition-colors text-center"
+                >
+                  Continue with My Trial
+                </Link>
+              </div>
             </div>
           )}
 
-          {/* Subscribe view (default, or shown again after cancel) */}
-          {!success && (
+          {/* Subscribe view (default) */}
+          {!success && !canceled && (
             <>
-              {!canceled && (
-                <div className="text-center mb-8">
-                  <h2 className="text-2xl font-black text-gray-900">Subscribe Today</h2>
-                  <p className="text-sm text-gray-500 mt-1">
-                    {hasActiveTrial
-                      ? `You have ${trialDaysLeft} day${trialDaysLeft !== 1 ? "s" : ""} left on your free trial. Subscribe to keep full access.`
-                      : "Get full access to every ExtraBase feature."}
-                  </p>
-                </div>
-              )}
+              <div className="text-center mb-8">
+                <h2 className="text-2xl font-black text-gray-900">Subscribe Today</h2>
+                <p className="text-sm text-gray-500 mt-1">
+                  {hasActiveTrial
+                    ? `You have ${trialDaysLeft} day${trialDaysLeft !== 1 ? "s" : ""} left on your free trial. Subscribe to keep full access.`
+                    : "Get full access to every ExtraBase feature."}
+                </p>
+              </div>
 
               <div className="bg-white rounded-2xl border-2 border-[#CC0000] p-6 shadow-lg">
                 <div className="flex items-baseline gap-2 mb-1">
