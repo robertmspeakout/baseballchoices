@@ -100,7 +100,7 @@ export default function RegisterPage() {
               </svg>
             </div>
             <h2 className="text-2xl font-bold text-gray-900">Create Your Account</h2>
-            <p className="text-sm text-gray-500 mt-1">Start your free trial — no credit card required</p>
+            <p className="text-sm text-gray-500 mt-1">Get started with ExtraBase</p>
           </div>
 
           <form onSubmit={handleRegister} className="space-y-4">
@@ -204,7 +204,7 @@ export default function RegisterPage() {
                   Creating account...
                 </span>
               ) : (
-                "Create Account & Start Free Trial"
+                "Create Account"
               )}
             </button>
           </form>
