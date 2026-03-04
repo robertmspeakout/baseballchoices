@@ -3,37 +3,33 @@ import { prisma } from "@/lib/prisma";
 
 export async function POST(request: NextRequest) {
   try {
-    const { email, code } = await request.json();
+    const { token } = await request.json();
 
-    if (!email || !code) {
-      return NextResponse.json({ error: "Email and code are required" }, { status: 400 });
+    if (!token) {
+      return NextResponse.json({ error: "Verification token is required" }, { status: 400 });
     }
 
-    const token = await prisma.verificationToken.findFirst({
-      where: {
-        email: email.toLowerCase(),
-        code,
-        expiresAt: { gt: new Date() },
-      },
+    const record = await prisma.verificationToken.findFirst({
+      where: { code: token },
       orderBy: { createdAt: "desc" },
     });
 
-    if (!token) {
-      return NextResponse.json({ error: "Invalid or expired code. Please try again." }, { status: 400 });
+    if (!record) {
+      return NextResponse.json({ error: "Invalid or expired verification link. Please request a new one." }, { status: 400 });
     }
 
     // Mark user as verified
     await prisma.user.update({
-      where: { email: email.toLowerCase() },
+      where: { email: record.email },
       data: { emailVerified: true },
     });
 
     // Clean up used tokens for this email
     await prisma.verificationToken.deleteMany({
-      where: { email: email.toLowerCase() },
+      where: { email: record.email },
     });
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true, email: record.email });
   } catch (error) {
     console.error("Verification error:", error);
     return NextResponse.json({ error: "Something went wrong" }, { status: 500 });

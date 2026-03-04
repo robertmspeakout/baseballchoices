@@ -627,7 +627,7 @@ export default function Home() {
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-3">
                 <Link
-                  href="/auth/register"
+                  href="/membership"
                   className="px-6 py-3 bg-[#CC0000] text-white rounded-xl text-sm font-bold hover:bg-red-700 transition-colors"
                 >
                   {marketingContent.hero.ctaButton}
@@ -640,8 +640,14 @@ export default function Home() {
                   {marketingContent.hero.secondaryButton}
                 </a>
               </div>
+              <p className="text-sm text-gray-400">
+                Already subscribed?{" "}
+                <Link href="/auth/login" className="text-white underline hover:text-gray-200 transition-colors">
+                  Login
+                </Link>
+              </p>
               {"footerNote" in marketingContent.hero && (
-                <p className="text-xs text-gray-500">{(marketingContent.hero as Record<string, string>).footerNote}</p>
+                <p className="text-xs text-gray-500 mt-2">{(marketingContent.hero as Record<string, string>).footerNote}</p>
               )}
             </div>
           </section>
@@ -707,7 +713,7 @@ export default function Home() {
                     </li>
                   ))}
                 </ul>
-                <Link href="/auth/register" className="block w-full px-4 py-3.5 bg-[#CC0000] text-white rounded-xl text-sm font-bold hover:bg-red-700 transition-colors shadow-sm text-center">
+                <Link href="/membership" className="block w-full px-4 py-3.5 bg-[#CC0000] text-white rounded-xl text-sm font-bold hover:bg-red-700 transition-colors shadow-sm text-center">
                   {marketingContent.pricing.ctaButton}
                 </Link>
                 <p className="text-xs text-gray-400 mt-3">{marketingContent.pricing.footerNote}</p>
@@ -963,7 +969,7 @@ export default function Home() {
                 Create a free account to access all {schoolCount || allSchools.length} programs and unlock AI matching.
               </p>
               <Link
-                href="/auth/register"
+                href="/membership"
                 className="inline-block px-6 py-2.5 bg-[#CC0000] text-white rounded-xl text-sm font-bold hover:bg-red-700 transition-colors mb-2"
               >
                 Sign Up Free

@@ -7,7 +7,7 @@
   },
   "statsBar": {
     "items": [
-      { "value": "1000+", "label": "Programs" },
+      { "value": "1,300+", "label": "Programs" },
       { "value": "D1, D2, D3 & JUCO" },
       { "value": "AI-Matching" }
     ]
@@ -41,7 +41,7 @@
     "planName": "One Full Year. ExtraBase Full Access",
     "price": "$24.99",
     "period": "per year",
-    "subtitle": "We priced this at $25 a year because we want it to be helpful, not another financial burden. You can even get it free for 5 days. Cancel anytime if it's not for you.",
+    "subtitle": "We priced this at $25 a year because we want it to be helpful, not another financial burden. Try it free — no credit card required. Cancel anytime if it's not for you.",
     "features": [
       "Access to {{PROGRAM_COUNT}} D1, D2, D2 & JUCO programs",
       "AI-powered program matching",

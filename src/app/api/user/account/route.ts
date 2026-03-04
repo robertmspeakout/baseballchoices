@@ -16,6 +16,7 @@ export async function GET() {
       lastName: true,
       email: true,
       role: true,
+      emailVerified: true,
       trialExpiresAt: true,
       membershipActive: true,
       notificationsEnabled: true,

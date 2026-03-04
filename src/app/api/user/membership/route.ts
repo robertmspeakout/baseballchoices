@@ -1,25 +1,32 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 
-export async function POST(request: NextRequest) {
+/** GET /api/user/membership — return current subscription status */
+export async function GET() {
   const session = await auth();
   if (!session?.user?.id) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const body = await request.json();
-  const { action } = body;
+  const user = await prisma.user.findUnique({
+    where: { id: session.user.id },
+    select: {
+      membershipActive: true,
+      subscriptionStatus: true,
+      stripeCustomerId: true,
+      trialExpiresAt: true,
+    },
+  });
 
-  if (action === "activate") {
-    // Dummy payment - just activate membership
-    await prisma.user.update({
-      where: { id: session.user.id },
-      data: { membershipActive: true },
-    });
-
-    return NextResponse.json({ success: true, membershipActive: true });
+  if (!user) {
+    return NextResponse.json({ error: "User not found" }, { status: 404 });
   }
 
-  return NextResponse.json({ error: "Invalid action" }, { status: 400 });
+  return NextResponse.json({
+    membershipActive: user.membershipActive,
+    subscriptionStatus: user.subscriptionStatus,
+    hasStripeAccount: !!user.stripeCustomerId,
+    trialExpiresAt: user.trialExpiresAt,
+  });
 }

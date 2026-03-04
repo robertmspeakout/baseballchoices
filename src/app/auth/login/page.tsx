@@ -35,21 +35,6 @@ function LoginForm() {
       });
 
       if (!result || result.error || !result.ok) {
-        // Check if the email is unverified
-        try {
-          const checkRes = await fetch("/api/auth/check-verification", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email }),
-          });
-          const checkData = await checkRes.json();
-          if (!checkData.verified) {
-            window.location.href = `/auth/verify?email=${encodeURIComponent(email)}`;
-            return;
-          }
-        } catch {
-          // Fall through to generic error
-        }
         setError("Invalid email or password.");
         setLoading(false);
         return;
@@ -146,7 +131,7 @@ function LoginForm() {
 
       <p className="text-center text-sm text-gray-500 mt-6">
         Don&apos;t have an account?{" "}
-        <Link href="/auth/register" className="text-blue-600 hover:text-blue-800 font-medium">Create one</Link>
+        <Link href="/membership" className="text-blue-600 hover:text-blue-800 font-medium">Create one</Link>
       </p>
     </div>
   );

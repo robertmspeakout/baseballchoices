@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
+import { randomUUID } from "crypto";
 import { hashPassword } from "@/lib/password";
 import { prisma } from "@/lib/prisma";
 import { rateLimit } from "@/lib/rate-limit";
-import { sendVerificationEmail } from "@/lib/email";
+import { sendWelcomeEmail } from "@/lib/email";
 
 const registerLimiter = rateLimit({
   name: "register",
@@ -67,16 +68,40 @@ export async function POST(request: NextRequest) {
       include: { profile: true },
     });
 
-    // Send email verification code
-    const code = Math.floor(100000 + Math.random() * 900000).toString();
+    // Generate verification token and send welcome email
+    const token = randomUUID();
     await prisma.verificationToken.create({
       data: {
         email: user.email,
-        code,
-        expiresAt: new Date(Date.now() + 15 * 60 * 1000), // 15 minutes
+        code: token,
+        expiresAt: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), // 30 days
       },
     });
-    await sendVerificationEmail(user.email, code, user.firstName);
+    await sendWelcomeEmail(user.email, token, user.firstName);
+
+    // Create notifications for the user
+    await prisma.notification.createMany({
+      data: [
+        {
+          userId: user.id,
+          schoolId: 0,
+          type: "email_verify",
+          title: "Verify your email address",
+          body: "Check your email for a verification link to confirm your account.",
+          link: `/auth/verify?email=${encodeURIComponent(user.email)}`,
+          schoolLogo: null,
+        },
+        {
+          userId: user.id,
+          schoolId: 0,
+          type: "profile_incomplete",
+          title: "Complete your player profile",
+          body: "Fill out your profile so we can match you with the best college baseball programs.",
+          link: "/auth/profile",
+          schoolLogo: null,
+        },
+      ],
+    });
 
     return NextResponse.json({
       id: user.id,

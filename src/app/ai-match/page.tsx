@@ -392,7 +392,17 @@ function AIMatchContent() {
   // Auto-scroll to the top of the latest AI reply
   useEffect(() => {
     if (hasInteracted.current && lastAssistantMsgRef.current) {
-      lastAssistantMsgRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+      // Use requestAnimationFrame + small delay to ensure DOM layout is settled
+      // before scrolling, so the element's position is accurate.
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          if (lastAssistantMsgRef.current) {
+            const el = lastAssistantMsgRef.current;
+            const y = el.getBoundingClientRect().top + window.scrollY - 12;
+            window.scrollTo({ top: y, behavior: "smooth" });
+          }
+        }, 50);
+      });
     }
   }, [messages]);
 

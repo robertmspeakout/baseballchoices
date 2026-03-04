@@ -1,11 +1,21 @@
 import type { Metadata } from "next";
-import { Permanent_Marker } from "next/font/google";
+import localFont from "next/font/local";
 import Providers from "@/components/Providers";
 import "./globals.css";
 
-const permanentMarker = Permanent_Marker({
-  weight: "400",
-  subsets: ["latin"],
+const permanentMarker = localFont({
+  src: [
+    {
+      path: "../../public/fonts/PermanentMarker-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/PermanentMarker-Regular.woff",
+      weight: "400",
+      style: "normal",
+    },
+  ],
   display: "swap",
 });
 
@@ -15,7 +25,7 @@ export const metadata: Metadata = {
     template: "%s | ExtraBase",
   },
   description:
-    "Search and track 1,800+ college baseball programs across D1, D2, D3 and JUCO. Rate your favorites, get AI-powered matches, and build your personalized recruiting list.",
+    "Search and track 1,300+ college baseball programs across D1, D2, D3 and JUCO. Rate your favorites, get AI-powered matches, and build your personalized recruiting list.",
   keywords: [
     "college baseball recruiting",
     "college baseball directory",
@@ -44,13 +54,13 @@ export const metadata: Metadata = {
     siteName: "ExtraBase",
     title: "ExtraBase - College Baseball Recruiting Directory",
     description:
-      "Search and track 1,800+ college baseball programs across D1, D2, D3 and JUCO. Rate your favorites, get AI-powered matches, and build your personalized recruiting list.",
+      "Search and track 1,300+ college baseball programs across D1, D2, D3 and JUCO. Rate your favorites, get AI-powered matches, and build your personalized recruiting list.",
   },
   twitter: {
     card: "summary",
     title: "ExtraBase - College Baseball Recruiting Directory",
     description:
-      "Search and track 1,800+ college baseball programs. Rate favorites, get AI matches, and build your recruiting list.",
+      "Search and track 1,300+ college baseball programs. Rate favorites, get AI matches, and build your recruiting list.",
   },
   robots: {
     index: true,

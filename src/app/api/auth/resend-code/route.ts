@@ -1,10 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
+import { randomUUID } from "crypto";
 import { prisma } from "@/lib/prisma";
 import { sendVerificationEmail } from "@/lib/email";
-
-function generateCode(): string {
-  return Math.floor(100000 + Math.random() * 900000).toString();
-}
 
 export async function POST(request: NextRequest) {
   try {
@@ -27,7 +24,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Email is already verified" }, { status: 400 });
     }
 
-    // Rate limit: don't send if a code was created in the last 60 seconds
+    // Rate limit: don't send if a token was created in the last 60 seconds
     const recentToken = await prisma.verificationToken.findFirst({
       where: {
         email: email.toLowerCase(),
@@ -36,7 +33,7 @@ export async function POST(request: NextRequest) {
     });
 
     if (recentToken) {
-      return NextResponse.json({ error: "Please wait a minute before requesting a new code" }, { status: 429 });
+      return NextResponse.json({ error: "Please wait a minute before requesting a new email" }, { status: 429 });
     }
 
     // Clean up old tokens
@@ -44,20 +41,20 @@ export async function POST(request: NextRequest) {
       where: { email: email.toLowerCase() },
     });
 
-    const code = generateCode();
+    const token = randomUUID();
     await prisma.verificationToken.create({
       data: {
         email: email.toLowerCase(),
-        code,
-        expiresAt: new Date(Date.now() + 15 * 60 * 1000), // 15 minutes
+        code: token,
+        expiresAt: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), // 30 days
       },
     });
 
-    await sendVerificationEmail(email.toLowerCase(), code, user.firstName);
+    await sendVerificationEmail(email.toLowerCase(), token, user.firstName);
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error("Resend code error:", error);
+    console.error("Resend verification error:", error);
     return NextResponse.json({ error: "Something went wrong" }, { status: 500 });
   }
 }
