@@ -262,6 +262,7 @@ export default function Home() {
     region: "",
   });
   const [searchOverlayOpen, setSearchOverlayOpen] = useState(false);
+  const [showDemoVideo, setShowDemoVideo] = useState(false);
 
   // Server-loaded school data
   const [allSchools, setAllSchools] = useState<School[]>([]);
@@ -640,6 +641,15 @@ export default function Home() {
                   {marketingContent.hero.secondaryButton}
                 </a>
               </div>
+              <button
+                onClick={() => setShowDemoVideo(true)}
+                className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors mb-3"
+              >
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                </svg>
+                Watch Demo
+              </button>
               <p className="text-sm text-gray-400">
                 Already subscribed?{" "}
                 <Link href="/auth/login" className="text-white underline hover:text-gray-200 transition-colors">
@@ -1017,6 +1027,35 @@ export default function Home() {
       </main>
 
       <SiteFooter onLogoClick={() => { handleTabChange(isLoggedIn ? "mylist" : "home"); window.scrollTo({ top: 0, behavior: "smooth" }); }} />
+
+      {/* Demo video modal */}
+      {showDemoVideo && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm px-4"
+          onClick={() => setShowDemoVideo(false)}
+        >
+          <div
+            className="relative w-full max-w-sm mx-auto"
+            style={{ aspectRatio: "9/16" }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setShowDemoVideo(false)}
+              className="absolute -top-10 right-0 text-white/80 hover:text-white transition-colors"
+            >
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <iframe
+              src="https://drive.google.com/file/d/1XzaLSmul-lzo3df6txx_I9lXPzIXV6Kc/preview"
+              className="w-full h-full rounded-2xl"
+              allow="autoplay"
+              allowFullScreen
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
