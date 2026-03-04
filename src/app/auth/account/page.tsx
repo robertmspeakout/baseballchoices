@@ -96,7 +96,7 @@ export default function AccountPage() {
                         : "Your free trial has expired"}
                     </h2>
                     <p className="text-xs text-gray-400 mt-0.5">
-                      Upgrade to Premium for $19.99/year — full access to 927+ programs, AI matching, and more.
+                      Upgrade to Premium for $24.99/year — full access to 927+ programs, AI matching, and more.
                     </p>
                   </div>
                 </div>
