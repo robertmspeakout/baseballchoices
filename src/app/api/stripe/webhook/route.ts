@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getStripe } from "@/lib/stripe";
 import { prisma } from "@/lib/prisma";
+import { sendVerificationEmail, sendProfileReminderEmail } from "@/lib/email";
 import type Stripe from "stripe";
 
 export async function POST(request: NextRequest) {
@@ -40,6 +41,49 @@ export async function POST(request: NextRequest) {
             membershipActive: true,
           },
         });
+
+        // Send verification/profile email and create profile notification
+        const user = await prisma.user.findFirst({
+          where: { stripeCustomerId: customerId },
+          include: { profile: true },
+        });
+
+        if (user) {
+          try {
+            if (!user.emailVerified) {
+              // Send verification email (includes profile prompt)
+              const code = Math.floor(100000 + Math.random() * 900000).toString();
+              await prisma.verificationToken.create({
+                data: {
+                  email: user.email,
+                  code,
+                  expiresAt: new Date(Date.now() + 15 * 60 * 1000),
+                },
+              });
+              await sendVerificationEmail(user.email, code, user.firstName);
+            } else if (!user.profile?.profileComplete) {
+              // Already verified but profile incomplete — send profile reminder
+              await sendProfileReminderEmail(user.email, user.firstName);
+            }
+          } catch (emailErr) {
+            console.error("Failed to send post-purchase email:", emailErr);
+          }
+
+          // Create notification to fill out profile
+          if (!user.profile?.profileComplete) {
+            await prisma.notification.create({
+              data: {
+                userId: user.id,
+                schoolId: 0,
+                type: "profile_incomplete",
+                title: "Complete your player profile",
+                body: "Fill out your profile so we can match you with the best college baseball programs.",
+                link: "/auth/profile",
+                schoolLogo: null,
+              },
+            });
+          }
+        }
       }
       break;
     }

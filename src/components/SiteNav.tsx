@@ -52,6 +52,7 @@ const NOTIFICATION_TYPE_ICONS: Record<string, string> = {
   coach_change: "person",
   ai_messages_low: "chat",
   trial_expiring: "clock",
+  profile_incomplete: "profile",
 };
 
 interface SiteNavProps {
@@ -190,6 +191,12 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
         );
+      case "profile":
+        return (
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+          </svg>
+        );
       default:
         return (
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -204,6 +211,7 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
       case "coach_change": return "bg-orange-100 text-orange-600";
       case "ai_messages_low": return "bg-amber-100 text-amber-600";
       case "trial_expiring": return "bg-red-100 text-red-600";
+      case "profile_incomplete": return "bg-blue-100 text-blue-600";
       default: return "bg-gray-100 text-gray-600";
     }
   };

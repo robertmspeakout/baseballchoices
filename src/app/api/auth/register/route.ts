@@ -78,6 +78,19 @@ export async function POST(request: NextRequest) {
     });
     await sendVerificationEmail(user.email, code, user.firstName);
 
+    // Create notification to fill out profile
+    await prisma.notification.create({
+      data: {
+        userId: user.id,
+        schoolId: 0,
+        type: "profile_incomplete",
+        title: "Complete your player profile",
+        body: "Fill out your profile so we can match you with the best college baseball programs.",
+        link: "/auth/profile",
+        schoolLogo: null,
+      },
+    });
+
     return NextResponse.json({
       id: user.id,
       email: user.email,
