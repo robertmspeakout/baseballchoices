@@ -69,7 +69,7 @@ function MembershipContent() {
         return;
       }
 
-      window.location.href = data.url;
+      window.location.replace(data.url);
     } catch {
       setError("Network error. Please check your connection.");
       setRedirecting(false);
