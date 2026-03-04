@@ -210,7 +210,7 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
 
   return (
     <div className="relative flex items-center gap-1">
-      {/* Desktop auth buttons — only for logged-out users */}
+      {/* Desktop Log In link — only for logged-out users */}
       {!isLoggedIn && (
         <div className="hidden sm:flex items-center gap-2">
           <Link
@@ -220,12 +220,6 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
             }`}
           >
             Log In
-          </Link>
-          <Link
-            href="/membership"
-            className="inline-flex items-center px-4 py-2 bg-[#CC0000] text-white rounded-lg text-xs font-bold hover:bg-red-700 transition-colors"
-          >
-            Sign Up
           </Link>
         </div>
       )}
@@ -397,8 +391,8 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
         </div>
       )}
 
-      {/* Upgrade CTA — logged-in non-members only */}
-      {isLoggedIn && !isMember && (
+      {/* Subscribe CTA — visible to everyone except paid members */}
+      {!isMember && (
         <Link
           href="/membership"
           className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors ${
@@ -591,7 +585,7 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
                   onClick={() => setOpen(false)}
                   className="w-full flex items-center justify-center gap-2 px-4 py-3 text-sm font-bold bg-[#CC0000] text-white hover:bg-red-700 transition-colors"
                 >
-                  Sign Up Free
+                  Subscribe
                 </Link>
               </>
             )}
