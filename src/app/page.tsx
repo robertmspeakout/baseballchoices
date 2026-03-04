@@ -642,9 +642,9 @@ export default function Home() {
                 </a>
               </div>
               <p className="text-sm text-gray-400">
-                Already subscribed?{" "}
+                Already Registered?{" "}
                 <Link href="/auth/login" className="text-white underline hover:text-gray-200 transition-colors">
-                  Login
+                  Login.
                 </Link>
               </p>
               {"footerNote" in marketingContent.hero && (
