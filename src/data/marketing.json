@@ -2,7 +2,7 @@
   "hero": {
     "headline": "Recruiting is complicated.\nYour app shouldn't be.",
     "subtext": "Built by a real baseball dad for real baseball families, ExtraBase is the only recruiting app made for ball players only. Easy-to-use, priced by people who know how much travel ball costs (ouch), and fun - ExtraBase gives you exactly what you need and nothing you don't.",
-    "ctaButton": "Start Your Free Trial",
+    "ctaButton": "Start Trial or Subscribe",
     "secondaryButton": "See How It Works"
   },
   "statsBar": {
@@ -49,7 +49,7 @@
       "Track your recruiting journey in one place",
       "Built by baseball parents who lived this process"
     ],
-    "ctaButton": "Start My Free Trial",
+    "ctaButton": "Start Trial or Subscribe",
     "footerNote": "No credit card required."
   },
   "whyWeBuiltThis": {
