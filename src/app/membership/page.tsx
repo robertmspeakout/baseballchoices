@@ -22,6 +22,7 @@ function MembershipContent() {
   const searchParams = useSearchParams();
   const [redirecting, setRedirecting] = useState(false);
   const [error, setError] = useState("");
+  const [trialDaysLeft, setTrialDaysLeft] = useState<number | null>(null);
 
   // Check for return from Stripe
   const success = searchParams.get("success") === "true";
@@ -33,6 +34,15 @@ function MembershipContent() {
       updateSession({ membershipActive: true });
     }
   }, [success, updateSession]);
+
+  // Calculate trial days remaining from session
+  useEffect(() => {
+    const trialExpiresAt = (session?.user as Record<string, unknown>)?.trialExpiresAt as string | undefined;
+    if (trialExpiresAt) {
+      const diff = new Date(trialExpiresAt).getTime() - Date.now();
+      setTrialDaysLeft(Math.max(0, Math.ceil(diff / (1000 * 60 * 60 * 24))));
+    }
+  }, [session]);
 
   const handleCheckout = async () => {
     setRedirecting(true);
@@ -56,15 +66,84 @@ function MembershipContent() {
     }
   };
 
-  if (!session?.user) {
+  const isLoggedIn = !!session?.user;
+  const isMember = !!(session?.user as Record<string, unknown>)?.membershipActive;
+  const hasActiveTrial = trialDaysLeft !== null && trialDaysLeft > 0;
+
+  if (!isLoggedIn) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <p className="text-gray-600 mb-4">Please sign in to manage your membership.</p>
-          <Link href="/auth/login?callbackUrl=/membership" className="px-6 py-3 bg-blue-600 text-white rounded-xl text-sm font-bold hover:bg-blue-700">
-            Sign In
-          </Link>
-        </div>
+      <div className="min-h-screen bg-gray-50 flex flex-col">
+        <header className="bg-blue-950 text-white">
+          <div className="max-w-lg mx-auto px-4 py-4 flex items-center gap-3">
+            <Link href="/" className="text-white/70 hover:text-white transition-colors">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </Link>
+            <span className="text-lg font-bold leading-none" style={{ fontFamily: "var(--font-marker)" }}>
+              <span className="text-red-500">EXTRA</span><span className="text-white">BASE</span>
+            </span>
+          </div>
+        </header>
+
+        <main className="flex-1 flex items-start justify-center px-4 py-8 sm:py-12">
+          <div className="w-full max-w-md">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl font-black text-gray-900">ExtraBase Premium</h2>
+              <p className="text-sm text-gray-500 mt-1">The complete college baseball recruiting toolkit.</p>
+            </div>
+
+            <div className="bg-white rounded-2xl border-2 border-[#CC0000] p-6 shadow-lg">
+              <div className="flex items-baseline gap-2 mb-2">
+                <span className="text-3xl font-black text-gray-900">$24.99</span>
+                <span className="text-sm text-gray-500">/year</span>
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-4">Annual Subscription</h3>
+
+              <ul className="space-y-3 mb-6">
+                {[
+                  "Full access to 927+ college baseball programs",
+                  "AI-powered program matching",
+                  "Unlimited school tracking & notes",
+                  "Coach contact information",
+                  "Academic & tuition comparisons",
+                  "Recruiting status management",
+                ].map((feature) => (
+                  <li key={feature} className="flex items-start gap-2.5">
+                    <svg className="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="text-sm text-gray-700">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="space-y-3">
+                <Link
+                  href="/auth/register"
+                  className="block w-full px-4 py-3.5 bg-[#CC0000] text-white rounded-xl text-sm font-bold hover:bg-red-700 transition-colors shadow-sm text-center"
+                >
+                  Start Your Free Trial
+                </Link>
+                <p className="text-xs text-gray-400 text-center">No credit card required. Try free for 60 days.</p>
+
+                <div className="relative flex items-center my-1">
+                  <div className="flex-1 border-t border-gray-200" />
+                  <span className="px-3 text-xs text-gray-400">or</span>
+                  <div className="flex-1 border-t border-gray-200" />
+                </div>
+
+                <Link
+                  href="/auth/login?callbackUrl=/membership"
+                  className="block w-full px-4 py-3 border-2 border-gray-900 text-gray-900 rounded-xl text-sm font-bold hover:bg-gray-50 transition-colors text-center"
+                >
+                  Subscribe Today — $24.99/year
+                </Link>
+                <p className="text-xs text-gray-400 text-center">Already have an account? Sign in to subscribe.</p>
+              </div>
+            </div>
+          </div>
+        </main>
       </div>
     );
   }
@@ -96,7 +175,7 @@ function MembershipContent() {
                 </svg>
               </div>
               <h2 className="text-2xl font-black text-gray-900 mb-2">Welcome to ExtraBase!</h2>
-              <p className="text-sm text-gray-500 mb-8">Your membership is now active. You have unlimited access to all features.</p>
+              <p className="text-sm text-gray-500 mb-8">Your subscription is now active. You have unlimited access to all features.</p>
 
               <div className="space-y-3">
                 <Link href="/" className="block px-4 py-3 bg-[#CC0000] text-white rounded-xl text-sm font-bold hover:bg-red-700 transition-colors">
@@ -118,31 +197,31 @@ function MembershipContent() {
                 </svg>
               </div>
               <h2 className="text-xl font-black text-gray-900 mb-1">No worries!</h2>
-              <p className="text-sm text-gray-500 mb-6">Your checkout was canceled. You can try again whenever you&apos;re ready.</p>
+              <p className="text-sm text-gray-500 mb-6">Your checkout was canceled. You can subscribe whenever you&apos;re ready.</p>
             </div>
           )}
 
-          {/* Plan selection (default view, or shown again after cancel) */}
+          {/* Subscribe view (default, or shown again after cancel) */}
           {!success && (
             <>
               {!canceled && (
                 <div className="text-center mb-8">
-                  <h2 className="text-2xl font-black text-gray-900">Unlock Full Access</h2>
-                  <p className="text-sm text-gray-500 mt-1">One plan. Everything included.</p>
+                  <h2 className="text-2xl font-black text-gray-900">Subscribe Today</h2>
+                  <p className="text-sm text-gray-500 mt-1">
+                    {hasActiveTrial
+                      ? `You have ${trialDaysLeft} day${trialDaysLeft !== 1 ? "s" : ""} left on your free trial. Subscribe to keep full access.`
+                      : "Get full access to every ExtraBase feature."}
+                  </p>
                 </div>
               )}
 
               <div className="bg-white rounded-2xl border-2 border-[#CC0000] p-6 shadow-lg">
-                <div className="flex items-baseline gap-2 mb-2">
+                <div className="flex items-baseline gap-2 mb-1">
                   <span className="text-3xl font-black text-gray-900">$24.99</span>
                   <span className="text-sm text-gray-500">/year</span>
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-4">ExtraBase Full Access</h3>
-
-                <div className="bg-green-50 border border-green-200 rounded-xl px-4 py-3 mb-4">
-                  <p className="text-sm font-semibold text-green-800">Includes 5-day risk-free trial</p>
-                  <p className="text-xs text-green-600 mt-0.5">Cancel anytime during your trial — no charge.</p>
-                </div>
+                <h3 className="text-lg font-bold text-gray-900 mb-1">Annual Subscription</h3>
+                <p className="text-xs text-gray-400 mb-4">Billed once per year. Cancel anytime.</p>
 
                 <ul className="space-y-3 mb-6">
                   {[
@@ -181,7 +260,7 @@ function MembershipContent() {
                       <div className="animate-spin rounded-full h-4 w-4 border-2 border-white/30 border-t-white" />
                       Redirecting to checkout...
                     </span>
-                  ) : "Start Free Trial & Subscribe"}
+                  ) : "Subscribe Now — $24.99/year"}
                 </button>
 
                 <div className="flex items-center justify-center gap-2 mt-4">
@@ -192,9 +271,9 @@ function MembershipContent() {
                 </div>
               </div>
 
-              {session.user.membershipActive && (
+              {isMember && (
                 <div className="mt-6 bg-blue-50 border border-blue-200 rounded-xl px-4 py-3 text-center">
-                  <p className="text-sm text-blue-800 font-semibold">You already have an active membership!</p>
+                  <p className="text-sm text-blue-800 font-semibold">You already have an active subscription!</p>
                   <Link href="/auth/account" className="text-sm text-blue-600 underline mt-1 inline-block">
                     Manage your account
                   </Link>

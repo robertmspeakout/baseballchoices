@@ -47,9 +47,6 @@ export async function POST() {
     customer: stripeCustomerId,
     mode: "subscription",
     line_items: [{ price: STRIPE_PRICE_ANNUAL, quantity: 1 }],
-    subscription_data: {
-      trial_period_days: 5,
-    },
     success_url: `${baseUrl}/membership?success=true`,
     cancel_url: `${baseUrl}/membership?canceled=true`,
     metadata: { userId: user.id },

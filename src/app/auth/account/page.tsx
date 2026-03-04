@@ -96,7 +96,7 @@ export default function AccountPage() {
                         : "Your free trial has expired"}
                     </h2>
                     <p className="text-xs text-gray-400 mt-0.5">
-                      Upgrade to Premium for $24.99/year — full access to 927+ programs, AI matching, and more.
+                      Subscribe for $24.99/year — full access to 927+ programs, AI matching, and more.
                     </p>
                   </div>
                 </div>
@@ -104,7 +104,7 @@ export default function AccountPage() {
                   href="/membership"
                   className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#CC0000] text-white rounded-lg text-sm font-bold hover:bg-red-700 transition-colors whitespace-nowrap shrink-0"
                 >
-                  Upgrade Now
+                  Subscribe Now
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
