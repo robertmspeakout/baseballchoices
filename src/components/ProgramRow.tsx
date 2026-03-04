@@ -87,7 +87,7 @@ export default function ProgramRow({
   return (
     <Link
       href={`/school/${school.id}`}
-      className="flex items-center bg-white rounded-xl border border-[rgba(0,0,0,0.05)] hover:border-[rgba(0,0,0,0.12)] hover:shadow-sm transition-all"
+      className="flex items-center bg-white rounded-xl border border-[rgba(0,0,0,0.05)] hover:border-[rgba(0,0,0,0.12)] hover:shadow-sm active:bg-gray-50 transition-all cursor-pointer select-none"
       style={{ padding: "10px 10px 10px 12px" }}
     >
       {/* Logo */}
