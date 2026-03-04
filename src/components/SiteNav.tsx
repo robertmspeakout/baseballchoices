@@ -214,14 +214,6 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
       {!isLoggedIn && (
         <div className="hidden sm:flex items-center gap-2">
           <Link
-            href="/membership"
-            className={`inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-bold transition-colors ${
-              isLight ? "text-gray-700 hover:bg-gray-100" : "text-white/80 hover:bg-white/10"
-            }`}
-          >
-            Pricing
-          </Link>
-          <Link
             href="/auth/login"
             className={`inline-flex items-center px-3 py-2 rounded-lg text-xs font-bold transition-colors ${
               isLight ? "text-gray-700 hover:bg-gray-100" : "text-white/80 hover:bg-white/10"
@@ -230,7 +222,7 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
             Log In
           </Link>
           <Link
-            href="/auth/register"
+            href="/membership"
             className="inline-flex items-center px-4 py-2 bg-[#CC0000] text-white rounded-lg text-xs font-bold hover:bg-red-700 transition-colors"
           >
             Sign Up
@@ -581,20 +573,6 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
                   );
                 })}
                 <Link
-                  href="/membership"
-                  onClick={() => setOpen(false)}
-                  className={`w-full flex items-center gap-2 px-4 py-3 text-sm font-bold transition-colors border-b ${
-                    isLight
-                      ? "text-[#CC0000] hover:bg-red-50 border-gray-100"
-                      : "text-red-400 hover:text-white hover:bg-white/10 border-white/5"
-                  }`}
-                >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-                  </svg>
-                  See Pricing
-                </Link>
-                <Link
                   href="/auth/login"
                   onClick={() => setOpen(false)}
                   className={`w-full flex items-center gap-2 px-4 py-3 text-sm font-bold transition-colors border-b ${
@@ -609,7 +587,7 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
                   Log In
                 </Link>
                 <Link
-                  href="/auth/register"
+                  href="/membership"
                   onClick={() => setOpen(false)}
                   className="w-full flex items-center justify-center gap-2 px-4 py-3 text-sm font-bold bg-[#CC0000] text-white hover:bg-red-700 transition-colors"
                 >
