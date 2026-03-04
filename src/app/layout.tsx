@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     template: "%s | ExtraBase",
   },
   description:
-    "Search and track 1,800+ college baseball programs across D1, D2, D3 and JUCO. Rate your favorites, get AI-powered matches, and build your personalized recruiting list.",
+    "Search and track 1,300+ college baseball programs across D1, D2, D3 and JUCO. Rate your favorites, get AI-powered matches, and build your personalized recruiting list.",
   keywords: [
     "college baseball recruiting",
     "college baseball directory",
@@ -54,13 +54,13 @@ export const metadata: Metadata = {
     siteName: "ExtraBase",
     title: "ExtraBase - College Baseball Recruiting Directory",
     description:
-      "Search and track 1,800+ college baseball programs across D1, D2, D3 and JUCO. Rate your favorites, get AI-powered matches, and build your personalized recruiting list.",
+      "Search and track 1,300+ college baseball programs across D1, D2, D3 and JUCO. Rate your favorites, get AI-powered matches, and build your personalized recruiting list.",
   },
   twitter: {
     card: "summary",
     title: "ExtraBase - College Baseball Recruiting Directory",
     description:
-      "Search and track 1,800+ college baseball programs. Rate favorites, get AI matches, and build your recruiting list.",
+      "Search and track 1,300+ college baseball programs. Rate favorites, get AI matches, and build your recruiting list.",
   },
   robots: {
     index: true,

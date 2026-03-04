@@ -96,7 +96,7 @@ export default function AccountPage() {
                         : "Your free trial has expired"}
                     </h2>
                     <p className="text-xs text-gray-400 mt-0.5">
-                      Subscribe for $24.99/year — full access to 927+ programs, AI matching, and more.
+                      Subscribe for $24.99/year — full access to 1,300+ programs, AI matching, and more.
                     </p>
                   </div>
                 </div>

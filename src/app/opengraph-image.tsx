@@ -76,7 +76,7 @@ export default async function OGImage() {
             lineHeight: 1.4,
           }}
         >
-          Search 1,800+ programs across D1, D2, D3 & JUCO. AI-powered matching. Free to try.
+          Search 1,300+ programs across D1, D2, D3 & JUCO. AI-powered matching. Free to try.
         </div>
 
         {/* Red accent line at bottom */}
