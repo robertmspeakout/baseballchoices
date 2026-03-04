@@ -1050,7 +1050,7 @@ export default function Home() {
               </svg>
             </button>
             <iframe
-              src="https://drive.google.com/file/d/1XzaLSmul-lzo3df6txx_I9lXPzIXV6Kc/preview"
+              src="https://www.youtube.com/embed/8cjo6f-EDj4?autoplay=1&mute=1&loop=1&playlist=8cjo6f-EDj4&controls=1&rel=0"
               className="w-full h-full rounded-2xl"
               allow="autoplay; encrypted-media"
               allowFullScreen
