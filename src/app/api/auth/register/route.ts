@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { hashPassword } from "@/lib/password";
 import { prisma } from "@/lib/prisma";
 import { rateLimit } from "@/lib/rate-limit";
-import { sendVerificationEmail } from "@/lib/email";
+import { sendWelcomeEmail } from "@/lib/email";
 
 const registerLimiter = rateLimit({
   name: "register",
@@ -67,7 +67,7 @@ export async function POST(request: NextRequest) {
       include: { profile: true },
     });
 
-    // Send email verification code
+    // Generate verification code and send welcome email (non-blocking to the user)
     const code = Math.floor(100000 + Math.random() * 900000).toString();
     await prisma.verificationToken.create({
       data: {
@@ -76,19 +76,30 @@ export async function POST(request: NextRequest) {
         expiresAt: new Date(Date.now() + 15 * 60 * 1000), // 15 minutes
       },
     });
-    await sendVerificationEmail(user.email, code, user.firstName);
+    await sendWelcomeEmail(user.email, code, user.firstName);
 
-    // Create notification to fill out profile
-    await prisma.notification.create({
-      data: {
-        userId: user.id,
-        schoolId: 0,
-        type: "profile_incomplete",
-        title: "Complete your player profile",
-        body: "Fill out your profile so we can match you with the best college baseball programs.",
-        link: "/auth/profile",
-        schoolLogo: null,
-      },
+    // Create notifications for the user
+    await prisma.notification.createMany({
+      data: [
+        {
+          userId: user.id,
+          schoolId: 0,
+          type: "email_verify",
+          title: "Verify your email address",
+          body: "Check your email for a verification code to confirm your account.",
+          link: `/auth/verify?email=${encodeURIComponent(user.email)}`,
+          schoolLogo: null,
+        },
+        {
+          userId: user.id,
+          schoolId: 0,
+          type: "profile_incomplete",
+          title: "Complete your player profile",
+          body: "Fill out your profile so we can match you with the best college baseball programs.",
+          link: "/auth/profile",
+          schoolLogo: null,
+        },
+      ],
     });
 
     return NextResponse.json({
