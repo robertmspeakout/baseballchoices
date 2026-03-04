@@ -79,6 +79,40 @@ export default function AccountPage() {
         <main className="max-w-2xl mx-auto px-4 sm:px-6 py-6 sm:py-10 space-y-6">
           <h1 className="text-2xl font-black text-gray-900">My Account</h1>
 
+          {/* Upgrade banner for non-members */}
+          {!loading && account && !account.membershipActive && (
+            <div className="bg-gradient-to-r from-gray-900 to-gray-800 rounded-xl border border-gray-700 shadow-lg overflow-hidden">
+              <div className="px-5 py-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-[#CC0000] flex items-center justify-center shrink-0">
+                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h2 className="text-sm font-bold text-white">
+                      {account.trialActive
+                        ? `${account.daysRemaining} day${account.daysRemaining !== 1 ? "s" : ""} left on your free trial`
+                        : "Your free trial has expired"}
+                    </h2>
+                    <p className="text-xs text-gray-400 mt-0.5">
+                      Upgrade to Premium for $19.99/year — full access to 927+ programs, AI matching, and more.
+                    </p>
+                  </div>
+                </div>
+                <Link
+                  href="/membership"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#CC0000] text-white rounded-lg text-sm font-bold hover:bg-red-700 transition-colors whitespace-nowrap shrink-0"
+                >
+                  Upgrade Now
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </Link>
+              </div>
+            </div>
+          )}
+
           {loading ? (
             <div className="flex items-center justify-center py-12">
               <div className="animate-spin rounded-full h-8 w-8 border-4 border-gray-200 border-t-blue-600" />
