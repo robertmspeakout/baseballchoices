@@ -75,7 +75,6 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
   const isLight = variant === "light";
   const isLoggedIn = !!session?.user;
   const firstName = (session?.user as Record<string, unknown>)?.firstName as string | undefined;
-  const isMember = !!(session?.user as Record<string, unknown>)?.membershipActive;
 
   // Close menus on click outside
   useEffect(() => {
@@ -407,22 +406,6 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
         </div>
       )}
 
-      {/* Subscribe CTA — visible to everyone except paid members */}
-      {!isMember && (
-        <Link
-          href="/membership"
-          className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors ${
-            isLight
-              ? "bg-[#CC0000] text-white hover:bg-red-700"
-              : "bg-[#CC0000] text-white hover:bg-red-700"
-          }`}
-        >
-          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-          </svg>
-          Subscribe
-        </Link>
-      )}
 
       {/* Profile / hamburger button */}
       <div ref={wrapperRef} className="relative">
@@ -499,18 +482,6 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
                   </svg>
                   My Account
                 </Link>
-                {!isMember && (
-                  <Link
-                    href="/membership"
-                    onClick={() => setOpen(false)}
-                    className="w-full flex items-center gap-2 px-4 py-3 text-sm font-bold bg-[#CC0000] text-white hover:bg-red-700 transition-colors border-b border-red-700/30"
-                  >
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-                    </svg>
-                    Subscribe Now
-                  </Link>
-                )}
                 <button
                   onClick={handleSignOut}
                   className={`w-full flex items-center gap-2 px-4 py-3 text-sm font-bold transition-colors ${
@@ -595,13 +566,6 @@ export default function SiteNav({ active, variant = "light", onNavigate }: SiteN
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
                   </svg>
                   Log In
-                </Link>
-                <Link
-                  href="/membership"
-                  onClick={() => setOpen(false)}
-                  className="w-full flex items-center justify-center gap-2 px-4 py-3 text-sm font-bold bg-[#CC0000] text-white hover:bg-red-700 transition-colors"
-                >
-                  Subscribe
                 </Link>
               </>
             )}

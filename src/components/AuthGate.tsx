@@ -43,7 +43,7 @@ export default function AuthGate({ children }: AuthGateProps) {
             Create a free account to access all programs, AI Scout, and more.
           </p>
           <Link
-            href="/membership"
+            href="/auth/register"
             className="inline-block px-6 py-2.5 bg-[#CC0000] text-white rounded-xl text-sm font-bold hover:bg-red-700 transition-colors mb-2"
           >
             Sign Up Free

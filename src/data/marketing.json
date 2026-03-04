@@ -36,22 +36,6 @@
     "quote": "It was really hard to keep track of everything and there are so many schools out there - it's hard to know where to start. I wish my dad had made this for me before I committed!",
     "attribution": "Jack, Class of 2027"
   },
-  "pricing": {
-    "title": "Simple Pricing. No Surprises.",
-    "planName": "ExtraBase Full Access",
-    "price": "$24.99",
-    "period": "per year",
-    "subtitle": "We priced this at $25 a year because we want it to be helpful, not another financial burden. Try it free — no credit card required. Cancel anytime if it's not for you.",
-    "features": [
-      "Access to all {{PROGRAM_COUNT}} college programs",
-      "AI-powered program matching",
-      "Personal program rankings and lists",
-      "Track your recruiting journey in one place",
-      "Built by baseball parents who lived this process"
-    ],
-    "ctaButton": "Start My Free Trial",
-    "footerNote": "No credit card required."
-  },
   "whyWeBuiltThis": {
     "title": "Why We Built ExtraBase",
     "paragraphs": [
