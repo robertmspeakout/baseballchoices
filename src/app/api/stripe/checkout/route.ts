@@ -47,8 +47,8 @@ export async function POST() {
     customer: stripeCustomerId,
     mode: "subscription",
     line_items: [{ price: STRIPE_PRICE_ANNUAL, quantity: 1 }],
-    success_url: `${baseUrl}/?success=true`,
-    cancel_url: `${baseUrl}/`,
+    success_url: `${baseUrl}/membership?success=true`,
+    cancel_url: `${baseUrl}/membership?canceled=true`,
     metadata: { userId: user.id },
   });
 

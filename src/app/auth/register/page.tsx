@@ -7,7 +7,7 @@ import Link from "next/link";
 
 function RegisterForm() {
   const searchParams = useSearchParams();
-  void searchParams;
+  const intent = searchParams.get("intent") || "";
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -67,7 +67,13 @@ function RegisterForm() {
         return;
       }
 
-      window.location.replace("/");
+      // Redirect based on intent
+      if (intent === "purchase") {
+        // Go straight to membership page which will auto-trigger Stripe checkout
+        window.location.replace("/membership?auto_checkout=true");
+      } else {
+        window.location.replace("/");
+      }
     } catch {
       setError("Something went wrong. Please try again.");
       setLoading(false);
@@ -101,7 +107,7 @@ function RegisterForm() {
             </div>
             <h2 className="text-2xl font-bold text-gray-900">Create Your Account</h2>
             <p className="text-sm text-gray-500 mt-1">
-              Get started with ExtraBase
+              {intent === "purchase" ? "Create your account to subscribe" : "Get started with ExtraBase"}
             </p>
           </div>
 
@@ -175,6 +181,8 @@ function RegisterForm() {
                   <div className="animate-spin rounded-full h-4 w-4 border-2 border-white/30 border-t-white" />
                   Creating account...
                 </span>
+              ) : intent === "purchase" ? (
+                "Create Account & Subscribe"
               ) : (
                 "Create Account"
               )}

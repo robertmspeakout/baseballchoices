@@ -627,7 +627,7 @@ export default function Home() {
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-3">
                 <Link
-                  href="/auth/register"
+                  href="/membership"
                   className="px-6 py-3 bg-[#CC0000] text-white rounded-xl text-sm font-bold hover:bg-red-700 transition-colors"
                 >
                   {marketingContent.hero.ctaButton}
@@ -686,6 +686,34 @@ export default function Home() {
             </div>
           </section>
 
+          {/* Pricing */}
+          <section className="bg-gray-100 py-12 sm:py-16">
+            <div className="max-w-lg mx-auto px-4 sm:px-6 text-center">
+              <h2 className="text-2xl sm:text-3xl font-black text-gray-900 mb-8">{marketingContent.pricing.title}</h2>
+              <div className="bg-white rounded-2xl border-2 border-gray-200 p-6 sm:p-8 shadow-sm">
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{marketingContent.pricing.planName}</h3>
+                <div className="flex items-baseline justify-center gap-1 mb-3">
+                  <span className="text-4xl font-black text-gray-900">{marketingContent.pricing.price}</span>
+                  <span className="text-sm text-gray-500">{marketingContent.pricing.period}</span>
+                </div>
+                <p className="text-sm text-gray-500 mb-6">{marketingContent.pricing.subtitle}</p>
+                <ul className="space-y-3 text-left mb-6">
+                  {marketingContent.pricing.features.map((feature) => (
+                    <li key={feature} className="flex items-start gap-2.5">
+                      <svg className="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span className="text-sm text-gray-700">{feature.replace("{{PROGRAM_COUNT}}", String(schoolCount || allSchools.length))}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Link href="/membership" className="block w-full px-4 py-3.5 bg-[#CC0000] text-white rounded-xl text-sm font-bold hover:bg-red-700 transition-colors shadow-sm text-center">
+                  {marketingContent.pricing.ctaButton}
+                </Link>
+                <p className="text-xs text-gray-400 mt-3">{marketingContent.pricing.footerNote}</p>
+              </div>
+            </div>
+          </section>
 
           {/* Why We Built This */}
           <section className="bg-white py-12 sm:py-16">
@@ -935,7 +963,7 @@ export default function Home() {
                 Create a free account to access all {schoolCount || allSchools.length} programs and unlock AI matching.
               </p>
               <Link
-                href="/auth/register"
+                href="/membership"
                 className="inline-block px-6 py-2.5 bg-[#CC0000] text-white rounded-xl text-sm font-bold hover:bg-red-700 transition-colors mb-2"
               >
                 Sign Up Free
