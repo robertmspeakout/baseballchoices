@@ -48,7 +48,7 @@ export async function POST() {
     mode: "subscription",
     line_items: [{ price: STRIPE_PRICE_ANNUAL, quantity: 1 }],
     success_url: `${baseUrl}/membership?success=true`,
-    cancel_url: `${baseUrl}/`,
+    cancel_url: `${baseUrl}/checkout-canceled`,
     metadata: { userId: user.id },
   });
 
