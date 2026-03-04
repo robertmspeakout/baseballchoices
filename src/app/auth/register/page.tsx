@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 
 const POSITIONS = [
@@ -16,7 +17,9 @@ const STATES = [
 
 const GRAD_YEARS = ["2025", "2026", "2027", "2028", "2029", "2030"];
 
-export default function RegisterPage() {
+function RegisterForm() {
+  const searchParams = useSearchParams();
+  const redirect = searchParams.get("redirect") || "";
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -67,7 +70,8 @@ export default function RegisterPage() {
       }
 
       // Redirect to verify page to enter email code
-      window.location.href = `/auth/verify?email=${encodeURIComponent(email)}`;
+      const verifyUrl = `/auth/verify?email=${encodeURIComponent(email)}${redirect ? `&redirect=${encodeURIComponent(redirect)}` : ""}`;
+      window.location.href = verifyUrl;
     } catch {
       setError("Something went wrong. Please try again.");
       setLoading(false);
@@ -216,5 +220,17 @@ export default function RegisterPage() {
         </div>
       </main>
     </div>
+  );
+}
+
+export default function RegisterPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-2 border-gray-300 border-t-gray-600" />
+      </div>
+    }>
+      <RegisterForm />
+    </Suspense>
   );
 }

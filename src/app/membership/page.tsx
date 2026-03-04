@@ -134,7 +134,7 @@ function MembershipContent() {
                 </div>
 
                 <Link
-                  href="/auth/register"
+                  href="/auth/register?redirect=/membership"
                   className="block w-full px-4 py-3 border-2 border-gray-900 text-gray-900 rounded-xl text-sm font-bold hover:bg-gray-50 transition-colors text-center"
                 >
                   Subscribe Today — $24.99/year

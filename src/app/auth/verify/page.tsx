@@ -7,6 +7,7 @@ import Link from "next/link";
 function VerifyForm() {
   const searchParams = useSearchParams();
   const email = searchParams.get("email") || "";
+  const redirect = searchParams.get("redirect") || "";
   const [code, setCode] = useState(["", "", "", "", "", ""]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -78,8 +79,9 @@ function VerifyForm() {
         return;
       }
 
-      // Success — redirect to profile setup
-      window.location.href = "/auth/login?verified=1";
+      // Success — redirect to login (with callbackUrl if user came from subscribe flow)
+      const loginUrl = `/auth/login?verified=1${redirect ? `&callbackUrl=${encodeURIComponent(redirect)}` : ""}`;
+      window.location.href = loginUrl;
     } catch {
       setError("Something went wrong. Please try again.");
       setLoading(false);
