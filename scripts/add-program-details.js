@@ -450,7 +450,7 @@ const postseason = {
   "Georgia State": { cws_appearances: 0, ncaa_regionals: 1 },
   "Hawai'i": { cws_appearances: 1, ncaa_regionals: 14 },
   "High Point": { cws_appearances: 0, ncaa_regionals: 1 },
-  "Holy Cross": { cws_appearances: 4, ncaa_regionals: 12 },
+  "Holy Cross": { cws_appearances: 5, ncaa_regionals: 12 },
   "Illinois State": { cws_appearances: 0, ncaa_regionals: 4 },
   "Jacksonville State": { cws_appearances: 0, ncaa_regionals: 5 },
   "Kent State": { cws_appearances: 1, ncaa_regionals: 14 },
