@@ -59,7 +59,7 @@ export async function sendWelcomeEmail(email: string, verificationToken: string,
           Welcome to ExtraBase, ${firstName}!
         </h1>
         <p style="font-size: 15px; color: #555; text-align: center; margin-bottom: 32px;">
-          Your account is ready. You have full access to explore 1,300+ college baseball programs during your 60-day free trial.
+          Your account is ready. You have full access to explore 1,300+ college baseball programs during your 5-day free trial.
         </p>
 
         <div style="background: #fef9f0; border: 2px solid #f0e0c0; border-radius: 16px; padding: 20px; text-align: center; margin-bottom: 24px;">
