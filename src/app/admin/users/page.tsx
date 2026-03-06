@@ -222,6 +222,22 @@ export default function AdminUsersPage() {
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Trial Expiration</label>
                   <input type="date" value={editTrial} onChange={(e) => setEditTrial(e.target.value)} className="w-full px-4 py-3 border border-gray-300 rounded-xl text-sm text-gray-900" />
+                  <div className="flex gap-2 mt-2">
+                    {[5, 14, 30, 60, 90].map((days) => (
+                      <button
+                        key={days}
+                        type="button"
+                        onClick={() => {
+                          const d = new Date();
+                          d.setDate(d.getDate() + days);
+                          setEditTrial(d.toISOString().split("T")[0]);
+                        }}
+                        className="px-2.5 py-1 text-xs font-medium text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors"
+                      >
+                        +{days}d
+                      </button>
+                    ))}
+                  </div>
                 </div>
 
                 <div>

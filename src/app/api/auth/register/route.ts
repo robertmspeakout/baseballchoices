@@ -43,7 +43,7 @@ export async function POST(request: NextRequest) {
     }
 
     const passwordHash = await hashPassword(password);
-    const trialExpiresAt = new Date(Date.now() + 60 * 24 * 60 * 60 * 1000); // 60 days
+    const trialExpiresAt = new Date(Date.now() + 5 * 24 * 60 * 60 * 1000); // 5 days
 
     // Check if this is the owner email
     const ownerEmail = process.env.OWNER_EMAIL || "";

@@ -176,7 +176,7 @@ function MembershipContent() {
                   href="/auth/register"
                   className="block w-full px-4 py-3.5 bg-[#CC0000] text-white rounded-xl text-sm font-bold hover:bg-red-700 transition-colors shadow-sm text-center"
                 >
-                  Try Free for 60 Days
+                  Try Free for 5 Days
                 </Link>
                 <p className="text-xs text-gray-400 text-center">No credit card required.</p>
 
