@@ -90,7 +90,7 @@ export default function ProgramsView({ mode, pageTitle, activeNavLabel }: Progra
   const [mounted, setMounted] = useState(false);
   const [userBgPic, setUserBgPic] = useState<string | null>(null);
   const [page, setPage] = useState(1);
-  const [sortBy, setSortBy] = useState(mode === "mylist" ? "priority" : "name");
+  const [sortBy, setSortBy] = useState(mode === "mylist" ? "priority" : mode === "D1" ? "ranking" : "name");
   const [sortDir, setSortDir] = useState(mode === "mylist" ? "desc" : "asc");
   const [distances, setDistances] = useState<Record<number, number> | null>(null);
   const [filters, setFilters] = useState<Filters>({
