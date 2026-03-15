@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { prisma } from "@/lib/prisma";
 
 export async function GET(request: Request) {
   // Verify the request is from Vercel Cron using the secret
@@ -10,7 +11,7 @@ export async function GET(request: Request) {
   try {
     // eslint-disable-next-line @typescript-eslint/no-require-imports
     const { updateRankings } = require("@/../scripts/update-rankings");
-    const result = await updateRankings();
+    const result = await updateRankings(prisma);
     return NextResponse.json(result);
   } catch (err: unknown) {
     const message = err instanceof Error ? err.message : "Unknown error";

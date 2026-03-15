@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
+import { prisma } from "@/lib/prisma";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -17,7 +18,7 @@ export async function POST() {
   try {
     // Dynamic import the rankings updater
     const { updateRankings } = require("@/../scripts/update-rankings");
-    const result = await updateRankings();
+    const result = await updateRankings(prisma);
     return NextResponse.json(result);
   } catch (err: any) {
     return NextResponse.json(
