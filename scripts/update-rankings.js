@@ -13,7 +13,8 @@
 const fs = require("fs");
 const path = require("path");
 
-const SCHOOLS_PATH = path.join(__dirname, "..", "src", "data", "schools.json");
+// Use process.cwd() so this works both locally and on Vercel serverless
+const SCHOOLS_PATH = path.join(process.cwd(), "src", "data", "schools.json");
 
 // ESPN team-ID → our school name (reverse of espn.ts map, for the most common D1 teams)
 // We match by name rather than ID when possible, but this helps resolve edge cases.
