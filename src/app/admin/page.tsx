@@ -237,9 +237,10 @@ export default function AdminPage() {
             <button
               onClick={refreshRankings}
               disabled={rankingsUpdating}
-              className="px-3 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap transition-colors"
+              title="Rankings update automatically every day at 8 AM EST. Click to update manually."
+              className="px-3 py-2 bg-gray-600 text-white text-sm font-medium rounded-lg hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap transition-colors"
             >
-              {rankingsUpdating ? "Updating..." : "Refresh Rankings"}
+              {rankingsUpdating ? "Updating..." : "Manual Rankings Refresh"}
             </button>
           </div>
         </div>
