@@ -8,7 +8,8 @@
     "postinstall": "prisma generate",
     "start": "next start",
     "lint": "eslint",
-    "seed": "npx tsx scripts/seed.ts && npx tsx scripts/seed-d1-part2.ts"
+    "seed": "npx tsx scripts/seed.ts && npx tsx scripts/seed-d1-part2.ts",
+    "update-rankings": "node scripts/update-rankings.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.78.0",

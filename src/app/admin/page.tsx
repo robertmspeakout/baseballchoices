@@ -88,6 +88,8 @@ export default function AdminPage() {
   const [editForm, setEditForm] = useState<Record<string, any>>({});
   const [saving, setSaving] = useState(false);
   const [saveMsg, setSaveMsg] = useState("");
+  const [rankingsUpdating, setRankingsUpdating] = useState(false);
+  const [rankingsMsg, setRankingsMsg] = useState("");
 
   useEffect(() => {
     fetch("/api/admin/schools")
@@ -163,6 +165,27 @@ export default function AdminPage() {
     setSaving(false);
   };
 
+  const refreshRankings = async () => {
+    setRankingsUpdating(true);
+    setRankingsMsg("");
+    try {
+      const res = await fetch("/api/admin/rankings", { method: "POST" });
+      const data = await res.json();
+      if (data.success) {
+        setRankingsMsg(`Updated ${data.matched}/${data.total} rankings from ${data.source}${data.unmatched?.length ? ` (${data.unmatched.length} unmatched)` : ""}`);
+        // Reload schools data
+        const schoolsRes = await fetch("/api/admin/schools");
+        const schoolsData = await schoolsRes.json();
+        setSchools(schoolsData);
+      } else {
+        setRankingsMsg(`Error: ${data.error}`);
+      }
+    } catch (err: any) {
+      setRankingsMsg(`Error: ${err.message}`);
+    }
+    setRankingsUpdating(false);
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -211,8 +234,20 @@ export default function AdminPage() {
               <option value="D3">D3</option>
               <option value="JUCO">JUCO</option>
             </select>
+            <button
+              onClick={refreshRankings}
+              disabled={rankingsUpdating}
+              className="px-3 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap transition-colors"
+            >
+              {rankingsUpdating ? "Updating..." : "Refresh Rankings"}
+            </button>
           </div>
         </div>
+        {rankingsMsg && (
+          <div className={`mb-4 px-4 py-2 rounded-lg text-sm ${rankingsMsg.startsWith("Error") ? "bg-red-50 text-red-700" : "bg-green-50 text-green-700"}`}>
+            {rankingsMsg}
+          </div>
+        )}
 
         {/* Schools table */}
         <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
