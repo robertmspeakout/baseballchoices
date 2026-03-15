@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { readFileSync } from "fs";
 import { join } from "path";
+import { prisma } from "@/lib/prisma";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -27,9 +28,27 @@ export async function GET(request: NextRequest) {
 
   const schools = getSchools();
 
+  // Fetch live rankings from database
+  let rankingsMap: Record<number, number> = {};
+  try {
+    const rankings = await prisma.schoolRanking.findMany();
+    for (const r of rankings) {
+      rankingsMap[r.schoolId] = r.ranking;
+    }
+  } catch {
+    // If DB query fails, fall back to JSON rankings
+  }
+
+  // Merge rankings into school data
+  const hasDbRankings = Object.keys(rankingsMap).length > 0;
+  const mergedSchools = schools.map((s: any) => ({
+    ...s,
+    current_ranking: hasDbRankings ? (rankingsMap[s.id] ?? null) : s.current_ranking,
+  }));
+
   // Single school lookup by ID
   if (id) {
-    const school = schools.find((s) => s.id === parseInt(id));
+    const school = mergedSchools.find((s: any) => s.id === parseInt(id));
     if (!school) {
       return NextResponse.json({ error: "School not found" }, { status: 404 });
     }
@@ -37,20 +56,20 @@ export async function GET(request: NextRequest) {
   }
 
   // Filter
-  let filtered = schools;
+  let filtered = mergedSchools;
 
   if (division) {
-    filtered = filtered.filter((s) => s.division === division);
+    filtered = filtered.filter((s: any) => s.division === division);
   }
   if (state) {
-    filtered = filtered.filter((s) => s.state === state);
+    filtered = filtered.filter((s: any) => s.state === state);
   }
   if (conference) {
-    filtered = filtered.filter((s) => s.conference === conference);
+    filtered = filtered.filter((s: any) => s.conference === conference);
   }
   if (search) {
     const term = search.toLowerCase();
-    filtered = filtered.filter((s) => {
+    filtered = filtered.filter((s: any) => {
       const searchable = [s.name, s.city, s.state, s.conference, s.head_coach_name, s.mascot]
         .filter(Boolean)
         .join(" ")

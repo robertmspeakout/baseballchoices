@@ -1,12 +1,13 @@
 /**
- * Fetch the latest D1 baseball rankings and update schools.json.
+ * Fetch the latest D1 baseball rankings and save to the database.
  *
  * Data source: NCAA website (D1Baseball.com Top 25 poll hosted on ncaa.com).
  * Fallback:    ESPN college baseball scoreboard API.
  *
  * Usage:
- *   node scripts/update-rankings.js          (CLI)
- *   Called via /api/admin/rankings route      (Admin panel)
+ *   node scripts/update-rankings.js          (CLI – requires DATABASE_URL)
+ *   Called via /api/cron/update-rankings      (Cron job)
+ *   Called via /api/admin/rankings            (Admin panel)
  */
 
 const fs = require("fs");
@@ -214,7 +215,16 @@ function findSchool(schools, rankName) {
   return null;
 }
 
-async function updateRankings() {
+/**
+ * Get a Prisma client instance. Works both from the API routes (where prisma
+ * singleton exists) and from CLI execution.
+ */
+function getPrismaClient() {
+  const { PrismaClient } = require("@prisma/client");
+  return new PrismaClient();
+}
+
+async function updateRankings(prismaClient) {
   console.log("Fetching latest D1 baseball rankings...");
 
   // Try NCAA first, then ESPN as fallback
@@ -235,34 +245,47 @@ async function updateRankings() {
 
   console.log(`Got ${rankings.length} rankings from ${source}`);
 
-  // Load schools data
+  // Load schools data (read-only, just for name matching)
   const schools = JSON.parse(fs.readFileSync(SCHOOLS_PATH, "utf8"));
 
-  // Clear all existing D1 rankings
-  let cleared = 0;
-  for (const school of schools) {
-    if (school.division === "D1" && school.current_ranking !== null) {
-      school.current_ranking = null;
-      cleared++;
-    }
-  }
-
-  // Apply new rankings
+  // Match rankings to school IDs
   const matched = [];
   const unmatched = [];
 
   for (const { rank, name } of rankings) {
     const school = findSchool(schools, name);
     if (school) {
-      school.current_ranking = rank;
-      matched.push({ rank, name, matched: school.name });
+      matched.push({ rank, name, schoolId: school.id, matchedName: school.name });
     } else {
       unmatched.push({ rank, name });
     }
   }
 
-  // Save
-  fs.writeFileSync(SCHOOLS_PATH, JSON.stringify(schools, null, 2));
+  // Save to database using a transaction
+  const prisma = prismaClient || getPrismaClient();
+  const shouldDisconnect = !prismaClient;
+
+  try {
+    await prisma.$transaction(async (tx) => {
+      // Clear all existing rankings
+      await tx.schoolRanking.deleteMany({});
+
+      // Insert new rankings
+      for (const { rank, schoolId } of matched) {
+        await tx.schoolRanking.create({
+          data: {
+            schoolId,
+            ranking: rank,
+            source,
+          },
+        });
+      }
+    });
+  } finally {
+    if (shouldDisconnect) {
+      await prisma.$disconnect();
+    }
+  }
 
   const result = {
     success: true,
@@ -270,11 +293,10 @@ async function updateRankings() {
     total: rankings.length,
     matched: matched.length,
     unmatched,
-    cleared,
     timestamp: new Date().toISOString(),
   };
 
-  console.log(`Updated ${matched.length}/${rankings.length} rankings (cleared ${cleared} previous).`);
+  console.log(`Updated ${matched.length}/${rankings.length} rankings in database.`);
   if (unmatched.length > 0) {
     console.log("Unmatched schools:", unmatched.map((u) => `#${u.rank} ${u.name}`).join(", "));
   }

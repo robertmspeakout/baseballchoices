@@ -4,6 +4,7 @@ import { readFileSync } from "fs";
 import { join } from "path";
 import { auth } from "@/lib/auth";
 import { rateLimit } from "@/lib/rate-limit";
+import { prisma } from "@/lib/prisma";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -51,9 +52,22 @@ function buildSchoolsSummary(schools: any[]): string {
   return rows.join("\n");
 }
 
+// Merge live rankings from database into schools array
+async function mergeDbRankings(schools: any[]): Promise<any[]> {
+  try {
+    const rankings = await prisma.schoolRanking.findMany();
+    if (rankings.length === 0) return schools;
+    const map: Record<number, number> = {};
+    for (const r of rankings) map[r.schoolId] = r.ranking;
+    return schools.map((s: any) => ({ ...s, current_ranking: map[s.id] ?? null }));
+  } catch {
+    return schools;
+  }
+}
+
 // Pre-filter schools based on keywords in the conversation
-function preFilterSchools(messages: any[]): any[] {
-  const allSchools = getSchools();
+function preFilterSchools(messages: any[], schools: any[]): any[] {
+  const allSchools = schools;
   const allText = messages.map((m: any) => m.content).join(" ").toLowerCase();
 
   // Extract division mentions
@@ -254,7 +268,8 @@ export async function POST(request: NextRequest) {
     }
 
     // Pre-filter schools based on conversation keywords for faster responses
-    const relevantSchools = preFilterSchools(messages);
+    const allSchoolsWithRankings = await mergeDbRankings(getSchools());
+    const relevantSchools = preFilterSchools(messages, allSchoolsWithRankings);
 
     // Build system prompt with filtered school data
     const schoolsSummary = buildSchoolsSummary(relevantSchools);
@@ -299,8 +314,7 @@ export async function POST(request: NextRequest) {
       .join("");
 
     // Match schools: first by [SCHOOL_ID:xxx] tags, then by name matching as fallback
-    const allSchools = getSchools();
-    const schoolCards = matchSchoolsByName(text, allSchools);
+    const schoolCards = matchSchoolsByName(text, allSchoolsWithRankings);
 
     return NextResponse.json({
       reply: text,
