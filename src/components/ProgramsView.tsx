@@ -174,7 +174,7 @@ export default function ProgramsView({ mode, pageTitle, activeNavLabel }: Progra
         case "distance": aVal = distances?.[a.id] ?? null; bVal = distances?.[b.id] ?? null; break;
         default: aVal = a.name; bVal = b.name;
       }
-      if (aVal == null && bVal == null) return 0;
+      if (aVal == null && bVal == null) return a.name.localeCompare(b.name);
       if (aVal == null) return 1;
       if (bVal == null) return -1;
       const cmp = typeof aVal === "string" ? aVal.localeCompare(bVal as string) : (aVal as number) - (bVal as number);
