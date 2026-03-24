@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { ESPN_TEAM_IDS, resolveEspnTeam, normalize as espnNormalize } from "@/lib/espn";
+import { ESPN_TEAM_IDS, resolveEspnTeam, normalize as espnNormalize, teamNameMatches } from "@/lib/espn";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -63,12 +63,17 @@ export async function GET(request: NextRequest) {
     let teamId: string;
 
     const knownId = ESPN_TEAM_IDS[school];
+    let usedCuratedId = false;
     if (knownId) {
       teamId = String(knownId);
+      usedCuratedId = true;
       debugLog.push(`Known ESPN ID: ${teamId} (from map for "${school}")`);
     } else {
       // Fall back to ESPN search
-      const searchUrl = `https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/teams?limit=5&search=${encodeURIComponent(school)}`;
+      // ESPN often ignores the `search` param and returns ALL teams
+      // alphabetically.  Use a high limit so our name-matching logic has
+      // all teams to work with.
+      const searchUrl = `https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/teams?limit=500&search=${encodeURIComponent(school)}`;
       debugLog.push(`Searching: ${searchUrl}`);
 
       let searchRes: Response;
@@ -150,16 +155,30 @@ export async function GET(request: NextRequest) {
 
     // --- Step 3: Extract record from team endpoint ---
     let espnRecord: string | null = null;
+    let teamDataParsed: any = null;
     if (teamRes && teamRes.ok) {
       try {
         const teamData = await teamRes.json();
         const t = teamData?.team || teamData;
+        teamDataParsed = t;
         if (t?.record?.items?.[0]?.summary) {
           espnRecord = t.record.items[0].summary;
         } else if (typeof t?.record === "string") {
           espnRecord = t.record;
         }
-        debugLog.push(`Team record: ${espnRecord}`);
+        debugLog.push(`Team record: ${espnRecord} | ESPN name: ${t?.displayName || "?"}`);
+
+        // Validate: if we used a curated ID, check that the ESPN team name
+        // actually matches the school we're looking for.  If not, the curated
+        // ID is wrong — discard the data to avoid showing the wrong team's info.
+        if (usedCuratedId && t?.displayName && !teamNameMatches(school, t)) {
+          debugLog.push(`⚠ NAME MISMATCH: asked for "${school}" but ESPN returned "${t.displayName}" (id=${teamId}). Curated map entry is wrong — discarding data.`);
+          console.warn(`[schedule] ESPN_TEAM_IDS mismatch: "${school}" → id ${teamId} → "${t.displayName}". Please run: node scripts/audit-espn-ids.js --apply`);
+          if (debug) {
+            return NextResponse.json({ _v: ROUTE_VERSION, _debug: true, error: "name_mismatch", school, espnName: t.displayName, teamId, log: debugLog });
+          }
+          return emptyResponse();
+        }
       } catch (e: any) {
         debugLog.push(`Team JSON parse error: ${e?.message}`);
       }

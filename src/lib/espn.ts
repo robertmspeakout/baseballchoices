@@ -95,7 +95,8 @@ export const ESPN_TEAM_IDS: Record<string, number> = {
   "Pacific Lutheran": 129700,
   "Penn": 415,
   "Penn State": 414,
-  "Portland": 416,
+  // "Portland": 416 — REMOVED: returned wrong team (6-6 instead of 15-7).
+  // Run `node scripts/audit-espn-ids.js --school Portland` to find the correct ID.
   "Purdue": 189,
   "Rutgers": 102,
   "San Diego": 143,
@@ -266,6 +267,19 @@ export function resolveEspnTeam(
   const match = (fn: (t: any) => boolean) =>
     teams.find((e: any) => fn(normalize(e)));
 
+  // For disambiguation: when "Portland" could match both "Portland Pilots"
+  // and "Portland State Vikings", prefer the one whose location exactly
+  // matches AND whose displayName doesn't include "State" or other suffixes
+  // that our school name doesn't have.
+  const exactLocationNonState = match((t) => {
+    const loc = t.location?.toLowerCase();
+    const dn = t.displayName?.toLowerCase() || "";
+    return loc === schoolLower &&
+      !dn.startsWith(schoolLower + " state") &&
+      !dn.startsWith(schoolLower + " a&m");
+  });
+  if (exactLocationNonState) return normalize(exactLocationNonState);
+
   return normalize(
     match((t) => t.displayName?.toLowerCase() === schoolLower) ||
     match((t) => t.location?.toLowerCase() === schoolLower) ||
@@ -277,7 +291,34 @@ export function resolveEspnTeam(
 }
 
 // ---------------------------------------------------------------------------
-// 3.  Season helper
+// 3.  Name-match validator
+// ---------------------------------------------------------------------------
+
+/**
+ * Check whether an ESPN team object plausibly matches our school name.
+ * Used to detect when a curated ESPN ID maps to the wrong team.
+ */
+export function teamNameMatches(school: string, espnTeam: any): boolean {
+  const s = school.toLowerCase().trim();
+  const dn = (espnTeam?.displayName || "").toLowerCase();
+  const sdn = (espnTeam?.shortDisplayName || "").toLowerCase();
+  const loc = (espnTeam?.location || "").toLowerCase();
+
+  if (dn === s || sdn === s || loc === s) return true;
+  if (dn.startsWith(s + " ") || dn.includes(s)) return true;
+  if (loc.startsWith(s + " ") || loc.includes(s)) return true;
+
+  // Handle parenthetical qualifiers: "Miami (FL)" → "Miami"
+  const base = s.replace(/\s*\(.*\)/, "").trim();
+  if (base !== s) {
+    if (dn.startsWith(base + " ") || loc === base) return true;
+  }
+
+  return false;
+}
+
+// ---------------------------------------------------------------------------
+// 4.  Season helper
 // ---------------------------------------------------------------------------
 
 /** Return the current college-baseball season year. */
