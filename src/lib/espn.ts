@@ -277,7 +277,34 @@ export function resolveEspnTeam(
 }
 
 // ---------------------------------------------------------------------------
-// 3.  Season helper
+// 3.  Name-match validator
+// ---------------------------------------------------------------------------
+
+/**
+ * Check whether an ESPN team object plausibly matches our school name.
+ * Used to detect when a curated ESPN ID maps to the wrong team.
+ */
+export function teamNameMatches(school: string, espnTeam: any): boolean {
+  const s = school.toLowerCase().trim();
+  const dn = (espnTeam?.displayName || "").toLowerCase();
+  const sdn = (espnTeam?.shortDisplayName || "").toLowerCase();
+  const loc = (espnTeam?.location || "").toLowerCase();
+
+  if (dn === s || sdn === s || loc === s) return true;
+  if (dn.startsWith(s + " ") || dn.includes(s)) return true;
+  if (loc.startsWith(s + " ") || loc.includes(s)) return true;
+
+  // Handle parenthetical qualifiers: "Miami (FL)" → "Miami"
+  const base = s.replace(/\s*\(.*\)/, "").trim();
+  if (base !== s) {
+    if (dn.startsWith(base + " ") || loc === base) return true;
+  }
+
+  return false;
+}
+
+// ---------------------------------------------------------------------------
+// 4.  Season helper
 // ---------------------------------------------------------------------------
 
 /** Return the current college-baseball season year. */

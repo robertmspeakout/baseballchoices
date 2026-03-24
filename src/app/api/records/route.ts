@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { ESPN_TEAM_IDS, resolveEspnTeam, normalize, currentSeason } from "@/lib/espn";
+import { ESPN_TEAM_IDS, resolveEspnTeam, normalize, currentSeason, teamNameMatches } from "@/lib/espn";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -75,6 +75,15 @@ export async function GET(request: NextRequest) {
       if (schedRes.ok) {
         const schedData = await schedRes.json();
         const teamInfo = schedData?.team || {};
+
+        // Validate that we got the right team
+        if (teamInfo.displayName && !teamNameMatches(school, teamInfo)) {
+          log.push(`⚠ NAME MISMATCH: asked for "${school}" but ESPN returned "${teamInfo.displayName}" (id=${teamId}). Curated map may be wrong.`);
+          console.warn(`[records] ESPN mismatch: "${school}" → id ${teamId} → "${teamInfo.displayName}"`);
+          records[school] = null;
+          return;
+        }
+
         const recordSummary = teamInfo.recordSummary;
         if (recordSummary) {
           records[school] = recordSummary;
