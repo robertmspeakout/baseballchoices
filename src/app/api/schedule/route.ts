@@ -167,10 +167,14 @@ export async function GET(request: NextRequest) {
 
         // Validate: if we used a curated ID, check that the ESPN team name
         // actually matches the school we're looking for.  If not, the curated
-        // ID is wrong — log a warning so we can fix the map.
+        // ID is wrong — discard the data to avoid showing the wrong team's info.
         if (usedCuratedId && t?.displayName && !teamNameMatches(school, t)) {
-          debugLog.push(`⚠ NAME MISMATCH: asked for "${school}" but ESPN returned "${t.displayName}" (id=${teamId}). Curated map entry is wrong.`);
-          console.warn(`[schedule] ESPN_TEAM_IDS mismatch: "${school}" → id ${teamId} → "${t.displayName}". Please fix the curated map.`);
+          debugLog.push(`⚠ NAME MISMATCH: asked for "${school}" but ESPN returned "${t.displayName}" (id=${teamId}). Curated map entry is wrong — discarding data.`);
+          console.warn(`[schedule] ESPN_TEAM_IDS mismatch: "${school}" → id ${teamId} → "${t.displayName}". Please run: node scripts/audit-espn-ids.js --apply`);
+          if (debug) {
+            return NextResponse.json({ _v: ROUTE_VERSION, _debug: true, error: "name_mismatch", school, espnName: t.displayName, teamId, log: debugLog });
+          }
+          return emptyResponse();
         }
       } catch (e: any) {
         debugLog.push(`Team JSON parse error: ${e?.message}`);
