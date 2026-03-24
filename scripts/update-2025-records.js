@@ -145,7 +145,7 @@ const records2025 = {
   "Pepperdine": "30-26",
   "LMU": "28-28",
   "San Francisco": "26-30",
-  "Portland": "24-32",
+  "Portland": "22-30",
   "Saint Mary's": "22-33",
   "Pacific": "20-35",
 
