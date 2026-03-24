@@ -70,7 +70,10 @@ export async function GET(request: NextRequest) {
       debugLog.push(`Known ESPN ID: ${teamId} (from map for "${school}")`);
     } else {
       // Fall back to ESPN search
-      const searchUrl = `https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/teams?limit=5&search=${encodeURIComponent(school)}`;
+      // ESPN often ignores the `search` param and returns ALL teams
+      // alphabetically.  Use a high limit so our name-matching logic has
+      // all teams to work with.
+      const searchUrl = `https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/teams?limit=500&search=${encodeURIComponent(school)}`;
       debugLog.push(`Searching: ${searchUrl}`);
 
       let searchRes: Response;

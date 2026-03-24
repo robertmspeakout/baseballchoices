@@ -95,7 +95,8 @@ export const ESPN_TEAM_IDS: Record<string, number> = {
   "Pacific Lutheran": 129700,
   "Penn": 415,
   "Penn State": 414,
-  "Portland": 416,
+  // "Portland": 416 — REMOVED: returned wrong team (6-6 instead of 15-7).
+  // Run `node scripts/audit-espn-ids.js --school Portland` to find the correct ID.
   "Purdue": 189,
   "Rutgers": 102,
   "San Diego": 143,
@@ -265,6 +266,19 @@ export function resolveEspnTeam(
   // 2–7.  Progressive name matching on the search results
   const match = (fn: (t: any) => boolean) =>
     teams.find((e: any) => fn(normalize(e)));
+
+  // For disambiguation: when "Portland" could match both "Portland Pilots"
+  // and "Portland State Vikings", prefer the one whose location exactly
+  // matches AND whose displayName doesn't include "State" or other suffixes
+  // that our school name doesn't have.
+  const exactLocationNonState = match((t) => {
+    const loc = t.location?.toLowerCase();
+    const dn = t.displayName?.toLowerCase() || "";
+    return loc === schoolLower &&
+      !dn.startsWith(schoolLower + " state") &&
+      !dn.startsWith(schoolLower + " a&m");
+  });
+  if (exactLocationNonState) return normalize(exactLocationNonState);
 
   return normalize(
     match((t) => t.displayName?.toLowerCase() === schoolLower) ||

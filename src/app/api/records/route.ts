@@ -42,7 +42,9 @@ export async function GET(request: NextRequest) {
         log.push(`Known ESPN ID: ${teamId} (from map)`);
       } else {
         // Fall back to ESPN search
-        const searchUrl = `${BASE}/teams?limit=3&search=${encodeURIComponent(school)}`;
+        // ESPN often ignores `search` and returns all teams alphabetically;
+        // use a high limit so name-matching logic has all teams available.
+        const searchUrl = `${BASE}/teams?limit=500&search=${encodeURIComponent(school)}`;
         log.push(`Searching: ${searchUrl}`);
 
         const searchRes = await fetch(searchUrl);
