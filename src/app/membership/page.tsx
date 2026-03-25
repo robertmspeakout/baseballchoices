@@ -237,12 +237,25 @@ function MembershipContent() {
               <p className="text-sm text-gray-500 mb-8">Your subscription is now active. You have unlimited access to all features.</p>
 
               <div className="space-y-3">
-                <Link href="/" className="block px-4 py-3 bg-[#CC0000] text-white rounded-xl text-sm font-bold hover:bg-red-700 transition-colors">
-                  Explore Programs
-                </Link>
-                <Link href="/ai-match" className="block px-4 py-3 border-2 border-gray-300 text-gray-700 rounded-xl text-sm font-bold hover:bg-gray-50 transition-colors">
-                  Try AI Scout
-                </Link>
+                {(session?.user as Record<string, unknown>)?.accountType === "parent" && !(session?.user as Record<string, unknown>)?.linkedPlayerId ? (
+                  <>
+                    <Link href="/family/invite" className="block px-4 py-3 bg-[#CC0000] text-white rounded-xl text-sm font-bold hover:bg-red-700 transition-colors">
+                      Invite Your Player
+                    </Link>
+                    <Link href="/" className="block px-4 py-3 border-2 border-gray-300 text-gray-700 rounded-xl text-sm font-bold hover:bg-gray-50 transition-colors">
+                      Skip for Now
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    <Link href="/" className="block px-4 py-3 bg-[#CC0000] text-white rounded-xl text-sm font-bold hover:bg-red-700 transition-colors">
+                      Explore Programs
+                    </Link>
+                    <Link href="/ai-match" className="block px-4 py-3 border-2 border-gray-300 text-gray-700 rounded-xl text-sm font-bold hover:bg-gray-50 transition-colors">
+                      Try AI Scout
+                    </Link>
+                  </>
+                )}
               </div>
             </div>
           )}
@@ -348,6 +361,19 @@ function MembershipContent() {
                   <p className="text-xs text-gray-400">Secure checkout powered by Stripe</p>
                 </div>
               </div>
+
+              {/* Option for players to have a parent pay */}
+              {!isMember && (session?.user as Record<string, unknown>)?.accountType === "player" && (
+                <div className="mt-4 bg-white border border-gray-200 rounded-xl p-4 text-center">
+                  <p className="text-sm text-gray-600 mb-2">Need a parent or guardian to subscribe for you?</p>
+                  <Link
+                    href="/family/invite-parent"
+                    className="text-sm font-semibold text-blue-600 hover:text-blue-800"
+                  >
+                    Send them a sign-up link
+                  </Link>
+                </div>
+              )}
 
               {isMember && (
                 <div className="mt-6 bg-blue-50 border border-blue-200 rounded-xl px-4 py-3 text-center">

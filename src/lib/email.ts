@@ -128,6 +128,53 @@ export async function sendVerificationEmail(email: string, token: string, firstN
   });
 }
 
+export async function sendFamilyInviteEmail(email: string, inviterName: string, token: string, invitedAs: "player" | "parent") {
+  const baseUrl = process.env.NEXTAUTH_URL || "https://extrabase.app";
+  const inviteUrl = `${baseUrl}/auth/register?invite=${token}`;
+  const resend = getResend();
+
+  const isParentInvite = invitedAs === "parent";
+  const subject = isParentInvite
+    ? `${inviterName} needs your help with ExtraBase`
+    : `${inviterName} invited you to ExtraBase`;
+  const headline = isParentInvite
+    ? `${inviterName} wants you to manage their ExtraBase account`
+    : `${inviterName} invited you to join ExtraBase`;
+  const description = isParentInvite
+    ? "Your player is using ExtraBase to explore college baseball programs. Create a parent account to subscribe and help manage their recruiting journey."
+    : "A parent has set up an ExtraBase subscription for you. Create your player account to start exploring 1,300+ college baseball programs.";
+  const buttonText = isParentInvite ? "Create Parent Account" : "Create Player Account";
+
+  await resend.emails.send({
+    from: FROM_EMAIL,
+    to: email,
+    subject,
+    html: `
+      <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 480px; margin: 0 auto; padding: 40px 20px;">
+        <div style="text-align: center; margin-bottom: 32px;">
+          <span style="font-size: 24px; font-weight: 900; letter-spacing: -0.5px;">
+            <span style="color: #CC0000;">EXTRA</span><span style="color: #111;">BASE</span>
+          </span>
+        </div>
+        <h1 style="font-size: 22px; font-weight: 700; color: #111; text-align: center; margin-bottom: 8px;">
+          ${headline}
+        </h1>
+        <p style="font-size: 15px; color: #555; text-align: center; margin-bottom: 32px;">
+          ${description}
+        </p>
+        <div style="text-align: center; margin-bottom: 32px;">
+          <a href="${inviteUrl}" style="display: inline-block; background: #CC0000; color: #fff; font-size: 14px; font-weight: 700; padding: 14px 32px; border-radius: 12px; text-decoration: none;">
+            ${buttonText}
+          </a>
+        </div>
+        <p style="font-size: 13px; color: #999; text-align: center;">
+          This invite expires in 7 days. If you didn't expect this email, you can ignore it.
+        </p>
+      </div>
+    `,
+  });
+}
+
 export async function sendProfileReminderEmail(email: string, firstName: string) {
   const baseUrl = process.env.NEXTAUTH_URL || "https://extrabase.app";
   const resend = getResend();

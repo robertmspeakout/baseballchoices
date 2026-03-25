@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, Suspense } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
@@ -8,7 +8,10 @@ import Link from "next/link";
 function RegisterForm() {
   const searchParams = useSearchParams();
   const intent = searchParams.get("intent") || "";
+  const inviteToken = searchParams.get("invite") || "";
   const [accountType, setAccountType] = useState<"player" | "parent" | null>(null);
+  const [inviteInfo, setInviteInfo] = useState<{ inviterName: string; invitedAs: string; email?: string } | null>(null);
+  const [inviteLoading, setInviteLoading] = useState(!!inviteToken);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -18,6 +21,28 @@ function RegisterForm() {
   const [error, setError] = useState("");
   const [errorCode, setErrorCode] = useState("");
   const [loading, setLoading] = useState(false);
+
+  // If there's an invite token, fetch invite details and auto-set account type
+  useEffect(() => {
+    if (!inviteToken) return;
+    fetch(`/api/family/invite?token=${encodeURIComponent(inviteToken)}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.error) {
+          setError("This invite link is invalid or has expired.");
+          setInviteLoading(false);
+          return;
+        }
+        setInviteInfo(data);
+        setAccountType(data.invitedAs as "player" | "parent");
+        if (data.email) setEmail(data.email);
+        setInviteLoading(false);
+      })
+      .catch(() => {
+        setError("Could not verify invite link.");
+        setInviteLoading(false);
+      });
+  }, [inviteToken]);
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -68,8 +93,27 @@ function RegisterForm() {
         return;
       }
 
+      // If registering via invite, accept the invite to link accounts
+      if (inviteToken) {
+        try {
+          await fetch("/api/family/accept", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ token: inviteToken }),
+          });
+        } catch {
+          // Non-fatal — they can link later
+        }
+      }
+
       // Redirect based on intent and account type
-      if (intent === "purchase" || accountType === "parent") {
+      if (inviteToken && accountType === "parent") {
+        // Parent coming from kid's invite — go to checkout
+        window.location.replace("/membership?auto_checkout=true");
+      } else if (inviteToken && accountType === "player") {
+        // Player coming from parent's invite — go to profile setup
+        window.location.replace("/auth/profile");
+      } else if (intent === "purchase" || accountType === "parent") {
         // Parents always go to checkout; purchase intent does the same
         window.location.replace("/membership?auto_checkout=true");
       } else {
@@ -100,7 +144,12 @@ function RegisterForm() {
 
       <main className="flex-1 flex items-start justify-center px-4 py-8 sm:py-12">
         <div className="w-full max-w-md">
-          {!accountType ? (
+          {inviteLoading ? (
+            <div className="text-center py-12">
+              <div className="animate-spin rounded-full h-8 w-8 border-2 border-gray-300 border-t-gray-600 mx-auto mb-4" />
+              <p className="text-sm text-gray-500">Loading invite...</p>
+            </div>
+          ) : !accountType ? (
             <>
               <div className="text-center mb-8">
                 <div className="mx-auto w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-4">
@@ -159,24 +208,30 @@ function RegisterForm() {
           <>
           <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-2 mb-4">
-              <button
-                onClick={() => setAccountType(null)}
-                className="text-gray-400 hover:text-gray-600 transition-colors"
-                title="Change account type"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
+              {!inviteToken && (
+                <button
+                  onClick={() => setAccountType(null)}
+                  className="text-gray-400 hover:text-gray-600 transition-colors"
+                  title="Change account type"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+              )}
               <div className={`px-3 py-1 rounded-full text-xs font-medium ${accountType === "player" ? "bg-blue-100 text-blue-700" : "bg-green-100 text-green-700"}`}>
                 {accountType === "player" ? "Player Account" : "Parent / Guardian Account"}
               </div>
             </div>
             <h2 className="text-2xl font-bold text-gray-900">Create Your Account</h2>
             <p className="text-sm text-gray-500 mt-1">
-              {accountType === "parent"
-                ? "You'll be able to invite your player after signing up"
-                : intent === "purchase" ? "Create your account to subscribe" : "Get started with ExtraBase"}
+              {inviteInfo
+                ? accountType === "player"
+                  ? `${inviteInfo.inviterName} has set up a subscription for you`
+                  : `${inviteInfo.inviterName} needs you to subscribe for them`
+                : accountType === "parent"
+                  ? "You'll be able to invite your player after signing up"
+                  : intent === "purchase" ? "Create your account to subscribe" : "Get started with ExtraBase"}
             </p>
           </div>
 
