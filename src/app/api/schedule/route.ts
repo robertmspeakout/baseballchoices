@@ -59,11 +59,12 @@ export async function GET(request: NextRequest) {
   const debugLog: string[] = [];
   debugLog.push(`v${ROUTE_VERSION} | school=${school} | espn_id=${espnIdParam || "none"} | ts=${new Date().toISOString()}`);
 
-  // --- Step 0a: Check manual overrides FIRST ---
+  // --- Step 0a: Check if ESPN doesn't track this team ---
+  // "unavailable" means ESPN has no reliable data — return null instead of wrong data.
   const overrides = recordOverrides as Record<string, string>;
-  const overrideRecord = overrides[school] || null;
-  if (overrideRecord) {
-    debugLog.push(`Override: ${overrideRecord}`);
+  const espnUnavailable = overrides[school] === "unavailable";
+  if (espnUnavailable) {
+    debugLog.push(`ESPN unavailable for "${school}" — will not use ESPN record`);
   }
 
   // --- Step 0b: Check standings (ESPN bulk + NCAA API) ---
@@ -382,9 +383,9 @@ export async function GET(request: NextRequest) {
       debugLog.push(`Using team endpoint record: ${espnRecord}`);
     }
 
-    // --- Record priority: override > standings > ESPN ---
-    const finalRecord = overrideRecord || standingsRecord || espnRecord;
-    const recordSource = overrideRecord ? "override" : standingsRecord ? "standings" : espnRecord ? "espn" : "none";
+    // --- Record priority: standings > ESPN (skip ESPN if unavailable) ---
+    const finalRecord = standingsRecord || (espnUnavailable ? null : espnRecord);
+    const recordSource = standingsRecord ? "standings" : espnUnavailable ? "espn_unavailable" : espnRecord ? "espn" : "none";
     debugLog.push(`Final record: ${finalRecord} (source: ${recordSource})`);
 
     const recentGames = completed.slice(-5).reverse();

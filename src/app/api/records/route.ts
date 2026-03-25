@@ -37,11 +37,11 @@ export async function GET(request: NextRequest) {
     const log: string[] = [];
     debugLog[school] = log;
     try {
-      // ── Step 0: check manual overrides ──────────────────────────
-      const override = overrides[school];
-      if (override) {
-        records[school] = override;
-        log.push(`Override: ${override}`);
+      // ── Step 0: check if ESPN doesn't track this team ──────────
+      // "unavailable" = ESPN has no reliable data, return null instead of wrong data
+      if (overrides[school] === "unavailable") {
+        records[school] = null;
+        log.push(`ESPN unavailable for "${school}" — skipping`);
         return;
       }
 
