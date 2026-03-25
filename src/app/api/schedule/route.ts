@@ -111,13 +111,18 @@ export async function GET(request: NextRequest) {
         return emptyResponse();
       }
 
-      // If espn_id hint is provided, try to match it first
+      // If espn_id hint is provided, try to match it first — but validate name
       let teamEntry: any = null;
       if (espnIdParam) {
         const hintMatch = teams.find((e) => String(espnNormalize(e).id) === espnIdParam);
         if (hintMatch) {
-          teamEntry = espnNormalize(hintMatch);
-          debugLog.push(`Matched by espn_id hint: ${teamEntry.displayName} (id=${teamEntry.id})`);
+          const normalized = espnNormalize(hintMatch);
+          if (teamNameMatches(school, normalized)) {
+            teamEntry = normalized;
+            debugLog.push(`Matched by espn_id hint: ${teamEntry.displayName} (id=${teamEntry.id})`);
+          } else {
+            debugLog.push(`espn_id hint ${espnIdParam} rejected: name mismatch ("${school}" vs "${normalized.displayName}")`);
+          }
         }
       }
 
