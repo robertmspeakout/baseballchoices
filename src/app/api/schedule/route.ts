@@ -1,12 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ESPN_TEAM_IDS, resolveEspnTeam, normalize as espnNormalize, teamNameMatches } from "@/lib/espn";
 import { getNcaaRecord } from "@/lib/ncaa";
+import recordOverrides from "@/data/record-overrides.json";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 export const dynamic = "force-dynamic";
 
-const ROUTE_VERSION = 7;
+const ROUTE_VERSION = 8;
 
 function emptyResponse() {
   return NextResponse.json({
@@ -58,8 +59,14 @@ export async function GET(request: NextRequest) {
   const debugLog: string[] = [];
   debugLog.push(`v${ROUTE_VERSION} | school=${school} | espn_id=${espnIdParam || "none"} | ts=${new Date().toISOString()}`);
 
-  // --- Step 0: Check standings (ESPN bulk + NCAA API) FIRST ---
-  // This is the primary record source — runs before any ESPN per-team calls.
+  // --- Step 0a: Check manual overrides FIRST ---
+  const overrides = recordOverrides as Record<string, string>;
+  const overrideRecord = overrides[school] || null;
+  if (overrideRecord) {
+    debugLog.push(`Override: ${overrideRecord}`);
+  }
+
+  // --- Step 0b: Check standings (ESPN bulk + NCAA API) ---
   let standingsRecord: string | null = null;
   try {
     standingsRecord = await getNcaaRecord(school);
@@ -375,10 +382,10 @@ export async function GET(request: NextRequest) {
       debugLog.push(`Using team endpoint record: ${espnRecord}`);
     }
 
-    // --- Record priority: standings > computed-from-games > ESPN summary ---
-    // standingsRecord was fetched at the top of the route (Step 0)
-    const finalRecord = standingsRecord || espnRecord;
-    debugLog.push(`Final record: ${finalRecord} (source: ${standingsRecord ? "standings" : espnRecord ? "espn" : "none"})`);
+    // --- Record priority: override > standings > ESPN ---
+    const finalRecord = overrideRecord || standingsRecord || espnRecord;
+    const recordSource = overrideRecord ? "override" : standingsRecord ? "standings" : espnRecord ? "espn" : "none";
+    debugLog.push(`Final record: ${finalRecord} (source: ${recordSource})`);
 
     const recentGames = completed.slice(-5).reverse();
     const next5 = upcoming.slice(0, 5);

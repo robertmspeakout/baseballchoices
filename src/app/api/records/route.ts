@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ESPN_TEAM_IDS, resolveEspnTeam, normalize, currentSeason, teamNameMatches } from "@/lib/espn";
 import { getNcaaRecord } from "@/lib/ncaa";
+import recordOverrides from "@/data/record-overrides.json";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -30,10 +31,20 @@ export async function GET(request: NextRequest) {
   const records: Record<string, string | null> = {};
   const debugLog: Record<string, string[]> = {};
 
+  const overrides = recordOverrides as Record<string, string>;
+
   const fetchRecord = async (school: string): Promise<void> => {
     const log: string[] = [];
     debugLog[school] = log;
     try {
+      // ── Step 0: check manual overrides ──────────────────────────
+      const override = overrides[school];
+      if (override) {
+        records[school] = override;
+        log.push(`Override: ${override}`);
+        return;
+      }
+
       // ── Step 1: check standings (ESPN bulk + NCAA API) ────────────
       const ncaaRecord = await getNcaaRecord(school);
       if (ncaaRecord) {
