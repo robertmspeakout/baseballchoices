@@ -1,11 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ESPN_TEAM_IDS, resolveEspnTeam, normalize as espnNormalize, teamNameMatches } from "@/lib/espn";
+import { getNcaaRecord } from "@/lib/ncaa";
+import recordOverrides from "@/data/record-overrides.json";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 export const dynamic = "force-dynamic";
 
-const ROUTE_VERSION = 6;
+const ROUTE_VERSION = 7;
 
 function emptyResponse() {
   return NextResponse.json({
@@ -54,8 +56,11 @@ export async function GET(request: NextRequest) {
     return emptyResponse();
   }
 
+  // Check for manual record override (highest priority — bypasses ESPN entirely for the record)
+  const overrideRecord = (recordOverrides as Record<string, string>)[school] || null;
+
   const debugLog: string[] = [];
-  debugLog.push(`v${ROUTE_VERSION} | school=${school} | espn_id=${espnIdParam || "none"} | ts=${new Date().toISOString()}`);
+  debugLog.push(`v${ROUTE_VERSION} | school=${school} | espn_id=${espnIdParam || "none"} | override=${overrideRecord || "none"} | ts=${new Date().toISOString()}`);
 
   try {
     // --- Step 1: Resolve the ESPN team ID ---
@@ -363,12 +368,25 @@ export async function GET(request: NextRequest) {
       espnRecord = espnScheduleRecord;
     }
 
+    // --- Record priority: override > NCAA > computed-from-games > ESPN ---
+    let ncaaRecord: string | null = null;
+    if (!overrideRecord) {
+      try {
+        ncaaRecord = await getNcaaRecord(school);
+        if (ncaaRecord) debugLog.push(`NCAA record: ${ncaaRecord}`);
+      } catch (e: any) {
+        debugLog.push(`NCAA fetch error: ${e?.message}`);
+      }
+    }
+    const finalRecord = overrideRecord || ncaaRecord || espnRecord;
+    debugLog.push(`Final record: ${finalRecord} (source: ${overrideRecord ? "override" : ncaaRecord ? "ncaa" : espnRecord ? "espn" : "none"})`);
+
     const recentGames = completed.slice(-5).reverse();
     const next5 = upcoming.slice(0, 5);
 
     return NextResponse.json({
       _v: ROUTE_VERSION,
-      record: espnRecord,
+      record: finalRecord,
       recentGames,
       upcoming: next5,
     }, {
