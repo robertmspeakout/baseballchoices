@@ -175,6 +175,72 @@ export async function sendFamilyInviteEmail(email: string, inviterName: string, 
   });
 }
 
+export async function sendFamilyLinkedEmail(
+  email: string,
+  firstName: string,
+  linkedPersonName: string,
+  role: "player" | "parent",
+  needsToSubscribe: boolean,
+) {
+  const baseUrl = process.env.NEXTAUTH_URL || "https://extrabase.app";
+  const resend = getResend();
+
+  const isParent = role === "parent";
+  const subject = isParent
+    ? `${linkedPersonName} linked their ExtraBase account to yours`
+    : `You've been linked to ${linkedPersonName}'s ExtraBase account`;
+  const headline = isParent
+    ? `${linkedPersonName} added you to their ExtraBase account`
+    : `${linkedPersonName} linked you to their ExtraBase family`;
+
+  let description: string;
+  let buttonText: string;
+  let buttonUrl: string;
+
+  if (isParent && needsToSubscribe) {
+    description = `Your player ${linkedPersonName} is using ExtraBase to explore college baseball programs. Subscribe now to give them full access.`;
+    buttonText = "Subscribe Now — $24.99/year";
+    buttonUrl = `${baseUrl}/membership`;
+  } else if (isParent) {
+    description = `Your account is now linked with ${linkedPersonName}'s player account. You can help manage their recruiting journey together.`;
+    buttonText = "Go to ExtraBase";
+    buttonUrl = baseUrl;
+  } else {
+    description = `${linkedPersonName} has linked your accounts. You now share their ExtraBase subscription and can explore 1,300+ college baseball programs.`;
+    buttonText = "Go to ExtraBase";
+    buttonUrl = baseUrl;
+  }
+
+  await resend.emails.send({
+    from: FROM_EMAIL,
+    to: email,
+    subject,
+    html: `
+      <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 480px; margin: 0 auto; padding: 40px 20px;">
+        <div style="text-align: center; margin-bottom: 32px;">
+          <span style="font-size: 24px; font-weight: 900; letter-spacing: -0.5px;">
+            <span style="color: #CC0000;">EXTRA</span><span style="color: #111;">BASE</span>
+          </span>
+        </div>
+        <h1 style="font-size: 22px; font-weight: 700; color: #111; text-align: center; margin-bottom: 8px;">
+          ${headline}
+        </h1>
+        <p style="font-size: 15px; color: #555; text-align: center; margin-bottom: 32px;">
+          ${description}
+        </p>
+        <div style="text-align: center; margin-bottom: 32px;">
+          <a href="${buttonUrl}" style="display: inline-block; background: #CC0000; color: #fff; font-size: 14px; font-weight: 700; padding: 14px 32px; border-radius: 12px; text-decoration: none;">
+            ${buttonText}
+          </a>
+        </div>
+        <p style="font-size: 13px; color: #999; text-align: center;">
+          If you didn't expect this, please contact us.
+        </p>
+      </div>
+    `,
+  });
+}
+
 export async function sendProfileReminderEmail(email: string, firstName: string) {
   const baseUrl = process.env.NEXTAUTH_URL || "https://extrabase.app";
   const resend = getResend();

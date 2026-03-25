@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { randomUUID } from "crypto";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
-import { sendFamilyInviteEmail } from "@/lib/email";
+import { sendFamilyInviteEmail, sendFamilyLinkedEmail } from "@/lib/email";
 
 // GET — check an invite token's validity
 export async function GET(request: NextRequest) {
@@ -116,6 +116,16 @@ export async function POST(request: NextRequest) {
         data: { ownerUserId: existingInvitee.id },
       });
     }
+
+    // Notify the linked person via email
+    const needsToSubscribe = existingInvitee.accountType === "parent" && !existingInvitee.membershipActive;
+    await sendFamilyLinkedEmail(
+      existingInvitee.email,
+      existingInvitee.firstName,
+      user.firstName,
+      existingInvitee.accountType === "parent" ? "parent" : "player",
+      needsToSubscribe,
+    );
 
     return NextResponse.json({ linked: true, firstName: existingInvitee.firstName });
   }
