@@ -28,148 +28,151 @@ export async function GET() {
     }
   };
 
-  await Promise.all([
-    // 1. ESPN scoreboard — check if games have team records embedded
-    tryFetch("espnScoreboard", "https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/scoreboard", (text) => {
-      const json = JSON.parse(text);
-      const events = json.events || [];
-      // Find a completed game and show its full competitor structure
-      const completedGame = events.find((e: any) =>
-        e.competitions?.[0]?.status?.type?.completed === true
-      );
-      const anyGame = events[0];
-      const game = completedGame || anyGame;
-      if (!game) return { games: 0 };
-      const comp = game.competitions?.[0];
-      const competitors = comp?.competitors || [];
-      return {
-        totalGames: events.length,
-        completedGames: events.filter((e: any) => e.competitions?.[0]?.status?.type?.completed).length,
-        sampleGame: game.name,
-        // Show FULL competitor structure to find where records live
-        competitor1: competitors[0] ? {
-          teamId: competitors[0].team?.id,
-          teamName: competitors[0].team?.displayName,
-          records: competitors[0].records,
-          score: competitors[0].score,
-          winner: competitors[0].winner,
-          // Show all keys on competitor
-          allKeys: Object.keys(competitors[0]),
-        } : null,
-        competitor2: competitors[1] ? {
-          teamId: competitors[1].team?.id,
-          teamName: competitors[1].team?.displayName,
-          records: competitors[1].records,
-          score: competitors[1].score,
-          winner: competitors[1].winner,
-        } : null,
-      };
-    }),
+  const tests: Promise<void>[] = [];
 
-    // 2. NCAA stats — winning percentage (has all teams with W-L)
-    tryFetch("ncaaStats_winPct", "https://ncaa-api.henrygd.me/stats/baseball/d1/current/team/340", (text) => {
+  // ── 1. ESPN standings with different group IDs to find WCC ──
+  // The default only returned 1 group with 138 teams. WCC might be a different group.
+  // Common ESPN conference group IDs for college baseball
+  const groupIds = [0, 1, 2, 3, 4, 5, 10, 18, 39, 46, 50, 100];
+  for (const gid of groupIds) {
+    tests.push(
+      tryFetch(`standings_group${gid}`, `https://site.api.espn.com/apis/v2/sports/baseball/college-baseball/standings?group=${gid}`, (text) => {
+        const json = JSON.parse(text);
+        const conferences = json.children || [];
+        let portland = null;
+        let totalTeams = 0;
+        const confNames: string[] = [];
+        for (const conf of conferences) {
+          confNames.push(conf.name || conf.abbreviation || "?");
+          const entries = conf.standings?.entries || [];
+          for (const entry of entries) {
+            totalTeams++;
+            const team = entry.team || {};
+            const dn = (team.displayName || "").toLowerCase();
+            const loc = (team.location || "").toLowerCase();
+            if (dn.includes("portland") || loc.includes("portland") || String(team.id) === "416") {
+              const stats = entry.stats || [];
+              const overall = stats.find((s: any) => s.name === "overall" || s.type === "total");
+              portland = {
+                teamId: team.id,
+                displayName: team.displayName,
+                location: team.location,
+                overall: overall?.displayValue || overall?.summary || null,
+                allStatNames: stats.map((s: any) => `${s.name}=${s.displayValue}`),
+              };
+            }
+          }
+        }
+        return { conferences: confNames.length, confNames, totalTeams, portland };
+      })
+    );
+  }
+
+  // ── 2. ESPN team search for "University of Portland" ──
+  tests.push(
+    tryFetch("searchUniversityOfPortland", "https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/teams?limit=500&search=University%20of%20Portland", (text) => {
+      const json = JSON.parse(text);
+      const teams = json?.sports?.[0]?.leagues?.[0]?.teams || json?.teams || [];
+      const matches: any[] = [];
+      for (const entry of teams) {
+        const t = entry?.team || entry;
+        const dn = (t.displayName || "").toLowerCase();
+        const loc = (t.location || "").toLowerCase();
+        if (dn.includes("portland") || loc.includes("portland")) {
+          matches.push({
+            id: t.id,
+            displayName: t.displayName,
+            location: t.location,
+            record: t.record,
+            recordSummary: t.recordSummary,
+            allKeys: Object.keys(t),
+          });
+        }
+      }
+      return { totalTeams: teams.length, portlandMatches: matches };
+    })
+  );
+
+  // ── 3. NCAA API — try different endpoints ──
+  tests.push(
+    tryFetch("ncaaStandings", "https://ncaa-api.henrygd.me/standings/baseball/d1", (text) => {
+      const json = JSON.parse(text);
+      const data = json.data || json || [];
+      let portland = null;
+      for (const group of (Array.isArray(data) ? data : [])) {
+        for (const team of (group.standings || group.data || [])) {
+          const school = (team["School"] || team["school"] || "").toLowerCase();
+          if (school.includes("portland")) {
+            portland = team;
+          }
+        }
+      }
+      return { dataGroups: Array.isArray(data) ? data.length : "not array", portland };
+    })
+  );
+
+  // Try NCAA scoreboard
+  tests.push(
+    tryFetch("ncaaScoreboard", "https://ncaa-api.henrygd.me/scoreboard/baseball/d1", (text) => {
+      const json = JSON.parse(text);
+      const portlandIdx = text.toLowerCase().indexOf("portland");
+      return {
+        topKeys: Object.keys(json),
+        size: text.length,
+        portlandFound: portlandIdx >= 0,
+        portlandContext: portlandIdx >= 0 ? text.slice(Math.max(0, portlandIdx - 50), portlandIdx + 150) : null,
+      };
+    })
+  );
+
+  // Try NCAA teams list
+  tests.push(
+    tryFetch("ncaaTeams", "https://ncaa-api.henrygd.me/teams/baseball/d1", (text) => {
+      const json = JSON.parse(text);
+      const portlandIdx = text.toLowerCase().indexOf("portland");
+      return {
+        topKeys: Object.keys(json),
+        size: text.length,
+        portlandFound: portlandIdx >= 0,
+        portlandContext: portlandIdx >= 0 ? text.slice(Math.max(0, portlandIdx - 50), portlandIdx + 200) : null,
+      };
+    })
+  );
+
+  // Try NCAA game-by-game results
+  tests.push(
+    tryFetch("ncaaGameByGame", "https://ncaa-api.henrygd.me/stats/baseball/d1/current/team/298", (text) => {
       const json = JSON.parse(text);
       const portlandIdx = text.toLowerCase().indexOf("portland");
       return {
         topKeys: Object.keys(json),
         dataCount: (json.data || []).length,
-        sampleData: (json.data || []).slice(0, 3),
+        sampleData: (json.data || []).slice(0, 2),
         portlandFound: portlandIdx >= 0,
-        portlandContext: portlandIdx >= 0 ? text.slice(Math.max(0, portlandIdx - 100), portlandIdx + 200) : null,
+        portlandContext: portlandIdx >= 0 ? text.slice(Math.max(0, portlandIdx - 50), portlandIdx + 200) : null,
       };
-    }),
+    })
+  );
 
-    // 3. NCAA rankings
-    tryFetch("ncaaRankings", "https://ncaa-api.henrygd.me/rankings/baseball/d1", (text) => {
-      const json = JSON.parse(text);
-      return {
-        topKeys: Object.keys(json),
-        dataCount: (json.data || []).length,
-        sampleData: (json.data || []).slice(0, 3),
-      };
-    }),
+  // Try NCAA W-L stats (different stat IDs)
+  for (const statId of [339, 341, 343, 221]) {
+    tests.push(
+      tryFetch(`ncaaStats_${statId}`, `https://ncaa-api.henrygd.me/stats/baseball/d1/current/team/${statId}`, (text) => {
+        const json = JSON.parse(text);
+        const portlandIdx = text.toLowerCase().indexOf("portland");
+        return {
+          status: "ok",
+          title: json.title || json.statTitle || null,
+          dataCount: (json.data || []).length,
+          sampleData: (json.data || []).slice(0, 2),
+          portlandFound: portlandIdx >= 0,
+          portlandContext: portlandIdx >= 0 ? text.slice(Math.max(0, portlandIdx - 50), portlandIdx + 200) : null,
+        };
+      })
+    );
+  }
 
-    // 4. ESPN schedule for Portland with higher limit
-    tryFetch("espnPortlandFullSchedule", "https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/teams/416/schedule?season=2026&limit=100", (text) => {
-      const json = JSON.parse(text);
-      const events = json.events || [];
-      const team = json.team || {};
-      const completed = events.filter((e: any) => e.competitions?.[0]?.status?.type?.completed);
-      let wins = 0, losses = 0;
-      for (const ev of completed) {
-        const comp = ev.competitions[0];
-        const us = comp.competitors?.find((c: any) => String(c.team?.id || c.id) === "416");
-        if (us?.winner === true) wins++;
-        else if (us?.winner === false) losses++;
-      }
-      return {
-        recordSummary: team.recordSummary,
-        totalEvents: events.length,
-        completedEvents: completed.length,
-        computedRecord: `${wins}-${losses}`,
-        sampleEventNames: events.slice(0, 5).map((e: any) => e.name),
-        lastEventNames: events.slice(-5).map((e: any) => e.name),
-      };
-    }),
-
-    // 5. ESPN scoreboard for a recent date (March 22 — Saturday, likely games)
-    tryFetch("espnScoreboardMar22", "https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/scoreboard?dates=20260322", (text) => {
-      const json = JSON.parse(text);
-      const events = json.events || [];
-      // Look for Portland in any game
-      let portlandGame = null;
-      for (const ev of events) {
-        const comp = ev.competitions?.[0];
-        for (const c of (comp?.competitors || [])) {
-          if (c.team?.displayName?.toLowerCase().includes("portland") ||
-              String(c.team?.id) === "416") {
-            portlandGame = {
-              game: ev.name,
-              teamId: c.team?.id,
-              teamName: c.team?.displayName,
-              records: c.records,
-              score: c.score,
-              winner: c.winner,
-              allCompetitorKeys: Object.keys(c),
-            };
-          }
-        }
-      }
-      return {
-        totalGames: events.length,
-        portlandGame,
-      };
-    }),
-
-    // 6. Try a few more scoreboard dates to find Portland
-    tryFetch("espnScoreboardMar21", "https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/scoreboard?dates=20260321", (text) => {
-      const json = JSON.parse(text);
-      const events = json.events || [];
-      let portlandGame = null;
-      for (const ev of events) {
-        for (const c of (ev.competitions?.[0]?.competitors || [])) {
-          if (String(c.team?.id) === "416") {
-            portlandGame = { game: ev.name, records: c.records, score: c.score, winner: c.winner, allKeys: Object.keys(c) };
-          }
-        }
-      }
-      return { totalGames: events.length, portlandGame };
-    }),
-
-    tryFetch("espnScoreboardMar20", "https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/scoreboard?dates=20260320", (text) => {
-      const json = JSON.parse(text);
-      const events = json.events || [];
-      let portlandGame = null;
-      for (const ev of events) {
-        for (const c of (ev.competitions?.[0]?.competitors || [])) {
-          if (String(c.team?.id) === "416") {
-            portlandGame = { game: ev.name, records: c.records, score: c.score, winner: c.winner, allKeys: Object.keys(c) };
-          }
-        }
-      }
-      return { totalGames: events.length, portlandGame };
-    }),
-  ]);
+  await Promise.all(tests);
 
   return NextResponse.json(results);
 }
