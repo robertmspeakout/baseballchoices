@@ -62,16 +62,16 @@ export async function POST(request: NextRequest) {
                 },
               });
               await sendVerificationEmail(user.email, token, user.firstName);
-            } else if (!user.profile?.profileComplete) {
-              // Already verified but profile incomplete — send profile reminder
+            } else if (user.accountType !== "parent" && !user.profile?.profileComplete) {
+              // Already verified but profile incomplete — send profile reminder (players only)
               await sendProfileReminderEmail(user.email, user.firstName);
             }
           } catch (emailErr) {
             console.error("Failed to send post-purchase email:", emailErr);
           }
 
-          // Create notification to fill out profile
-          if (!user.profile?.profileComplete) {
+          // Create notification to fill out profile (only for players)
+          if (user.accountType !== "parent" && !user.profile?.profileComplete) {
             await prisma.notification.create({
               data: {
                 userId: user.id,
