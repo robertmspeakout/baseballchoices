@@ -95,8 +95,7 @@ export const ESPN_TEAM_IDS: Record<string, number> = {
   "Pacific Lutheran": 129700,
   "Penn": 415,
   "Penn State": 414,
-  // "Portland": 416 — REMOVED: returned wrong team (6-6 instead of 15-7).
-  // Run `node scripts/audit-espn-ids.js --school Portland` to find the correct ID.
+  "Portland": 416,
   "Purdue": 189,
   "Rutgers": 102,
   "San Diego": 143,

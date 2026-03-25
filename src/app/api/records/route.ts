@@ -74,12 +74,47 @@ export async function GET(request: NextRequest) {
         log.push(`Matched: ${teamEntry.displayName} (id=${teamId}, location=${teamEntry.location})`);
       }
 
-      // ── Step 2: fetch current-season record ───────────────────────
-      // The /schedule endpoint reliably returns recordSummary for the
-      // current season.  The /teams endpoint often returns last season's
-      // record when the new season has just started.
+      // ── Step 2: fetch record from /teams endpoint (authoritative) ──
+      // The /teams endpoint returns the team's current overall record
+      // directly.  This is more reliable than computing from schedule
+      // events, which ESPN sometimes returns incomplete.
+      const teamUrl = `${BASE}/teams/${teamId}`;
+      log.push(`Fetching team: ${teamUrl}`);
+
+      const teamRes = await fetch(teamUrl);
+      log.push(`Team status: ${teamRes.status}`);
+
+      if (teamRes.ok) {
+        const teamData = await teamRes.json();
+        const t = teamData?.team || teamData;
+
+        // Validate that we got the right team
+        if (t?.displayName && !teamNameMatches(school, t)) {
+          log.push(`⚠ NAME MISMATCH: asked for "${school}" but ESPN returned "${t.displayName}" (id=${teamId}). Curated map may be wrong.`);
+          console.warn(`[records] ESPN mismatch: "${school}" → id ${teamId} → "${t.displayName}"`);
+          records[school] = null;
+          return;
+        }
+
+        if (t?.record?.items?.[0]?.summary) {
+          records[school] = t.record.items[0].summary;
+          log.push(`Result (team record): ${records[school]}`);
+          return;
+        } else if (typeof t?.record === "string") {
+          records[school] = t.record;
+          log.push(`Result (team string): ${records[school]}`);
+          return;
+        } else if (t?.recordSummary) {
+          records[school] = t.recordSummary;
+          log.push(`Result (team summary): ${records[school]}`);
+          return;
+        }
+        log.push("Team endpoint had no record fields");
+      }
+
+      // ── Step 3: fallback to schedule computation ────────────────────
       const schedUrl = `${BASE}/teams/${teamId}/schedule?season=${season}`;
-      log.push(`Fetching schedule: ${schedUrl}`);
+      log.push(`Fallback: fetching schedule: ${schedUrl}`);
 
       const schedRes = await fetch(schedUrl);
       log.push(`Schedule status: ${schedRes.status}`);
@@ -88,16 +123,14 @@ export async function GET(request: NextRequest) {
         const schedData = await schedRes.json();
         const teamInfo = schedData?.team || {};
 
-        // Validate that we got the right team
-        if (teamInfo.displayName && !teamNameMatches(school, teamInfo)) {
-          log.push(`⚠ NAME MISMATCH: asked for "${school}" but ESPN returned "${teamInfo.displayName}" (id=${teamId}). Curated map may be wrong.`);
-          console.warn(`[records] ESPN mismatch: "${school}" → id ${teamId} → "${teamInfo.displayName}"`);
-          records[school] = null;
+        // Try recordSummary from schedule response first
+        if (teamInfo.recordSummary) {
+          records[school] = teamInfo.recordSummary;
+          log.push(`Result (schedule recordSummary): ${records[school]}`);
           return;
         }
 
-        // Compute record from actual game results — more reliable than ESPN's
-        // recordSummary which can be stale or wrong.
+        // Last resort: compute from individual game results
         const events: any[] = schedData?.events || [];
         let wins = 0;
         let losses = 0;
@@ -115,7 +148,6 @@ export async function GET(request: NextRequest) {
           if (ourTeam.winner === true) wins++;
           else if (ourTeam.winner === false) losses++;
           else {
-            // Fallback: compare scores
             const ourScore = parseInt(String(ourTeam.score?.displayValue ?? ourTeam.score ?? ""), 10);
             const opp = competitors.find((c: any) => String(c.team?.id || c.id) !== teamId);
             const oppScore = parseInt(String(opp?.score?.displayValue ?? opp?.score ?? ""), 10);
@@ -127,47 +159,15 @@ export async function GET(request: NextRequest) {
         }
 
         if (gamesCount > 0) {
-          const computedRecord = `${wins}-${losses}`;
-          const espnSummary = teamInfo.recordSummary || null;
-          log.push(`Computed from ${gamesCount} games: ${computedRecord} (ESPN said: ${espnSummary || "n/a"})`);
-          records[school] = computedRecord;
-          return;
-        }
-
-        // Fall back to ESPN's recordSummary if no completed games
-        const recordSummary = teamInfo.recordSummary;
-        if (recordSummary) {
-          records[school] = recordSummary;
-          log.push(`Result (schedule): ${recordSummary}`);
+          records[school] = `${wins}-${losses}`;
+          log.push(`Computed from ${gamesCount} games: ${records[school]}`);
           return;
         }
         log.push(`Schedule had no recordSummary and no completed games`);
       }
 
-      // Fallback: try the /teams endpoint directly
-      const teamUrl = `${BASE}/teams/${teamId}`;
-      log.push(`Fallback fetching team: ${teamUrl}`);
-
-      const teamRes = await fetch(teamUrl);
-      log.push(`Team status: ${teamRes.status}`);
-      if (!teamRes.ok) { records[school] = null; return; }
-
-      const teamData = await teamRes.json();
-      const t = teamData?.team || teamData;
-
-      if (t?.record?.items?.[0]?.summary) {
-        records[school] = t.record.items[0].summary;
-        log.push(`Result (team record): ${records[school]}`);
-      } else if (typeof t?.record === "string") {
-        records[school] = t.record;
-        log.push(`Result (team string): ${records[school]}`);
-      } else if (t?.recordSummary) {
-        records[school] = t.recordSummary;
-        log.push(`Result (team summary): ${records[school]}`);
-      } else {
-        records[school] = null;
-        log.push("Result: null (no record fields found)");
-      }
+      records[school] = null;
+      log.push("Result: null (no record found from any source)");
     } catch (err: any) {
       records[school] = null;
       log.push(`Error: ${err?.name || "unknown"}: ${err?.message || String(err)}`);
