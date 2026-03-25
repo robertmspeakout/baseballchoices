@@ -24,7 +24,8 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { firstName, lastName, email, password, gradYear, position, state } = body;
+    const { firstName, lastName, email, password, gradYear, position, state, accountType: rawAccountType } = body;
+    const accountType = rawAccountType === "parent" ? "parent" : "player";
 
     if (!firstName || !lastName || !email || !password) {
       return NextResponse.json({ error: "All fields are required" }, { status: 400 });
@@ -49,24 +50,48 @@ export async function POST(request: NextRequest) {
     const ownerEmail = process.env.OWNER_EMAIL || "";
     const role = ownerEmail && email.toLowerCase() === ownerEmail.toLowerCase() ? "OWNER" : "USER";
 
-    const user = await prisma.user.create({
-      data: {
-        firstName,
-        lastName,
-        email: email.toLowerCase(),
-        passwordHash,
-        role,
-        trialExpiresAt,
-        profile: {
-          create: {
-            gradYear: gradYear ? parseInt(gradYear) : null,
-            primaryPosition: position || null,
-            state: state || null,
-          },
+    // Build user creation data based on account type
+    const userData: Parameters<typeof prisma.user.create>[0]["data"] = {
+      firstName,
+      lastName,
+      email: email.toLowerCase(),
+      passwordHash,
+      role,
+      accountType,
+      trialExpiresAt,
+    };
+
+    // Only create a profile for players
+    if (accountType === "player") {
+      userData.profile = {
+        create: {
+          gradYear: gradYear ? parseInt(gradYear) : null,
+          primaryPosition: position || null,
+          state: state || null,
         },
-      },
+      };
+    }
+
+    const user = await prisma.user.create({
+      data: userData,
       include: { profile: true },
     });
+
+    // For parents, create a FamilyAccount and link them to it
+    if (accountType === "parent") {
+      const familyAccount = await prisma.familyAccount.create({
+        data: {
+          ownerUserId: user.id,
+          members: { connect: { id: user.id } },
+        },
+      });
+
+      // Update user with familyAccountId (already connected via relation, but store the ID)
+      await prisma.user.update({
+        where: { id: user.id },
+        data: { familyAccountId: familyAccount.id },
+      });
+    }
 
     // Generate verification token and send welcome email
     const token = randomUUID();
@@ -80,28 +105,41 @@ export async function POST(request: NextRequest) {
     await sendWelcomeEmail(user.email, token, user.firstName);
 
     // Create notifications for the user
-    await prisma.notification.createMany({
-      data: [
-        {
-          userId: user.id,
-          schoolId: 0,
-          type: "email_verify",
-          title: "Verify your email address",
-          body: "Check your email for a verification link to confirm your account.",
-          link: `/auth/verify?email=${encodeURIComponent(user.email)}`,
-          schoolLogo: null,
-        },
-        {
-          userId: user.id,
-          schoolId: 0,
-          type: "profile_incomplete",
-          title: "Complete your player profile",
-          body: "Fill out your profile so we can match you with the best college baseball programs.",
-          link: "/auth/profile",
-          schoolLogo: null,
-        },
-      ],
-    });
+    const notifications = [
+      {
+        userId: user.id,
+        schoolId: 0,
+        type: "email_verify",
+        title: "Verify your email address",
+        body: "Check your email for a verification link to confirm your account.",
+        link: `/auth/verify?email=${encodeURIComponent(user.email)}`,
+        schoolLogo: null,
+      },
+    ];
+
+    if (accountType === "player") {
+      notifications.push({
+        userId: user.id,
+        schoolId: 0,
+        type: "profile_incomplete",
+        title: "Complete your player profile",
+        body: "Fill out your profile so we can match you with the best college baseball programs.",
+        link: "/auth/profile",
+        schoolLogo: null,
+      });
+    } else {
+      notifications.push({
+        userId: user.id,
+        schoolId: 0,
+        type: "family_invite",
+        title: "Invite your player",
+        body: "Send an invite to your player so they can access their recruiting profile.",
+        link: "/family/invite",
+        schoolLogo: null,
+      });
+    }
+
+    await prisma.notification.createMany({ data: notifications });
 
     return NextResponse.json({
       id: user.id,

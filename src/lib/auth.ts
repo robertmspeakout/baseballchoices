@@ -30,7 +30,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
         const user = await prisma.user.findUnique({
           where: { email: (credentials.email as string).toLowerCase() },
-          include: { profile: true },
+          include: {
+            profile: true,
+            familyAccount: { include: { members: true } },
+          },
         });
 
         if (!user) return null;
@@ -41,15 +44,42 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         );
         if (!passwordMatch) return null;
 
+        // Resolve membership from family account owner if applicable
+        let membershipActive = user.membershipActive;
+        let trialExpiresAt = user.trialExpiresAt;
+        let linkedPlayerId: string | null = null;
+
+        if (user.familyAccount) {
+          const owner = user.familyAccount.members.find(
+            (m) => m.id === user.familyAccount!.ownerUserId
+          );
+          if (owner && owner.id !== user.id) {
+            // This user is not the owner — inherit membership from the owner
+            membershipActive = owner.membershipActive;
+            trialExpiresAt = owner.trialExpiresAt;
+          }
+
+          // For parents, find the linked player
+          if (user.accountType === "parent") {
+            const player = user.familyAccount.members.find(
+              (m) => m.accountType === "player"
+            );
+            linkedPlayerId = player?.id ?? null;
+          }
+        }
+
         return {
           id: user.id,
           email: user.email,
           name: `${user.firstName} ${user.lastName}`,
           role: user.role,
-          membershipActive: user.membershipActive,
-          trialExpiresAt: user.trialExpiresAt.toISOString(),
+          accountType: user.accountType,
+          membershipActive,
+          trialExpiresAt: trialExpiresAt.toISOString(),
           profileComplete: user.profile?.profileComplete ?? false,
           firstName: user.firstName,
+          familyAccountId: user.familyAccountId,
+          linkedPlayerId,
         };
       },
     }),

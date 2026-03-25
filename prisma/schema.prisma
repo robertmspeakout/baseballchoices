@@ -15,6 +15,7 @@ model User {
   email            String   @unique
   passwordHash     String
   role             String   @default("USER")
+  accountType      String   @default("player") // "player" | "parent"
   emailVerified    Boolean  @default(false)
   trialExpiresAt   DateTime
   membershipActive     Boolean  @default(false)
@@ -22,13 +23,26 @@ model User {
   stripeSubscriptionId String?
   subscriptionStatus   String?  // "active" | "trialing" | "past_due" | "canceled" | "unpaid"
   notificationsEnabled Boolean  @default(true)
+  familyAccountId      String?
   createdAt            DateTime @default(now())
   updatedAt            DateTime @updatedAt
 
-  profile       Profile?
-  preferences   Preferences?
-  schoolData    UserSchoolData[]
-  notifications Notification[]
+  profile        Profile?
+  preferences    Preferences?
+  schoolData     UserSchoolData[]
+  notifications  Notification[]
+  familyAccount  FamilyAccount? @relation(fields: [familyAccountId], references: [id])
+}
+
+model FamilyAccount {
+  id              String    @id @default(cuid())
+  ownerUserId     String
+  inviteToken     String?   @unique
+  inviteEmail     String?
+  inviteExpiresAt DateTime?
+  createdAt       DateTime  @default(now())
+
+  members User[]
 }
 
 model VerificationToken {
@@ -103,6 +117,7 @@ model UserSchoolData {
   detail           String?
   myContactName    String?
   myContactEmail   String?
+  addedByUserId    String?
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
 
