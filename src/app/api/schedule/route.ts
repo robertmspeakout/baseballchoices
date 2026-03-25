@@ -58,6 +58,16 @@ export async function GET(request: NextRequest) {
   const debugLog: string[] = [];
   debugLog.push(`v${ROUTE_VERSION} | school=${school} | espn_id=${espnIdParam || "none"} | ts=${new Date().toISOString()}`);
 
+  // --- Step 0: Check standings (ESPN bulk + NCAA API) FIRST ---
+  // This is the primary record source — runs before any ESPN per-team calls.
+  let standingsRecord: string | null = null;
+  try {
+    standingsRecord = await getNcaaRecord(school);
+    debugLog.push(`Standings lookup: ${standingsRecord || "no match"}`);
+  } catch (e: any) {
+    debugLog.push(`Standings error: ${e?.message}`);
+  }
+
   try {
     // --- Step 1: Resolve the ESPN team ID ---
     // First check the curated map, then fall back to ESPN search.
@@ -238,6 +248,7 @@ export async function GET(request: NextRequest) {
         _debug: true,
         teamId,
         year,
+        standingsRecord,
         log: debugLog,
         scheduleTopKeys: Object.keys(scheduleData),
         eventsCount: events.length,
@@ -364,16 +375,10 @@ export async function GET(request: NextRequest) {
       espnRecord = espnScheduleRecord;
     }
 
-    // --- Record priority: NCAA/ESPN standings > computed-from-games > ESPN summary ---
-    let ncaaRecord: string | null = null;
-    try {
-      ncaaRecord = await getNcaaRecord(school);
-      if (ncaaRecord) debugLog.push(`Standings record: ${ncaaRecord}`);
-    } catch (e: any) {
-      debugLog.push(`Standings fetch error: ${e?.message}`);
-    }
-    const finalRecord = ncaaRecord || espnRecord;
-    debugLog.push(`Final record: ${finalRecord} (source: ${ncaaRecord ? "standings" : espnRecord ? "espn" : "none"})`);
+    // --- Record priority: standings > computed-from-games > ESPN summary ---
+    // standingsRecord was fetched at the top of the route (Step 0)
+    const finalRecord = standingsRecord || espnRecord;
+    debugLog.push(`Final record: ${finalRecord} (source: ${standingsRecord ? "standings" : espnRecord ? "espn" : "none"})`);
 
     const recentGames = completed.slice(-5).reverse();
     const next5 = upcoming.slice(0, 5);
