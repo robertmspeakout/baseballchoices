@@ -4,98 +4,69 @@ import { NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
 
-const ESPN_STANDINGS_URL =
-  "https://site.api.espn.com/apis/v2/sports/baseball/college-baseball/standings";
-const NCAA_API_URL = "https://ncaa-api.henrygd.me/standings/baseball/d1";
-
 export async function GET() {
   const results: any = { timestamp: new Date().toISOString() };
 
-  // Test 1: ESPN Standings bulk endpoint
-  try {
-    const res = await fetch(ESPN_STANDINGS_URL, { signal: AbortSignal.timeout(15000) });
-    results.espnStandings = {
-      status: res.status,
-      ok: res.ok,
-    };
-    if (res.ok) {
-      const json = await res.json();
-      const topKeys = Object.keys(json);
-      const children = json.children || [];
-      results.espnStandings.topKeys = topKeys;
-      results.espnStandings.conferenceCount = children.length;
-      // Show first conference + first few teams as sample
-      if (children.length > 0) {
-        const firstConf = children[0];
-        const entries = firstConf.standings?.entries || [];
-        results.espnStandings.firstConference = firstConf.name || firstConf.abbreviation || "?";
-        results.espnStandings.firstConfTeamCount = entries.length;
-        results.espnStandings.sampleTeams = entries.slice(0, 3).map((e: any) => ({
-          id: e.team?.id,
-          displayName: e.team?.displayName,
-          location: e.team?.location,
-          stats: e.stats?.slice(0, 5).map((s: any) => ({ name: s.name, displayValue: s.displayValue, value: s.value })),
-        }));
-      }
-      // Search for Portland specifically
-      for (const conf of children) {
-        for (const entry of (conf.standings?.entries || [])) {
-          const dn = (entry.team?.displayName || "").toLowerCase();
-          const loc = (entry.team?.location || "").toLowerCase();
-          if (dn.includes("portland") || loc.includes("portland")) {
-            results.espnStandings.portlandMatch = {
-              conference: conf.name,
-              id: entry.team?.id,
-              displayName: entry.team?.displayName,
-              stats: entry.stats?.map((s: any) => ({ name: s.name, displayValue: s.displayValue })),
-            };
-          }
-        }
-      }
-    }
-  } catch (err: any) {
-    results.espnStandings = { error: err?.message || String(err) };
-  }
+  const tryFetch = async (label: string, url: string) => {
+    try {
+      const res = await fetch(url, {
+        headers: { "User-Agent": "baseballchoices/1.0" },
+        signal: AbortSignal.timeout(15000),
+      });
+      const info: any = { url, status: res.status, ok: res.ok };
+      if (res.ok) {
+        const text = await res.text();
+        info.size = text.length;
+        info.isJson = text.startsWith("{") || text.startsWith("[");
+        info.isHtml = text.includes("<html") || text.includes("<table");
+        // Show first 2000 chars for inspection
+        info.preview = text.slice(0, 2000);
 
-  // Test 2: NCAA API
-  try {
-    const res = await fetch(NCAA_API_URL, {
-      headers: { "User-Agent": "baseballchoices/1.0" },
-      signal: AbortSignal.timeout(15000),
-    });
-    results.ncaaApi = {
-      status: res.status,
-      ok: res.ok,
-    };
-    if (res.ok) {
-      const json = await res.json();
-      const topKeys = Object.keys(json);
-      const data = json.data || json || [];
-      results.ncaaApi.topKeys = topKeys;
-      results.ncaaApi.groupCount = Array.isArray(data) ? data.length : "not array";
-      // Show first group as sample
-      if (Array.isArray(data) && data.length > 0) {
-        const first = data[0];
-        results.ncaaApi.firstGroup = {
-          conference: first.conference || first.name || "?",
-          keys: Object.keys(first),
-          teamCount: (first.standings || first.data || []).length,
-          sampleTeams: (first.standings || first.data || []).slice(0, 3),
-        };
-      }
-      // Search for Portland
-      for (const group of (Array.isArray(data) ? data : [])) {
-        for (const team of (group.standings || group.data || [])) {
-          const school = (team["School"] || team["school"] || "").toLowerCase();
-          if (school.includes("portland")) {
-            results.ncaaApi.portlandMatch = team;
+        // If JSON, try to parse and look for Portland
+        if (info.isJson) {
+          try {
+            const json = JSON.parse(text);
+            info.topKeys = Object.keys(json);
+
+            // Search entire JSON string for "portland" (case insensitive)
+            const portlandIdx = text.toLowerCase().indexOf("portland");
+            if (portlandIdx >= 0) {
+              info.portlandFound = true;
+              info.portlandContext = text.slice(Math.max(0, portlandIdx - 100), portlandIdx + 200);
+            } else {
+              info.portlandFound = false;
+            }
+          } catch { /* not valid json */ }
+        }
+
+        // If HTML, search for Portland
+        if (info.isHtml) {
+          const portlandIdx = text.toLowerCase().indexOf("portland");
+          if (portlandIdx >= 0) {
+            info.portlandFound = true;
+            info.portlandContext = text.slice(Math.max(0, portlandIdx - 200), portlandIdx + 300);
+          } else {
+            info.portlandFound = false;
           }
         }
       }
+      results[label] = info;
+    } catch (err: any) {
+      results[label] = { url, error: err?.message || String(err) };
     }
-  } catch (err: any) {
-    results.ncaaApi = { error: err?.message || String(err) };
-  }
+  };
+
+  // Test all potential sources
+  await Promise.all([
+    tryFetch("ncaaApi_baseball", "https://ncaa-api.henrygd.me/standings/baseball/d1"),
+    tryFetch("ncaaApi_baseballMen", "https://ncaa-api.henrygd.me/standings/baseball-men/d1"),
+    tryFetch("ncaaApi_scoreboard", "https://ncaa-api.henrygd.me/scoreboard/baseball/d1"),
+    tryFetch("ncaaWebsite", "https://www.ncaa.com/standings/baseball/d1"),
+    tryFetch("warrennolan", "https://www.warrennolan.com/baseball/2026/team-record"),
+    tryFetch("warrennolan2", "https://www.warrennolan.com/baseball/2025/team-record"),
+    tryFetch("espnScoreboard", "https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/scoreboard"),
+    tryFetch("espnPortland2501", "https://site.api.espn.com/apis/site/v2/sports/baseball/college-baseball/teams/2501/schedule?season=2026"),
+  ]);
 
   return NextResponse.json(results);
 }
