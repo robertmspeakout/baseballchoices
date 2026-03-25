@@ -361,18 +361,18 @@ export async function GET(request: NextRequest) {
       }
     }
 
-    // Always compute record from actual game results when we have completed
-    // games — this is more reliable than ESPN's recordSummary which can be
-    // stale or wrong (e.g. Portland showing 6-6 instead of 15-7).
-    if (completed.length > 0) {
+    // Use the /teams endpoint record (espnRecord) as the primary source.
+    // Only fall back to schedule computation if the team endpoint had no record.
+    if (!espnRecord && completed.length > 0) {
       const wins = completed.filter((g) => g.result === "W").length;
       const losses = completed.filter((g) => g.result === "L").length;
-      const computedRecord = `${wins}-${losses}`;
-      debugLog.push(`Computed from ${completed.length} games: ${computedRecord} (ESPN said: ${espnRecord || espnScheduleRecord || "n/a"})`);
-      espnRecord = computedRecord;
-    } else if (espnScheduleRecord) {
-      // No completed games to compute from — fall back to ESPN's summary
+      espnRecord = `${wins}-${losses}`;
+      debugLog.push(`Computed from ${completed.length} games: ${espnRecord}`);
+    } else if (!espnRecord && espnScheduleRecord) {
       espnRecord = espnScheduleRecord;
+      debugLog.push(`Using schedule recordSummary: ${espnRecord}`);
+    } else {
+      debugLog.push(`Using team endpoint record: ${espnRecord}`);
     }
 
     // --- Record priority: standings > computed-from-games > ESPN summary ---
