@@ -1,4 +1,0 @@
-{
-  "_comment": "Manual season record overrides. These take priority over ESPN. Key = school name (must match schools.json), value = current season W-L record.",
-  "Portland": "15-7"
-}

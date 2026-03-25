@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ESPN_TEAM_IDS, resolveEspnTeam, normalize, currentSeason, teamNameMatches } from "@/lib/espn";
-import { fetchNcaaRecords, getNcaaRecord } from "@/lib/ncaa";
-import recordOverrides from "@/data/record-overrides.json";
+import { getNcaaRecord } from "@/lib/ncaa";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -31,29 +30,20 @@ export async function GET(request: NextRequest) {
   const records: Record<string, string | null> = {};
   const debugLog: Record<string, string[]> = {};
 
-  const overrides = recordOverrides as Record<string, string>;
-
   const fetchRecord = async (school: string): Promise<void> => {
     const log: string[] = [];
     debugLog[school] = log;
     try {
-      // ── Step 0: check manual overrides first ──────────────────────
-      if (overrides[school]) {
-        records[school] = overrides[school];
-        log.push(`Override: ${overrides[school]}`);
-        return;
-      }
-
-      // ── Step 0b: check NCAA standings (primary automated source) ──
+      // ── Step 1: check standings (ESPN bulk + NCAA API) ────────────
       const ncaaRecord = await getNcaaRecord(school);
       if (ncaaRecord) {
         records[school] = ncaaRecord;
-        log.push(`NCAA: ${ncaaRecord}`);
+        log.push(`Standings: ${ncaaRecord}`);
         return;
       }
-      log.push(`NCAA: no match for "${school}"`);
+      log.push(`Standings: no match for "${school}"`);
 
-      // ── Step 1: fallback to ESPN team ID ──────────────────────────
+      // ── Step 2: fallback to ESPN per-team API ─────────────────────
       let teamId: string | null = null;
 
       const knownId = ESPN_TEAM_IDS[school];
