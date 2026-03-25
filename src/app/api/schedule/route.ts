@@ -1,11 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ESPN_TEAM_IDS, resolveEspnTeam, normalize as espnNormalize, teamNameMatches } from "@/lib/espn";
+import { getNcaaRecord } from "@/lib/ncaa";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 export const dynamic = "force-dynamic";
 
-const ROUTE_VERSION = 5;
+const ROUTE_VERSION = 7;
 
 function emptyResponse() {
   return NextResponse.json({
@@ -251,13 +252,12 @@ export async function GET(request: NextRequest) {
       });
     }
 
-    // Prefer the schedule endpoint's record (current season) over the team
-    // endpoint which can return last season's record early in the year.
+    // Note: we also capture the schedule endpoint's record as a fallback,
+    // but we prefer computing from actual game results (see below).
     const st = scheduleData?.team;
-    if (st?.recordSummary) {
-      espnRecord = st.recordSummary;
-    } else if (st?.record?.items?.[0]?.summary) {
-      espnRecord = st.record.items[0].summary;
+    const espnScheduleRecord = st?.recordSummary || st?.record?.items?.[0]?.summary || null;
+    if (espnScheduleRecord) {
+      debugLog.push(`ESPN schedule recordSummary: ${espnScheduleRecord}`);
     }
 
     // --- Step 5: Parse games ---
@@ -350,19 +350,37 @@ export async function GET(request: NextRequest) {
       }
     }
 
-    // Compute record from games if ESPN didn't provide one
-    if (!espnRecord && completed.length > 0) {
+    // Always compute record from actual game results when we have completed
+    // games — this is more reliable than ESPN's recordSummary which can be
+    // stale or wrong (e.g. Portland showing 6-6 instead of 15-7).
+    if (completed.length > 0) {
       const wins = completed.filter((g) => g.result === "W").length;
       const losses = completed.filter((g) => g.result === "L").length;
-      espnRecord = `${wins}-${losses}`;
+      const computedRecord = `${wins}-${losses}`;
+      debugLog.push(`Computed from ${completed.length} games: ${computedRecord} (ESPN said: ${espnRecord || espnScheduleRecord || "n/a"})`);
+      espnRecord = computedRecord;
+    } else if (espnScheduleRecord) {
+      // No completed games to compute from — fall back to ESPN's summary
+      espnRecord = espnScheduleRecord;
     }
+
+    // --- Record priority: NCAA/ESPN standings > computed-from-games > ESPN summary ---
+    let ncaaRecord: string | null = null;
+    try {
+      ncaaRecord = await getNcaaRecord(school);
+      if (ncaaRecord) debugLog.push(`Standings record: ${ncaaRecord}`);
+    } catch (e: any) {
+      debugLog.push(`Standings fetch error: ${e?.message}`);
+    }
+    const finalRecord = ncaaRecord || espnRecord;
+    debugLog.push(`Final record: ${finalRecord} (source: ${ncaaRecord ? "standings" : espnRecord ? "espn" : "none"})`);
 
     const recentGames = completed.slice(-5).reverse();
     const next5 = upcoming.slice(0, 5);
 
     return NextResponse.json({
       _v: ROUTE_VERSION,
-      record: espnRecord,
+      record: finalRecord,
       recentGames,
       upcoming: next5,
     }, {

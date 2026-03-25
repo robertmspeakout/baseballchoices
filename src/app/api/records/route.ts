@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ESPN_TEAM_IDS, resolveEspnTeam, normalize, currentSeason, teamNameMatches } from "@/lib/espn";
+import { getNcaaRecord } from "@/lib/ncaa";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -33,7 +34,16 @@ export async function GET(request: NextRequest) {
     const log: string[] = [];
     debugLog[school] = log;
     try {
-      // ── Step 1: resolve the ESPN team ID ──────────────────────────
+      // ── Step 1: check standings (ESPN bulk + NCAA API) ────────────
+      const ncaaRecord = await getNcaaRecord(school);
+      if (ncaaRecord) {
+        records[school] = ncaaRecord;
+        log.push(`Standings: ${ncaaRecord}`);
+        return;
+      }
+      log.push(`Standings: no match for "${school}"`);
+
+      // ── Step 2: fallback to ESPN per-team API ─────────────────────
       let teamId: string | null = null;
 
       const knownId = ESPN_TEAM_IDS[school];
@@ -86,13 +96,52 @@ export async function GET(request: NextRequest) {
           return;
         }
 
+        // Compute record from actual game results — more reliable than ESPN's
+        // recordSummary which can be stale or wrong.
+        const events: any[] = schedData?.events || [];
+        let wins = 0;
+        let losses = 0;
+        let gamesCount = 0;
+        for (const event of events) {
+          const comp = event.competitions?.[0];
+          if (!comp || comp.status?.type?.completed !== true) continue;
+          const competitors: any[] = comp.competitors || [];
+          if (competitors.length < 2) continue;
+          const ourTeam = competitors.find(
+            (c: any) => String(c.team?.id || c.id) === teamId
+          );
+          if (!ourTeam) continue;
+          gamesCount++;
+          if (ourTeam.winner === true) wins++;
+          else if (ourTeam.winner === false) losses++;
+          else {
+            // Fallback: compare scores
+            const ourScore = parseInt(String(ourTeam.score?.displayValue ?? ourTeam.score ?? ""), 10);
+            const opp = competitors.find((c: any) => String(c.team?.id || c.id) !== teamId);
+            const oppScore = parseInt(String(opp?.score?.displayValue ?? opp?.score ?? ""), 10);
+            if (!isNaN(ourScore) && !isNaN(oppScore)) {
+              if (ourScore > oppScore) wins++;
+              else if (ourScore < oppScore) losses++;
+            }
+          }
+        }
+
+        if (gamesCount > 0) {
+          const computedRecord = `${wins}-${losses}`;
+          const espnSummary = teamInfo.recordSummary || null;
+          log.push(`Computed from ${gamesCount} games: ${computedRecord} (ESPN said: ${espnSummary || "n/a"})`);
+          records[school] = computedRecord;
+          return;
+        }
+
+        // Fall back to ESPN's recordSummary if no completed games
         const recordSummary = teamInfo.recordSummary;
         if (recordSummary) {
           records[school] = recordSummary;
           log.push(`Result (schedule): ${recordSummary}`);
           return;
         }
-        log.push(`Schedule had no recordSummary`);
+        log.push(`Schedule had no recordSummary and no completed games`);
       }
 
       // Fallback: try the /teams endpoint directly
