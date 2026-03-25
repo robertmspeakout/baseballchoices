@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 export const dynamic = "force-dynamic";
+export const fetchCache = "force-no-store";
 
 export async function GET() {
   const results: any = { timestamp: new Date().toISOString() };
