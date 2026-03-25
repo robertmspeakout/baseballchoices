@@ -43,7 +43,7 @@ export async function GET() {
       const d = new Date(e.date);
       return d.toISOString().slice(0, 10).replace(/-/g, "");
     });
-    lastGameDates = [...new Set(dates)].sort().reverse(); // most recent first
+    lastGameDates = [...new Set(dates)].sort().reverse() as string[]; // most recent first
     lastGameDate = lastGameDates[0] || null;
 
     let wins = 0, losses = 0;
