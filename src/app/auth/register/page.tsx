@@ -8,6 +8,7 @@ import Link from "next/link";
 function RegisterForm() {
   const searchParams = useSearchParams();
   const intent = searchParams.get("intent") || "";
+  const [accountType, setAccountType] = useState<"player" | "parent" | null>(null);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -42,7 +43,7 @@ function RegisterForm() {
       const res = await fetch("/api/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ firstName, lastName, email, password }),
+        body: JSON.stringify({ firstName, lastName, email, password, accountType }),
       });
 
       const data = await res.json();
@@ -67,9 +68,9 @@ function RegisterForm() {
         return;
       }
 
-      // Redirect based on intent
-      if (intent === "purchase") {
-        // Go straight to membership page which will auto-trigger Stripe checkout
+      // Redirect based on intent and account type
+      if (intent === "purchase" || accountType === "parent") {
+        // Parents always go to checkout; purchase intent does the same
         window.location.replace("/membership?auto_checkout=true");
       } else {
         window.location.replace("/");
@@ -99,15 +100,83 @@ function RegisterForm() {
 
       <main className="flex-1 flex items-start justify-center px-4 py-8 sm:py-12">
         <div className="w-full max-w-md">
+          {!accountType ? (
+            <>
+              <div className="text-center mb-8">
+                <div className="mx-auto w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-4">
+                  <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
+                  </svg>
+                </div>
+                <h2 className="text-2xl font-bold text-gray-900">Who&apos;s signing up?</h2>
+                <p className="text-sm text-gray-500 mt-1">Select your account type to get started</p>
+              </div>
+
+              <div className="space-y-3">
+                <button
+                  onClick={() => setAccountType("player")}
+                  className="w-full flex items-center gap-4 p-4 bg-white border-2 border-gray-200 rounded-xl hover:border-blue-500 hover:bg-blue-50 transition-colors text-left"
+                >
+                  <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center shrink-0">
+                    <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <div className="font-semibold text-gray-900">I&apos;m a Player</div>
+                    <div className="text-sm text-gray-500">Create your own recruiting profile</div>
+                  </div>
+                  <svg className="w-5 h-5 text-gray-400 ml-auto shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+
+                <button
+                  onClick={() => setAccountType("parent")}
+                  className="w-full flex items-center gap-4 p-4 bg-white border-2 border-gray-200 rounded-xl hover:border-blue-500 hover:bg-blue-50 transition-colors text-left"
+                >
+                  <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center shrink-0">
+                    <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <div className="font-semibold text-gray-900">I&apos;m a Parent / Guardian</div>
+                    <div className="text-sm text-gray-500">Manage your player&apos;s recruiting journey</div>
+                  </div>
+                  <svg className="w-5 h-5 text-gray-400 ml-auto shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </div>
+
+              <p className="text-center text-sm text-gray-500 mt-6">
+                Already have an account?{" "}
+                <Link href="/auth/login" className="text-blue-600 hover:text-blue-800 font-medium">Sign in</Link>
+              </p>
+            </>
+          ) : (
+          <>
           <div className="text-center mb-8">
-            <div className="mx-auto w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-4">
-              <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
-              </svg>
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <button
+                onClick={() => setAccountType(null)}
+                className="text-gray-400 hover:text-gray-600 transition-colors"
+                title="Change account type"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <div className={`px-3 py-1 rounded-full text-xs font-medium ${accountType === "player" ? "bg-blue-100 text-blue-700" : "bg-green-100 text-green-700"}`}>
+                {accountType === "player" ? "Player Account" : "Parent / Guardian Account"}
+              </div>
             </div>
             <h2 className="text-2xl font-bold text-gray-900">Create Your Account</h2>
             <p className="text-sm text-gray-500 mt-1">
-              {intent === "purchase" ? "Create your account to subscribe" : "Get started with ExtraBase"}
+              {accountType === "parent"
+                ? "You'll be able to invite your player after signing up"
+                : intent === "purchase" ? "Create your account to subscribe" : "Get started with ExtraBase"}
             </p>
           </div>
 
@@ -193,6 +262,8 @@ function RegisterForm() {
             Already have an account?{" "}
             <Link href="/auth/login" className="text-blue-600 hover:text-blue-800 font-medium">Sign in</Link>
           </p>
+          </>
+          )}
         </div>
       </main>
     </div>
